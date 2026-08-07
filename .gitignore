@@ -1,0 +1,18 @@
+# Dependencies and build output — never commit these
+node_modules/
+.next/
+out/
+build/
+.vercel/
+
+# Secrets — the Web3Forms key lives here. Must never reach GitHub.
+.env
+.env.local
+.env*.local
+
+# OS / editor noise
+.DS_Store
+Thumbs.db
+*.log
+.idea/
+.vscode/

@@ -1,0 +1,156 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    scroll-padding-top: 72px;
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+  }
+
+  body {
+    @apply bg-paper font-sans text-ink;
+  }
+
+  ::selection {
+    background-color: #1c1512;
+    color: #f4f2ec;
+  }
+}
+
+@layer components {
+  /* Wide editorial gutter — content breathes, photos can break out of it */
+  .container-max {
+    @apply mx-auto w-full max-w-container px-margin-mobile md:px-margin-desktop;
+  }
+
+  .label-caps {
+    @apply font-mono text-label-caps uppercase;
+  }
+
+  /* Mono index/eyebrow — the tiny half of the type contrast. Coloured with
+     the accent rather than neutral grey so every section header carries a
+     small, consistent warm beat instead of the page reading pure b&w. */
+  .eyebrow {
+    @apply label-caps mb-6 flex items-center gap-3 text-accent;
+  }
+  .eyebrow::before {
+    content: '';
+    @apply inline-block h-px w-8 bg-accent;
+  }
+
+  .h-display {
+    @apply text-headline-lg-mobile font-semibold tracking-tight text-ink md:text-display-lg;
+  }
+  .h-section {
+    @apply text-headline-lg-mobile font-semibold tracking-tight text-ink md:text-headline-lg;
+  }
+
+  /* Buttons — square, solid, no radius. Underline-reveal on the text link. */
+  .btn-primary {
+    @apply label-caps inline-flex items-center justify-center gap-2 bg-ink px-8 py-4 text-paper transition-colors duration-300 ease-premium hover:bg-accent;
+  }
+  .btn-outline {
+    @apply label-caps inline-flex items-center justify-center gap-2 border border-ink px-8 py-4 text-ink transition-colors duration-300 ease-premium hover:bg-ink hover:text-paper;
+  }
+  .btn-on-dark {
+    @apply label-caps inline-flex items-center justify-center gap-2 bg-paper px-8 py-4 text-ink transition-colors duration-300 ease-premium hover:bg-accent hover:text-white;
+  }
+  .btn-sm {
+    @apply label-caps inline-flex items-center justify-center gap-2 bg-ink px-5 py-2.5 text-paper transition-colors duration-300 ease-premium hover:bg-accent;
+  }
+
+  /* Text link with an underline that draws in on hover */
+  .link-underline {
+    @apply relative inline-flex items-center gap-2 text-ink transition-colors duration-300;
+    background-image: linear-gradient(currentColor, currentColor);
+    background-position: 0 100%;
+    background-repeat: no-repeat;
+    background-size: 0% 1px;
+    transition: background-size 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+  .link-underline:hover {
+    background-size: 100% 1px;
+  }
+
+  /* Subtle hover on interactive rows/cards — border darkens, no lift/shadow */
+  .row-hover {
+    @apply transition-colors duration-300 ease-premium;
+  }
+
+  /* Thin-border card that lifts a hair on hover — never a shadow-heavy card */
+  .edit-card {
+    @apply border border-line bg-white transition-all duration-[350ms] ease-premium;
+  }
+  .edit-card:hover {
+    @apply border-line-strong;
+    transform: translateY(-3px);
+  }
+
+  /* Slow, deliberate image zoom — the only "flashy" motion this system allows */
+  .img-zoom {
+    @apply transition-transform duration-[1400ms] ease-premium;
+  }
+  .img-zoom:hover {
+    transform: scale(1.045);
+  }
+}
+
+/* ---------------------------------------------------------------------- */
+/* Reveal-on-scroll — text fades upward, respects reduced motion           */
+/* ---------------------------------------------------------------------- */
+.reveal {
+  opacity: 0;
+  transform: translateY(24px);
+  transition:
+    opacity 0.7s cubic-bezier(0.16, 1, 0.3, 1),
+    transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+  will-change: opacity, transform;
+}
+.reveal.is-visible {
+  opacity: 1;
+  transform: none;
+}
+
+/* ---------------------------------------------------------------------- */
+/* Ken Burns — slow, barely-there zoom for hero / editorial photography    */
+/* ---------------------------------------------------------------------- */
+@keyframes ken-burns {
+  0% {
+    transform: scale(1.02);
+  }
+  100% {
+    transform: scale(1.1);
+  }
+}
+.ken-burns {
+  animation: ken-burns 18s cubic-bezier(0.16, 1, 0.3, 1) infinite alternate;
+}
+
+/* ---------------------------------------------------------------------- */
+/* Grain — a whisper of texture over flat colour fields, never over photos */
+/* ---------------------------------------------------------------------- */
+.grain-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 60;
+  pointer-events: none;
+  opacity: 0.035;
+  mix-blend-mode: overlay;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  .reveal {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+  .ken-burns {
+    animation: none;
+  }
+}

@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 240 44" width="240" height="44" role="img" aria-label="The Cote Noire">
+  <g fill="none" stroke="currentColor" stroke-width="1.4">
+    <path d="M18 6 L30 20 L18 34 L6 20 Z"/>
+  </g>
+  <circle cx="18" cy="20" r="3.2" fill="currentColor"/>
+  <text x="44" y="17"
+        font-family="'Hanken Grotesk', 'Segoe UI', Helvetica, Arial, sans-serif"
+        font-size="10" font-weight="500" letter-spacing="4"
+        fill="currentColor" opacity="0.6">LA</text>
+  <text x="44" y="35"
+        font-family="'Hanken Grotesk', Georgia, 'Times New Roman', serif"
+        font-size="21" font-weight="400" letter-spacing="2.6"
+        fill="currentColor">CÔTE NOIRE</text>
+</svg>

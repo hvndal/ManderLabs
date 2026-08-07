@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 260 40" width="260" height="40" role="img" aria-label="Waste Universe">
+  <g fill="none" stroke="currentColor" stroke-width="2">
+    <circle cx="18" cy="20" r="9"/>
+    <ellipse cx="18" cy="20" rx="16" ry="6" transform="rotate(-24 18 20)"/>
+  </g>
+  <text x="42" y="19"
+        font-family="'Hanken Grotesk', 'Segoe UI', Helvetica, Arial, sans-serif"
+        font-size="15" font-weight="700" letter-spacing="2.2"
+        fill="currentColor">WASTE</text>
+  <text x="42" y="34"
+        font-family="'Hanken Grotesk', 'Segoe UI', Helvetica, Arial, sans-serif"
+        font-size="15" font-weight="300" letter-spacing="2.2"
+        fill="currentColor" opacity="0.65">UNIVERSE</text>
+</svg>

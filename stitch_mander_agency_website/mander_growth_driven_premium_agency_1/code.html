@@ -1,0 +1,499 @@
+<!DOCTYPE html>
+
+<html class="scroll-smooth" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>MANDER | Websites that grow your business.</title>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;500;600&amp;family=JetBrains+Mono:wght@500&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "on-primary-container": "#858383",
+                        "surface-variant": "#e5e2e1",
+                        "tertiary-fixed-dim": "#dfb7fa",
+                        "secondary-fixed-dim": "#c6c6c7",
+                        "on-surface-variant": "#444748",
+                        "primary-fixed": "#e5e2e1",
+                        "on-secondary-fixed": "#1a1c1c",
+                        "surface-container-high": "#ebe7e6",
+                        "secondary-container": "#dfe0e0",
+                        "outline": "#747878",
+                        "surface-container-low": "#f7f3f2",
+                        "on-primary": "#ffffff",
+                        "primary": "#000000",
+                        "error": "#ba1a1a",
+                        "secondary": "#5d5f5f",
+                        "secondary-fixed": "#e2e2e2",
+                        "inverse-primary": "#c8c6c5",
+                        "primary-fixed-dim": "#c8c6c5",
+                        "surface-container": "#f1edec",
+                        "on-primary-fixed": "#1c1b1b",
+                        "surface-container-lowest": "#ffffff",
+                        "primary-container": "#1c1b1b",
+                        "outline-variant": "#c4c7c7",
+                        "on-tertiary-fixed": "#2b0a42",
+                        "on-secondary-fixed-variant": "#454747",
+                        "tertiary-container": "#2b0a42",
+                        "on-tertiary-container": "#9a76b3",
+                        "on-primary-fixed-variant": "#474746",
+                        "surface-bright": "#fdf8f8",
+                        "surface": "#fdf8f8",
+                        "on-surface": "#1c1b1b",
+                        "on-secondary-container": "#616363",
+                        "tertiary-fixed": "#f3daff",
+                        "error-container": "#ffdad6",
+                        "on-tertiary-fixed-variant": "#593971",
+                        "tertiary": "#000000",
+                        "on-error": "#ffffff",
+                        "background": "#fdf8f8",
+                        "inverse-surface": "#313030",
+                        "on-error-container": "#93000a",
+                        "on-background": "#1c1b1b",
+                        "on-secondary": "#ffffff",
+                        "surface-container-highest": "#e5e2e1",
+                        "surface-dim": "#ddd9d8",
+                        "inverse-on-surface": "#f4f0ef",
+                        "surface-tint": "#5f5e5e",
+                        "on-tertiary": "#ffffff",
+                        "accent-purple": "#7C3AED"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.125rem",
+                        "lg": "0.25rem",
+                        "xl": "0.5rem",
+                        "full": "0.75rem"
+                    },
+                    "spacing": {
+                        "stack-lg": "80px",
+                        "stack-md": "40px",
+                        "gutter": "32px",
+                        "margin-mobile": "20px",
+                        "unit": "8px",
+                        "container-max": "1280px",
+                        "stack-sm": "16px",
+                        "margin-desktop": "64px"
+                    },
+                    "fontFamily": {
+                        "headline-md": ["Hanken Grotesk"],
+                        "label-caps": ["JetBrains Mono"],
+                        "label-sm": ["Hanken Grotesk"],
+                        "headline-lg": ["Hanken Grotesk"],
+                        "display-lg": ["Hanken Grotesk"],
+                        "body-md": ["Hanken Grotesk"],
+                        "headline-lg-mobile": ["Hanken Grotesk"],
+                        "body-lg": ["Hanken Grotesk"]
+                    },
+                    "fontSize": {
+                        "headline-md": ["24px", { "lineHeight": "32px", "letterSpacing": "-0.01em", "fontWeight": "500" }],
+                        "label-caps": ["12px", { "lineHeight": "16px", "letterSpacing": "0.1em", "fontWeight": "500" }],
+                        "label-sm": ["13px", { "lineHeight": "18px", "letterSpacing": "0.01em", "fontWeight": "500" }],
+                        "headline-lg": ["48px", { "lineHeight": "56px", "letterSpacing": "-0.03em", "fontWeight": "600" }],
+                        "display-lg": ["72px", { "lineHeight": "80px", "letterSpacing": "-0.04em", "fontWeight": "600" }],
+                        "body-md": ["16px", { "lineHeight": "24px", "letterSpacing": "0em", "fontWeight": "400" }],
+                        "headline-lg-mobile": ["32px", { "lineHeight": "40px", "letterSpacing": "-0.02em", "fontWeight": "600" }],
+                        "body-lg": ["18px", { "lineHeight": "28px", "letterSpacing": "0em", "fontWeight": "400" }]
+                    },
+                    "animation": {
+                        "float": "float 6s ease-in-out infinite",
+                    },
+                    "keyframes": {
+                        "float": {
+                            "0%, 100%": { transform: "translateY(0)" },
+                            "50%": { transform: "translateY(-20px)" }
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        body { background-color: #FFFFFF; color: #1c1b1b; }
+        .glass-nav { background: rgba(253, 248, 248, 0.8); backdrop-filter: blur(20px); }
+        .hover-lift { transition: transform 0.3s cubic-bezier(0.2, 0.8, 0.2, 1), box-shadow 0.3s cubic-bezier(0.2, 0.8, 0.2, 1); }
+        .hover-lift:hover { transform: translateY(-4px); box-shadow: 0px 10px 30px rgba(0,0,0,0.04); }
+        .border-hairline { border: 1px solid #EAEAEA; }
+        .bg-subtle { background-color: #F9F9F9; }
+        
+        .shader-bg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 0;
+            pointer-events: none;
+        }
+    </style>
+</head>
+<body class="font-body-md antialiased text-on-surface bg-background selection:bg-accent-purple selection:text-white">
+<!-- TopNavBar -->
+<nav class="glass-nav docked full-width top-0 sticky z-50 border-b border-outline-variant/30 flex justify-between items-center w-full px-margin-mobile md:px-margin-desktop py-4 max-w-container-max mx-auto">
+<div class="flex items-center gap-4">
+<img alt="MANDER Logo" class="h-8 w-auto" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAfvnc7-vKgxWW59dd7UkkIqX-8pkNjp3JkkROcKjJEaMp0E8NH11Yht0Xu2LNeYVVuH5t5FRV8Kh0V54wfqCQgksExHjXTvGQ6rzEhnj-nB9MCE6TviP5BXMCw9syttleQDgvLX2yPNZoD5cWmT_peKu8WywiCc9q9X7TywloYt4wtAU0TZ8di6gkLvkyBB3NY_7S-f2bP_IaYJnnljne6ABR4FgxkxX37KRSach_VrcsBZzQsuE1ZVbQHUFntsK0WdQ"/>
+</div>
+<div class="hidden md:flex gap-8 items-center">
+<a class="text-on-surface-variant hover:text-accent-purple transition-colors font-label-caps text-label-caps uppercase" href="#services">Services</a>
+<a class="text-on-surface-variant hover:text-accent-purple transition-colors font-label-caps text-label-caps uppercase" href="#work">Work</a>
+<a class="text-on-surface-variant hover:text-accent-purple transition-colors font-label-caps text-label-caps uppercase" href="/pricing">Pricing</a>
+<a class="text-on-surface-variant hover:text-accent-purple transition-colors font-label-caps text-label-caps uppercase" href="#process">Process</a>
+<a class="text-on-surface-variant hover:text-accent-purple transition-colors font-label-caps text-label-caps uppercase" href="#faq">FAQ</a>
+</div>
+<div class="hidden md:block">
+<a class="bg-primary text-on-primary font-label-caps text-label-caps uppercase px-4 py-2 rounded scale-95 active:scale-90 transition-transform hover:bg-accent-purple hover:text-white transition-all duration-300 inline-block" href="#contact">Get Started</a>
+</div>
+<button class="md:hidden text-primary">
+<span class="material-symbols-outlined">menu</span>
+</button>
+</nav>
+<main>
+<!-- Hero Section -->
+<section class="relative min-h-[90vh] flex flex-col justify-center overflow-hidden pt-stack-lg pb-stack-lg">
+<!-- STITCH_SHADER_START:ANIMATION_7 class="shader-bg" -->
+<div class="shader-bg" style="display:block;">
+<canvas id="shader-canvas-ANIMATION_7" style="display:block;width:100%;height:100%"></canvas>
+<script>
+(function() {
+  const canvas = document.getElementById('shader-canvas-ANIMATION_7');
+
+  // Sync the WebGL drawing-buffer size with the CSS-driven layout size.
+  // This fires on initial layout and whenever the element is resized.
+  function syncSize() {
+    const w = canvas.clientWidth  || 1280;
+    const h = canvas.clientHeight || 720;
+    if (canvas.width !== w || canvas.height !== h) {
+      canvas.width  = w;
+      canvas.height = h;
+    }
+  }
+  if (typeof ResizeObserver !== 'undefined') {
+    new ResizeObserver(syncSize).observe(canvas);
+  }
+  syncSize();
+
+  const gl = canvas.getContext('webgl') || canvas.getContext('experimental-webgl');
+  if (!gl) return;
+  const vs = `attribute vec2 a_position;
+varying vec2 v_texCoord;
+void main() {
+  v_texCoord = a_position * 0.5 + 0.5;
+  gl_Position = vec4(a_position, 0.0, 1.0);
+}`;
+  const fs = `precision highp float;
+uniform float u_time;
+uniform vec2 u_resolution;
+uniform vec2 u_mouse;
+varying vec2 v_texCoord;
+
+void main() {
+    vec2 uv = v_texCoord;
+    vec2 mouse = u_mouse / u_resolution;
+    
+    // Create a slow, flowing liquid motion
+    float wave = sin(uv.x * 3.0 + u_time * 0.5) * 0.1;
+    wave += cos(uv.y * 2.0 + u_time * 0.3) * 0.1;
+    
+    // Define the brand purple
+    vec3 color1 = vec3(0.44, 0.22, 0.68); // Mander Purple
+    vec3 color2 = vec3(0.98, 0.96, 0.96); // Soft Surface
+    vec3 color3 = vec3(0.1, 0.1, 0.1);    // Charcoal
+    
+    float mixFactor = smoothstep(0.4 + wave, 0.6 + wave, uv.y + uv.x * 0.5);
+    vec3 finalColor = mix(color1 * 0.1, color2, mixFactor);
+    
+    // Add a subtle purple glow near mouse
+    float dist = distance(uv, mouse);
+    float glow = smoothstep(0.3, 0.0, dist) * 0.15;
+    finalColor += color1 * glow;
+
+    gl_FragColor = vec4(finalColor, 1.0);
+}`;
+  function cs(type, src) {
+    const s = gl.createShader(type);
+    gl.shaderSource(s, src);
+    gl.compileShader(s);
+    return s;
+  }
+  const prog = gl.createProgram();
+  gl.attachShader(prog, cs(gl.VERTEX_SHADER, vs));
+  gl.attachShader(prog, cs(gl.FRAGMENT_SHADER, fs));
+  gl.linkProgram(prog);
+  gl.useProgram(prog);
+  const buf = gl.createBuffer();
+  gl.bindBuffer(gl.ARRAY_BUFFER, buf);
+  gl.bufferData(gl.ARRAY_BUFFER, new Float32Array([-1,-1, 1,-1, -1,1, 1,1]), gl.STATIC_DRAW);
+  const pos = gl.getAttribLocation(prog, 'a_position');
+  gl.enableVertexAttribArray(pos);
+  gl.vertexAttribPointer(pos, 2, gl.FLOAT, false, 0, 0);
+  const uTime = gl.getUniformLocation(prog, 'u_time');
+  const uRes = gl.getUniformLocation(prog, 'u_resolution');
+  const uMouse = gl.getUniformLocation(prog, 'u_mouse');
+
+  // u_mouse is in pixel coordinates matching u_resolution (ShaderToy convention).
+  // Shaders that need normalized coords should use: u_mouse / u_resolution.
+  let mouse = { x: canvas.width / 2, y: canvas.height / 2 };
+  window.addEventListener('mousemove', (event) => {
+    const rect = canvas.getBoundingClientRect();
+    if (rect.width && rect.height) {
+      const nx = (event.clientX - rect.left) / rect.width;
+      const ny = 1.0 - (event.clientY - rect.top) / rect.height;
+      mouse.x = nx * canvas.width;
+      mouse.y = ny * canvas.height;
+    }
+  });
+
+  function render(t) {
+    if (typeof ResizeObserver === 'undefined') syncSize();
+    gl.viewport(0, 0, canvas.width, canvas.height);
+    if (uTime) gl.uniform1f(uTime, t * 0.001);
+    if (uRes) gl.uniform2f(uRes, canvas.width, canvas.height);
+    if (uMouse) gl.uniform2f(uMouse, mouse.x, mouse.y);
+    gl.drawArrays(gl.TRIANGLE_STRIP, 0, 4);
+    requestAnimationFrame(render);
+  }
+  render(0);
+})();
+</script>
+</div>
+<!-- STITCH_SHADER_END:ANIMATION_7 -->
+<div class="max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop relative z-10 w-full flex flex-col items-center text-center gap-8">
+<h1 class="font-display-lg text-headline-lg-mobile md:text-display-lg text-primary tracking-tight leading-tight max-w-4xl">Websites that grow your business.</h1>
+<p class="font-body-lg text-body-lg text-on-surface-variant max-w-2xl">Premium, high-performance websites engineered for authoritative brands. We combine Scandinavian minimalism with Swiss functionalism to deliver digital experiences that convert.</p>
+<div class="flex gap-4 mt-2 flex-wrap justify-center">
+<a class="bg-primary text-on-primary px-8 py-4 rounded font-label-caps text-label-caps uppercase tracking-wider hover:bg-accent-purple transition-colors" href="#contact">Book a Free Consultation</a>
+<a class="border border-primary text-primary px-8 py-4 rounded font-label-caps text-label-caps uppercase tracking-wider hover:bg-primary hover:text-white transition-colors" href="#work">View Our Work</a>
+</div>
+<div class="w-full max-w-5xl mt-12 relative">
+<img class="w-full h-auto rounded-xl shadow-2xl object-cover aspect-video" data-alt="Premium workspace showing growth" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCKsgxC8FysGL9Px9CyaNrGsdzYaCUq5yeNu5G9PsrlXP3KH649utUXTWI8XmE-S_d89M6AIZNGZnodB7x4GM7cGcqXEgD7nHVsQV4AAOoNAyBze5ECWLMM1emrHUGNZdY4MwXL7fHXH8-8WbhAaPpdKVQGzi7lQptcxVRa-Fj6RQXPR936TBZ235Q8k4Rh2nkU-QtRA8GSbuw3gha6g-LR64n-XlNKa4vCuk9s-iRh_kopx3QxD5or"/>
+</div>
+</div>
+</section>
+<!-- Services -->
+<section class="bg-subtle py-stack-lg" id="services">
+<div class="max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop">
+<div class="mb-12">
+<span class="font-label-caps text-label-caps text-accent-purple uppercase tracking-widest block mb-2">Capabilities</span>
+<h2 class="font-headline-lg text-headline-lg-mobile md:text-headline-lg text-primary">Focused expertise.</h2>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-gutter">
+<!-- Service Card -->
+<div class="bg-surface border-hairline p-8 rounded hover-lift flex flex-col gap-4 group">
+<span class="material-symbols-outlined text-primary group-hover:text-accent-purple transition-colors text-3xl">web</span>
+<h3 class="font-headline-md text-headline-md text-primary">Website Design</h3>
+<p class="font-body-md text-body-md text-on-surface-variant">Custom, conversion-optimized websites built on scalable architectures. Clean code, fast load times.</p>
+</div>
+<!-- Service Card -->
+<div class="bg-surface border-hairline p-8 rounded hover-lift flex flex-col gap-4 group">
+<span class="material-symbols-outlined text-primary group-hover:text-accent-purple transition-colors text-3xl">branding_watermark</span>
+<h3 class="font-headline-md text-headline-md text-primary">Brand Identity</h3>
+<p class="font-body-md text-body-md text-on-surface-variant">Cohesive visual systems that communicate authority. Logos, typography, and color palettes.</p>
+</div>
+<!-- Service Card -->
+<div class="bg-surface border-hairline p-8 rounded hover-lift flex flex-col gap-4 group">
+<span class="material-symbols-outlined text-primary group-hover:text-accent-purple transition-colors text-3xl">autorenew</span>
+<h3 class="font-headline-md text-headline-md text-primary">Website Redesign</h3>
+<p class="font-body-md text-body-md text-on-surface-variant">Modernizing legacy sites to improve user experience, aesthetic appeal, and technical performance.</p>
+</div>
+<!-- Service Card -->
+<div class="bg-surface border-hairline p-8 rounded hover-lift flex flex-col gap-4 group">
+<span class="material-symbols-outlined text-primary group-hover:text-accent-purple transition-colors text-3xl">search</span>
+<h3 class="font-headline-md text-headline-md text-primary">SEO</h3>
+<p class="font-body-md text-body-md text-on-surface-variant">Technical and content optimization to ensure your brand is visible to high-intent audiences.</p>
+</div>
+<!-- Service Card -->
+<div class="bg-surface border-hairline p-8 rounded hover-lift flex flex-col gap-4 group">
+<span class="material-symbols-outlined text-primary group-hover:text-accent-purple transition-colors text-3xl">storefront</span>
+<h3 class="font-headline-md text-headline-md text-primary">GBP Optimization</h3>
+<p class="font-body-md text-body-md text-on-surface-variant">Maximizing local visibility through strategic Google Business Profile management.</p>
+</div>
+<!-- Service Card -->
+<div class="bg-surface border-hairline p-8 rounded hover-lift flex flex-col gap-4 group">
+<span class="material-symbols-outlined text-primary group-hover:text-accent-purple transition-colors text-3xl">health_and_safety</span>
+<h3 class="font-headline-md text-headline-md text-primary">Care Plan</h3>
+<p class="font-body-md text-body-md text-on-surface-variant">Ongoing maintenance, security updates, and technical support to keep your site pristine.</p>
+</div>
+</div>
+</div>
+</section>
+<!-- Value Proposition Section -->
+<section class="py-stack-lg max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop">
+<div class="flex flex-col md:flex-row items-center gap-gutter">
+<div class="w-full md:w-1/2">
+<img class="w-full h-auto rounded-xl shadow-xl object-cover" data-alt="Business owner looking at 400% sales growth" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCG2-ovCLJjw1KBD2O-IMGxwM1Pa5VvcLIrNA15voj5uAktCJK0Zp5OBsWTsIk-0_RB9-wSQ5_fx4YD5Hp4l3hvgEPCDyBM12NvKx950eXuazucnFjFdbEQBsSEMsx3bN4G6LzGmJHwNRpv5aQoo3kg6qb5F0yGGP5HdTGdqIY1aJMyFm_NmFI6OO_xZsbgr7Grl_daU87OZgnuBeivvmaueQewKbpp-okKgnS9eYI2f1gnw84Q_FpN"/>
+</div>
+<div class="w-full md:w-1/2 flex flex-col gap-6">
+<span class="font-label-caps text-label-caps text-accent-purple uppercase tracking-widest block">Results Driven</span>
+<h2 class="font-headline-lg text-headline-lg-mobile md:text-headline-lg text-primary leading-tight">We don't just build websites. We build businesses.</h2>
+<p class="font-body-lg text-body-lg text-on-surface-variant">Our strategic approach to design and development is focused on one thing: measurable growth. We create digital assets that work as hard as you do.</p>
+<ul class="flex flex-col gap-4 font-body-md text-body-md text-on-surface-variant mt-2">
+<li class="flex items-center gap-3"><span class="material-symbols-outlined text-accent-purple">trending_up</span> Increased Conversion Rates</li>
+<li class="flex items-center gap-3"><span class="material-symbols-outlined text-accent-purple">visibility</span> Higher Search Visibility</li>
+<li class="flex items-center gap-3"><span class="material-symbols-outlined text-accent-purple">verified_user</span> Enhanced Brand Authority</li>
+</ul>
+</div>
+</div>
+</section>
+<!-- Pricing -->
+<section class="py-stack-lg bg-subtle" id="pricing">
+<div class="max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop">
+<div class="text-center mb-16">
+<span class="font-label-caps text-label-caps text-accent-purple uppercase tracking-widest block mb-2">Investment</span>
+<h2 class="font-headline-lg text-headline-lg-mobile md:text-headline-lg text-primary">Transparent pricing.</h2>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 items-end">
+<!-- Tier 1 -->
+<div class="border-hairline rounded p-8 flex flex-col h-full hover-lift bg-surface">
+<h3 class="font-headline-md text-headline-md text-primary mb-2">Brand Launch</h3>
+<div class="mb-6"><span class="text-3xl font-bold text-primary">$249</span></div>
+<ul class="flex flex-col gap-3 font-body-md text-body-md text-on-surface-variant mb-8 flex-grow">
+<li class="flex items-center gap-2 border-b border-surface-variant pb-2"><span class="material-symbols-outlined text-accent-purple text-sm">check</span> Single Page Site</li>
+<li class="flex items-center gap-2 border-b border-surface-variant pb-2"><span class="material-symbols-outlined text-accent-purple text-sm">check</span> Basic SEO</li>
+<li class="flex items-center gap-2 pb-2"><span class="material-symbols-outlined text-accent-purple text-sm">check</span> Contact Form</li>
+</ul>
+<a class="w-full text-center border-hairline text-primary py-3 rounded font-label-caps text-label-caps uppercase hover:bg-surface-variant transition-colors mt-auto" href="#contact">Select Plan</a>
+</div>
+<!-- Tier 2 -->
+<div class="border-hairline rounded p-8 flex flex-col h-full hover-lift bg-surface">
+<h3 class="font-headline-md text-headline-md text-primary mb-2">Starter</h3>
+<div class="mb-6"><span class="text-3xl font-bold text-primary">$499</span></div>
+<ul class="flex flex-col gap-3 font-body-md text-body-md text-on-surface-variant mb-8 flex-grow">
+<li class="flex items-center gap-2 border-b border-surface-variant pb-2"><span class="material-symbols-outlined text-accent-purple text-sm">check</span> Up to 5 Pages</li>
+<li class="flex items-center gap-2 border-b border-surface-variant pb-2"><span class="material-symbols-outlined text-accent-purple text-sm">check</span> Standard SEO</li>
+<li class="flex items-center gap-2 pb-2"><span class="material-symbols-outlined text-accent-purple text-sm">check</span> Google Analytics Setup</li>
+</ul>
+<a class="w-full text-center border-hairline text-primary py-3 rounded font-label-caps text-label-caps uppercase hover:bg-surface-variant transition-colors mt-auto" href="#contact">Select Plan</a>
+</div>
+<!-- Tier 3 (Premium) -->
+<div class="border-[2px] border-accent-purple rounded p-8 flex flex-col h-full relative hover-lift bg-surface transform md:-translate-y-4 shadow-lg">
+<div class="absolute top-0 left-1/2 transform -translate-x-1/2 -translate-y-1/2 bg-accent-purple text-white px-3 py-1 rounded font-label-caps text-[10px] uppercase tracking-wider">Most Popular</div>
+<h3 class="font-headline-md text-headline-md text-primary mb-2">Growth</h3>
+<div class="mb-6"><span class="text-3xl font-bold text-primary">$899</span></div>
+<ul class="flex flex-col gap-3 font-body-md text-body-md text-on-surface-variant mb-8 flex-grow">
+<li class="flex items-center gap-2 border-b border-surface-variant pb-2"><span class="material-symbols-outlined text-accent-purple text-sm">check</span> Up to 10 Pages</li>
+<li class="flex items-center gap-2 border-b border-surface-variant pb-2"><span class="material-symbols-outlined text-accent-purple text-sm">check</span> Advanced SEO</li>
+<li class="flex items-center gap-2 border-b border-surface-variant pb-2"><span class="material-symbols-outlined text-accent-purple text-sm">check</span> Custom Animations</li>
+<li class="flex items-center gap-2 pb-2"><span class="material-symbols-outlined text-accent-purple text-sm">check</span> CRM Integration</li>
+</ul>
+<a class="w-full text-center bg-primary text-on-primary py-3 rounded font-label-caps text-label-caps uppercase hover:bg-accent-purple transition-colors mt-auto" href="#contact">Select Plan</a>
+</div>
+<!-- Tier 4 -->
+<div class="border-hairline rounded p-8 flex flex-col h-full hover-lift bg-surface">
+<h3 class="font-headline-md text-headline-md text-primary mb-2">Business Pro</h3>
+<div class="mb-6"><span class="text-3xl font-bold text-primary">$1499+</span></div>
+<ul class="flex flex-col gap-3 font-body-md text-body-md text-on-surface-variant mb-8 flex-grow">
+<li class="flex items-center gap-2 border-b border-surface-variant pb-2"><span class="material-symbols-outlined text-accent-purple text-sm">check</span> Custom Architecture</li>
+<li class="flex items-center gap-2 border-b border-surface-variant pb-2"><span class="material-symbols-outlined text-accent-purple text-sm">check</span> E-Commerce Ready</li>
+<li class="flex items-center gap-2 border-b border-surface-variant pb-2"><span class="material-symbols-outlined text-accent-purple text-sm">check</span> Priority Support</li>
+<li class="flex items-center gap-2 pb-2"><span class="material-symbols-outlined text-accent-purple text-sm">check</span> API Integrations</li>
+</ul>
+<a class="w-full text-center border-hairline text-primary py-3 rounded font-label-caps text-label-caps uppercase hover:bg-surface-variant transition-colors mt-auto" href="#contact">Custom Quote</a>
+</div>
+</div>
+<!-- Care Plan Add-on -->
+<div class="mt-16 bg-surface border-hairline rounded p-8 flex flex-col md:flex-row items-center justify-between gap-6 max-w-3xl mx-auto shadow-sm">
+<div>
+<h4 class="font-headline-md text-headline-md text-primary flex items-center gap-2"><span class="material-symbols-outlined text-accent-purple">verified</span> Care Plan</h4>
+<p class="font-body-md text-body-md text-on-surface-variant mt-2">Continuous security, updates, and peace of mind.</p>
+</div>
+<div class="flex items-center gap-6">
+<div class="text-xl font-bold text-primary">$29<span class="text-sm font-normal text-on-surface-variant">/mo</span></div>
+<a class="border-hairline text-primary px-6 py-3 rounded font-label-caps text-label-caps uppercase hover:bg-subtle transition-colors" href="#contact">Add to Plan</a>
+</div>
+</div>
+</div>
+</section>
+</main>
+<!-- Footer -->
+<footer class="bg-surface border-t border-outline-variant/50 w-full px-margin-mobile md:px-margin-desktop py-stack-lg mt-stack-lg">
+<div class="max-w-container-max mx-auto grid grid-cols-1 md:grid-cols-2 gap-stack-md">
+<div>
+<div class="font-headline-md text-headline-md font-bold text-primary mb-4 flex items-center gap-2">
+<img alt="MANDER Logo" class="h-6 w-auto opacity-80" src="https://lh3.googleusercontent.com/aida-public/AB6AXuB_CKlgMYJPuh40pAtOTmVrlW2rAjwEDbBJ-BUCn1zt4sKLVdeB2_0GnCVBKxQyK2irGBQBVo086LplPUiSRpvpwaWxNfTKk_Z64teV5DUtxYwFJsmJli6ptHjY_YnlC19dMj7Z1lvI7c-K-O2Xys72JnrId5_84g6-CLpe5ilIBeYBDpoOrjywOUuFScg6xbx3mgotqHCKYS02ACPW4MHuFK45SOdxEKThVSN0kRCypK8dy2F9BnamUCAW0ThVFkcpkA"/>
+</div>
+<p class="font-body-md text-body-md text-on-surface-variant max-w-xs">© 2024 MANDER. Built for the high-growth era.</p>
+</div>
+<div class="flex flex-wrap gap-6 md:justify-end font-label-caps text-label-caps uppercase">
+<a class="text-on-surface-variant hover:text-accent-purple transition-colors" href="#">Privacy Policy</a>
+<a class="text-on-surface-variant hover:text-accent-purple transition-colors" href="#">Terms of Service</a>
+<a class="text-on-surface-variant hover:text-accent-purple transition-colors" href="#">Cookies</a>
+<a class="text-on-surface-variant hover:text-accent-purple transition-colors" href="#">Contact</a>
+</div>
+</div>
+</footer>
+<script>
+    // Simple WebGL Shader Implementation
+    document.querySelectorAll('canvas[data-shader]').forEach(canvas => {
+        const gl = canvas.getContext('webgl');
+        if (!gl) return;
+
+        const shaderSource = canvas.getAttribute('data-shader');
+        
+        // Setup simple quad
+        const vertices = new Float32Array([-1, -1, 1, -1, -1, 1, 1, 1]);
+        const buffer = gl.createBuffer();
+        gl.bindBuffer(gl.ARRAY_BUFFER, buffer);
+        gl.bufferData(gl.ARRAY_BUFFER, vertices, gl.STATIC_DRAW);
+
+        const vsSource = `
+            attribute vec2 position;
+            varying vec2 v_texCoord;
+            void main() {
+                gl_Position = vec4(position, 0.0, 1.0);
+                v_texCoord = position * 0.5 + 0.5;
+            }
+        `;
+
+        const fsSource = shaderSource;
+
+        const compileShader = (type, source) => {
+            const shader = gl.createShader(type);
+            gl.shaderSource(shader, source);
+            gl.compileShader(shader);
+            return shader;
+        };
+
+        const program = gl.createProgram();
+        gl.attachShader(program, compileShader(gl.VERTEX_SHADER, vsSource));
+        gl.attachShader(program, compileShader(gl.FRAGMENT_SHADER, fsSource));
+        gl.linkProgram(program);
+        gl.useProgram(program);
+
+        const posAttrib = gl.getAttribLocation(program, 'position');
+        gl.enableVertexAttribArray(posAttrib);
+        gl.vertexAttribPointer(posAttrib, 2, gl.FLOAT, false, 0, 0);
+
+        const timeUniform = gl.getUniformLocation(program, 'u_time');
+        const resUniform = gl.getUniformLocation(program, 'u_resolution');
+        const mouseUniform = gl.getUniformLocation(program, 'u_mouse');
+
+        let mouseX = 0, mouseY = 0;
+        window.addEventListener('mousemove', (e) => {
+            mouseX = e.clientX;
+            mouseY = window.innerHeight - e.clientY;
+        });
+
+        const resize = () => {
+            canvas.width = canvas.clientWidth;
+            canvas.height = canvas.clientHeight;
+            gl.viewport(0, 0, canvas.width, canvas.height);
+            gl.uniform2f(resUniform, canvas.width, canvas.height);
+        };
+        window.addEventListener('resize', resize);
+        resize();
+
+        let startTime = Date.now();
+        const render = () => {
+            gl.uniform1f(timeUniform, (Date.now() - startTime) * 0.001);
+            gl.uniform2f(mouseUniform, mouseX, mouseY);
+            gl.drawArrays(gl.TRIANGLE_STRIP, 0, 4);
+            requestAnimationFrame(render);
+        };
+        render();
+    });
+</script>
+</body></html>

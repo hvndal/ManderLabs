@@ -1,0 +1,392 @@
+// Single source of truth for site copy — edit here, every page updates.
+
+export const BRAND = {
+  name: 'MANDER',
+  tagline: 'Websites for Canadian & American small business.',
+  // Public-facing address — shown on the site and used in every mailto link.
+  // This needs email forwarding set up at the mander.tech registrar/host
+  // (Cloudflare Email Routing, Zoho, Google Workspace, etc.) pointed at
+  // hundalg968@gmail.com — otherwise mail sent here bounces. The contact
+  // form and quiz don't depend on this: they submit straight to Web3Forms,
+  // which is registered directly to hundalg968@gmail.com (see
+  // .env.local.example). Two separate paths, same inbox.
+  email: 'herman@mander.tech',
+  portfolio: 'https://hermanify.online',
+  region: 'Serving small & mid-sized businesses across Canada and the U.S.',
+};
+
+export const NAV_LINKS = [
+  { label: 'Work', href: '/#work' },
+  { label: 'Services', href: '/#services' },
+  { label: 'Process', href: '/#process' },
+  { label: 'Team', href: '/#team' },
+  { label: 'Pricing', href: '/pricing' },
+];
+
+// Pexels — free to use, no attribution required (https://www.pexels.com/license/)
+export const IMAGES = {
+  heroWorkspace: {
+    src: 'https://images.pexels.com/photos/36123565/pexels-photo-36123565.jpeg?auto=compress&cs=tinysrgb&w=1800',
+    alt: 'Modern minimal workspace with a laptop and books on a desk',
+  },
+  growthOwner: {
+    src: 'https://images.pexels.com/photos/4872048/pexels-photo-4872048.jpeg?auto=compress&cs=tinysrgb&w=1400',
+    alt: 'Business owner reviewing performance figures on a tablet in a bright office',
+  },
+};
+
+// Service photos live in /public/services — copied from Pictures\our services
+// by setup-assets.bat. Filenames are fixed; swap the file, keep the name.
+export const SERVICES = [
+  {
+    index: '01',
+    title: 'Website Design',
+    body: 'Custom, conversion-focused sites built on fast, scalable foundations. Clean code, quick to load, easy for you to update.',
+    image: '/services/website-design.jpg',
+  },
+  {
+    index: '02',
+    title: 'Brand Identity',
+    body: 'A cohesive visual system — logo, type, colour, and the rules that hold it together — so you look established from day one.',
+    image: '/services/brand-identity.jpg',
+  },
+  {
+    index: '03',
+    title: 'Website Redesign',
+    body: 'Modernising a site that has aged out. Better experience, sharper design, and the technical performance search engines reward.',
+    image: '/services/website-redesign.jpg',
+  },
+  {
+    index: '04',
+    title: 'SEO',
+    body: 'Technical and content work that puts you in front of high-intent local buyers — the people already searching for what you do.',
+    image: '/services/seo.jpg',
+  },
+  {
+    index: '05',
+    title: 'Local Search',
+    body: 'Google Business Profile, maps, and directory presence tuned so the right customer in the right town lands on the right page.',
+    image: '/services/gbp-optimization.jpg',
+  },
+  {
+    index: '06',
+    title: 'Care Plan',
+    body: 'Hosting, security, backups, and unlimited small edits. We keep the site fast and current so you never think about it.',
+    image: '/services/care-plan.jpg',
+  },
+];
+
+export const PROCESS = [
+  {
+    step: '01',
+    title: 'Discovery',
+    body: 'A short call to understand the business, the customer, and what a win actually looks like for you.',
+  },
+  {
+    step: '02',
+    title: 'Strategy',
+    body: 'A tight plan — structure, messaging, and the exact scope — priced up front with no moving targets.',
+  },
+  {
+    step: '03',
+    title: 'Build',
+    body: 'Design and development in one motion, shown to you as it comes together, not sprung on you at the end.',
+  },
+  {
+    step: '04',
+    title: 'Launch',
+    body: 'Testing, handover, and a site you own outright. We stay on for support if you want us to.',
+  },
+];
+
+// --- Pricing --------------------------------------------------------------
+// Starter no longer bundles Google Business / Analytics — those moved into
+// Local Search as an add-on / higher tiers.
+export const TIERS = [
+  {
+    name: 'Brand Launch',
+    price: '$249',
+    from: 249,
+    blurb: 'A sharp one-page presence for a new venture that needs to look real, now.',
+    features: ['Single-page site', 'Mobile-first build', 'Contact form'],
+    detailed: [
+      'Custom single-page website',
+      'Mobile-first responsive build',
+      'Contact form with spam protection',
+      'Basic on-page SEO',
+      '1 round of revisions',
+    ],
+    cta: 'Start here',
+    featured: false,
+  },
+  {
+    name: 'Starter',
+    price: '$499',
+    from: 499,
+    blurb: 'A proper small-business site — a handful of pages that do the selling for you.',
+    features: ['Up to 5 pages', 'Copywriting support', 'Contact + enquiry forms'],
+    detailed: [
+      'Custom 5-page website',
+      'Copywriting support',
+      'On-page SEO across all pages',
+      'Enquiry + contact forms',
+      '2 rounds of revisions',
+    ],
+    cta: 'Choose Starter',
+    featured: false,
+  },
+  {
+    name: 'Growth',
+    price: '$899',
+    from: 899,
+    blurb: 'For businesses ready to compete on search and turn the site into a real channel.',
+    features: ['Up to 10 pages', 'Advanced + local SEO', 'CRM / booking integration', 'Custom motion'],
+    detailed: [
+      'Custom 10+ page or e-commerce build',
+      'Advanced technical + local SEO',
+      'Google Business Profile setup',
+      'CRM / booking / automation integration',
+      'Custom motion and interactions',
+      'Priority support',
+    ],
+    cta: 'Choose Growth',
+    featured: true,
+  },
+  {
+    name: 'Business Pro',
+    price: '$1,499+',
+    from: 1499,
+    blurb: 'Bespoke builds for established brands that need more than a template can carry.',
+    features: ['Custom architecture', 'E-commerce ready', 'API integrations', 'Dedicated manager'],
+    detailed: [
+      'Bespoke architecture or web app',
+      'Full e-commerce or booking systems',
+      'Third-party API integrations',
+      'Dedicated account manager',
+      'Quarterly performance reviews',
+    ],
+    cta: 'Talk to us',
+    featured: false,
+  },
+];
+
+export const CARE_PLAN = [
+  { title: 'Managed Hosting', body: 'Fast, reliable infrastructure — we handle it end to end.' },
+  { title: 'SSL & Security', body: 'Encryption plus 24/7 malware scanning and threat prevention.' },
+  { title: 'Daily Backups', body: 'Automated off-site backups, restorable in minutes.' },
+  { title: 'Unlimited Edits', body: 'Small content changes done for you, no hourly billing.' },
+  { title: 'Priority Support', body: 'A direct line to the people who built your site.' },
+];
+
+export const STATS = [
+  { value: '100k+', label: 'Members served on one client build' },
+  { value: '2 wks', label: 'Typical time to a launched site' },
+  { value: '100%', label: 'Sites you own outright' },
+];
+
+export const FAQS = [
+  {
+    q: 'How much does a website cost?',
+    a: 'Custom builds start at $249 for a single-page site and run to $899 for a full multi-page build with SEO — well under typical agency rates. Every price is fixed and quoted up front before any work starts, so there is no surprise invoice at the end.',
+  },
+  {
+    q: 'How fast can you build my website?',
+    a: 'A one-page Brand Launch site typically ships in about two weeks. A fuller Starter or Growth build usually takes four to six weeks, mostly gated by how quickly content and feedback come back from you — not by us.',
+  },
+  {
+    q: 'Do you have budget-friendly options for small businesses?',
+    a: 'That is the whole premise. Brand Launch and Starter are built specifically for small businesses that need a real, professional site without agency-level spend — from $249, with no retainer required.',
+  },
+  {
+    q: 'Do you only work with local businesses?',
+    a: 'We focus on small and mid-sized businesses across Canada and the U.S. — the ones who need a site that competes with the big players without a big-player budget. Larger projects are welcome too; that is what Business Pro is for.',
+  },
+  {
+    q: 'Do I own the website?',
+    a: 'Yes — completely. On final payment you own the design, the code, and every account, all in your name. No lock-in, no hostage hosting.',
+  },
+  {
+    q: 'What if I am not sure which plan I need?',
+    a: 'Take the 60-second fit quiz — it recommends a starting point based on your answers, or routes you straight to a person if your situation is unusual.',
+  },
+  {
+    q: 'Do you charge in USD or CAD?',
+    a: 'Either. Prices are shown in USD by default; we invoice Canadian clients in CAD at your preference.',
+  },
+];
+
+// --- Work -----------------------------------------------------------------
+// Client logos are SVG placeholders in /public/logos — replace the files with
+// the real marks and nothing else changes. `image` is a stock photo picked to
+// actually match the industry (Pexels, free to use) — swap for real client
+// photography the moment you have it; a stand-in stock shot next to a real
+// client name and result is the one thing worth fixing before this goes live.
+export const WORK = [
+  {
+    name: 'Fitway Gym',
+    sector: 'Commercial Fitness',
+    location: 'Multi-site, U.S.',
+    logo: '/logos/fitway.svg',
+    image: 'https://images.pexels.com/photos/9545914/pexels-photo-9545914.jpeg?auto=compress&cs=tinysrgb&w=1200',
+    result: '100k+ members',
+    body: 'A commercial gym at real scale needed a site that could carry 100,000+ members without buckling. We rebuilt the class timetable, membership sign-up, and location finder into one fast self-serve flow — and the front desk stopped answering questions the website should have.',
+    services: ['Website Design', 'CRM Integration', 'Care Plan'],
+    quote: 'They rebuilt the parts of our site our members actually touch every day. Sign-ups stopped being a phone call.',
+    person: 'Operations Director, Fitway Gym',
+  },
+  {
+    name: 'Waste Universe',
+    sector: 'Waste Management',
+    location: 'Massachusetts, U.S.',
+    logo: '/logos/waste-universe.svg',
+    image: 'https://images.pexels.com/photos/16891361/pexels-photo-16891361.jpeg?auto=compress&cs=tinysrgb&w=1200',
+    result: 'Statewide coverage',
+    body: 'Commercial and residential collection across Massachusetts, sold through a site that looked smaller than the operation. We rebuilt it around service areas and quote requests, with local SEO tuned to every town they cover, so the right customer books the right service.',
+    services: ['Website Redesign', 'Local SEO', 'Local Search'],
+    quote: 'We finally look like the operation we actually are. Quote requests come in already knowing what we do.',
+    person: 'Founder, Waste Universe',
+  },
+  {
+    name: 'The Côte Noire',
+    sector: 'Hospitality',
+    location: 'France',
+    logo: '/logos/cote-noire.svg',
+    image: 'https://images.pexels.com/photos/28454110/pexels-photo-28454110.jpeg?auto=compress&cs=tinysrgb&w=1200',
+    result: 'Direct bookings up',
+    body: 'A hospitality brand whose atmosphere never made it online. We built a restrained, image-led bilingual site that lets the photography carry the room, with direct reservations front and centre to pull bookings back off the aggregators.',
+    services: ['Brand Identity', 'Website Design', 'Bilingual Build'],
+    quote: 'The site finally feels like walking into the room. Bookings moved off the aggregators within a month.',
+    person: 'Owner, The Côte Noire',
+  },
+];
+
+// --- Team -----------------------------------------------------------------
+// All U.S.-based except the founder (Langley, BC). Small, concentrated team.
+// photo: null renders an initials placeholder. Drop a headshot in /public/team
+// and set photo: '/team/name.jpg' to swap it in.
+// NOTE: these bios are written copy, not verified fact — check before launch.
+export const TEAM = [
+  {
+    name: 'Herman',
+    role: 'Founder',
+    location: 'Langley, BC',
+    bio: 'Studied computing science and philosophy at Trinity Western in Langley — the mix of building things and asking why they should exist that still runs the shop. Started MANDER to give small businesses the kind of site the big firms gatekeep. Off the clock: trail runs, secondhand bookstores, and too much coffee.',
+    photo: '/team/herman.jpg',
+    link: { label: 'Personal portfolio', href: BRAND.portfolio },
+  },
+  {
+    name: 'Evan Mercado',
+    role: 'Head of Marketing',
+    location: 'Austin, TX',
+    bio: 'Six years running paid acquisition for franchise fitness brands. Learned the hard way that a beautiful site with a buried booking button is just an expensive brochure.',
+    photo: '/team/male2.jpg',
+  },
+  {
+    name: 'Danielle Brooks',
+    role: 'Creative Director',
+    location: 'Portland, OR',
+    bio: 'Came out of print — three years art-directing an independent design quarterly. Sets everything on a grid first and adds colour last, if at all.',
+    photo: '/team/danielle.jpg',
+  },
+  {
+    name: 'Marcus Reyes',
+    role: 'Lead Engineer',
+    location: 'Denver, CO',
+    bio: 'Spent four years on e-commerce platforms where a 300ms regression showed up in the revenue dashboard by lunch. Has strong opinions about image formats.',
+    photo: null,
+  },
+  {
+    name: 'Sophie Bennett',
+    role: 'Brand Strategist',
+    location: 'Nashville, TN',
+    bio: 'Former hospitality copywriter. Sat through enough founder interviews to know the good line is usually the third thing they say, not the first.',
+    photo: '/team/sophie.jpg',
+  },
+  {
+    name: 'Tyler Nakamura',
+    role: 'Design Engineer',
+    location: 'Seattle, WA',
+    bio: 'Trained as an industrial designer, moved to the web when tooling cycles got shorter than furniture ones. Owns the component library.',
+    photo: null,
+  },
+];
+
+// --- Quiz (drives /quote) -------------------------------------------------
+// Each option carries a `weight` toward a tier. Highest total wins; ties break
+// to the higher tier. `sales: true` on an answer forces a human handoff.
+export const QUIZ = {
+  intro: {
+    eyebrow: 'Fit quiz · 60 seconds',
+    title: 'Find the right starting point.',
+    body: 'Six quick questions. We recommend a plan based on your answers — or hand you to a person if that is the better move. No email required to see your result.',
+  },
+  questions: [
+    {
+      id: 'stage',
+      question: 'Where is the business today?',
+      options: [
+        { label: 'Brand new — nothing online yet', weights: { 'Brand Launch': 2, Starter: 1 } },
+        { label: 'Up and running, no real website', weights: { Starter: 2, Growth: 1 } },
+        { label: 'Established, the site is dated', weights: { Growth: 2, Starter: 1 } },
+        { label: 'Doing well, need something serious', weights: { 'Business Pro': 2, Growth: 1 } },
+      ],
+    },
+    {
+      id: 'goal',
+      question: 'What is the site mainly for?',
+      options: [
+        { label: 'Look legit and share the basics', weights: { 'Brand Launch': 2 } },
+        { label: 'Bring in enquiries and calls', weights: { Starter: 2, Growth: 1 } },
+        { label: 'Rank on Google and win local search', weights: { Growth: 2 } },
+        { label: 'Sell products or take bookings online', weights: { Growth: 1, 'Business Pro': 2 } },
+      ],
+    },
+    {
+      id: 'pages',
+      question: 'How much do you need to say?',
+      options: [
+        { label: 'One page is plenty', weights: { 'Brand Launch': 2 } },
+        { label: 'A handful — 3 to 5 pages', weights: { Starter: 2 } },
+        { label: 'Ten or so, with room to grow', weights: { Growth: 2 } },
+        { label: 'A lot, or a full store / app', weights: { 'Business Pro': 2 } },
+      ],
+    },
+    {
+      id: 'seo',
+      question: 'How important is showing up on Google?',
+      options: [
+        { label: 'Not a priority right now', weights: { 'Brand Launch': 1, Starter: 1 } },
+        { label: 'Would be nice', weights: { Starter: 1, Growth: 1 } },
+        { label: 'Important — customers search for us', weights: { Growth: 2 } },
+        { label: 'Critical — it is how we get found', weights: { Growth: 1, 'Business Pro': 1 } },
+      ],
+    },
+    {
+      id: 'integrations',
+      question: 'Anything the site needs to plug into?',
+      options: [
+        { label: 'No, keep it simple', weights: { 'Brand Launch': 1, Starter: 1 } },
+        { label: 'A booking or contact tool', weights: { Growth: 2 } },
+        { label: 'CRM, email, payments', weights: { Growth: 1, 'Business Pro': 1 } },
+        { label: 'Custom systems / an API', weights: { 'Business Pro': 2, sales: true } },
+      ],
+    },
+    {
+      id: 'budget',
+      question: 'What budget are you working with?',
+      options: [
+        { label: 'Tight — under $400', weights: { 'Brand Launch': 2 } },
+        { label: 'Around $500', weights: { Starter: 2 } },
+        { label: '$800–1,200', weights: { Growth: 2 } },
+        { label: '$1,500+ / not sure yet', weights: { 'Business Pro': 2 } },
+      ],
+    },
+  ],
+  // Reasoning shown with each recommended tier.
+  reasons: {
+    'Brand Launch': 'You need to look real and get online fast, without paying for pages you will not use yet.',
+    Starter: 'A focused few-page site is the sweet spot — enough to sell for you, nothing wasted.',
+    Growth: 'You are ready to compete on search and turn the site into a genuine channel, so the SEO and integrations earn their keep.',
+    'Business Pro': 'Your needs go past a template — custom architecture and integrations are the right call.',
+  },
+};
