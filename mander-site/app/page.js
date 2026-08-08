@@ -7,6 +7,10 @@ import ServiceBand from '@/components/ServiceBand';
 import Masthead from '@/components/Masthead';
 import Colophon from '@/components/Colophon';
 import StatsConstellation from '@/components/StatsConstellation';
+import {
+  CommunityRateSection,
+  CommunityRateNote,
+} from '@/components/CommunityRate';
 import Statement from '@/components/Statement';
 import WorkCompact from '@/components/WorkCompact';
 import TeamCard from '@/components/TeamCard';
@@ -245,11 +249,19 @@ export default function HomePage() {
         </Reveal>
 
         <Reveal delay={140}>
-          <p className="mt-6 text-label-sm text-ink-mute">
-            Tap a plan to see everything it includes.
-          </p>
+          <div className="mt-8 flex flex-col gap-3 border-t border-line pt-8 md:flex-row md:items-baseline md:justify-between md:gap-8">
+            <p className="text-label-sm text-ink-mute">
+              Tap a plan to see everything it includes.
+            </p>
+            {/* Quiet second door into the Community Rate — text, not a button,
+                so it never competes with the plan CTAs above it. */}
+            <CommunityRateNote />
+          </div>
         </Reveal>
       </Section>
+
+      {/* ------------------------------------------------ Community Rate · 20% */}
+      <CommunityRateSection />
 
       {/* ------------------------------------------------------------------ FAQ */}
       <Section id="faq" tone="paper">

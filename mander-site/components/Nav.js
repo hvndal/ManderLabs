@@ -73,12 +73,12 @@ export default function Nav() {
     >
       <nav
         aria-label="Primary"
-        className="mx-auto flex h-[68px] w-full max-w-container items-center justify-between px-margin-mobile md:px-margin-desktop"
+        className="mx-auto flex h-[76px] w-full max-w-container items-center justify-between px-margin-mobile md:px-margin-desktop"
       >
         <Link href="/" aria-label="MANDER home" className="text-ink">
           {/* The illustration, not the wordmark — the masthead already sets
               MANDER at full height, so repeating it here is redundant. */}
-          <Logo variant="mark" className="h-9 md:h-10" />
+          <Logo variant="mark" className="h-11 md:h-12" />
         </Link>
 
         <ul className="hidden items-center gap-9 md:flex">

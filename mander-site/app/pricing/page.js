@@ -6,6 +6,10 @@ import Icon from '@/components/Icon';
 import PricingInteractive from '@/components/PricingInteractive';
 import Faq from '@/components/Faq';
 import JsonLd from '@/components/JsonLd';
+import {
+  CommunityRateSection,
+  CommunityRateNote,
+} from '@/components/CommunityRate';
 import { TIERS, CARE_PLAN, FAQS, BRAND } from '@/lib/content';
 import { faqSchema } from '@/lib/seo';
 
@@ -69,6 +73,12 @@ export default function PricingPage() {
         <div className="container-max py-stack-md">
           <Reveal>
             <PricingInteractive tiers={TIERS} />
+          </Reveal>
+          <Reveal delay={100}>
+            {/* Same quiet door as the home page's pricing block */}
+            <div className="mt-8 border-t border-line pt-8">
+              <CommunityRateNote />
+            </div>
           </Reveal>
           <Reveal delay={120}>
             <p className="mt-8 text-label-sm text-ink-mute">
@@ -159,6 +169,9 @@ export default function PricingPage() {
           </div>
         </Reveal>
       </Section>
+
+      {/* ------------------------------------------------ Community Rate · 20% */}
+      <CommunityRateSection />
 
       {/* ------------------------------------------------------------------ FAQ */}
       <Section tone="paper">

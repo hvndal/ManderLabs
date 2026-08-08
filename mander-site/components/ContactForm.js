@@ -1,7 +1,7 @@
 'use client';
 
 import { useState } from 'react';
-import { TIERS } from '@/lib/content';
+import { TIERS, BRAND } from '@/lib/content';
 
 const FIELD =
   'w-full border border-line bg-white px-4 py-3 text-body-md text-ink transition-colors duration-200 placeholder:text-ink-mute/60 focus:border-ink focus:outline-none focus:ring-0';
@@ -10,7 +10,7 @@ const FIELD =
 // The key is bound to the inbox you registered at web3forms.com, so it is safe
 // to expose in the browser; it can only deliver to that address.
 const ACCESS_KEY = process.env.NEXT_PUBLIC_WEB3FORMS_KEY;
-const FALLBACK_EMAIL = 'hundalg968@gmail.com';
+const FALLBACK_EMAIL = BRAND.email;
 
 export default function ContactForm() {
   const [status, setStatus] = useState('idle'); // idle | sending | sent | error

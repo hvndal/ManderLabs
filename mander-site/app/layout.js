@@ -4,6 +4,7 @@ import Nav from '@/components/Nav';
 import Footer from '@/components/Footer';
 import Grain from '@/components/Grain';
 import JsonLd from '@/components/JsonLd';
+import { CommunityRateProvider } from '@/components/CommunityRate';
 import { SITE_URL, organizationSchema, websiteSchema } from '@/lib/seo';
 
 // Both are variable fonts — omitting `weight` pulls the full axis, which is
@@ -75,9 +76,13 @@ export default function RootLayout({ children }) {
           Skip to content
         </a>
         <Grain />
-        <Nav />
-        <main id="main">{children}</main>
-        <Footer />
+        {/* Wraps everything so the pricing note, the plan cards, the section
+            and the footer link all open one shared Community Rate drawer. */}
+        <CommunityRateProvider>
+          <Nav />
+          <main id="main">{children}</main>
+          <Footer />
+        </CommunityRateProvider>
       </body>
     </html>
   );

@@ -1,5 +1,6 @@
 import Link from 'next/link';
 import Logo from './Logo';
+import { CommunityRateFooterLink } from './CommunityRate';
 import { BRAND, NAV_LINKS } from '@/lib/content';
 
 const LEGAL = [
@@ -55,6 +56,9 @@ export default function Footer() {
                 </a>
               </li>
               <li className="text-paper/50">Mon–Fri, 9–5 PT</li>
+              <li className="pt-1">
+                <CommunityRateFooterLink className="text-left text-paper/60 underline decoration-paper/30 underline-offset-4 transition-colors hover:text-paper hover:decoration-paper" />
+              </li>
               <li className="pt-1">
                 <a
                   href={BRAND.portfolio}

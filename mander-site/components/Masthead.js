@@ -88,52 +88,80 @@ export default function Masthead({ tagline, mono }) {
   // The small furniture clears out early — it would only fight the type.
   const furniture = Math.max(0, 1 - eased / 0.35);
 
+  // vh first so iOS below 15.4 (which doesn't know svh) still gets a height
+  // instead of collapsing to auto; svh layered on top where it's supported, so
+  // the sticky stage doesn't jump as Safari's URL bar shows and hides.
   return (
     <section
       ref={trackRef}
       aria-label="MANDER"
-      className="relative h-[165svh] md:h-[220svh]"
+      className="relative h-[165vh] supports-[height:100svh]:h-[165svh] md:h-[220vh] md:supports-[height:100svh]:h-[220svh]"
     >
-      <div className="sticky top-0 h-[100svh] w-full overflow-hidden bg-paper">
-        {/* Film — always full bleed, only ever seen through the stencil */}
+      <div className="sticky top-0 h-[100vh] w-full overflow-hidden bg-paper supports-[height:100svh]:h-[100svh]">
+        {/* Film — always full bleed, only ever seen through the stencil.
+            iOS needs muted + playsInline + autoPlay all present before it will
+            play inline; without playsInline Safari opens it fullscreen. The
+            translate3d nudge forces GPU compositing so the video doesn't tear
+            or freeze against the sticky parent while scrolling on iOS. */}
         <video
-          className="absolute inset-0 h-full w-full object-cover"
+          className="absolute inset-0 h-full w-full object-cover [transform:translate3d(0,0,0)]"
           autoPlay
           muted
           loop
           playsInline
+          webkit-playsinline="true"
           preload="auto"
           poster="/hero-poster.jpg"
+          disablePictureInPicture
         >
           <source src="/videos/hero.mp4" type="video/mp4" />
         </video>
 
         {/* Cream stencil with MANDER knocked out of it.
-            Two cuts: a portrait viewBox for phones and a landscape one for
-            everything else. With preserveAspectRatio="slice" a single viewBox
-            can't serve both — on a tall phone a 3:2 box crops so hard you'd
-            read "ND" instead of the word. Each is sized so the word overruns
-            its box by ~15%, which is what puts the M and the R off the edges.
-            Scaling uses an SVG transform rather than CSS transform-origin,
-            which is inconsistent on <g> elements across browsers. */}
+            Two cuts, because one viewBox cannot serve both orientations under
+            preserveAspectRatio="slice".
+
+            Phone: the word is STACKED — MAN over DER. A single horizontal line
+            on a portrait screen can only ever be as tall as screenWidth/4.4,
+            which lands around 7% of the viewport — a caption, not a masthead.
+            Splitting it in two gets the block to ~37% of the screen, matching
+            the desktop proportion. The viewBox is set near a phone's own
+            aspect so slice barely crops.
+
+            Desktop: one line, set large enough to overrun the box so the M and
+            the R are cut by the viewport edges, and raised off the bottom so
+            the empty cream above it reads as composed rather than merely
+            unfilled.
+
+            Scaling uses an SVG transform, not CSS transform-origin, which
+            browsers disagree about on <g>. */}
         <svg
           aria-hidden="true"
           className="absolute inset-0 h-full w-full md:hidden"
-          viewBox="0 0 420 800"
+          viewBox="0 0 420 900"
           preserveAspectRatio="xMidYMid slice"
           style={{ opacity: stencilOpacity }}
         >
           <mask id="masthead-cut-sm" maskUnits="userSpaceOnUse">
             <rect x="-3000" y="-3000" width="7000" height="7000" fill="#fff" />
-            <g transform={cutTransform(210, 636, letterScale)}>
+            <g transform={cutTransform(210, 470, letterScale)}>
               <text
                 x="210"
-                y="700"
+                y="470"
                 textAnchor="middle"
                 fill="#000"
-                style={{ ...WORDMARK, fontSize: '132px' }}
+                style={{ ...WORDMARK, fontSize: '218px' }}
               >
-                MANDER
+                MAN
+              </text>
+              <text
+                x="210"
+                y="645"
+                textAnchor="middle"
+                fill="#000"
+                style={{ ...WORDMARK, fontSize: '218px' }}
+              >
+                DER
               </text>
             </g>
           </mask>
@@ -150,19 +178,19 @@ export default function Masthead({ tagline, mono }) {
         <svg
           aria-hidden="true"
           className="absolute inset-0 hidden h-full w-full md:block"
-          viewBox="0 0 1200 800"
+          viewBox="0 0 1500 800"
           preserveAspectRatio="xMidYMid slice"
           style={{ opacity: stencilOpacity }}
         >
           <mask id="masthead-cut-lg" maskUnits="userSpaceOnUse">
             <rect x="-3000" y="-3000" width="7000" height="7000" fill="#fff" />
-            <g transform={cutTransform(600, 572, letterScale)}>
+            <g transform={cutTransform(750, 456, letterScale)}>
               <text
-                x="600"
-                y="690"
+                x="750"
+                y="600"
                 textAnchor="middle"
                 fill="#000"
-                style={{ ...WORDMARK, fontSize: '330px' }}
+                style={{ ...WORDMARK, fontSize: '400px' }}
               >
                 MANDER
               </text>
@@ -183,10 +211,10 @@ export default function Masthead({ tagline, mono }) {
           className="pointer-events-none absolute inset-0"
           style={{ opacity: furniture }}
         >
-          <div className="container-max flex h-full flex-col justify-between py-7 md:py-9">
+          <div className="container-max flex h-full flex-col justify-between py-6 md:py-8">
             <div className="flex items-start justify-between gap-8">
-              <Logo variant="mark" className="pointer-events-auto h-9 md:h-11" />
-              <p className="label-caps max-w-[19ch] pt-1 text-right text-ink-mute md:max-w-none">
+              <Logo variant="mark" className="pointer-events-auto h-14 md:h-[72px]" />
+              <p className="label-caps max-w-[19ch] pt-2 text-right text-ink-mute md:max-w-none md:pt-3">
                 {mono}
               </p>
             </div>

@@ -1,9 +1,9 @@
 'use client';
 
 import { useState } from 'react';
-import Link from 'next/link';
 import { motion, AnimatePresence } from 'framer-motion';
 import Icon from './Icon';
+import { BRAND } from '@/lib/content';
 
 // The one shared easing curve for every motion primitive on the site.
 const EASE = [0.16, 1, 0.3, 1];
@@ -138,14 +138,23 @@ export default function PricingInteractive({ tiers }) {
                     }}
                     className="mt-8"
                   >
-                    <Link
-                      href="/quote"
+                    {/* Buying is a conversation, not a checkout — this goes
+                        straight to a person rather than into the quiz. */}
+                    <a
+                      href={`mailto:${BRAND.email}?subject=${encodeURIComponent(
+                        `${tier.name} — enquiry from the MANDER site`
+                      )}`}
                       onClick={(e) => e.stopPropagation()}
                       className="btn-primary w-full"
                     >
                       {tier.cta}
                       <Icon name="arrow" className="h-4 w-4" strokeWidth={2} />
-                    </Link>
+                    </a>
+
+                    {/* Quiet, never a discount badge */}
+                    <p className="label-caps mt-4 text-ink-mute">
+                      20% Community Rate available
+                    </p>
                   </motion.div>
                 </motion.div>
               )}

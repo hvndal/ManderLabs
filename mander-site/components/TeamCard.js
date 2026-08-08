@@ -18,8 +18,15 @@ function initials(name) {
  * third, so a centre-anchored crop decapitates people; anchoring high keeps
  * the face in frame whether the source is a tight studio shot or a casual
  * phone photo. photo: null renders a tonal initials block at the same size.
+ *
+ * `crop: 'half'` deliberately pushes the subject to the right edge so they sit
+ * half outside the frame. Used on exactly one member — a grid of six identical
+ * portraits is a contact sheet, and one broken frame turns it into a composition.
+ * It only works while it stays the exception, so resist applying it twice.
  */
 export default function TeamCard({ member }) {
+  const half = member.crop === 'half';
+
   return (
     <article className="group flex h-full flex-col">
       <div className="relative aspect-[4/5] overflow-hidden bg-paper-3">
@@ -29,7 +36,12 @@ export default function TeamCard({ member }) {
             alt={member.name}
             fill
             sizes="(max-width: 640px) 45vw, (max-width: 1024px) 30vw, 220px"
-            className="object-cover object-top grayscale transition-all duration-700 ease-premium group-hover:scale-[1.03] group-hover:grayscale-0"
+            style={half ? { objectPosition: '82% 22%' } : undefined}
+            className={`object-cover grayscale transition-all duration-700 ease-premium group-hover:grayscale-0 ${
+              half
+                ? 'scale-[1.35] group-hover:scale-[1.4]'
+                : 'object-top group-hover:scale-[1.03]'
+            }`}
           />
         ) : (
           <span

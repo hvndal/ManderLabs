@@ -3,13 +3,14 @@
 export const BRAND = {
   name: 'MANDER',
   tagline: 'Websites for Canadian & American small business.',
-  // Public-facing address — shown on the site and used in every mailto link.
-  // This needs email forwarding set up at the mander.tech registrar/host
-  // (Cloudflare Email Routing, Zoho, Google Workspace, etc.) pointed at
-  // hundalg968@gmail.com — otherwise mail sent here bounces. The contact
-  // form and quiz don't depend on this: they submit straight to Web3Forms,
-  // which is registered directly to hundalg968@gmail.com (see
-  // .env.local.example). Two separate paths, same inbox.
+  // The single public address. Every "Contact sales" button, the contact
+  // form's fallback, and Community Rate requests all resolve here, so this
+  // one string is the whole sales funnel.
+  //
+  // It needs email forwarding set up at the mander.tech registrar/host
+  // (Cloudflare Email Routing is free) pointed at an inbox that's actually
+  // read — otherwise mail sent here bounces. Register the Web3Forms key to
+  // this same address once forwarding is live; see .env.local.example.
   email: 'herman@mander.tech',
   portfolio: 'https://hermanify.online',
   region: 'Serving small & mid-sized businesses across Canada and the U.S.',
@@ -140,7 +141,7 @@ export const TIERS = [
       'Basic on-page SEO',
       '1 round of revisions',
     ],
-    cta: 'Start here',
+    cta: 'Contact sales',
     featured: false,
   },
   {
@@ -156,7 +157,7 @@ export const TIERS = [
       'Enquiry + contact forms',
       '2 rounds of revisions',
     ],
-    cta: 'Choose Starter',
+    cta: 'Contact sales',
     featured: false,
   },
   {
@@ -173,7 +174,7 @@ export const TIERS = [
       'Custom motion and interactions',
       'Priority support',
     ],
-    cta: 'Choose Growth',
+    cta: 'Contact sales',
     featured: true,
   },
   {
@@ -189,10 +190,58 @@ export const TIERS = [
       'Dedicated account manager',
       'Quarterly performance reviews',
     ],
-    cta: 'Talk to us',
+    cta: 'Contact sales',
     featured: false,
   },
 ];
+
+// --- Community Rate --------------------------------------------------------
+// 20% off, granted on trust rather than proof. The whole point is that asking
+// is easy, so the copy avoids the language of applications, approvals and
+// eligibility screening wherever it can — "tell us" rather than "submit".
+//
+// Deliberately not framed as a promotion or a limited-time offer: it's a
+// standing rate, which is why it lives in the pricing conversation rather
+// than in a banner. Micro-labels elsewhere on the site point back here; none
+// of them are allowed to look like a discount badge.
+export const COMMUNITY = {
+  rate: '20%',
+  title: '20% Community Rate',
+  lede: "Because circumstances shouldn't be a barrier to getting good service.",
+  body: 'We take 20% off for veterans and active-duty military, single parents, people living with a disability, anyone facing financial hardship or barriers to access, and small, independent, owner-operated businesses — along with other communities where it plainly makes sense.',
+  smallBusinessTitle: 'Small business? We’ve got you.',
+  smallBusinessBody:
+    'Independent businesses and owner-operated teams can request the same 20% rate. No headcount test, no revenue threshold.',
+  cta: 'Request the Community Rate',
+  entryPoint: 'Eligible for our Community Rate? Get 20% off.',
+  entryPointCta: 'See if you qualify',
+  microLabel: '20% Community Rate available',
+  footerLink: 'Community Rate — 20% off for eligible customers',
+  reassurance: 'No complicated applications. No invasive paperwork. Just ask.',
+
+  // Shown as the first step of the request flow. `hint` is the lightest
+  // possible confirmation we'd ever ask for — never a document upload.
+  categories: [
+    { id: 'veteran', label: 'Veteran / Military', hint: 'Branch and years served is plenty.' },
+    { id: 'single-parent', label: 'Single Parent', hint: 'Your word is enough.' },
+    { id: 'small-business', label: 'Small Business', hint: 'A business email or website link works.' },
+    { id: 'hardship', label: 'Financial Hardship', hint: 'A sentence about your situation. No documents.' },
+    { id: 'accessibility', label: 'Accessibility / Disability', hint: 'Tell us only what you want to.' },
+    { id: 'other', label: 'Other', hint: 'Tell us what’s going on and we’ll take it from there.' },
+  ],
+
+  // Plain-language terms. Written to read like a person explaining a policy,
+  // not a form gating access to one.
+  policy: [
+    'The 20% applies to our design and build services and to eligible plans.',
+    'We may ask for something small and reasonable to confirm eligibility — a business email, a link, a short note. Nothing invasive, and only what we actually need.',
+    'It generally can’t be stacked with another promotion, though ask us if you think your situation warrants it.',
+    'One Community Rate per qualifying account, unless we agree otherwise with you.',
+    'We may check in on eligibility from time to time for ongoing work.',
+    'We use common sense and discretion. If your situation isn’t on the list but the spirit fits, say so.',
+    'We may change or end the programme in future. Anyone already on the rate keeps it for work already agreed.',
+  ],
+};
 
 export const CARE_PLAN = [
   { title: 'Managed Hosting', body: 'Fast, reliable infrastructure — we handle it end to end.' },
@@ -236,6 +285,10 @@ export const FAQS = [
   {
     q: 'Do you charge in USD or CAD?',
     a: 'Either. Prices are shown in USD by default; we invoice Canadian clients in CAD at your preference.',
+  },
+  {
+    q: 'Do you offer any discounts?',
+    a: 'Yes — a standing 20% Community Rate for veterans and active-duty military, single parents, people living with a disability, anyone facing financial hardship, and small, independent, owner-operated businesses. There is no application process: tell us which applies and we take it from there. At most we might ask for something small like a business email or a link.',
   },
 ];
 
@@ -290,54 +343,57 @@ export const WORK = [
 ];
 
 // --- Team -----------------------------------------------------------------
-// All U.S.-based except the founder (Langley, BC). Small, concentrated team.
-// All six now have a headshot in /public/team. photo: null still renders an
-// initials placeholder if a slot ever goes empty again (new hire, someone
-// leaves) — set photo: '/team/name.jpg' to fill it back in.
+// Five people: the founder in Langley, BC and the rest out of Maynard, MA.
+// Concentrating them in one town is deliberate — a scattered list of six
+// cities across a five-person company reads as stock-photo staffing, and the
+// whole pitch here is "small, senior, reachable".
+//
+// Three of the five build the work (Herman, Danielle, Tyler), one runs the
+// platform side (Sophie), one owns the client relationship (Evan) — so the
+// team actually accounts for design and engineering rather than implying a
+// company of marketers.
+//
+// `crop` is an art-direction hint consumed by TeamCard: 'half' pushes the
+// subject to the frame edge so they sit half out of it.
+// photo: null still renders an initials placeholder if a slot goes empty.
 // NOTE: these bios are written copy, not verified fact — check before launch.
 export const TEAM = [
   {
     name: 'Herman',
-    role: 'Founder',
+    role: 'Founder & Design Lead',
     location: 'Langley, BC',
-    bio: 'Studied computing science and philosophy at Trinity Western in Langley — the mix of building things and asking why they should exist that still runs the shop. Started MANDER to give small businesses the kind of site the big firms gatekeep. Off the clock: trail runs, secondhand bookstores, and too much coffee.',
+    bio: 'Studied computing science and philosophy at Trinity Western in Langley — the mix of building things and asking why they should exist that still runs the shop. Designs and builds alongside the team rather than above it.',
     photo: '/team/herman.jpg',
     link: { label: 'Personal portfolio', href: BRAND.portfolio },
   },
   {
-    name: 'Evan Mercado',
-    role: 'Head of Marketing',
-    location: 'Austin, TX',
-    bio: 'Six years running paid acquisition for franchise fitness brands. Learned the hard way that a beautiful site with a buried booking button is just an expensive brochure.',
-    photo: '/team/male2.jpg',
-  },
-  {
     name: 'Danielle Brooks',
     role: 'Creative Director',
-    location: 'Portland, OR',
+    location: 'Maynard, MA',
     bio: 'Came out of print — three years art-directing an independent design quarterly. Sets everything on a grid first and adds colour last, if at all.',
     photo: '/team/danielle.jpg',
   },
   {
-    name: 'Marcus Reyes',
-    role: 'Lead Engineer',
-    location: 'Denver, CO',
-    bio: 'Spent four years on e-commerce platforms where a 300ms regression showed up in the revenue dashboard by lunch. Has strong opinions about image formats.',
-    photo: '/team/marcus.jpg',
+    name: 'Tyler Nakamura',
+    role: 'Design Engineer',
+    location: 'Maynard, MA',
+    bio: 'Trained as an industrial designer, moved to the web when tooling cycles got shorter than furniture ones. Owns the component library and most of the front end.',
+    photo: '/team/tyler.jpg',
+    crop: 'half',
   },
   {
     name: 'Sophie Bennett',
-    role: 'Brand Strategist',
-    location: 'Nashville, TN',
-    bio: 'Former hospitality copywriter. Sat through enough founder interviews to know the good line is usually the third thing they say, not the first.',
+    role: 'Technical Lead',
+    location: 'Maynard, MA',
+    bio: 'Handles the parts clients never see — hosting, performance budgets, integrations, and the security work that keeps a small business off an incident report.',
     photo: '/team/sophie.jpg',
   },
   {
-    name: 'Tyler Nakamura',
-    role: 'Design Engineer',
-    location: 'Seattle, WA',
-    bio: 'Trained as an industrial designer, moved to the web when tooling cycles got shorter than furniture ones. Owns the component library.',
-    photo: '/team/tyler.jpg',
+    name: 'Evan Mercado',
+    role: 'Sales & Client Relations',
+    location: 'Maynard, MA',
+    bio: 'Moved from the Philippines to New England as a child and has been translating between people ever since. First call, scoping, and the one who keeps you posted — so you are never chasing an update.',
+    photo: '/team/evan.jpg',
   },
 ];
 

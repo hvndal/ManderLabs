@@ -5,7 +5,7 @@
 @layer base {
   html {
     scroll-behavior: smooth;
-    scroll-padding-top: 72px;
+    scroll-padding-top: 80px; /* matches the 76px sticky header + a hair */
     -webkit-font-smoothing: antialiased;
     text-rendering: optimizeLegibility;
   }
