@@ -14,7 +14,8 @@ export default function Footer() {
       <div className="container-max py-stack-lg">
         <div className="grid grid-cols-1 gap-stack-md md:grid-cols-12">
           <div className="md:col-span-6">
-            <Logo className="h-20 md:h-24" />
+            {/* The one place the pale rose lockup has enough contrast to work */}
+            <Logo variant="full" tone="rose" className="h-24 md:h-28" />
             <p className="mt-6 max-w-sm text-body-lg text-paper/70">
               {BRAND.tagline}
             </p>

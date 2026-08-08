@@ -22,14 +22,32 @@ function NavLink({ href, children, onClick, className = '' }) {
 export default function Nav() {
   const [open, setOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
+  const [cleared, setCleared] = useState(false);
   const pathname = usePathname();
 
+  // The home page opens on the masthead, whose composition depends on there
+  // being nothing in the first viewport but the mark, one line of mono, and
+  // the word itself. So the nav withholds itself until the masthead has been
+  // scrolled through, then arrives on the paper background. Every other route
+  // has no masthead, so it shows immediately.
+  const isHome = pathname === '/';
+
   useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 24);
+    const onScroll = () => {
+      const y = window.scrollY;
+      setScrolled(y > 24);
+      setCleared(y > window.innerHeight * 0.72);
+    };
     onScroll();
     window.addEventListener('scroll', onScroll, { passive: true });
-    return () => window.removeEventListener('scroll', onScroll);
+    window.addEventListener('resize', onScroll);
+    return () => {
+      window.removeEventListener('scroll', onScroll);
+      window.removeEventListener('resize', onScroll);
+    };
   }, []);
+
+  const hidden = isHome && !cleared && !open;
 
   useEffect(() => setOpen(false), [pathname]);
 
@@ -42,10 +60,15 @@ export default function Nav() {
 
   return (
     <header
-      className={`sticky top-0 z-50 w-full border-b transition-[background-color,border-color,backdrop-filter] duration-500 ease-premium ${
+      aria-hidden={hidden}
+      className={`sticky top-0 z-50 w-full border-b transition-[background-color,border-color,backdrop-filter,opacity,transform] duration-500 ease-premium ${
         scrolled || open
           ? 'border-line bg-paper/90 backdrop-blur-md'
           : 'border-transparent bg-transparent'
+      } ${
+        hidden
+          ? 'pointer-events-none -translate-y-3 opacity-0'
+          : 'translate-y-0 opacity-100'
       }`}
     >
       <nav
@@ -53,7 +76,9 @@ export default function Nav() {
         className="mx-auto flex h-[68px] w-full max-w-container items-center justify-between px-margin-mobile md:px-margin-desktop"
       >
         <Link href="/" aria-label="MANDER home" className="text-ink">
-          <Logo variant="nav" className="h-10 md:h-11" />
+          {/* The illustration, not the wordmark — the masthead already sets
+              MANDER at full height, so repeating it here is redundant. */}
+          <Logo variant="mark" className="h-9 md:h-10" />
         </Link>
 
         <ul className="hidden items-center gap-9 md:flex">

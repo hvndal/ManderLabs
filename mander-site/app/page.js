@@ -4,7 +4,9 @@ import Section, { SectionHeading } from '@/components/Section';
 import Reveal from '@/components/Reveal';
 import Icon from '@/components/Icon';
 import ServiceBand from '@/components/ServiceBand';
-import HeroVideo from '@/components/HeroVideo';
+import Masthead from '@/components/Masthead';
+import Colophon from '@/components/Colophon';
+import StatsConstellation from '@/components/StatsConstellation';
 import Statement from '@/components/Statement';
 import WorkCompact from '@/components/WorkCompact';
 import TeamCard from '@/components/TeamCard';
@@ -37,90 +39,28 @@ export default function HomePage() {
     <>
       <JsonLd data={faqSchema(FAQS)} />
 
-      {/* ---------------------------------------------------------------- Hero */}
-      <section>
-        <div className="container-max pt-14 md:pt-20">
-          <Reveal>
-            <p className="eyebrow">{BRAND.region}</p>
-          </Reveal>
+      {/* -------------------------------------------------- 01 · The masthead */}
+      {/* The word is the aperture: MANDER knocked out of a cream stencil over
+          full-bleed film, scaling out of frame on scroll. See Masthead.js. */}
+      <Masthead tagline={BRAND.tagline} mono={BRAND.region} />
 
-          <Reveal delay={80}>
-            <h1 className="max-w-[15ch] font-semibold tracking-tight text-ink text-headline-lg-mobile md:text-display-xl">
-              Websites that grow small business.
-            </h1>
-          </Reveal>
-
-          <div className="mt-8 flex flex-col gap-6 md:flex-row md:items-end md:justify-between">
-            <Reveal delay={160} className="max-w-text">
-              <p className="text-body-lg text-ink-soft">
-                Premium design and build for small and mid-sized businesses in
-                Canada and the U.S. — at a rate that makes sense for you.
-              </p>
-            </Reveal>
-
-            <Reveal delay={240} className="flex flex-wrap items-center gap-6">
-              <Link href="/quote" className="btn-primary">
-                Get a quote
-                <Icon name="arrow" className="h-4 w-4" strokeWidth={2} />
-              </Link>
-              <Link href="#work" className="link-underline label-caps text-ink">
-                See the work
-              </Link>
-            </Reveal>
-          </div>
-        </div>
-
-        {/* Cinematic cover — looping showcase video, full-bleed edge to edge */}
-        <Reveal delay={200} className="mt-14 md:mt-20">
-          <HeroVideo poster={IMAGES.heroWorkspace.src} posterAlt={IMAGES.heroWorkspace.alt} />
-        </Reveal>
-      </section>
-
-      {/* ---------------------------------------------------- Trusted by strip */}
-      <section className="border-b border-t border-line bg-paper">
-        <div className="container-max flex flex-col items-center gap-6 py-9 md:flex-row md:justify-between">
-          <Reveal>
-            <span className="label-caps shrink-0 text-ink-mute">Trusted by</span>
-          </Reveal>
-          <Reveal delay={80}>
-            <ul className="flex flex-wrap items-center justify-center gap-x-12 gap-y-5">
-              {WORK.map((project) => (
-                <li key={project.name}>
-                  {/* eslint-disable-next-line @next/next/no-img-element */}
-                  <img
-                    src={project.logo}
-                    alt={`${project.name} logo`}
-                    className="h-6 w-auto max-w-[140px] object-contain opacity-45 transition-opacity duration-300 hover:opacity-90"
-                  />
-                </li>
-              ))}
-            </ul>
-          </Reveal>
-        </div>
-      </section>
+      {/* ------------------------------------------- 02 · Colophon / the sheet */}
+      <Colophon
+        headline="Websites that grow small business."
+        body="Premium design and build for small and mid-sized businesses in Canada and the U.S. — at a rate that makes sense for you."
+        clients={WORK}
+      />
 
       {/* -------------------------------------------------- Statement · breathe */}
       <Statement
         eyebrow="Our take"
         text="A website is not a brochure. It is the first employee your business hires that never sleeps."
         tone="warm"
+        align="editorial"
       />
 
-      {/* ---------------------------------------------------- Stats / rationale */}
-      <section className="border-b border-line bg-paper">
-        <div className="container-max grid grid-cols-1 gap-10 pb-stack-md md:grid-cols-3 md:gap-gutter">
-          {STATS.map((stat, i) => (
-            <Reveal key={stat.label} delay={i * 80}>
-              <div className="flex flex-col">
-                <span className="text-stat-xl text-ink">{stat.value}</span>
-                <span className="mt-3 max-w-[22ch] text-body-md text-ink-soft">
-                  {stat.label}
-                </span>
-              </div>
-            </Reveal>
-          ))}
-        </div>
-      </section>
+      {/* ------------------------------------------ 03 · Stats as constellation */}
+      <StatsConstellation stats={STATS} />
 
       {/* ----------------------------------------------------------------- Work */}
       <Section id="work" tone="paper" className="!py-stack-md">

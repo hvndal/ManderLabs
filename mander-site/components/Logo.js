@@ -3,22 +3,30 @@
 import { useState } from 'react';
 
 /**
- * The real MANDER mark — a transparent PNG, not a text wordmark.
+ * The MANDER identity, in three cuts.
  *
- * Drop the exported file at:
- *   - public/logo-mander.png       (full lockup — wordmark + illustration + tagline)
- *   - public/logo-mander-nav.png   (optional — a tighter crop for the navbar)
+ *   variant="mark"   → the illustration only, no wordmark.
+ *   variant="nav"    → the wordmark alone, recoloured to ink.
+ *   variant="full"   → wordmark + illustration lockup, in the original rose.
  *
- * See make-logo-transparent.html for how to export both from the black-
- * background source. Until logo-mander.png exists, this quietly falls back
- * to a text wordmark instead of showing a broken image.
+ * Why three: the supplied artwork is a tall stacked lockup in a pale rose
+ * (~1.6:1 against the cream page), which is illegible at header scale and
+ * fights a horizontal bar. So the pieces are used where each actually works —
+ * the ink mark on light surfaces, the rose lockup only on ink-dark fields
+ * like the footer, where the pale rose finally has the contrast to sing.
  *
- * `variant="nav"` tries the nav-specific crop first (if you made one) and
- * falls back to the full mark; any other variant always uses the full mark.
+ * `tone="rose"` forces the untouched rose artwork for use on dark grounds.
+ * Everything falls back to a text wordmark rather than a broken image.
  */
-export default function Logo({ className = '', variant = 'full' }) {
-  const preferred = variant === 'nav' ? '/logo-mander-nav.png' : '/logo-mander.png';
-  const [src, setSrc] = useState(preferred);
+const SOURCES = {
+  mark: { light: '/logo-mark-ink.png', rose: '/logo-mark.png' },
+  nav: { light: '/logo-mander-nav.png', rose: '/logo-mander.png' },
+  full: { light: '/logo-mander.png', rose: '/logo-mander.png' },
+};
+
+export default function Logo({ className = '', variant = 'full', tone = 'light' }) {
+  const set = SOURCES[variant] || SOURCES.full;
+  const [src, setSrc] = useState(tone === 'rose' ? set.rose : set.light);
   const [failed, setFailed] = useState(false);
 
   if (failed) {
@@ -40,12 +48,8 @@ export default function Logo({ className = '', variant = 'full' }) {
         decoding="async"
         className="h-full w-auto object-contain"
         onError={() => {
-          // nav crop missing → try the full lockup once before giving up
-          if (variant === 'nav' && src !== '/logo-mander.png') {
-            setSrc('/logo-mander.png');
-          } else {
-            setFailed(true);
-          }
+          if (src !== set.rose) setSrc(set.rose);
+          else setFailed(true);
         }}
       />
     </span>
