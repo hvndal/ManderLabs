@@ -25,9 +25,13 @@ export const NAV_LINKS = [
 
 // Pexels — free to use, no attribution required (https://www.pexels.com/license/)
 export const IMAGES = {
+  // Still fallback for the hero — a graded frame pulled straight from
+  // hero.mp4 so reduced-motion/no-video visitors see the same warm grade
+  // instead of a mismatched stock photo. Regenerate from the video if it
+  // ever changes (see setup-video.bat).
   heroWorkspace: {
-    src: 'https://images.pexels.com/photos/36123565/pexels-photo-36123565.jpeg?auto=compress&cs=tinysrgb&w=1800',
-    alt: 'Modern minimal workspace with a laptop and books on a desk',
+    src: '/hero-poster.jpg',
+    alt: 'Designer sketching on a graphics tablet, warm editorial tone',
   },
   growthOwner: {
     src: 'https://images.pexels.com/photos/4872048/pexels-photo-4872048.jpeg?auto=compress&cs=tinysrgb&w=1400',
@@ -37,42 +41,63 @@ export const IMAGES = {
 
 // Service photos live in /public/services — copied from Pictures\our services
 // by setup-assets.bat. Filenames are fixed; swap the file, keep the name.
+//
+// Two of the six original stock photos didn't actually match their slug once
+// seen full-bleed on desktop: `website-design.jpg` was someone browsing Pexels
+// on a laptop outdoors, and `gbp-optimization.jpg` was a meeting room with a
+// visibly fake "Lorem Ipsum" chart on the screen. Reassigned/replaced below —
+// `imagePosition` also lets a tile pull a portrait photo's focal point toward
+// the top instead of a dead-center crop, since most of these source photos
+// are tall portrait shots being cropped into a wide desktop band.
 export const SERVICES = [
   {
     index: '01',
     title: 'Website Design',
     body: 'Custom, conversion-focused sites built on fast, scalable foundations. Clean code, quick to load, easy for you to update.',
-    image: '/services/website-design.jpg',
+    // The wireframe/sketch shot (originally filed under care-plan.jpg) — a
+    // far better fit for "Website Design" than the outdoor stock-photo-
+    // browsing shot that was here.
+    image: '/services/care-plan.jpg',
+    imagePosition: 'center 30%',
   },
   {
     index: '02',
     title: 'Brand Identity',
     body: 'A cohesive visual system — logo, type, colour, and the rules that hold it together — so you look established from day one.',
     image: '/services/brand-identity.jpg',
+    imagePosition: 'center 25%',
   },
   {
     index: '03',
     title: 'Website Redesign',
     body: 'Modernising a site that has aged out. Better experience, sharper design, and the technical performance search engines reward.',
     image: '/services/website-redesign.jpg',
+    imagePosition: 'top',
   },
   {
     index: '04',
     title: 'SEO',
     body: 'Technical and content work that puts you in front of high-intent local buyers — the people already searching for what you do.',
     image: '/services/seo.jpg',
+    imagePosition: 'top',
   },
   {
     index: '05',
     title: 'Local Search',
     body: 'Google Business Profile, maps, and directory presence tuned so the right customer in the right town lands on the right page.',
-    image: '/services/gbp-optimization.jpg',
+    // Swapped the "Lorem Ipsum"-on-screen meeting photo for something that
+    // actually reads as maps/local search. Pexels — free, no attribution.
+    image: 'https://images.pexels.com/photos/35969/pexels-photo-35969.jpeg?auto=compress&cs=tinysrgb&w=1200',
+    imagePosition: 'center',
   },
   {
     index: '06',
     title: 'Care Plan',
     body: 'Hosting, security, backups, and unlimited small edits. We keep the site fast and current so you never think about it.',
-    image: '/services/care-plan.jpg',
+    // Swapped for a server-room shot — the wireframe photo that used to sit
+    // here fits "Website Design" much better and has moved there.
+    image: 'https://images.pexels.com/photos/5480781/pexels-photo-5480781.jpeg?auto=compress&cs=tinysrgb&w=1200',
+    imagePosition: 'center',
   },
 ];
 

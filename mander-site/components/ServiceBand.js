@@ -22,6 +22,7 @@ export default function ServiceBand({ service, flip = false }) {
             fill
             sizes="(max-width: 768px) 100vw, 50vw"
             className="object-cover transition-transform duration-[900ms] ease-premium hover:scale-[1.03]"
+            style={{ objectPosition: service.imagePosition || 'center' }}
           />
         )}
       </div>
