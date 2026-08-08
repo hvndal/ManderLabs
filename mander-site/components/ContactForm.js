@@ -88,84 +88,93 @@ export default function ContactForm() {
   }
 
   return (
-    <form
-      onSubmit={handleSubmit}
-      className="border border-line bg-white p-8 md:p-10"
-    >
-      {/* Honeypot */}
-      <input
-        type="checkbox"
-        name="botcheck"
-        tabIndex={-1}
-        autoComplete="off"
+    <div>
+      {/* Webform code preserved, visually hidden */}
+      <form
+        onSubmit={handleSubmit}
         className="hidden"
         aria-hidden="true"
-      />
+      >
+        <input
+          type="checkbox"
+          name="botcheck"
+          tabIndex={-1}
+          autoComplete="off"
+          className="hidden"
+          aria-hidden="true"
+        />
 
-      <div className="grid grid-cols-1 gap-6 sm:grid-cols-2">
-        <div>
-          <label htmlFor="name" className="label-caps mb-2 block text-ink-mute">
-            Name
-          </label>
-          <input id="name" name="name" type="text" required autoComplete="name" className={FIELD} placeholder="Jane Halden" />
+        <div className="grid grid-cols-1 gap-6 sm:grid-cols-2">
+          <div>
+            <label htmlFor="name" className="label-caps mb-2 block text-ink-mute">
+              Name
+            </label>
+            <input id="name" name="name" type="text" required autoComplete="name" className={FIELD} placeholder="Jane Halden" />
+          </div>
+
+          <div>
+            <label htmlFor="email" className="label-caps mb-2 block text-ink-mute">
+              Email
+            </label>
+            <input id="email" name="email" type="email" required autoComplete="email" className={FIELD} placeholder="jane@company.com" />
+          </div>
+
+          <div className="sm:col-span-2">
+            <label htmlFor="plan" className="label-caps mb-2 block text-ink-mute">
+              Plan of interest
+            </label>
+            <select id="plan" name="plan" defaultValue="Growth" className={FIELD}>
+              {TIERS.map((tier) => (
+                <option key={tier.name} value={tier.name}>
+                  {tier.name} — {tier.price}
+                </option>
+              ))}
+              <option value="Not sure yet">Not sure yet</option>
+            </select>
+          </div>
+
+          <div className="sm:col-span-2">
+            <label htmlFor="message" className="label-caps mb-2 block text-ink-mute">
+              What are you building?
+            </label>
+            <textarea
+              id="message"
+              name="message"
+              rows={5}
+              className={`${FIELD} resize-y`}
+              placeholder="A little about the business, the goal, and your timeline."
+            />
+          </div>
         </div>
 
-        <div>
-          <label htmlFor="email" className="label-caps mb-2 block text-ink-mute">
-            Email
-          </label>
-          <input id="email" name="email" type="email" required autoComplete="email" className={FIELD} placeholder="jane@company.com" />
-        </div>
-
-        <div className="sm:col-span-2">
-          <label htmlFor="plan" className="label-caps mb-2 block text-ink-mute">
-            Plan of interest
-          </label>
-          <select id="plan" name="plan" defaultValue="Growth" className={FIELD}>
-            {TIERS.map((tier) => (
-              <option key={tier.name} value={tier.name}>
-                {tier.name} — {tier.price}
-              </option>
-            ))}
-            <option value="Not sure yet">Not sure yet</option>
-          </select>
-        </div>
-
-        <div className="sm:col-span-2">
-          <label htmlFor="message" className="label-caps mb-2 block text-ink-mute">
-            What are you building?
-          </label>
-          <textarea
-            id="message"
-            name="message"
-            rows={5}
-            className={`${FIELD} resize-y`}
-            placeholder="A little about the business, the goal, and your timeline."
-          />
-        </div>
-      </div>
-
-      {status === 'error' && (
-        <p
-          role="alert"
-          className="mt-6 border border-error/30 bg-error/5 px-4 py-3 text-label-sm text-error"
-        >
-          {error}{' '}
-          <a href={`mailto:${FALLBACK_EMAIL}`} className="underline underline-offset-2">
-            Or email us directly
-          </a>
-          .
-        </p>
-      )}
-
-      <div className="mt-8 flex flex-col items-start gap-4 sm:flex-row sm:items-center">
-        <button type="submit" disabled={status === 'sending'} className="btn-primary disabled:opacity-60">
-          {status === 'sending' ? 'Sending…' : 'Send enquiry'}
+        <button type="submit" disabled={status === 'sending'} className="btn-primary">
+          Send enquiry
         </button>
-        <p className="text-label-sm text-ink-mute">
-          No obligation. We reply within one business day.
+      </form>
+
+      {/* Visually active direct contact card */}
+      <div className="border border-line bg-white p-8 text-center md:p-12">
+        <span className="label-caps mb-3 block text-accent">Get in touch</span>
+        <h3 className="text-headline-md font-semibold text-ink">
+          Ready to start your project?
+        </h3>
+        <p className="mx-auto mt-4 max-w-md text-body-lg text-ink-soft">
+          Email us directly about your business, goals, and timeline. We reply within one business day.
+        </p>
+        <div className="mt-8">
+          <a
+            href={`mailto:${FALLBACK_EMAIL}?subject=${encodeURIComponent(
+              'New project enquiry'
+            )}`}
+            className="btn-primary"
+          >
+            Email {FALLBACK_EMAIL}
+          </a>
+        </div>
+        <p className="mt-4 text-label-sm text-ink-mute">
+          No obligation. Directly connected to our team.
         </p>
       </div>
-    </form>
+    </div>
   );
 }

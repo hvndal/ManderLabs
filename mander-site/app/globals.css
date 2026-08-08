@@ -114,6 +114,17 @@
   transform: none;
 }
 
+@media (max-width: 768px) {
+  .reveal {
+    transform: translateY(8px);
+    transition:
+      opacity 0.4s cubic-bezier(0.16, 1, 0.3, 1),
+      transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
+  }
+}
+
 /* ---------------------------------------------------------------------- */
 /* Process staircase — each step's rule draws in as the step reveals       */
 /* ---------------------------------------------------------------------- */

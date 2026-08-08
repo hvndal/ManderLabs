@@ -24,6 +24,8 @@ export default function Reveal({
       return;
     }
 
+    const isMobile = typeof window !== 'undefined' && window.innerWidth <= 768;
+
     const observer = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
@@ -33,7 +35,10 @@ export default function Reveal({
           }
         });
       },
-      { threshold: 0.12, rootMargin: '0px 0px -40px 0px' }
+      {
+        threshold: isMobile ? 0.01 : 0.12,
+        rootMargin: isMobile ? '0px 0px 80px 0px' : '0px 0px -40px 0px',
+      }
     );
 
     observer.observe(el);
