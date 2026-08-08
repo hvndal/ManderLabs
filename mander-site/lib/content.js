@@ -44,43 +44,59 @@ export const IMAGES = {
 // they were cut because generic stock photography is the weakest possible
 // argument on a site whose entire product is design — and because six of them
 // meant six screens of scrolling that said nothing. The section is typographic
-// now (see ServiceBand.js), so there is no `image` field to maintain and no
-// crop to fight.
+// now (see ServiceBand.js): a matching line icon, title, copy, and a small
+// animated bar chart that rises on scroll (GrowthBars.js) instead of a photo.
 //
-// The old files still sit in /public/services and setup-assets.bat still
-// copies them; they're unused. If real work artefacts ever replace them
-// (a wireframe, a Lighthouse score, a live GBP listing), add `image` back and
-// ServiceBand can grow a right-hand column.
+// `icon` keys into Icon.js. `growth` is a purely decorative bar pattern (0–1
+// scale) — there's no real metric behind it, it's the "your numbers go up"
+// visual, same idea as a PayPal savings-tracker chart. Keep values honest-
+// looking (gentle upward drift, not a straight ramp to 1) rather than a
+// manufactured hockey stick.
+//
+// The old service photo files still sit in /public/services and
+// setup-assets.bat still copies them; they're unused now.
 export const SERVICES = [
   {
     index: '01',
     title: 'Website Design',
     body: 'Custom, conversion-focused sites built on fast, scalable foundations. Clean code, quick to load, easy for you to update.',
+    icon: 'web',
+    growth: [0.3, 0.34, 0.4, 0.38, 0.5, 0.6, 0.72, 0.86],
   },
   {
     index: '02',
     title: 'Brand Identity',
     body: 'A cohesive visual system — logo, type, colour, and the rules that hold it together — so you look established from day one.',
+    icon: 'brand',
+    growth: [0.36, 0.32, 0.44, 0.46, 0.4, 0.58, 0.7, 0.8],
   },
   {
     index: '03',
     title: 'Website Redesign',
     body: 'Modernising a site that has aged out. Better experience, sharper design, and the technical performance search engines reward.',
+    icon: 'refresh',
+    growth: [0.4, 0.42, 0.36, 0.5, 0.62, 0.58, 0.74, 0.92],
   },
   {
     index: '04',
     title: 'SEO',
     body: 'Technical and content work that puts you in front of high-intent local buyers — the people already searching for what you do.',
+    icon: 'search',
+    growth: [0.28, 0.3, 0.38, 0.46, 0.44, 0.6, 0.76, 1],
   },
   {
     index: '05',
     title: 'Local Search',
     body: 'Google Business Profile, maps, and directory presence tuned so the right customer in the right town lands on the right page.',
+    icon: 'pin',
+    growth: [0.34, 0.38, 0.36, 0.52, 0.48, 0.66, 0.7, 0.88],
   },
   {
     index: '06',
     title: 'Care Plan',
     body: 'Hosting, security, backups, and unlimited small edits. We keep the site fast and current so you never think about it.',
+    icon: 'shield',
+    growth: [0.5, 0.52, 0.48, 0.54, 0.56, 0.6, 0.64, 0.7],
   },
 ];
 
@@ -275,8 +291,9 @@ export const WORK = [
 
 // --- Team -----------------------------------------------------------------
 // All U.S.-based except the founder (Langley, BC). Small, concentrated team.
-// photo: null renders an initials placeholder. Drop a headshot in /public/team
-// and set photo: '/team/name.jpg' to swap it in.
+// All six now have a headshot in /public/team. photo: null still renders an
+// initials placeholder if a slot ever goes empty again (new hire, someone
+// leaves) — set photo: '/team/name.jpg' to fill it back in.
 // NOTE: these bios are written copy, not verified fact — check before launch.
 export const TEAM = [
   {
@@ -306,7 +323,7 @@ export const TEAM = [
     role: 'Lead Engineer',
     location: 'Denver, CO',
     bio: 'Spent four years on e-commerce platforms where a 300ms regression showed up in the revenue dashboard by lunch. Has strong opinions about image formats.',
-    photo: null,
+    photo: '/team/marcus.jpg',
   },
   {
     name: 'Sophie Bennett',
@@ -320,7 +337,7 @@ export const TEAM = [
     role: 'Design Engineer',
     location: 'Seattle, WA',
     bio: 'Trained as an industrial designer, moved to the web when tooling cycles got shorter than furniture ones. Owns the component library.',
-    photo: null,
+    photo: '/team/tyler.jpg',
   },
 ];
 

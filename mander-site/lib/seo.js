@@ -2,10 +2,11 @@
 // content.js because it reshapes that copy into schema.org's vocabulary
 // rather than being copy itself.
 //
-// IMPORTANT: SITE_URL is a placeholder until the site has a real domain.
-// Update it here (and metadataBase in app/layout.js) the day that's live —
-// search engines treat these as the canonical address of the business.
-export const SITE_URL = 'https://mander.agency';
+// Matches the domain used everywhere else on the site (BRAND.email is
+// herman@mander.tech) — was pointed at a placeholder .agency domain that
+// nothing else referenced, which fed a wrong canonical URL, sitemap, and
+// structured data. Update again if the real domain ever changes.
+export const SITE_URL = 'https://mander.tech';
 
 import { BRAND, SERVICES, TIERS } from './content';
 
