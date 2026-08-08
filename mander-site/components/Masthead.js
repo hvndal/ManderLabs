@@ -144,10 +144,10 @@ export default function Masthead({ tagline, mono }) {
         >
           <mask id="masthead-cut-sm" maskUnits="userSpaceOnUse">
             <rect x="-3000" y="-3000" width="7000" height="7000" fill="#fff" />
-            <g transform={cutTransform(210, 470, letterScale)}>
+            <g transform={cutTransform(210, 400, letterScale)}>
               <text
                 x="210"
-                y="470"
+                y="400"
                 textAnchor="middle"
                 fill="#000"
                 style={{ ...WORDMARK, fontSize: '218px' }}
@@ -156,7 +156,7 @@ export default function Masthead({ tagline, mono }) {
               </text>
               <text
                 x="210"
-                y="645"
+                y="575"
                 textAnchor="middle"
                 fill="#000"
                 style={{ ...WORDMARK, fontSize: '218px' }}
@@ -184,10 +184,10 @@ export default function Masthead({ tagline, mono }) {
         >
           <mask id="masthead-cut-lg" maskUnits="userSpaceOnUse">
             <rect x="-3000" y="-3000" width="7000" height="7000" fill="#fff" />
-            <g transform={cutTransform(750, 456, letterScale)}>
+            <g transform={cutTransform(750, 386, letterScale)}>
               <text
                 x="750"
-                y="600"
+                y="530"
                 textAnchor="middle"
                 fill="#000"
                 style={{ ...WORDMARK, fontSize: '400px' }}

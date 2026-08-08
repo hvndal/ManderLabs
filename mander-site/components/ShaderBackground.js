@@ -12,6 +12,15 @@ void main() {
   gl_Position = vec4(a_position, 0.0, 1.0);
 }`;
 
+// Brand-palette rewrite. The original was a purple liquid gradient from an
+// unrelated prototype — the single most off-brand thing in the repo, and
+// exactly the "generic WebGL" look this site is trying to avoid.
+//
+// This is closer to paper than to plasma: two slow overlapping wave fields
+// pushing terracotta and rose through a cream ground at very low amplitude,
+// plus a faint hatch that keeps it reading as printed tone rather than a
+// glowing screen effect. Contrast is deliberately tiny — it should register
+// as the page surface breathing, not as a graphic competing with the type.
 const FRAG = `precision highp float;
 uniform float u_time;
 uniform vec2 u_resolution;
@@ -20,19 +29,31 @@ varying vec2 v_uv;
 
 void main() {
   vec2 uv = v_uv;
+  float aspect = u_resolution.x / max(u_resolution.y, 1.0);
+  vec2 p = vec2(uv.x * aspect, uv.y);
   vec2 mouse = u_mouse / max(u_resolution, vec2(1.0));
 
-  float wave = sin(uv.x * 3.0 + u_time * 0.5) * 0.1;
-  wave += cos(uv.y * 2.0 + u_time * 0.3) * 0.1;
+  // Two slow fields at different speeds so the pattern never visibly repeats
+  float a = sin(p.x * 2.1 - u_time * 0.11) * 0.5 + 0.5;
+  float b = cos(p.y * 1.7 + u_time * 0.08) * 0.5 + 0.5;
+  float c = sin((p.x + p.y) * 1.3 + u_time * 0.06) * 0.5 + 0.5;
+  float field = (a * 0.4 + b * 0.35 + c * 0.25);
 
-  vec3 purple  = vec3(0.44, 0.22, 0.68);
-  vec3 surface = vec3(0.988, 0.973, 0.973);
+  vec3 paper     = vec3(0.957, 0.949, 0.925); // #f4f2ec
+  vec3 rose      = vec3(0.890, 0.698, 0.659); // accent-soft
+  vec3 terracotta= vec3(0.651, 0.282, 0.227); // accent
 
-  float mixFactor = smoothstep(0.4 + wave, 0.6 + wave, uv.y + uv.x * 0.5);
-  vec3 color = mix(purple * 0.10, surface, mixFactor);
+  // Barely there: the strongest tint is ~7% off the paper colour
+  vec3 color = mix(paper, rose, smoothstep(0.35, 0.95, field) * 0.16);
+  color = mix(color, terracotta, smoothstep(0.72, 1.0, field) * 0.05);
 
-  float dist = distance(uv, mouse);
-  color += purple * smoothstep(0.35, 0.0, dist) * 0.15;
+  // A whisper of warmth that follows the pointer, no glow, no radius edge
+  float dist = distance(vec2(uv.x * aspect, uv.y), vec2(mouse.x * aspect, mouse.y));
+  color = mix(color, rose, smoothstep(0.45, 0.0, dist) * 0.07);
+
+  // Fine horizontal hatch — keeps it feeling like ink on stock
+  float hatch = sin(uv.y * u_resolution.y * 0.7) * 0.004;
+  color -= hatch;
 
   gl_FragColor = vec4(color, 1.0);
 }`;
@@ -188,8 +209,9 @@ export default function ShaderBackground({ className = '' }) {
   return (
     <div className={`pointer-events-none absolute inset-0 ${className}`} aria-hidden="true">
       <canvas ref={canvasRef} className="block h-full w-full" />
-      {/* Fade the shader into the page surface so it never competes with type */}
-      <div className="absolute inset-0 bg-gradient-to-b from-surface/40 via-surface/70 to-surface" />
+      {/* Feather the top and bottom edges into the page so the section has no
+          visible canvas boundary — the ground shifts, it doesn't start. */}
+      <div className="absolute inset-0 bg-gradient-to-b from-paper via-transparent to-paper" />
     </div>
   );
 }

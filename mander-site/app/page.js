@@ -7,6 +7,8 @@ import ServiceBand from '@/components/ServiceBand';
 import Masthead from '@/components/Masthead';
 import Colophon from '@/components/Colophon';
 import StatsConstellation from '@/components/StatsConstellation';
+import AperturedType from '@/components/AperturedType';
+import ShaderBackground from '@/components/ShaderBackground';
 import {
   CommunityRateSection,
   CommunityRateNote,
@@ -97,18 +99,30 @@ export default function HomePage() {
       </Section>
 
       {/* ------------------------------------------------------------ Services */}
-      <section id="services" className="border-y border-line bg-white">
-        {/* Heading set as a masthead in miniature rather than a stacked
-            eyebrow/title/body block: the count hangs enormous in the left
-            column, the title runs across the right, and the supporting line
-            is dropped to the far right margin so nothing shares a centre. */}
-        <div className="container-max grid grid-cols-1 gap-y-8 py-stack-md md:grid-cols-12 md:gap-gutter">
+      {/* The one section with a living ground: a very low-contrast shader
+          drifting terracotta and rose through the paper colour. It is not
+          decoration sitting behind content — it is the surface itself moving,
+          which is why the contrast is kept near-invisible and the top and
+          bottom edges are feathered away. */}
+      <section id="services" className="relative border-y border-line bg-paper">
+        <ShaderBackground className="opacity-90" />
+
+        <div className="relative container-max grid grid-cols-1 gap-y-8 py-stack-md md:grid-cols-12 md:gap-gutter">
           <div className="md:col-span-3">
             <Reveal>
               <span className="label-caps text-accent">What we do</span>
-              <p className="mt-6 font-mono text-[19vw] leading-[0.78] tracking-[-0.04em] text-line-strong md:text-[9vw]">
-                06
-              </p>
+              {/* Was a flat grey 06 — the deadest thing on the page. Now the
+                  hero's aperture treatment, so the count carries the footage
+                  and the motif returns instead of appearing once. */}
+              <AperturedType
+                text="06"
+                viewBox="0 0 320 300"
+                fontSize={268}
+                baselineY={240}
+                stencil="#f4f2ec"
+                maskId="aperture-services-count"
+                className="mt-6 w-full max-w-[260px]"
+              />
             </Reveal>
           </div>
 
@@ -131,7 +145,7 @@ export default function HomePage() {
         </div>
 
         {/* Typographic rows — no photography, see ServiceBand.js */}
-        <div className="container-max pb-stack-md">
+        <div className="relative container-max pb-stack-md">
           <div className="divide-y divide-line border-t border-line">
             {SERVICES.map((service, index) => (
               <ServiceBand key={service.title} service={service} index={index} />

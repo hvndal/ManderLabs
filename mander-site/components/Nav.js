@@ -3,9 +3,15 @@
 import { useEffect, useState } from 'react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
-import { NAV_LINKS } from '@/lib/content';
+import { NAV_LINKS, BRAND } from '@/lib/content';
 import Logo from './Logo';
 import Icon from './Icon';
+
+// Buying starts a conversation rather than a checkout, so the primary action
+// everywhere is a person, not a form.
+const SALES_MAILTO = `mailto:${BRAND.email}?subject=${encodeURIComponent(
+  'New project enquiry'
+)}`;
 
 function NavLink({ href, children, onClick, className = '' }) {
   return (
@@ -90,9 +96,9 @@ export default function Nav() {
         </ul>
 
         <div className="hidden items-center gap-4 md:flex">
-          <Link href="/quote" className="btn-sm">
-            Get a quote
-          </Link>
+          <a href={SALES_MAILTO} className="btn-sm">
+            Contact sales
+          </a>
         </div>
 
         <button
@@ -125,9 +131,12 @@ export default function Nav() {
             </li>
           ))}
         </ul>
-        <div className="px-margin-mobile py-5">
-          <Link href="/quote" className="btn-primary w-full">
-            Get a quote
+        <div className="flex flex-col gap-3 px-margin-mobile py-5">
+          <a href={SALES_MAILTO} className="btn-primary w-full">
+            Contact sales
+          </a>
+          <Link href="/quote" className="btn-outline w-full">
+            Take the fit quiz
           </Link>
         </div>
       </div>

@@ -1,6 +1,7 @@
 import Link from 'next/link';
 import Reveal from './Reveal';
 import Icon from './Icon';
+import { BRAND } from '@/lib/content';
 
 /**
  * SECTION TWO — the sheet that arrives after the film.
@@ -59,10 +60,15 @@ export default function Colophon({ headline, body, clients }) {
         {/* CTA sits low and left of the paragraph — never beside the headline */}
         <div className="md:col-start-4 md:col-span-8 md:mt-8">
           <Reveal delay={200} className="flex flex-wrap items-center gap-8">
-            <Link href="/quote" className="btn-primary">
-              Get a quote
+            <a
+              href={`mailto:${BRAND.email}?subject=${encodeURIComponent(
+                'New project enquiry'
+              )}`}
+              className="btn-primary"
+            >
+              Contact sales
               <Icon name="arrow" className="h-4 w-4" strokeWidth={2} />
-            </Link>
+            </a>
             <Link href="#work" className="link-underline label-caps text-ink">
               See the work
             </Link>

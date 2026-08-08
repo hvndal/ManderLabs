@@ -6,9 +6,9 @@ import Icon from './Icon';
 import { QUIZ, TIERS, BRAND } from '@/lib/content';
 
 const ACCESS_KEY = process.env.NEXT_PUBLIC_WEB3FORMS_KEY;
-// Used only when the form itself fails to send — the guaranteed-working
-// inbox, bypassing the mander.tech forwarding chain BRAND.email depends on.
-const FALLBACK_EMAIL = 'hundalg968@gmail.com';
+// Used only when the form itself fails to send. Now the same public address
+// as everything else, so there is one inbox to keep alive rather than two.
+const FALLBACK_EMAIL = BRAND.email;
 
 const TIER_ORDER = ['Brand Launch', 'Starter', 'Growth', 'Business Pro'];
 

@@ -3,6 +3,7 @@
 import { createContext, useContext, useState, useCallback } from 'react';
 import { COMMUNITY } from '@/lib/content';
 import CommunityRateDialog from './CommunityRateDialog';
+import AperturedType from './AperturedType';
 import Reveal from './Reveal';
 import Icon from './Icon';
 
@@ -83,8 +84,14 @@ export function CommunityRateSection() {
     <section id="community-rate" className="bg-ink text-paper">
       <div className="container-max py-stack-lg">
         <div className="grid grid-cols-1 gap-y-14 md:grid-cols-12 md:gap-gutter">
-          {/* The number */}
-          <div className="md:col-span-5">
+          {/* The number.
+              Set as apertured type rather than flat paper-white: at this
+              scale a solid numeral sat right against the body column and the
+              two masses merged into one grey block. Filling it with moving
+              footage separates them by texture instead of by distance, and
+              carries the masthead's motif down the page. Held to 4 of 12
+              columns so it can no longer run into the copy beside it. */}
+          <div className="md:col-span-4">
             <Reveal>
               <div className="flex items-center gap-3">
                 <span className="label-caps text-paper/50">The rate</span>
@@ -95,10 +102,17 @@ export function CommunityRateSection() {
                 </span>
               </div>
 
-              <p className="mt-8 text-[26vw] font-semibold leading-[0.8] tracking-[-0.05em] md:text-[13vw]">
-                {COMMUNITY.rate}
-              </p>
-              <h2 className="mt-6 max-w-[18ch] text-headline-md font-semibold tracking-tight text-paper">
+              <AperturedType
+                text={COMMUNITY.rate}
+                viewBox="0 0 460 300"
+                fontSize={250}
+                baselineY={238}
+                stencil="#1c1512"
+                maskId="aperture-community-rate"
+                className="mt-8 w-full max-w-[420px]"
+              />
+
+              <h2 className="mt-7 max-w-[18ch] text-headline-md font-semibold tracking-tight text-paper">
                 {COMMUNITY.title}
               </h2>
             </Reveal>

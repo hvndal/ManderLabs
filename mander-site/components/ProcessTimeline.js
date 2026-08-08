@@ -37,9 +37,17 @@ export default function ProcessTimeline({ steps }) {
             key={step.step}
             as="li"
             delay={index * 110}
-            className={`${place.col} border-t border-line pt-7 md:pt-9`}
+            className={`${place.col} process-step pt-7 md:pt-9`}
           >
-            <div className="flex items-start gap-6 md:gap-10">
+            {/* The rule draws itself left-to-right as the step arrives, so the
+                staircase builds rather than simply appearing. Transform-only,
+                so it stays on the compositor at high refresh rates. */}
+            <span
+              aria-hidden="true"
+              className="process-rule block h-px w-full origin-left bg-line-strong"
+            />
+
+            <div className="flex items-start gap-6 pt-7 md:gap-10 md:pt-9">
               <span
                 className={`font-mono text-stat-lg leading-[0.8] text-line-strong ${place.num}`}
                 aria-hidden="true"

@@ -165,7 +165,14 @@ export default function PricingPage() {
 
         <Reveal delay={120}>
           <div className="mt-12 flex justify-center">
-            <Link href="/quote" className="btn-primary">Add it to your quote</Link>
+            <a
+              href={`mailto:${BRAND.email}?subject=${encodeURIComponent(
+                'Care Plan enquiry'
+              )}`}
+              className="btn-primary"
+            >
+              Contact sales
+            </a>
           </div>
         </Reveal>
       </Section>
@@ -195,13 +202,20 @@ export default function PricingPage() {
               Find your fit in 60 seconds.
             </h2>
             <div className="mt-10 flex flex-col justify-center gap-3 sm:flex-row">
-              <Link href="/quote" className="btn-on-dark">Take the quiz</Link>
               <a
-                href={`mailto:${BRAND.email}`}
+                href={`mailto:${BRAND.email}?subject=${encodeURIComponent(
+                  'Pricing enquiry'
+                )}`}
+                className="btn-on-dark"
+              >
+                Contact sales
+              </a>
+              <Link
+                href="/quote"
                 className="label-caps inline-flex items-center justify-center gap-2 border border-paper/40 px-8 py-4 text-paper transition-colors duration-300 hover:border-paper"
               >
-                Talk to sales
-              </a>
+                Take the fit quiz
+              </Link>
             </div>
           </Reveal>
         </div>

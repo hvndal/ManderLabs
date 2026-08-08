@@ -23,9 +23,14 @@ export default function Footer() {
             <p className="mt-3 max-w-sm text-body-md text-paper/50">
               {BRAND.region}
             </p>
-            <Link href="/quote" className="btn-on-dark mt-8">
-              Get a quote
-            </Link>
+            <a
+              href={`mailto:${BRAND.email}?subject=${encodeURIComponent(
+                'New project enquiry'
+              )}`}
+              className="btn-on-dark mt-8"
+            >
+              Contact sales
+            </a>
           </div>
 
           <div className="md:col-span-3">

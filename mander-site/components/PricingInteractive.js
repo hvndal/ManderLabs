@@ -8,6 +8,14 @@ import { BRAND } from '@/lib/content';
 // The one shared easing curve for every motion primitive on the site.
 const EASE = [0.16, 1, 0.3, 1];
 
+// The expand/collapse runs on a spring rather than a fixed duration. A tween
+// samples the same curve regardless of refresh rate, so on a 120Hz panel it
+// looks identical to 60Hz — technically smoother, perceptually the same. A
+// spring is solved per frame, so it genuinely uses the extra frames, and the
+// card settles instead of stopping. Tuned slightly overdamped: no visible
+// bounce, just weight.
+const SPRING = { type: 'spring', stiffness: 210, damping: 30, mass: 0.9 };
+
 const featureListVariants = {
   hidden: {},
   visible: { transition: { staggerChildren: 0.06, delayChildren: 0.08 } },
@@ -38,7 +46,7 @@ export default function PricingInteractive({ tiers }) {
           <motion.article
             key={tier.name}
             layout
-            transition={{ layout: { duration: 0.5, ease: EASE } }}
+            transition={{ layout: SPRING }}
             onClick={() => setOpenIndex(isOpen ? null : i)}
             onKeyDown={(e) => {
               if (e.key === 'Enter' || e.key === ' ') {
@@ -51,11 +59,19 @@ export default function PricingInteractive({ tiers }) {
             aria-expanded={isOpen}
             className="group relative flex cursor-pointer flex-col bg-white p-7 outline-none focus-visible:ring-1 focus-visible:ring-inset focus-visible:ring-ink md:p-8"
             style={{ flexGrow: isOpen ? 2.35 : 1, flexBasis: 0, flexShrink: 0 }}
-            animate={{ opacity: isDimmed ? 0.45 : 1 }}
-            transition={{ opacity: { duration: 0.35, ease: EASE } }}
+            animate={{
+              opacity: isDimmed ? 0.5 : 1,
+              // Closed cards recede a hair as one opens — the row reads as one
+              // object reorganising rather than four boxes changing size.
+              scale: isDimmed ? 0.985 : 1,
+            }}
+            transition={{
+              opacity: { duration: 0.4, ease: EASE },
+              scale: SPRING,
+            }}
           >
             {/* Header — always visible, identical anatomy across all four */}
-            <motion.div layout="position" className="flex items-start justify-between gap-4">
+            <motion.div layout="position" transition={SPRING} className="flex items-start justify-between gap-4">
               <div>
                 <h3 className="text-headline-md text-ink">{tier.name}</h3>
                 {tier.featured && (
@@ -70,7 +86,7 @@ export default function PricingInteractive({ tiers }) {
               />
             </motion.div>
 
-            <motion.div layout="position" className="mt-6 flex items-baseline gap-2">
+            <motion.div layout="position" transition={SPRING} className="mt-6 flex items-baseline gap-2">
               <AnimatePresence mode="popLayout">
                 <motion.span
                   key={isOpen ? 'open' : 'closed'}
@@ -84,7 +100,7 @@ export default function PricingInteractive({ tiers }) {
               </AnimatePresence>
             </motion.div>
 
-            <motion.p layout="position" className="mt-4 text-body-md text-ink-soft">
+            <motion.p layout="position" transition={SPRING} className="mt-4 text-body-md text-ink-soft">
               {tier.blurb}
             </motion.p>
 
