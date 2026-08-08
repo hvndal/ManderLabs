@@ -111,19 +111,6 @@ export default function HomePage() {
           <div className="md:col-span-3">
             <Reveal>
               <span className="label-caps text-accent">What we do</span>
-              {/* Was a flat grey 06 — the deadest thing on the page. Now the
-                  masthead's aperture treatment filled with the marbled asset,
-                  so the motif recurs without the hero clip doing every job. */}
-              <AperturedType
-                text="06"
-                viewBox="0 0 320 300"
-                fontSize={268}
-                baselineY={240}
-                stencil="#f4f2ec"
-                maskId="aperture-services-count"
-                mediaClassName="brightness-[0.8] saturate-[1.2]"
-                className="mt-6 w-full max-w-[260px]"
-              />
             </Reveal>
           </div>
 
