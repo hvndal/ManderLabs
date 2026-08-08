@@ -10,6 +10,7 @@ import StatsConstellation from '@/components/StatsConstellation';
 import {
   CommunityRateSection,
   CommunityRateNote,
+  CommunityRateFooterLink,
 } from '@/components/CommunityRate';
 import Statement from '@/components/Statement';
 import WorkCompact from '@/components/WorkCompact';
@@ -68,32 +69,65 @@ export default function HomePage() {
 
       {/* ----------------------------------------------------------------- Work */}
       <Section id="work" tone="paper" className="!py-stack-md">
-        <div className="flex flex-col justify-between gap-4 sm:flex-row sm:items-end">
-          <div>
-            <span className="eyebrow mb-3">Selected work</span>
-            <h2 className="text-headline-md text-ink">A few recent builds.</h2>
-          </div>
-          <Reveal>
-            <Link href="/quote" className="link-underline label-caps text-ink">
+        {/* Label and title on one baseline rather than stacked, with the link
+            hung off the opposite edge — a running head, not a title card. */}
+        <Reveal>
+          <div className="flex flex-col gap-5 border-b border-line pb-7 sm:flex-row sm:items-baseline sm:justify-between sm:gap-10">
+            <div className="flex flex-wrap items-baseline gap-x-6 gap-y-2">
+              <span className="label-caps shrink-0 text-accent">Selected work</span>
+              <h2 className="text-headline-md font-semibold tracking-tight text-ink">
+                A few recent builds.
+              </h2>
+            </div>
+            <a
+              href={`mailto:${BRAND.email}?subject=${encodeURIComponent(
+                'New project enquiry'
+              )}`}
+              className="link-underline label-caps shrink-0 text-ink"
+            >
               Start your project
               <Icon name="arrow" className="h-4 w-4" strokeWidth={2} />
-            </Link>
-          </Reveal>
-        </div>
+            </a>
+          </div>
+        </Reveal>
 
-        <div className="mt-10">
+        <div className="mt-12">
           <WorkCompact items={WORK} />
         </div>
       </Section>
 
       {/* ------------------------------------------------------------ Services */}
       <section id="services" className="border-y border-line bg-white">
-        <div className="container-max py-stack-md">
-          <SectionHeading
-            eyebrow="What we do"
-            title="Everything a small business needs online."
-            body="Six disciplines, one outcome: more of the right customers finding you and getting in touch."
-          />
+        {/* Heading set as a masthead in miniature rather than a stacked
+            eyebrow/title/body block: the count hangs enormous in the left
+            column, the title runs across the right, and the supporting line
+            is dropped to the far right margin so nothing shares a centre. */}
+        <div className="container-max grid grid-cols-1 gap-y-8 py-stack-md md:grid-cols-12 md:gap-gutter">
+          <div className="md:col-span-3">
+            <Reveal>
+              <span className="label-caps text-accent">What we do</span>
+              <p className="mt-6 font-mono text-[19vw] leading-[0.78] tracking-[-0.04em] text-line-strong md:text-[9vw]">
+                06
+              </p>
+            </Reveal>
+          </div>
+
+          <div className="md:col-span-6 md:col-start-5 md:self-end">
+            <Reveal delay={100}>
+              <h2 className="max-w-[14ch] text-headline-lg-mobile font-semibold tracking-tight text-ink md:text-display-lg">
+                Everything a small business needs online.
+              </h2>
+            </Reveal>
+          </div>
+
+          <div className="md:col-span-3 md:col-start-10 md:self-end">
+            <Reveal delay={180}>
+              <p className="text-body-md text-ink-soft">
+                Six disciplines, one outcome: more of the right customers
+                finding you and getting in touch.
+              </p>
+            </Reveal>
+          </div>
         </div>
 
         {/* Typographic rows — no photography, see ServiceBand.js */}
@@ -157,24 +191,54 @@ export default function HomePage() {
       </Section>
 
       {/* -------------------------------------------------------------- Process */}
+      {/* The heading is pinned hard left and the steps descend away from it
+          diagonally (see ProcessTimeline) — the section's own shape states
+          the sequence before the copy does. */}
       <Section id="process" tone="alt">
-        <SectionHeading eyebrow="How it works" title="A straight line from call to launch." />
-        <div className="mt-4">
-          <ProcessTimeline steps={PROCESS} />
+        <div className="grid grid-cols-1 gap-y-10 md:grid-cols-12 md:gap-gutter">
+          <div className="md:col-span-4">
+            <Reveal>
+              <span className="label-caps text-accent">How it works</span>
+              <h2 className="mt-6 max-w-[12ch] text-headline-lg-mobile font-semibold tracking-tight text-ink md:text-headline-lg">
+                A straight line from call to launch.
+              </h2>
+            </Reveal>
+          </div>
+          <div className="md:col-span-12">
+            <ProcessTimeline steps={PROCESS} />
+          </div>
         </div>
       </Section>
 
       {/* ----------------------------------------------------------------- Team */}
       <Section id="team" tone="paper">
-        <SectionHeading
-          eyebrow="The team"
-          title="Small, senior, and reachable."
-          body="No account-manager relay. The people who scope your project are the people who build it."
-        />
+        {/* Title left, supporting line dropped to the right margin and set
+            small — the asymmetry keeps it from reading as another centred
+            title card, and the gap between them is the composition. */}
+        <div className="grid grid-cols-1 gap-y-6 md:grid-cols-12 md:gap-gutter">
+          <div className="md:col-span-6">
+            <Reveal>
+              <span className="label-caps text-accent">The team</span>
+              <h2 className="mt-6 max-w-[14ch] text-headline-lg-mobile font-semibold tracking-tight text-ink md:text-headline-lg">
+                Small, senior, and reachable.
+              </h2>
+            </Reveal>
+          </div>
+          <div className="md:col-span-4 md:col-start-9 md:self-end">
+            <Reveal delay={120}>
+              <p className="text-body-md text-ink-soft">
+                No account-manager relay. The people who scope your project are
+                the people who build it.
+              </p>
+            </Reveal>
+          </div>
+        </div>
 
-        {/* Six across three columns on desktop reads as a small, concentrated
-            studio — a wider grid of bigger cards makes the team look padded. */}
-        <div className="mt-10 grid grid-cols-2 gap-x-6 gap-y-10 sm:grid-cols-3 lg:max-w-4xl">
+        {/* Five across three columns reads as a small, concentrated studio —
+            and the empty sixth cell is left empty on purpose. Stretching the
+            grid to close the gap would make a five-person team look like it
+            was arranged to fill space. */}
+        <div className="mt-14 grid grid-cols-2 gap-x-6 gap-y-10 sm:grid-cols-3 lg:max-w-4xl">
           {TEAM.map((member, index) => (
             <Reveal key={member.name} delay={index * 60} className="h-full">
               <TeamCard member={member} />
@@ -285,13 +349,24 @@ export default function HomePage() {
               Let&apos;s build something that pulls its weight.
             </h2>
             <div className="mt-10 flex flex-col justify-center gap-3 sm:flex-row">
-              <Link href="/quote" className="btn-on-dark">
-                Get a quote
-              </Link>
-              <a href={`mailto:${BRAND.email}`} className="label-caps inline-flex items-center justify-center gap-2 border border-paper/40 px-8 py-4 text-paper transition-colors duration-300 hover:border-paper">
-                Email us directly
+              <a
+                href={`mailto:${BRAND.email}?subject=${encodeURIComponent(
+                  'New project enquiry'
+                )}`}
+                className="btn-on-dark"
+              >
+                Contact sales
               </a>
+              <Link
+                href="/quote"
+                className="label-caps inline-flex items-center justify-center gap-2 border border-paper/40 px-8 py-4 text-paper transition-colors duration-300 hover:border-paper"
+              >
+                Take the fit quiz
+              </Link>
             </div>
+            <p className="mt-6 text-label-sm text-paper/50">
+              <CommunityRateFooterLink className="underline decoration-paper/25 underline-offset-4 transition-colors hover:text-paper/80 hover:decoration-paper/60" />
+            </p>
           </Reveal>
         </div>
       </section>
