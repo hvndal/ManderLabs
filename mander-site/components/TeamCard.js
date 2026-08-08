@@ -28,7 +28,7 @@ export default function TeamCard({ member }) {
   const half = member.crop === 'half';
 
   return (
-    <article className="group flex h-full flex-col">
+    <article className="group flex h-full w-full flex-col">
       <div className="relative aspect-[4/5] overflow-hidden bg-paper-3">
         {member.photo ? (
           <Image
@@ -53,19 +53,32 @@ export default function TeamCard({ member }) {
         )}
       </div>
 
+      {/* Fixed vertical rhythm below the portrait.
+          Name, then role/location on a reserved two-line block, then the bio
+          clamped to four lines. Without the reserved heights the cards drift:
+          a two-line role or a longer bio pushes that card's baselines out of
+          step with its neighbours, and in a grid of five that misalignment is
+          the first thing the eye catches. Clamping costs a few words of bio
+          and buys a shared baseline across every card in the row. */}
       <h3 className="mt-4 text-body-lg font-medium text-ink">{member.name}</h3>
-      <p className="label-caps mt-1.5 text-ink-mute">
-        {member.role}
-        {member.location ? ` · ${member.location}` : ''}
+      <p className="label-caps mt-1.5 flex min-h-[2.4em] items-start text-ink-mute">
+        <span>
+          {member.role}
+          {member.location ? ` · ${member.location}` : ''}
+        </span>
       </p>
-      <p className="mt-2.5 text-label-sm leading-relaxed text-ink-soft">{member.bio}</p>
+      <p className="mt-2.5 line-clamp-4 text-label-sm leading-relaxed text-ink-soft">
+        {member.bio}
+      </p>
 
+      {/* Pushed to the bottom so the one card that has a link doesn't sit
+          taller than the rest of the row. */}
       {member.link && (
         <a
           href={member.link.href}
           target="_blank"
           rel="noreferrer noopener"
-          className="link-underline label-caps mt-3 inline-flex w-fit items-center gap-1.5 text-accent"
+          className="link-underline label-caps mt-auto inline-flex w-fit items-center gap-1.5 pt-3 text-accent"
         >
           {member.link.label}
           <span aria-hidden="true">↗</span>

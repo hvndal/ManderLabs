@@ -127,20 +127,33 @@ export const PROCESS = [
 // --- Pricing --------------------------------------------------------------
 // Starter no longer bundles Google Business / Analytics — those moved into
 // Local Search as an add-on / higher tiers.
+//
+// `specs` are the three numbers a buyer actually compares before they read a
+// feature list — pages, timeline, revisions — surfaced on the closed card so
+// the tiers can be scanned without opening anything.
+//
+// `notIncluded` exists because a pricing table that only ever says yes is
+// the reason people phone to ask what the catch is. Naming the ceiling on
+// each tier is what makes the tier above it obviously worth the money, and
+// it is the single most trust-building thing on a pricing page.
 export const TIERS = [
   {
     name: 'Brand Launch',
     price: '$249',
     from: 249,
     blurb: 'A sharp one-page presence for a new venture that needs to look real, now.',
+    specs: { pages: '1 page', timeline: '~2 weeks', revisions: '1 round' },
+    bestFor: 'Brand-new ventures that need to exist online this month.',
     features: ['Single-page site', 'Mobile-first build', 'Contact form'],
     detailed: [
       'Custom single-page website',
       'Mobile-first responsive build',
       'Contact form with spam protection',
       'Basic on-page SEO',
+      'Google Analytics installed',
       '1 round of revisions',
     ],
+    notIncluded: ['Multi-page structure', 'Ongoing SEO', 'Integrations'],
     cta: 'Contact sales',
     featured: false,
   },
@@ -149,14 +162,18 @@ export const TIERS = [
     price: '$499',
     from: 499,
     blurb: 'A proper small-business site — a handful of pages that do the selling for you.',
+    specs: { pages: 'Up to 5 pages', timeline: '3–4 weeks', revisions: '2 rounds' },
+    bestFor: 'Established local businesses with no real site yet.',
     features: ['Up to 5 pages', 'Copywriting support', 'Contact + enquiry forms'],
     detailed: [
       'Custom 5-page website',
       'Copywriting support',
       'On-page SEO across all pages',
       'Enquiry + contact forms',
+      'Google Analytics + Search Console',
       '2 rounds of revisions',
     ],
+    notIncluded: ['Local search / GBP setup', 'CRM or booking integration'],
     cta: 'Contact sales',
     featured: false,
   },
@@ -165,6 +182,8 @@ export const TIERS = [
     price: '$899',
     from: 899,
     blurb: 'For businesses ready to compete on search and turn the site into a real channel.',
+    specs: { pages: '10+ pages', timeline: '4–6 weeks', revisions: '3 rounds' },
+    bestFor: 'Businesses where customers search before they buy.',
     features: ['Up to 10 pages', 'Advanced + local SEO', 'CRM / booking integration', 'Custom motion'],
     detailed: [
       'Custom 10+ page or e-commerce build',
@@ -172,8 +191,10 @@ export const TIERS = [
       'Google Business Profile setup',
       'CRM / booking / automation integration',
       'Custom motion and interactions',
+      'Performance budget + Core Web Vitals pass',
       'Priority support',
     ],
+    notIncluded: ['Bespoke web app work', 'Dedicated account manager'],
     cta: 'Contact sales',
     featured: true,
   },
@@ -182,14 +203,18 @@ export const TIERS = [
     price: '$1,499+',
     from: 1499,
     blurb: 'Bespoke builds for established brands that need more than a template can carry.',
+    specs: { pages: 'Unlimited', timeline: '6–10 weeks', revisions: 'Until signed off' },
+    bestFor: 'Multi-location or multi-service operations.',
     features: ['Custom architecture', 'E-commerce ready', 'API integrations', 'Dedicated manager'],
     detailed: [
       'Bespoke architecture or web app',
       'Full e-commerce or booking systems',
       'Third-party API integrations',
+      'Multi-location / multi-service structure',
       'Dedicated account manager',
       'Quarterly performance reviews',
     ],
+    notIncluded: [],
     cta: 'Contact sales',
     featured: false,
   },
@@ -272,7 +297,15 @@ export const FAQS = [
   },
   {
     q: 'Do you only work with local businesses?',
-    a: 'We focus on small and mid-sized businesses across Canada and the U.S. — the ones who need a site that competes with the big players without a big-player budget. Larger projects are welcome too; that is what Business Pro is for.',
+    a: 'No — we work remotely with small and mid-sized businesses anywhere in the United States and Canada. Everything from the first call to handover happens over email and video, so your location makes no difference to the price or the timeline.',
+  },
+  {
+    q: 'Where are you based, and does it matter?',
+    a: 'The team is split between Langley, British Columbia and Maynard, Massachusetts, and we deliver every project remotely across both countries. In practice that means you get the same senior people whether you are in Vancouver, Boston, Austin or a town of four thousand — and we cover both Pacific and Eastern hours between us.',
+  },
+  {
+    q: 'Can you do local SEO if you are not in my town?',
+    a: 'Yes, and it is one of the things we do most. Local search is won with your Google Business Profile, location-specific pages, citations and reviews — none of which require us to be down the road from you. We have ranked clients in towns none of us have visited.',
   },
   {
     q: 'Do I own the website?',

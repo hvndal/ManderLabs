@@ -112,8 +112,8 @@ export default function HomePage() {
             <Reveal>
               <span className="label-caps text-accent">What we do</span>
               {/* Was a flat grey 06 — the deadest thing on the page. Now the
-                  hero's aperture treatment, so the count carries the footage
-                  and the motif returns instead of appearing once. */}
+                  masthead's aperture treatment filled with the marbled asset,
+                  so the motif recurs without the hero clip doing every job. */}
               <AperturedType
                 text="06"
                 viewBox="0 0 320 300"
@@ -121,6 +121,7 @@ export default function HomePage() {
                 baselineY={240}
                 stencil="#f4f2ec"
                 maskId="aperture-services-count"
+                mediaClassName="brightness-[0.8] saturate-[1.2]"
                 className="mt-6 w-full max-w-[260px]"
               />
             </Reveal>
@@ -252,9 +253,13 @@ export default function HomePage() {
             and the empty sixth cell is left empty on purpose. Stretching the
             grid to close the gap would make a five-person team look like it
             was arranged to fill space. */}
-        <div className="mt-14 grid grid-cols-2 gap-x-6 gap-y-10 sm:grid-cols-3 lg:max-w-4xl">
+        {/* `items-stretch` plus `h-full` on both the Reveal wrapper and the
+            card is what actually makes the row share a baseline — without it
+            each card sizes to its own content and the portraits step up and
+            down across the row. */}
+        <div className="mt-14 grid grid-cols-2 items-stretch gap-x-6 gap-y-12 sm:grid-cols-3 lg:max-w-4xl">
           {TEAM.map((member, index) => (
-            <Reveal key={member.name} delay={index * 60} className="h-full">
+            <Reveal key={member.name} delay={index * 60} className="flex h-full">
               <TeamCard member={member} />
             </Reveal>
           ))}

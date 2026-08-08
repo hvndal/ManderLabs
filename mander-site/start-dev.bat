@@ -16,9 +16,6 @@ if errorlevel 1 (
   exit /b 1
 )
 
-call "%~dp0setup-assets.bat"
-call "%~dp0setup-video.bat"
-call "%~dp0setup-team.bat"
 
 rem Install if node_modules is missing entirely, OR if a specific dependency
 rem (framer-motion, added for the interactive pricing / motion system) isn't

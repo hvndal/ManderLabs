@@ -28,6 +28,18 @@ export default function AperturedType({
   letterSpacing = '-0.045em',
   className = '',
   maskId,
+  // Which footage shows through. Defaults to the marbled asset rather than
+  // the hero clip: one film doing every job on the page reads as a shortcut,
+  // and marbled endpaper suits small numerals better — it has structure at
+  // any crop, where a filmed scene turns to mush inside a 40px counter.
+  src = '/videos/marble.mp4',
+  poster = '/marble-poster.jpg',
+  // Tone correction for the ground it sits on. The stencil hides everything
+  // except the characters, so wherever the footage happens to match the
+  // stencil colour the letterform silently disappears — cream passages vanish
+  // into paper, dark passages into ink. Push the media away from the stencil
+  // and the characters hold their shape at every frame of the loop.
+  mediaClassName = '',
 }) {
   const [reducedMotion, setReducedMotion] = useState(false);
 
@@ -47,25 +59,25 @@ export default function AperturedType({
       {reducedMotion ? (
         // eslint-disable-next-line @next/next/no-img-element
         <img
-          src="/hero-poster.jpg"
+          src={poster}
           alt=""
           aria-hidden="true"
-          className="absolute inset-0 h-full w-full object-cover"
+          className={`absolute inset-0 h-full w-full object-cover ${mediaClassName}`}
         />
       ) : (
         <video
-          className="absolute inset-0 h-full w-full object-cover [transform:translate3d(0,0,0)]"
+          className={`absolute inset-0 h-full w-full object-cover [transform:translate3d(0,0,0)] ${mediaClassName}`}
           autoPlay
           muted
           loop
           playsInline
           webkit-playsinline="true"
           preload="metadata"
-          poster="/hero-poster.jpg"
+          poster={poster}
           disablePictureInPicture
           aria-hidden="true"
         >
-          <source src="/videos/hero.mp4" type="video/mp4" />
+          <source src={src} type="video/mp4" />
         </video>
       )}
 

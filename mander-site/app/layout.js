@@ -5,7 +5,12 @@ import Footer from '@/components/Footer';
 import Grain from '@/components/Grain';
 import JsonLd from '@/components/JsonLd';
 import { CommunityRateProvider } from '@/components/CommunityRate';
-import { SITE_URL, organizationSchema, websiteSchema } from '@/lib/seo';
+import {
+  SITE_URL,
+  organizationSchema,
+  websiteSchema,
+  serviceSchemas,
+} from '@/lib/seo';
 
 // Both are variable fonts — omitting `weight` pulls the full axis, which is
 // what the design system needs (400/500/600).
@@ -28,34 +33,63 @@ export const metadata = {
     template: '%s | MANDER',
   },
   description:
-    'Budget-friendly custom website design, built fast — from $249. Small and mid-sized businesses across Canada and the U.S. get a premium site, SEO, and ongoing care without agency prices.',
+    'Remote website design for small business across the U.S. and Canada. Fixed-price custom builds from $249, plus SEO, local search and ongoing care. 20% Community Rate available.',
+  // Keywords carry almost no ranking weight now, but they cost nothing and a
+  // few engines still read them. The real work is done by the description,
+  // headings and JSON-LD service area. Weighted toward remote/nationwide
+  // intent rather than a single city, because that's how the business sells.
   keywords: [
-    'affordable website design',
-    'budget website design',
-    'fast website design',
-    'small business website design',
-    'custom website design',
+    'remote website design',
+    'website design for small business',
+    'affordable website design USA',
     'website design Canada',
-    'website design United States',
-    'cheap website for small business',
-    'website design and SEO',
+    'small business web design agency',
+    'custom website design remote',
+    'fixed price website design',
+    'small business SEO',
+    'local SEO for small business',
+    'Google Business Profile optimization',
+    'website redesign small business',
+    'website design from $249',
+    'veteran owned business discount website',
+    'nonprofit and small business website discount',
   ],
   alternates: {
     canonical: '/',
   },
+  category: 'Web Design',
+  applicationName: 'MANDER',
+  authors: [{ name: 'MANDER', url: SITE_URL }],
+  creator: 'MANDER',
+  publisher: 'MANDER',
+  formatDetection: { telephone: false, address: false, email: false },
+  // Explicit crawl directives. `max-image-preview: large` is what allows a
+  // full-width thumbnail in results, and it is off by default.
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      'max-video-preview': -1,
+      'max-image-preview': 'large',
+      'max-snippet': -1,
+    },
+  },
   openGraph: {
-    title: 'MANDER | Affordable, Fast Website Design for Small Business',
+    title: 'MANDER | Website Design for Small Business — U.S. & Canada',
     description:
-      'Budget-friendly custom website design, built fast — from $249. Premium design and build for small and mid-sized businesses across Canada and the U.S.',
+      'Remote website design, development and SEO for small and mid-sized businesses across the U.S. and Canada. Fixed-price builds from $249.',
     type: 'website',
     url: SITE_URL,
     siteName: 'MANDER',
+    locale: 'en_US',
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'MANDER | Affordable, Fast Website Design for Small Business',
+    title: 'MANDER | Website Design for Small Business — U.S. & Canada',
     description:
-      'Budget-friendly custom website design, built fast — from $249, for small and mid-sized businesses across Canada and the U.S.',
+      'Remote website design and SEO for small business across the U.S. and Canada. Fixed-price builds from $249.',
   },
 };
 
@@ -69,6 +103,11 @@ export default function RootLayout({ children }) {
       <body>
         <JsonLd data={organizationSchema} />
         <JsonLd data={websiteSchema} />
+        {/* One Service entity per discipline — these can surface independently
+            of the homepage for "<service> for small business" queries. */}
+        {serviceSchemas.map((schema) => (
+          <JsonLd key={schema.name} data={schema} />
+        ))}
         <a
           href="#main"
           className="label-caps sr-only focus:not-sr-only focus:absolute focus:left-4 focus:top-4 focus:z-[100] focus:bg-ink focus:px-4 focus:py-2 focus:text-paper"

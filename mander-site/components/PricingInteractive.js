@@ -104,9 +104,31 @@ export default function PricingInteractive({ tiers }) {
               {tier.blurb}
             </motion.p>
 
+            {/* Specs — the three numbers a buyer compares before reading any
+                feature list, on the closed card so the row is scannable
+                without opening anything. */}
+            {tier.specs && (
+              <motion.dl
+                layout="position"
+                transition={SPRING}
+                className="mt-6 grid grid-cols-3 gap-3 border-y border-line py-4"
+              >
+                {[
+                  ['Scope', tier.specs.pages],
+                  ['Timeline', tier.specs.timeline],
+                  ['Revisions', tier.specs.revisions],
+                ].map(([k, v]) => (
+                  <div key={k}>
+                    <dt className="label-caps text-[10px] text-ink-mute">{k}</dt>
+                    <dd className="mt-1.5 text-label-sm font-medium text-ink">{v}</dd>
+                  </div>
+                ))}
+              </motion.dl>
+            )}
+
             {/* Collapsed preview — three headline features, always present */}
             {!isOpen && (
-              <ul className="mt-6 flex flex-1 flex-col gap-3">
+              <ul className="mt-5 flex flex-1 flex-col gap-3">
                 {tier.features.slice(0, 3).map((f) => (
                   <li key={f} className="flex items-start gap-2.5">
                     <Icon name="check" className="mt-0.5 h-3.5 w-3.5 shrink-0 text-ink" strokeWidth={2} />
@@ -144,13 +166,62 @@ export default function PricingInteractive({ tiers }) {
                     ))}
                   </motion.ul>
 
+                  {/* Who it's for — one line, does more work than three
+                      more ticks would. */}
+                  {tier.bestFor && (
+                    <motion.p
+                      initial={{ opacity: 0, y: 8 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      transition={{
+                        duration: 0.4,
+                        ease: EASE,
+                        delay: 0.06 + tier.detailed.length * 0.06,
+                      }}
+                      className="mt-7 border-l-2 border-accent/40 pl-4 text-body-md text-ink-soft"
+                    >
+                      <span className="label-caps mb-1.5 block text-ink-mute">Best for</span>
+                      {tier.bestFor}
+                    </motion.p>
+                  )}
+
+                  {/* And the ceiling. A pricing table that only says yes is
+                      why people ring up asking what the catch is. */}
+                  {tier.notIncluded?.length > 0 && (
+                    <motion.div
+                      initial={{ opacity: 0, y: 8 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      transition={{
+                        duration: 0.4,
+                        ease: EASE,
+                        delay: 0.1 + tier.detailed.length * 0.06,
+                      }}
+                      className="mt-6"
+                    >
+                      <span className="label-caps mb-3 block text-ink-mute">
+                        Not in this tier
+                      </span>
+                      <ul className="flex flex-col gap-2">
+                        {tier.notIncluded.map((f) => (
+                          <li key={f} className="flex items-start gap-2.5">
+                            <Icon
+                              name="close"
+                              className="mt-1 h-3 w-3 shrink-0 text-line-strong"
+                              strokeWidth={2}
+                            />
+                            <span className="text-body-md text-ink-mute">{f}</span>
+                          </li>
+                        ))}
+                      </ul>
+                    </motion.div>
+                  )}
+
                   <motion.div
                     initial={{ opacity: 0, x: 16 }}
                     animate={{ opacity: 1, x: 0 }}
                     transition={{
                       duration: 0.4,
                       ease: EASE,
-                      delay: 0.1 + tier.detailed.length * 0.06,
+                      delay: 0.16 + tier.detailed.length * 0.06,
                     }}
                     className="mt-8"
                   >
@@ -176,12 +247,29 @@ export default function PricingInteractive({ tiers }) {
               )}
             </AnimatePresence>
 
-            {/* Closed-state affordance — kept out of the way, click anywhere works */}
+            {/* Closed-state affordance — kept out of the way, click anywhere works.
+                The rule wipes in from the left on hover and the label shifts
+                with it, so the whole card reads as one target rather than the
+                words being the only live thing on it. */}
             {!isOpen && (
-              <span className="label-caps mt-6 text-ink-mute transition-colors duration-300 group-hover:text-ink">
-                View details
+              <span className="mt-6 flex items-center gap-3">
+                <span
+                  aria-hidden="true"
+                  className="h-px w-6 origin-left scale-x-0 bg-accent transition-transform duration-500 ease-premium group-hover:scale-x-100"
+                />
+                <span className="label-caps text-ink-mute transition-all duration-500 ease-premium group-hover:translate-x-1 group-hover:text-accent">
+                  View details
+                </span>
               </span>
             )}
+
+            {/* A hairline that draws across the top edge on hover — the only
+                thing separating a hovered card from a resting one, which is
+                all the signal a click target this large needs. */}
+            <span
+              aria-hidden="true"
+              className="pointer-events-none absolute inset-x-0 top-0 h-px origin-left scale-x-0 bg-accent transition-transform duration-500 ease-premium group-hover:scale-x-100"
+            />
           </motion.article>
         );
       })}
