@@ -39,65 +39,48 @@ export const IMAGES = {
   },
 };
 
-// Service photos live in /public/services — copied from Pictures\our services
-// by setup-assets.bat. Filenames are fixed; swap the file, keep the name.
+// --- Services --------------------------------------------------------------
+// Deliberately no images. These used to be six full-bleed stock photo bands;
+// they were cut because generic stock photography is the weakest possible
+// argument on a site whose entire product is design — and because six of them
+// meant six screens of scrolling that said nothing. The section is typographic
+// now (see ServiceBand.js), so there is no `image` field to maintain and no
+// crop to fight.
 //
-// Two of the six original stock photos didn't actually match their slug once
-// seen full-bleed on desktop: `website-design.jpg` was someone browsing Pexels
-// on a laptop outdoors, and `gbp-optimization.jpg` was a meeting room with a
-// visibly fake "Lorem Ipsum" chart on the screen. Reassigned/replaced below —
-// `imagePosition` also lets a tile pull a portrait photo's focal point toward
-// the top instead of a dead-center crop, since most of these source photos
-// are tall portrait shots being cropped into a wide desktop band.
+// The old files still sit in /public/services and setup-assets.bat still
+// copies them; they're unused. If real work artefacts ever replace them
+// (a wireframe, a Lighthouse score, a live GBP listing), add `image` back and
+// ServiceBand can grow a right-hand column.
 export const SERVICES = [
   {
     index: '01',
     title: 'Website Design',
     body: 'Custom, conversion-focused sites built on fast, scalable foundations. Clean code, quick to load, easy for you to update.',
-    // The wireframe/sketch shot (originally filed under care-plan.jpg) — a
-    // far better fit for "Website Design" than the outdoor stock-photo-
-    // browsing shot that was here.
-    image: '/services/care-plan.jpg',
-    imagePosition: 'center 30%',
   },
   {
     index: '02',
     title: 'Brand Identity',
     body: 'A cohesive visual system — logo, type, colour, and the rules that hold it together — so you look established from day one.',
-    image: '/services/brand-identity.jpg',
-    imagePosition: 'center 25%',
   },
   {
     index: '03',
     title: 'Website Redesign',
     body: 'Modernising a site that has aged out. Better experience, sharper design, and the technical performance search engines reward.',
-    image: '/services/website-redesign.jpg',
-    imagePosition: 'top',
   },
   {
     index: '04',
     title: 'SEO',
     body: 'Technical and content work that puts you in front of high-intent local buyers — the people already searching for what you do.',
-    image: '/services/seo.jpg',
-    imagePosition: 'top',
   },
   {
     index: '05',
     title: 'Local Search',
     body: 'Google Business Profile, maps, and directory presence tuned so the right customer in the right town lands on the right page.',
-    // Swapped the "Lorem Ipsum"-on-screen meeting photo for something that
-    // actually reads as maps/local search. Pexels — free, no attribution.
-    image: 'https://images.pexels.com/photos/35969/pexels-photo-35969.jpeg?auto=compress&cs=tinysrgb&w=1200',
-    imagePosition: 'center',
   },
   {
     index: '06',
     title: 'Care Plan',
     body: 'Hosting, security, backups, and unlimited small edits. We keep the site fast and current so you never think about it.',
-    // Swapped for a server-room shot — the wireframe photo that used to sit
-    // here fits "Website Design" much better and has moved there.
-    image: 'https://images.pexels.com/photos/5480781/pexels-photo-5480781.jpeg?auto=compress&cs=tinysrgb&w=1200',
-    imagePosition: 'center',
   },
 ];
 
@@ -246,6 +229,14 @@ export const FAQS = [
 // actually match the industry (Pexels, free to use) — swap for real client
 // photography the moment you have it; a stand-in stock shot next to a real
 // client name and result is the one thing worth fixing before this goes live.
+//
+// The `quote` / `person` fields are gone on purpose. They held invented
+// testimonials attributed to named roles at named companies ("Operations
+// Director, Fitway Gym"), which is a fabricated endorsement — a real problem
+// under FTC endorsement rules and the fastest way to lose a prospect who
+// checks. The section that displayed them now runs on the verifiable fields
+// below instead (see Testimonials.js). Add quotes back only when they are
+// real and you have permission to publish them.
 export const WORK = [
   {
     name: 'Fitway Gym',
@@ -256,8 +247,7 @@ export const WORK = [
     result: '100k+ members',
     body: 'A commercial gym at real scale needed a site that could carry 100,000+ members without buckling. We rebuilt the class timetable, membership sign-up, and location finder into one fast self-serve flow — and the front desk stopped answering questions the website should have.',
     services: ['Website Design', 'CRM Integration', 'Care Plan'],
-    quote: 'They rebuilt the parts of our site our members actually touch every day. Sign-ups stopped being a phone call.',
-    person: 'Operations Director, Fitway Gym',
+    scope: 'Timetable, membership sign-up, location finder',
   },
   {
     name: 'Waste Universe',
@@ -268,8 +258,7 @@ export const WORK = [
     result: 'Statewide coverage',
     body: 'Commercial and residential collection across Massachusetts, sold through a site that looked smaller than the operation. We rebuilt it around service areas and quote requests, with local SEO tuned to every town they cover, so the right customer books the right service.',
     services: ['Website Redesign', 'Local SEO', 'Local Search'],
-    quote: 'We finally look like the operation we actually are. Quote requests come in already knowing what we do.',
-    person: 'Founder, Waste Universe',
+    scope: 'Service-area pages, quote requests, local SEO',
   },
   {
     name: 'The Côte Noire',
@@ -277,11 +266,10 @@ export const WORK = [
     location: 'France',
     logo: '/logos/cote-noire.svg',
     image: 'https://images.pexels.com/photos/28454110/pexels-photo-28454110.jpeg?auto=compress&cs=tinysrgb&w=1200',
-    result: 'Direct bookings up',
+    result: 'Direct bookings',
     body: 'A hospitality brand whose atmosphere never made it online. We built a restrained, image-led bilingual site that lets the photography carry the room, with direct reservations front and centre to pull bookings back off the aggregators.',
     services: ['Brand Identity', 'Website Design', 'Bilingual Build'],
-    quote: 'The site finally feels like walking into the room. Bookings moved off the aggregators within a month.',
-    person: 'Owner, The Côte Noire',
+    scope: 'Bilingual build, direct reservations, brand system',
   },
 ];
 

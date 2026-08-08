@@ -1,48 +1,42 @@
-import Image from 'next/image';
 import Reveal from './Reveal';
 
 /**
- * Full-bleed editorial row: a large photo on one side, big index + title and
- * copy on the other. Alternates sides down the page. No cards, no borders —
- * the photography carries it.
+ * A service, set as type — no photography.
+ *
+ * This used to be a full-bleed photo band. Six of them meant roughly six
+ * screens of stock imagery that carried no information and, on an agency
+ * site, quietly argued the opposite of the pitch: if you sell design, a
+ * stranger in a stock meeting room is the weakest thing you can show.
+ *
+ * The replacement is a wide editorial row — oversized mono index, title,
+ * and copy on a 12-column grid with a hairline between each. Nothing to
+ * source, nothing to crop, and it reads as deliberate rather than padded.
+ * The index is the only coloured element and it warms to the accent on
+ * hover, which is the whole of the interaction.
  */
-export default function ServiceBand({ service, flip = false }) {
+export default function ServiceBand({ service, index = 0 }) {
   return (
-    <div className="grid grid-cols-1 items-stretch md:grid-cols-2">
-      {/* Photo */}
-      <div
-        className={`relative min-h-[280px] overflow-hidden bg-paper-3 md:min-h-[520px] ${
-          flip ? 'md:order-2' : ''
-        }`}
-      >
-        {service.image && (
-          <Image
-            src={service.image}
-            alt=""
-            fill
-            sizes="(max-width: 768px) 100vw, 50vw"
-            className="object-cover transition-transform duration-[900ms] ease-premium hover:scale-[1.03]"
-            style={{ objectPosition: service.imagePosition || 'center' }}
-          />
-        )}
-      </div>
-
-      {/* Text */}
-      <div
-        className={`flex items-center px-margin-mobile py-14 md:px-[7vw] md:py-0 ${
-          flip ? 'md:order-1' : ''
-        }`}
-      >
-        <Reveal className="max-w-text">
-          <span className="font-mono text-stat-md text-line-strong">
+    <Reveal delay={index * 70}>
+      <div className="group grid grid-cols-1 gap-4 py-12 transition-colors duration-500 ease-premium md:grid-cols-12 md:gap-gutter md:py-16">
+        {/* Index */}
+        <div className="md:col-span-2">
+          <span className="font-mono text-stat-lg leading-none text-line-strong transition-colors duration-500 ease-premium group-hover:text-accent">
             {service.index}
           </span>
-          <h3 className="mt-5 text-headline-lg-mobile font-semibold tracking-tight text-ink md:text-headline-lg">
+        </div>
+
+        {/* Title */}
+        <div className="md:col-span-4">
+          <h3 className="text-headline-lg-mobile font-semibold tracking-tight text-ink md:text-headline-md">
             {service.title}
           </h3>
-          <p className="mt-5 text-body-lg text-ink-soft">{service.body}</p>
-        </Reveal>
+        </div>
+
+        {/* Copy */}
+        <div className="md:col-span-6">
+          <p className="max-w-text text-body-lg text-ink-soft">{service.body}</p>
+        </div>
       </div>
-    </div>
+    </Reveal>
   );
 }

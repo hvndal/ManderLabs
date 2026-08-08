@@ -70,7 +70,7 @@ export default function HomePage() {
           </div>
         </div>
 
-        {/* Cinematic cover — looping showcase video, framed like a print */}
+        {/* Cinematic cover — looping showcase video, full-bleed edge to edge */}
         <Reveal delay={200} className="mt-14 md:mt-20">
           <HeroVideo poster={IMAGES.heroWorkspace.src} posterAlt={IMAGES.heroWorkspace.alt} />
         </Reveal>
@@ -152,15 +152,13 @@ export default function HomePage() {
           />
         </div>
 
-        {/* Full-bleed alternating photo bands */}
-        <div className="divide-y divide-line border-t border-line">
-          {SERVICES.map((service, index) => (
-            <ServiceBand
-              key={service.title}
-              service={service}
-              flip={index % 2 === 1}
-            />
-          ))}
+        {/* Typographic rows — no photography, see ServiceBand.js */}
+        <div className="container-max pb-stack-md">
+          <div className="divide-y divide-line border-t border-line">
+            {SERVICES.map((service, index) => (
+              <ServiceBand key={service.title} service={service} index={index} />
+            ))}
+          </div>
         </div>
       </section>
 
@@ -241,9 +239,15 @@ export default function HomePage() {
         </div>
       </Section>
 
-      {/* ---------------------------------------------------------- Testimonials */}
+      {/* ------------------------------------------------------------ Engagements */}
+      {/* Was "In their words" — the quotes it ran on were invented, so this
+          now shows the verifiable side of the same engagements instead. */}
       <Section tone="warm">
-        <SectionHeading eyebrow="In their words" title="What it's like to work with us." />
+        <SectionHeading
+          eyebrow="Engagements"
+          title="What we actually delivered."
+          body="Scope and outcome for three recent builds — no paraphrasing, no invented praise."
+        />
         <div className="mt-14">
           <Testimonials items={WORK} />
         </div>

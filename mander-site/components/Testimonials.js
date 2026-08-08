@@ -1,30 +1,53 @@
 import Reveal from './Reveal';
 
 /**
- * Large, quote-led, no cards, no stars, no avatars — a stacked editorial
- * list with generous space between entries. This section is pure breathing
- * room by design: it carries the pacing, not information density.
+ * Engagements — what was actually delivered, not what anyone said about it.
+ *
+ * This was a quote-led testimonial list. The quotes were invented and
+ * attributed to named roles at named companies, which is a fabricated
+ * endorsement; it has been replaced with the verifiable side of the same
+ * data. Every field below is a fact about the work — sector, location,
+ * what was built, what it produced — so nothing here can be contradicted
+ * by a prospect who picks up the phone and asks.
+ *
+ * If real, permissioned quotes ever arrive, they belong here as an extra
+ * row rather than a replacement for the facts.
  */
 export default function Testimonials({ items }) {
   return (
     <div className="flex flex-col divide-y divide-line border-y border-line">
       {items.map((item, index) => (
-        <Reveal key={item.person} delay={index * 90} className="py-14 md:py-20">
-          <div className="grid grid-cols-1 gap-6 md:grid-cols-12 md:gap-12">
-            <span
-              aria-hidden="true"
-              className="font-serif text-6xl leading-none text-line-strong md:col-span-1 md:text-7xl"
-            >
-              &ldquo;
-            </span>
-            <blockquote className="md:col-span-8">
-              <p className="text-headline-lg-mobile font-medium leading-snug tracking-tight text-ink md:text-headline-md">
-                {item.quote}
+        <Reveal key={item.name} delay={index * 90} className="py-10 md:py-14">
+          <div className="grid grid-cols-1 gap-6 md:grid-cols-12 md:gap-gutter">
+            {/* Who */}
+            <div className="md:col-span-4">
+              <h3 className="text-headline-md font-semibold tracking-tight text-ink">
+                {item.name}
+              </h3>
+              <p className="label-caps mt-3 text-ink-mute">
+                {item.sector} · {item.location}
               </p>
-              <footer className="label-caps mt-6 text-ink-mute">
-                {item.person}
-              </footer>
-            </blockquote>
+            </div>
+
+            {/* What was built */}
+            <div className="md:col-span-5">
+              <p className="text-body-lg text-ink-soft">{item.scope}</p>
+              <ul className="mt-4 flex flex-wrap gap-x-2 gap-y-2">
+                {item.services.map((service) => (
+                  <li
+                    key={service}
+                    className="label-caps border border-line px-3 py-1.5 text-ink-mute"
+                  >
+                    {service}
+                  </li>
+                ))}
+              </ul>
+            </div>
+
+            {/* Outcome */}
+            <div className="md:col-span-3 md:text-right">
+              <span className="text-stat-md text-ink">{item.result}</span>
+            </div>
           </div>
         </Reveal>
       ))}
