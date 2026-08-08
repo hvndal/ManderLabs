@@ -10,6 +10,13 @@ build/
 .env.local
 .env*.local
 
+# Loose notes that have held the access key in plain text. A .txt is not
+# covered by the .env rules above, so it would otherwise be committed to a
+# public repo on the next `git add -A`.
+env.txt
+**/env.txt
+*key*.txt
+
 # OS / editor noise
 .DS_Store
 Thumbs.db
