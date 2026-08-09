@@ -198,7 +198,7 @@ export default function PricingPage() {
       <section className="bg-ink text-paper">
         <div className="container-max py-stack-lg text-center">
           <Reveal className="mx-auto max-w-3xl">
-            <h2 className="text-headline-lg-mobile font-semibold tracking-tight md:text-display-lg">
+            <h2 className="font-display text-headline-lg-mobile font-normal md:text-display-lg">
               Find your fit in 60 seconds.
             </h2>
             <div className="mt-10 flex flex-col justify-center gap-3 sm:flex-row">

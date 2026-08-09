@@ -59,14 +59,24 @@ module.exports = {
       fontFamily: {
         sans: ['var(--font-hanken)', 'ui-sans-serif', 'system-ui', 'sans-serif'],
         mono: ['var(--font-jetbrains)', 'ui-monospace', 'SFMono-Regular', 'monospace'],
+        // Display serif — headings only. See the note in layout.js.
+        display: ['var(--font-instrument)', 'ui-serif', 'Georgia', 'serif'],
       },
       fontSize: {
         // High contrast: statements are large, labels are tiny. Nothing sits
         // in the comfortable middle — that middle is what read as "generic".
-        'display-xl': ['clamp(3rem, 8vw, 7rem)', { lineHeight: '0.96', letterSpacing: '-0.04em', fontWeight: '600' }],
-        'display-lg': ['clamp(2.5rem, 6vw, 5rem)', { lineHeight: '0.98', letterSpacing: '-0.035em', fontWeight: '600' }],
-        'headline-lg': ['clamp(2rem, 4vw, 3.25rem)', { lineHeight: '1.04', letterSpacing: '-0.03em', fontWeight: '600' }],
-        'headline-lg-mobile': ['1.9rem', { lineHeight: '1.06', letterSpacing: '-0.025em', fontWeight: '600' }],
+        //
+        // The display and headline steps are set in the serif, so their
+        // tracking is close to neutral: the tight negative letterspacing that
+        // a grotesk needs at size will collapse a high-contrast serif's
+        // sidebearings and clot the joins. Line-height is a touch looser for
+        // the same reason — serif ascenders and descenders need the room.
+        'display-xl': ['clamp(3.25rem, 8.5vw, 7.5rem)', { lineHeight: '0.94', letterSpacing: '-0.02em', fontWeight: '400' }],
+        'display-lg': ['clamp(2.75rem, 6.5vw, 5.5rem)', { lineHeight: '0.97', letterSpacing: '-0.018em', fontWeight: '400' }],
+        'headline-lg': ['clamp(2.25rem, 4.4vw, 3.6rem)', { lineHeight: '1.03', letterSpacing: '-0.015em', fontWeight: '400' }],
+        'headline-lg-mobile': ['2.15rem', { lineHeight: '1.05', letterSpacing: '-0.012em', fontWeight: '400' }],
+        // Stays in the grotesk — it's a card/row title doing UI work, not a
+        // display line, and the serif gets muddy this small.
         'headline-md': ['1.35rem', { lineHeight: '1.2', letterSpacing: '-0.015em', fontWeight: '500' }],
         'stat-xl': ['clamp(2.75rem, 6vw, 4.5rem)', { lineHeight: '0.95', letterSpacing: '-0.03em', fontWeight: '600' }],
         'stat-lg': ['2rem', { lineHeight: '1', letterSpacing: '-0.02em', fontWeight: '600' }],

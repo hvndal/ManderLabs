@@ -134,7 +134,7 @@ export default function Quiz() {
           <div className="bg-ink p-8 text-paper md:p-10">
             <span className="label-caps text-paper/60">Recommended for you</span>
             <div className="mt-4 flex flex-wrap items-end justify-between gap-4">
-              <h2 className="text-headline-lg-mobile font-semibold tracking-tight md:text-headline-lg">
+              <h2 className="font-display text-headline-lg-mobile font-normal md:text-headline-lg">
                 {result.tier}
               </h2>
               {recommended && (
@@ -249,7 +249,7 @@ export default function Quiz() {
       </div>
 
       <div key={q.id} className="animate-slide-in">
-        <h2 className="text-headline-lg-mobile font-semibold tracking-tight text-ink md:text-headline-lg">
+        <h2 className="font-display text-headline-lg-mobile font-normal text-ink md:text-headline-lg">
           {q.question}
         </h2>
 

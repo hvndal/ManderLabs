@@ -1,5 +1,5 @@
 import './globals.css';
-import { Hanken_Grotesk, JetBrains_Mono } from 'next/font/google';
+import { Hanken_Grotesk, JetBrains_Mono, Instrument_Serif } from 'next/font/google';
 import Nav from '@/components/Nav';
 import Footer from '@/components/Footer';
 import Grain from '@/components/Grain';
@@ -24,6 +24,24 @@ const jetbrains = JetBrains_Mono({
   subsets: ['latin'],
   display: 'swap',
   variable: '--font-jetbrains',
+});
+
+// The display face. Hanken alone was doing every job, which is why the page
+// read competent-but-generic below the masthead — a single grotesk at three
+// sizes is a UI kit, not a type system. Instrument Serif is high-contrast and
+// slightly condensed: it carries an editorial voice at large sizes the way a
+// masthead needs to, and it sets up the three-way contrast the design system
+// was always describing — serif display, grotesk body, mono label.
+//
+// Single weight (400) on purpose. It's a display cut; faux-bolding it or
+// pulling a heavier optical size would flatten exactly the contrast that
+// makes it worth loading.
+const instrument = Instrument_Serif({
+  subsets: ['latin'],
+  display: 'swap',
+  weight: '400',
+  style: ['normal', 'italic'],
+  variable: '--font-instrument',
 });
 
 export const metadata = {
@@ -99,7 +117,10 @@ export const viewport = {
 
 export default function RootLayout({ children }) {
   return (
-    <html lang="en" className={`${hanken.variable} ${jetbrains.variable}`}>
+    <html
+      lang="en"
+      className={`${hanken.variable} ${jetbrains.variable} ${instrument.variable}`}
+    >
       <body>
         <JsonLd data={organizationSchema} />
         <JsonLd data={websiteSchema} />

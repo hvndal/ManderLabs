@@ -122,7 +122,7 @@ export function CommunityRateSection() {
           {/* The argument */}
           <div className="md:col-span-6 md:col-start-7">
             <Reveal delay={120}>
-              <p className="max-w-[26ch] text-headline-lg-mobile font-medium leading-[1.12] tracking-tight text-paper md:text-headline-lg">
+              <p className="max-w-[26ch] font-display text-headline-lg-mobile leading-[1.12] font-normal text-paper md:text-headline-lg">
                 {COMMUNITY.lede}
               </p>
               <p className="mt-8 max-w-text text-body-lg text-paper/70">

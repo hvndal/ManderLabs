@@ -13,7 +13,7 @@ export default function ServiceBand({ service, index = 0 }) {
 
         {/* Title */}
         <div className="col-span-2 md:col-span-4">
-          <h3 className="text-headline-lg-mobile font-semibold tracking-tight text-ink md:text-headline-md">
+          <h3 className="font-display text-headline-lg-mobile font-normal text-ink transition-colors duration-500 group-hover:text-accent md:text-headline-lg">
             {service.title}
           </h3>
         </div>

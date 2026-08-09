@@ -41,11 +41,16 @@
     @apply inline-block h-px w-8 bg-accent;
   }
 
+  /* Every display-scale heading routes through these two, so the serif is
+     applied here once rather than sprinkled across thirty call sites.
+     `font-normal` is deliberate — the face ships one weight and asking the
+     browser for 600 triggers synthetic bolding, which smears the thin
+     strokes that are the whole reason for using it. */
   .h-display {
-    @apply text-headline-lg-mobile font-semibold tracking-tight text-ink md:text-display-lg;
+    @apply font-display text-headline-lg-mobile font-normal text-ink md:text-display-lg;
   }
   .h-section {
-    @apply text-headline-lg-mobile font-semibold tracking-tight text-ink md:text-headline-lg;
+    @apply font-display text-headline-lg-mobile font-normal text-ink md:text-headline-lg;
   }
 
   /* Buttons — square, solid, no radius. Underline-reveal on the text link. */
@@ -101,25 +106,46 @@
 /* ---------------------------------------------------------------------- */
 /* Reveal-on-scroll — text fades upward, respects reduced motion           */
 /* ---------------------------------------------------------------------- */
+/* Reveal.
+   Two things made this feel clunky. The travel was 24px over 0.7s, which is
+   slow enough that the eye tracks the element moving instead of just finding
+   it already there — a reveal should be felt, not watched. And opacity ran on
+   the same curve as the transform, so a block spent most of its travel at low
+   alpha and appeared to "arrive late".
+
+   Now: shorter travel, opacity front-loaded on its own faster curve so the
+   element is legible almost immediately and the last of the movement is a
+   settle rather than an entrance. `translate3d` keeps it on the compositor.
+
+   will-change is NOT set here. Declaring it up front promotes every reveal on
+   the page to its own layer at once — on a phone that is dozens of layers
+   competing for VRAM, which is itself a cause of jank. It's applied only
+   while an element is armed (see .reveal:not(.is-visible)) and dropped the
+   moment it lands. */
 .reveal {
   opacity: 0;
-  transform: translateY(24px);
+  transform: translate3d(0, 16px, 0);
   transition:
-    opacity 0.7s cubic-bezier(0.16, 1, 0.3, 1),
-    transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+    opacity 0.45s cubic-bezier(0.33, 1, 0.68, 1),
+    transform 0.75s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.reveal:not(.is-visible) {
   will-change: opacity, transform;
 }
 .reveal.is-visible {
   opacity: 1;
-  transform: none;
+  transform: translate3d(0, 0, 0);
 }
 
 @media (max-width: 768px) {
+  /* Phones scroll faster relative to viewport height, so the same travel
+     reads as lag. Shorter distance, quicker settle, and the transform is
+     given a hair less time than the fade so it never trails behind. */
   .reveal {
-    transform: translateY(8px);
+    transform: translate3d(0, 10px, 0);
     transition:
-      opacity 0.4s cubic-bezier(0.16, 1, 0.3, 1),
-      transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+      opacity 0.34s cubic-bezier(0.33, 1, 0.68, 1),
+      transform 0.5s cubic-bezier(0.16, 1, 0.3, 1);
     -webkit-backface-visibility: hidden;
     backface-visibility: hidden;
   }

@@ -45,7 +45,7 @@ export default function Colophon({ headline, body, clients }) {
       <div className="container-max grid grid-cols-1 gap-y-10 pb-stack-lg pt-16 md:grid-cols-12 md:pt-28">
         <div className="md:col-start-4 md:col-span-8">
           <Reveal>
-            <h1 className="max-w-[16ch] text-headline-lg-mobile font-semibold tracking-tight text-ink md:text-display-lg">
+            <h1 className="max-w-[16ch] font-display text-headline-lg-mobile font-normal text-ink md:text-display-lg">
               {headline}
             </h1>
           </Reveal>

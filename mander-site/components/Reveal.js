@@ -14,6 +14,7 @@ export default function Reveal({
 }) {
   const ref = useRef(null);
   const [visible, setVisible] = useState(false);
+  const [mobile, setMobile] = useState(false);
 
   useEffect(() => {
     const el = ref.current;
@@ -24,20 +25,27 @@ export default function Reveal({
       return;
     }
 
-    const isMobile = typeof window !== 'undefined' && window.innerWidth <= 768;
+    const isMobile = window.matchMedia('(max-width: 768px)').matches;
+    setMobile(isMobile);
 
+    // Fire *before* the element reaches the viewport, not as it crosses.
+    // Waiting for it to be on screen means the animation plays over content
+    // the eye has already landed on, which is what reads as lag. A positive
+    // bottom margin arms it roughly a third of a screen early on phones, so
+    // by the time it's actually looked at it has already settled.
     const observer = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            setVisible(true);
-            observer.unobserve(entry.target);
-          }
+          if (!entry.isIntersecting) return;
+          setVisible(true);
+          observer.unobserve(entry.target);
         });
       },
       {
-        threshold: isMobile ? 0.01 : 0.12,
-        rootMargin: isMobile ? '0px 0px 80px 0px' : '0px 0px -40px 0px',
+        // Any sliver counts on mobile. A 12% threshold on a tall block can
+        // require most of a phone screen before it trips.
+        threshold: isMobile ? 0 : 0.08,
+        rootMargin: isMobile ? '0px 0px 22% 0px' : '0px 0px -8% 0px',
       }
     );
 
@@ -45,10 +53,16 @@ export default function Reveal({
     return () => observer.disconnect();
   }, []);
 
+  // Stagger is a desktop device. On a phone the items in a stagger are
+  // stacked rather than side by side, so a 60–70ms step compounds down the
+  // column into a visible cascade — the "one at a time" clunk. Compressed to
+  // a third and capped, it's a soft offset instead of a queue.
+  const stagger = mobile ? Math.min(delay * 0.34, 90) : delay;
+
   return (
     <Tag
       ref={ref}
-      style={delay ? { transitionDelay: `${delay}ms` } : undefined}
+      style={stagger ? { transitionDelay: `${Math.round(stagger)}ms` } : undefined}
       className={`reveal ${visible ? 'is-visible' : ''} ${className}`}
     >
       {children}

@@ -28,7 +28,7 @@ export default function StatsConstellation({ stats }) {
           <Reveal>
             <div className="relative">
               <div className="flex items-end gap-6 md:gap-10">
-                <span className="whitespace-nowrap text-[22vw] font-semibold leading-[0.82] tracking-[-0.05em] text-ink md:text-[15.5vw]">
+                <span className="whitespace-nowrap font-display text-[22vw] font-normal leading-[0.82] tracking-[-0.02em] text-ink md:text-[15.5vw]">
                   {first.value}
                 </span>
                 <span className="mb-3 max-w-[16ch] text-body-md text-ink-soft md:mb-5">
@@ -44,7 +44,7 @@ export default function StatsConstellation({ stats }) {
           <Reveal delay={120}>
             <div className="mt-20 flex justify-end md:mt-28">
               <div className="max-w-[34ch] text-right">
-                <span className="block text-stat-xl leading-none text-ink">
+                <span className="block font-display text-stat-xl font-normal leading-none text-ink">
                   {second.value}
                 </span>
                 <span className="mt-4 block text-body-md text-ink-soft">
@@ -59,7 +59,7 @@ export default function StatsConstellation({ stats }) {
         {third && (
           <Reveal delay={200}>
             <div className="mt-16 max-w-[26ch] md:mt-20">
-              <span className="block text-stat-md leading-none text-ink">
+              <span className="block font-display text-stat-md font-normal leading-none text-ink">
                 {third.value}
               </span>
               <span className="mt-3 block text-body-md text-ink-soft">

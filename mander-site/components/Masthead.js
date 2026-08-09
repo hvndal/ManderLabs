@@ -212,14 +212,28 @@ export default function Masthead({ tagline, mono }) {
           style={{ opacity: furniture }}
         >
           <div className="container-max flex h-full flex-col justify-between py-6 md:py-8">
-            <div className="flex items-start justify-between gap-8">
+            {/* The head sets centred, the way a masthead actually sets. It was
+                a left mark with a right-hung line of mono, which on a phone
+                wrapped mid-compound ("small & mid-" / "sized") and left the
+                mark and the text sitting on two different optical centres —
+                so the one element that has to look composed didn't.
+                Centred, the mark and the line share an axis with MANDER
+                itself, and the region line is short enough to hold one line
+                down to 320px. */}
+            <div className="flex flex-col items-center gap-3 text-center md:gap-4">
               <Logo variant="mark" className="pointer-events-auto h-14 md:h-[72px]" />
-              <p className="label-caps max-w-[28ch] pt-1 text-right text-[10px] leading-relaxed text-ink-mute sm:max-w-none sm:text-xs md:pt-3">
+              {/* Tracking is opened up and the size dropped a step: at this
+                  width a caps line reads as a rule of small marks rather than
+                  a sentence, which is what keeps it furniture and stops it
+                  competing with the wordmark below. */}
+              <p className="font-mono text-[9.5px] uppercase leading-none tracking-[0.3em] text-ink-mute sm:text-[11px] sm:tracking-[0.34em]">
                 {mono}
               </p>
             </div>
 
-            <p className="label-caps max-w-[24ch] text-ink-mute">{tagline}</p>
+            <p className="label-caps mx-auto max-w-[30ch] text-center text-ink-mute">
+              {tagline}
+            </p>
           </div>
         </div>
       </div>

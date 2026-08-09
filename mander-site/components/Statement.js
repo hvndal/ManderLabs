@@ -49,7 +49,7 @@ export default function Statement({ eyebrow, text, tone = 'paper', align = 'cent
           )}
           <div className="md:col-span-9 md:col-start-4">
             <Reveal delay={90}>
-              <p className="max-w-[20ch] text-headline-lg-mobile font-medium leading-[1.08] tracking-tight md:max-w-[16ch] md:text-display-lg">
+              <p className="max-w-[20ch] font-display text-headline-lg-mobile leading-[1.08] font-normal md:max-w-[16ch] md:text-display-lg">
                 {text}
               </p>
             </Reveal>
@@ -70,7 +70,7 @@ export default function Statement({ eyebrow, text, tone = 'paper', align = 'cent
               {eyebrow}
             </span>
           )}
-          <p className="text-headline-lg-mobile font-medium leading-[1.15] tracking-tight md:text-headline-lg">
+          <p className="font-display text-headline-lg-mobile leading-[1.15] font-normal md:text-headline-lg">
             {text}
           </p>
         </Reveal>

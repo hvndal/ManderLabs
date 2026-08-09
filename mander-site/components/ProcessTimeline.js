@@ -48,15 +48,19 @@ export default function ProcessTimeline({ steps }) {
             />
 
             <div className="flex items-start gap-6 pt-7 md:gap-10 md:pt-9">
+              {/* The staircase numerals are the largest type in the section,
+                  so they set in the display serif with the other display
+                  type. In the mono they were reading as a code, which put
+                  them in the same voice as the tiny section labels. */}
               <span
-                className={`font-mono text-stat-lg leading-[0.8] text-line-strong ${place.num}`}
+                className={`font-display text-stat-lg font-normal leading-[0.78] text-line-strong ${place.num}`}
                 aria-hidden="true"
               >
                 {step.step}
               </span>
 
               <div className="flex-1 pb-10 md:pb-14">
-                <h3 className="text-headline-md font-semibold tracking-tight text-ink">
+                <h3 className="font-display text-[1.65rem] font-normal leading-[1.15] text-ink md:text-[2rem]">
                   {step.title}
                 </h3>
                 <p className="mt-3 max-w-text text-body-lg text-ink-soft">

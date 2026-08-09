@@ -1,5 +1,4 @@
 import Link from 'next/link';
-import Image from 'next/image';
 import Section, { SectionHeading } from '@/components/Section';
 import Reveal from '@/components/Reveal';
 import Icon from '@/components/Icon';
@@ -24,13 +23,13 @@ import Faq from '@/components/Faq';
 import JsonLd from '@/components/JsonLd';
 import {
   SERVICES,
+  TERMS,
   PROCESS,
   TIERS,
   STATS,
   FAQS,
   WORK,
   TEAM,
-  IMAGES,
   BRAND,
 } from '@/lib/content';
 import { faqSchema } from '@/lib/seo';
@@ -116,7 +115,7 @@ export default function HomePage() {
 
           <div className="md:col-span-6 md:col-start-5 md:self-end">
             <Reveal delay={100}>
-              <h2 className="max-w-[14ch] text-headline-lg-mobile font-semibold tracking-tight text-ink md:text-display-lg">
+              <h2 className="max-w-[14ch] font-display text-headline-lg-mobile font-normal text-ink md:text-display-lg">
                 Everything a small business needs online.
               </h2>
             </Reveal>
@@ -149,46 +148,50 @@ export default function HomePage() {
         tone="alt"
       />
 
-      {/* ----------------------------------------------------------- Value prop */}
+      {/* --------------------------------------------------------------- Terms */}
+      {/* Was a stock photograph beside a tick-list — the last generic block on
+          the route and the only remaining stock image outside Work. These are
+          commitments, so they're set as clauses: numbered, ruled, each one a
+          line of display serif with its qualification hung out in the right
+          margin. Same grammar as the services index, so the page stops
+          switching languages halfway down. */}
       <Section tone="paper">
-        <div className="grid grid-cols-1 items-center gap-gutter lg:grid-cols-2 lg:gap-16">
-          <Reveal>
-            <div className="relative aspect-[4/3] overflow-hidden bg-paper-3">
-              <Image
-                src={IMAGES.growthOwner.src}
-                alt={IMAGES.growthOwner.alt}
-                fill
-                sizes="(max-width: 1024px) 100vw, 620px"
-                className="img-zoom object-cover"
-              />
-            </div>
-          </Reveal>
+        <div className="grid grid-cols-1 gap-y-8 md:grid-cols-12 md:gap-gutter">
+          <div className="md:col-span-3">
+            <Reveal>
+              <span className="label-caps text-accent">Why MANDER</span>
+            </Reveal>
+          </div>
+          <div className="md:col-span-8 md:col-start-4">
+            <Reveal delay={80}>
+              <h2 className="h-display max-w-[15ch]">
+                Big-firm quality, without the big-firm invoice.
+              </h2>
+              <p className="mt-8 max-w-text text-body-lg text-ink-soft md:mt-10">
+                Most agencies price small businesses out, or hand them a
+                template and disappear. We do neither — and these three hold
+                whatever you spend.
+              </p>
+            </Reveal>
+          </div>
+        </div>
 
-          <Reveal delay={100}>
-            <span className="eyebrow">Why MANDER</span>
-            <h2 className="h-section">
-              Big-firm quality, without the big-firm invoice.
-            </h2>
-            <p className="mt-6 text-body-lg text-ink-soft">
-              Most agencies price small businesses out or hand them a template
-              and disappear. We do neither. You get considered design, clean
-              build, and a team that stays reachable — for a rate a local
-              business can actually justify.
-            </p>
-
-            <ul className="mt-8 divide-y divide-line border-y border-line">
-              {[
-                'Fixed scope, fixed price — quoted up front',
-                'You own the site, the code, and every account',
-                'No retainer lock-in, ever',
-              ].map((item) => (
-                <li key={item} className="flex items-center gap-4 py-5">
-                  <Icon name="check" className="h-4 w-4 shrink-0 text-ink" strokeWidth={2} />
-                  <span className="text-body-md text-ink-soft">{item}</span>
-                </li>
-              ))}
-            </ul>
-          </Reveal>
+        <div className="mt-16 border-t border-line md:mt-24">
+          {TERMS.map((term, index) => (
+            <Reveal key={term.index} delay={index * 70}>
+              <div className="group grid grid-cols-1 gap-y-3 border-b border-line py-9 md:grid-cols-12 md:items-baseline md:gap-gutter md:py-12">
+                <span className="font-mono text-body-md font-medium text-ink-mute transition-colors duration-500 group-hover:text-accent md:col-span-2">
+                  {term.index}
+                </span>
+                <h3 className="font-display text-headline-lg-mobile font-normal text-ink md:col-span-6 md:text-headline-lg">
+                  {term.title}
+                </h3>
+                <p className="max-w-text text-body-md text-ink-soft md:col-span-4">
+                  {term.body}
+                </p>
+              </div>
+            </Reveal>
+          ))}
         </div>
       </Section>
 
@@ -201,7 +204,7 @@ export default function HomePage() {
           <div className="md:col-span-4">
             <Reveal>
               <span className="label-caps text-accent">How it works</span>
-              <h2 className="mt-6 max-w-[12ch] text-headline-lg-mobile font-semibold tracking-tight text-ink md:text-headline-lg">
+              <h2 className="mt-6 max-w-[12ch] font-display text-headline-lg-mobile font-normal text-ink md:text-headline-lg">
                 A straight line from call to launch.
               </h2>
             </Reveal>
@@ -221,7 +224,7 @@ export default function HomePage() {
           <div className="md:col-span-6">
             <Reveal>
               <span className="label-caps text-accent">The team</span>
-              <h2 className="mt-6 max-w-[14ch] text-headline-lg-mobile font-semibold tracking-tight text-ink md:text-headline-lg">
+              <h2 className="mt-6 max-w-[14ch] font-display text-headline-lg-mobile font-normal text-ink md:text-headline-lg">
                 Small, senior, and reachable.
               </h2>
             </Reveal>
@@ -256,12 +259,25 @@ export default function HomePage() {
       {/* ------------------------------------------------------------ Engagements */}
       {/* Was "In their words" — the quotes it ran on were invented, so this
           now shows the verifiable side of the same engagements instead. */}
+      {/* Set as a running head on a rule, matching Selected Work above rather
+          than the centred title card it used to use — a centred heading in the
+          middle of a page built on asymmetry is the thing that made this
+          section read as bolted on. */}
       <Section tone="warm">
-        <SectionHeading
-          eyebrow="Engagements"
-          title="What we actually delivered."
-          body="Scope and outcome for three recent builds — no paraphrasing, no invented praise."
-        />
+        <Reveal>
+          <div className="flex flex-col gap-5 border-b border-line pb-7 sm:flex-row sm:items-baseline sm:justify-between sm:gap-10">
+            <div className="flex flex-wrap items-baseline gap-x-6 gap-y-2">
+              <span className="label-caps shrink-0 text-accent">Engagements</span>
+              <h2 className="font-display text-headline-lg-mobile font-normal text-ink md:text-headline-lg">
+                What we actually delivered.
+              </h2>
+            </div>
+            <p className="max-w-[34ch] shrink-0 text-body-md text-ink-soft sm:text-right">
+              Scope and outcome for three recent builds — no paraphrasing, no
+              invented praise.
+            </p>
+          </div>
+        </Reveal>
         <div className="mt-14">
           <Testimonials items={WORK} />
         </div>
@@ -273,7 +289,10 @@ export default function HomePage() {
           <div className="grid grid-cols-1 gap-10 lg:grid-cols-12 lg:items-end">
             <div className="lg:col-span-8">
               <span className="label-caps text-white/70">Not sure where to start?</span>
-              <h2 className="mt-5 text-headline-lg-mobile font-semibold tracking-tight md:text-headline-lg">
+              {/* Pushed up to display scale. On a full-bleed accent field a
+                  headline set at the same size as the ones on paper looks
+                  timid — the block needs the type to fill it. */}
+              <h2 className="mt-5 font-display text-headline-lg-mobile font-normal md:text-display-lg">
                 Take the 60-second fit quiz.
               </h2>
               <p className="mt-5 max-w-text text-body-lg text-white/85">
@@ -351,7 +370,7 @@ export default function HomePage() {
       <section className="bg-ink text-paper">
         <div className="container-max py-stack-lg text-center">
           <Reveal className="mx-auto max-w-3xl">
-            <h2 className="text-headline-lg-mobile font-semibold tracking-tight md:text-display-lg">
+            <h2 className="font-display text-headline-lg-mobile font-normal md:text-display-lg">
               Let&apos;s build something that pulls its weight.
             </h2>
             <div className="mt-10 flex flex-col justify-center gap-3 sm:flex-row">

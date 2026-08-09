@@ -13,7 +13,13 @@ export const BRAND = {
   // this same address once forwarding is live; see .env.local.example.
   email: 'herman@mander.tech',
   portfolio: 'https://hermanify.online',
-  region: 'Serving small & mid-sized businesses across Canada and the U.S.',
+  // Masthead furniture, set centred in caps under the mark. Kept short and
+  // free of hyphenated compounds on purpose — the old line ("small &
+  // mid-sized businesses across Canada and the U.S.") broke after "mid-" on
+  // a phone, which is the one place a masthead cannot afford a bad break.
+  // The small-business keyword work is carried by the metadata, the H1 and
+  // the schema, not by this line.
+  region: 'Canada & the United States',
 };
 
 export const NAV_LINKS = [
@@ -34,10 +40,9 @@ export const IMAGES = {
     src: '/hero-poster.jpg',
     alt: 'Designer sketching on a graphics tablet, warm editorial tone',
   },
-  growthOwner: {
-    src: 'https://images.pexels.com/photos/4872048/pexels-photo-4872048.jpeg?auto=compress&cs=tinysrgb&w=1400',
-    alt: 'Business owner reviewing performance figures on a tablet in a bright office',
-  },
+  // `growthOwner` (a Pexels shot of an owner holding a tablet) was removed
+  // with the value-prop section it sat in — see TERMS below. The homepage now
+  // carries no stock photography outside the Work grid.
 };
 
 // --- Services --------------------------------------------------------------
@@ -98,6 +103,31 @@ export const SERVICES = [
     body: 'Hosting, security, backups, and unlimited small edits. We keep the site fast and current so you never think about it.',
     icon: 'shield',
     growth: [0.5, 0.52, 0.48, 0.54, 0.56, 0.6, 0.64, 0.7],
+  },
+];
+
+// --- Terms -----------------------------------------------------------------
+// The "why us" argument, restated as what it actually is: three commitments.
+// This replaced a stock photograph sitting beside a tick-list — the one
+// pattern on the homepage that still looked like a template, and the last
+// piece of generic photography on the route. Set as numbered clauses, the
+// section carries the same grammar as the services index and the process
+// staircase instead of importing a different one.
+export const TERMS = [
+  {
+    index: '01',
+    title: 'Fixed scope, fixed price.',
+    body: 'Quoted up front against a written scope. The number you approve is the number you pay — there is no hourly meter running behind it.',
+  },
+  {
+    index: '02',
+    title: 'You own all of it.',
+    body: 'The site, the code, the domain and every account it touches are registered in your name from day one, not ours.',
+  },
+  {
+    index: '03',
+    title: 'No retainer lock-in.',
+    body: 'The care plan is month to month. Leave whenever you like and the site stays yours and stays running.',
   },
 ];
 
