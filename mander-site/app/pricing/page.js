@@ -4,6 +4,7 @@ import Reveal from '@/components/Reveal';
 import Statement from '@/components/Statement';
 import Icon from '@/components/Icon';
 import PricingInteractive from '@/components/PricingInteractive';
+import Guilloche from '@/components/Guilloche';
 import Faq from '@/components/Faq';
 import JsonLd from '@/components/JsonLd';
 import {
@@ -47,8 +48,15 @@ export default function PricingPage() {
       <JsonLd data={faqSchema(FAQS)} />
 
       {/* ---------------------------------------------------------------- Hero */}
-      <section className="border-b border-line">
-        <div className="container-max py-stack-md">
+      {/* Engraved plate behind the price header — the visual language of an
+          issued instrument rather than a posted rate. See Guilloche.js. */}
+      <section className="relative overflow-hidden border-b border-line">
+        <Guilloche
+          opacity={0.09}
+          spin
+          className="-right-28 -top-32 h-[440px] w-[440px] md:-right-24 md:h-[620px] md:w-[620px]"
+        />
+        <div className="relative container-max py-stack-md">
           <Reveal>
             <span className="eyebrow">Pricing</span>
           </Reveal>

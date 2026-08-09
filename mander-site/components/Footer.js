@@ -1,5 +1,6 @@
 import Link from 'next/link';
 import Logo from './Logo';
+import Guilloche from './Guilloche';
 import { CommunityRateFooterLink } from './CommunityRate';
 import { BRAND, NAV_LINKS } from '@/lib/content';
 
@@ -11,8 +12,19 @@ const LEGAL = [
 
 export default function Footer() {
   return (
-    <footer className="bg-ink text-paper">
-      <div className="container-max py-stack-lg">
+    <footer className="relative overflow-hidden bg-ink text-paper">
+      {/* Engraved plate, hung off the top-right corner and cropped by two
+          edges. Cropping is what keeps it architecture rather than
+          decoration — a circle floating fully inside the block would read as
+          a sticker. */}
+      <Guilloche
+        tone="rose"
+        spin
+        opacity={0.14}
+        className="-right-24 -top-40 h-[420px] w-[420px] md:-right-16 md:-top-52 md:h-[620px] md:w-[620px]"
+      />
+
+      <div className="relative container-max py-stack-lg">
         <div className="grid grid-cols-1 gap-stack-md md:grid-cols-12">
           <div className="md:col-span-6">
             {/* The one place the pale rose lockup has enough contrast to work */}
@@ -95,6 +107,27 @@ export default function Footer() {
             ))}
           </ul>
         </div>
+      </div>
+
+      {/* The wordmark set enormous along the bottom edge — the masthead
+          gesture returned at the other end of the page, so the document
+          opens and closes on the same move.
+
+          Deliberately not a heading and not content: the real lockup is at
+          the top of the footer, so this is aria-hidden, and `select-none`
+          keeps a 19vw string from being draggable and highlightable.
+
+          Sized to sit flush rather than to be cropped mid-letter. A crop
+          into the letterforms depends on the font's baseline sitting where
+          you assume it does, and getting that wrong by a few percent is the
+          difference between "cropped" and "broken" — so the negative margin
+          only trims the empty space below the baseline (MANDER is all caps,
+          nothing descends into it) and the letters stay whole. `leading` and
+          the margin are in vw so the relationship holds at every width. */}
+      <div aria-hidden="true" className="relative select-none overflow-hidden">
+        <span className="-mb-[1.2vw] block whitespace-nowrap text-center font-display text-[19vw] font-normal leading-[0.8] tracking-[-0.015em] text-paper/[0.07]">
+          {BRAND.name}
+        </span>
       </div>
     </footer>
   );

@@ -8,6 +8,7 @@ import Colophon from '@/components/Colophon';
 import StatsConstellation from '@/components/StatsConstellation';
 import AperturedType from '@/components/AperturedType';
 import ShaderBackground from '@/components/ShaderBackground';
+import Guilloche from '@/components/Guilloche';
 import {
   CommunityRateSection,
   CommunityRateNote,
@@ -155,7 +156,18 @@ export default function HomePage() {
           line of display serif with its qualification hung out in the right
           margin. Same grammar as the services index, so the page stops
           switching languages halfway down. */}
-      <Section tone="paper">
+      <section className="relative overflow-hidden bg-paper py-stack-lg">
+        {/* The plate sits behind the clauses and bleeds off the right edge.
+            These are the site's guarantees, and engraved line-work is the
+            visual language of an issued guarantee — it does the arguing that
+            a row of icons would only decorate. */}
+        <Guilloche
+          opacity={0.09}
+          spin
+          className="-right-32 top-1/2 h-[560px] w-[560px] -translate-y-1/2 md:-right-40 md:h-[760px] md:w-[760px]"
+        />
+
+        <div className="relative container-max">
         <div className="grid grid-cols-1 gap-y-8 md:grid-cols-12 md:gap-gutter">
           <div className="md:col-span-3">
             <Reveal>
@@ -193,7 +205,8 @@ export default function HomePage() {
             </Reveal>
           ))}
         </div>
-      </Section>
+        </div>
+      </section>
 
       {/* -------------------------------------------------------------- Process */}
       {/* The heading is pinned hard left and the steps descend away from it
@@ -353,22 +366,41 @@ export default function HomePage() {
       <CommunityRateSection />
 
       {/* ------------------------------------------------------------------ FAQ */}
-      <Section id="faq" tone="paper">
-        <div className="grid grid-cols-1 gap-gutter lg:grid-cols-12 lg:gap-16">
-          <div className="lg:col-span-4">
-            <SectionHeading eyebrow="Questions" title="Before you ask." />
-          </div>
-          <div className="lg:col-span-8">
-            <Reveal>
-              <Faq items={FAQS} />
-            </Reveal>
+      {/* The heading column is mostly empty below the title on desktop — an
+          accordion is tall and a two-line heading is not. The plate fills
+          that column instead of letting it read as a blank gutter. */}
+      <section id="faq" className="relative overflow-hidden bg-paper py-stack-lg">
+        <Guilloche
+          opacity={0.1}
+          spin
+          className="-left-40 bottom-0 hidden h-[520px] w-[520px] lg:block"
+        />
+        <div className="relative container-max">
+          <div className="grid grid-cols-1 gap-gutter lg:grid-cols-12 lg:gap-16">
+            <div className="lg:col-span-4">
+              <SectionHeading eyebrow="Questions" title="Before you ask." />
+            </div>
+            <div className="lg:col-span-8">
+              <Reveal>
+                <Faq items={FAQS} />
+              </Reveal>
+            </div>
           </div>
         </div>
-      </Section>
+      </section>
 
       {/* ------------------------------------------------------------ Final CTA */}
-      <section className="bg-ink text-paper">
-        <div className="container-max py-stack-lg text-center">
+      <section className="relative overflow-hidden bg-ink text-paper">
+        {/* Centred behind the closing line, so the last thing on the page
+            before the footer is the plate and the type occupying the same
+            spot — a stamp under a signature. */}
+        <Guilloche
+          tone="rose"
+          spin
+          opacity={0.13}
+          className="left-1/2 top-1/2 h-[440px] w-[440px] -translate-x-1/2 -translate-y-1/2 md:h-[620px] md:w-[620px]"
+        />
+        <div className="relative container-max py-stack-lg text-center">
           <Reveal className="mx-auto max-w-3xl">
             <h2 className="font-display text-headline-lg-mobile font-normal md:text-display-lg">
               Let&apos;s build something that pulls its weight.

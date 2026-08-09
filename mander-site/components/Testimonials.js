@@ -17,16 +17,27 @@ export default function Testimonials({ items }) {
   return (
     <div className="flex flex-col divide-y divide-line border-y border-line">
       {items.map((item, index) => (
-        <Reveal key={item.name} delay={index * 90} className="py-10 md:py-14">
+        <Reveal key={item.name} delay={index * 90} className="group py-10 md:py-14">
           <div className="grid grid-cols-1 gap-6 md:grid-cols-12 md:gap-gutter">
-            {/* Who */}
-            <div className="md:col-span-4">
-              <h3 className="text-headline-md font-semibold tracking-tight text-ink">
-                {item.name}
-              </h3>
-              <p className="label-caps mt-3 text-ink-mute">
-                {item.sector} · {item.location}
-              </p>
+            {/* Who — the row index is carried as a large serif numeral in the
+                margin rather than a bullet, which gives each row a graphic
+                anchor and lets the eye count the engagements at a glance
+                instead of reading three near-identical text blocks. */}
+            <div className="flex items-baseline gap-5 md:col-span-4">
+              <span
+                aria-hidden="true"
+                className="font-display text-[2.6rem] font-normal leading-none text-line-strong transition-colors duration-500 group-hover:text-accent-soft md:text-[3.4rem]"
+              >
+                {String(index + 1).padStart(2, '0')}
+              </span>
+              <div>
+                <h3 className="text-headline-md font-semibold tracking-tight text-ink">
+                  {item.name}
+                </h3>
+                <p className="label-caps mt-3 text-ink-mute">
+                  {item.sector} · {item.location}
+                </p>
+              </div>
             </div>
 
             {/* What was built */}
@@ -36,7 +47,7 @@ export default function Testimonials({ items }) {
                 {item.services.map((service) => (
                   <li
                     key={service}
-                    className="label-caps border border-line px-3 py-1.5 text-ink-mute"
+                    className="label-caps border border-line px-3 py-1.5 text-ink-mute transition-colors duration-500 group-hover:border-line-strong"
                   >
                     {service}
                   </li>
@@ -44,9 +55,13 @@ export default function Testimonials({ items }) {
               </ul>
             </div>
 
-            {/* Outcome */}
+            {/* Outcome — set in the display serif and stepped up a size. It is
+                the one number on the row that matters and it was previously
+                the same weight as the scope copy beside it. */}
             <div className="md:col-span-3 md:text-right">
-              <span className="text-stat-md text-ink">{item.result}</span>
+              <span className="font-display text-stat-lg font-normal leading-none text-ink">
+                {item.result}
+              </span>
             </div>
           </div>
         </Reveal>
