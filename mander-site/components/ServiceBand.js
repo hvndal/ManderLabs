@@ -21,6 +21,10 @@ export default function ServiceBand({ service, index = 0 }) {
             fontSize={116}
             baselineY={96}
             maskId={`service-${service.index}`}
+            // Six rows step across the field left to right, so scrolling the
+            // list travels through one continuous thing instead of replaying
+            // the same clip six times.
+            offset={index / 5}
             className="w-[76px] opacity-80 transition-opacity duration-500 group-hover:opacity-100 md:w-[96px]"
             mediaClassName="brightness-[0.8] saturate-[1.2]"
           />

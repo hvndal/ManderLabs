@@ -195,6 +195,7 @@ export default function HomePage() {
                     fontSize={116}
                     baselineY={96}
                     maskId={`term-${term.index}`}
+                    offset={0.15 + index * 0.35}
                     className="w-[86px] opacity-80 transition-opacity duration-500 group-hover:opacity-100 md:w-[104px]"
                     mediaClassName="brightness-[0.8] saturate-[1.2]"
                   />

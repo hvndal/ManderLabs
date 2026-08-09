@@ -40,6 +40,19 @@ export default function AperturedType({
   // into paper, dark passages into ink. Push the media away from the stencil
   // and the characters hold their shape at every frame of the loop.
   mediaClassName = '',
+  // Which part of the field this aperture looks at, 0 (left) to 1 (right).
+  //
+  // This is the whole reason the source is a wide 4:1 field rather than a
+  // square. Every aperture used to show the entire frame scaled into its own
+  // box, so eleven openings displayed the identical image at the identical
+  // moment — which reads as eleven separate little loops rather than one
+  // thing seen through eleven holes. Giving each a different offset makes
+  // them windows onto a single continuous field, which is what they should
+  // have been from the start.
+  //
+  // object-fit: cover scales the field to fill the box's height, leaving
+  // horizontal overflow; objectPosition is what pans through it.
+  offset = 0.5,
 }) {
   const [reducedMotion, setReducedMotion] = useState(false);
   const hostRef = useRef(null);
@@ -92,6 +105,9 @@ export default function AperturedType({
 
   const id = maskId || `aperture-${text.replace(/[^a-z0-9]/gi, '')}`;
   const [, , vbW, vbH] = viewBox.split(' ').map(Number);
+  const objectPosition = `${Math.round(
+    Math.min(Math.max(offset, 0), 1) * 100
+  )}% 50%`;
 
   return (
     <div ref={hostRef} className={`relative overflow-hidden ${className}`}>
@@ -101,11 +117,13 @@ export default function AperturedType({
           src={poster}
           alt=""
           aria-hidden="true"
+          style={{ objectPosition }}
           className={`absolute inset-0 h-full w-full object-cover ${mediaClassName}`}
         />
       ) : (
         <video
           ref={videoRef}
+          style={{ objectPosition }}
           className={`absolute inset-0 h-full w-full object-cover [transform:translate3d(0,0,0)] ${mediaClassName}`}
           autoPlay
           muted
