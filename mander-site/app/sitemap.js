@@ -1,5 +1,6 @@
 import { SITE_URL } from '@/lib/seo';
 import { REGIONS, allCities } from '@/lib/locations';
+import { LEGAL_DOCS } from '@/lib/legal';
 
 export default function sitemap() {
   const now = new Date();
@@ -28,6 +29,14 @@ export default function sitemap() {
     { url: `${SITE_URL}/locations`, lastModified: now, changeFrequency: 'monthly', priority: 0.8 },
     ...regionUrls,
     ...cityUrls,
+    // Policy pages: indexable and canonical, but low priority — they're
+    // required, linked and crawlable, not something we compete on.
+    ...LEGAL_DOCS.map((doc) => ({
+      url: `${SITE_URL}/legal/${doc.slug}`,
+      lastModified: now,
+      changeFrequency: 'yearly',
+      priority: 0.3,
+    })),
   ];
   // Previously also listed `${SITE_URL}/#community-rate` as its own sitemap
   // entry. A URL fragment isn't a separate crawlable document — search

@@ -4,12 +4,13 @@ import GridField from './GridField';
 import AperturedType from './AperturedType';
 import { CommunityRateFooterLink } from './CommunityRate';
 import { BRAND, NAV_LINKS } from '@/lib/content';
+import { LEGAL_DOCS } from '@/lib/legal';
 
-const LEGAL = [
-  { label: 'Privacy', href: '#' },
-  { label: 'Terms', href: '#' },
-  { label: 'Cookies', href: '#' },
-];
+// Derived from the policy data rather than hand-listed, so a new policy is
+// linked here automatically. These used to be three href="#" placeholders —
+// including a "Cookies" link, which was doubly wrong: the site sets no
+// cookies, so the honest answer lives in the privacy policy instead.
+const LEGAL = LEGAL_DOCS.map((d) => ({ label: d.nav, href: `/legal/${d.slug}` }));
 
 export default function Footer() {
   return (
@@ -89,12 +90,12 @@ export default function Footer() {
           <ul className="flex flex-wrap gap-6">
             {LEGAL.map((item) => (
               <li key={item.label}>
-                <a
+                <Link
                   href={item.href}
                   className="label-caps text-paper/45 transition-colors hover:text-paper"
                 >
                   {item.label}
-                </a>
+                </Link>
               </li>
             ))}
           </ul>
