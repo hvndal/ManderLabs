@@ -132,10 +132,19 @@ export default function WorkCompact({ items }) {
                 onClick={() => goTo(target)}
                 aria-label={`Show projects ${i * PER_PAGE + 1}–${i * PER_PAGE + PER_PAGE}`}
                 aria-current={active}
-                className={`h-[3px] transition-all duration-500 ease-premium ${
-                  active ? 'w-8 bg-accent' : 'w-4 bg-line-strong hover:bg-ink-mute'
-                }`}
-              />
+                /* The visible mark stays a hairline, but the button around it
+                   is a full 44px-tall target — a 3px-high tap target is
+                   effectively unhittable with a thumb. */
+                className="group/dot -my-3 flex items-center px-2 py-3"
+              >
+                <span
+                  className={`h-[3px] transition-all duration-500 ease-premium ${
+                    active
+                      ? 'w-8 bg-accent'
+                      : 'w-4 bg-line-strong group-hover/dot:bg-ink-mute'
+                  }`}
+                />
+              </button>
             );
           })}
         </div>
