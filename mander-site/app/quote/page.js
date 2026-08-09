@@ -1,13 +1,30 @@
 import Quiz from '@/components/Quiz';
 import Reveal from '@/components/Reveal';
 import { QUIZ } from '@/lib/content';
+import { OG_IMAGE } from '@/lib/seo';
+
+const TITLE = 'Get a Quote — Fast Website Design, Custom Priced';
+const DESCRIPTION =
+  'Answer six quick questions and get a recommended plan and starting price for a custom, budget-friendly website — or route straight to a person.';
 
 export const metadata = {
-  title: 'Get a Quote — Fast Website Design, Custom Priced',
-  description:
-    'Answer six quick questions and get a recommended plan and starting price for a custom, budget-friendly website — or route straight to a person.',
+  title: TITLE,
+  description: DESCRIPTION,
   alternates: {
     canonical: '/quote',
+  },
+  openGraph: {
+    title: TITLE,
+    description: DESCRIPTION,
+    url: '/quote',
+    type: 'website',
+    images: [OG_IMAGE],
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: TITLE,
+    description: DESCRIPTION,
+    images: [OG_IMAGE.url],
   },
 };
 

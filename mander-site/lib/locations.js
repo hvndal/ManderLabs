@@ -60,7 +60,7 @@ export const REGIONS = [
       },
       {
         q: 'Which Massachusetts cities do you have dedicated pages for?',
-        a: "Boston, Cambridge, Worcester, Springfield and Newton so far — see the city list below. If your town isn't listed yet, this page and a direct conversation cover the same ground.",
+        a: "Boston, Cambridge, Worcester, Springfield, Newton, Lowell, Quincy, Framingham, Brockton and Lynn so far — see the city list below. If your town isn't listed yet, this page and a direct conversation cover the same ground.",
       },
     ],
     cities: [
@@ -164,6 +164,106 @@ export const REGIONS = [
           },
         ],
       },
+      {
+        slug: 'lowell',
+        name: 'Lowell',
+        h1: 'Website design in Lowell, Massachusetts.',
+        metaDescription:
+          'Website design for Lowell, MA — UMass Lowell-adjacent tech, healthcare and a diverse small-business downtown. Fixed-price, remote delivery.',
+        intro:
+          "Lowell's economy runs on a mix rarely seen in one city this size: a National Historical Park built around its mill heritage, a growing UMass Lowell research and engineering presence, and one of the more diverse small-business communities in New England, including a large Cambodian-American business district downtown. A website here has to work as hard for a family-run restaurant as it does for a tech spinout, so we scope each build around which of those it actually is, not one template stretched over both.",
+        industries: ['Restaurants & independent retail', 'Healthcare', 'Technology & engineering', 'Manufacturing heritage & trades'],
+        faqs: [
+          {
+            q: 'Do you work with immigrant-owned or first-generation businesses?',
+            a: 'Yes, regularly — Lowell has one of the more diverse small-business communities in the state, and we scope structure and copy around who the business actually serves.',
+          },
+          {
+            q: 'Can you build something for a UMass Lowell-adjacent startup?',
+            a: 'Yes — Brand Launch and Starter both suit an early-stage build well, and Growth is there once you need real SEO and integrations.',
+          },
+        ],
+      },
+      {
+        slug: 'quincy',
+        name: 'Quincy',
+        h1: 'Website design in Quincy, Massachusetts.',
+        metaDescription:
+          'Website design for Quincy, MA — Asian-owned retail and restaurants, professional services and the Quincy Center revival.',
+        intro:
+          "Quincy's small-business base has two defining features: one of the largest Asian-American business communities in Massachusetts, concentrated along Hancock Street and in Quincy Center, and a wave of redevelopment bringing new retail and residential density to a downtown that spent decades in Boston's shadow. Businesses here are often competing with a customer who has Boston twenty minutes away as the easy default, which makes a credible, fast-loading site more of a competitive necessity than in a smaller, more isolated market.",
+        industries: ['Asian-owned retail & restaurants', 'Professional & financial services', 'Healthcare', 'Real estate & property services'],
+        faqs: [
+          {
+            q: 'Do you handle multilingual signage or menu content?',
+            a: "We write in English by default; where a Quincy business needs Chinese, Vietnamese or another language alongside it, that's handled as part of Website Design rather than a separate add-on.",
+          },
+          {
+            q: 'How do we stand out against Boston competitors nearby?',
+            a: 'Mostly through local search — Local Search is built to make sure someone searching from Quincy or the South Shore finds you before they default to a Boston result.',
+          },
+        ],
+      },
+      {
+        slug: 'framingham',
+        name: 'Framingham',
+        h1: 'Website design in Framingham, Massachusetts.',
+        metaDescription:
+          'Website design for Framingham, MA — MetroWest retail, biotech and a diverse small-business community. Fixed-price, remote delivery.',
+        intro:
+          "Framingham sits at the centre of MetroWest — a retail and office corridor that's hosted biotech and pharmaceutical operations for decades, layered over a downtown with a large Brazilian-American business community and a wide mix of independent retail and services. It only became a city in 2018, and a lot of its businesses are still competing more on being found online than on brand polish — a properly built, locally optimised site tends to move the needle faster here than in markets where every competitor already has one.",
+        industries: ['Retail & shopping corridors', 'Biotech & life-sciences-adjacent', 'Brazilian & multicultural businesses', 'Professional services'],
+        faqs: [
+          {
+            q: 'Competition along the retail corridor is heavy — can SEO actually help?',
+            a: "Yes — Local Search and on-page SEO are built for this: showing up when someone searches a service plus \"Framingham\" or a nearby MetroWest town, not just competing on brand name.",
+          },
+          {
+            q: 'Do you build sites for Brazilian-owned or Portuguese-speaking businesses?',
+            a: "Yes — bilingual builds are something we handle as part of Website Design when a business's customers read in more than one language.",
+          },
+        ],
+      },
+      {
+        slug: 'brockton',
+        name: 'Brockton',
+        h1: 'Website design in Brockton, Massachusetts.',
+        metaDescription:
+          'Website design for Brockton, MA — healthcare, trades and a diverse small-business community. Real, professional sites, honestly priced.',
+        intro:
+          "Brockton's small-business economy is more working-class and healthcare-driven than its wealthier neighbors, with a large Cape Verdean-American and Haitian-American business community and a manufacturing history — it was once the world's largest shoe-manufacturing city — that's given way to healthcare, trades and logistics. Budget matters more here than in markets like Newton nearby, which is the actual reason Brand Launch and Starter exist: a real, professional site at a price that doesn't assume a different city's margins.",
+        industries: ['Healthcare', 'Trades & contractors', 'Cape Verdean & Haitian-owned businesses', 'Logistics & distribution'],
+        faqs: [
+          {
+            q: 'Is there a genuinely affordable option, not just a cheap-looking one?',
+            a: "That's specifically what Brand Launch is — $249 for a single-page site that looks considered, not like a template. Most Brockton inquiries land in Brand Launch or Starter.",
+          },
+          {
+            q: 'Do you work with Cape Verdean or Haitian Creole-speaking business owners?',
+            a: 'Yes — calls run in English, but the site itself can carry Creole or Portuguese content where your customers need it.',
+          },
+        ],
+      },
+      {
+        slug: 'lynn',
+        name: 'Lynn',
+        h1: 'Website design in Lynn, Massachusetts.',
+        metaDescription:
+          'Website design for Lynn, MA — aerospace, manufacturing and a diverse North Shore small-business community. Fixed-price, remote delivery.',
+        intro:
+          "Lynn's economy has an unusual anchor for a city its size — a major GE Aviation jet-engine plant — alongside a manufacturing history (it was once the country's leading shoe-manufacturing city, same as Brockton) and a working waterfront that's slowly redeveloping. The small-business base around that — trades, healthcare, a large immigrant business community along Union Street — rarely gets the design attention Boston or the North Shore's wealthier towns do, which is usually the real reason a Lynn business is still running on a site built a decade ago.",
+        industries: ['Trades & manufacturing-adjacent', 'Healthcare', 'Immigrant & multicultural businesses', 'Retail'],
+        faqs: [
+          {
+            q: 'Our current site is old — is it worth fixing or replacing?',
+            a: 'Usually replacing, through Website Redesign — a decade-old site is normally slower and harder to find on Google than the cost of a proper rebuild justifies keeping it.',
+          },
+          {
+            q: 'Do you serve businesses along the North Shore generally, not just Lynn?',
+            a: "Yes — Lynn is one of several North Shore markets we work in; the process and pricing are identical whichever town you're in.",
+          },
+        ],
+      },
     ],
   },
 
@@ -231,6 +331,10 @@ export const REGIONS = [
           {
             q: 'We just need something simple that ranks locally — is that in scope?',
             a: "Yes — that's most of what Starter and Local Search are built for: a clean multi-page site plus the Google Business Profile and citation work that gets you found in Warwick searches specifically.",
+          },
+          {
+            q: "We're near T.F. Green Airport — does that change what the site needs?",
+            a: 'Sometimes — travel-adjacent and logistics businesses near the airport often need clear service-area and hours information front and centre, which we build the homepage around rather than burying it on a contact page.',
           },
         ],
       },
@@ -321,6 +425,10 @@ export const REGIONS = [
           {
             q: 'Do you build sites aimed at both tourists and local customers?',
             a: "Yes — it's a common brief in Victoria specifically, and it usually comes down to information architecture: getting both audiences to the page that's actually relevant to them within a click or two.",
+          },
+          {
+            q: 'Do you invoice in Canadian dollars for Victoria clients?',
+            a: 'Yes — CAD on request at no extra cost, the same as anywhere else in British Columbia.',
           },
         ],
       },

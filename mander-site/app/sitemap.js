@@ -28,14 +28,11 @@ export default function sitemap() {
     { url: `${SITE_URL}/locations`, lastModified: now, changeFrequency: 'monthly', priority: 0.8 },
     ...regionUrls,
     ...cityUrls,
-    // Anchors, so the Community Rate can be linked and shared directly. Google
-    // treats these as the parent page, but they give the section a canonical
-    // address for anyone citing it.
-    {
-      url: `${SITE_URL}/#community-rate`,
-      lastModified: now,
-      changeFrequency: 'monthly',
-      priority: 0.6,
-    },
   ];
+  // Previously also listed `${SITE_URL}/#community-rate` as its own sitemap
+  // entry. A URL fragment isn't a separate crawlable document — search
+  // engines resolve it to the same page as `/`, so having both in the
+  // sitemap was a duplicate-URL entry, one of the things a sitemap should
+  // never contain. The section is still linked and shareable at that
+  // address; it just doesn't need its own sitemap row to be.
 }

@@ -7,6 +7,7 @@ import JsonLd from '@/components/JsonLd';
 import { CommunityRateProvider } from '@/components/CommunityRate';
 import {
   SITE_URL,
+  OG_IMAGE,
   organizationSchema,
   websiteSchema,
   serviceSchemas,
@@ -102,12 +103,14 @@ export const metadata = {
     url: SITE_URL,
     siteName: 'MANDER',
     locale: 'en_US',
+    images: [OG_IMAGE],
   },
   twitter: {
     card: 'summary_large_image',
     title: 'MANDER | Website Design for Small Business — U.S. & Canada',
     description:
       'Remote website design and SEO for small business across the U.S. and Canada. Fixed-price builds from $249.',
+    images: [OG_IMAGE.url],
   },
 };
 

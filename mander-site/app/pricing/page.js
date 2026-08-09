@@ -12,14 +12,30 @@ import {
   CommunityRateNote,
 } from '@/components/CommunityRate';
 import { TIERS, CARE_PLAN, FAQS, BRAND } from '@/lib/content';
-import { faqSchema } from '@/lib/seo';
+import { faqSchema, OG_IMAGE } from '@/lib/seo';
+
+const TITLE = 'Website Design Pricing — Plans from $249';
+const DESCRIPTION =
+  'Plain, one-time website design pricing for small and mid-sized businesses across Canada and the U.S. Four tiers from $249, plus an optional Care Plan. No hidden fees.';
 
 export const metadata = {
-  title: 'Website Design Pricing — Plans from $249',
-  description:
-    'Plain, one-time website design pricing for small and mid-sized businesses across Canada and the U.S. Four tiers from $249, plus an optional Care Plan. No hidden fees.',
+  title: TITLE,
+  description: DESCRIPTION,
   alternates: {
     canonical: '/pricing',
+  },
+  openGraph: {
+    title: TITLE,
+    description: DESCRIPTION,
+    url: '/pricing',
+    type: 'website',
+    images: [OG_IMAGE],
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: TITLE,
+    description: DESCRIPTION,
+    images: [OG_IMAGE.url],
   },
 };
 

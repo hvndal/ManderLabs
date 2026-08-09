@@ -10,6 +10,20 @@ export const SITE_URL = 'https://mander.tech';
 
 import { BRAND, SERVICES, TIERS, TEAM } from './content';
 
+// Shared social-card image. Next.js does NOT deep-merge `openGraph`/`twitter`
+// between a layout and a page — if a page defines its own `openGraph` object
+// at all (every page here does, for a page-specific title/description), that
+// object entirely replaces the layout's, images included. So this has to be
+// spread into every page's openGraph.images and twitter.images individually
+// (see app/layout.js and every route under app/) rather than set once and
+// relied on to inherit.
+export const OG_IMAGE = {
+  url: `${SITE_URL}/og-image.jpg`,
+  width: 1200,
+  height: 630,
+  alt: 'MANDER — website design for small business',
+};
+
 // The business is delivered remotely across two countries, so the schema has
 // to say that explicitly. A ProfessionalService with no address and no
 // areaServed reads to Google like a local business that forgot its address,

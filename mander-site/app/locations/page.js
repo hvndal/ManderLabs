@@ -6,19 +6,28 @@ import JsonLd from '@/components/JsonLd';
 import Icon from '@/components/Icon';
 import { REGIONS } from '@/lib/locations';
 import { BRAND } from '@/lib/content';
-import { breadcrumbSchema } from '@/lib/seo';
+import { breadcrumbSchema, OG_IMAGE } from '@/lib/seo';
+
+const TITLE = 'Locations — Website Design Across the U.S. & Canada';
+const DESCRIPTION =
+  'MANDER builds websites for small and mid-sized businesses across the United States and Canada, remotely. Featured markets: Massachusetts, Rhode Island and British Columbia.';
 
 export const metadata = {
-  title: 'Locations — Website Design Across the U.S. & Canada',
-  description:
-    'MANDER builds websites for small and mid-sized businesses across the United States and Canada, remotely. Featured markets: Massachusetts, Rhode Island and British Columbia.',
+  title: TITLE,
+  description: DESCRIPTION,
   alternates: { canonical: '/locations' },
   openGraph: {
-    title: 'Locations — Website Design Across the U.S. & Canada',
-    description:
-      'MANDER builds websites for small and mid-sized businesses across the United States and Canada, remotely.',
+    title: TITLE,
+    description: DESCRIPTION,
     url: '/locations',
     type: 'website',
+    images: [OG_IMAGE],
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: TITLE,
+    description: DESCRIPTION,
+    images: [OG_IMAGE.url],
   },
 };
 

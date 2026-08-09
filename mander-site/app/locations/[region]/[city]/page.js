@@ -8,7 +8,7 @@ import JsonLd from '@/components/JsonLd';
 import Icon from '@/components/Icon';
 import { getCity, allCities } from '@/lib/locations';
 import { SERVICES, BRAND } from '@/lib/content';
-import { breadcrumbSchema, locationServiceSchema, faqSchema } from '@/lib/seo';
+import { breadcrumbSchema, locationServiceSchema, faqSchema, OG_IMAGE } from '@/lib/seo';
 
 // One entry per city across every region in lib/locations.js — adding a city
 // there is what adds a route here.
@@ -23,15 +23,23 @@ export function generateMetadata({ params }) {
   if (!found) return {};
   const { region, city } = found;
   const path = `/locations/${region.slug}/${city.slug}`;
+  const title = `Website Design in ${city.name}, ${region.abbr}`;
   return {
-    title: `Website Design in ${city.name}, ${region.abbr}`,
+    title,
     description: city.metaDescription,
     alternates: { canonical: path },
     openGraph: {
-      title: `Website Design in ${city.name}, ${region.abbr}`,
+      title,
       description: city.metaDescription,
       url: path,
       type: 'website',
+      images: [OG_IMAGE],
+    },
+    twitter: {
+      card: 'summary_large_image',
+      title,
+      description: city.metaDescription,
+      images: [OG_IMAGE.url],
     },
   };
 }
