@@ -23,3 +23,7 @@ Thumbs.db
 *.log
 .idea/
 .vscode/
+
+# Python bytecode from local generator scripts
+__pycache__/
+*.pyc

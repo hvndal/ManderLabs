@@ -152,22 +152,6 @@
 }
 
 /* ---------------------------------------------------------------------- */
-/* Guilloche plate — imperceptibly slow rotation                           */
-/* ---------------------------------------------------------------------- */
-/* 120s per revolution is roughly 3°/second: far too slow to read as motion
-   if you look straight at it, which is the point. It only stops the plate
-   from reading as a flat sticker when the eye crosses it a second time.
-   Transform-only, so it stays on the compositor and costs nothing. */
-@keyframes guilloche-spin {
-  to {
-    transform: rotate(360deg);
-  }
-}
-.guilloche-spin {
-  animation: guilloche-spin 120s linear infinite;
-}
-
-/* ---------------------------------------------------------------------- */
 /* Process staircase — each step's rule draws in as the step reveals       */
 /* ---------------------------------------------------------------------- */
 .process-step .process-rule {
@@ -217,9 +201,6 @@
     transition: none;
   }
   .ken-burns {
-    animation: none;
-  }
-  .guilloche-spin {
     animation: none;
   }
 }

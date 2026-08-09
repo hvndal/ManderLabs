@@ -1,6 +1,7 @@
 import Link from 'next/link';
 import Logo from './Logo';
-import Guilloche from './Guilloche';
+import GridField from './GridField';
+import AperturedType from './AperturedType';
 import { CommunityRateFooterLink } from './CommunityRate';
 import { BRAND, NAV_LINKS } from '@/lib/content';
 
@@ -13,16 +14,7 @@ const LEGAL = [
 export default function Footer() {
   return (
     <footer className="relative overflow-hidden bg-ink text-paper">
-      {/* Engraved plate, hung off the top-right corner and cropped by two
-          edges. Cropping is what keeps it architecture rather than
-          decoration — a circle floating fully inside the block would read as
-          a sticker. */}
-      <Guilloche
-        tone="rose"
-        spin
-        opacity={0.14}
-        className="-right-24 -top-40 h-[420px] w-[420px] md:-right-16 md:-top-52 md:h-[620px] md:w-[620px]"
-      />
+      <GridField tone="paper" />
 
       <div className="relative container-max py-stack-lg">
         <div className="grid grid-cols-1 gap-stack-md md:grid-cols-12">
@@ -109,25 +101,36 @@ export default function Footer() {
         </div>
       </div>
 
-      {/* The wordmark set enormous along the bottom edge — the masthead
-          gesture returned at the other end of the page, so the document
-          opens and closes on the same move.
+      {/* The masthead's move, returned at the other end of the document.
+          MANDER knocked out of an ink stencil with film running behind it,
+          set wide enough that the M and the R are cut by the viewport edges
+          exactly as they are in the hero — so the page opens and closes on
+          the same gesture rather than trailing off into a link list.
 
-          Deliberately not a heading and not content: the real lockup is at
-          the top of the footer, so this is aria-hidden, and `select-none`
-          keeps a 19vw string from being draggable and highlightable.
+          A flat tinted wordmark was tried here first. It filled the space
+          but it was inert, and next to a hero whose entire idea is
+          type-as-aperture it read as a different design speaking. This is
+          the same idea, quieter.
 
-          Sized to sit flush rather than to be cropped mid-letter. A crop
-          into the letterforms depends on the font's baseline sitting where
-          you assume it does, and getting that wrong by a few percent is the
-          difference between "cropped" and "broken" — so the negative margin
-          only trims the empty space below the baseline (MANDER is all caps,
-          nothing descends into it) and the letters stay whole. `leading` and
-          the margin are in vw so the relationship holds at every width. */}
-      <div aria-hidden="true" className="relative select-none overflow-hidden">
-        <span className="-mb-[1.2vw] block whitespace-nowrap text-center font-display text-[19vw] font-normal leading-[0.8] tracking-[-0.015em] text-paper/[0.07]">
-          {BRAND.name}
-        </span>
+          The marble clip, not the hero clip: the hero footage is a scene and
+          turns to mush cropped inside letterforms, where the marble has
+          structure at any scale. It is already cached from the service
+          indices further up, so this costs no extra download.
+
+          Brightened hard because the stencil is ink — wherever a dark
+          passage of film meets the dark stencil the letterform silently
+          disappears, and MANDER dissolving halfway through its own loop is
+          not a subtle bug. */}
+      <div className="relative">
+        <AperturedType
+          text={BRAND.name}
+          viewBox="0 0 1000 210"
+          fontSize={240}
+          baselineY={182}
+          stencil="#1c1512"
+          maskId="footer-wordmark"
+          mediaClassName="brightness-[1.4] saturate-[1.15] contrast-[1.08]"
+        />
       </div>
     </footer>
   );

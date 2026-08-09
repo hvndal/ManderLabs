@@ -1,6 +1,6 @@
 'use client';
 
-import { useEffect, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 
 /**
  * The masthead's move, reused as a motif.
@@ -42,6 +42,8 @@ export default function AperturedType({
   mediaClassName = '',
 }) {
   const [reducedMotion, setReducedMotion] = useState(false);
+  const hostRef = useRef(null);
+  const videoRef = useRef(null);
 
   useEffect(() => {
     const mq = window.matchMedia('(prefers-reduced-motion: reduce)');
@@ -51,11 +53,48 @@ export default function AperturedType({
     return () => mq.removeEventListener('change', set);
   }, []);
 
+  // Play only while on screen.
+  //
+  // This motif now recurs a dozen times across the homepage — six service
+  // indices, the section count, three terms, the Community Rate figure and
+  // the footer wordmark. They all point at one cached file, so it is a
+  // single download, but a dozen simultaneously *decoding* video elements is
+  // a different cost entirely: on a mid-range phone that is real battery and
+  // real jank, and iOS caps how many can play at once, so the ones past the
+  // limit silently freeze on their poster.
+  //
+  // Pausing the offscreen ones keeps at most two or three live at any scroll
+  // position. Errors from play() are swallowed on purpose — a rejected
+  // autoplay promise is expected on some browsers and is not worth surfacing
+  // for a decorative element.
+  useEffect(() => {
+    if (reducedMotion) return;
+    const host = hostRef.current;
+    if (!host || typeof IntersectionObserver === 'undefined') return;
+
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        const video = videoRef.current;
+        if (!video) return;
+        if (entry.isIntersecting) {
+          const p = video.play();
+          if (p && typeof p.catch === 'function') p.catch(() => {});
+        } else {
+          video.pause();
+        }
+      },
+      { rootMargin: '200px 0px' }
+    );
+
+    observer.observe(host);
+    return () => observer.disconnect();
+  }, [reducedMotion]);
+
   const id = maskId || `aperture-${text.replace(/[^a-z0-9]/gi, '')}`;
   const [, , vbW, vbH] = viewBox.split(' ').map(Number);
 
   return (
-    <div className={`relative overflow-hidden ${className}`}>
+    <div ref={hostRef} className={`relative overflow-hidden ${className}`}>
       {reducedMotion ? (
         // eslint-disable-next-line @next/next/no-img-element
         <img
@@ -66,6 +105,7 @@ export default function AperturedType({
         />
       ) : (
         <video
+          ref={videoRef}
           className={`absolute inset-0 h-full w-full object-cover [transform:translate3d(0,0,0)] ${mediaClassName}`}
           autoPlay
           muted

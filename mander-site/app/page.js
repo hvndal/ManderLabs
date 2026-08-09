@@ -8,7 +8,7 @@ import Colophon from '@/components/Colophon';
 import StatsConstellation from '@/components/StatsConstellation';
 import AperturedType from '@/components/AperturedType';
 import ShaderBackground from '@/components/ShaderBackground';
-import Guilloche from '@/components/Guilloche';
+import GridField from '@/components/GridField';
 import {
   CommunityRateSection,
   CommunityRateNote,
@@ -157,15 +157,7 @@ export default function HomePage() {
           margin. Same grammar as the services index, so the page stops
           switching languages halfway down. */}
       <section className="relative overflow-hidden bg-paper py-stack-lg">
-        {/* The plate sits behind the clauses and bleeds off the right edge.
-            These are the site's guarantees, and engraved line-work is the
-            visual language of an issued guarantee — it does the arguing that
-            a row of icons would only decorate. */}
-        <Guilloche
-          opacity={0.09}
-          spin
-          className="-right-32 top-1/2 h-[560px] w-[560px] -translate-y-1/2 md:-right-40 md:h-[760px] md:w-[760px]"
-        />
+        <GridField />
 
         <div className="relative container-max">
         <div className="grid grid-cols-1 gap-y-8 md:grid-cols-12 md:gap-gutter">
@@ -192,9 +184,21 @@ export default function HomePage() {
           {TERMS.map((term, index) => (
             <Reveal key={term.index} delay={index * 70}>
               <div className="group grid grid-cols-1 gap-y-3 border-b border-line py-9 md:grid-cols-12 md:items-baseline md:gap-gutter md:py-12">
-                <span className="font-mono text-body-md font-medium text-ink-mute transition-colors duration-500 group-hover:text-accent md:col-span-2">
-                  {term.index}
-                </span>
+                {/* Apertured, like the service indices — the numerals carry
+                    film instead of sitting flat in mono, so the same motif
+                    recurs on both of the page's numbered lists rather than
+                    appearing once. */}
+                <div className="md:col-span-2">
+                  <AperturedType
+                    text={term.index}
+                    viewBox="0 0 200 120"
+                    fontSize={116}
+                    baselineY={96}
+                    maskId={`term-${term.index}`}
+                    className="w-[86px] opacity-80 transition-opacity duration-500 group-hover:opacity-100 md:w-[104px]"
+                    mediaClassName="brightness-[0.8] saturate-[1.2]"
+                  />
+                </div>
                 <h3 className="font-display text-headline-lg-mobile font-normal text-ink md:col-span-6 md:text-headline-lg">
                   {term.title}
                 </h3>
@@ -366,15 +370,11 @@ export default function HomePage() {
       <CommunityRateSection />
 
       {/* ------------------------------------------------------------------ FAQ */}
-      {/* The heading column is mostly empty below the title on desktop — an
-          accordion is tall and a two-line heading is not. The plate fills
-          that column instead of letting it read as a blank gutter. */}
+      {/* The heading column runs mostly empty below the title on desktop — an
+          accordion is tall and a two-line heading is not. The column rules
+          give that gutter something to be rather than nothing. */}
       <section id="faq" className="relative overflow-hidden bg-paper py-stack-lg">
-        <Guilloche
-          opacity={0.1}
-          spin
-          className="-left-40 bottom-0 hidden h-[520px] w-[520px] lg:block"
-        />
+        <GridField />
         <div className="relative container-max">
           <div className="grid grid-cols-1 gap-gutter lg:grid-cols-12 lg:gap-16">
             <div className="lg:col-span-4">
@@ -391,15 +391,7 @@ export default function HomePage() {
 
       {/* ------------------------------------------------------------ Final CTA */}
       <section className="relative overflow-hidden bg-ink text-paper">
-        {/* Centred behind the closing line, so the last thing on the page
-            before the footer is the plate and the type occupying the same
-            spot — a stamp under a signature. */}
-        <Guilloche
-          tone="rose"
-          spin
-          opacity={0.13}
-          className="left-1/2 top-1/2 h-[440px] w-[440px] -translate-x-1/2 -translate-y-1/2 md:h-[620px] md:w-[620px]"
-        />
+        <GridField tone="paper" />
         <div className="relative container-max py-stack-lg text-center">
           <Reveal className="mx-auto max-w-3xl">
             <h2 className="font-display text-headline-lg-mobile font-normal md:text-display-lg">
