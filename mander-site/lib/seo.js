@@ -2,11 +2,14 @@
 // content.js because it reshapes that copy into schema.org's vocabulary
 // rather than being copy itself.
 //
-// Matches the domain used everywhere else on the site (BRAND.email is
-// herman@mander.tech) — was pointed at a placeholder .agency domain that
-// nothing else referenced, which fed a wrong canonical URL, sitemap, and
-// structured data. Update again if the real domain ever changes.
-export const SITE_URL = 'https://mander.tech';
+// Must match the domain Vercel actually serves the site on, not just the
+// registered domain. The Vercel project has www.mander.tech set as the
+// primary domain, with bare mander.tech configured as a 308 redirect to it —
+// so a canonical/sitemap/JSON-LD URL of "https://mander.tech" is a URL that
+// itself redirects, which Google explicitly advises against for canonicals.
+// If the Vercel primary domain is ever flipped to the bare domain, this needs
+// to flip with it.
+export const SITE_URL = 'https://www.mander.tech';
 
 import { BRAND, SERVICES, TIERS, TEAM } from './content';
 
