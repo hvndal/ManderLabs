@@ -404,7 +404,81 @@ export const WORK = [
     services: ['Brand Identity', 'Website Design', 'Bilingual Build'],
     scope: 'Bilingual build, direct reservations, brand system',
   },
+
+  // --- In-house builds ----------------------------------------------------
+  // Everything below is MANDER's own work, not a paid client engagement, and
+  // `kind: 'studio'` is what puts the "In-house" tag on the card. Two of them
+  // say so in their own repositories — KERN's README opens with a portfolio
+  // disclaimer calling it a front-end prototype, and Kinetic Roast is built
+  // around a deliberately fictional roastery. Presenting either as client
+  // work would be inventing a client, which is the one thing the rest of this
+  // file is careful never to do. Keep the tag.
+  //
+  // `image: null` is a supported state — WorkCompact falls back to a
+  // typographic tile. KERN's deployment is currently down and TvCan is a
+  // Windows desktop app, so neither has a usable screenshot yet; drop one
+  // into /public/work and add the path here when they do.
+  {
+    name: 'RentCan',
+    kind: 'studio',
+    sector: 'Property Management',
+    location: 'Live at rentcan.in',
+    image: '/work/rentcan.png',
+    result: 'Shipped product',
+    body: 'A property management platform for owners running homes remotely — passwordless sign-in over OAuth and SMS, a standardised inspection report backed by timestamped photography, a document vault and a payments ledger. Built mobile-first as a browser substitute for a native app.',
+    services: ['Product Design', 'Full-Stack Build', 'Design System'],
+    scope: 'Owner dashboard, inspection reports, document vault, payments',
+    stack: ['Node / Express', 'Supabase Postgres', 'Tailwind'],
+    href: 'https://rentcan.in',
+  },
+  {
+    name: 'TvCan',
+    kind: 'studio',
+    sector: 'Desktop Software',
+    location: 'Windows',
+    image: null,
+    result: '10k+ channels',
+    body: 'A desktop live-TV player built on a VLC engine, aggregating thousands of freely available public IPTV streams into one organised interface. Thousands of fragmented source categories are normalised into a handful of readable groups, and dead redirects are filtered out so listed channels actually play.',
+    services: ['Product Design', 'Desktop App', 'Interface Design'],
+    scope: 'Channel normalisation, stream filtering, transport controls',
+    stack: ['Electron', 'VLC engine', 'HLS.js'],
+    href: 'https://github.com/hvndal/TvCan',
+  },
+  {
+    name: 'KERN',
+    kind: 'studio',
+    sector: 'Product Design',
+    location: 'Front-end prototype',
+    image: null,
+    result: 'Interface study',
+    body: 'A workspace interface exploring how project management, tasks, notes, scheduling, files and analytics fit into one coherent product rather than six disconnected tools. Kanban boards, a three-pane notes editor, charted productivity analytics and a keyboard-driven command palette, on a typed component system.',
+    services: ['Product Design', 'Design System', 'Front-End Build'],
+    scope: 'Dashboard, kanban, notes, calendar, analytics, command palette',
+    stack: ['React', 'TypeScript', 'Zustand'],
+    href: 'https://github.com/hvndal/KERN',
+  },
+  {
+    name: 'Kinetic Roast',
+    kind: 'studio',
+    sector: 'Brand & Web',
+    location: 'Concept build',
+    image: '/work/kinetic-roast.png',
+    result: 'Concept build',
+    body: 'A cinematic brand site for a deliberately fictional coffee roastery, built as an art-direction study — a near-black palette lit by heat-map gradients, display type used architecturally, and scroll and 3D work carrying the idea that roasting is thermal engineering rather than a lifestyle photograph.',
+    services: ['Art Direction', 'Brand Identity', 'Website Design'],
+    scope: 'Art direction, motion, 3D product study',
+    stack: ['Next.js', 'Framer Motion', 'React Three Fiber'],
+    href: 'https://kinetic-roast.vercel.app',
+  },
 ];
+
+// Paid client engagements only. The Selected-clients logo strip and the
+// Engagements section ("what we actually delivered") must not pick up the
+// in-house builds above — one has no client logo to show, and both would be
+// claiming a customer relationship that doesn't exist. The rotating Selected
+// Work grid is the one place the two sit together, and there the card carries
+// an "In-house" tag.
+export const CLIENTS = WORK.filter((project) => project.kind !== 'studio');
 
 // --- Team -----------------------------------------------------------------
 // Five people: the founder in Langley, BC and the rest out of Maynard, MA.

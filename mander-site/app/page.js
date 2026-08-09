@@ -30,6 +30,7 @@ import {
   STATS,
   FAQS,
   WORK,
+  CLIENTS,
   TEAM,
   BRAND,
 } from '@/lib/content';
@@ -55,7 +56,7 @@ export default function HomePage() {
       <Colophon
         headline="Websites that grow small business."
         body="Premium design and build for small and mid-sized businesses in Canada and the U.S. — at a rate that makes sense for you."
-        clients={WORK}
+        clients={CLIENTS}
       />
 
       {/* -------------------------------------------------- Statement · breathe */}
@@ -297,7 +298,7 @@ export default function HomePage() {
           </div>
         </Reveal>
         <div className="mt-14">
-          <Testimonials items={WORK} />
+          <Testimonials items={CLIENTS} />
         </div>
       </Section>
 
