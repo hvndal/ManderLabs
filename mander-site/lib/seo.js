@@ -164,6 +164,29 @@ export function breadcrumbSchema(trail) {
   };
 }
 
+// One Service entity per location page (state/province or city), reusing the
+// same organization @id so these read as offers from the one
+// ProfessionalService rather than separate businesses. Pair with
+// breadcrumbSchema() above and faqSchema() below — a location page renders
+// all three.
+export function locationServiceSchema({ path, areaName, areaType = 'City', description }) {
+  return {
+    '@context': 'https://schema.org',
+    '@type': 'Service',
+    name: `Website design — ${areaName}`,
+    description,
+    serviceType: 'Website design',
+    provider: {
+      '@type': 'ProfessionalService',
+      '@id': `${SITE_URL}/#organization`,
+      name: BRAND.name,
+      url: SITE_URL,
+    },
+    areaServed: { '@type': areaType, name: areaName },
+    url: `${SITE_URL}${path}`,
+  };
+}
+
 // Turns the FAQS array (or any {q,a}[] list) into FAQPage schema. Used on any
 // page that actually renders that FAQ content — don't attach it to a page
 // where the text isn't visible, Google's guidelines treat that as spam.
