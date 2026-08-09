@@ -214,7 +214,7 @@ export default function Masthead({ tagline, mono }) {
           <div className="container-max flex h-full flex-col justify-between py-6 md:py-8">
             <div className="flex items-start justify-between gap-8">
               <Logo variant="mark" className="pointer-events-auto h-14 md:h-[72px]" />
-              <p className="label-caps max-w-[19ch] pt-2 text-right text-ink-mute md:max-w-none md:pt-3">
+              <p className="label-caps max-w-[28ch] pt-1 text-right text-[10px] leading-relaxed text-ink-mute sm:max-w-none sm:text-xs md:pt-3">
                 {mono}
               </p>
             </div>

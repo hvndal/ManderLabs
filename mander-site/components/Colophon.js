@@ -53,7 +53,7 @@ export default function Colophon({ headline, body, clients }) {
 
         <div className="md:col-start-8 md:col-span-4">
           <Reveal delay={120}>
-            <p className="text-body-lg text-ink-soft">{body}</p>
+            <p className="text-body-lg leading-relaxed text-ink-soft text-balance">{body}</p>
           </Reveal>
         </div>
 

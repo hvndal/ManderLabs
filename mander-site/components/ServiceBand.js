@@ -1,17 +1,11 @@
 import Reveal from './Reveal';
-import Icon from './Icon';
 
 export default function ServiceBand({ service, index = 0 }) {
   return (
     <Reveal delay={index * 70}>
       <div className="group grid grid-cols-2 items-center gap-y-6 py-12 md:grid-cols-12 md:gap-gutter md:py-16">
-        {/* Icon + index */}
-        <div className="col-span-2 flex items-center gap-4 md:col-span-2 md:flex-col md:items-start md:gap-4">
-          <Icon
-            name={service.icon}
-            className="h-7 w-7 shrink-0 text-ink-mute transition-colors duration-500 ease-premium group-hover:text-accent"
-            strokeWidth={1.4}
-          />
+        {/* Index */}
+        <div className="col-span-2 md:col-span-2">
           <span className="font-mono text-body-md font-medium text-ink-mute transition-colors duration-500 group-hover:text-accent">
             {service.index}
           </span>
