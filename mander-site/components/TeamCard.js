@@ -33,7 +33,11 @@ export default function TeamCard({ member }) {
         {member.photo ? (
           <Image
             src={member.photo}
-            alt={member.name}
+            // Name plus role: the portrait is the only thing on the card a
+            // screen reader can't otherwise reach, and "Herman" alone doesn't
+            // say who that is. The name is repeated in the <h3> below, but
+            // alt text is read in place of the image, not alongside it.
+            alt={`${member.name} — ${member.role}`}
             fill
             sizes="(max-width: 640px) 45vw, (max-width: 1024px) 30vw, 220px"
             style={half ? { objectPosition: '82% 22%' } : undefined}

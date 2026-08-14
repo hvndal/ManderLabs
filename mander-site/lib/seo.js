@@ -20,11 +20,21 @@ import { BRAND, SERVICES, TIERS, TEAM } from './content';
 // spread into every page's openGraph.images and twitter.images individually
 // (see app/layout.js and every route under app/) rather than set once and
 // relied on to inherit.
+//
+// Points at the generated card in app/opengraph-image.js, not the old static
+// /og-image.jpg. Two reasons. The site was previously serving two different
+// thumbnails: the homepage picked up the generated route (Next's file
+// convention overrides inherited layout metadata), while every other page
+// used the static logo card — and on the homepage og:image and twitter:image
+// disagreed with each other outright. Naming one source here makes all of it
+// consistent. Second, the static file was a bare wordmark on cream; the
+// generated card carries the hero footage, which is what a share preview is
+// actually for.
 export const OG_IMAGE = {
-  url: `${SITE_URL}/og-image.jpg`,
+  url: `${SITE_URL}/opengraph-image`,
   width: 1200,
   height: 630,
-  alt: 'MANDER — website design for small business',
+  alt: 'MANDER — website design for small business across Canada and the U.S.',
 };
 
 // The business is delivered remotely across two countries, so the schema has

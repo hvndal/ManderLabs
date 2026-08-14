@@ -24,7 +24,7 @@ export default function WorkCase({ project, index, flip = false }) {
             {project.image && (
               <Image
                 src={project.image}
-                alt={`${project.name} — ${project.sector}`}
+                alt={project.imageAlt || `${project.name} — ${project.sector}`}
                 fill
                 sizes="(max-width: 768px) 100vw, 58vw"
                 className="img-zoom object-cover"

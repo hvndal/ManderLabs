@@ -377,6 +377,15 @@ export const WORK = [
     location: 'Multi-site, U.S.',
     logo: '/logos/fitway.svg',
     image: 'https://images.pexels.com/photos/9545914/pexels-photo-9545914.jpeg?auto=compress&cs=tinysrgb&w=1200',
+    // `imageAlt` describes what is actually in the frame. The cards used to
+    // derive alt text as "<name> — <sector>", which is a caption, not a
+    // description: it repeated text already sitting next to the image and
+    // told a screen reader (and Google Images) nothing about the picture.
+    // Note that the client images here are sector photography, not site
+    // screenshots — calling them "the Fitway website" would be inventing
+    // something the file doesn't show.
+    imageAlt:
+      'Training floor of a commercial gym — rowing machines, weight racks and medicine balls',
     result: '100k+ members',
     body: 'A commercial gym at real scale needed a site that could carry 100,000+ members without buckling. We rebuilt the class timetable, membership sign-up, and location finder into one fast self-serve flow — and the front desk stopped answering questions the website should have.',
     services: ['Website Design', 'CRM Integration', 'Care Plan'],
@@ -388,6 +397,8 @@ export const WORK = [
     location: 'Massachusetts, U.S.',
     logo: '/logos/waste-universe.svg',
     image: 'https://images.pexels.com/photos/16891361/pexels-photo-16891361.jpeg?auto=compress&cs=tinysrgb&w=1200',
+    imageAlt:
+      'A rear-loading refuse truck lit up in a collection depot at night',
     result: 'Statewide coverage',
     body: 'Commercial and residential collection across Massachusetts, sold through a site that looked smaller than the operation. We rebuilt it around service areas and quote requests, with local SEO tuned to every town they cover, so the right customer books the right service.',
     services: ['Website Redesign', 'Local SEO', 'Local Search'],
@@ -399,6 +410,8 @@ export const WORK = [
     location: 'France',
     logo: '/logos/cote-noire.svg',
     image: 'https://images.pexels.com/photos/28454110/pexels-photo-28454110.jpeg?auto=compress&cs=tinysrgb&w=1200',
+    imageAlt:
+      'Bistro interior with red gingham tablecloths, booth seating and a vintage French poster',
     result: 'Direct bookings',
     body: 'A hospitality brand whose atmosphere never made it online. We built a restrained, image-led bilingual site that lets the photography carry the room, with direct reservations front and centre to pull bookings back off the aggregators.',
     services: ['Brand Identity', 'Website Design', 'Bilingual Build'],
@@ -424,6 +437,8 @@ export const WORK = [
     sector: 'Property Management',
     location: 'Live at rentcan.in',
     image: '/work/rentcan.png',
+    imageAlt:
+      'RentCan owner dashboard showing portfolio occupancy, rent collection and active property listings',
     result: 'Shipped product',
     body: 'A property management platform for owners running homes remotely — passwordless sign-in over OAuth and SMS, a standardised inspection report backed by timestamped photography, a document vault and a payments ledger. Built mobile-first as a browser substitute for a native app.',
     services: ['Product Design', 'Full-Stack Build', 'Design System'],
@@ -463,6 +478,8 @@ export const WORK = [
     sector: 'Brand & Web',
     location: 'Concept build',
     image: '/work/kinetic-roast.png',
+    imageAlt:
+      'The Kinetic Roast site — a near-black coffee brand page with architectural display type and heat-lit product photography',
     result: 'Concept build',
     body: 'A cinematic brand site for a deliberately fictional coffee roastery, built as an art-direction study — a near-black palette lit by heat-map gradients, display type used architecturally, and scroll and 3D work carrying the idea that roasting is thermal engineering rather than a lifestyle photograph.',
     services: ['Art Direction', 'Brand Identity', 'Website Design'],

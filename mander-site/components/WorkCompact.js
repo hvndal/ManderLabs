@@ -169,7 +169,7 @@ function WorkTile({ project }) {
           <>
             <Image
               src={project.image}
-              alt={`${project.name} — ${project.sector}`}
+              alt={project.imageAlt || `${project.name} — ${project.sector}`}
               fill
               sizes="(max-width: 640px) 100vw, 33vw"
               className="img-zoom object-cover object-top transition-transform duration-700 ease-premium group-hover:scale-105 group-active:scale-105"

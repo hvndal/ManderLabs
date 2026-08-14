@@ -3,37 +3,35 @@ import { REGIONS, allCities } from '@/lib/locations';
 import { LEGAL_DOCS } from '@/lib/legal';
 
 export default function sitemap() {
-  const now = new Date();
+  // A fixed date that tracks the last real content change. Using new Date()
+  // reported "right now" on every crawl, which teaches Google to ignore the
+  // lastmod signal entirely. Update this when content meaningfully changes.
+  const lastContentUpdate = new Date('2026-08-09');
 
-  // Region and city pages generated from the same data file the routes read
-  // (lib/locations.js) — adding a state/province or city there adds it here
-  // too, with no separate list to keep in sync.
   const regionUrls = REGIONS.map((region) => ({
     url: `${SITE_URL}/locations/${region.slug}`,
-    lastModified: now,
+    lastModified: lastContentUpdate,
     changeFrequency: 'monthly',
     priority: 0.75,
   }));
 
   const cityUrls = allCities().map(({ region, city }) => ({
     url: `${SITE_URL}/locations/${region.slug}/${city.slug}`,
-    lastModified: now,
+    lastModified: lastContentUpdate,
     changeFrequency: 'monthly',
     priority: 0.7,
   }));
 
   return [
-    { url: `${SITE_URL}/`, lastModified: now, changeFrequency: 'weekly', priority: 1 },
-    { url: `${SITE_URL}/pricing`, lastModified: now, changeFrequency: 'monthly', priority: 0.9 },
-    { url: `${SITE_URL}/quote`, lastModified: now, changeFrequency: 'monthly', priority: 0.8 },
-    { url: `${SITE_URL}/locations`, lastModified: now, changeFrequency: 'monthly', priority: 0.8 },
+    { url: `${SITE_URL}/`, lastModified: lastContentUpdate, changeFrequency: 'weekly', priority: 1 },
+    { url: `${SITE_URL}/pricing`, lastModified: lastContentUpdate, changeFrequency: 'monthly', priority: 0.9 },
+    { url: `${SITE_URL}/quote`, lastModified: lastContentUpdate, changeFrequency: 'monthly', priority: 0.8 },
+    { url: `${SITE_URL}/locations`, lastModified: lastContentUpdate, changeFrequency: 'monthly', priority: 0.8 },
     ...regionUrls,
     ...cityUrls,
-    // Policy pages: indexable and canonical, but low priority — they're
-    // required, linked and crawlable, not something we compete on.
     ...LEGAL_DOCS.map((doc) => ({
       url: `${SITE_URL}/legal/${doc.slug}`,
-      lastModified: now,
+      lastModified: lastContentUpdate,
       changeFrequency: 'yearly',
       priority: 0.3,
     })),
