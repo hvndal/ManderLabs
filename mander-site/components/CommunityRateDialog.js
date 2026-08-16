@@ -3,10 +3,10 @@
 import { useEffect, useRef, useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { COMMUNITY, BRAND } from '@/lib/content';
+import { submitForm } from '@/lib/forms';
 import Icon from './Icon';
 
 const EASE = [0.16, 1, 0.3, 1];
-const ACCESS_KEY = process.env.NEXT_PUBLIC_WEB3FORMS_KEY;
 
 const FIELD =
   'w-full border-0 border-b border-line bg-transparent px-0 py-3 text-body-lg text-ink transition-colors duration-300 placeholder:text-ink-mute/50 focus:border-ink focus:outline-none focus:ring-0';
@@ -81,39 +81,22 @@ export default function CommunityRateDialog({ open, onClose }) {
     const data = Object.fromEntries(new FormData(form).entries());
     if (data.botcheck) return;
 
-    if (!ACCESS_KEY) {
-      setError(
-        'The form is not connected yet — but email works. Use the link below and we will sort it out.'
-      );
-      setStatus('error');
-      return;
-    }
-
     setStatus('sending');
-    try {
-      const response = await fetch('https://api.web3forms.com/submit', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
-        body: JSON.stringify({
-          access_key: ACCESS_KEY,
-          subject: `Community Rate request — ${chosen?.label || 'Unspecified'}`,
-          from_name: 'MANDER website',
-          category: chosen?.label,
-          name: data.name,
-          email: data.email,
-          note: data.note,
-        }),
-      });
-      const result = await response.json();
-      if (response.ok && result.success) {
-        setStatus('sent');
-        form.reset();
-      } else {
-        setError(result.message || 'Something went wrong. Please try again.');
-        setStatus('error');
-      }
-    } catch {
-      setError('Could not reach the mail service. Check your connection and try again.');
+
+    const result = await submitForm({
+      subject: `Community Rate request — ${chosen?.label || 'Unspecified'}`,
+      from_name: 'MANDER website',
+      category: chosen?.label,
+      name: data.name,
+      email: data.email,
+      note: data.note,
+    });
+
+    if (result.ok) {
+      setStatus('sent');
+      form.reset();
+    } else {
+      setError(result.message);
       setStatus('error');
     }
   };

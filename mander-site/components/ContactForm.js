@@ -1,18 +1,23 @@
 'use client';
 
 import { useState } from 'react';
+import Icon from './Icon';
 import { TIERS, BRAND } from '@/lib/content';
+import { submitForm } from '@/lib/forms';
 
 const FIELD =
   'w-full border border-line bg-white px-4 py-3 text-body-md text-ink transition-colors duration-200 placeholder:text-ink-mute/60 focus:border-ink focus:outline-none focus:ring-0';
 
-// Set NEXT_PUBLIC_WEB3FORMS_KEY in .env.local — see .env.local.example.
-// The key is bound to the inbox you registered at web3forms.com, so it is safe
-// to expose in the browser; it can only deliver to that address.
-const ACCESS_KEY = process.env.NEXT_PUBLIC_WEB3FORMS_KEY;
-const FALLBACK_EMAIL = BRAND.email;
-
-export default function ContactForm() {
+/**
+ * The site's contact form.
+ *
+ * This used to render the whole form with `className="hidden"` and show a
+ * mailto card in its place — the markup was written but deliberately switched
+ * off, and nothing imported the component at all, so there was no working
+ * form anywhere on the site. It's live now; the mailto stays underneath as a
+ * secondary route for people who'd rather use their own mail client.
+ */
+export default function ContactForm({ defaultPlan = 'Growth' }) {
   const [status, setStatus] = useState('idle'); // idle | sending | sent | error
   const [error, setError] = useState('');
 
@@ -23,48 +28,26 @@ export default function ContactForm() {
     const form = event.currentTarget;
     const data = Object.fromEntries(new FormData(form).entries());
 
-    // Honeypot — bots fill hidden fields, humans don't.
+    // Honeypot — bots fill hidden fields, humans don't. Bail silently rather
+    // than showing an error, so a bot gets no signal about why it failed.
     if (data.botcheck) return;
-
-    if (!ACCESS_KEY) {
-      setError(
-        'The form is not connected yet. Add NEXT_PUBLIC_WEB3FORMS_KEY to .env.local and restart the dev server.'
-      );
-      setStatus('error');
-      return;
-    }
 
     setStatus('sending');
 
-    try {
-      const response = await fetch('https://api.web3forms.com/submit', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-          Accept: 'application/json',
-        },
-        body: JSON.stringify({
-          access_key: ACCESS_KEY,
-          subject: `New enquiry from ${data.name || 'the MANDER website'}`,
-          from_name: 'MANDER website',
-          name: data.name,
-          email: data.email,
-          plan: data.plan,
-          message: data.message,
-        }),
-      });
+    const result = await submitForm({
+      subject: `New enquiry from ${data.name || 'the MANDER website'}`,
+      from_name: 'MANDER website',
+      name: data.name,
+      email: data.email,
+      plan: data.plan,
+      message: data.message,
+    });
 
-      const result = await response.json();
-
-      if (response.ok && result.success) {
-        setStatus('sent');
-        form.reset();
-      } else {
-        setError(result.message || 'Something went wrong. Please try again.');
-        setStatus('error');
-      }
-    } catch {
-      setError('Could not reach the mail service. Check your connection and try again.');
+    if (result.ok) {
+      setStatus('sent');
+      form.reset();
+    } else {
+      setError(result.message);
       setStatus('error');
     }
   };
@@ -88,93 +71,118 @@ export default function ContactForm() {
   }
 
   return (
-    <div>
-      {/* Webform code preserved, visually hidden */}
-      <form
-        onSubmit={handleSubmit}
+    <form onSubmit={handleSubmit} className="border border-line bg-white p-8 md:p-10">
+      {/* Hidden from people and from assistive tech; only a bot fills it. */}
+      <input
+        type="checkbox"
+        name="botcheck"
+        tabIndex={-1}
+        autoComplete="off"
         className="hidden"
         aria-hidden="true"
-      >
-        <input
-          type="checkbox"
-          name="botcheck"
-          tabIndex={-1}
-          autoComplete="off"
-          className="hidden"
-          aria-hidden="true"
-        />
+      />
 
-        <div className="grid grid-cols-1 gap-6 sm:grid-cols-2">
-          <div>
-            <label htmlFor="name" className="label-caps mb-2 block text-ink-mute">
-              Name
-            </label>
-            <input id="name" name="name" type="text" required autoComplete="name" className={FIELD} placeholder="Jane Halden" />
-          </div>
-
-          <div>
-            <label htmlFor="email" className="label-caps mb-2 block text-ink-mute">
-              Email
-            </label>
-            <input id="email" name="email" type="email" required autoComplete="email" className={FIELD} placeholder="jane@company.com" />
-          </div>
-
-          <div className="sm:col-span-2">
-            <label htmlFor="plan" className="label-caps mb-2 block text-ink-mute">
-              Plan of interest
-            </label>
-            <select id="plan" name="plan" defaultValue="Growth" className={FIELD}>
-              {TIERS.map((tier) => (
-                <option key={tier.name} value={tier.name}>
-                  {tier.name} — {tier.price}
-                </option>
-              ))}
-              <option value="Not sure yet">Not sure yet</option>
-            </select>
-          </div>
-
-          <div className="sm:col-span-2">
-            <label htmlFor="message" className="label-caps mb-2 block text-ink-mute">
-              What are you building?
-            </label>
-            <textarea
-              id="message"
-              name="message"
-              rows={5}
-              className={`${FIELD} resize-y`}
-              placeholder="A little about the business, the goal, and your timeline."
-            />
-          </div>
+      <div className="grid grid-cols-1 gap-6 sm:grid-cols-2">
+        <div>
+          <label htmlFor="cf-name" className="label-caps mb-2 block text-ink-mute">
+            Name
+          </label>
+          <input
+            id="cf-name"
+            name="name"
+            type="text"
+            required
+            autoComplete="name"
+            className={FIELD}
+            placeholder="Jane Halden"
+          />
         </div>
 
-        <button type="submit" disabled={status === 'sending'} className="btn-primary">
-          Send enquiry
-        </button>
-      </form>
+        <div>
+          <label htmlFor="cf-email" className="label-caps mb-2 block text-ink-mute">
+            Email
+          </label>
+          <input
+            id="cf-email"
+            name="email"
+            type="email"
+            required
+            autoComplete="email"
+            className={FIELD}
+            placeholder="jane@company.com"
+          />
+        </div>
 
-      {/* Visually active direct contact card */}
-      <div className="border border-line bg-white p-8 text-center md:p-12">
-        <span className="label-caps mb-3 block text-accent">Get in touch</span>
-        <h3 className="text-headline-md font-semibold text-ink">
-          Ready to start your project?
-        </h3>
-        <p className="mx-auto mt-4 max-w-md text-body-lg text-ink-soft">
-          Email us directly about your business, goals, and timeline. We reply within one business day.
-        </p>
-        <div className="mt-8">
+        <div className="sm:col-span-2">
+          <label htmlFor="cf-plan" className="label-caps mb-2 block text-ink-mute">
+            Plan of interest
+          </label>
+          <select id="cf-plan" name="plan" defaultValue={defaultPlan} className={FIELD}>
+            {TIERS.map((tier) => (
+              <option key={tier.name} value={tier.name}>
+                {tier.name} — {tier.price}
+              </option>
+            ))}
+            <option value="Not sure yet">Not sure yet</option>
+          </select>
+        </div>
+
+        <div className="sm:col-span-2">
+          <label htmlFor="cf-message" className="label-caps mb-2 block text-ink-mute">
+            What are you building?
+          </label>
+          <textarea
+            id="cf-message"
+            name="message"
+            rows={5}
+            className={`${FIELD} resize-y`}
+            placeholder="A little about the business, the goal, and your timeline."
+          />
+        </div>
+      </div>
+
+      {status === 'error' && (
+        <p
+          role="alert"
+          className="mt-6 border border-accent/40 bg-accent/5 px-4 py-3 text-label-sm text-ink"
+        >
+          {error}{' '}
           <a
-            href={`mailto:${FALLBACK_EMAIL}?subject=${encodeURIComponent(
+            href={`mailto:${BRAND.email}?subject=${encodeURIComponent(
               'New project enquiry'
             )}`}
-            className="btn-primary"
+            className="underline underline-offset-2"
           >
-            Email {FALLBACK_EMAIL}
+            Or email us directly
           </a>
-        </div>
-        <p className="mt-4 text-label-sm text-ink-mute">
-          No obligation. Directly connected to our team.
+          .
         </p>
+      )}
+
+      <div className="mt-8 flex flex-col gap-4 sm:flex-row sm:items-center">
+        <button
+          type="submit"
+          disabled={status === 'sending'}
+          className="btn-primary disabled:opacity-60"
+        >
+          {status === 'sending' ? 'Sending…' : 'Send enquiry'}
+          {status !== 'sending' && (
+            <Icon name="arrow" className="h-4 w-4" strokeWidth={2} />
+          )}
+        </button>
+        <a
+          href={`mailto:${BRAND.email}?subject=${encodeURIComponent(
+            'New project enquiry'
+          )}`}
+          className="link-underline label-caps text-ink-soft"
+        >
+          Or email {BRAND.email}
+        </a>
       </div>
-    </div>
+
+      <p className="mt-4 text-label-sm text-ink-mute">
+        No obligation. We reply within one business day.
+      </p>
+    </form>
   );
 }

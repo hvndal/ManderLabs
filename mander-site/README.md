@@ -236,23 +236,27 @@ all — they submit straight to Web3Forms, which is registered directly to
 moment the Web3Forms key is set up, even before `herman@mander.tech`
 forwarding exists.
 
-## Contact form — one step left
+## Contact form
 
-The form (and the quiz) posts to **Web3Forms**, which forwards submissions to
-your inbox. It needs an access key before it will send anything.
+Three surfaces submit to **Web3Forms**, all through `submitForm()` in
+`lib/forms.js`: the contact form (home and `/pricing`), the `/quote` quiz lead
+capture, and the Community Rate drawer. No setup step is needed — the access
+key ships with the code.
 
-1. Go to <https://web3forms.com>
-2. Enter `hundalg968@gmail.com` in the "Create Access Key" box
-3. They email that address a key (a UUID) — check spam if it's slow
-4. Copy `.env.local.example` to `.env.local` and paste the key in
-5. Restart the dev server
+That's deliberate, and it's a fix rather than a shortcut. The key used to live
+only in `.env.local`, which `.gitignore` excludes, so no deploy ever received
+it and every form on the live site failed while working fine locally. Web3Forms
+is a client-side service: the key is posted from the browser, so it appears in
+the page JavaScript and any visitor's network tab regardless of where it's
+stored. It is bound to the inbox it was registered against, can only deliver
+mail there, and grants no account access.
 
-Until that's done, the form shows an inline error with a `mailto:` fallback
-(also pointed at `hundalg968@gmail.com`, not `herman@mander.tech` — the
-fallback has to be an address that already works) rather than silently
-failing. The same key also powers the `/quote` lead capture. The key is safe
-in client-side code — it can only deliver to the address you registered it
-with.
+To rotate it, set `NEXT_PUBLIC_WEB3FORMS_KEY` in the Vercel dashboard (or
+`.env.local` locally) — the environment variable takes precedence over the
+committed default, so no code change is needed.
+
+Every form also keeps a `mailto:` link beside it for anyone who'd rather use
+their own mail client, and falls back to one if a submission fails.
 
 ## SEO
 

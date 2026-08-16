@@ -6,6 +6,7 @@ import Icon from '@/components/Icon';
 import PricingInteractive from '@/components/PricingInteractive';
 import GridField from '@/components/GridField';
 import Faq from '@/components/Faq';
+import ContactForm from '@/components/ContactForm';
 import JsonLd from '@/components/JsonLd';
 import {
   CommunityRateSection,
@@ -207,6 +208,24 @@ export default function PricingPage() {
           <div className="lg:col-span-8">
             <Reveal>
               <Faq items={FAQS} />
+            </Reveal>
+          </div>
+        </div>
+      </Section>
+
+      {/* -------------------------------------------------------------- Contact */}
+      <Section id="contact" tone="white">
+        <div className="grid grid-cols-1 gap-gutter lg:grid-cols-12 lg:gap-16">
+          <div className="lg:col-span-4">
+            <SectionHeading
+              eyebrow="Get in touch"
+              title="Ready when you are."
+              body="Tell us which plan fits and what you're building. We reply within one business day."
+            />
+          </div>
+          <div className="lg:col-span-8">
+            <Reveal>
+              <ContactForm />
             </Reveal>
           </div>
         </div>

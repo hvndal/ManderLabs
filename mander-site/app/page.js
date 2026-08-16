@@ -21,6 +21,7 @@ import ProcessTimeline from '@/components/ProcessTimeline';
 import Testimonials from '@/components/Testimonials';
 import PricingInteractive from '@/components/PricingInteractive';
 import Faq from '@/components/Faq';
+import ContactForm from '@/components/ContactForm';
 import JsonLd from '@/components/JsonLd';
 import {
   SERVICES,
@@ -390,6 +391,27 @@ export default function HomePage() {
           </div>
         </div>
       </section>
+
+      {/* -------------------------------------------------------------- Contact */}
+      {/* The site had no working contact form at all — every route out was a
+          mailto, which loses anyone reading on a phone without a mail client
+          configured. Same column split as the FAQ above it. */}
+      <Section id="contact" tone="paper">
+        <div className="grid grid-cols-1 gap-gutter lg:grid-cols-12 lg:gap-16">
+          <div className="lg:col-span-4">
+            <SectionHeading
+              eyebrow="Get in touch"
+              title="Tell us about the project."
+              body="A few lines is enough to start. We reply within one business day — no obligation."
+            />
+          </div>
+          <div className="lg:col-span-8">
+            <Reveal>
+              <ContactForm />
+            </Reveal>
+          </div>
+        </div>
+      </Section>
 
       {/* ------------------------------------------------------------ Final CTA */}
       <section className="relative overflow-hidden bg-ink text-paper">

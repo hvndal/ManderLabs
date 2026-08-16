@@ -4,8 +4,8 @@ import { useMemo, useState } from 'react';
 import Link from 'next/link';
 import Icon from './Icon';
 import { QUIZ, TIERS, BRAND } from '@/lib/content';
+import { submitForm } from '@/lib/forms';
 
-const ACCESS_KEY = process.env.NEXT_PUBLIC_WEB3FORMS_KEY;
 // Used only when the form itself fails to send. Now the same public address
 // as everything else, so there is one inbox to keep alive rather than two.
 const FALLBACK_EMAIL = BRAND.email;
@@ -68,12 +68,6 @@ export default function Quiz() {
     event.preventDefault();
     setError('');
 
-    if (!ACCESS_KEY) {
-      setError('The form is not connected yet. Add NEXT_PUBLIC_WEB3FORMS_KEY to .env.local and restart.');
-      setStatus('error');
-      return;
-    }
-
     // Human-readable answer summary for the email.
     const summary = QUIZ.questions
       .map((q) => {
@@ -83,30 +77,22 @@ export default function Quiz() {
       .join('\n');
 
     setStatus('sending');
-    try {
-      const res = await fetch('https://api.web3forms.com/submit', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
-        body: JSON.stringify({
-          access_key: ACCESS_KEY,
-          subject: `Quiz lead — ${result.tier}${result.forceSales ? ' (wants sales)' : ''} — ${contact.name || 'no name'}`,
-          from_name: 'MANDER quiz',
-          name: contact.name,
-          email: contact.email,
-          recommended_plan: result.tier,
-          from_price: recommended ? `$${recommended.from}` : '',
-          wants_sales: result.forceSales ? 'yes' : 'no',
-          answers: summary,
-        }),
-      });
-      const data = await res.json();
-      if (res.ok && data.success) setStatus('sent');
-      else {
-        setError(data.message || 'Something went wrong. Please try again.');
-        setStatus('error');
-      }
-    } catch {
-      setError('Could not reach the mail service. Check your connection and try again.');
+
+    const sent = await submitForm({
+      subject: `Quiz lead — ${result.tier}${result.forceSales ? ' (wants sales)' : ''} — ${contact.name || 'no name'}`,
+      from_name: 'MANDER quiz',
+      name: contact.name,
+      email: contact.email,
+      recommended_plan: result.tier,
+      from_price: recommended ? `$${recommended.from}` : '',
+      wants_sales: result.forceSales ? 'yes' : 'no',
+      answers: summary,
+    });
+
+    if (sent.ok) {
+      setStatus('sent');
+    } else {
+      setError(sent.message);
       setStatus('error');
     }
   };
