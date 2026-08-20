@@ -432,6 +432,11 @@ export const COMMUNITY = {
   ],
 };
 
+// Monthly, month-to-month, optional on every tier. Kept next to the list it
+// prices — it used to be hardcoded in the pricing page's JSX, which is how a
+// price ends up updated in one place and stale in another.
+export const CARE_PLAN_PRICE = '$40/mo';
+
 export const CARE_PLAN = [
   { title: 'Managed Hosting', body: 'Fast, reliable infrastructure — we handle it end to end.' },
   { title: 'SSL & Security', body: 'Encryption plus 24/7 malware scanning and threat prevention.' },
@@ -701,75 +706,278 @@ export const QUIZ = {
   intro: {
     eyebrow: 'Fit quiz · 60 seconds',
     title: 'Find the right starting point.',
-    body: 'Six quick questions. We recommend a plan based on your answers — or hand you to a person if that is the better move. No email required to see your result.',
+    body: 'Six quick questions about the business — not about your budget. We recommend a plan based on your answers, or hand you to a person if that is the better move. No email required to see your result.',
   },
+  // There used to be a seventh question asking what budget you were working
+  // with, and it was the worst question here. It asked what you could pay
+  // instead of what you needed, it anchored low (the cheapest option was
+  // listed first), and it let someone who genuinely needed local search talk
+  // themselves into a brochure site — which is a bad recommendation and a
+  // lost sale in the same move. Worse, it told the reader the quiz was a
+  // price calculator wearing a diagnosis costume, which is exactly the thing
+  // that makes people distrust the answer.
+  //
+  // What replaced it is the question a decent consultant actually opens
+  // with: when someone searches for what you do, what comes up? It is the
+  // only question here most owners cannot answer confidently, and every
+  // honest answer to it points at the same work.
   questions: [
     {
       id: 'stage',
       question: 'Where is the business today?',
       options: [
         { label: 'Brand new — nothing online yet', weights: { Launch: 2, Starter: 1 } },
-        { label: 'Up and running, no real website', weights: { Starter: 2, Growth: 1 } },
-        { label: 'Established, the site is dated', weights: { Growth: 2, Starter: 1 } },
-        { label: 'Doing well, need something serious', weights: { 'Business Pro': 2, Growth: 1 } },
+        { label: 'Trading already, but no real website', weights: { Starter: 2, Growth: 1 } },
+        { label: 'We have a site — it is dated or not working', weights: { Growth: 2, Starter: 1 } },
+        { label: 'Established, multiple locations or services', weights: { 'Business Pro': 2, Growth: 1 } },
       ],
     },
     {
-      id: 'goal',
-      question: 'What is the site mainly for?',
+      id: 'discovery',
+      question: 'How do customers find you today?',
       options: [
-        { label: 'Look legit and share the basics', weights: { Launch: 2 } },
-        { label: 'Bring in enquiries and calls', weights: { Starter: 2, Growth: 1 } },
-        { label: 'Rank on Google and win local search', weights: { Growth: 2 } },
-        { label: 'Sell products or take bookings online', weights: { Growth: 1, 'Business Pro': 2 } },
+        { label: 'Word of mouth, mostly', weights: { Starter: 1, Growth: 1 } },
+        { label: 'Social media — Instagram, Facebook', weights: { Starter: 1, Growth: 2 } },
+        { label: 'They search Google for what we do', weights: { Growth: 2 } },
+        { label: 'Paid ads or referrals we pay for', weights: { Growth: 2, 'Business Pro': 1 } },
+      ],
+    },
+    {
+      id: 'search',
+      question: 'When someone searches for what you do in your area, what comes up?',
+      options: [
+        { label: 'Us, near the top', weights: { Growth: 1, Starter: 1 } },
+        { label: 'Competitors — not us', weights: { Growth: 2 } },
+        { label: 'Just directories — Yelp, Facebook, Yellow Pages', weights: { Growth: 2 } },
+        { label: 'Honestly, no idea', weights: { Growth: 1, Starter: 1 } },
       ],
     },
     {
       id: 'pages',
       question: 'How much do you need to say?',
       options: [
-        { label: 'One page is plenty', weights: { Launch: 2 } },
+        // Weighted heavier than its neighbours on purpose. Someone who tells
+        // you one page is plenty has given you the clearest signal in the
+        // whole quiz, and nudging them up to a five-page plan anyway is how
+        // a recommendation stops being worth reading.
+        { label: 'One page is plenty', weights: { Launch: 3 } },
         { label: 'A handful — 3 to 5 pages', weights: { Starter: 2 } },
         { label: 'Ten or so, with room to grow', weights: { Growth: 2 } },
-        { label: 'A lot, or a full store / app', weights: { 'Business Pro': 2 } },
+        { label: 'A lot, or a full store', weights: { 'Business Pro': 2 } },
+      ],
+    },
+    {
+      id: 'action',
+      question: 'What should happen when someone is interested?',
+      options: [
+        { label: 'They call or email us', weights: { Launch: 1, Starter: 2 } },
+        { label: 'They send an enquiry through the site', weights: { Starter: 1, Growth: 2 } },
+        { label: 'They book a slot or appointment themselves', weights: { Growth: 2 } },
+        { label: 'They order, pay, or use a custom system', weights: { 'Business Pro': 2, sales: true } },
+      ],
+    },
+    {
+      id: 'value',
+      question: 'Roughly what is one new customer worth to you?',
+      options: [
+        { label: 'Under $100', weights: { Launch: 1, Starter: 1 } },
+        { label: 'A few hundred dollars', weights: { Growth: 2 } },
+        { label: '$1,000 or more', weights: { Growth: 2, 'Business Pro': 1 } },
+        { label: 'They stay with us for months or years', weights: { Growth: 2, 'Business Pro': 1 } },
+      ],
+    },
+  ],
+  // Reasoning shown with each recommended tier. Written to answer "why this
+  // one" rather than to congratulate anyone on their answers.
+  reasons: {
+    Launch: 'You need to look real and get online fast, without paying for pages you will not use yet.',
+    Starter: 'A focused few-page site is the sweet spot — enough to sell for you, nothing wasted.',
+    Growth: 'People are searching for what you do and finding someone else. Growth is the tier where the site stops being a brochure and starts being found — local SEO, Google Business Profile, and the booking or enquiry flow that turns a search into a customer.',
+    'Business Pro': 'Your needs go past a template — custom architecture and integrations are the right call.',
+  },
+};
+// --- Careers ---------------------------------------------------------------
+// IMPORTANT, read before this page goes live: everything in this block is a
+// statement about how MANDER hires. Unlike the rest of this file, none of it
+// can be checked against the site or the code — it has to be checked against
+// you. The defaults below are written to be true of a small remote studio and
+// to promise nothing specific (no salary bands, no benefits, no headcount),
+// which is the safe place to start. Confirm or correct each one before
+// publishing, and treat `roles[].status` as the thing most likely to go stale.
+//
+// Deliberately absent: invented job openings with salaries and closing dates.
+// A candidate who applies for a role that does not exist is a candidate who
+// tells other people about it. `status: 'rolling'` says the honest thing —
+// this is a discipline we hire for, not a vacancy we are promising.
+export const CAREERS = {
+  intro: {
+    eyebrow: 'Careers',
+    title: 'Work on sites that have to earn their keep.',
+    body: 'MANDER is a small remote studio building websites and Android apps for small businesses across Canada and the United States. Every project is fixed-scope and fixed-price, which changes what the work feels like day to day more than anything else on this page.',
+  },
+
+  // What it is actually like. Each of these is downstream of something the
+  // studio already does — fixed-price quoting, client ownership, month-to-month
+  // care plans — rather than a value statement invented for a careers page.
+  culture: [
+    {
+      title: 'Fixed scope, not open-ended crunch',
+      body: 'Work is quoted against a written scope before it starts. That discipline exists for the client, but you get it too: the deadline was agreed by someone who knew what the job was, and nobody is absorbing an invisible overrun on a Friday night.',
+    },
+    {
+      title: 'Small team, visible work',
+      body: 'There is no layer between what you make and the person paying for it. You will talk to the business owner, hear what actually broke, and see your work carry real traffic instead of disappearing into a backlog.',
+    },
+    {
+      title: 'Remote across two countries',
+      body: 'The team works from British Columbia and Massachusetts. Overlap matters more than location — a few reliable hours against Pacific time is worth more than sitting in a particular city.',
+    },
+    {
+      title: 'Craft is the product',
+      body: 'Clients come to us because the work looks considered rather than templated. That only holds if the people making it care about typography, performance and the details nobody is asked to fix.',
+    },
+  ],
+
+  // Disciplines we hire for, not a list of vacancies. `status` is one of:
+  //   'open'    — actively interviewing, shown as a live opening
+  //   'rolling' — no vacancy today, applications kept on file
+  //   'closed'  — hidden from the page entirely
+  roles: [
+    {
+      id: 'web-design',
+      title: 'Web Designer',
+      discipline: 'Design',
+      type: 'Contract or full-time',
+      location: 'Remote — Canada or U.S.',
+      status: 'rolling',
+      blurb: 'Design small-business sites that look authored rather than assembled, and hand them over in a state a developer can actually build.',
+      doing: [
+        'Take a business from a discovery call to a designed, build-ready site',
+        'Set type, layout and motion inside an existing design system',
+        'Write or shape the copy when the words are the problem',
+      ],
+      looking: [
+        'A portfolio where the typography is the strongest thing in it',
+        'Comfort designing to a fixed scope instead of an open brief',
+        'Figma fluency, and opinions you can defend without a deck',
+      ],
+    },
+    {
+      id: 'frontend',
+      title: 'Front-End Developer',
+      discipline: 'Engineering',
+      type: 'Contract or full-time',
+      location: 'Remote — Canada or U.S.',
+      status: 'rolling',
+      blurb: 'Build the sites in Next.js and Tailwind, and keep them fast on the mid-range Android phone most of our clients’ customers are actually holding.',
+      doing: [
+        'Build responsive marketing sites in Next.js, React and Tailwind',
+        'Hold a performance budget and a clean Core Web Vitals pass',
+        'Wire up forms, bookings, CRM and analytics integrations',
+      ],
+      looking: [
+        'Production React and Next.js, App Router included',
+        'Semantic, accessible markup written on purpose rather than by habit',
+        'The instinct to reach for less JavaScript, not more',
+      ],
+    },
+    {
+      id: 'android',
+      title: 'Android Developer',
+      discipline: 'Engineering',
+      type: 'Contract',
+      location: 'Remote — Canada or U.S.',
+      status: 'rolling',
+      blurb: 'Build the native Android side of the studio — custom apps shipped to Google Play under the client’s own developer account.',
+      doing: [
+        'Build native Android apps from a designed spec',
+        'Stand up the backend, auth, payments and push a build needs',
+        'Take a release through Play Store review and the listing setup',
+      ],
+      looking: [
+        'Shipped Android apps you can point at on Google Play',
+        'Kotlin, and comfort owning the backend a small app needs',
+        'Patience with store review, because it is half the job',
       ],
     },
     {
       id: 'seo',
-      question: 'How important is showing up on Google?',
-      options: [
-        { label: 'Not a priority right now', weights: { Launch: 1, Starter: 1 } },
-        { label: 'Would be nice', weights: { Starter: 1, Growth: 1 } },
-        { label: 'Important — customers search for us', weights: { Growth: 2 } },
-        { label: 'Critical — it is how we get found', weights: { Growth: 1, 'Business Pro': 1 } },
+      title: 'SEO & Local Search Specialist',
+      discipline: 'Growth',
+      type: 'Part-time or contract',
+      location: 'Remote — Canada or U.S.',
+      status: 'rolling',
+      blurb: 'Make sure the sites we build actually get found — local search, Google Business Profile, and the technical work underneath it.',
+      doing: [
+        'Keyword and local research for a specific town, not a category',
+        'Google Business Profile, Search Console and indexing setup',
+        'Technical SEO: schema, metadata, sitemaps, Core Web Vitals',
       ],
-    },
-    {
-      id: 'integrations',
-      question: 'Anything the site needs to plug into?',
-      options: [
-        { label: 'No, keep it simple', weights: { Launch: 1, Starter: 1 } },
-        { label: 'A booking or contact tool', weights: { Growth: 2 } },
-        { label: 'CRM, email, payments', weights: { Growth: 1, 'Business Pro': 1 } },
-        { label: 'Custom systems / an API', weights: { 'Business Pro': 2, sales: true } },
-      ],
-    },
-    {
-      id: 'budget',
-      question: 'What budget are you working with?',
-      options: [
-        { label: 'Tight — under $400', weights: { Launch: 2 } },
-        { label: 'Around $500', weights: { Starter: 2 } },
-        { label: '$800–1,200', weights: { Growth: 2 } },
-        { label: '$1,500+ / not sure yet', weights: { 'Business Pro': 2 } },
+      looking: [
+        'Local SEO results you can describe honestly, ranking claims included',
+        'Comfort in Search Console and a real analytics stack',
+        'Allergy to tactics that need explaining to a client twice',
       ],
     },
   ],
-  // Reasoning shown with each recommended tier.
-  reasons: {
-    Launch: 'You need to look real and get online fast, without paying for pages you will not use yet.',
-    Starter: 'A focused few-page site is the sweet spot — enough to sell for you, nothing wasted.',
-    Growth: 'You are ready to compete on search and turn the site into a genuine channel, so the SEO and integrations earn their keep.',
-    'Business Pro': 'Your needs go past a template — custom architecture and integrations are the right call.',
-  },
+
+  // An email is a worse form and a better front door. The one thing a form
+  // did better was tell people what to send — so that becomes this list
+  // instead, and the inbox stops filling with three-line messages that need a
+  // reply before they can be read properly.
+  applyWith: [
+    'Where you are and what you do, in a sentence',
+    'The role you are after — or "open application" if none of them fit',
+    'Links: portfolio, GitHub, LinkedIn, a CV if you have one',
+    'One thing you have made, and why you think it is good',
+  ],
+
+  // What actually happens after the application lands. Every step here is a promise
+  // to a candidate — including the paid one — so change it if it is not what
+  // you intend to do.
+  process: [
+    {
+      step: '01',
+      title: 'You apply',
+      body: 'One email, to a person, with whatever you have got. No cover letter, no portal, no account to create — and nothing sitting in front of us filtering it.',
+    },
+    {
+      step: '02',
+      title: 'We reply',
+      body: 'Within one week, either way. A no is a no rather than silence, because being left hanging is the worst part of applying anywhere.',
+    },
+    {
+      step: '03',
+      title: 'A conversation',
+      body: 'A call about the work you have already done and the work we have on. Not a whiteboard, not a trivia round on framework internals.',
+    },
+    {
+      step: '04',
+      title: 'A small paid project',
+      body: 'One real, scoped piece of work, paid at your rate. It tells us more than any interview, and you find out what working here is like before either of us commits.',
+    },
+  ],
+
+  faqs: [
+    {
+      q: 'Do I need to be in Canada or the U.S.?',
+      a: 'For employed roles, yes — that is where the studio operates and pays. For contract work we are more flexible, but we need a few dependable hours of overlap with Pacific time, so a timezone far outside the Americas rarely works well for either side.',
+    },
+    {
+      q: 'There is no opening for my discipline. Should I still apply?',
+      a: 'Yes. We are a small studio and we hire in bursts rather than continuously, so most of the disciplines above sit at "applications open" for long stretches. A strong application gets kept and revisited when work lands — that is genuinely how most of the team arrived.',
+    },
+    {
+      q: 'Is there an application form?',
+      a: 'No. Email is the whole process — attach a CV if you have one, or just send links. A portfolio or a live site tells us more in thirty seconds than a form does in twenty fields, and you should not have to fill in boxes to start a conversation.',
+    },
+    {
+      q: 'Is the test project really paid?',
+      a: 'Yes, at your quoted rate, on a scope agreed in writing before you start. Asking people to work for free is the same thing as asking them to subsidise our hiring, and it filters for who can afford it rather than who is good.',
+    },
+    {
+      q: 'What happens to my information?',
+      a: 'It goes to one inbox and stays there. We keep applications on file so we can come back to them when something opens up, and if you would rather we did not, say so in the form or email us and it is deleted.',
+    },
+  ],
 };

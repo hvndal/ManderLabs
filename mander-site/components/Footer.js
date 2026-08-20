@@ -67,6 +67,14 @@ export default function Footer() {
               </li>
               <li className="text-paper/50">Mon–Fri, 9–5 PT</li>
               <li className="pt-1">
+                <Link
+                  href="/careers"
+                  className="text-paper/60 underline decoration-paper/30 underline-offset-4 transition-colors hover:text-paper hover:decoration-paper"
+                >
+                  Careers
+                </Link>
+              </li>
+              <li className="pt-1">
                 <CommunityRateFooterLink className="text-left text-paper/60 underline decoration-paper/30 underline-offset-4 transition-colors hover:text-paper hover:decoration-paper" />
               </li>
               <li className="pt-1">

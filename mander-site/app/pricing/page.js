@@ -13,7 +13,7 @@ import {
   CommunityRateSection,
   CommunityRateNote,
 } from '@/components/CommunityRate';
-import { TIERS, CARE_PLAN, FAQS, BRAND } from '@/lib/content';
+import { TIERS, CARE_PLAN, CARE_PLAN_PRICE, FAQS, BRAND } from '@/lib/content';
 import { faqSchema, OG_IMAGE } from '@/lib/seo';
 
 const TITLE = 'Website Design Pricing — Plans from $299';
@@ -179,7 +179,7 @@ export default function PricingPage() {
       <Section tone="alt">
         <SectionHeading
           eyebrow="Add-on"
-          title="The Care Plan — $29/mo."
+          title={`The Care Plan — ${CARE_PLAN_PRICE}.`}
           body="Optional on every tier. Hosting, security, backups, and unlimited small edits so you never think about the site."
           align="center"
         />

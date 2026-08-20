@@ -27,6 +27,7 @@ export default function sitemap() {
     { url: `${SITE_URL}/pricing`, lastModified: lastContentUpdate, changeFrequency: 'monthly', priority: 0.9 },
     { url: `${SITE_URL}/quote`, lastModified: lastContentUpdate, changeFrequency: 'monthly', priority: 0.8 },
     { url: `${SITE_URL}/locations`, lastModified: lastContentUpdate, changeFrequency: 'monthly', priority: 0.8 },
+    { url: `${SITE_URL}/careers`, lastModified: lastContentUpdate, changeFrequency: 'monthly', priority: 0.5 },
     ...regionUrls,
     ...cityUrls,
     ...LEGAL_DOCS.map((doc) => ({
