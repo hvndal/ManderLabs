@@ -169,22 +169,23 @@ export const PROCESS = [
 // it is the single most trust-building thing on a pricing page.
 export const TIERS = [
   {
-    name: 'Brand Launch',
-    price: '$249',
-    from: 249,
-    blurb: 'A sharp one-page presence for a new venture that needs to look real, now.',
+    name: 'Launch',
+    price: '$299',
+    from: 299,
+    blurb:
+      'For businesses that need a sharp, professional online presence without the complexity.',
     specs: { pages: '1 page', timeline: '~2 weeks', revisions: '1 round' },
     bestFor: 'Brand-new ventures that need to exist online this month.',
-    features: ['Single-page site', 'Mobile-first build', 'Contact form'],
+    features: ['1-page website', 'Mobile-first responsive design', 'Contact form'],
     detailed: [
-      'Custom single-page website',
-      'Mobile-first responsive build',
-      'Contact form with spam protection',
-      'Basic on-page SEO',
-      'Google Analytics installed',
-      '1 round of revisions',
+      '1-page website',
+      'Mobile-first responsive design',
+      'Contact form',
+      'Google Maps / social links',
+      'Basic technical setup',
+      '1 revision round',
     ],
-    notIncluded: ['Multi-page structure', 'Ongoing SEO', 'Integrations'],
+    notIncluded: ['Multi-page structure', 'Copywriting support', 'SEO beyond the basics'],
     cta: 'Contact sales',
     featured: false,
   },
@@ -192,19 +193,28 @@ export const TIERS = [
     name: 'Starter',
     price: '$499',
     from: 499,
-    blurb: 'A proper small-business site — a handful of pages that do the selling for you.',
+    blurb:
+      'A proper small-business website with everything needed to establish a professional online presence.',
     specs: { pages: 'Up to 5 pages', timeline: '3–4 weeks', revisions: '2 rounds' },
     bestFor: 'Established local businesses with no real site yet.',
     features: ['Up to 5 pages', 'Copywriting support', 'Contact + enquiry forms'],
     detailed: [
-      'Custom 5-page website',
+      'Up to 5 pages',
+      'Custom responsive design',
+      'Contact + enquiry forms',
       'Copywriting support',
-      'On-page SEO across all pages',
-      'Enquiry + contact forms',
-      'Google Analytics + Search Console',
-      '2 rounds of revisions',
+      'Basic technical SEO',
+      'Google Maps integration',
+      '2 revision rounds',
     ],
-    notIncluded: ['Local search / GBP setup', 'CRM or booking integration'],
+    // The ceiling here is deliberate and accurate: Starter builds the site,
+    // Growth is where it starts getting found. Naming that gap is what makes
+    // the $400 step up read as an obvious decision rather than an upsell.
+    notIncluded: [
+      'Local SEO / Google Business Profile',
+      'Google Analytics + Search Console',
+      'Booking / CRM integration',
+    ],
     cta: 'Contact sales',
     featured: false,
   },
@@ -212,20 +222,31 @@ export const TIERS = [
     name: 'Growth',
     price: '$899',
     from: 899,
-    blurb: 'For businesses ready to compete on search and turn the site into a real channel.',
-    specs: { pages: '10+ pages', timeline: '4–6 weeks', revisions: '3 rounds' },
-    bestFor: 'Businesses where customers search before they buy.',
-    features: ['Up to 10 pages', 'Advanced + local SEO', 'CRM / booking integration', 'Custom motion'],
-    detailed: [
-      'Custom 10+ page or e-commerce build',
-      'Advanced technical + local SEO',
-      'Google Business Profile setup',
-      'CRM / booking / automation integration',
-      'Custom motion and interactions',
-      'Performance budget + Core Web Vitals pass',
-      'Priority support',
+    blurb:
+      'For businesses ready to turn their website into a real customer-acquisition channel.',
+    specs: { pages: 'Up to 10 pages', timeline: '4–6 weeks', revisions: '3 rounds' },
+    bestFor: 'Businesses where customers search Google before they buy.',
+    features: [
+      'Up to 10 pages',
+      'Local SEO + Google Business Profile',
+      'Booking / CRM integration',
     ],
-    notIncluded: ['Bespoke web app work', 'Dedicated account manager'],
+    detailed: [
+      'Up to 10 pages',
+      'Custom responsive design',
+      'Contact + enquiry forms',
+      'Local SEO',
+      'On-page SEO',
+      'Google Business Profile optimization',
+      'Google Search Console setup',
+      'Google Analytics',
+      'Sitemap + indexing setup',
+      'Local keyword research',
+      'Metadata + basic schema',
+      'Booking / CRM integration',
+      '3 revision rounds',
+    ],
+    notIncluded: ['Custom architecture', 'E-commerce', 'API integrations'],
     cta: 'Contact sales',
     featured: true,
   },
@@ -233,17 +254,129 @@ export const TIERS = [
     name: 'Business Pro',
     price: '$1,499+',
     from: 1499,
-    blurb: 'Bespoke builds for established brands that need more than a template can carry.',
+    blurb:
+      'For established businesses that need custom functionality beyond a standard website.',
     specs: { pages: 'Unlimited', timeline: '6–10 weeks', revisions: 'Until signed off' },
     bestFor: 'Multi-location or multi-service operations.',
-    features: ['Custom architecture', 'E-commerce ready', 'API integrations', 'Dedicated manager'],
+    features: ['Everything in Growth', 'E-commerce', 'API integrations'],
     detailed: [
-      'Bespoke architecture or web app',
-      'Full e-commerce or booking systems',
-      'Third-party API integrations',
-      'Multi-location / multi-service structure',
-      'Dedicated account manager',
-      'Quarterly performance reviews',
+      'Everything in Growth',
+      'Custom architecture',
+      'Advanced functionality',
+      'E-commerce',
+      'API integrations',
+      'Booking systems',
+      'CRM integrations',
+      'Custom workflows',
+      'Advanced SEO',
+      'Priority support',
+    ],
+    notIncluded: [],
+    cta: 'Contact sales',
+    featured: false,
+  },
+];
+
+// --- Android app pricing ---------------------------------------------------
+// Same object shape as TIERS on purpose, so the same card component renders
+// them. A separate component would mean a second interaction pattern to learn
+// on a page that already has one.
+//
+// `specs` is an array of [label, value] pairs here rather than the website
+// object, because what a buyer compares on an app is not pages and revision
+// rounds — it is how much app, how much backend, and how long we stay on
+// after it ships.
+export const APP_TIERS = [
+  {
+    name: 'App Launch',
+    price: '$2,999',
+    from: 2999,
+    blurb:
+      'A real native Android app on the Play Store — the core of what your business does, in your customers’ hands.',
+    specs: [
+      ['Scope', 'Up to 8 screens'],
+      ['Backend', 'Basic'],
+      ['Support', '30 days'],
+    ],
+    bestFor: 'A first app: one clear job, done properly, live on Google Play.',
+    features: ['Up to 8 screens', 'User authentication', 'Google Play deployment'],
+    detailed: [
+      'Custom Android app',
+      'Up to 8 screens',
+      'Custom UI/UX',
+      'User authentication',
+      'Basic backend/database',
+      'Contact + enquiry functionality',
+      'Push notifications',
+      'API integrations',
+      'Google Play Store deployment',
+      'Google Play listing setup',
+      'App icon + store graphics',
+      'Basic analytics',
+      '30 days post-launch support',
+    ],
+    notIncluded: ['Payments', 'Admin dashboard', 'Booking / reservations'],
+    cta: 'Contact sales',
+    featured: false,
+  },
+  {
+    name: 'App Growth',
+    price: '$5,999',
+    from: 5999,
+    blurb:
+      'The app that runs the business — accounts, payments, bookings, and a dashboard to see it all from.',
+    specs: [
+      ['Scope', 'Up to 15 screens'],
+      ['Backend', 'Advanced'],
+      ['Support', '60 days'],
+    ],
+    bestFor: 'Businesses taking money or bookings through the app itself.',
+    features: ['Payments', 'Booking / reservation system', 'Admin dashboard'],
+    detailed: [
+      'Everything in App Launch',
+      'Up to 15 screens',
+      'Advanced backend',
+      'User accounts',
+      'Payments',
+      'Booking/reservation system',
+      'Push notifications',
+      'Admin dashboard',
+      'Analytics',
+      'Multiple third-party integrations',
+      'Google Play deployment',
+      'Play Store listing optimization',
+      '60 days post-launch support',
+    ],
+    notIncluded: ['Multiple user roles', 'Custom API development', 'AI integrations'],
+    cta: 'Contact sales',
+    featured: true,
+  },
+  {
+    name: 'App Pro',
+    price: '$9,999+',
+    from: 9999,
+    blurb:
+      'Platform-grade Android — multiple roles, custom APIs, and workflows built to your operation rather than around it.',
+    specs: [
+      ['Scope', 'Unlimited screens'],
+      ['Backend', 'Custom API'],
+      ['Support', '90 days'],
+    ],
+    bestFor: 'Operations where the app is the product, not a companion to it.',
+    features: ['Multiple user roles', 'Custom API development', 'AI integrations'],
+    detailed: [
+      'Everything in App Growth',
+      'Multiple user roles',
+      'Advanced workflows',
+      'Custom API development',
+      'Complex database architecture',
+      'AI integrations',
+      'Advanced admin dashboard',
+      'Third-party integrations',
+      'Advanced notifications',
+      'Advanced analytics',
+      'Google Play deployment',
+      '90 days post-launch support',
     ],
     notIncluded: [],
     cta: 'Contact sales',
@@ -316,15 +449,15 @@ export const STATS = [
 export const FAQS = [
   {
     q: 'How much does a website cost?',
-    a: 'Custom builds start at $249 for a single-page site and run to $899 for a full multi-page build with SEO — well under typical agency rates. Every price is fixed and quoted up front before any work starts, so there is no surprise invoice at the end.',
+    a: 'Custom builds start at $299 for a single-page site and run to $899 for a full multi-page build with SEO — well under typical agency rates. Every price is fixed and quoted up front before any work starts, so there is no surprise invoice at the end.',
   },
   {
     q: 'How fast can you build my website?',
-    a: 'A one-page Brand Launch site typically ships in about two weeks. A fuller Starter or Growth build usually takes four to six weeks, mostly gated by how quickly content and feedback come back from you — not by us.',
+    a: 'A one-page Launch site typically ships in about two weeks. A fuller Starter or Growth build usually takes four to six weeks, mostly gated by how quickly content and feedback come back from you — not by us.',
   },
   {
     q: 'Do you have budget-friendly options for small businesses?',
-    a: 'That is the whole premise. Brand Launch and Starter are built specifically for small businesses that need a real, professional site without agency-level spend — from $249, with no retainer required.',
+    a: 'That is the whole premise. Launch and Starter are built specifically for small businesses that need a real, professional site without agency-level spend — from $299, with no retainer required.',
   },
   {
     q: 'Do you only work with local businesses?',
@@ -374,48 +507,57 @@ export const WORK = [
   {
     name: 'Fitway Gym',
     sector: 'Commercial Fitness',
-    location: 'Multi-site, U.S.',
+    location: 'Mohali, Punjab, India',
     logo: '/logos/fitway.svg',
-    image: 'https://images.pexels.com/photos/9545914/pexels-photo-9545914.jpeg?auto=compress&cs=tinysrgb&w=1200',
+    image: '/work/fitway.png',
     // `imageAlt` describes what is actually in the frame. The cards used to
     // derive alt text as "<name> — <sector>", which is a caption, not a
     // description: it repeated text already sitting next to the image and
     // told a screen reader (and Google Images) nothing about the picture.
-    // Note that the client images here are sector photography, not site
-    // screenshots — calling them "the Fitway website" would be inventing
-    // something the file doesn't show.
+    // Fitway and Nouvelle Côte are now real screenshots of the live sites,
+    // so their alt text describes the page. Waste Universe is still sector
+    // photography on purpose — see the note on that entry.
     imageAlt:
-      'Training floor of a commercial gym — rowing machines, weight racks and medicine balls',
+      'The Fitway Gym homepage — a dark hero over a barbell rack, headlined “Push Your Limits”, with the programme nav above it',
     result: '100k+ members',
-    body: 'A commercial gym at real scale needed a site that could carry 100,000+ members without buckling. We rebuilt the class timetable, membership sign-up, and location finder into one fast self-serve flow — and the front desk stopped answering questions the website should have.',
-    services: ['Website Design', 'CRM Integration', 'Care Plan'],
-    scope: 'Timetable, membership sign-up, location finder',
+    body: 'A luxury gym with the floor, the coaches and the programmes already in place, and nothing online carrying any of it. We built a dark, high-contrast site around the eight training programmes, the class timings, the coaching team and member results — so an enquiry arrives already knowing what the gym is. Over 100,000 members served.',
+    services: ['Website Design', 'Responsive Build', 'Care Plan'],
+    scope: 'Programme pages, class timings, trainer profiles, enquiries',
+    href: 'https://fitwaygym.in',
   },
+  {
+    name: 'Nouvelle Côte',
+    sector: 'Hospitality',
+    location: 'Nice, France',
+    logo: '/logos/nouvelle-cote.svg',
+    image: '/work/nouvelle-cote.png',
+    imageAlt:
+      'The Nouvelle Côte homepage — a serif wordmark and reservation nav over a sunlit dining room, headlined “The Architecture of Flavor”',
+    result: 'Direct bookings',
+    body: 'A Riviera dining room whose atmosphere never made it online. We built a restrained, image-led site that lets the photography carry the room — seasonal menu, wine cellar, gallery and journal — with direct reservations front and centre to pull bookings back off the aggregators.',
+    services: ['Brand Identity', 'Website Design', 'Direct Reservations'],
+    scope: 'Seasonal menu, wine cellar, gallery, direct reservations',
+    href: 'https://nouvellemaison.vercel.app/',
+  },
+
+  // Kept for the Massachusetts footprint, which is worth real search value,
+  // but deliberately held back: the owner has since replaced this build with
+  // his own design, so the live site no longer shows our work. No link out —
+  // linking it would attribute his redesign to us — and no screenshot, for
+  // the same reason. The stock photograph stays. Restore both only if the
+  // site comes back under our design.
   {
     name: 'Waste Universe',
     sector: 'Waste Management',
-    location: 'Massachusetts, U.S.',
+    location: 'Rhode Island & Massachusetts',
     logo: '/logos/waste-universe.svg',
     image: 'https://images.pexels.com/photos/16891361/pexels-photo-16891361.jpeg?auto=compress&cs=tinysrgb&w=1200',
     imageAlt:
       'A rear-loading refuse truck lit up in a collection depot at night',
-    result: 'Statewide coverage',
-    body: 'Commercial and residential collection across Massachusetts, sold through a site that looked smaller than the operation. We rebuilt it around service areas and quote requests, with local SEO tuned to every town they cover, so the right customer books the right service.',
+    result: 'RI & MA coverage',
+    body: 'A family-run waste operation — roll-off dumpster rental, residential curbside and commercial collection across Rhode Island and Massachusetts — sold through a site that looked smaller than the business. We rebuilt it around the three services and a quote request, with local SEO tuned to the towns they actually cover.',
     services: ['Website Redesign', 'Local SEO', 'Local Search'],
-    scope: 'Service-area pages, quote requests, local SEO',
-  },
-  {
-    name: 'The Côte Noire',
-    sector: 'Hospitality',
-    location: 'France',
-    logo: '/logos/cote-noire.svg',
-    image: 'https://images.pexels.com/photos/28454110/pexels-photo-28454110.jpeg?auto=compress&cs=tinysrgb&w=1200',
-    imageAlt:
-      'Bistro interior with red gingham tablecloths, booth seating and a vintage French poster',
-    result: 'Direct bookings',
-    body: 'A hospitality brand whose atmosphere never made it online. We built a restrained, image-led bilingual site that lets the photography carry the room, with direct reservations front and centre to pull bookings back off the aggregators.',
-    services: ['Brand Identity', 'Website Design', 'Bilingual Build'],
-    scope: 'Bilingual build, direct reservations, brand system',
+    scope: 'Service pages, quote requests, service-area coverage',
   },
 
   // --- In-house builds ----------------------------------------------------
@@ -566,7 +708,7 @@ export const QUIZ = {
       id: 'stage',
       question: 'Where is the business today?',
       options: [
-        { label: 'Brand new — nothing online yet', weights: { 'Brand Launch': 2, Starter: 1 } },
+        { label: 'Brand new — nothing online yet', weights: { Launch: 2, Starter: 1 } },
         { label: 'Up and running, no real website', weights: { Starter: 2, Growth: 1 } },
         { label: 'Established, the site is dated', weights: { Growth: 2, Starter: 1 } },
         { label: 'Doing well, need something serious', weights: { 'Business Pro': 2, Growth: 1 } },
@@ -576,7 +718,7 @@ export const QUIZ = {
       id: 'goal',
       question: 'What is the site mainly for?',
       options: [
-        { label: 'Look legit and share the basics', weights: { 'Brand Launch': 2 } },
+        { label: 'Look legit and share the basics', weights: { Launch: 2 } },
         { label: 'Bring in enquiries and calls', weights: { Starter: 2, Growth: 1 } },
         { label: 'Rank on Google and win local search', weights: { Growth: 2 } },
         { label: 'Sell products or take bookings online', weights: { Growth: 1, 'Business Pro': 2 } },
@@ -586,7 +728,7 @@ export const QUIZ = {
       id: 'pages',
       question: 'How much do you need to say?',
       options: [
-        { label: 'One page is plenty', weights: { 'Brand Launch': 2 } },
+        { label: 'One page is plenty', weights: { Launch: 2 } },
         { label: 'A handful — 3 to 5 pages', weights: { Starter: 2 } },
         { label: 'Ten or so, with room to grow', weights: { Growth: 2 } },
         { label: 'A lot, or a full store / app', weights: { 'Business Pro': 2 } },
@@ -596,7 +738,7 @@ export const QUIZ = {
       id: 'seo',
       question: 'How important is showing up on Google?',
       options: [
-        { label: 'Not a priority right now', weights: { 'Brand Launch': 1, Starter: 1 } },
+        { label: 'Not a priority right now', weights: { Launch: 1, Starter: 1 } },
         { label: 'Would be nice', weights: { Starter: 1, Growth: 1 } },
         { label: 'Important — customers search for us', weights: { Growth: 2 } },
         { label: 'Critical — it is how we get found', weights: { Growth: 1, 'Business Pro': 1 } },
@@ -606,7 +748,7 @@ export const QUIZ = {
       id: 'integrations',
       question: 'Anything the site needs to plug into?',
       options: [
-        { label: 'No, keep it simple', weights: { 'Brand Launch': 1, Starter: 1 } },
+        { label: 'No, keep it simple', weights: { Launch: 1, Starter: 1 } },
         { label: 'A booking or contact tool', weights: { Growth: 2 } },
         { label: 'CRM, email, payments', weights: { Growth: 1, 'Business Pro': 1 } },
         { label: 'Custom systems / an API', weights: { 'Business Pro': 2, sales: true } },
@@ -616,7 +758,7 @@ export const QUIZ = {
       id: 'budget',
       question: 'What budget are you working with?',
       options: [
-        { label: 'Tight — under $400', weights: { 'Brand Launch': 2 } },
+        { label: 'Tight — under $400', weights: { Launch: 2 } },
         { label: 'Around $500', weights: { Starter: 2 } },
         { label: '$800–1,200', weights: { Growth: 2 } },
         { label: '$1,500+ / not sure yet', weights: { 'Business Pro': 2 } },
@@ -625,7 +767,7 @@ export const QUIZ = {
   ],
   // Reasoning shown with each recommended tier.
   reasons: {
-    'Brand Launch': 'You need to look real and get online fast, without paying for pages you will not use yet.',
+    Launch: 'You need to look real and get online fast, without paying for pages you will not use yet.',
     Starter: 'A focused few-page site is the sweet spot — enough to sell for you, nothing wasted.',
     Growth: 'You are ready to compete on search and turn the site into a genuine channel, so the SEO and integrations earn their keep.',
     'Business Pro': 'Your needs go past a template — custom architecture and integrations are the right call.',

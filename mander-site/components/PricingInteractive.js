@@ -42,6 +42,20 @@ export default function PricingInteractive({ tiers }) {
         const isOpen = openIndex === i;
         const isDimmed = openIndex !== null && !isOpen;
 
+        // Website tiers compare on pages/timeline/revisions; app tiers compare
+        // on something else entirely, so they pass their own [label, value]
+        // pairs instead. Same three-column row either way.
+        const specRows =
+          !tier.specs
+            ? null
+            : Array.isArray(tier.specs)
+              ? tier.specs
+              : [
+                  ['Scope', tier.specs.pages],
+                  ['Timeline', tier.specs.timeline],
+                  ['Revisions', tier.specs.revisions],
+                ];
+
         return (
           <motion.article
             key={tier.name}
@@ -107,17 +121,13 @@ export default function PricingInteractive({ tiers }) {
             {/* Specs — the three numbers a buyer compares before reading any
                 feature list, on the closed card so the row is scannable
                 without opening anything. */}
-            {tier.specs && (
+            {specRows && (
               <motion.dl
                 layout="position"
                 transition={SPRING}
                 className="mt-6 grid grid-cols-3 gap-3 border-y border-line py-4"
               >
-                {[
-                  ['Scope', tier.specs.pages],
-                  ['Timeline', tier.specs.timeline],
-                  ['Revisions', tier.specs.revisions],
-                ].map(([k, v]) => (
+                {specRows.map(([k, v]) => (
                   <div key={k}>
                     <dt className="label-caps text-[10px] text-ink-mute">{k}</dt>
                     <dd className="mt-1.5 text-label-sm font-medium text-ink">{v}</dd>

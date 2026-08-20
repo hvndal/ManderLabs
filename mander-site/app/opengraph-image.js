@@ -134,7 +134,7 @@ export default async function Image() {
             <span style={{ margin: '0 18px', color: 'rgba(244,242,236,0.35)' }}>
               ·
             </span>
-            <span>Fixed-price builds from $249</span>
+            <span>Fixed-price builds from $299</span>
           </div>
         </div>
       </div>

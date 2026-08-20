@@ -101,7 +101,7 @@ and nothing in the code needs to be touched.
 |-------|----------|-------|
 | Hero video | `public/videos/hero.mp4` | Copied automatically by `setup-video.bat` (run by `start-dev.bat`) from the uploaded source file. If you swap in a different clip, keep it reasonably compressed (a few MB, not tens) — it autoplays on page load. `IMAGES.heroWorkspace` in `lib/content.js` is the poster/fallback frame shown while the video loads or if it fails. |
 | Service photos | `public/services/` | `website-design.jpg`, `brand-identity.jpg`, `website-redesign.jpg`, `seo.jpg`, `gbp-optimization.jpg`, `care-plan.jpg`. Copied automatically from `Pictures\our services` by `setup-assets.bat`. Used full-bleed in the alternating service bands; landscape crops best. |
-| Client logos | `public/logos/` | `fitway.svg`, `waste-universe.svg`, `cote-noire.svg`. **Placeholder wordmarks** — swap in the real marks. They render at low opacity in the "Trusted by" strip and inverted to white over each Work card image; if a real logo is already light, remove `invert` in `components/WorkCompact.js`. |
+| Client logos | `public/logos/` | `fitway.svg`, `waste-universe.svg`, `nouvelle-cote.svg`. **Placeholder wordmarks** — swap in the real marks. They render at low opacity in the "Trusted by" strip and inverted to white over each Work card image; if a real logo is already light, remove `invert` in `components/WorkCompact.js`. |
 | Work case photos | `lib/content.js` → `WORK[].image` | Currently topically-matched **stock** photos (a gym interior, a waste truck, a bistro) picked to at least match each client's industry — not real photography. Replace with actual client photos before launch; this is flagged again in the comment directly above the `WORK` array. |
 | Team headshots | `public/team/` | Add a file, then set `photo: '/team/name.jpg'` on that member in `lib/content.js`. Until then a tonal initials block renders in the same square frame. Square/portrait crops best; photos show grayscale, colour on hover. |
 | Site logo | `public/logo-mander.png` (+ `public/logo-mander-nav.png`) | `components/Logo.js` reads these and falls back to a text wordmark if either file is missing, so the site never breaks without them. Use the **transparent PNG** exported from `make-logo-transparent.html` (see below) — not the original black-background version. |
@@ -213,7 +213,7 @@ The pricing comparison table on `/pricing` lives in `app/pricing/page.js`
 (`COMPARISON`), since its column order is tied to `TIERS`.
 
 **A note on invented content:** the client case-study descriptions, the
-testimonial quotes attributed to Fitway Gym / Waste Universe / The Côte Noire,
+testimonial quotes attributed to Fitway Gym / Waste Universe / Nouvelle Côte,
 the work-case photos (currently stock, industry-matched but not real client
 photography), and the team bios are all written copy, not verified fact. Read
 and edit them before this goes live — in particular the testimonial quotes

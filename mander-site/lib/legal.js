@@ -491,7 +491,7 @@ export const LEGAL_DOCS = [
           'Indicative timelines by plan, measured from the point we have your content and a confirmed scope:',
         ],
         ul: [
-          'Brand Launch — around two weeks.',
+          'Launch — around two weeks.',
           'Starter — around three to four weeks.',
           'Growth — around four to six weeks.',
           'Business Pro — around six to ten weeks, depending on complexity.',

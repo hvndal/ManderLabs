@@ -10,7 +10,7 @@ export default function manifest() {
     name: 'MANDER — Website Design for Small Business',
     short_name: BRAND.name,
     description:
-      'Remote website design, development and SEO for small and mid-sized businesses across the U.S. and Canada. Fixed-price builds from $249.',
+      'Remote website design, development and SEO for small and mid-sized businesses across the U.S. and Canada. Fixed-price builds from $299.',
     start_url: '/',
     scope: '/',
     display: 'standalone',

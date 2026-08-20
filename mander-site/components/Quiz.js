@@ -10,7 +10,7 @@ import { submitForm } from '@/lib/forms';
 // as everything else, so there is one inbox to keep alive rather than two.
 const FALLBACK_EMAIL = BRAND.email;
 
-const TIER_ORDER = ['Brand Launch', 'Starter', 'Growth', 'Business Pro'];
+const TIER_ORDER = ['Launch', 'Starter', 'Growth', 'Business Pro'];
 
 function scoreAnswers(answers) {
   const totals = {};

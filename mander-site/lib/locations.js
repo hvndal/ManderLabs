@@ -96,11 +96,11 @@ export const REGIONS = [
         faqs: [
           {
             q: 'Do you build sites for early-stage or academic-adjacent businesses?',
-            a: 'Yes — that describes a good share of Cambridge inquiries. Brand Launch and Starter are built for exactly this: something credible and fast without the cost of a full agency engagement.',
+            a: 'Yes — that describes a good share of Cambridge inquiries. Launch and Starter are built for exactly this: something credible and fast without the cost of a full agency engagement.',
           },
           {
             q: 'How fast can a Cambridge business get live?',
-            a: 'A single-page Brand Launch site typically ships in about two weeks; a fuller Starter or Growth build runs four to six weeks, mostly paced by how quickly we get your content and feedback back.',
+            a: 'A single-page Launch site typically ships in about two weeks; a fuller Starter or Growth build runs four to six weeks, mostly paced by how quickly we get your content and feedback back.',
           },
         ],
       },
@@ -120,7 +120,7 @@ export const REGIONS = [
           },
           {
             q: 'Is a Worcester business too small for a custom build?',
-            a: 'No — Brand Launch starts at $249 specifically for businesses that need a real, professional presence without agency-level spend.',
+            a: 'No — Launch starts at $299 specifically for businesses that need a real, professional presence without agency-level spend.',
           },
         ],
       },
@@ -129,14 +129,14 @@ export const REGIONS = [
         name: 'Springfield',
         h1: 'Website design in Springfield, Massachusetts.',
         metaDescription:
-          'Website design for Springfield, MA and the Pioneer Valley — manufacturing, logistics, healthcare and trades. Fixed-price builds from $249.',
+          'Website design for Springfield, MA and the Pioneer Valley — manufacturing, logistics, healthcare and trades. Fixed-price builds from $299.',
         intro:
           "Springfield and the wider Pioneer Valley run on manufacturing, logistics and healthcare more than the Boston-centric image of Massachusetts suggests, and a lot of those businesses have never needed a marketing-forward website to get work — referrals and reputation have carried them. That's changing as procurement and hiring move online. We build sites that do the job of a credible first impression without pretending to be something the business isn't.",
         industries: ['Manufacturing & industrial', 'Logistics & distribution', 'Healthcare', 'Trades & contractors'],
         faqs: [
           {
             q: "We've never had a real website — where do we start?",
-            a: 'Brand Launch or Starter, most likely — take the 60-second fit quiz or just get in touch and we\'ll recommend a starting point based on what the business actually needs.',
+            a: 'Launch or Starter, most likely — take the 60-second fit quiz or just get in touch and we\'ll recommend a starting point based on what the business actually needs.',
           },
           {
             q: 'Do you handle Google Business Profile and local listings?',
@@ -155,8 +155,8 @@ export const REGIONS = [
         industries: ['Law & professional practices', 'Medical & dental practices', 'Real estate', 'Boutique retail'],
         faqs: [
           {
-            q: 'Is a $249 site too basic for a professional practice?',
-            a: "Brand Launch suits a new venture; most Newton practices land in Starter or Growth, where copywriting support and fuller SEO are included. We'll recommend the right tier rather than the cheapest one.",
+            q: 'Is a $299 site too basic for a professional practice?',
+            a: "Launch suits a new venture; most Newton practices land in Starter or Growth, where copywriting support and fuller SEO are included. We'll recommend the right tier rather than the cheapest one.",
           },
           {
             q: 'Can you match an existing brand identity?',
@@ -180,7 +180,7 @@ export const REGIONS = [
           },
           {
             q: 'Can you build something for a UMass Lowell-adjacent startup?',
-            a: 'Yes — Brand Launch and Starter both suit an early-stage build well, and Growth is there once you need real SEO and integrations.',
+            a: 'Yes — Launch and Starter both suit an early-stage build well, and Growth is there once you need real SEO and integrations.',
           },
         ],
       },
@@ -231,12 +231,12 @@ export const REGIONS = [
         metaDescription:
           'Website design for Brockton, MA — healthcare, trades and a diverse small-business community. Real, professional sites, honestly priced.',
         intro:
-          "Brockton's small-business economy is more working-class and healthcare-driven than its wealthier neighbors, with a large Cape Verdean-American and Haitian-American business community and a manufacturing history — it was once the world's largest shoe-manufacturing city — that's given way to healthcare, trades and logistics. Budget matters more here than in markets like Newton nearby, which is the actual reason Brand Launch and Starter exist: a real, professional site at a price that doesn't assume a different city's margins.",
+          "Brockton's small-business economy is more working-class and healthcare-driven than its wealthier neighbors, with a large Cape Verdean-American and Haitian-American business community and a manufacturing history — it was once the world's largest shoe-manufacturing city — that's given way to healthcare, trades and logistics. Budget matters more here than in markets like Newton nearby, which is the actual reason Launch and Starter exist: a real, professional site at a price that doesn't assume a different city's margins.",
         industries: ['Healthcare', 'Trades & contractors', 'Cape Verdean & Haitian-owned businesses', 'Logistics & distribution'],
         faqs: [
           {
             q: 'Is there a genuinely affordable option, not just a cheap-looking one?',
-            a: "That's specifically what Brand Launch is — $249 for a single-page site that looks considered, not like a template. Most Brockton inquiries land in Brand Launch or Starter.",
+            a: "That's specifically what Launch is — $299 for a single-page site that looks considered, not like a template. Most Brockton inquiries land in Launch or Starter.",
           },
           {
             q: 'Do you work with Cape Verdean or Haitian Creole-speaking business owners?',

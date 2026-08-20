@@ -20,6 +20,7 @@ import TeamCard from '@/components/TeamCard';
 import ProcessTimeline from '@/components/ProcessTimeline';
 import Testimonials from '@/components/Testimonials';
 import PricingInteractive from '@/components/PricingInteractive';
+import AppPricing from '@/components/AppPricing';
 import Faq from '@/components/Faq';
 import ContactForm from '@/components/ContactForm';
 import JsonLd from '@/components/JsonLd';
@@ -355,6 +356,12 @@ export default function HomePage() {
 
         <Reveal delay={80} className="mt-12">
           <PricingInteractive tiers={TIERS} />
+        </Reveal>
+
+        {/* Apps, folded shut — stated, priced, and out of the way so the
+            website tiers above stay the decision on this page. */}
+        <Reveal delay={120} className="mt-6">
+          <AppPricing />
         </Reveal>
 
         <Reveal delay={140}>

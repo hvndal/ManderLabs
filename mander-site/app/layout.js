@@ -52,7 +52,7 @@ export const metadata = {
     template: '%s | MANDER',
   },
   description:
-    'Remote website design for small business across the U.S. and Canada. Fixed-price custom builds from $249, plus SEO, local search and ongoing care. 20% Community Rate available.',
+    'Remote website design for small business across the U.S. and Canada. Fixed-price custom builds from $299, plus SEO, local search and ongoing care. 20% Community Rate available.',
   // Keywords carry almost no ranking weight now, but they cost nothing and a
   // few engines still read them. The real work is done by the description,
   // headings and JSON-LD service area. Weighted toward remote/nationwide
@@ -69,7 +69,7 @@ export const metadata = {
     'local SEO for small business',
     'Google Business Profile optimization',
     'website redesign small business',
-    'website design from $249',
+    'website design from $299',
     'veteran owned business discount website',
     'nonprofit and small business website discount',
   ],
@@ -98,7 +98,7 @@ export const metadata = {
   openGraph: {
     title: 'MANDER | Website Design for Small Business — U.S. & Canada',
     description:
-      'Remote website design, development and SEO for small and mid-sized businesses across the U.S. and Canada. Fixed-price builds from $249.',
+      'Remote website design, development and SEO for small and mid-sized businesses across the U.S. and Canada. Fixed-price builds from $299.',
     type: 'website',
     url: SITE_URL,
     siteName: 'MANDER',
@@ -109,7 +109,7 @@ export const metadata = {
     card: 'summary_large_image',
     title: 'MANDER | Website Design for Small Business — U.S. & Canada',
     description:
-      'Remote website design and SEO for small business across the U.S. and Canada. Fixed-price builds from $249.',
+      'Remote website design and SEO for small business across the U.S. and Canada. Fixed-price builds from $299.',
     images: [OG_IMAGE.url],
   },
 };

@@ -4,6 +4,7 @@ import Reveal from '@/components/Reveal';
 import Statement from '@/components/Statement';
 import Icon from '@/components/Icon';
 import PricingInteractive from '@/components/PricingInteractive';
+import AppPricing from '@/components/AppPricing';
 import GridField from '@/components/GridField';
 import Faq from '@/components/Faq';
 import ContactForm from '@/components/ContactForm';
@@ -15,9 +16,9 @@ import {
 import { TIERS, CARE_PLAN, FAQS, BRAND } from '@/lib/content';
 import { faqSchema, OG_IMAGE } from '@/lib/seo';
 
-const TITLE = 'Website Design Pricing — Plans from $249';
+const TITLE = 'Website Design Pricing — Plans from $299';
 const DESCRIPTION =
-  'Plain, one-time website design pricing for small and mid-sized businesses across Canada and the U.S. Four tiers from $249, plus an optional Care Plan. No hidden fees.';
+  'Plain, one-time website design pricing for small and mid-sized businesses across Canada and the U.S. Four tiers from $299, Android app builds from $2,999, plus an optional Care Plan. No hidden fees.';
 
 export const metadata = {
   title: TITLE,
@@ -40,17 +41,23 @@ export const metadata = {
   },
 };
 
+// Ordered so the rows that separate Starter from Growth — local search,
+// analytics, integrations — sit in the middle of the table where the eye
+// lands, rather than buried under a run of rows every tier ticks.
 const COMPARISON = [
-  { feature: 'Pages', values: ['1', 'Up to 5', '10+ / store', 'Unlimited'] },
+  { feature: 'Pages', values: ['1', 'Up to 5', 'Up to 10', 'Unlimited'] },
+  { feature: 'Delivery', values: ['~2 weeks', '3–4 weeks', '4–6 weeks', '6–10 weeks'] },
+  { feature: 'Enquiry forms', values: ['Contact only', true, true, true] },
   { feature: 'Copywriting support', values: [false, true, true, true] },
-  { feature: 'On-page SEO', values: ['Basic', 'All pages', 'Advanced', 'Full strategy'] },
-  { feature: 'Local search / GBP', values: [false, false, true, true] },
-  { feature: 'Custom motion', values: [false, false, true, true] },
-  { feature: 'CRM / booking integration', values: [false, false, true, true] },
-  { feature: 'E-commerce', values: [false, false, true, true] },
+  { feature: 'On-page SEO', values: ['Basic', 'Basic', 'Advanced', 'Full strategy'] },
+  { feature: 'Local SEO + Google Business Profile', values: [false, false, true, true] },
+  { feature: 'Analytics + Search Console', values: [false, false, true, true] },
+  { feature: 'Booking / CRM integration', values: [false, false, true, true] },
+  { feature: 'E-commerce', values: [false, false, false, true] },
   { feature: 'API integrations', values: [false, false, false, true] },
-  { feature: 'Revision rounds', values: ['1', '2', 'Unlimited', 'Unlimited'] },
-  { feature: 'Dedicated manager', values: [false, false, false, true] },
+  { feature: 'Custom workflows', values: [false, false, false, true] },
+  { feature: 'Revision rounds', values: ['1', '2', '3', 'Until sign-off'] },
+  { feature: 'Priority support', values: [false, false, false, true] },
 ];
 
 function Cell({ value }) {
@@ -92,6 +99,12 @@ export default function PricingPage() {
         <div className="container-max py-stack-md">
           <Reveal>
             <PricingInteractive tiers={TIERS} />
+          </Reveal>
+          {/* Apps sit below the websites, folded shut, because the page is
+              read top-down and the $899 Growth plan has to be the decision
+              that gets made first. */}
+          <Reveal delay={60} className="mt-6">
+            <AppPricing />
           </Reveal>
           <Reveal delay={100}>
             {/* Same quiet door as the home page's pricing block */}

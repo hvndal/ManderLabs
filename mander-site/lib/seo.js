@@ -11,7 +11,7 @@
 // to flip with it.
 export const SITE_URL = 'https://www.mander.tech';
 
-import { BRAND, SERVICES, TIERS, TEAM } from './content';
+import { BRAND, SERVICES, TIERS, APP_TIERS, TEAM } from './content';
 
 // Shared social-card image. Next.js does NOT deep-merge `openGraph`/`twitter`
 // between a layout and a page — if a page defines its own `openGraph` object
@@ -80,7 +80,7 @@ export const organizationSchema = {
   '@id': `${SITE_URL}/#organization`,
   name: BRAND.name,
   description:
-    'Remote website design, development and SEO for small and mid-sized businesses across the United States and Canada. Fixed-price custom builds from $249.',
+    'Remote website design, development and SEO for small and mid-sized businesses across the United States and Canada. Fixed-price custom builds from $299.',
   url: SITE_URL,
   email: BRAND.email,
   slogan: BRAND.tagline,
@@ -109,9 +109,9 @@ export const organizationSchema = {
     name: m.name,
     jobTitle: m.role,
   })),
-  priceRange: '$249–$1499+',
+  priceRange: '$299–$9999+',
   currenciesAccepted: 'USD, CAD',
-  makesOffer: TIERS.map((tier) => ({
+  makesOffer: [...TIERS, ...APP_TIERS].map((tier) => ({
     '@type': 'Offer',
     name: tier.name,
     price: String(tier.from),

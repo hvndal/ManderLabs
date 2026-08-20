@@ -73,6 +73,13 @@ const PATHS = {
       <path d="M19.5 18.5v.5a2 2 0 0 1-2 2H13" />
     </>
   ),
+  mobile: (
+    <>
+      <rect x="6" y="2.5" width="12" height="19" rx="2" />
+      <path d="M10.5 5.5h3" />
+      <path d="M10.75 18.5h2.5" />
+    </>
+  ),
   check: <path d="M4.5 12.5l5 5 10-11" />,
   trending: (
     <>
