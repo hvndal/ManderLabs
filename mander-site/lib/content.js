@@ -18,6 +18,10 @@ export const BRAND = {
   // looks to tie the site and the profile to the same business.
   instagram: 'https://www.instagram.com/mander.tech/',
   instagramHandle: '@mander.tech',
+  // Google Business Profile. The share link is what Google hands you; the
+  // knowledge-graph id inside it (/g/11zdgzpwn5) is the stable part, and it
+  // is what ties this site to that listing in the eyes of the crawler.
+  googleBusiness: 'https://www.google.com/search?kgmid=/g/11zdgzpwn5',
   // Masthead furniture, set centred in caps under the mark. Kept short and
   // free of hyphenated compounds on purpose — the old line ("small &
   // mid-sized businesses across Canada and the U.S.") broke after "mid-" on
