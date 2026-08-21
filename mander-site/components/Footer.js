@@ -3,7 +3,7 @@ import Logo from './Logo';
 import GridField from './GridField';
 import AperturedType from './AperturedType';
 import { CommunityRateFooterLink } from './CommunityRate';
-import { CookiePreferencesLink } from './CookieConsent';
+import { CookiePreferencesLink } from './CookieHub';
 import { BRAND, NAV_LINKS } from '@/lib/content';
 import { LEGAL_DOCS } from '@/lib/legal';
 

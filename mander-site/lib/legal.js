@@ -9,13 +9,14 @@
 //
 // WRITTEN AGAINST WHAT THE SITE ACTUALLY DOES. The privacy policy in
 // particular was derived from an audit of the codebase, not a template:
-// three Web3Forms-backed forms, Vercel hosting, no on-site payments, and one
+// three Web3Forms-backed forms, Vercel hosting, no on-site payments, a
+// consent banner served by CookieHub (components/CookieHub.js), and one
 // analytics tool (Google Analytics 4, see components/Analytics.js) that only
-// ever runs if a visitor actively accepts the cookie banner. Do not add
-// claims here for services MANDER doesn't genuinely use — that's the one
-// change that turns this file from a protection into a liability. If GA is
-// ever removed from the codebase, this file has to lose every sentence
-// about it in the same change, not some time after.
+// ever runs if a visitor accepts the analytics category in that banner.
+// Do not add claims here for services MANDER doesn't genuinely use — that
+// is the one change that turns this file from a protection into a
+// liability. If GA is ever removed from the codebase, this file has to lose
+// every sentence about it in the same change, not some time after.
 
 import { BRAND } from './content';
 
@@ -74,7 +75,8 @@ export const LEGAL_DOCS = [
         p: [
           'We use Google Analytics 4 to see which pages are useful and which aren’t. It is off by default. It only starts if you click "Accept" on the cookie banner that appears on your first visit, and it stops immediately if you click "Decline" or simply close the tab without answering. If you don’t see a banner at all, it means we aren’t currently running analytics on this site.',
           'Accepting sets two cookies belonging to Google — typically named _ga and _ga_ followed by a container ID — used only to tell repeat visits apart and measure how people move through the pages. We have IP anonymisation switched on, and we do not enable Google Signals or any ad-personalisation feature, so this data is never linked to an advertising profile or used to target you anywhere else. We do not run any other analytics tool, advertising pixel, or session-recording script.',
-          'You can change your mind at any time from the "Cookie preferences" link in the footer of every page, which reopens the banner. Declining after previously accepting stops new data being collected straight away; it does not retroactively delete what was already recorded — for that, use your Google account’s own activity controls, or email us and we will request the deletion on your behalf.',
+          'You can change your mind at any time from the "Cookie preferences" link in the footer of every page, which reopens the consent dialog. Declining after previously accepting stops new data being collected straight away; it does not retroactively delete what was already recorded — for that, use your Google account’s own activity controls, or email us and we will request the deletion on your behalf.',
+          'The banner itself is run by CookieHub, a consent management platform. It sets its own cookie to remember what you chose and keeps a record of that choice, which is what lets us prove consent was actually given rather than assumed. That cookie is strictly necessary for the banner to work and is set regardless of what you decide — including when you decline everything else.',
           'Google’s own privacy policy, at policies.google.com/privacy, covers how Google processes this data once it reaches them. That is between you and Google; we only ever see the aggregate reports GA4 produces, not individual visitor identities.',
         ],
       },
@@ -98,7 +100,8 @@ export const LEGAL_DOCS = [
           'Web3Forms — processes our form submissions and relays them to our email inbox. Anything you type into a form on this site passes through this provider.',
           'Vercel — hosts the website and processes standard server request data as described above.',
           'Our email provider — receives and stores the message that results from your submission.',
-          'Google — only if you accept the cookie banner. Google Analytics 4 then receives the pages you visit and standard technical data about your browser, under the terms described in Cookies and analytics above.',
+          'CookieHub — runs the consent banner, and records which categories you allowed or declined so that decision can be honoured on your next visit and evidenced if ever questioned.',
+          'Google — only if you accept the analytics category. Google Analytics 4 then receives the pages you visit and standard technical data about your browser, under the terms described in Cookies and analytics above.',
         ],
         // Deliberately no payment processor named: none is integrated. See the
         // Terms for how payment actually works today.

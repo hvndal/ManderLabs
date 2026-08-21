@@ -5,7 +5,7 @@ import Footer from '@/components/Footer';
 import Grain from '@/components/Grain';
 import JsonLd from '@/components/JsonLd';
 import Analytics from '@/components/Analytics';
-import CookieConsent from '@/components/CookieConsent';
+import CookieHub from '@/components/CookieHub';
 import { CommunityRateProvider } from '@/components/CommunityRate';
 import {
   SITE_URL,
@@ -147,12 +147,14 @@ export default function RootLayout({ children }) {
           <main id="main">{children}</main>
           <Footer />
         </CommunityRateProvider>
-        {/* Both render nothing at all unless NEXT_PUBLIC_GA_MEASUREMENT_ID is
-            set — see lib/analytics.js. Outside the provider tree on purpose:
-            neither has any relationship to the Community Rate drawer, and
-            nesting them there would imply one. */}
+        {/* CookieHub renders the consent banner and decides whether Analytics
+            is allowed to load; Analytics does nothing until it says yes.
+            Outside the provider tree on purpose: neither has any relationship
+            to the Community Rate drawer, and nesting them there would imply
+            one. Order is presentational only — the two communicate by event,
+            not by position. */}
         <Analytics />
-        <CookieConsent />
+        <CookieHub />
       </body>
     </html>
   );

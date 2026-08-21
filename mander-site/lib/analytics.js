@@ -1,56 +1,57 @@
-// --- Analytics ---------------------------------------------------------
-// Nothing in this file's orbit runs until NEXT_PUBLIC_GA_MEASUREMENT_ID is
-// set in the environment. Until that variable exists, GA_MEASUREMENT_ID is
-// null, ANALYTICS_ENABLED is false, and CookieConsent, Analytics and the
-// footer's cookie-preferences link all render nothing — the site behaves
-// exactly as it did before this file existed. Add the real measurement ID
-// in Vercel's project settings and redeploy; nothing else needs to change.
+// --- Analytics & consent ---------------------------------------------------
+// Consent is owned by CookieHub, a third-party consent management platform.
+// It renders the banner, stores the decision, keeps the audit log a GDPR
+// request would ask for, and — the part that matters here — tells us whether
+// the visitor allowed the "analytics" category. Nothing in this codebase
+// stores a consent decision any more; CookieHub is the single source of truth,
+// because two systems each holding half an answer is how a site ends up
+// tracking someone who said no.
 //
-// This is a real Google Analytics 4 property or it is nothing — there is no
-// placeholder ID here to make the feature "look done". A fake ID would fire
-// requests that silently vanish, which is worse than not tracking at all: it
-// would look like it works.
-export const GA_MEASUREMENT_ID = process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID || null;
+// Both IDs below are publishable by design and already visible in the page
+// source of any site using them — the CookieHub account ID is in the script
+// URL, the GA4 measurement ID is in every gtag request. They are committed
+// for the same reason WEB3FORMS_KEY is (see lib/forms.js): `.env*.local` is
+// gitignored, so a value left only there reaches localhost and never reaches
+// a deploy. The env vars still win when set, so either can be rotated from
+// the Vercel dashboard without a code change.
+export const COOKIEHUB_ID = process.env.NEXT_PUBLIC_COOKIEHUB_ID || 'e3274c1f';
+export const GA_MEASUREMENT_ID =
+  process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID || 'G-TNPMWPQX2W';
+
 export const ANALYTICS_ENABLED = Boolean(GA_MEASUREMENT_ID);
+export const CONSENT_ENABLED = Boolean(COOKIEHUB_ID);
 
-const STORAGE_KEY = 'mander-consent';
+// The CookieHub category that governs Google Analytics. Their default
+// taxonomy is necessary / preferences / analytics / marketing; if that
+// category is ever renamed in the CookieHub dashboard, this string has to
+// change with it or consent will never register and GA will never load.
+export const ANALYTICS_CATEGORY = 'analytics';
 
-// Dispatched on <body> whenever a visitor accepts or declines, and whenever
-// the decision is reopened for editing. Analytics.js listens for the first;
-// the footer link and CookieConsent both use the second so either can drive
-// the other without a shared parent component holding state.
+// Dispatched whenever CookieHub reports a change. Analytics.js listens for it
+// and is otherwise completely unaware of which consent platform is in use —
+// swapping CookieHub for something else means rewriting one component, not
+// touching the analytics loader.
 export const CONSENT_EVENT = 'mander:consent-change';
-export const OPEN_PREFERENCES_EVENT = 'mander:open-cookie-preferences';
 
-// 'granted' | 'denied' | null — null means no decision has been made yet,
-// which is different from 'denied' and must stay different: the banner only
-// disappears for good once an actual choice has been recorded.
-export function getConsent() {
-  if (typeof window === 'undefined') return null;
-  try {
-    const raw = window.localStorage.getItem(STORAGE_KEY);
-    if (!raw) return null;
-    return JSON.parse(raw)?.status || null;
-  } catch {
-    return null;
-  }
-}
-
-export function setConsent(status) {
+export function publishConsent(status) {
   if (typeof window === 'undefined') return;
-  try {
-    window.localStorage.setItem(
-      STORAGE_KEY,
-      JSON.stringify({ status, decidedAt: new Date().toISOString() })
-    );
-  } catch {
-    // Storage can throw in a locked-down context — Safari private mode at
-    // quota, some in-app browsers. The choice just doesn't persist and the
-    // banner reappears next visit; nothing about the page breaks over it.
-  }
   window.dispatchEvent(new CustomEvent(CONSENT_EVENT, { detail: status }));
 }
 
+/**
+ * Reopen CookieHub's own preferences dialog.
+ *
+ * Guarded rather than assumed: this is a third-party global that an ad
+ * blocker, a network failure, or a misconfigured account can all prevent from
+ * ever existing. Returns false when it isn't there so a caller can decide
+ * what to do instead of throwing inside an onClick handler.
+ */
 export function openCookiePreferences() {
-  window.dispatchEvent(new Event(OPEN_PREFERENCES_EVENT));
+  if (typeof window === 'undefined') return false;
+  const ch = window.cookiehub;
+  if (ch && typeof ch.openSettings === 'function') {
+    ch.openSettings();
+    return true;
+  }
+  return false;
 }

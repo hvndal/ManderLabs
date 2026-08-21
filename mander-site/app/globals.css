@@ -248,3 +248,27 @@
     inset: -15px -6px;
   }
 }
+
+/* --- CookieHub theming -----------------------------------------------------
+   The consent banner is the one piece of third-party UI on the site, and out
+   of the box it arrives in CookieHub's own red (#e42127) — a colour that has
+   nothing to do with this palette and reads exactly like what it is, a widget
+   bolted on from somewhere else. Mapped onto the site's terracotta it reads
+   as part of the page instead.
+
+   !important is load-bearing here rather than lazy: CookieHub writes its
+   palette as inline custom properties on its own root element, and an inline
+   style beats every selector in this file. This is the specific case the
+   keyword exists for.
+
+   Only the tokens are overridden, never their layout or structure — those
+   belong to a vendor who will change them without telling us, and a
+   consent banner that breaks after a vendor update is a compliance problem,
+   not a cosmetic one.
+   --------------------------------------------------------------------------- */
+.ch2 {
+  --ch-primary-color: #a6483a !important;
+  --cookiehub-primary-color: #a6483a !important;
+  --ch-primary-shadow-color: rgba(166, 72, 58, 0.35) !important;
+  --ch-primary-text-color: #ffffff !important;
+}
