@@ -84,6 +84,39 @@ export const SERVICE_AREA = [
  * serves both markets" rather than leaving Google to guess which one it is
  * for. x-default catches everyone else.
  */
+/**
+ * BlogPosting for a journal entry.
+ *
+ * publisher points at the same @id the organisation schema declares, so the
+ * post is attached to the existing business entity rather than introducing a
+ * second, unrelated one — which is what happens when a blog gets bolted on
+ * with its own Organization block and is a common way sites end up with two
+ * competing entities in Google's index.
+ */
+export function articleSchema(post) {
+  const url = `${SITE_URL}/blog/${post.slug}`;
+  return {
+    '@context': 'https://schema.org',
+    '@type': 'BlogPosting',
+    '@id': `${url}#article`,
+    headline: post.title,
+    description: post.description,
+    datePublished: post.date,
+    dateModified: post.date,
+    inLanguage: 'en',
+    url,
+    mainEntityOfPage: { '@type': 'WebPage', '@id': url },
+    image: OG_IMAGE.url,
+    author: {
+      '@type': 'Person',
+      name: 'Herman',
+      jobTitle: 'Founder & Design Lead',
+      url: BRAND.portfolio,
+    },
+    publisher: { '@id': `${SITE_URL}/#organization` },
+  };
+}
+
 export function alternates(path) {
   return {
     canonical: path,

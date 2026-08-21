@@ -17,7 +17,14 @@ export function generateStaticParams() {
 export const dynamicParams = false;
 
 // Section headings double as anchor targets for the contents list.
-const anchor = (h) => h.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '');
+// A heading that opens with a number — '$500 to $900' — yields an id that
+// starts with a digit. That is legal HTML and native fragment jumps honour it,
+// but it is not a valid CSS identifier, so any querySelector('#' + id) throws.
+// Prefixing only that case keeps every other anchor clean and readable.
+const anchor = (h) => {
+  const slug = h.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '');
+  return /^[0-9]/.test(slug) ? `s-${slug}` : slug;
+};
 
 export function generateMetadata({ params }) {
   const doc = getLegalDoc(params.doc);
