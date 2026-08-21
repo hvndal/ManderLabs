@@ -4,6 +4,8 @@ import Nav from '@/components/Nav';
 import Footer from '@/components/Footer';
 import Grain from '@/components/Grain';
 import JsonLd from '@/components/JsonLd';
+import Analytics from '@/components/Analytics';
+import CookieConsent from '@/components/CookieConsent';
 import { CommunityRateProvider } from '@/components/CommunityRate';
 import {
   SITE_URL,
@@ -145,6 +147,12 @@ export default function RootLayout({ children }) {
           <main id="main">{children}</main>
           <Footer />
         </CommunityRateProvider>
+        {/* Both render nothing at all unless NEXT_PUBLIC_GA_MEASUREMENT_ID is
+            set — see lib/analytics.js. Outside the provider tree on purpose:
+            neither has any relationship to the Community Rate drawer, and
+            nesting them there would imply one. */}
+        <Analytics />
+        <CookieConsent />
       </body>
     </html>
   );

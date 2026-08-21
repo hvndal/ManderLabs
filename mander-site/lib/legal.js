@@ -9,15 +9,18 @@
 //
 // WRITTEN AGAINST WHAT THE SITE ACTUALLY DOES. The privacy policy in
 // particular was derived from an audit of the codebase, not a template:
-// three Web3Forms-backed forms, Vercel hosting, and no analytics, cookies,
-// storage, tracking or on-site payments of any kind. Do not add claims here
-// for services MANDER doesn't genuinely use — that's the one change that
-// turns this file from a protection into a liability.
+// three Web3Forms-backed forms, Vercel hosting, no on-site payments, and one
+// analytics tool (Google Analytics 4, see components/Analytics.js) that only
+// ever runs if a visitor actively accepts the cookie banner. Do not add
+// claims here for services MANDER doesn't genuinely use — that's the one
+// change that turns this file from a protection into a liability. If GA is
+// ever removed from the codebase, this file has to lose every sentence
+// about it in the same change, not some time after.
 
 import { BRAND } from './content';
 
 const EMAIL = BRAND.email;
-const UPDATED = '9 August 2026';
+const UPDATED = '21 August 2026';
 
 // Governing law follows where the company originates — the founder works out
 // of Langley, BC. Revisit with a lawyer if MANDER incorporates elsewhere.
@@ -38,14 +41,14 @@ export const LEGAL_DOCS = [
     title: 'Privacy Policy',
     nav: 'Privacy',
     description:
-      'How MANDER collects, uses and protects personal information submitted through this website. No analytics, no cookies, no tracking.',
+      'How MANDER collects, uses and protects personal information — including the analytics we only run if you say yes.',
     lede: 'This policy describes what happens to information you send us through this website. It reflects what the site actually does — not a generic template.',
     sections: [
       {
         h: 'Summary',
         p: [
-          'This website does not use cookies, analytics, advertising pixels, session recording or any other tracking technology. We do not build profiles of visitors, and we do not sell or rent personal information to anyone, ever.',
-          'The only personal information we receive is what you deliberately type into one of our forms or send us by email.',
+          'Most of what you send us is exactly what you typed into a form, and nothing else happens to it beyond replying. The one exception is analytics: we would like to use Google Analytics to see which pages are useful, and it only ever runs if you click Accept on the cookie banner. Decline it, or ignore it, and it never loads — no cookie is set, nothing is sent to Google. If you never see a banner at all, we are not currently running analytics on this site.',
+          'We do not run advertising pixels, session recording, or any tracking beyond that one optional tool. We do not build advertising profiles of visitors, and we do not sell or rent personal information to anyone, ever.',
         ],
       },
       {
@@ -62,15 +65,17 @@ export const LEGAL_DOCS = [
       {
         h: 'Information collected automatically',
         p: [
-          'This site is hosted on Vercel. Like effectively all web hosting, Vercel processes standard technical request data — such as IP address, browser user-agent, requested URL and timestamp — for the purpose of serving the site, security and abuse prevention. We do not add any analytics layer on top of this and we do not use that data to identify or profile individual visitors.',
+          'This site is hosted on Vercel. Like effectively all web hosting, Vercel processes standard technical request data — such as IP address, browser user-agent, requested URL and timestamp — for the purpose of serving the site, security and abuse prevention. We do not use that data to identify or profile individual visitors.',
           'The web fonts used on this site are self-hosted and served from our own domain at build time, so loading a page does not send a request to a font provider. Images are served through our own image pipeline rather than by a third-party host.',
         ],
       },
       {
-        h: 'Cookies and tracking',
+        h: 'Cookies and analytics',
         p: [
-          'We do not set cookies. We do not use local storage or session storage. We do not run Google Analytics or any equivalent, and there are no advertising or social media tracking pixels on this site.',
-          'Because of this, there is no cookie consent banner — there is nothing to consent to. If this ever changes, this policy will be updated before the change goes live.',
+          'We use Google Analytics 4 to see which pages are useful and which aren’t. It is off by default. It only starts if you click "Accept" on the cookie banner that appears on your first visit, and it stops immediately if you click "Decline" or simply close the tab without answering. If you don’t see a banner at all, it means we aren’t currently running analytics on this site.',
+          'Accepting sets two cookies belonging to Google — typically named _ga and _ga_ followed by a container ID — used only to tell repeat visits apart and measure how people move through the pages. We have IP anonymisation switched on, and we do not enable Google Signals or any ad-personalisation feature, so this data is never linked to an advertising profile or used to target you anywhere else. We do not run any other analytics tool, advertising pixel, or session-recording script.',
+          'You can change your mind at any time from the "Cookie preferences" link in the footer of every page, which reopens the banner. Declining after previously accepting stops new data being collected straight away; it does not retroactively delete what was already recorded — for that, use your Google account’s own activity controls, or email us and we will request the deletion on your behalf.',
+          'Google’s own privacy policy, at policies.google.com/privacy, covers how Google processes this data once it reaches them. That is between you and Google; we only ever see the aggregate reports GA4 produces, not individual visitor identities.',
         ],
       },
       {
@@ -93,6 +98,7 @@ export const LEGAL_DOCS = [
           'Web3Forms — processes our form submissions and relays them to our email inbox. Anything you type into a form on this site passes through this provider.',
           'Vercel — hosts the website and processes standard server request data as described above.',
           'Our email provider — receives and stores the message that results from your submission.',
+          'Google — only if you accept the cookie banner. Google Analytics 4 then receives the pages you visit and standard technical data about your browser, under the terms described in Cookies and analytics above.',
         ],
         // Deliberately no payment processor named: none is integrated. See the
         // Terms for how payment actually works today.

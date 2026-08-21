@@ -41,6 +41,15 @@ export default function Masthead({ tagline, mono }) {
   const trackRef = useRef(null);
   const [progress, setProgress] = useState(0);
   const [reducedMotion, setReducedMotion] = useState(false);
+  // The film is 4.1MB. That is fine on the sticky-scroll desktop composition
+  // it was built for, and it is the actual reason a phone on cellular used to
+  // fail mobile-friendliness checks — preload="auto" pulled the whole file
+  // before anything else on the page finished. Below the md breakpoint the
+  // stencil holds at rest against the poster image instead: same opening
+  // moment, no 4MB fetch. Data Saver mode gets the same treatment regardless
+  // of screen size, because it is the visitor stating the same preference
+  // explicitly.
+  const [skipFilm, setSkipFilm] = useState(false);
 
   useEffect(() => {
     const mq = window.matchMedia('(prefers-reduced-motion: reduce)');
@@ -48,6 +57,15 @@ export default function Masthead({ tagline, mono }) {
     set();
     mq.addEventListener('change', set);
     return () => mq.removeEventListener('change', set);
+  }, []);
+
+  useEffect(() => {
+    const mqMobile = window.matchMedia('(max-width: 767px)');
+    const saveData = !!navigator.connection?.saveData;
+    const decide = () => setSkipFilm(mqMobile.matches || saveData);
+    decide();
+    mqMobile.addEventListener('change', decide);
+    return () => mqMobile.removeEventListener('change', decide);
   }, []);
 
   useEffect(() => {
@@ -103,19 +121,31 @@ export default function Masthead({ tagline, mono }) {
             play inline; without playsInline Safari opens it fullscreen. The
             translate3d nudge forces GPU compositing so the video doesn't tear
             or freeze against the sticky parent while scrolling on iOS. */}
-        <video
-          className="absolute inset-0 h-full w-full object-cover [transform:translate3d(0,0,0)]"
-          autoPlay
-          muted
-          loop
-          playsInline
-          webkit-playsinline="true"
-          preload="auto"
-          poster="/hero-poster.jpg"
-          disablePictureInPicture
-        >
-          <source src="/videos/hero.mp4" type="video/mp4" />
-        </video>
+        {skipFilm ? (
+          /* eslint-disable-next-line @next/next/no-img-element -- fixed
+             full-bleed background behind an SVG mask, not content Image
+             needs to size or lazy-load. */
+          <img
+            src="/hero-poster.jpg"
+            alt=""
+            aria-hidden="true"
+            className="absolute inset-0 h-full w-full object-cover"
+          />
+        ) : (
+          <video
+            className="absolute inset-0 h-full w-full object-cover [transform:translate3d(0,0,0)]"
+            autoPlay
+            muted
+            loop
+            playsInline
+            webkit-playsinline="true"
+            preload="metadata"
+            poster="/hero-poster.jpg"
+            disablePictureInPicture
+          >
+            <source src="/videos/hero.mp4" type="video/mp4" />
+          </video>
+        )}
 
         {/* Cream stencil with MANDER knocked out of it.
             Two cuts, because one viewBox cannot serve both orientations under

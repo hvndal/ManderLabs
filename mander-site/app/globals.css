@@ -63,6 +63,13 @@
   .btn-on-dark {
     @apply label-caps inline-flex items-center justify-center gap-2 bg-paper px-8 py-4 text-ink transition-colors duration-300 ease-premium hover:bg-accent hover:text-white;
   }
+  /* btn-outline's pair for an ink background — this exact border/hover
+     combination was already duplicated inline across three final-CTA
+     sections (careers, pricing, blog) before it needed a fourth home in the
+     cookie banner. Promoted here rather than copied a fourth time. */
+  .btn-outline-dark {
+    @apply label-caps inline-flex items-center justify-center gap-2 border border-paper/40 px-8 py-4 text-paper transition-colors duration-300 ease-premium hover:border-paper;
+  }
   .btn-sm {
     @apply label-caps inline-flex items-center justify-center gap-2 bg-ink px-5 py-2.5 text-paper transition-colors duration-300 ease-premium hover:bg-accent;
   }

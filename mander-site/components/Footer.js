@@ -3,13 +3,15 @@ import Logo from './Logo';
 import GridField from './GridField';
 import AperturedType from './AperturedType';
 import { CommunityRateFooterLink } from './CommunityRate';
+import { CookiePreferencesLink } from './CookieConsent';
 import { BRAND, NAV_LINKS } from '@/lib/content';
 import { LEGAL_DOCS } from '@/lib/legal';
 
 // Derived from the policy data rather than hand-listed, so a new policy is
 // linked here automatically. These used to be three href="#" placeholders —
-// including a "Cookies" link, which was doubly wrong: the site sets no
-// cookies, so the honest answer lives in the privacy policy instead.
+// including a "Cookies" link, pointing nowhere. It has a real destination now:
+// CookiePreferencesLink reopens the consent banner, and renders nothing at
+// all on a build where analytics was never configured — see lib/analytics.js.
 const LEGAL = LEGAL_DOCS.map((d) => ({ label: d.nav, href: `/legal/${d.slug}` }));
 
 export default function Footer() {
@@ -94,6 +96,9 @@ export default function Footer() {
               </li>
               <li className="pt-1">
                 <CommunityRateFooterLink className="text-left text-paper/60 underline decoration-paper/30 underline-offset-4 transition-colors hover:text-paper hover:decoration-paper" />
+              </li>
+              <li className="pt-1">
+                <CookiePreferencesLink className="text-left text-paper/60 underline decoration-paper/30 underline-offset-4 transition-colors hover:text-paper hover:decoration-paper" />
               </li>
               <li className="pt-1">
                 <a
