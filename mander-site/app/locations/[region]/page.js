@@ -9,7 +9,7 @@ import JsonLd from '@/components/JsonLd';
 import Icon from '@/components/Icon';
 import { REGIONS, getRegion } from '@/lib/locations';
 import { SERVICES, PROCESS, WORK, BRAND } from '@/lib/content';
-import { breadcrumbSchema, locationServiceSchema, faqSchema, OG_IMAGE } from '@/lib/seo';
+import { breadcrumbSchema, locationServiceSchema, faqSchema, OG_IMAGE, alternates } from '@/lib/seo';
 
 // Static params only — one entry per region in lib/locations.js. Adding a
 // state or province there is what adds a route here; this file doesn't
@@ -30,7 +30,7 @@ export function generateMetadata({ params }) {
   return {
     title,
     description: region.metaDescription,
-    alternates: { canonical: path },
+    alternates: alternates(path),
     openGraph: {
       title,
       description: region.metaDescription,

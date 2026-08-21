@@ -14,18 +14,16 @@ import {
   CommunityRateNote,
 } from '@/components/CommunityRate';
 import { TIERS, CARE_PLAN, CARE_PLAN_PRICE, FAQS, BRAND } from '@/lib/content';
-import { faqSchema, OG_IMAGE } from '@/lib/seo';
+import { faqSchema, OG_IMAGE, alternates } from '@/lib/seo';
 
 const TITLE = 'Website Design Pricing — Plans from $299';
 const DESCRIPTION =
-  'Plain, one-time website design pricing for small and mid-sized businesses across Canada and the U.S. Four tiers from $299, Android app builds from $2,999, plus an optional Care Plan. No hidden fees.';
+  'One-time website design pricing for small business in Canada and the U.S. Four plans from $299, Android apps from $2,999. No hidden fees.';
 
 export const metadata = {
   title: TITLE,
   description: DESCRIPTION,
-  alternates: {
-    canonical: '/pricing',
-  },
+  alternates: alternates('/pricing'),
   openGraph: {
     title: TITLE,
     description: DESCRIPTION,

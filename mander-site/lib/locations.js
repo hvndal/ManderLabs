@@ -69,7 +69,7 @@ export const REGIONS = [
         name: 'Boston',
         h1: 'Website design in Boston, Massachusetts.',
         metaDescription:
-          'Fixed-price website design and local SEO for Boston small businesses — professional services, healthcare and hospitality. Remote delivery, no agency overhead.',
+          'Fixed-price website design and local SEO for Boston small businesses — professional services, healthcare and hospitality. Remote, no agency overhead.',
         intro:
           "Boston's small-business market sits next to some of the most competitive professional-services and healthcare institutions in the country, which raises the bar for what a credible small-business website has to look like — a generic template reads as amateur fast in a city like this. We build sites that hold their own visually while staying fixed-price, because the usual alternative in Boston is an agency quote with a lot more overhead attached to it.",
         industries: ['Professional services & law', 'Healthcare & wellness practices', 'Higher-ed-adjacent businesses', 'Hospitality'],

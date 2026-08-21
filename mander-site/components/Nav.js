@@ -107,7 +107,7 @@ export default function Nav() {
           aria-expanded={open}
           aria-controls="mobile-menu"
           aria-label={open ? 'Close menu' : 'Open menu'}
-          className="-mr-2 p-2 text-ink md:hidden"
+          className="-mr-2.5 p-2.5 text-ink md:hidden"
         >
           <Icon name={open ? 'close' : 'menu'} className="h-6 w-6" />
         </button>

@@ -6,16 +6,16 @@ import JsonLd from '@/components/JsonLd';
 import Icon from '@/components/Icon';
 import { REGIONS } from '@/lib/locations';
 import { BRAND } from '@/lib/content';
-import { breadcrumbSchema, OG_IMAGE } from '@/lib/seo';
+import { breadcrumbSchema, OG_IMAGE, alternates } from '@/lib/seo';
 
 const TITLE = 'Locations — Website Design Across the U.S. & Canada';
 const DESCRIPTION =
-  'MANDER builds websites for small and mid-sized businesses across the United States and Canada, remotely. Featured markets: Massachusetts, Rhode Island and British Columbia.';
+  'Remote website design across the U.S. and Canada. Featured markets: Massachusetts, Rhode Island and British Columbia.';
 
 export const metadata = {
   title: TITLE,
   description: DESCRIPTION,
-  alternates: { canonical: '/locations' },
+  alternates: alternates('/locations'),
   openGraph: {
     title: TITLE,
     description: DESCRIPTION,

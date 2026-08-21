@@ -36,12 +36,10 @@ import {
   TEAM,
   BRAND,
 } from '@/lib/content';
-import { faqSchema } from '@/lib/seo';
+import { faqSchema, alternates } from '@/lib/seo';
 
 export const metadata = {
-  alternates: {
-    canonical: '/',
-  },
+  alternates: alternates('/'),
 };
 
 export default function HomePage() {

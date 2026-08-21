@@ -74,6 +74,27 @@ export const SERVICE_AREA = [
   ...CA_PROVINCES.map((name) => ({ '@type': 'State', name })),
 ];
 
+/**
+ * Canonical plus hreflang for a page.
+ *
+ * The site is English-only, so the usual reason for hreflang — separate
+ * translations — does not apply. It still earns its place here for the other
+ * reason: MANDER sells into two countries off one set of pages, and en-US and
+ * en-CA both resolving to the same URL is the correct way to say "this page
+ * serves both markets" rather than leaving Google to guess which one it is
+ * for. x-default catches everyone else.
+ */
+export function alternates(path) {
+  return {
+    canonical: path,
+    languages: {
+      'en-US': path,
+      'en-CA': path,
+      'x-default': path,
+    },
+  };
+}
+
 export const organizationSchema = {
   '@context': 'https://schema.org',
   '@type': 'ProfessionalService',
@@ -85,7 +106,10 @@ export const organizationSchema = {
   email: BRAND.email,
   slogan: BRAND.tagline,
   knowsLanguage: ['en'],
-  sameAs: [BRAND.portfolio],
+  // sameAs is how Google confirms that this site, that Instagram account and
+  // the business behind them are one entity. Both entries have to be profiles
+  // that actually resolve, or the signal is worth less than nothing.
+  sameAs: [BRAND.instagram, BRAND.portfolio],
   // Remote-first: the team works from Langley BC and Maynard MA, but the
   // service is delivered online everywhere in both countries.
   areaServed: SERVICE_AREA,

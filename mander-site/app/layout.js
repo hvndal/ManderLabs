@@ -11,6 +11,7 @@ import {
   organizationSchema,
   websiteSchema,
   serviceSchemas,
+  alternates,
 } from '@/lib/seo';
 
 // Both are variable fonts — omitting `weight` pulls the full axis, which is
@@ -52,7 +53,7 @@ export const metadata = {
     template: '%s | MANDER',
   },
   description:
-    'Remote website design for small business across the U.S. and Canada. Fixed-price custom builds from $299, plus SEO, local search and ongoing care. 20% Community Rate available.',
+    'Remote website design for small business across the U.S. and Canada. Fixed-price builds from $299, with local SEO and ongoing care.',
   // Keywords carry almost no ranking weight now, but they cost nothing and a
   // few engines still read them. The real work is done by the description,
   // headings and JSON-LD service area. Weighted toward remote/nationwide
@@ -73,9 +74,7 @@ export const metadata = {
     'veteran owned business discount website',
     'nonprofit and small business website discount',
   ],
-  alternates: {
-    canonical: '/',
-  },
+  alternates: alternates('/'),
   category: 'Web Design',
   applicationName: 'MANDER',
   authors: [{ name: 'MANDER', url: SITE_URL }],

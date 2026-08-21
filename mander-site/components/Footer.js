@@ -67,6 +67,16 @@ export default function Footer() {
               </li>
               <li className="text-paper/50">Mon–Fri, 9–5 PT</li>
               <li className="pt-1">
+                <a
+                  href={BRAND.instagram}
+                  target="_blank"
+                  rel="noreferrer noopener"
+                  className="text-paper/60 underline decoration-paper/30 underline-offset-4 transition-colors hover:text-paper hover:decoration-paper"
+                >
+                  Instagram {BRAND.instagramHandle} ↗
+                </a>
+              </li>
+              <li className="pt-1">
                 <Link
                   href="/careers"
                   className="text-paper/60 underline decoration-paper/30 underline-offset-4 transition-colors hover:text-paper hover:decoration-paper"

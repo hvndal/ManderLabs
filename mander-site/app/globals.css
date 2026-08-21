@@ -204,3 +204,40 @@
     animation: none;
   }
 }
+
+/* --- Mobile legibility floor ----------------------------------------------
+   The small-caps labels are a deliberate device and they earn their keep on a
+   desktop, but the set runs 9.5–11px and on a phone that crosses from "quiet"
+   into "squint". It is also precisely what a mobile-usability audit reports as
+   text too small to read: 95 rendered elements on the home page alone sat
+   under the 12px floor those checks use.
+
+   Raised only below the md breakpoint, so the desktop typography is untouched.
+   Tracking eases back as the size goes up — 0.18em was tuned for 11px, and
+   keeping it at 12px would push labels like "REVISIONS" out of a three-column
+   card on a 375px screen.
+
+   These sit outside @layer on purpose: Tailwind's utilities (including the
+   arbitrary text-[10px] values these override) are emitted in the utilities
+   layer above, so a plain rule here is what wins without needing !important.
+   --------------------------------------------------------------------------- */
+@media (max-width: 767px) {
+  .label-caps,
+  .eyebrow,
+  [class~="text-[10px]"],
+  [class~="text-[11px]"],
+  [class~="text-[9.5px]"] {
+    font-size: 0.75rem;
+    letter-spacing: 0.13em;
+  }
+
+  /* Text links set in the label face are 14–16px tall, which is legible but
+     well under a 44px touch target. Rather than pad them and disturb every
+     layout they sit in, the hit area is extended with a pseudo-element — the
+     link looks identical and the thumb gets the full target. */
+  .link-underline::after {
+    content: '';
+    position: absolute;
+    inset: -15px -6px;
+  }
+}

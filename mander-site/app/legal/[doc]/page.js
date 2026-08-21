@@ -6,7 +6,7 @@ import Breadcrumbs from '@/components/Breadcrumbs';
 import JsonLd from '@/components/JsonLd';
 import { LEGAL_DOCS, LEGAL_UPDATED, getLegalDoc } from '@/lib/legal';
 import { BRAND } from '@/lib/content';
-import { breadcrumbSchema, OG_IMAGE } from '@/lib/seo';
+import { breadcrumbSchema, OG_IMAGE, alternates } from '@/lib/seo';
 
 // One route renders all four policies from lib/legal.js. Adding a policy is
 // adding an object there — no new route, no new markup.
@@ -26,7 +26,7 @@ export function generateMetadata({ params }) {
   return {
     title: doc.title,
     description: doc.description,
-    alternates: { canonical: path },
+    alternates: alternates(path),
     openGraph: {
       title: `${doc.title} | MANDER`,
       description: doc.description,

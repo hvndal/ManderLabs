@@ -1,7 +1,7 @@
 import Quiz from '@/components/Quiz';
 import Reveal from '@/components/Reveal';
 import { QUIZ } from '@/lib/content';
-import { OG_IMAGE } from '@/lib/seo';
+import { OG_IMAGE, alternates } from '@/lib/seo';
 
 const TITLE = 'Get a Quote — Fast Website Design, Custom Priced';
 const DESCRIPTION =
@@ -10,9 +10,7 @@ const DESCRIPTION =
 export const metadata = {
   title: TITLE,
   description: DESCRIPTION,
-  alternates: {
-    canonical: '/quote',
-  },
+  alternates: alternates('/quote'),
   openGraph: {
     title: TITLE,
     description: DESCRIPTION,
@@ -30,7 +28,7 @@ export const metadata = {
 
 export default function QuotePage() {
   return (
-    <section className="min-h-[80vh] border-b border-line bg-paper">
+    <section className="min-h-[80vh] overflow-x-hidden border-b border-line bg-paper">
       <div className="container-max py-stack-md">
         <Reveal className="mx-auto mb-12 max-w-2xl text-center">
           <span className="eyebrow justify-center">{QUIZ.intro.eyebrow}</span>

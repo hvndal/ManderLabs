@@ -13,6 +13,11 @@ export const BRAND = {
   // this same address once forwarding is live; see .env.local.example.
   email: 'herman@mander.tech',
   portfolio: 'https://hermanify.online',
+  // The only social profile that exists today. When a second one does, add it
+  // here and to `sameAs` in lib/seo.js — those are the two places a crawler
+  // looks to tie the site and the profile to the same business.
+  instagram: 'https://www.instagram.com/mander.tech/',
+  instagramHandle: '@mander.tech',
   // Masthead furniture, set centred in caps under the mark. Kept short and
   // free of hyphenated compounds on purpose — the old line ("small &
   // mid-sized businesses across Canada and the U.S.") broke after "mid-" on

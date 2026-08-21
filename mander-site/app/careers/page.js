@@ -7,18 +7,16 @@ import GridField from '@/components/GridField';
 import Faq from '@/components/Faq';
 import ProcessTimeline from '@/components/ProcessTimeline';
 import { CAREERS, BRAND } from '@/lib/content';
-import { OG_IMAGE } from '@/lib/seo';
+import { OG_IMAGE, alternates } from '@/lib/seo';
 
 const TITLE = 'Careers — Design & Development Roles at MANDER';
 const DESCRIPTION =
-  'Work with a small remote studio building websites and Android apps for small businesses across Canada and the U.S. Design, front-end, Android and SEO roles — applications open year-round.';
+  'Design, front-end, Android and SEO roles at a small remote studio building for small business in Canada and the U.S.';
 
 export const metadata = {
   title: TITLE,
   description: DESCRIPTION,
-  alternates: {
-    canonical: '/careers',
-  },
+  alternates: alternates('/careers'),
   openGraph: {
     title: TITLE,
     description: DESCRIPTION,
