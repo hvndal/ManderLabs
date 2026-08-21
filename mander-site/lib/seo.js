@@ -115,6 +115,19 @@ export const organizationSchema = {
   // the two it reads first and the site was sending neither.
   logo: `${SITE_URL}/apple-icon`,
   image: OG_IMAGE.url,
+  // Not invented — the footer has published "Mon–Fri, 9–5 PT" since launch,
+  // and this states the same thing in a form Google can read. If the Business
+  // Profile ever says different hours, change both: a listing and a site
+  // disagreeing about opening times is the kind of small inconsistency that
+  // quietly costs a local ranking.
+  openingHoursSpecification: [
+    {
+      '@type': 'OpeningHoursSpecification',
+      dayOfWeek: ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday'],
+      opens: '09:00',
+      closes: '17:00',
+    },
+  ],
   // Remote-first: the team works from Langley BC and Maynard MA, but the
   // service is delivered online everywhere in both countries.
   areaServed: SERVICE_AREA,
