@@ -3,6 +3,7 @@
 import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import Icon from './Icon';
+import WhatsAppCta from './WhatsAppCta';
 import { BRAND } from '@/lib/content';
 
 // The one shared easing curve for every motion primitive on the site.
@@ -100,7 +101,23 @@ export default function PricingInteractive({ tiers }) {
               />
             </motion.div>
 
-            <motion.div layout="position" transition={SPRING} className="mt-6 flex items-baseline gap-2">
+            {/* "Starting at" / "Per month" where a market needs it. The US
+                cards carry no qualifier and are unchanged. */}
+            {tier.priceQualifier && (
+              <motion.span
+                layout="position"
+                transition={SPRING}
+                className="label-caps mt-6 block text-[10px] text-ink-mute"
+              >
+                {tier.priceQualifier}
+              </motion.span>
+            )}
+
+            <motion.div
+              layout="position"
+              transition={SPRING}
+              className={`flex items-baseline gap-2 ${tier.priceQualifier ? 'mt-1.5' : 'mt-6'}`}
+            >
               <AnimatePresence mode="popLayout">
                 <motion.span
                   key={isOpen ? 'open' : 'closed'}
@@ -247,6 +264,14 @@ export default function PricingInteractive({ tiers }) {
                       {tier.cta}
                       <Icon name="arrow" className="h-4 w-4" strokeWidth={2} />
                     </a>
+
+                    {/* India only, and the faster route there — a plan
+                        enquiry over WhatsApp gets answered the same hour. */}
+                    <WhatsAppCta
+                      tone="outline"
+                      className="mt-3 w-full"
+                      location={`plan-card-${tier.name}`}
+                    />
 
                     {/* Quiet, never a discount badge */}
                     <p className="label-caps mt-4 text-ink-mute">

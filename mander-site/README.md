@@ -220,6 +220,69 @@ and edit them before this goes live — in particular the testimonial quotes
 and case-study photos are the kind of thing that should either be real or
 replaced.
 
+## Markets — the site serves two countries automatically
+
+Visitors in India get the India version of every page; everyone else gets the
+site as it was. There is no country switcher anywhere, and there is no `/in`
+URL — both versions are served from the same paths.
+
+How it works, in four files:
+
+| File | Job |
+|---|---|
+| `middleware.js` | Reads the edge's country code (`request.geo.country`, or `x-vercel-ip-country`) and sets one request header, `x-mander-market`. Nothing else. |
+| `lib/markets/geo.js` | The country → market rule (`IN` → `in`, everything else → `us`). Kept import-free so the edge bundle stays tiny. |
+| `lib/markets/us.js`, `lib/markets/in.js` | The two markets: prices, tiers, comparison table, FAQs, quiz copy, metadata, JSON-LD inputs, WhatsApp. The US file mostly points at `lib/content.js`, so US copy still has one home. |
+| `lib/market-server.js` / `components/MarketProvider.js` | Server components call `getServerMarket()`; client components call `useMarket()`. |
+
+**Adding a market** is one file in `lib/markets/` plus one line in
+`COUNTRY_MARKETS`. No page or component changes.
+
+**Why no redirect and no `/in` prefix.** One URL per page means one canonical
+per page, so there is no duplicate-content question and nothing to keep out of
+the index — the India version is a geographic variation of the same page, not
+a second page competing with it. Googlebot crawls from the US, so the US
+version is what gets indexed, which is the intended canonical experience. It
+also means no redirect loop is possible and no cached 30x can pin a visitor to
+the wrong market.
+
+**The cost.** Reading a request header opts every route out of static
+rendering — a cached page cannot show two different prices. That is also what
+stops a CDN serving one market's HTML to the other.
+
+**Privacy.** The country code is derived by the platform before the middleware
+runs, is mapped to `us`/`in`, and is discarded. No IP is read, logged or
+stored, and the market is not written to a cookie — nothing here creates an
+identifier, which is why it needs no consent gate.
+
+### The India version
+
+* Positioning: *Websites & digital experiences for growing businesses.*
+* Builds: Starter Website ₹19,999, Website + Local ₹34,999.
+* Monthly: Mander Care ₹2,499/mo, Mander Growth ₹4,999/mo — sold as plans
+  rather than as the single US-style Care Plan add-on.
+* Android: ₹49,999 / ₹99,999 / ₹1,99,999+.
+* WhatsApp **+91 81462 08024** appears in the nav, footer, plan cards, contact
+  blocks and final CTAs. Every one of those renders from `market.whatsapp`, so
+  outside India the number is absent from the HTML *and* from the JavaScript
+  bundle — not hidden with CSS.
+
+Prices are set from what a local business actually pays, not converted from
+the US card. To change them, edit `lib/markets/in.js` — nothing else needs
+touching.
+
+### Testing it
+
+`next start`, then send the header the edge would:
+
+```bash
+curl -s -H "x-vercel-ip-country: IN" localhost:3000/pricing   # India
+curl -s localhost:3000/pricing                                 # everyone else
+```
+
+Spoofing is not a concern: the middleware overwrites any inbound
+`x-mander-market` before the app sees it.
+
 ## Email — two addresses, two jobs
 
 `BRAND.email` in `lib/content.js` is **`sales@mander.tech`** — the

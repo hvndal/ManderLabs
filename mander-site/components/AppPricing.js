@@ -4,7 +4,7 @@ import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import Icon from './Icon';
 import PricingInteractive from './PricingInteractive';
-import { APP_TIERS } from '@/lib/content';
+import { useMarket } from './MarketProvider';
 
 // Same two motion primitives as PricingInteractive — this is the same
 // interaction one level up, not a new one.
@@ -29,6 +29,7 @@ const SPRING = { type: 'spring', stiffness: 210, damping: 30, mass: 0.9 };
  * a package closed the thing you were reading.
  */
 export default function AppPricing() {
+  const market = useMarket();
   const [isOpen, setIsOpen] = useState(false);
 
   return (
@@ -78,7 +79,7 @@ export default function AppPricing() {
         <div className="flex shrink-0 items-center justify-between gap-5 border-t border-line pt-6 md:justify-end md:border-0 md:pt-0">
           <div className="md:text-right">
             <span className="label-caps text-[10px] text-ink-mute">Apps from</span>
-            <span className="mt-1.5 block text-stat-md text-ink">$2,999</span>
+            <span className="mt-1.5 block text-stat-md text-ink">{market.appsFromLabel}</span>
           </div>
           <Icon
             name={isOpen ? 'minus' : 'plus'}
@@ -98,7 +99,7 @@ export default function AppPricing() {
             className="overflow-hidden"
           >
             <div className="border-t border-line p-7 md:p-8">
-              <PricingInteractive tiers={APP_TIERS} />
+              <PricingInteractive tiers={market.appTiers} />
               <p className="mt-6 text-label-sm text-ink-mute">
                 App builds are quoted separately from website work. Play Store
                 developer account and any third-party service fees are billed

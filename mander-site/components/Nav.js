@@ -6,6 +6,7 @@ import { usePathname } from 'next/navigation';
 import { NAV_LINKS, BRAND } from '@/lib/content';
 import Logo from './Logo';
 import Icon from './Icon';
+import WhatsAppCta from './WhatsAppCta';
 
 // Buying starts a conversation rather than a checkout, so the primary action
 // everywhere is a person, not a form.
@@ -95,7 +96,10 @@ export default function Nav() {
           ))}
         </ul>
 
-        <div className="hidden items-center gap-4 md:flex">
+        <div className="hidden items-center gap-3 md:flex">
+          {/* India only. Ordered ahead of email because it is the faster
+              route in that market, and absent entirely in every other. */}
+          <WhatsAppCta tone="sm" location="nav" />
           <a href={SALES_MAILTO} className="btn-sm">
             Contact sales
           </a>
@@ -116,7 +120,7 @@ export default function Nav() {
       <div
         id="mobile-menu"
         className={`overflow-hidden border-t bg-paper transition-[max-height] duration-300 ease-premium md:hidden ${
-          open ? 'max-h-[420px] border-line' : 'max-h-0 border-transparent'
+          open ? 'max-h-[520px] border-line' : 'max-h-0 border-transparent'
         }`}
       >
         <ul className="flex flex-col px-margin-mobile py-1">
@@ -132,6 +136,7 @@ export default function Nav() {
           ))}
         </ul>
         <div className="flex flex-col gap-3 px-margin-mobile py-5">
+          <WhatsAppCta className="w-full" location="nav-mobile" />
           <a href={SALES_MAILTO} className="btn-primary w-full">
             Contact sales
           </a>

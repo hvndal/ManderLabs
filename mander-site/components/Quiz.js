@@ -3,9 +3,11 @@
 import { useMemo, useState } from 'react';
 import Link from 'next/link';
 import Icon from './Icon';
-import { QUIZ, TIERS, BRAND } from '@/lib/content';
+import { BRAND } from '@/lib/content';
 import { submitForm } from '@/lib/forms';
 import { trackEvent } from '@/lib/analytics';
+import { useMarket } from './MarketProvider';
+import WhatsAppCta from './WhatsAppCta';
 
 // Used only when the form itself fails to send. Now the same public address
 // as everything else, so there is one inbox to keep alive rather than two.
@@ -13,11 +15,16 @@ const FALLBACK_EMAIL = BRAND.email;
 
 const TIER_ORDER = ['Launch', 'Starter', 'Growth', 'Business Pro'];
 
-function scoreAnswers(answers) {
+// Scoring is market-independent on purpose. It works in the US tier names,
+// which are the vocabulary the weights were written in; a market that sells a
+// different ladder maps the answer onto its own plans through
+// `market.quizTierAlias` rather than carrying a second set of weights that
+// would have to be kept in sync with this one.
+function scoreAnswers(questions, answers) {
   const totals = {};
   let forceSales = false;
 
-  QUIZ.questions.forEach((q) => {
+  questions.forEach((q) => {
     const chosen = answers[q.id];
     if (chosen == null) return;
     const opt = q.options[chosen];
@@ -46,7 +53,9 @@ function scoreAnswers(answers) {
 }
 
 export default function Quiz() {
-  const total = QUIZ.questions.length;
+  const market = useMarket();
+  const quiz = market.quiz;
+  const total = quiz.questions.length;
   const [step, setStep] = useState(0); // 0..total-1 questions, then result
   const [answers, setAnswers] = useState({});
   const [status, setStatus] = useState('idle'); // idle | sending | sent | error
@@ -54,8 +63,19 @@ export default function Quiz() {
   const [contact, setContact] = useState({ name: '', email: '' });
 
   const done = step >= total;
-  const result = useMemo(() => (done ? scoreAnswers(answers) : null), [done, answers]);
-  const recommended = result ? TIERS.find((t) => t.name === result.tier) : null;
+  const result = useMemo(
+    () => (done ? scoreAnswers(quiz.questions, answers) : null),
+    [done, answers, quiz]
+  );
+
+  // The scored tier translated into this market's plan names — an identity
+  // lookup in the US, two-into-one in India.
+  const planName = result
+    ? market.quizTierAlias?.[result.tier] || result.tier
+    : null;
+  const recommended = planName
+    ? market.tiers.find((t) => t.name === planName)
+    : null;
 
   const choose = (qId, optIndex) => {
     setAnswers((a) => ({ ...a, [qId]: optIndex }));
@@ -70,7 +90,7 @@ export default function Quiz() {
     setError('');
 
     // Human-readable answer summary for the email.
-    const summary = QUIZ.questions
+    const summary = quiz.questions
       .map((q) => {
         const opt = q.options[answers[q.id]];
         return `• ${q.question}\n   ${opt ? opt.label : '—'}`;
@@ -80,13 +100,16 @@ export default function Quiz() {
     setStatus('sending');
 
     const sent = await submitForm({
-      subject: `Quiz lead — ${result.tier}${result.forceSales ? ' (wants sales)' : ''} — ${contact.name || 'no name'}`,
+      subject: `Quiz lead — ${planName}${result.forceSales ? ' (wants sales)' : ''} — ${contact.name || 'no name'}`,
       from_name: 'MANDER quiz',
       name: contact.name,
       email: contact.email,
-      recommended_plan: result.tier,
-      from_price: recommended ? `$${recommended.from}` : '',
+      recommended_plan: planName,
+      // Already carries its own currency symbol, so the lead email reads
+      // correctly whichever market it came from.
+      from_price: recommended?.fromLabel || (recommended ? `$${recommended.from}` : ''),
       wants_sales: result.forceSales ? 'yes' : 'no',
+      market: market.id.toUpperCase(),
       answers: summary,
     });
 
@@ -95,12 +118,13 @@ export default function Quiz() {
       // sales, is the only read there is on whether the quiz is worth having.
       trackEvent('generate_lead', {
         form: 'quiz',
-        plan: result.tier,
+        plan: planName,
         wants_sales: result.forceSales ? 'yes' : 'no',
+        market: market.id,
       });
       setStatus('sent');
     } else {
-      trackEvent('form_error', { form: 'quiz' });
+      trackEvent('form_error', { form: 'quiz', market: market.id });
       setError(sent.message);
       setStatus('error');
     }
@@ -115,7 +139,7 @@ export default function Quiz() {
           <h2 className="h-section">Thanks — that&apos;s on its way to us.</h2>
           <p className="mt-5 text-body-lg text-ink-soft">
             We&apos;ll review your answers and come back within one business day
-            with a fixed-price proposal for the <strong>{result.tier}</strong> plan.
+            with a fixed-price proposal for the <strong>{planName}</strong> plan.
           </p>
           <Link href="/" className="btn-outline mt-10">Back to home</Link>
         </div>
@@ -130,16 +154,16 @@ export default function Quiz() {
             <span className="label-caps text-paper/60">Recommended for you</span>
             <div className="mt-4 flex flex-wrap items-end justify-between gap-4">
               <h2 className="font-display text-headline-lg-mobile font-normal md:text-headline-lg">
-                {result.tier}
+                {planName}
               </h2>
               {recommended && (
                 <p className="text-stat-md">
-                  from ${recommended.from}
+                  from {recommended.fromLabel || `$${recommended.from}`}
                 </p>
               )}
             </div>
             <p className="mt-4 max-w-text text-body-lg text-paper/80">
-              {QUIZ.reasons[result.tier]}
+              {quiz.reasons[result.tier]}
             </p>
           </div>
 
@@ -201,6 +225,7 @@ export default function Quiz() {
                 <a href={`mailto:${BRAND.email}`} className="link-underline label-caps text-ink-soft">
                   Or talk to sales
                 </a>
+                <WhatsAppCta tone="link" location="quiz-result" />
               </div>
             </form>
           </div>
@@ -218,7 +243,7 @@ export default function Quiz() {
   }
 
   // ---------------------------------------------------------- Question view
-  const q = QUIZ.questions[step];
+  const q = quiz.questions[step];
   const progress = Math.round((step / total) * 100);
 
   return (

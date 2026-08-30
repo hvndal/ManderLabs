@@ -2,9 +2,11 @@
 
 import { useState } from 'react';
 import Icon from './Icon';
-import { TIERS, BRAND } from '@/lib/content';
+import { BRAND } from '@/lib/content';
 import { submitForm } from '@/lib/forms';
 import { trackEvent } from '@/lib/analytics';
+import { useMarket } from './MarketProvider';
+import WhatsAppCta from './WhatsAppCta';
 
 const FIELD =
   'w-full border border-line bg-white px-4 py-3 text-body-md text-ink transition-colors duration-200 placeholder:text-ink-mute/60 focus:border-ink focus:outline-none focus:ring-0';
@@ -18,9 +20,17 @@ const FIELD =
  * form anywhere on the site. It's live now; the mailto stays underneath as a
  * secondary route for people who'd rather use their own mail client.
  */
-export default function ContactForm({ defaultPlan = 'Growth' }) {
+export default function ContactForm({ defaultPlan }) {
+  const market = useMarket();
   const [status, setStatus] = useState('idle'); // idle | sending | sent | error
   const [error, setError] = useState('');
+
+  // The plan list is the visitor's own market's, so an Indian enquiry names
+  // an Indian plan and the lead email is readable without a conversion step.
+  // Defaults to whichever plan that market features.
+  const tiers = market.tiers;
+  const featuredPlan =
+    defaultPlan || tiers.find((t) => t.featured)?.name || tiers[0].name;
 
   const handleSubmit = async (event) => {
     event.preventDefault();
@@ -42,6 +52,9 @@ export default function ContactForm({ defaultPlan = 'Growth' }) {
       email: data.email,
       plan: data.plan,
       message: data.message,
+      // Which market the enquiry came from, so the reply quotes the right
+      // currency without anyone having to guess from the plan name.
+      market: market.id.toUpperCase(),
     });
 
     if (result.ok) {
@@ -50,11 +63,12 @@ export default function ContactForm({ defaultPlan = 'Growth' }) {
       trackEvent('generate_lead', {
         form: 'contact',
         plan: data.plan || 'unspecified',
+        market: market.id,
       });
       setStatus('sent');
       form.reset();
     } else {
-      trackEvent('form_error', { form: 'contact' });
+      trackEvent('form_error', { form: 'contact', market: market.id });
       setError(result.message);
       setStatus('error');
     }
@@ -125,8 +139,8 @@ export default function ContactForm({ defaultPlan = 'Growth' }) {
           <label htmlFor="cf-plan" className="label-caps mb-2 block text-ink-mute">
             Plan of interest
           </label>
-          <select id="cf-plan" name="plan" defaultValue={defaultPlan} className={FIELD}>
-            {TIERS.map((tier) => (
+          <select id="cf-plan" name="plan" defaultValue={featuredPlan} className={FIELD}>
+            {tiers.map((tier) => (
               <option key={tier.name} value={tier.name}>
                 {tier.name} — {tier.price}
               </option>
@@ -186,6 +200,9 @@ export default function ContactForm({ defaultPlan = 'Growth' }) {
         >
           Or email {BRAND.email}
         </a>
+        {/* India only. A form is still the right primary action — this is the
+            route for anyone who would rather not fill one in. */}
+        <WhatsAppCta tone="link" location="contact-form" />
       </div>
 
       <p className="mt-4 text-label-sm text-ink-mute">

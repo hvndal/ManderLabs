@@ -4,7 +4,9 @@ import GridField from './GridField';
 import AperturedType from './AperturedType';
 import { CommunityRateFooterLink } from './CommunityRate';
 import { CookiePreferencesLink } from './CookieHub';
+import WhatsAppCta, { WhatsAppLine } from './WhatsAppCta';
 import { BRAND, NAV_LINKS } from '@/lib/content';
+import { getServerMarket } from '@/lib/market-server';
 import { LEGAL_DOCS } from '@/lib/legal';
 
 // Derived from the policy data rather than hand-listed, so a new policy is
@@ -15,6 +17,8 @@ import { LEGAL_DOCS } from '@/lib/legal';
 const LEGAL = LEGAL_DOCS.map((d) => ({ label: d.nav, href: `/legal/${d.slug}` }));
 
 export default function Footer() {
+  const market = getServerMarket();
+
   return (
     <footer className="relative overflow-hidden bg-ink text-paper">
       <GridField tone="paper" />
@@ -25,19 +29,22 @@ export default function Footer() {
             {/* The one place the pale rose lockup has enough contrast to work */}
             <Logo variant="full" tone="rose" className="h-24 md:h-28" />
             <p className="mt-6 max-w-sm text-body-lg text-paper/70">
-              {BRAND.tagline}
+              {market.tagline}
             </p>
             <p className="mt-3 max-w-sm text-body-md text-paper/50">
-              {BRAND.region}
+              {market.region}
             </p>
-            <a
-              href={`mailto:${BRAND.email}?subject=${encodeURIComponent(
-                'New project enquiry'
-              )}`}
-              className="btn-on-dark mt-8"
-            >
-              Contact sales
-            </a>
+            <div className="mt-8 flex flex-col gap-3 sm:flex-row">
+              <a
+                href={`mailto:${BRAND.email}?subject=${encodeURIComponent(
+                  'New project enquiry'
+                )}`}
+                className="btn-on-dark"
+              >
+                Contact sales
+              </a>
+              <WhatsAppCta tone="on-dark" location="footer" />
+            </div>
           </div>
 
           <div className="md:col-span-3">
@@ -66,6 +73,11 @@ export default function Footer() {
                 >
                   {BRAND.email}
                 </a>
+              </li>
+              {/* Renders nothing outside India — the number is not in the
+                  US markup at all, not hidden in it. */}
+              <li>
+                <WhatsAppLine className="transition-colors hover:text-paper" />
               </li>
               <li className="text-paper/50">Mon–Fri, 9–5 PT</li>
               <li className="pt-1">
@@ -116,7 +128,7 @@ export default function Footer() {
 
         <div className="mt-stack-md flex flex-col gap-4 border-t border-paper/15 pt-8 md:flex-row md:items-center md:justify-between">
           <p className="text-label-sm text-paper/45">
-            © {new Date().getFullYear()} {BRAND.name}. Built for Canadian &amp; American business.
+            © {new Date().getFullYear()} {BRAND.name}. Built for {market.region}.
           </p>
           <ul className="flex flex-wrap gap-6">
             {LEGAL.map((item) => (

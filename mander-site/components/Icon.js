@@ -99,6 +99,15 @@ const PATHS = {
       <path d="M9 12.2l2 2 4-4.4" />
     </>
   ),
+  // WhatsApp — same 1.5px stroke language as the rest of the set rather than
+  // the official filled glyph, which would be the only solid mark on the site
+  // and would drag brand green into a two-colour palette.
+  whatsapp: (
+    <>
+      <path d="M20.5 11.8a8.5 8.5 0 0 1-12.7 7.4L3.5 20.5l1.3-4.2A8.5 8.5 0 1 1 20.5 11.8z" />
+      <path d="M9.3 8.9c0 3.2 2.6 5.8 5.8 5.8l.9-1.4-1.9-1-.9.8a4.7 4.7 0 0 1-2.3-2.3l.8-.9-1-1.9-1.4.9z" />
+    </>
+  ),
   arrow: <path d="M5 12h14M13 6l6 6-6 6" />,
   menu: <path d="M4 7h16M4 12h16M4 17h16" />,
   close: <path d="M6 6l12 12M18 6L6 18" />,

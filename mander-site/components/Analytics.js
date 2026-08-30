@@ -10,6 +10,7 @@ import {
   getConsent,
   trackEvent,
 } from '@/lib/analytics';
+import { useMarketId } from './MarketProvider';
 
 /**
  * Google Analytics 4 — and only GA4. No Google Signals, no ad
@@ -22,14 +23,17 @@ import {
  * initialising and had a chance to say otherwise, which is exactly the window
  * in which a site tracks someone who revoked.
  *
- * usePathname rather than useSearchParams on purpose: the latter opts a page
- * out of static rendering unless wrapped in Suspense, which would have
- * quietly turned all 41 statically-generated routes dynamic. Pathname alone
- * carries no such cost and is enough to log a page_view on every route
- * change — query strings on this site are not part of a page's identity.
+ * usePathname rather than useSearchParams on purpose: the latter needs a
+ * Suspense boundary around every page that renders this, and pathname alone
+ * is enough to log a page_view on every route change — query strings on this
+ * site are not part of a page's identity.
  */
 export default function Analytics() {
   const pathname = usePathname();
+  // Every hit is stamped with the market that produced it. Without it the
+  // Indian and US funnels are one undifferentiated number, and the whole
+  // point of running two price ladders is being able to tell them apart.
+  const marketId = useMarketId();
   const [granted, setGranted] = useState(false);
 
   useEffect(() => {
@@ -54,9 +58,10 @@ export default function Analytics() {
     window.gtag('event', 'page_view', {
       page_path: pathname,
       page_location: window.location.href,
+      market: marketId,
     });
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [pathname, granted]);
+  }, [pathname, granted, marketId]);
 
   // Every "Contact sales" button on this site is a mailto:, and a mailto:
   // click leaves no trace of its own — no page view, no navigation, nothing.
@@ -68,11 +73,11 @@ export default function Analytics() {
     const onClick = (e) => {
       const link = e.target.closest?.('a[href^="mailto:"]');
       if (!link) return;
-      trackEvent('contact_email_click', { page_path: pathname });
+      trackEvent('contact_email_click', { page_path: pathname, market: marketId });
     };
     document.addEventListener('click', onClick);
     return () => document.removeEventListener('click', onClick);
-  }, [granted, pathname]);
+  }, [granted, pathname, marketId]);
 
   if (!ANALYTICS_ENABLED || !granted) return null;
 
@@ -89,6 +94,7 @@ export default function Analytics() {
           window.gtag = gtag;
           gtag('js', new Date());
           gtag('config', '${GA_MEASUREMENT_ID}', {
+            market: '${marketId}',
             anonymize_ip: true,
             allow_google_signals: false,
             allow_ad_personalization_signals: false,

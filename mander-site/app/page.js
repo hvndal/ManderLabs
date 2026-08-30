@@ -24,18 +24,18 @@ import AppPricing from '@/components/AppPricing';
 import Faq from '@/components/Faq';
 import ContactForm from '@/components/ContactForm';
 import JsonLd from '@/components/JsonLd';
+import WhatsAppCta from '@/components/WhatsAppCta';
 import {
   SERVICES,
   TERMS,
   PROCESS,
-  TIERS,
   STATS,
-  FAQS,
   WORK,
   CLIENTS,
   TEAM,
   BRAND,
 } from '@/lib/content';
+import { getServerMarket } from '@/lib/market-server';
 import { faqSchema, alternates } from '@/lib/seo';
 
 export const metadata = {
@@ -43,19 +43,23 @@ export const metadata = {
 };
 
 export default function HomePage() {
+  // Prices, positioning line and FAQ all come from the visitor's market; the
+  // layout, sections and components below are identical for every market.
+  const market = getServerMarket();
+
   return (
     <>
-      <JsonLd data={faqSchema(FAQS)} />
+      <JsonLd data={faqSchema(market.faqs)} />
 
       {/* -------------------------------------------------- 01 · The masthead */}
       {/* The word is the aperture: MANDER knocked out of a cream stencil over
           full-bleed film, scaling out of frame on scroll. See Masthead.js. */}
-      <Masthead tagline={BRAND.tagline} mono={BRAND.region} />
+      <Masthead tagline={market.tagline} mono={market.region} />
 
       {/* ------------------------------------------- 02 · Colophon / the sheet */}
       <Colophon
-        headline="Websites that grow small business."
-        body="Premium design and build for small and mid-sized businesses in Canada and the U.S. — at a rate that makes sense for you."
+        headline={market.colophon.headline}
+        body={market.colophon.body}
         clients={CLIENTS}
       />
 
@@ -353,7 +357,7 @@ export default function HomePage() {
         </div>
 
         <Reveal delay={80} className="mt-12">
-          <PricingInteractive tiers={TIERS} />
+          <PricingInteractive tiers={market.tiers} />
         </Reveal>
 
         {/* Apps, folded shut — stated, priced, and out of the way so the
@@ -390,7 +394,7 @@ export default function HomePage() {
             </div>
             <div className="lg:col-span-8">
               <Reveal>
-                <Faq items={FAQS} />
+                <Faq items={market.faqs} />
               </Reveal>
             </div>
           </div>
@@ -409,6 +413,9 @@ export default function HomePage() {
               title="Tell us about the project."
               body="A few lines is enough to start. We reply within one business day — no obligation."
             />
+            <Reveal delay={80}>
+              <WhatsAppCta className="mt-8" location="home-contact" />
+            </Reveal>
           </div>
           <div className="lg:col-span-8">
             <Reveal>
@@ -435,6 +442,9 @@ export default function HomePage() {
               >
                 Contact sales
               </a>
+              {/* India only — returns null in every other market, so the
+                  number is not in the US page at all. */}
+              <WhatsAppCta tone="on-dark" location="home-final-cta" />
               <Link
                 href="/quote"
                 className="label-caps inline-flex items-center justify-center gap-2 border border-paper/40 px-8 py-4 text-paper transition-colors duration-300 hover:border-paper"

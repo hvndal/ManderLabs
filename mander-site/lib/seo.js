@@ -11,7 +11,8 @@
 // to flip with it.
 export const SITE_URL = 'https://www.mander.tech';
 
-import { BRAND, SERVICES, TIERS, APP_TIERS, TEAM } from './content';
+import { BRAND, SERVICES, TEAM } from './content';
+import { getMarket } from './markets';
 
 // Shared social-card image. Next.js does NOT deep-merge `openGraph`/`twitter`
 // between a layout and a page — if a page defines its own `openGraph` object
@@ -74,6 +75,33 @@ export const SERVICE_AREA = [
   ...CA_PROVINCES.map((name) => ({ '@type': 'State', name })),
 ];
 
+// Indian states and union territories, for the same reason the US and
+// Canadian ones are enumerated above: a service business with no address and
+// no areaServed reads to Google like a local business that forgot its
+// address, and it will try to rank the site for one city.
+const IN_STATES = [
+  'Andhra Pradesh', 'Arunachal Pradesh', 'Assam', 'Bihar', 'Chhattisgarh',
+  'Goa', 'Gujarat', 'Haryana', 'Himachal Pradesh', 'Jharkhand', 'Karnataka',
+  'Kerala', 'Madhya Pradesh', 'Maharashtra', 'Manipur', 'Meghalaya',
+  'Mizoram', 'Nagaland', 'Odisha', 'Punjab', 'Rajasthan', 'Sikkim',
+  'Tamil Nadu', 'Telangana', 'Tripura', 'Uttar Pradesh', 'Uttarakhand',
+  'West Bengal', 'Andaman and Nicobar Islands', 'Chandigarh',
+  'Dadra and Nagar Haveli and Daman and Diu', 'Delhi', 'Jammu and Kashmir',
+  'Ladakh', 'Lakshadweep', 'Puducherry',
+];
+
+export const IN_SERVICE_AREA = [
+  { '@type': 'Country', name: 'India' },
+  ...IN_STATES.map((name) => ({ '@type': 'State', name })),
+];
+
+// The service area a market's schema claims. Keyed by market id so a new
+// market declares its own without touching the schema builders below.
+const MARKET_SERVICE_AREA = {
+  us: SERVICE_AREA,
+  in: IN_SERVICE_AREA,
+};
+
 /**
  * Canonical plus hreflang for a page.
  *
@@ -128,118 +156,141 @@ export function alternates(path) {
   };
 }
 
-export const organizationSchema = {
-  '@context': 'https://schema.org',
-  '@type': 'ProfessionalService',
-  '@id': `${SITE_URL}/#organization`,
-  name: BRAND.name,
-  description:
-    'Remote website design, development and SEO for small and mid-sized businesses across the United States and Canada. Fixed-price custom builds from $299.',
-  url: SITE_URL,
-  email: BRAND.email,
-  slogan: BRAND.tagline,
-  knowsLanguage: ['en'],
-  // sameAs is how Google confirms that this site, that Instagram account and
-  // the business behind them are one entity. Both entries have to be profiles
-  // that actually resolve, or the signal is worth less than nothing.
-  sameAs: [BRAND.instagram, BRAND.googleBusiness, BRAND.portfolio],
-  // Google matches a site to a Business Profile on the strength of the
-  // entity looking like the same thing in both places. logo and image are
-  // the two it reads first and the site was sending neither.
-  logo: `${SITE_URL}/apple-icon`,
-  image: OG_IMAGE.url,
-  // Not invented — the footer has published "Mon–Fri, 9–5 PT" since launch,
-  // and this states the same thing in a form Google can read. If the Business
-  // Profile ever says different hours, change both: a listing and a site
-  // disagreeing about opening times is the kind of small inconsistency that
-  // quietly costs a local ranking.
-  openingHoursSpecification: [
-    {
-      '@type': 'OpeningHoursSpecification',
-      dayOfWeek: ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday'],
-      opens: '09:00',
-      closes: '17:00',
-    },
-  ],
-  // Remote-first: the team works from Langley BC and Maynard MA, but the
-  // service is delivered online everywhere in both countries.
-  areaServed: SERVICE_AREA,
-  serviceType: SERVICES.map((s) => s.title),
-  availableLanguage: 'English',
-  contactPoint: {
-    '@type': 'ContactPoint',
-    contactType: 'sales',
+/**
+ * The business, as schema.org sees it — per market.
+ *
+ * A function rather than a constant because the prices, currency, service
+ * area and contact area all differ between the US and India, and JSON-LD
+ * that contradicts the visible page is worse than no JSON-LD at all. The
+ * shape is identical for every market; only the values from
+ * `market.schema` change.
+ */
+export function organizationSchema(marketOrId) {
+  const market =
+    typeof marketOrId === 'string' || !marketOrId ? getMarket(marketOrId) : marketOrId;
+  const { schema } = market;
+  const countries = schema.countries.map((name) => ({ '@type': 'Country', name }));
+
+  return {
+    '@context': 'https://schema.org',
+    '@type': 'ProfessionalService',
+    '@id': `${SITE_URL}/#organization`,
+    name: BRAND.name,
+    description: schema.description,
+    url: SITE_URL,
     email: BRAND.email,
-    areaServed: ['US', 'CA'],
-    availableLanguage: ['English'],
-  },
-  founder: {
-    '@type': 'Person',
-    name: 'Herman',
-    jobTitle: 'Founder & Design Lead',
-    url: BRAND.portfolio,
-  },
-  employee: TEAM.map((m) => ({
-    '@type': 'Person',
-    name: m.name,
-    jobTitle: m.role,
-  })),
-  priceRange: '$299–$9999+',
-  currenciesAccepted: 'USD, CAD',
-  makesOffer: [...TIERS, ...APP_TIERS].map((tier) => ({
-    '@type': 'Offer',
-    name: tier.name,
-    price: String(tier.from),
-    priceCurrency: 'USD',
-    description: tier.blurb,
-    availability: 'https://schema.org/InStock',
-    areaServed: ['US', 'CA'],
-    url: `${SITE_URL}/pricing`,
-  })),
-  hasOfferCatalog: {
-    '@type': 'OfferCatalog',
-    name: 'Website design services',
-    itemListElement: SERVICES.map((service) => ({
-      '@type': 'Offer',
-      itemOffered: {
-        '@type': 'Service',
-        name: service.title,
-        description: service.body,
-        serviceType: service.title,
-        provider: { '@id': `${SITE_URL}/#organization` },
-        areaServed: [
-          { '@type': 'Country', name: 'United States' },
-          { '@type': 'Country', name: 'Canada' },
-        ],
+    slogan: market.tagline,
+    knowsLanguage: ['en'],
+    // sameAs is how Google confirms that this site, that Instagram account and
+    // the business behind them are one entity. Both entries have to be profiles
+    // that actually resolve, or the signal is worth less than nothing.
+    sameAs: [BRAND.instagram, BRAND.googleBusiness, BRAND.portfolio],
+    // Google matches a site to a Business Profile on the strength of the
+    // entity looking like the same thing in both places. logo and image are
+    // the two it reads first and the site was sending neither.
+    logo: `${SITE_URL}/apple-icon`,
+    image: OG_IMAGE.url,
+    // Not invented — the footer has published "Mon–Fri, 9–5 PT" since launch,
+    // and this states the same thing in a form Google can read. If the Business
+    // Profile ever says different hours, change both: a listing and a site
+    // disagreeing about opening times is the kind of small inconsistency that
+    // quietly costs a local ranking.
+    openingHoursSpecification: [
+      {
+        '@type': 'OpeningHoursSpecification',
+        dayOfWeek: ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday'],
+        opens: '09:00',
+        closes: '17:00',
       },
+    ],
+    // Remote-first: the service is delivered online everywhere it is sold.
+    areaServed: MARKET_SERVICE_AREA[market.id] || SERVICE_AREA,
+    serviceType: SERVICES.map((s) => s.title),
+    availableLanguage: 'English',
+    contactPoint: {
+      '@type': 'ContactPoint',
+      contactType: 'sales',
+      email: BRAND.email,
+      // The Indian number is published as a contact point only in the market
+      // that is shown it, exactly as it is in the page itself.
+      ...(market.whatsapp ? { telephone: market.whatsapp.display } : {}),
+      areaServed: schema.countryCodes,
+      availableLanguage: ['English'],
+    },
+    founder: {
+      '@type': 'Person',
+      name: 'Herman',
+      jobTitle: 'Founder & Design Lead',
+      url: BRAND.portfolio,
+    },
+    employee: TEAM.map((m) => ({
+      '@type': 'Person',
+      name: m.name,
+      jobTitle: m.role,
     })),
-  },
-};
+    priceRange: schema.priceRange,
+    currenciesAccepted: schema.currenciesAccepted,
+    makesOffer: [
+      ...market.tiers,
+      ...(market.monthlyTiers || []),
+      ...market.appTiers,
+    ].map((tier) => ({
+      '@type': 'Offer',
+      name: tier.name,
+      price: String(tier.from),
+      priceCurrency: schema.offerCurrency,
+      description: tier.blurb,
+      availability: 'https://schema.org/InStock',
+      areaServed: schema.countryCodes,
+      url: `${SITE_URL}/pricing`,
+    })),
+    hasOfferCatalog: {
+      '@type': 'OfferCatalog',
+      name: 'Website design services',
+      itemListElement: SERVICES.map((service) => ({
+        '@type': 'Offer',
+        itemOffered: {
+          '@type': 'Service',
+          name: service.title,
+          description: service.body,
+          serviceType: service.title,
+          provider: { '@id': `${SITE_URL}/#organization` },
+          areaServed: countries,
+        },
+      })),
+    },
+  };
+}
 
 // Individual Service entities. Separate from the offer catalogue above
 // because Google reads these independently and they can surface for
 // "<service> near me" style queries in either country.
-export const serviceSchemas = SERVICES.map((service) => ({
-  '@context': 'https://schema.org',
-  '@type': 'Service',
-  name: `${service.title} — small business`,
-  description: service.body,
-  serviceType: service.title,
-  provider: {
-    '@type': 'ProfessionalService',
-    '@id': `${SITE_URL}/#organization`,
-    name: BRAND.name,
-    url: SITE_URL,
-  },
-  areaServed: [
-    { '@type': 'Country', name: 'United States' },
-    { '@type': 'Country', name: 'Canada' },
-  ],
-  audience: {
-    '@type': 'BusinessAudience',
-    name: 'Small and mid-sized businesses',
-  },
-}));
+export function serviceSchemas(marketOrId) {
+  const market =
+    typeof marketOrId === 'string' || !marketOrId ? getMarket(marketOrId) : marketOrId;
+
+  return SERVICES.map((service) => ({
+    '@context': 'https://schema.org',
+    '@type': 'Service',
+    name: `${service.title} — small business`,
+    description: service.body,
+    serviceType: service.title,
+    provider: {
+      '@type': 'ProfessionalService',
+      '@id': `${SITE_URL}/#organization`,
+      name: BRAND.name,
+      url: SITE_URL,
+    },
+    areaServed: market.schema.countries.map((name) => ({
+      '@type': 'Country',
+      name,
+    })),
+    audience: {
+      '@type': 'BusinessAudience',
+      name: 'Small and mid-sized businesses',
+    },
+  }));
+}
 
 export const websiteSchema = {
   '@context': 'https://schema.org',

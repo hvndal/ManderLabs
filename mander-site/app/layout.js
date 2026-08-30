@@ -7,6 +7,8 @@ import JsonLd from '@/components/JsonLd';
 import Analytics from '@/components/Analytics';
 import CookieHub from '@/components/CookieHub';
 import { CommunityRateProvider } from '@/components/CommunityRate';
+import MarketProvider from '@/components/MarketProvider';
+import { getServerMarket } from '@/lib/market-server';
 import {
   SITE_URL,
   OG_IMAGE,
@@ -48,89 +50,91 @@ const instrument = Instrument_Serif({
   variable: '--font-instrument',
 });
 
-export const metadata = {
-  metadataBase: new URL(SITE_URL),
-  title: {
-    default: 'MANDER | Affordable, Fast Website Design for Small Business',
-    template: '%s | MANDER',
-  },
-  description:
-    'Remote website design for small business across the U.S. and Canada. Fixed-price builds from $299, with local SEO and ongoing care.',
-  // Keywords carry almost no ranking weight now, but they cost nothing and a
-  // few engines still read them. The real work is done by the description,
-  // headings and JSON-LD service area. Weighted toward remote/nationwide
-  // intent rather than a single city, because that's how the business sells.
-  keywords: [
-    'remote website design',
-    'website design for small business',
-    'affordable website design USA',
-    'website design Canada',
-    'small business web design agency',
-    'custom website design remote',
-    'fixed price website design',
-    'small business SEO',
-    'local SEO for small business',
-    'Google Business Profile optimization',
-    'website redesign small business',
-    'website design from $299',
-    'veteran owned business discount website',
-    'nonprofit and small business website discount',
-  ],
-  alternates: alternates('/'),
-  category: 'Web Design',
-  applicationName: 'MANDER',
-  authors: [{ name: 'MANDER', url: SITE_URL }],
-  creator: 'MANDER',
-  publisher: 'MANDER',
-  formatDetection: { telephone: false, address: false, email: false },
-  // Explicit crawl directives. `max-image-preview: large` is what allows a
-  // full-width thumbnail in results, and it is off by default.
-  robots: {
-    index: true,
-    follow: true,
-    googleBot: {
+/**
+ * Metadata is per-market, which is why this is a function now rather than the
+ * static object it used to be.
+ *
+ * `alternates` is deliberately unchanged between markets: both versions live
+ * at the same URL, so there is exactly one canonical per page and no
+ * duplicate-content question to answer. Googlebot crawls from the US and
+ * therefore indexes the US version, which is the intended canonical
+ * experience — the India version is a geographic variation of the same page,
+ * not a second page competing with it.
+ */
+export async function generateMetadata() {
+  const market = getServerMarket();
+  const { meta } = market;
+
+  return {
+    metadataBase: new URL(SITE_URL),
+    title: {
+      default: meta.title,
+      template: '%s | MANDER',
+    },
+    description: meta.description,
+    // Keywords carry almost no ranking weight now, but they cost nothing and a
+    // few engines still read them. The real work is done by the description,
+    // headings and JSON-LD service area.
+    keywords: meta.keywords,
+    alternates: alternates('/'),
+    category: 'Web Design',
+    applicationName: 'MANDER',
+    authors: [{ name: 'MANDER', url: SITE_URL }],
+    creator: 'MANDER',
+    publisher: 'MANDER',
+    formatDetection: { telephone: false, address: false, email: false },
+    // Explicit crawl directives. `max-image-preview: large` is what allows a
+    // full-width thumbnail in results, and it is off by default.
+    robots: {
       index: true,
       follow: true,
-      'max-video-preview': -1,
-      'max-image-preview': 'large',
-      'max-snippet': -1,
+      googleBot: {
+        index: true,
+        follow: true,
+        'max-video-preview': -1,
+        'max-image-preview': 'large',
+        'max-snippet': -1,
+      },
     },
-  },
-  openGraph: {
-    title: 'MANDER | Website Design for Small Business — U.S. & Canada',
-    description:
-      'Remote website design, development and SEO for small and mid-sized businesses across the U.S. and Canada. Fixed-price builds from $299.',
-    type: 'website',
-    url: SITE_URL,
-    siteName: 'MANDER',
-    locale: 'en_US',
-    images: [OG_IMAGE],
-  },
-  twitter: {
-    card: 'summary_large_image',
-    title: 'MANDER | Website Design for Small Business — U.S. & Canada',
-    description:
-      'Remote website design and SEO for small business across the U.S. and Canada. Fixed-price builds from $299.',
-    images: [OG_IMAGE.url],
-  },
-};
+    openGraph: {
+      title: meta.ogTitle,
+      description: meta.ogDescription,
+      type: 'website',
+      url: SITE_URL,
+      siteName: 'MANDER',
+      locale: market.locale,
+      images: [OG_IMAGE],
+    },
+    twitter: {
+      card: 'summary_large_image',
+      title: meta.ogTitle,
+      description: meta.twitterDescription,
+      images: [OG_IMAGE.url],
+    },
+  };
+}
 
 export const viewport = {
   themeColor: '#f4f2ec',
 };
 
 export default function RootLayout({ children }) {
+  // Resolved once, here, from the header the edge middleware set. Server
+  // components below call getServerMarket() themselves; MarketProvider hands
+  // the same id to the client components.
+  const market = getServerMarket();
+
   return (
     <html
       lang="en"
       className={`${hanken.variable} ${jetbrains.variable} ${instrument.variable}`}
     >
       <body>
-        <JsonLd data={organizationSchema} />
+        <JsonLd data={organizationSchema(market)} />
         <JsonLd data={websiteSchema} />
         {/* One Service entity per discipline — these can surface independently
             of the homepage for "<service> for small business" queries. */}
-        {serviceSchemas.map((schema) => (
+        {serviceSchemas(market).map((schema) => (
           <JsonLd key={schema.name} data={schema} />
         ))}
         <a
@@ -140,20 +144,26 @@ export default function RootLayout({ children }) {
           Skip to content
         </a>
         <Grain />
-        {/* Wraps everything so the pricing note, the plan cards, the section
-            and the footer link all open one shared Community Rate drawer. */}
-        <CommunityRateProvider>
-          <Nav />
-          <main id="main">{children}</main>
-          <Footer />
-        </CommunityRateProvider>
-        {/* CookieHub renders the consent banner and decides whether Analytics
-            is allowed to load; Analytics does nothing until it says yes.
-            Outside the provider tree on purpose: neither has any relationship
-            to the Community Rate drawer, and nesting them there would imply
-            one. Order is presentational only — the two communicate by event,
-            not by position. */}
-        <Analytics />
+        {/* Every client component that shows a price or a contact option
+            reads its market from here; server components call
+            getServerMarket() directly. Wraps the analytics loader too, so
+            events are attributed to the market that produced them. */}
+        <MarketProvider market={market}>
+          {/* Wraps the tree so the pricing note, the plan cards, the section
+              and the footer link all open one shared Community Rate drawer. */}
+          <CommunityRateProvider>
+            <Nav />
+            <main id="main">{children}</main>
+            <Footer />
+          </CommunityRateProvider>
+          {/* CookieHub renders the consent banner and decides whether
+              Analytics is allowed to load; Analytics does nothing until it
+              says yes. Outside the Community Rate provider on purpose:
+              neither has any relationship to that drawer. Order is
+              presentational only — the two communicate by event, not by
+              position. */}
+          <Analytics />
+        </MarketProvider>
         <CookieHub />
       </body>
     </html>

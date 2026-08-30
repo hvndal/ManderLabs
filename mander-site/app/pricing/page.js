@@ -13,51 +13,40 @@ import {
   CommunityRateSection,
   CommunityRateNote,
 } from '@/components/CommunityRate';
-import { TIERS, CARE_PLAN, CARE_PLAN_PRICE, FAQS, BRAND } from '@/lib/content';
+import WhatsAppCta from '@/components/WhatsAppCta';
+import { BRAND } from '@/lib/content';
+import { getServerMarket } from '@/lib/market-server';
 import { faqSchema, OG_IMAGE, alternates } from '@/lib/seo';
 
-const TITLE = 'Website Design Pricing — Plans from $299';
-const DESCRIPTION =
-  'One-time website design pricing for small business in Canada and the U.S. Four plans from $299, Android apps from $2,999. No hidden fees.';
+export async function generateMetadata() {
+  const { pricing } = getServerMarket().meta;
 
-export const metadata = {
-  title: TITLE,
-  description: DESCRIPTION,
-  alternates: alternates('/pricing'),
-  openGraph: {
-    title: TITLE,
-    description: DESCRIPTION,
-    url: '/pricing',
-    type: 'website',
-    images: [OG_IMAGE],
-  },
-  twitter: {
-    card: 'summary_large_image',
-    title: TITLE,
-    description: DESCRIPTION,
-    images: [OG_IMAGE.url],
-  },
-};
+  return {
+    title: pricing.title,
+    description: pricing.description,
+    // Same URL for both markets, so the canonical does not move — see the
+    // note in app/layout.js.
+    alternates: alternates('/pricing'),
+    openGraph: {
+      title: pricing.title,
+      description: pricing.description,
+      url: '/pricing',
+      type: 'website',
+      images: [OG_IMAGE],
+    },
+    twitter: {
+      card: 'summary_large_image',
+      title: pricing.title,
+      description: pricing.description,
+      images: [OG_IMAGE.url],
+    },
+  };
+}
 
-// Ordered so the rows that separate Starter from Growth — local search,
-// analytics, integrations — sit in the middle of the table where the eye
-// lands, rather than buried under a run of rows every tier ticks.
-const COMPARISON = [
-  { feature: 'Pages', values: ['1', 'Up to 5', 'Up to 10', 'Unlimited'] },
-  { feature: 'Delivery', values: ['~2 weeks', '3–4 weeks', '4–6 weeks', '6–10 weeks'] },
-  { feature: 'Enquiry forms', values: ['Contact only', true, true, true] },
-  { feature: 'Copywriting support', values: [false, true, true, true] },
-  { feature: 'On-page SEO', values: ['Basic', 'Basic', 'Advanced', 'Full strategy'] },
-  { feature: 'Local SEO + Google Business Profile', values: [false, false, true, true] },
-  { feature: 'Analytics + Search Console', values: [false, false, true, true] },
-  { feature: 'Booking / CRM integration', values: [false, false, true, true] },
-  { feature: 'E-commerce', values: [false, false, false, true] },
-  { feature: 'API integrations', values: [false, false, false, true] },
-  { feature: 'Custom workflows', values: [false, false, false, true] },
-  { feature: 'Revision rounds', values: ['1', '2', '3', 'Until sign-off'] },
-  { feature: 'Priority support', values: [false, false, false, true] },
-];
-
+// The comparison table's rows are positional — one value per tier — so they
+// live with the tiers in lib/markets/<id>.js rather than here. The US table
+// is the same thirteen rows it always was; India's has its own, because it
+// sells two plans rather than four.
 function Cell({ value }) {
   if (value === true) return <Icon name="check" className="mx-auto h-4 w-4 text-ink" strokeWidth={2} />;
   if (value === false) return <span className="text-line-strong">—</span>;
@@ -65,9 +54,12 @@ function Cell({ value }) {
 }
 
 export default function PricingPage() {
+  const market = getServerMarket();
+  const { tiers, comparison } = market;
+
   return (
     <>
-      <JsonLd data={faqSchema(FAQS)} />
+      <JsonLd data={faqSchema(market.faqs)} />
 
       {/* ---------------------------------------------------------------- Hero */}
       <section className="relative overflow-hidden border-b border-line">
@@ -84,10 +76,13 @@ export default function PricingPage() {
               One-time build cost, quoted up front. Not sure which fits? The
               60-second quiz recommends a starting point.
             </p>
-            <Link href="/quote" className="btn-primary shrink-0">
-              Take the fit quiz
-              <Icon name="arrow" className="h-4 w-4" strokeWidth={2} />
-            </Link>
+            <div className="flex shrink-0 flex-col gap-3 sm:flex-row">
+              <Link href="/quote" className="btn-primary">
+                Take the fit quiz
+                <Icon name="arrow" className="h-4 w-4" strokeWidth={2} />
+              </Link>
+              <WhatsAppCta tone="outline" location="pricing-hero" />
+            </div>
           </Reveal>
         </div>
       </section>
@@ -96,7 +91,7 @@ export default function PricingPage() {
       <section className="bg-paper-2">
         <div className="container-max py-stack-md">
           <Reveal>
-            <PricingInteractive tiers={TIERS} />
+            <PricingInteractive tiers={tiers} />
           </Reveal>
           {/* Apps sit below the websites, folded shut, because the page is
               read top-down and the $899 Growth plan has to be the decision
@@ -112,9 +107,7 @@ export default function PricingPage() {
           </Reveal>
           <Reveal delay={120}>
             <p className="mt-8 text-label-sm text-ink-mute">
-              Prices in USD; Canadian clients invoiced in CAD on request.
-              One-time build cost unless otherwise agreed. Hosting &amp;
-              maintenance available via the Care Plan.
+              {market.priceNote}
             </p>
           </Reveal>
         </div>
@@ -137,7 +130,7 @@ export default function PricingPage() {
               <thead>
                 <tr className="border-b border-line bg-paper">
                   <th scope="col" className="label-caps px-6 py-5 text-ink-mute">Feature</th>
-                  {TIERS.map((tier) => (
+                  {tiers.map((tier) => (
                     <th
                       key={tier.name}
                       scope="col"
@@ -152,7 +145,7 @@ export default function PricingPage() {
                 </tr>
               </thead>
               <tbody>
-                {COMPARISON.map((row) => (
+                {comparison.map((row) => (
                   <tr key={row.feature} className="border-b border-line last:border-0">
                     <th scope="row" className="px-6 py-4 text-body-md font-normal text-ink">
                       {row.feature}
@@ -160,7 +153,7 @@ export default function PricingPage() {
                     {row.values.map((value, i) => (
                       <td
                         key={`${row.feature}-${i}`}
-                        className={`px-6 py-4 text-center ${TIERS[i].featured ? 'bg-paper' : ''}`}
+                        className={`px-6 py-4 text-center ${tiers[i]?.featured ? 'bg-paper' : ''}`}
                       >
                         <Cell value={value} />
                       </td>
@@ -173,36 +166,57 @@ export default function PricingPage() {
         </Reveal>
       </Section>
 
-      {/* ------------------------------------------------------------ Care Plan */}
+      {/* ------------------------------------------------- Ongoing / Care Plan */}
+      {/* Two shapes of the same idea. The US sells one care plan at one price
+          with a feature grid; India sells two monthly plans, which are tiers
+          and therefore render through the same card component as the builds
+          above rather than through a second pattern. */}
       <Section tone="alt">
-        <SectionHeading
-          eyebrow="Add-on"
-          title={`The Care Plan — ${CARE_PLAN_PRICE}.`}
-          body="Optional on every tier. Hosting, security, backups, and unlimited small edits so you never think about the site."
-          align="center"
-        />
-
-        <div className="mt-12 grid grid-cols-1 gap-px overflow-hidden border border-line bg-line sm:grid-cols-2 lg:grid-cols-5">
-          {CARE_PLAN.map((item) => (
-            <Reveal key={item.title} className="bg-paper-2">
-              <div className="flex h-full flex-col p-6">
-                <h3 className="text-headline-md text-ink">{item.title}</h3>
-                <p className="mt-3 text-body-md text-ink-soft">{item.body}</p>
-              </div>
+        {market.monthlyTiers ? (
+          <>
+            <SectionHeading
+              eyebrow="Ongoing"
+              title={market.monthlyHeading}
+              body={market.monthlyBody}
+              align="center"
+            />
+            <Reveal className="mt-12">
+              <PricingInteractive tiers={market.monthlyTiers} />
             </Reveal>
-          ))}
-        </div>
+          </>
+        ) : (
+          <>
+            <SectionHeading
+              eyebrow="Add-on"
+              title={`The Care Plan — ${market.carePlanPrice}.`}
+              body={market.carePlanBody}
+              align="center"
+            />
+
+            <div className="mt-12 grid grid-cols-1 gap-px overflow-hidden border border-line bg-line sm:grid-cols-2 lg:grid-cols-5">
+              {market.carePlan.map((item) => (
+                <Reveal key={item.title} className="bg-paper-2">
+                  <div className="flex h-full flex-col p-6">
+                    <h3 className="text-headline-md text-ink">{item.title}</h3>
+                    <p className="mt-3 text-body-md text-ink-soft">{item.body}</p>
+                  </div>
+                </Reveal>
+              ))}
+            </div>
+          </>
+        )}
 
         <Reveal delay={120}>
-          <div className="mt-12 flex justify-center">
+          <div className="mt-12 flex flex-col justify-center gap-3 sm:flex-row">
             <a
               href={`mailto:${BRAND.email}?subject=${encodeURIComponent(
-                'Care Plan enquiry'
+                market.monthlyTiers ? 'Monthly plan enquiry' : 'Care Plan enquiry'
               )}`}
               className="btn-primary"
             >
               Contact sales
             </a>
+            <WhatsAppCta tone="outline" location="pricing-care" />
           </div>
         </Reveal>
       </Section>
@@ -218,7 +232,7 @@ export default function PricingPage() {
           </div>
           <div className="lg:col-span-8">
             <Reveal>
-              <Faq items={FAQS} />
+              <Faq items={market.faqs} />
             </Reveal>
           </div>
         </div>
@@ -258,6 +272,7 @@ export default function PricingPage() {
               >
                 Contact sales
               </a>
+              <WhatsAppCta tone="on-dark" location="pricing-final-cta" />
               <Link
                 href="/quote"
                 className="label-caps inline-flex items-center justify-center gap-2 border border-paper/40 px-8 py-4 text-paper transition-colors duration-300 hover:border-paper"
