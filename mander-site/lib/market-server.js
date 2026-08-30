@@ -10,7 +10,12 @@
 // cannot show two different prices. It is also what keeps the two markets
 // from bleeding into each other through a CDN cache.
 import { headers } from 'next/headers';
-import { MARKET_HEADER, getMarket, resolveMarketId } from './markets';
+import {
+  MARKET_HEADER,
+  MARKET_SOURCE_HEADER,
+  getMarket,
+  resolveMarketId,
+} from './markets';
 
 export function getServerMarketId() {
   try {
@@ -25,4 +30,20 @@ export function getServerMarketId() {
 
 export function getServerMarket() {
   return getMarket(getServerMarketId());
+}
+
+/**
+ * 'override' when a market was pinned with ?market=, 'geo' otherwise.
+ *
+ * Only the override badge reads this — everything else on the site behaves
+ * identically whichever way the market was arrived at, which is the point:
+ * pinning India shows you exactly what an Indian visitor sees, not a preview
+ * mode with its own quirks.
+ */
+export function getServerMarketSource() {
+  try {
+    return headers().get(MARKET_SOURCE_HEADER) === 'override' ? 'override' : 'geo';
+  } catch {
+    return 'geo';
+  }
 }

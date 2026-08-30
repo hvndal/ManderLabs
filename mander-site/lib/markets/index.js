@@ -13,7 +13,14 @@ import { US_MARKET } from './us';
 import { IN_MARKET } from './in';
 import { DEFAULT_MARKET_ID } from './geo';
 
-export { DEFAULT_MARKET_ID, MARKET_HEADER, marketIdForCountry } from './geo';
+export {
+  DEFAULT_MARKET_ID,
+  MARKET_HEADER,
+  MARKET_SOURCE_HEADER,
+  MARKET_QUERY_PARAM,
+  MARKET_AUTO,
+  marketIdForCountry,
+} from './geo';
 
 export const MARKETS = {
   us: US_MARKET,

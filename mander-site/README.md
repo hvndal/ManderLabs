@@ -271,6 +271,32 @@ Prices are set from what a local business actually pays, not converted from
 the US card. To change them, edit `lib/markets/in.js` — nothing else needs
 touching.
 
+### The hidden override (for you, not visitors)
+
+There is no country selector on the site. There is a query parameter:
+
+```
+/pricing?market=in     pin the India version
+/pricing?market=us     pin the US version
+/pricing?market=auto   back to geolocation
+```
+
+Asking for one sets a 30-day `httpOnly` cookie and immediately redirects to
+the same path *without* the parameter — so the pinned URL is never what gets
+bookmarked, shared or crawled, and the pin then follows you across the site.
+
+While a market is pinned, a small strip sits in the bottom-left corner
+showing which one and offering the other plus **Auto**. It renders only when
+the cookie is present, so an ordinary visitor's page does not contain it at
+all. Pinning is not a preview mode — the pinned market renders exactly what a
+visitor in that country sees; the strip is the only difference, and it exists
+so a 30-day pin cannot quietly become the site you think you have.
+
+"Hidden" means no UI, not secret: anyone who guesses the parameter can look at
+the other market's prices. Both versions are public pages, so that costs
+nothing — and an auth check for looking at your own site would be a lot of
+machinery for very little.
+
 ### Testing it
 
 `next start`, then send the header the edge would:
@@ -280,7 +306,9 @@ curl -s -H "x-vercel-ip-country: IN" localhost:3000/pricing   # India
 curl -s localhost:3000/pricing                                 # everyone else
 ```
 
-Spoofing is not a concern: the middleware overwrites any inbound
+Or just use `?market=in` in a browser, as above.
+
+Spoofing the header is not a concern: the middleware overwrites any inbound
 `x-mander-market` before the app sees it.
 
 ## Email — two addresses, two jobs

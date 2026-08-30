@@ -15,6 +15,25 @@ export const MARKET_HEADER = 'x-mander-market';
 
 export const DEFAULT_MARKET_ID = 'us';
 
+// Set alongside MARKET_HEADER so the app can tell a geolocated market from an
+// overridden one — the only thing that reads it is the little badge that
+// shows you which version you have pinned.
+export const MARKET_SOURCE_HEADER = 'x-mander-market-source';
+
+// The override: ?market=in / ?market=us pins a market for whoever asked,
+// ?market=auto goes back to geolocation. It is stored in a cookie so it
+// survives navigation, and the middleware redirects the query parameter away
+// immediately afterwards — so a pinned URL never gets shared, indexed, or
+// left lying in someone's history.
+//
+// "Hidden" here means no UI, not secret: anyone who guesses the parameter can
+// see the other market's prices. That is fine — both versions are public
+// pages, and the alternative (an auth check for a preview toggle) is a lot of
+// machinery for looking at your own site.
+export const MARKET_QUERY_PARAM = 'market';
+export const MARKET_COOKIE = 'mander_market';
+export const MARKET_AUTO = 'auto';
+
 // The whole geographic rule, in one object. Adding a market later means one
 // entry here plus one file in lib/markets — no page or component changes.
 // Everything not listed falls through to the default (US) experience, which
