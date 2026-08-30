@@ -4,6 +4,7 @@ import { useEffect, useRef, useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { COMMUNITY, BRAND } from '@/lib/content';
 import { submitForm } from '@/lib/forms';
+import { trackEvent } from '@/lib/analytics';
 import Icon from './Icon';
 
 const EASE = [0.16, 1, 0.3, 1];
@@ -93,9 +94,16 @@ export default function CommunityRateDialog({ open, onClose }) {
     });
 
     if (result.ok) {
+      // The category only — never the name, email or note. Which categories
+      // people actually use is the point; who used them is not GA's business.
+      trackEvent('generate_lead', {
+        form: 'community_rate',
+        category: chosen?.label || 'unspecified',
+      });
       setStatus('sent');
       form.reset();
     } else {
+      trackEvent('form_error', { form: 'community_rate' });
       setError(result.message);
       setStatus('error');
     }

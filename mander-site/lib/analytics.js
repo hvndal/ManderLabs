@@ -33,9 +33,55 @@ export const ANALYTICS_CATEGORY = 'analytics';
 // touching the analytics loader.
 export const CONSENT_EVENT = 'mander:consent-change';
 
+// The last status CookieHub reported, kept in module scope because the event
+// alone is not enough: CookieHub's onInitialise can fire before a component
+// that cares has mounted and attached its listener (an already-cached
+// consent script routinely wins that race), and a CustomEvent dispatched to
+// nobody is gone for good. That was leaving returning visitors who had
+// already accepted with no analytics at all for the whole session. Anything
+// mounting late reads the current answer here instead of waiting for the
+// next change.
+let consentStatus = 'denied';
+
 export function publishConsent(status) {
+  consentStatus = status === 'granted' ? 'granted' : 'denied';
   if (typeof window === 'undefined') return;
-  window.dispatchEvent(new CustomEvent(CONSENT_EVENT, { detail: status }));
+  window.dispatchEvent(new CustomEvent(CONSENT_EVENT, { detail: consentStatus }));
+}
+
+/** Current consent answer — 'granted' only once CookieHub has said so. */
+export function getConsent() {
+  return consentStatus;
+}
+
+/**
+ * Send a GA4 event, if and only if the visitor allowed analytics.
+ *
+ * Enquiries, quiz completions and Community Rate requests are the only
+ * numbers on this site worth having — page views alone cannot tell you
+ * whether the funnel works. Without this the property was collecting
+ * traffic and nothing else.
+ *
+ * Events raised in the moment right after consent is granted can land before
+ * gtag.js has finished loading, so those are pushed straight onto dataLayer;
+ * the loader reuses the same array (`dataLayer || []`), so the queue is
+ * replayed rather than dropped.
+ */
+export function trackEvent(name, params = {}) {
+  if (typeof window === 'undefined') return false;
+  if (!ANALYTICS_ENABLED || consentStatus !== 'granted') return false;
+  try {
+    if (typeof window.gtag === 'function') {
+      window.gtag('event', name, params);
+    } else {
+      window.dataLayer = window.dataLayer || [];
+      window.dataLayer.push(['event', name, params]);
+    }
+    return true;
+  } catch {
+    // Analytics must never be able to break a form submission.
+    return false;
+  }
 }
 
 /**

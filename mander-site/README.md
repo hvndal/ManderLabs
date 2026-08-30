@@ -222,7 +222,7 @@ replaced.
 
 ## Email — two addresses, two jobs
 
-`BRAND.email` in `lib/content.js` is **`herman@mander.tech`** — the
+`BRAND.email` in `lib/content.js` is **`sales@mander.tech`** — the
 public-facing address shown on the site and used in every `mailto:` link.
 This is display-only: for mail sent *to* that address to actually arrive
 anywhere, you need to set up email forwarding at wherever `mander.tech` is
@@ -233,7 +233,7 @@ codebase — nothing here does it for you.
 The **contact form and the `/quote` quiz** don't depend on that forwarding at
 all — they submit straight to Web3Forms, which is registered directly to
 `hundalg968@gmail.com` (see below). So submissions reach your inbox the
-moment the Web3Forms key is set up, even before `herman@mander.tech`
+moment the Web3Forms key is set up, even before `sales@mander.tech`
 forwarding exists.
 
 ## Contact form

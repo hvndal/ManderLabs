@@ -4,6 +4,7 @@ import { useState } from 'react';
 import Icon from './Icon';
 import { TIERS, BRAND } from '@/lib/content';
 import { submitForm } from '@/lib/forms';
+import { trackEvent } from '@/lib/analytics';
 
 const FIELD =
   'w-full border border-line bg-white px-4 py-3 text-body-md text-ink transition-colors duration-200 placeholder:text-ink-mute/60 focus:border-ink focus:outline-none focus:ring-0';
@@ -44,9 +45,16 @@ export default function ContactForm({ defaultPlan = 'Growth' }) {
     });
 
     if (result.ok) {
+      // The conversion that matters. No email address or message body goes
+      // to GA — just the fact of an enquiry and which plan it was about.
+      trackEvent('generate_lead', {
+        form: 'contact',
+        plan: data.plan || 'unspecified',
+      });
       setStatus('sent');
       form.reset();
     } else {
+      trackEvent('form_error', { form: 'contact' });
       setError(result.message);
       setStatus('error');
     }

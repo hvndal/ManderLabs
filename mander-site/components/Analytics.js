@@ -7,6 +7,8 @@ import {
   ANALYTICS_ENABLED,
   GA_MEASUREMENT_ID,
   CONSENT_EVENT,
+  getConsent,
+  trackEvent,
 } from '@/lib/analytics';
 
 /**
@@ -34,6 +36,12 @@ export default function Analytics() {
     if (!ANALYTICS_ENABLED) return;
     const onChange = (e) => setGranted(e.detail === 'granted');
     window.addEventListener(CONSENT_EVENT, onChange);
+    // Consent can already have been published before this listener existed —
+    // CookieHub's script is frequently warm in cache and its onInitialise
+    // callback beats hydration, and that one dispatch is not repeated. Read
+    // the stored answer once on mount so a returning visitor who accepted
+    // gets analytics on this page, not on the next one they navigate to.
+    if (getConsent() === 'granted') setGranted(true);
     return () => window.removeEventListener(CONSENT_EVENT, onChange);
   }, []);
 
@@ -49,6 +57,22 @@ export default function Analytics() {
     });
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [pathname, granted]);
+
+  // Every "Contact sales" button on this site is a mailto:, and a mailto:
+  // click leaves no trace of its own — no page view, no navigation, nothing.
+  // Without this, the most common way people start a conversation here is
+  // simply invisible in the reporting. One delegated listener catches them
+  // all rather than threading a handler through a dozen components.
+  useEffect(() => {
+    if (!ANALYTICS_ENABLED || !granted) return;
+    const onClick = (e) => {
+      const link = e.target.closest?.('a[href^="mailto:"]');
+      if (!link) return;
+      trackEvent('contact_email_click', { page_path: pathname });
+    };
+    document.addEventListener('click', onClick);
+    return () => document.removeEventListener('click', onClick);
+  }, [granted, pathname]);
 
   if (!ANALYTICS_ENABLED || !granted) return null;
 

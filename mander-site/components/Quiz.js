@@ -5,6 +5,7 @@ import Link from 'next/link';
 import Icon from './Icon';
 import { QUIZ, TIERS, BRAND } from '@/lib/content';
 import { submitForm } from '@/lib/forms';
+import { trackEvent } from '@/lib/analytics';
 
 // Used only when the form itself fails to send. Now the same public address
 // as everything else, so there is one inbox to keep alive rather than two.
@@ -90,8 +91,16 @@ export default function Quiz() {
     });
 
     if (sent.ok) {
+      // Which tier the quiz recommends, and how often it hands someone to
+      // sales, is the only read there is on whether the quiz is worth having.
+      trackEvent('generate_lead', {
+        form: 'quiz',
+        plan: result.tier,
+        wants_sales: result.forceSales ? 'yes' : 'no',
+      });
       setStatus('sent');
     } else {
+      trackEvent('form_error', { form: 'quiz' });
       setError(sent.message);
       setStatus('error');
     }
