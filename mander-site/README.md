@@ -262,7 +262,7 @@ identifier, which is why it needs no consent gate.
 * Monthly: Mander Care ₹2,499/mo, Mander Growth ₹4,999/mo — sold as plans
   rather than as the single US-style Care Plan add-on.
 * Android: ₹49,999 / ₹99,999 / ₹1,99,999+.
-* WhatsApp **+91 81462 08024** appears in the nav, footer, plan cards, contact
+* WhatsApp **+91 81462 98024** appears in the nav, footer, plan cards, contact
   blocks and final CTAs. Every one of those renders from `market.whatsapp`, so
   outside India the number is absent from the HTML *and* from the JavaScript
   bundle — not hidden with CSS.
@@ -271,31 +271,30 @@ Prices are set from what a local business actually pays, not converted from
 the US card. To change them, edit `lib/markets/in.js` — nothing else needs
 touching.
 
-### The hidden override (for you, not visitors)
+### The country picker
 
-There is no country selector on the site. There is a query parameter:
+At the very end of the footer, below the legal row: a flag and a country name.
+Clicking it offers United States, Canada, India, and *Detect automatically*.
 
-```
-/pricing?market=in     pin the India version
-/pricing?market=us     pin the US version
-/pricing?market=auto   back to geolocation
-```
+Everyone is placed by IP already — the picker exists for the visitor that gets
+wrong (a Canadian on a US VPN, an Indian owner travelling, you checking the
+other version). It sits at the quietest point on the page so it never competes
+with a CTA, and nobody is asked to choose a country before they can read
+anything.
 
-Asking for one sets a 30-day `httpOnly` cookie and immediately redirects to
-the same path *without* the parameter — so the pinned URL is never what gets
-bookmarked, shared or crawled, and the pin then follows you across the site.
+Choosing navigates to `?market=<region>`. The middleware saves the choice in a
+year-long `httpOnly` cookie and redirects the parameter away immediately, so
+the pinned URL is never bookmarked, shared or crawled — and the choice then
+follows the visitor across the site. Precedence is picker, then cookie, then
+geolocation; a cookie naming a region that does not exist falls through to
+geolocation rather than pinning anyone to a broken state.
 
-While a market is pinned, a small strip sits in the bottom-left corner
-showing which one and offering the other plus **Auto**. It renders only when
-the cookie is present, so an ordinary visitor's page does not contain it at
-all. Pinning is not a preview mode — the pinned market renders exactly what a
-visitor in that country sees; the strip is the only difference, and it exists
-so a 30-day pin cannot quietly become the site you think you have.
-
-"Hidden" means no UI, not secret: anyone who guesses the parameter can look at
-the other market's prices. Both versions are public pages, so that costs
-nothing — and an auth check for looking at your own site would be a lot of
-machinery for very little.
+**US and Canada are one market on purpose** — one price ladder, one set of
+copy (USD, invoiced in CAD on request, which the pricing page already says).
+Both are listed anyway, because "which country am I being shown" is the
+question a visitor is actually asking and a flag they recognise is the answer.
+Regions map to markets in `REGIONS` in `lib/markets/geo.js`; giving Canada its
+own prices later means adding a market file and pointing `ca` at it.
 
 ### Testing it
 
@@ -306,7 +305,7 @@ curl -s -H "x-vercel-ip-country: IN" localhost:3000/pricing   # India
 curl -s localhost:3000/pricing                                 # everyone else
 ```
 
-Or just use `?market=in` in a browser, as above.
+Or just use the footer picker in a browser.
 
 Spoofing the header is not a concern: the middleware overwrites any inbound
 `x-mander-market` before the app sees it.

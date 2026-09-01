@@ -5,8 +5,9 @@ import AperturedType from './AperturedType';
 import { CommunityRateFooterLink } from './CommunityRate';
 import { CookiePreferencesLink } from './CookieHub';
 import WhatsAppCta, { WhatsAppLine } from './WhatsAppCta';
+import CountryPicker from './CountryPicker';
 import { BRAND, NAV_LINKS } from '@/lib/content';
-import { getServerMarket } from '@/lib/market-server';
+import { getServerMarket, getServerRegion } from '@/lib/market-server';
 import { LEGAL_DOCS } from '@/lib/legal';
 
 // Derived from the policy data rather than hand-listed, so a new policy is
@@ -18,6 +19,7 @@ const LEGAL = LEGAL_DOCS.map((d) => ({ label: d.nav, href: `/legal/${d.slug}` })
 
 export default function Footer() {
   const market = getServerMarket();
+  const region = getServerRegion();
 
   return (
     <footer className="relative overflow-hidden bg-ink text-paper">
@@ -126,10 +128,15 @@ export default function Footer() {
           </div>
         </div>
 
-        <div className="mt-stack-md flex flex-col gap-4 border-t border-paper/15 pt-8 md:flex-row md:items-center md:justify-between">
-          <p className="text-label-sm text-paper/45">
-            © {new Date().getFullYear()} {BRAND.name}. Built for {market.region}.
-          </p>
+        <div className="mt-stack-md flex flex-col gap-6 border-t border-paper/15 pt-8 md:flex-row md:items-center md:justify-between">
+          <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:gap-6">
+            <p className="text-label-sm text-paper/45">
+              © {new Date().getFullYear()} {BRAND.name}. Built for {market.region}.
+            </p>
+            {/* The very end of the page, on purpose: everyone is placed by IP
+                already, so this is for the visitor that got wrong. */}
+            <CountryPicker region={region} />
+          </div>
           <ul className="flex flex-wrap gap-6">
             {LEGAL.map((item) => (
               <li key={item.label}>

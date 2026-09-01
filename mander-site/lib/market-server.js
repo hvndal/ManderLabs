@@ -13,6 +13,9 @@ import { headers } from 'next/headers';
 import {
   MARKET_HEADER,
   MARKET_SOURCE_HEADER,
+  REGION_HEADER,
+  DEFAULT_REGION_ID,
+  isRegion,
   getMarket,
   resolveMarketId,
 } from './markets';
@@ -42,8 +45,24 @@ export function getServerMarket() {
  */
 export function getServerMarketSource() {
   try {
-    return headers().get(MARKET_SOURCE_HEADER) === 'override' ? 'override' : 'geo';
+    return headers().get(MARKET_SOURCE_HEADER) === 'picked' ? 'picked' : 'geo';
   } catch {
     return 'geo';
+  }
+}
+
+/**
+ * The visitor's display region — 'us', 'ca' or 'in'.
+ *
+ * Distinct from the market because Canada and the United States share one
+ * market: the footer picker needs to show a Canadian visitor a maple leaf
+ * even though the page they are looking at is the North America version.
+ */
+export function getServerRegion() {
+  try {
+    const region = headers().get(REGION_HEADER);
+    return isRegion(region) ? region : DEFAULT_REGION_ID;
+  } catch {
+    return DEFAULT_REGION_ID;
   }
 }

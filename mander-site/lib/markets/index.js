@@ -15,11 +15,17 @@ import { DEFAULT_MARKET_ID } from './geo';
 
 export {
   DEFAULT_MARKET_ID,
+  DEFAULT_REGION_ID,
   MARKET_HEADER,
   MARKET_SOURCE_HEADER,
+  REGION_HEADER,
   MARKET_QUERY_PARAM,
   MARKET_AUTO,
+  REGIONS,
+  isRegion,
+  marketForRegion,
   marketIdForCountry,
+  regionForCountry,
 } from './geo';
 
 export const MARKETS = {

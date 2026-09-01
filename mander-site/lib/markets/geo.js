@@ -34,6 +34,43 @@ export const MARKET_QUERY_PARAM = 'market';
 export const MARKET_COOKIE = 'mander_market';
 export const MARKET_AUTO = 'auto';
 
+// Header carrying the display region, which is not the same thing as the
+// market: Canada and the United States are one market (one price ladder, one
+// set of copy) but two countries, and a Canadian visitor should see a maple
+// leaf in the footer picker rather than being told they are looking at the
+// American site.
+export const REGION_HEADER = 'x-mander-region';
+
+// Region → market. The picker offers these three; two of them resolve to the
+// same market on purpose. Inventing a separate Canadian price ladder to make
+// the menu look symmetrical would put numbers on the site that nobody has
+// agreed to charge — the pricing page already says USD, invoiced in CAD on
+// request, which is the true answer.
+export const REGIONS = {
+  us: { market: 'us', flag: '🇺🇸', name: 'United States', short: 'US' },
+  ca: { market: 'us', flag: '🇨🇦', name: 'Canada', short: 'CA' },
+  in: { market: 'in', flag: '🇮🇳', name: 'India', short: 'IN' },
+};
+
+export const DEFAULT_REGION_ID = 'us';
+
+export function isRegion(value) {
+  return Boolean(value) && Object.hasOwn(REGIONS, value);
+}
+
+export function marketForRegion(region) {
+  return REGIONS[region]?.market || DEFAULT_MARKET_ID;
+}
+
+/** Display region for a country code — everything unlisted reads as US. */
+export function regionForCountry(country) {
+  if (!country) return DEFAULT_REGION_ID;
+  const code = String(country).trim().toUpperCase();
+  if (code === 'IN') return 'in';
+  if (code === 'CA') return 'ca';
+  return DEFAULT_REGION_ID;
+}
+
 // The whole geographic rule, in one object. Adding a market later means one
 // entry here plus one file in lib/markets — no page or component changes.
 // Everything not listed falls through to the default (US) experience, which

@@ -274,7 +274,7 @@ const FAQS = [
   },
   {
     q: 'How do we talk?',
-    a: 'WhatsApp is the fastest route — message us on +91 81462 08024 and you will get a person, not a form. Email works too, and everything from the first conversation to handover happens remotely, so where you are in India makes no difference to the price or the timeline.',
+    a: 'WhatsApp is the fastest route — message us on +91 81462 98024 and you will get a person, not a form. Email works too, and everything from the first conversation to handover happens remotely, so where you are in India makes no difference to the price or the timeline.',
   },
 ];
 
@@ -319,9 +319,9 @@ export const IN_MARKET = {
   // site renders from this object and nothing else, so it appears here and
   // is absent from the US HTML entirely.
   whatsapp: {
-    display: '+91 81462 08024',
+    display: '+91 81462 98024',
     // wa.me wants the number with country code and no punctuation.
-    url: 'https://wa.me/918146208024',
+    url: 'https://wa.me/918146298024',
     cta: 'Chat with us on WhatsApp',
   },
 

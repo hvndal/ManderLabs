@@ -8,9 +8,7 @@ import Analytics from '@/components/Analytics';
 import CookieHub from '@/components/CookieHub';
 import { CommunityRateProvider } from '@/components/CommunityRate';
 import MarketProvider from '@/components/MarketProvider';
-import MarketBadge from '@/components/MarketBadge';
-import { getServerMarket, getServerMarketSource } from '@/lib/market-server';
-import { MARKETS } from '@/lib/markets';
+import { getServerMarket } from '@/lib/market-server';
 import {
   SITE_URL,
   OG_IMAGE,
@@ -125,9 +123,6 @@ export default function RootLayout({ children }) {
   // components below call getServerMarket() themselves; MarketProvider hands
   // the same id to the client components.
   const market = getServerMarket();
-  // 'override' only when a market was pinned with ?market= — so the badge
-  // below is absent from an ordinary visitor's page entirely.
-  const overridden = getServerMarketSource() === 'override';
 
   return (
     <html
@@ -168,9 +163,6 @@ export default function RootLayout({ children }) {
               presentational only — the two communicate by event, not by
               position. */}
           <Analytics />
-          {overridden && (
-            <MarketBadge active={market.id} markets={Object.keys(MARKETS)} />
-          )}
         </MarketProvider>
         <CookieHub />
       </body>
