@@ -31,6 +31,23 @@ export default function manifest() {
         type: 'image/png',
         purpose: 'any',
       },
+      // Raster copies of the same mark. The SVG above is the sharp one, but
+      // not everything that reads a manifest or hunts for a site icon renders
+      // SVG — and Google's own favicon guidance asks for a square raster at a
+      // multiple of 48. Cheap insurance for the one icon a search result and
+      // an installed app both draw.
+      {
+        src: '/icon-192.png',
+        sizes: '192x192',
+        type: 'image/png',
+        purpose: 'any',
+      },
+      {
+        src: '/logo-mander-square.png',
+        sizes: '512x512',
+        type: 'image/png',
+        purpose: 'any',
+      },
     ],
   };
 }

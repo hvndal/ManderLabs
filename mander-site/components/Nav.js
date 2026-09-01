@@ -7,6 +7,8 @@ import { NAV_LINKS, BRAND } from '@/lib/content';
 import Logo from './Logo';
 import Icon from './Icon';
 import WhatsAppCta from './WhatsAppCta';
+import { useMarket } from './MarketProvider';
+import { trackEvent } from '@/lib/analytics';
 
 // Buying starts a conversation rather than a checkout, so the primary action
 // everywhere is a person, not a form.
@@ -27,6 +29,7 @@ function NavLink({ href, children, onClick, className = '' }) {
 }
 
 export default function Nav() {
+  const market = useMarket();
   const [open, setOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const [cleared, setCleared] = useState(false);
@@ -97,6 +100,23 @@ export default function Nav() {
         </ul>
 
         <div className="hidden items-center gap-3 md:flex">
+          {/* The number for this market — the North American line outside
+              India, nothing inside it, where WhatsApp is the number. */}
+          {market.phone && (
+            <a
+              href={market.phone.href}
+              onClick={() =>
+                trackEvent('contact_phone_click', {
+                  market: market.id,
+                  location: 'nav',
+                })
+              }
+              className="label-caps hidden items-center gap-2 text-ink-soft transition-colors hover:text-ink lg:inline-flex"
+            >
+              <Icon name="phone" className="h-3.5 w-3.5" strokeWidth={2} />
+              {market.phone.display}
+            </a>
+          )}
           {/* India only. Ordered ahead of email because it is the faster
               route in that market, and absent entirely in every other. */}
           <WhatsAppCta tone="sm" location="nav" />
@@ -136,6 +156,21 @@ export default function Nav() {
           ))}
         </ul>
         <div className="flex flex-col gap-3 px-margin-mobile py-5">
+          {market.phone && (
+            <a
+              href={market.phone.href}
+              onClick={() =>
+                trackEvent('contact_phone_click', {
+                  market: market.id,
+                  location: 'nav-mobile',
+                })
+              }
+              className="btn-outline w-full"
+            >
+              <Icon name="phone" className="h-4 w-4" strokeWidth={2} />
+              {market.phone.display}
+            </a>
+          )}
           <WhatsAppCta className="w-full" location="nav-mobile" />
           <a href={SALES_MAILTO} className="btn-primary w-full">
             Contact sales

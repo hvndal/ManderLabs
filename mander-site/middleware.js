@@ -10,6 +10,7 @@ import {
   marketForRegion,
   regionForCountry,
 } from '@/lib/markets/geo';
+import { marketForPath } from '@/lib/markets/location-markets';
 
 /**
  * Edge geolocation → two request headers, and nothing else.
@@ -56,12 +57,30 @@ export function middleware(request) {
 
   const region = picked || geoRegion;
 
+  // A page about a place is resolved by the place, not by who is reading it.
+  // /locations/punjab/mohali quotes rupees to everyone including the US-based
+  // crawler that decides whether it can rank in India, and /locations/
+  // massachusetts/boston quotes dollars to everyone including a visitor in
+  // Delhi. Deciding it here rather than inside the page is what keeps the
+  // header, the footer, the sticky contact bar and the JSON-LD agreeing with
+  // the page body — they all read the market off the request, and a page that
+  // said rupees while its own structured data said dollars would be a
+  // contradiction Google is entitled to distrust.
+  //
+  // The region header is deliberately left alone: the footer picker still
+  // shows the visitor their own country, because that is what it controls.
+  const urlMarket = marketForPath(request.nextUrl.pathname);
+  const market = urlMarket || marketForRegion(region);
+
   const headers = new Headers(request.headers);
   // Set, not append: any inbound copy of these headers is replaced, so a
   // visitor cannot hand themselves a market by sending the header directly.
-  headers.set(MARKET_HEADER, marketForRegion(region));
+  headers.set(MARKET_HEADER, market);
   headers.set(REGION_HEADER, region);
-  headers.set(MARKET_SOURCE_HEADER, picked ? 'picked' : 'geo');
+  headers.set(
+    MARKET_SOURCE_HEADER,
+    urlMarket ? 'url' : picked ? 'picked' : 'geo'
+  );
 
   // No ?market= in play: the ordinary path, no redirect, nothing written.
   if (requested === null) {

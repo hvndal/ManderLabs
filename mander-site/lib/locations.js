@@ -1,4 +1,4 @@
-// Location SEO data — Massachusetts, Rhode Island, British Columbia.
+// Location SEO data — North America here, India in ./locations-india.js.
 //
 // Two routes read this file: app/locations/[region]/page.js and
 // app/locations/[region]/[city]/page.js. Both are data-driven templates, not
@@ -24,8 +24,18 @@
 // (lib/content.js) that is honestly tied to that region — e.g. Waste
 // Universe is a real Massachusetts client. Never invent one for a region
 // that doesn't have a genuine match; omit the field instead.
+//
+// `market` says which price ladder and contact options a region's pages
+// render — 'us' here, 'in' for the Indian regions. A location page ignores
+// the visitor's own geolocation and uses this instead, because a page about
+// Mohali has to show rupees to the US-based crawler or it can never rank in
+// India, and a page about Boston has to show dollars to an Indian visitor or
+// it is answering a question nobody asked. The market pages (home, pricing,
+// quote) are still resolved by IP; these are resolved by their own URL.
+import { IN_REGIONS } from './locations-india';
+import { LOCATION_MARKETS } from './markets/location-markets';
 
-export const REGIONS = [
+const NA_REGIONS = [
   {
     slug: 'massachusetts',
     name: 'Massachusetts',
@@ -611,6 +621,28 @@ export const REGIONS = [
     ],
   },
 ];
+
+// One list, in the order the locations hub shows them: North America first
+// because that is where the studio started, then India.
+//
+// The market is stamped on from lib/markets/location-markets.js rather than
+// written into each region, because the edge middleware reads that same map
+// to decide the market before this file is ever loaded. Two copies of the
+// answer would eventually disagree, and the failure would be a page showing
+// rupees with dollars in its structured data — invisible in review and
+// expensive in search.
+export const REGIONS = [...NA_REGIONS, ...IN_REGIONS].map((region) => {
+  const market = LOCATION_MARKETS[region.slug];
+  if (!market) {
+    // Loud on purpose. A region with no market would silently inherit the
+    // visitor's geolocation, which is the one behaviour these pages must
+    // never have.
+    throw new Error(
+      `Region "${region.slug}" has no entry in LOCATION_MARKETS (lib/markets/location-markets.js). Add one before adding the region.`
+    );
+  }
+  return { ...region, market };
+});
 
 export function getRegion(slug) {
   return REGIONS.find((r) => r.slug === slug) || null;

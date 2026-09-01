@@ -47,6 +47,17 @@ export const US_MARKET = {
   // from the rendered HTML, not hidden with CSS.
   whatsapp: null,
 
+  // The North American line, shown to US, Canadian and every other non-Indian
+  // visitor. Same gating in reverse: India renders its WhatsApp number and
+  // not this one, so neither market ever shows a number nobody there can
+  // sensibly call. E.164 in `href` because that is the only format every
+  // dialler, and Google's structured data, read without ambiguity.
+  phone: {
+    display: '+1 (857) 758-7182',
+    href: 'tel:+18577587182',
+    e164: '+18577587182',
+  },
+
   tagline: BRAND.tagline,
   region: BRAND.region,
   colophon: {

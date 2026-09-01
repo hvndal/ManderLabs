@@ -76,6 +76,16 @@ export default function Footer() {
                   {BRAND.email}
                 </a>
               </li>
+              {market.phone && (
+                <li>
+                  <a
+                    href={market.phone.href}
+                    className="transition-colors hover:text-paper"
+                  >
+                    {market.phone.display}
+                  </a>
+                </li>
+              )}
               {/* Renders nothing outside India — the number is not in the
                   US markup at all, not hidden in it. */}
               <li>

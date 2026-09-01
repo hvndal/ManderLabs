@@ -7,8 +7,11 @@ import ProcessTimeline from '@/components/ProcessTimeline';
 import Faq from '@/components/Faq';
 import JsonLd from '@/components/JsonLd';
 import Icon from '@/components/Icon';
+import MarketProvider from '@/components/MarketProvider';
+import WhatsAppCta from '@/components/WhatsAppCta';
 import { REGIONS, getRegion } from '@/lib/locations';
 import { SERVICES, PROCESS, WORK, BRAND } from '@/lib/content';
+import { getMarket } from '@/lib/markets';
 import { breadcrumbSchema, locationServiceSchema, faqSchema, OG_IMAGE, alternates } from '@/lib/seo';
 
 // Static params only — one entry per region in lib/locations.js. Adding a
@@ -58,11 +61,14 @@ export default function RegionPage({ params }) {
     { name: region.name },
   ];
   const workCase = region.workRef ? WORK.find((w) => w.name === region.workRef) : null;
+  // Market by URL, not by IP — see the note in lib/locations.js.
+  const market = getMarket(region.market);
+  const startingAt = market.tiers[0];
   const mailto = (subject) =>
     `mailto:${BRAND.email}?subject=${encodeURIComponent(subject)}`;
 
   return (
-    <>
+    <MarketProvider market={market}>
       <JsonLd data={breadcrumbSchema(trail.map((t) => ({ name: t.name, path: t.href || path })))} />
       <JsonLd
         data={locationServiceSchema({
@@ -70,6 +76,7 @@ export default function RegionPage({ params }) {
           areaName: region.name,
           areaType: region.country === 'CA' ? 'AdministrativeArea' : 'State',
           description: region.metaDescription,
+          market,
         })}
       />
       <JsonLd data={faqSchema(region.faqs)} />
@@ -94,9 +101,19 @@ export default function RegionPage({ params }) {
             <a href={mailto(`${region.name} project enquiry`)} className="btn-primary">
               Contact sales
             </a>
+            <WhatsAppCta tone="outline" location={`region-${region.slug}`} />
             <Link href="/pricing" className="btn-outline">
               See pricing
             </Link>
+          </Reveal>
+          <Reveal delay={260} className="mt-6">
+            <p className="text-label-sm text-ink-mute">
+              Websites from{' '}
+              <Link href="/pricing" className="link-underline text-ink">
+                {startingAt.fromLabel || startingAt.price}
+              </Link>{' '}
+              — fixed price, quoted before anything starts.
+            </p>
           </Reveal>
         </div>
       </section>
@@ -250,6 +267,7 @@ export default function RegionPage({ params }) {
               <a href={mailto(`${region.name} project enquiry`)} className="btn-on-dark">
                 Contact sales
               </a>
+              <WhatsAppCta tone="on-dark" location={`region-${region.slug}-cta`} />
               <Link
                 href="/quote"
                 className="label-caps inline-flex items-center justify-center gap-2 border border-paper/40 px-8 py-4 text-paper transition-colors duration-300 hover:border-paper"
@@ -260,6 +278,6 @@ export default function RegionPage({ params }) {
           </Reveal>
         </div>
       </section>
-    </>
+    </MarketProvider>
   );
 }

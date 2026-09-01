@@ -8,6 +8,7 @@ import Analytics from '@/components/Analytics';
 import CookieHub from '@/components/CookieHub';
 import { CommunityRateProvider } from '@/components/CommunityRate';
 import MarketProvider from '@/components/MarketProvider';
+import QuickContact from '@/components/QuickContact';
 import { getServerMarket } from '@/lib/market-server';
 import {
   SITE_URL,
@@ -155,6 +156,9 @@ export default function RootLayout({ children }) {
             <Nav />
             <main id="main">{children}</main>
             <Footer />
+            {/* Additive on purpose: nothing above moved to make room for it.
+                See components/QuickContact.js. */}
+            <QuickContact />
           </CommunityRateProvider>
           {/* CookieHub renders the consent banner and decides whether
               Analytics is allowed to load; Analytics does nothing until it

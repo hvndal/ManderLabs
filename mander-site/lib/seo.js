@@ -186,10 +186,36 @@ export function organizationSchema(marketOrId) {
     // that actually resolve, or the signal is worth less than nothing.
     sameAs: [BRAND.instagram, BRAND.googleBusiness, BRAND.portfolio],
     // Google matches a site to a Business Profile on the strength of the
-    // entity looking like the same thing in both places. logo and image are
-    // the two it reads first and the site was sending neither.
-    logo: `${SITE_URL}/apple-icon`,
+    // entity looking like the same thing in both places, and logo is the
+    // first thing it reads.
+    //
+    // A static 512² PNG with declared dimensions, not the generated
+    // /apple-icon route this used to point at and not the lockup in /public.
+    // Three reasons, in order of how much they cost: Google wants a logo it
+    // can fetch and cache like any other image, it wants to know the size
+    // without downloading it first, and the lockup is pale rose line art on
+    // a transparent background — on the white card a search result draws, it
+    // is very close to invisible. This is the same mark as the favicon, on
+    // the ink field, so the tab, the home screen and the search result are
+    // recognisably one thing.
+    logo: {
+      '@type': 'ImageObject',
+      url: `${SITE_URL}/logo-mander-square.png`,
+      width: 512,
+      height: 512,
+      caption: BRAND.name,
+    },
     image: OG_IMAGE.url,
+    // The number the visitor is actually shown: the North American line
+    // outside India, the WhatsApp number inside it. Structured data that
+    // names a number the page does not display is a contradiction Google
+    // reads as a quality signal, and it would be an easy one to introduce
+    // with two markets.
+    ...(market.phone
+      ? { telephone: market.phone.e164 }
+      : market.whatsapp
+        ? { telephone: market.whatsapp.display.replace(/\s/g, '') }
+        : {}),
     // Not invented — the footer has published "Mon–Fri, 9–5 PT" since launch,
     // and this states the same thing in a form Google can read. If the Business
     // Profile ever says different hours, change both: a listing and a site
@@ -211,9 +237,12 @@ export function organizationSchema(marketOrId) {
       '@type': 'ContactPoint',
       contactType: 'sales',
       email: BRAND.email,
-      // The Indian number is published as a contact point only in the market
-      // that is shown it, exactly as it is in the page itself.
-      ...(market.whatsapp ? { telephone: market.whatsapp.display } : {}),
+      // Each market publishes only the number it actually shows.
+      ...(market.phone
+        ? { telephone: market.phone.e164 }
+        : market.whatsapp
+          ? { telephone: market.whatsapp.display.replace(/\s/g, '') }
+          : {}),
       areaServed: schema.countryCodes,
       availableLanguage: ['English'],
     },
@@ -322,7 +351,16 @@ export function breadcrumbSchema(trail) {
 // ProfessionalService rather than separate businesses. Pair with
 // breadcrumbSchema() above and faqSchema() below — a location page renders
 // all three.
-export function locationServiceSchema({ path, areaName, areaType = 'City', description }) {
+export function locationServiceSchema({
+  path,
+  areaName,
+  areaType = 'City',
+  description,
+  market,
+}) {
+  const resolved = market || getMarket(null);
+  const entry = resolved.tiers[0];
+
   return {
     '@context': 'https://schema.org',
     '@type': 'Service',
@@ -336,6 +374,19 @@ export function locationServiceSchema({ path, areaName, areaType = 'City', descr
       url: SITE_URL,
     },
     areaServed: { '@type': areaType, name: areaName },
+    // The entry price in the currency the page itself shows. A location page
+    // quoting rupees on the page and dollars in its structured data is the
+    // kind of contradiction that gets rich results dropped, and it would be
+    // easy to introduce here because the page's market comes from its URL
+    // rather than from the visitor.
+    offers: {
+      '@type': 'Offer',
+      name: entry.name,
+      price: String(entry.from),
+      priceCurrency: resolved.schema.offerCurrency,
+      availability: 'https://schema.org/InStock',
+      url: `${SITE_URL}/pricing`,
+    },
     url: `${SITE_URL}${path}`,
   };
 }

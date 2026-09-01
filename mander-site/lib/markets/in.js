@@ -318,6 +318,11 @@ export const IN_MARKET = {
   // The only market with a WhatsApp number. Every WhatsApp affordance on the
   // site renders from this object and nothing else, so it appears here and
   // is absent from the US HTML entirely.
+  // India has no separate voice line — WhatsApp is the number, and putting a
+  // US line on the India pages would just cost someone an international call
+  // to reach the same people.
+  phone: null,
+
   whatsapp: {
     display: '+91 81462 98024',
     // wa.me wants the number with country code and no punctuation.

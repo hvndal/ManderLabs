@@ -6,8 +6,11 @@ import Breadcrumbs from '@/components/Breadcrumbs';
 import Faq from '@/components/Faq';
 import JsonLd from '@/components/JsonLd';
 import Icon from '@/components/Icon';
+import MarketProvider from '@/components/MarketProvider';
+import WhatsAppCta from '@/components/WhatsAppCta';
 import { getCity, allCities } from '@/lib/locations';
 import { SERVICES, BRAND } from '@/lib/content';
+import { getMarket } from '@/lib/markets';
 import { breadcrumbSchema, locationServiceSchema, faqSchema, OG_IMAGE, alternates } from '@/lib/seo';
 
 // One entry per city across every region in lib/locations.js — adding a city
@@ -49,6 +52,14 @@ export default function CityPage({ params }) {
   if (!found) notFound();
   const { region, city } = found;
 
+  // The page's market comes from the region, not from the visitor's IP: a
+  // page about Mumbai quotes rupees to everyone, including the US-based
+  // crawler that decides whether it can rank in India, and a page about
+  // Boston quotes dollars to everyone. The provider makes the client
+  // components below (the WhatsApp CTA) agree with the server ones.
+  const market = getMarket(region.market);
+  const startingAt = market.tiers[0];
+
   const regionPath = `/locations/${region.slug}`;
   const path = `${regionPath}/${city.slug}`;
   const trail = [
@@ -62,7 +73,7 @@ export default function CityPage({ params }) {
     `mailto:${BRAND.email}?subject=${encodeURIComponent(subject)}`;
 
   return (
-    <>
+    <MarketProvider market={market}>
       <JsonLd
         data={breadcrumbSchema(
           trail.map((t) => ({ name: t.name, path: t.href || path }))
@@ -74,6 +85,7 @@ export default function CityPage({ params }) {
           areaName: `${city.name}, ${region.abbr}`,
           areaType: 'City',
           description: city.metaDescription,
+          market,
         })}
       />
       <JsonLd data={faqSchema(city.faqs)} />
@@ -98,9 +110,24 @@ export default function CityPage({ params }) {
             <a href={mailto(`${city.name} project enquiry`)} className="btn-primary">
               Contact sales
             </a>
+            {/* India pages only — the component renders nothing where the
+                market has no WhatsApp number. */}
+            <WhatsAppCta tone="outline" location={`city-${city.slug}`} />
             <Link href="/pricing" className="btn-outline">
               See pricing
             </Link>
+          </Reveal>
+          {/* The price, on the page that ranks, rather than one click away.
+              Someone who searched for a city and a service wants the number
+              before they want the philosophy. */}
+          <Reveal delay={260} className="mt-6">
+            <p className="text-label-sm text-ink-mute">
+              Websites from{' '}
+              <Link href="/pricing" className="link-underline text-ink">
+                {startingAt.fromLabel || startingAt.price}
+              </Link>{' '}
+              — fixed price, quoted before anything starts.
+            </p>
           </Reveal>
         </div>
       </section>
@@ -204,6 +231,7 @@ export default function CityPage({ params }) {
               <a href={mailto(`${city.name} project enquiry`)} className="btn-on-dark">
                 Contact sales
               </a>
+              <WhatsAppCta tone="on-dark" location={`city-${city.slug}-cta`} />
               <Link
                 href="/quote"
                 className="label-caps inline-flex items-center justify-center gap-2 border border-paper/40 px-8 py-4 text-paper transition-colors duration-300 hover:border-paper"
@@ -214,6 +242,6 @@ export default function CityPage({ params }) {
           </Reveal>
         </div>
       </section>
-    </>
+    </MarketProvider>
   );
 }

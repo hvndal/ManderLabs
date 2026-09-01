@@ -310,6 +310,56 @@ Or just use the footer picker in a browser.
 Spoofing the header is not a concern: the middleware overwrites any inbound
 `x-mander-market` before the app sees it.
 
+## Local pages — how the two markets share one locations tree
+
+`/locations/<region>/<city>` covers 11 regions and 31 cities across three
+countries. Adding one is a data change: `lib/locations.js` (North America),
+`lib/locations-india.js` (India), plus one line in
+`lib/markets/location-markets.js` saying which market it belongs to. Forget
+that line and the build throws — a region with no market would silently
+inherit the visitor's geolocation, which is the one thing these pages must
+never do.
+
+**Location pages are resolved by URL, not by IP.** The homepage, pricing and
+quote pages follow the visitor's country; a page *about a place* follows the
+place, for everyone, crawler included. `/locations/punjab/mohali` quotes
+₹19,999 and shows the WhatsApp button to a visitor in Ohio;
+`/locations/massachusetts/boston` quotes $299 to a visitor in Delhi. That is
+not a hole in the geolocation, it is the only arrangement that can work:
+Googlebot crawls from the United States, so an IP-resolved Mohali page would
+be indexed with dollar prices and could never rank for a Mohali search — and
+geolocated pricing on a city page is the pattern Google's own guidance warns
+about. Separate URLs per market is what it recommends instead.
+
+The decision is made once, in `middleware.js`, so the header, footer, sticky
+contact bar and JSON-LD all agree with the page body. A page saying rupees
+while its structured data said dollars is exactly the contradiction that gets
+rich results dropped.
+
+**The doorway-page rule still binds.** A city gets a page only when someone
+has written it a genuinely distinct paragraph — not a template with the name
+swapped. Sixteen real Indian pages beat sixty thin ones, and thin ones would
+cost the whole domain, not just those URLs.
+
+**No page claims an office.** Every location page is about the market being
+served, not where the studio sits. If a registered Indian address ever exists,
+add `proximityNote` to that region the way Massachusetts and British Columbia
+use it — and pair it with a Google Business Profile at the same address. An
+unverifiable local claim is the one thing that gets a listing suspended.
+
+## Contact — one number per market
+
+`market.phone` is the North American line (+1 857 758 7182, shown in the nav,
+the footer, the sticky bar and the JSON-LD); `market.whatsapp` is the Indian
+one. Each market defines one and nulls the other, so neither ever shows a
+number nobody there can sensibly call, and the Indian number is absent from
+the US HTML and JavaScript entirely rather than hidden with CSS.
+
+`components/QuickContact.js` is the sticky bar: talk to someone, or see the
+price. Two actions, never more; dismissible, remembered for the session;
+hidden on `/quote`, where the page already is the call to action. Nothing else
+moved to make room for it.
+
 ## Email — two addresses, two jobs
 
 `BRAND.email` in `lib/content.js` is **`sales@mander.tech`** — the
