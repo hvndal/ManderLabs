@@ -119,7 +119,11 @@ export default function PricingPage() {
 
       {/* ----------------------------------------------------- Comparison table */}
       <Section tone="white">
-        <SectionHeading eyebrow="Side by side" title="Compare every plan." align="center" />
+        <SectionHeading
+          index="02"
+          eyebrow="Side by side"
+          title="Compare every plan."
+        />
 
         <Reveal className="mt-12">
           <div className="overflow-x-auto border border-line">
@@ -170,6 +174,7 @@ export default function PricingPage() {
         {market.monthlyTiers ? (
           <>
             <SectionHeading
+              index="03"
               eyebrow="Ongoing"
               title="Keep it growing."
               body={market.monthlyBody}
@@ -182,6 +187,7 @@ export default function PricingPage() {
         ) : (
           <>
             <SectionHeading
+              index="03"
               eyebrow="Add-on"
               title="The Care Plan."
               body={market.carePlanBody}
@@ -223,7 +229,7 @@ export default function PricingPage() {
       <Section tone="paper">
         <div className="grid grid-cols-1 gap-gutter lg:grid-cols-12 lg:gap-16">
           <div className="lg:col-span-4">
-            <SectionHeading eyebrow="Questions" title="Pricing, answered." />
+            <SectionHeading index="04" eyebrow="Questions" title="Answered." />
           </div>
           <div className="lg:col-span-8">
             <Reveal>
@@ -238,6 +244,7 @@ export default function PricingPage() {
         <div className="grid grid-cols-1 gap-gutter lg:grid-cols-12 lg:gap-16">
           <div className="lg:col-span-4">
             <SectionHeading
+              index="05"
               eyebrow="Get in touch"
               title="Ready when you are."
               body="Tell us which plan fits and what you're building. We reply within one business day."

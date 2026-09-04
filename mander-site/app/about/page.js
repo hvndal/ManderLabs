@@ -111,7 +111,8 @@ export default function AboutPage() {
       <section className="bg-paper-2 py-stack-md">
         <div className="container-max">
           <SectionHeading
-            eyebrow="What we sell"
+            index="01"
+          eyebrow="What we sell"
             title="Products and prices, in one place."
             body="What the plans are, and what is billed once versus monthly. Every project is quoted in writing before it starts — ask and you get a real figure, not a range."
           />
@@ -160,7 +161,8 @@ export default function AboutPage() {
 
       {/* ------------------------------------------------------ Services */}
       <Section tone="white">
-        <SectionHeading eyebrow="Disciplines" title="What we actually do." />
+        <SectionHeading index="02"
+          eyebrow="Disciplines" title="What we actually do." />
         <Reveal className="mt-10 flex flex-wrap gap-x-8 gap-y-3">
           {SERVICES.map((service) => (
             <Link
@@ -177,6 +179,7 @@ export default function AboutPage() {
       {/* --------------------------------------------------- Commitments */}
       <Section tone="alt">
         <SectionHeading
+          index="03"
           eyebrow="How we work"
           title="Three commitments, and we mean them literally."
         />
@@ -195,7 +198,8 @@ export default function AboutPage() {
 
       {/* ------------------------------------------------------- Process */}
       <Section tone="paper">
-        <SectionHeading eyebrow="Process" title="Four stages, start to handover." />
+        <SectionHeading index="04"
+          eyebrow="Process" title="Four stages, start to handover." />
         <div className="mt-12 grid grid-cols-1 gap-px overflow-hidden border border-line bg-line sm:grid-cols-2 lg:grid-cols-4">
           {PROCESS.map((step) => (
             <Reveal key={step.step} className="bg-paper-2">
@@ -211,7 +215,8 @@ export default function AboutPage() {
 
       {/* ---------------------------------------------------------- Team */}
       <Section tone="white">
-        <SectionHeading eyebrow="Who you work with" title="The whole studio." />
+        <SectionHeading index="05"
+          eyebrow="Who you work with" title="The whole studio." />
         <div className="mt-12 grid grid-cols-1 gap-gutter sm:grid-cols-2 lg:grid-cols-3">
           {TEAM.map((member, i) => (
             <TeamCard key={member.name} member={member} index={i} />

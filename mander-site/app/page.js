@@ -19,8 +19,6 @@ import WorkCompact from '@/components/WorkCompact';
 import TeamCard from '@/components/TeamCard';
 import ProcessTimeline from '@/components/ProcessTimeline';
 import Testimonials from '@/components/Testimonials';
-import PricingInteractive from '@/components/PricingInteractive';
-import AppPricing from '@/components/AppPricing';
 import Faq from '@/components/Faq';
 import ContactForm from '@/components/ContactForm';
 import JsonLd from '@/components/JsonLd';
@@ -76,25 +74,39 @@ export default function HomePage() {
 
       {/* ----------------------------------------------------------------- Work */}
       <Section id="work" tone="paper" className="!py-stack-md">
-        {/* Label and title on one baseline rather than stacked, with the link
-            hung off the opposite edge — a running head, not a title card. */}
+        {/* The running head, in the same grammar as every other section: index
+            and label in the margin, statement in the field, one link hung off
+            the right edge. */}
         <Reveal>
-          <div className="flex flex-col gap-5 border-b border-line pb-7 sm:flex-row sm:items-baseline sm:justify-between sm:gap-10">
-            <div className="flex flex-wrap items-baseline gap-x-6 gap-y-2">
-              <span className="label-caps shrink-0 text-accent">Selected work</span>
-              <h2 className="text-headline-md font-semibold tracking-tight text-ink">
-                A few recent builds.
-              </h2>
+          <div className="border-t border-line pt-6">
+            <div className="grid grid-cols-1 gap-6 md:grid-cols-12 md:gap-gutter">
+              <div className="md:col-span-3">
+                <div className="flex items-baseline gap-4">
+                  <span className="font-mono text-[10px] uppercase tracking-[0.22em] text-ink-mute">
+                    04
+                  </span>
+                  <span className="font-mono text-[10px] uppercase tracking-[0.22em] text-accent">
+                    Selected work
+                  </span>
+                </div>
+              </div>
+              <div className="md:col-span-6">
+                <h2 className="font-display text-headline-lg-mobile font-normal leading-[1.02] text-ink md:text-headline-lg">
+                  A few recent builds.
+                </h2>
+              </div>
+              <div className="md:col-span-3 md:text-right">
+                <a
+                  href={`mailto:${BRAND.email}?subject=${encodeURIComponent(
+                    'New project enquiry'
+                  )}`}
+                  className="link-underline label-caps text-ink"
+                >
+                  Start your project
+                  <Icon name="arrow" className="h-4 w-4" strokeWidth={2} />
+                </a>
+              </div>
             </div>
-            <a
-              href={`mailto:${BRAND.email}?subject=${encodeURIComponent(
-                'New project enquiry'
-              )}`}
-              className="link-underline label-caps shrink-0 text-ink"
-            >
-              Start your project
-              <Icon name="arrow" className="h-4 w-4" strokeWidth={2} />
-            </a>
           </div>
         </Reveal>
 
@@ -115,7 +127,14 @@ export default function HomePage() {
         <div className="relative container-max grid grid-cols-1 gap-y-8 py-stack-md md:grid-cols-12 md:gap-gutter">
           <div className="md:col-span-3">
             <Reveal>
-              <span className="label-caps text-accent">What we do</span>
+              <div className="flex items-baseline gap-4">
+                <span className="font-mono text-[10px] uppercase tracking-[0.22em] text-ink-mute">
+                  05
+                </span>
+                <span className="font-mono text-[10px] uppercase tracking-[0.22em] text-accent">
+                  What we do
+                </span>
+              </div>
             </Reveal>
           </div>
 
@@ -168,7 +187,14 @@ export default function HomePage() {
         <div className="grid grid-cols-1 gap-y-8 md:grid-cols-12 md:gap-gutter">
           <div className="md:col-span-3">
             <Reveal>
-              <span className="label-caps text-accent">Why MANDER</span>
+              <div className="flex items-baseline gap-4">
+                <span className="font-mono text-[10px] uppercase tracking-[0.22em] text-ink-mute">
+                  03
+                </span>
+                <span className="font-mono text-[10px] uppercase tracking-[0.22em] text-accent">
+                  Why MANDER
+                </span>
+              </div>
             </Reveal>
           </div>
           <div className="md:col-span-8 md:col-start-4">
@@ -226,7 +252,14 @@ export default function HomePage() {
         <div className="grid grid-cols-1 gap-y-10 md:grid-cols-12 md:gap-gutter">
           <div className="md:col-span-4">
             <Reveal>
-              <span className="label-caps text-accent">How it works</span>
+              <div className="flex items-baseline gap-4">
+                <span className="font-mono text-[10px] uppercase tracking-[0.22em] text-ink-mute">
+                  06
+                </span>
+                <span className="font-mono text-[10px] uppercase tracking-[0.22em] text-accent">
+                  How it works
+                </span>
+              </div>
               <h2 className="mt-6 max-w-[12ch] font-display text-headline-lg-mobile font-normal text-ink md:text-headline-lg">
                 A straight line from call to launch.
               </h2>
@@ -246,7 +279,14 @@ export default function HomePage() {
         <div className="grid grid-cols-1 gap-y-6 md:grid-cols-12 md:gap-gutter">
           <div className="md:col-span-6">
             <Reveal>
-              <span className="label-caps text-accent">The team</span>
+              <div className="flex items-baseline gap-4">
+                <span className="font-mono text-[10px] uppercase tracking-[0.22em] text-ink-mute">
+                  07
+                </span>
+                <span className="font-mono text-[10px] uppercase tracking-[0.22em] text-accent">
+                  The team
+                </span>
+              </div>
               <h2 className="mt-6 max-w-[14ch] font-display text-headline-lg-mobile font-normal text-ink md:text-headline-lg">
                 Small, senior, and reachable.
               </h2>
@@ -340,39 +380,55 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* -------------------------------------------------------------- Pricing */}
-      <Section id="pricing" tone="warm">
-        <div className="flex flex-col justify-between gap-6 md:flex-row md:items-end">
-          <SectionHeading
-            eyebrow="Pricing"
-            title="Plain prices. No games."
-            body="One-time build cost. Every tier includes a strategy call before a pixel is drawn."
-          />
-          <Reveal>
-            <Link href="/quote" className="link-underline label-caps text-ink">
-              Get a quote
-              <Icon name="arrow" className="h-4 w-4" strokeWidth={2} />
-            </Link>
-          </Reveal>
+      {/* ---------------------------------------------------------------- Plans */}
+      {/* Was a pricing block: four cards, an app panel, a note. All of it was
+          furniture for numbers that are no longer published, and a card row
+          is the single most SaaS-shaped thing a page can contain. What is
+          actually useful here is the shape of the offer — three or four named
+          plans — and one door into a quote. The full scope lives one click
+          away on /pricing. */}
+      <Section id="pricing" tone="paper">
+        <SectionHeading
+          index="08"
+          eyebrow="Plans"
+          title="Fixed scope, fixed price, agreed before we start."
+          body="Every project is quoted in writing against a written scope. The number you approve is the number you pay — there is no hourly meter running behind it."
+          meta={`${market.tiers.length} plans`}
+        />
+
+        <div className="mt-14 grid grid-cols-1 gap-px overflow-hidden border-y border-line bg-line md:grid-cols-2">
+          {market.tiers.map((tier, i) => (
+            <Reveal key={tier.name} delay={i * 60} className="bg-paper">
+              <Link
+                href="/quote"
+                className="group flex h-full items-baseline justify-between gap-6 px-2 py-7 transition-colors hover:bg-paper-2 md:px-6"
+              >
+                <span className="flex items-baseline gap-5">
+                  <span className="font-mono text-[10px] uppercase tracking-[0.22em] text-ink-mute">
+                    {String(i + 1).padStart(2, '0')}
+                  </span>
+                  <span className="font-display text-headline-lg-mobile leading-none text-ink transition-colors group-hover:text-accent">
+                    {tier.name}
+                  </span>
+                </span>
+                <span className="label-caps shrink-0 text-ink-mute transition-all duration-300 group-hover:translate-x-1 group-hover:text-accent">
+                  Quote
+                </span>
+              </Link>
+            </Reveal>
+          ))}
         </div>
 
-        <Reveal delay={80} className="mt-12">
-          <PricingInteractive tiers={market.tiers} />
-        </Reveal>
-
-        {/* Apps, folded shut — stated, priced, and out of the way so the
-            website tiers above stay the decision on this page. */}
-        <Reveal delay={120} className="mt-6">
-          <AppPricing />
-        </Reveal>
-
         <Reveal delay={140}>
-          <div className="mt-8 flex flex-col gap-3 border-t border-line pt-8 md:flex-row md:items-baseline md:justify-between md:gap-8">
+          <div className="mt-8 flex flex-col gap-3 md:flex-row md:items-baseline md:justify-between md:gap-8">
             <p className="text-label-sm text-ink-mute">
-              Tap a plan to see everything it includes.
+              Android builds are quoted the same way.{' '}
+              <Link href="/pricing" className="link-underline text-ink">
+                What each plan includes
+              </Link>
+              .
             </p>
-            {/* Quiet second door into the Community Rate — text, not a button,
-                so it never competes with the plan CTAs above it. */}
+            {/* Quiet second door into the Community Rate — text, not a button. */}
             <CommunityRateNote />
           </div>
         </Reveal>
@@ -390,7 +446,11 @@ export default function HomePage() {
         <div className="relative container-max">
           <div className="grid grid-cols-1 gap-gutter lg:grid-cols-12 lg:gap-16">
             <div className="lg:col-span-4">
-              <SectionHeading eyebrow="Questions" title="Before you ask." />
+              <SectionHeading
+                index="09"
+                eyebrow="Questions"
+                title="Before you ask."
+              />
             </div>
             <div className="lg:col-span-8">
               <Reveal>
@@ -409,6 +469,7 @@ export default function HomePage() {
         <div className="grid grid-cols-1 gap-gutter lg:grid-cols-12 lg:gap-16">
           <div className="lg:col-span-4">
             <SectionHeading
+              index="10"
               eyebrow="Get in touch"
               title="Tell us about the project."
               body="A few lines is enough to start. We reply within one business day — no obligation."
