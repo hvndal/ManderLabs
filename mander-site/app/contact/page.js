@@ -132,8 +132,8 @@ export default function ContactPage() {
                 {market.phone.display}
               </a>
             )}
-            <Link href="/pricing" className="btn-outline">
-              See pricing
+            <Link href="/quote" className="btn-outline">
+              Get a quote
             </Link>
           </Reveal>
         </div>

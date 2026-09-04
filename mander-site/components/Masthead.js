@@ -200,7 +200,7 @@ export default function Masthead({ tagline, mono }) {
             y="-3000"
             width="7000"
             height="7000"
-            fill="#f4f2ec"
+            fill="#f6f7f7"
             mask="url(#masthead-cut-sm)"
           />
         </svg>
@@ -231,7 +231,7 @@ export default function Masthead({ tagline, mono }) {
             y="-3000"
             width="7000"
             height="7000"
-            fill="#f4f2ec"
+            fill="#f6f7f7"
             mask="url(#masthead-cut-lg)"
           />
         </svg>

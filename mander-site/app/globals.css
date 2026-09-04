@@ -15,8 +15,8 @@
   }
 
   ::selection {
-    background-color: #1c1512;
-    color: #f4f2ec;
+    background-color: #1b242c;
+    color: #f6f7f7;
   }
 }
 
@@ -267,8 +267,8 @@
    not a cosmetic one.
    --------------------------------------------------------------------------- */
 .ch2 {
-  --ch-primary-color: #a6483a !important;
-  --cookiehub-primary-color: #a6483a !important;
+  --ch-primary-color: #2f6690 !important;
+  --cookiehub-primary-color: #2f6690 !important;
   --ch-primary-shadow-color: rgba(166, 72, 58, 0.35) !important;
   --ch-primary-text-color: #ffffff !important;
 }

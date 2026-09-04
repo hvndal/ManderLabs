@@ -113,13 +113,16 @@ export default function CityPage({ params }) {
             {/* India pages only — the component renders nothing where the
                 market has no WhatsApp number. */}
             <WhatsAppCta tone="outline" location={`city-${city.slug}`} />
-            <Link href="/pricing" className="btn-outline">
-              See pricing
+            <Link href="/quote" className="btn-outline">
+              Get a quote
             </Link>
           </Reveal>
-          {/* The price, on the page that ranks, rather than one click away.
-              Someone who searched for a city and a service wants the number
-              before they want the philosophy. */}
+          {/* The starting figure stays on the page that ranks — someone who
+              searched a city and a service wants a sense of the number before
+              they want the philosophy — but it is a line of text pointing at
+              the pricing page, not the primary action. The button above asks
+              for a quote instead, because a scoped conversation converts
+              better than a price list does. */}
           <Reveal delay={260} className="mt-6">
             <p className="text-label-sm text-ink-mute">
               Websites from{' '}

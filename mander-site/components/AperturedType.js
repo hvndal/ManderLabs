@@ -24,7 +24,7 @@ export default function AperturedType({
   viewBox = '0 0 420 300',
   fontSize = 260,
   baselineY = 245,
-  stencil = '#f4f2ec',
+  stencil = '#f6f7f7',
   letterSpacing = '-0.045em',
   className = '',
   maskId,

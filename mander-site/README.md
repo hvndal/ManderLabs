@@ -173,6 +173,23 @@ versions kept only as re-exports so a stray import doesn't break the build —
 the real implementations are `ServiceBand.js`, `WorkCompact.js`/`WorkCase.js`, and
 `PricingInteractive.js`.
 
+## Palette
+
+Slate, cool off-white, denim blue and golden yellow — carried across from the
+Her Homes build, replacing the espresso/cream/terracotta set the site launched
+with. Values and the reasoning are in `tailwind.config.js`.
+
+One rule matters more than the rest and is easy to break: **blue carries
+anything that has to be read or clicked; yellow is decorative only.** Blue
+holds white text at 6.1:1. Yellow sits at 1.6:1 on the page ground — fine as a
+rule, a thread, or a fill behind dark text (9.4:1 that way round), never as
+text on white and never as a button fill with light type. Every value in the
+config was measured rather than eyeballed.
+
+The MANDER lockup is rose line art drawn for the old palette. The nav renders
+it in ink (`tone="ink"`, a filter rather than a second file) so it belongs to
+the new system; the footer keeps the original artwork.
+
 ## Design tokens
 
 Everything lives in `tailwind.config.js`:

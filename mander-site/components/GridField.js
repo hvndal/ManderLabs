@@ -21,7 +21,7 @@
  */
 export default function GridField({ tone = 'ink', className = '' }) {
   const color =
-    tone === 'paper' ? 'rgba(244, 242, 236, 0.14)' : 'rgba(28, 21, 18, 0.10)';
+    tone === 'paper' ? 'rgba(246, 247, 247, 0.14)' : 'rgba(27, 36, 44, 0.10)';
 
   return (
     <div

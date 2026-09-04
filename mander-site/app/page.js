@@ -349,8 +349,8 @@ export default function HomePage() {
             body="One-time build cost. Every tier includes a strategy call before a pixel is drawn."
           />
           <Reveal>
-            <Link href="/pricing" className="link-underline label-caps text-ink">
-              Full breakdown
+            <Link href="/quote" className="link-underline label-caps text-ink">
+              Get a quote
               <Icon name="arrow" className="h-4 w-4" strokeWidth={2} />
             </Link>
           </Reveal>

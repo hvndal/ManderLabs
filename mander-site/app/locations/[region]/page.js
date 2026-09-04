@@ -102,8 +102,8 @@ export default function RegionPage({ params }) {
               Contact sales
             </a>
             <WhatsAppCta tone="outline" location={`region-${region.slug}`} />
-            <Link href="/pricing" className="btn-outline">
-              See pricing
+            <Link href="/quote" className="btn-outline">
+              Get a quote
             </Link>
           </Reveal>
           <Reveal delay={260} className="mt-6">

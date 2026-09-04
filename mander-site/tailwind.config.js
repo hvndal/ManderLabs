@@ -8,52 +8,55 @@ module.exports = {
   theme: {
     extend: {
       colors: {
-        // --- Warm editorial neutrals + one accent, sampled from the MANDER mark ---
-        // Originally a strict cool black/white — that read clinical ("psych
-        // ward" was the actual feedback). Every neutral below has warmth
-        // mixed in (a touch of brown/red in the black, cream instead of
-        // stark white) so the palette sits closer to Aesop or a boutique
-        // hotel than a SaaS dashboard, while keeping the same structure:
-        // ink for text, paper for the canvas, one accent used deliberately.
+        // --- Her Homes palette, carried across to MANDER ---
+        // The previous set was warm espresso and cream with a terracotta
+        // accent, sampled from the old rose lockup. This is the palette from
+        // the Her Homes build: a deep slate that reads as black at text
+        // sizes, a cool off-white ground, denim blue as the working accent,
+        // and the golden yellow as the graphic one.
         //
-        // The logo is a dusty rose/terracotta line illustration on black.
-        // `accent` is that same hue darkened and saturated enough to hold
-        // white text at ~5.8:1 contrast (AA-safe) for solid CTA blocks.
-        // `accent-soft` is the pale rose exactly as it appears in the logo —
-        // decorative use only (tints, badges with dark text), never text on
-        // white and never a button fill.
-        ink: '#1c1512', // warm espresso, not cold black
-        'ink-soft': '#453a34',
-        'ink-mute': '#6f6259', // re-verified ≥5:1 contrast on paper
-        paper: '#f4f2ec', // warm off-white — the dominant canvas
-        'paper-2': '#eae7df', // alt band
-        'paper-3': '#e2ded4',
-        white: '#fbf8f3', // warm cream, not stark white — used for "card" surfaces
-        line: '#dcd8ce', // hairline on paper
-        'line-strong': '#c3bdb0',
-        accent: '#a6483a', // terracotta — CTA blocks, "most chosen" tag, hovers
-        'accent-ink': '#8a3a2e', // pressed/hover state for accent-filled elements
-        'accent-soft': '#e3b2a8', // the logo's true pale rose — decorative only
-        'on-accent': '#ffffff', // small badges only — kept true white for legibility at tiny sizes
+        // Two accents rather than one, with a hard rule between them that is
+        // worth stating because getting it wrong is how a yellow brand turns
+        // illegible: BLUE carries anything that has to be read or clicked —
+        // it holds white text at 6.1:1. YELLOW is decorative only. It sits at
+        // 1.6:1 on the ground, which is fine for a rule, a thread or a fill
+        // behind dark text (9.4:1 that way round), and is never text on
+        // white, never a link colour, never a button fill with light type.
+        //
+        // Every value below was measured, not eyeballed: ink 14.7:1 on paper,
+        // ink-mute 5.3:1, accent 5.7:1, white on accent 6.1:1.
+        ink: '#1b242c', // deep slate — body copy and headlines
+        'ink-soft': '#3c4a56',
+        'ink-mute': '#5c6873', // 5.3:1 on paper
+        paper: '#f6f7f7', // cool off-white — the dominant canvas
+        'paper-2': '#eceeee', // alt band
+        'paper-3': '#e2e5e6',
+        white: '#ffffff', // card surfaces
+        line: '#dcdfe1', // hairline on paper
+        'line-strong': '#c2c7ca',
+        accent: '#2f6690', // denim blue — CTA blocks, links, hovers
+        'accent-ink': '#24506f', // pressed/hover state for accent fills
+        'accent-soft': '#f2c230', // the yellow — rules, threads, tints only
+        'on-accent': '#ffffff',
 
         // Back-compat aliases so older class names keep resolving
-        primary: '#1c1512',
-        'on-primary': '#fbf8f3',
-        secondary: '#453a34',
-        surface: '#f4f2ec',
-        background: '#f4f2ec',
-        'surface-container-lowest': '#fbf8f3',
-        'surface-container-low': '#faf9f5',
-        'surface-container': '#eae7df',
-        'surface-container-high': '#e2ded4',
-        'surface-container-highest': '#dad5c9',
-        'on-surface': '#1c1512',
-        'on-surface-variant': '#6f6259',
-        'inverse-surface': '#1c1512',
-        outline: '#6f6259',
-        'outline-variant': '#dcd8ce',
-        hairline: '#dcd8ce',
-        subtle: '#eae7df',
+        primary: '#1b242c',
+        'on-primary': '#ffffff',
+        secondary: '#3c4a56',
+        surface: '#f6f7f7',
+        background: '#f6f7f7',
+        'surface-container-lowest': '#ffffff',
+        'surface-container-low': '#fafbfb',
+        'surface-container': '#eceeee',
+        'surface-container-high': '#e2e5e6',
+        'surface-container-highest': '#d7dbdc',
+        'on-surface': '#1b242c',
+        'on-surface-variant': '#5c6873',
+        'inverse-surface': '#1b242c',
+        outline: '#5c6873',
+        'outline-variant': '#dcdfe1',
+        hairline: '#dcdfe1',
+        subtle: '#eceeee',
         error: '#b3261e',
       },
       fontFamily: {

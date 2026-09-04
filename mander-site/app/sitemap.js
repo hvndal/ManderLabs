@@ -7,7 +7,7 @@ export default function sitemap() {
   // A fixed date that tracks the last real content change. Using new Date()
   // reported "right now" on every crawl, which teaches Google to ignore the
   // lastmod signal entirely. Update this when content meaningfully changes.
-  const lastContentUpdate = new Date('2026-09-02');
+  const lastContentUpdate = new Date('2026-09-04');
 
   const regionUrls = REGIONS.map((region) => ({
     url: `${SITE_URL}/locations/${region.slug}`,

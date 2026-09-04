@@ -199,7 +199,7 @@ export default function Footer() {
           viewBox="0 0 1000 210"
           fontSize={240}
           baselineY={182}
-          stencil="#1c1512"
+          stencil="#1b242c"
           maskId="footer-wordmark"
           mediaClassName="brightness-[1.4] saturate-[1.15] contrast-[1.08]"
         />

@@ -29,6 +29,13 @@ const SOURCES = {
 };
 
 export default function Logo({ className = '', variant = 'full', tone = 'light' }) {
+  // The artwork is rose line art on transparency — the palette it was drawn
+  // for. Against the slate-and-blue system it now sits in, that rose is the
+  // one warm thing on the page and it reads as a leftover. `tone="ink"`
+  // renders the same drawing in the page's own ink by knocking the colour out
+  // of it, rather than shipping a second copy of the file in another colour
+  // that would then have to be kept in sync with it.
+  const inkFilter = tone === 'ink' ? 'brightness(0) saturate(100%)' : undefined;
   const set = SOURCES[variant] || SOURCES.full;
   const [src, setSrc] = useState(tone === 'rose' ? set.rose : set.light);
   const [failed, setFailed] = useState(false);
@@ -51,6 +58,7 @@ export default function Logo({ className = '', variant = 'full', tone = 'light' 
         alt="MANDER"
         decoding="async"
         className="h-full w-auto object-contain"
+        style={inkFilter ? { filter: inkFilter } : undefined}
         onError={() => {
           if (src !== set.rose) setSrc(set.rose);
           else setFailed(true);

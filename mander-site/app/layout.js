@@ -79,6 +79,19 @@ export async function generateMetadata() {
     keywords: meta.keywords,
     alternates: alternates('/'),
     category: 'Web Design',
+    // Search Console verification. Google will not show a property's data —
+    // or let a sitemap be submitted — until the domain is verified, and
+    // nothing else here can make that happen. Set
+    // NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION in Vercel to the token Google
+    // gives you and the meta tag appears on every page; leave it unset and
+    // nothing is emitted.
+    ...(process.env.NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION
+      ? {
+          verification: {
+            google: process.env.NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION,
+          },
+        }
+      : {}),
     applicationName: 'MANDER',
     authors: [{ name: 'MANDER', url: SITE_URL }],
     creator: 'MANDER',
@@ -116,7 +129,7 @@ export async function generateMetadata() {
 }
 
 export const viewport = {
-  themeColor: '#f4f2ec',
+  themeColor: '#f6f7f7',
 };
 
 export default function RootLayout({ children }) {

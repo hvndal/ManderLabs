@@ -14,8 +14,8 @@ export default function manifest() {
     start_url: '/',
     scope: '/',
     display: 'standalone',
-    background_color: '#f4f2ec',
-    theme_color: '#f4f2ec',
+    background_color: '#f6f7f7',
+    theme_color: '#f6f7f7',
     lang: 'en',
     categories: ['business', 'design', 'productivity'],
     icons: [

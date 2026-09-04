@@ -34,7 +34,7 @@ export default async function Image() {
           display: 'flex',
           width: '100%',
           height: '100%',
-          backgroundColor: '#1c1512',
+          backgroundColor: '#1b242c',
         }}
       >
         <img
@@ -80,7 +80,7 @@ export default async function Image() {
               fontSize: 24,
               letterSpacing: 5,
               textTransform: 'uppercase',
-              color: '#e3b2a8',
+              color: '#f2c230',
             }}
           >
             Web design for small business — Canada &amp; U.S.
@@ -95,7 +95,7 @@ export default async function Image() {
               height: 4,
               marginTop: 30,
               marginBottom: 30,
-              backgroundColor: '#a6483a',
+              backgroundColor: '#2f6690',
             }}
           />
 
@@ -106,7 +106,7 @@ export default async function Image() {
               fontWeight: 700,
               letterSpacing: -3,
               lineHeight: 1.06,
-              color: '#f4f2ec',
+              color: '#f6f7f7',
               maxWidth: 760,
             }}
           >
@@ -126,7 +126,7 @@ export default async function Image() {
               style={{
                 fontWeight: 700,
                 letterSpacing: 7,
-                color: '#f4f2ec',
+                color: '#f6f7f7',
               }}
             >
               MANDER

@@ -9,7 +9,7 @@ import { BRAND } from '@/lib/content';
 import { trackEvent } from '@/lib/analytics';
 
 /**
- * The sticky bar: talk to someone, or see the price.
+ * The sticky bar: talk to someone, or get a quote.
  *
  * The site reads top-down and rewards reading, which is the right shape for
  * the people who want it and the wrong one for everybody else — a lot of
@@ -113,20 +113,22 @@ export default function QuickContact() {
           {primary.label}
         </a>
 
+        {/* A quote, not a price list. The number on its own invites a
+            comparison against someone cheaper; a quote starts a conversation
+            where the scope can be explained. The pricing page is still one
+            click away in the nav and the footer for anyone who wants the
+            figure first — this is about which door is the obvious one. */}
         <Link
-          href="/pricing"
+          href="/quote"
           onClick={() =>
-            trackEvent('pricing_shortcut_click', {
+            trackEvent('quote_shortcut_click', {
               market: market.id,
               location: 'quick-bar',
             })
           }
           className="label-caps flex flex-1 items-center justify-center gap-2 border border-paper/25 px-4 py-3 text-paper transition-colors hover:border-paper md:flex-none"
         >
-          Pricing
-          <span className="text-paper/50">
-            {market.tiers[0].fromLabel || market.tiers[0].price}
-          </span>
+          Get a quote
         </Link>
 
         <button

@@ -107,7 +107,7 @@ export function CommunityRateSection() {
                 viewBox="0 0 460 300"
                 fontSize={250}
                 baselineY={238}
-                stencil="#1c1512"
+                stencil="#1b242c"
                 maskId="aperture-community-rate"
                 mediaClassName="brightness-[1.32] contrast-[0.88] saturate-[1.05]"
                 className="mt-8 w-full max-w-[420px]"

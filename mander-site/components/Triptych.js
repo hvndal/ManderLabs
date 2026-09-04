@@ -173,10 +173,13 @@ function SocialPanel({ active }) {
         />
       </motion.div>
 
-      {/* A wash of the logo's rose over monochrome photography — the accent
-          doing colour-grading work rather than sitting in a badge. Kept low
-          enough that it reads as a print duotone, not a filter. */}
-      <div className="absolute inset-0 bg-accent-soft/25 mix-blend-multiply" />
+      {/* A wash of the blue over monochrome photography — the accent doing
+          colour-grading work rather than sitting in a badge. Blue rather than
+          the yellow because the yellow has one job on this screen, the thread
+          crossing all three panels, and an accent that appears everywhere
+          stops being an accent. Kept low enough to read as a print duotone
+          rather than a filter. */}
+      <div className="absolute inset-0 bg-accent/30 mix-blend-multiply" />
       <div className="absolute inset-0 bg-gradient-to-t from-ink via-ink/45 to-ink/10" />
 
       {/* Plate number, set like a caption in a printed portfolio. */}

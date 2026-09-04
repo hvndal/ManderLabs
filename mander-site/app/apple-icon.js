@@ -42,7 +42,7 @@ export default async function AppleIcon() {
           justifyContent: 'center',
           width: '100%',
           height: '100%',
-          backgroundColor: '#1c1512',
+          backgroundColor: '#1b242c',
         }}
       >
         <img src={glyph} width={124} height={111} />

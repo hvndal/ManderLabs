@@ -54,7 +54,7 @@ void main() {
   float c = sin((pw.x + pw.y) * 1.3 + u_time * 0.030) * 0.5 + 0.5;
   float field = (a * 0.4 + b * 0.35 + c * 0.25);
 
-  vec3 paper     = vec3(0.957, 0.949, 0.925); // #f4f2ec
+  vec3 paper     = vec3(0.965, 0.969, 0.969); // #f6f7f7
   vec3 rose      = vec3(0.890, 0.698, 0.659); // accent-soft
   vec3 terracotta= vec3(0.651, 0.282, 0.227); // accent
 

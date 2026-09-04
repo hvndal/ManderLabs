@@ -88,7 +88,7 @@ export default function Nav() {
         <Link href="/" aria-label="MANDER home" className="text-ink">
           {/* The illustration, not the wordmark — the masthead already sets
               MANDER at full height, so repeating it here is redundant. */}
-          <Logo variant="mark" className="h-11 md:h-12" />
+          <Logo variant="mark" tone="ink" className="h-11 md:h-12" />
         </Link>
 
         <ul className="hidden items-center gap-9 md:flex">
