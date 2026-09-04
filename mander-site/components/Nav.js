@@ -35,12 +35,12 @@ export default function Nav() {
   const [cleared, setCleared] = useState(false);
   const pathname = usePathname();
 
-  // The home page opens on the masthead, whose composition depends on there
-  // being nothing in the first viewport but the mark, one line of mono, and
-  // the word itself. So the nav withholds itself until the masthead has been
-  // scrolled through, then arrives on the paper background. Every other route
-  // has no masthead, so it shows immediately.
-  const isHome = pathname === '/';
+  // The nav used to withhold itself on the home page until the masthead had
+  // been scrolled past — the masthead's composition depended on an empty
+  // first viewport. The triptych that replaced it carries its own running
+  // head and needs the mark present from the first frame, so the header now
+  // behaves the same on every route.
+  const isHome = false;
 
   useEffect(() => {
     const onScroll = () => {

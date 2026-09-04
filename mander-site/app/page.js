@@ -3,7 +3,7 @@ import Section, { SectionHeading } from '@/components/Section';
 import Reveal from '@/components/Reveal';
 import Icon from '@/components/Icon';
 import ServiceBand from '@/components/ServiceBand';
-import Masthead from '@/components/Masthead';
+import Triptych from '@/components/Triptych';
 import Colophon from '@/components/Colophon';
 import StatsConstellation from '@/components/StatsConstellation';
 import AperturedType from '@/components/AperturedType';
@@ -51,10 +51,10 @@ export default function HomePage() {
     <>
       <JsonLd data={faqSchema(market.faqs)} />
 
-      {/* -------------------------------------------------- 01 · The masthead */}
-      {/* The word is the aperture: MANDER knocked out of a cream stencil over
-          full-bleed film, scaling out of frame on scroll. See Masthead.js. */}
-      <Masthead tagline={market.tagline} mono={market.region} />
+      {/* ------------------------------------------------- 01 · The triptych */}
+      {/* WEB / SOCIAL / BRAND standing side by side at full height, read as
+          one spread rather than three cards. See Triptych.js. */}
+      <Triptych tagline={market.tagline} region={market.region} />
 
       {/* ------------------------------------------- 02 · Colophon / the sheet */}
       <Colophon

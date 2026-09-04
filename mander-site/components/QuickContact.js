@@ -32,6 +32,7 @@ export default function QuickContact() {
   const pathname = usePathname();
   const [dismissed, setDismissed] = useState(false);
   const [ready, setReady] = useState(false);
+  const [past, setPast] = useState(false);
 
   // Mounted-only, so the server and the first client render agree; and read
   // from sessionStorage rather than localStorage, because "not right now" is
@@ -46,7 +47,24 @@ export default function QuickContact() {
     setReady(true);
   }, []);
 
-  if (!ready || dismissed || pathname === '/quote') return null;
+  // Held back until the first screen has been scrolled through. The homepage
+  // now opens on a full-viewport triptych, and a fixed bar sitting over the
+  // corner of it covers the third panel's caption — the composition is the
+  // argument on that screen, and this bar is the argument on every screen
+  // after it. Elsewhere there is nothing to protect, so it shows at once.
+  useEffect(() => {
+    const gate = pathname === '/' ? () => window.innerHeight * 0.6 : () => 0;
+    const onScroll = () => setPast(window.scrollY > gate());
+    onScroll();
+    window.addEventListener('scroll', onScroll, { passive: true });
+    window.addEventListener('resize', onScroll);
+    return () => {
+      window.removeEventListener('scroll', onScroll);
+      window.removeEventListener('resize', onScroll);
+    };
+  }, [pathname]);
+
+  if (!ready || dismissed || !past || pathname === '/quote') return null;
 
   const wa = market.whatsapp;
   const phone = market.phone;

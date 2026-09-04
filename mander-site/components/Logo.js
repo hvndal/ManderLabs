@@ -19,7 +19,11 @@ import { useState } from 'react';
  * Everything falls back to a text wordmark rather than a broken image.
  */
 const SOURCES = {
-  mark: { light: '/logo-mark-ink.png', rose: '/logo-mark.png' },
+  // The figure alone, cropped out of the 1024² lockup at its measured bounds
+  // (x 197–808, y 239–786). The lockup files bake in the wordmark and the
+  // tagline, so at nav scale they render as an illegible smudge with type
+  // inside type. This is the same artwork with the furniture removed.
+  mark: { light: '/logo-figure.png', rose: '/logo-figure.png' },
   nav: { light: '/logo-mander-nav.png', rose: '/logo-mander.png' },
   full: { light: '/logo-mander.png', rose: '/logo-mander.png' },
 };
