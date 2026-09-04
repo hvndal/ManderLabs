@@ -4,14 +4,15 @@ import Reveal from '@/components/Reveal';
 import GridField from '@/components/GridField';
 import Breadcrumbs from '@/components/Breadcrumbs';
 import JsonLd from '@/components/JsonLd';
-import { LEGAL_DOCS, LEGAL_UPDATED, getLegalDoc } from '@/lib/legal';
+import { LEGAL_NAV, LEGAL_UPDATED, legalDocs, getLegalDoc } from '@/lib/legal';
+import { getServerMarket } from '@/lib/market-server';
 import { BRAND } from '@/lib/content';
 import { breadcrumbSchema, OG_IMAGE, alternates } from '@/lib/seo';
 
 // One route renders all four policies from lib/legal.js. Adding a policy is
 // adding an object there — no new route, no new markup.
 export function generateStaticParams() {
-  return LEGAL_DOCS.map((d) => ({ doc: d.slug }));
+  return LEGAL_NAV.map((d) => ({ doc: d.slug }));
 }
 
 export const dynamicParams = false;
@@ -27,7 +28,7 @@ const anchor = (h) => {
 };
 
 export function generateMetadata({ params }) {
-  const doc = getLegalDoc(params.doc);
+  const doc = getLegalDoc(params.doc, getServerMarket());
   if (!doc) return {};
   const path = `/legal/${doc.slug}`;
   return {
@@ -51,12 +52,16 @@ export function generateMetadata({ params }) {
 }
 
 export default function LegalPage({ params }) {
-  const doc = getLegalDoc(params.doc);
+  // Policies are rendered for the visitor's market: a refund policy that
+  // quotes the wrong currency, or a contact block with a number the reader
+  // cannot dial, is not a policy anyone can rely on.
+  const docs = legalDocs(getServerMarket());
+  const doc = docs.find((d) => d.slug === params.doc);
   if (!doc) notFound();
 
   const path = `/legal/${doc.slug}`;
   const trail = [{ name: 'MANDER', href: '/' }, { name: doc.title }];
-  const others = LEGAL_DOCS.filter((d) => d.slug !== doc.slug);
+  const others = docs.filter((d) => d.slug !== doc.slug);
 
   return (
     <>

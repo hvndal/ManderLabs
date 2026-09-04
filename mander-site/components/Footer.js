@@ -8,14 +8,25 @@ import WhatsAppCta, { WhatsAppLine } from './WhatsAppCta';
 import CountryPicker from './CountryPicker';
 import { BRAND, NAV_LINKS } from '@/lib/content';
 import { getServerMarket, getServerRegion } from '@/lib/market-server';
-import { LEGAL_DOCS } from '@/lib/legal';
+import { LEGAL_NAV } from '@/lib/legal';
 
 // Derived from the policy data rather than hand-listed, so a new policy is
 // linked here automatically. These used to be three href="#" placeholders —
 // including a "Cookies" link, pointing nowhere. It has a real destination now:
 // CookiePreferencesLink reopens the consent banner, and renders nothing at
 // all on a build where analytics was never configured — see lib/analytics.js.
-const LEGAL = LEGAL_DOCS.map((d) => ({ label: d.nav, href: `/legal/${d.slug}` }));
+const LEGAL = LEGAL_NAV.map((d) => ({ label: d.nav, href: `/legal/${d.slug}` }));
+
+// The nav bar carries the six links a visitor browses with; the footer also
+// carries the two a stranger checks with. About and Contact are kept out of
+// the header on purpose — adding them there would crowd it — but a payment
+// processor, a first-time client or a crawler looking for who this is should
+// never have to hunt, and the footer is where all three look.
+const EXPLORE = [
+  ...NAV_LINKS,
+  { label: 'About', href: '/about' },
+  { label: 'Contact', href: '/contact' },
+];
 
 export default function Footer() {
   const market = getServerMarket();
@@ -52,7 +63,7 @@ export default function Footer() {
           <div className="md:col-span-3">
             <h3 className="label-caps mb-6 text-paper/45">Explore</h3>
             <ul className="flex flex-col gap-3">
-              {NAV_LINKS.map((item) => (
+              {EXPLORE.map((item) => (
                 <li key={item.label}>
                   <Link
                     href={item.href}

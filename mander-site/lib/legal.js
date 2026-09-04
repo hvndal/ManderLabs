@@ -19,23 +19,63 @@
 // every sentence about it in the same change, not some time after.
 
 import { BRAND } from './content';
+import { getMarket } from './markets';
 
 const EMAIL = BRAND.email;
-const UPDATED = '21 August 2026';
+const UPDATED = '2 September 2026';
 
 // Governing law follows where the company originates — the founder works out
 // of Langley, BC. Revisit with a lawyer if MANDER incorporates elsewhere.
 const JURISDICTION = 'British Columbia, Canada';
 
-const CONTACT_SECTION = {
-  h: 'Contact',
-  p: [
-    `Questions about this policy, or any request relating to it, can be sent to ${EMAIL} and we will respond within a reasonable period.`,
-    'MANDER is a remote studio serving clients across the United States and Canada. We do not operate a public office or walk-in premises, so email is the correct and fastest route for every enquiry, including legal and privacy requests.',
-  ],
-};
+// The nav labels and slugs, without the documents themselves.
+//
+// The footer and the sitemap need to know which policies exist; they do not
+// need a market to find out, and building every document for both markets to
+// answer "what are the four links" would be silly. The documents are built on
+// demand by legalDocs() below.
+export const LEGAL_NAV = [
+  { slug: 'privacy', nav: 'Privacy' },
+  { slug: 'terms', nav: 'Terms' },
+  { slug: 'refunds', nav: 'Refunds' },
+  { slug: 'shipping', nav: 'Delivery' },
+];
 
-export const LEGAL_DOCS = [
+export const LEGAL_SLUGS = LEGAL_NAV.map((d) => d.slug);
+
+/**
+ * The policies, built for one market.
+ *
+ * A function rather than a constant because a policy that quotes the wrong
+ * currency, the wrong tax or a phone number the reader cannot dial is not a
+ * policy — and a payment processor reviewing the site reads these pages
+ * before it reads anything else. The prose is shared; the money, the tax
+ * treatment and the contact details come from the market.
+ */
+export function legalDocs(market = getMarket(null)) {
+  const isIndia = market.id === 'in';
+  const CURRENCY = isIndia ? 'Indian Rupees (INR)' : 'US Dollars (USD)';
+  const TAX_LINE = isIndia
+    ? 'Prices are exclusive of GST, which is added where applicable and shown on the invoice.'
+    : 'Prices are exclusive of any sales tax, GST or VAT that applies in your jurisdiction, which is added where applicable and shown on the invoice.';
+  // One line per market naming the number the reader can actually reach us
+  // on — the North American line outside India, WhatsApp inside it.
+  const PHONE_LINE = market.phone
+    ? `Phone: ${market.phone.display}, Monday to Friday, 9am–5pm Pacific.`
+    : market.whatsapp
+      ? `WhatsApp: ${market.whatsapp.display} — the fastest route, and a person rather than a form.`
+      : null;
+
+  const CONTACT_SECTION = {
+    h: 'Contact',
+    p: [
+      `Questions about this policy, or any request relating to it, can be sent to ${EMAIL} and we will respond within a reasonable period.`,
+      ...(PHONE_LINE ? [PHONE_LINE] : []),
+      `MANDER is a remote studio serving clients across ${market.region}. We do not operate a public office or walk-in premises, so email is the correct and fastest route for every enquiry, including legal, billing and privacy requests.`,
+    ],
+  };
+
+  return [
   /* ------------------------------------------------------------- Privacy */
   {
     slug: 'privacy',
@@ -98,6 +138,7 @@ export const LEGAL_DOCS = [
         ],
         ul: [
           'Web3Forms — processes our form submissions and relays them to our email inbox. Anything you type into a form on this site passes through this provider.',
+          'Our payment gateway — where you pay an invoice or a payment link, the gateway collects and processes your payment details directly. We never see or store your full card or bank details; we receive only confirmation of the outcome and a reference for reconciliation.',
           'Vercel — hosts the website and processes standard server request data as described above.',
           'Our email provider — receives and stores the message that results from your submission.',
           'CookieHub — runs the consent banner, and records which categories you allowed or declined so that decision can be honoured on your next visit and evidenced if ever questioned.',
@@ -229,9 +270,27 @@ export const LEGAL_DOCS = [
       {
         h: 'Payment terms',
         p: [
-          'Prices are quoted in USD unless otherwise agreed; Canadian clients can be invoiced in CAD on request. Prices exclude any taxes, duties or third-party fees, which are your responsibility unless we state otherwise in writing.',
-          'Unless the written scope says otherwise, a deposit is payable before work begins and the balance is payable before launch or handover. Care plan fees are billed monthly in advance.',
-          'Invoices are payable by the date stated. We may suspend work, withhold delivery or handover, or stop care plan services on overdue accounts, and we may charge reasonable costs of recovery to the maximum extent permitted by applicable law.',
+          isIndia
+            ? 'Prices are quoted and payable in Indian Rupees (INR).'
+            : 'Prices are quoted and payable in US Dollars (USD); Canadian clients can be invoiced in CAD on request, at the same figures.',
+          `${TAX_LINE} Third-party fees — domains, hosting, licences and platform charges — are your responsibility unless we state otherwise in writing.`,
+          'Unless the written scope says otherwise, a deposit is payable before work begins and the balance is payable before launch or handover. Monthly plan fees are billed monthly in advance.',
+          'Invoices are payable by the date stated. We may suspend work, withhold delivery or handover, or stop monthly plan services on overdue accounts, and we may charge reasonable costs of recovery to the maximum extent permitted by applicable law.',
+        ],
+      },
+      {
+        h: 'How payment is taken',
+        p: [
+          'Payments are taken through a third-party payment gateway. We do not see, handle or store your full card details at any point — those go directly to the gateway, which is responsible for processing them securely and is certified to do so.',
+          'What we receive back is a confirmation that a payment succeeded or failed, plus the last few digits and card type for reconciliation. See the Privacy Policy for what that means for your data.',
+          'A payment is only accepted once it has cleared. A failed, reversed or disputed payment leaves the invoice outstanding, and work may be suspended until it is settled.',
+        ],
+      },
+      {
+        h: 'Refunds and disputes',
+        p: [
+          'Fees are non-refundable once work has commenced. The Refund & Cancellation Policy is part of these terms and sets out the narrow cases where a refund is available, the 7-day window for requesting one, and how monthly plans are treated on cancellation.',
+          'You agree to raise any billing or delivery concern with us in writing, and to give us a reasonable opportunity to resolve it, before initiating a chargeback or payment dispute. Initiating one without doing so is a breach of these terms.',
         ],
       },
       {
@@ -377,90 +436,117 @@ export const LEGAL_DOCS = [
     title: 'Refund & Cancellation Policy',
     nav: 'Refunds',
     description:
-      'How cancellations and refunds work on MANDER’s custom digital projects, including deposits, completed work, third-party costs and defects.',
-    lede: 'Custom design and development is made to order. This policy explains plainly what is refundable, what is not, and why — before you pay us anything.',
+      'MANDER’s refund and cancellation policy for custom digital projects — non-refundable deposits, what is never refundable, monthly plans, defects and disputes.',
+    lede: 'Custom design and development is made to order, so fees are non-refundable once work starts. This page sets out exactly what that means, the narrow cases where a refund is available, and how to ask — before you pay us anything.',
     sections: [
       {
-        h: 'The principle',
+        h: 'The short version',
         p: [
-          'Every MANDER project is custom work produced specifically for one client. It cannot be resold, restocked or reused for anyone else. Once we have begun, our time is spent and cannot be recovered.',
-          'For that reason, payments for custom digital work are generally non-refundable once work has commenced. Everything below explains how that applies in practice, and the specific situations where a refund is available.',
+          'Custom design and development is made to order. Once work has started, fees are non-refundable. There is no trial period, no cooling-off period and no refund for a change of mind.',
+          'The narrow situations where a refund is available are set out below and are the only ones. Read this page before you pay — accepting a quote or paying a deposit means you accept this policy.',
         ],
       },
       {
-        h: 'Deposits',
+        h: 'The principle',
+        p: [
+          'Every MANDER project is custom work produced specifically for one client. It cannot be resold, restocked or reused for anyone else. Once we have begun, our time is spent and cannot be recovered, and the slot in our production schedule was withheld from other clients to hold it for you.',
+          'For that reason, payments for custom digital work are non-refundable once work has commenced. Everything below explains how that applies in practice.',
+        ],
+      },
+      {
+        h: 'Deposits are non-refundable',
         p: [
           'The deposit secures your place in our production schedule, which means turning down or deferring other work for that period. It also funds the discovery and strategy work that happens first.',
-          'Before we begin work, a deposit is refundable in full. Once we have started work, or committed resources, scheduling or third-party purchases against your project, the deposit is non-refundable.',
+          'A deposit is refundable in full only if you cancel in writing before any work begins. From the moment work commences — which includes discovery, research, scheduling, or any third-party purchase made for your project — the deposit is non-refundable in full, regardless of how much of the project remains.',
+        ],
+      },
+      {
+        h: 'What is never refundable',
+        p: [
+          'The following are not refundable under any circumstances, because the cost is spent or the value is delivered at the moment of payment:',
+        ],
+        ul: [
+          'Work already performed, assessed against the deliverables and stages in the agreed scope.',
+          'Deposits, once work has commenced.',
+          'Domain registrations, renewals and transfers.',
+          'Hosting, platform and infrastructure fees already paid.',
+          'Font, stock imagery, plugin and software licences purchased for your project.',
+          'Third-party service subscriptions set up at your request.',
+          'Payment processing and gateway fees already deducted by a payment provider.',
+          'Completed and delivered months of any monthly plan.',
+          'Rush or priority fees, once the schedule has been rearranged to accommodate them.',
+          'Taxes already remitted to a tax authority.',
+        ],
+      },
+      {
+        h: 'Change of mind is not a refund event',
+        p: [
+          'Deciding not to proceed, changing direction, going with another supplier, a change in your circumstances, or the project no longer being commercially useful to you are not grounds for a refund of work performed or of a deposit against commenced work.',
+          'The same applies to a preference change — wanting something different from what was scoped and approved, a new visual direction, or dissatisfaction with a decision you approved along the way. That is quoted as additional work. Your included revision rounds exist precisely so preferences are resolved before approval.',
         ],
       },
       {
         h: 'Work already completed',
         p: [
           'Completed work is chargeable. If a project ends early for any reason, you are liable for the work performed up to that point, assessed against the deliverables and stages set out in the agreed scope.',
-          'Where you have paid more than the value of the work completed, we refund the difference. Where you have paid less, the balance for completed work is invoiced and payable.',
-        ],
-      },
-      {
-        h: 'Third-party and non-refundable costs',
-        p: [
-          'Costs we incur on your behalf are excluded from any refund, because we cannot recover them ourselves. These commonly include:',
-        ],
-        ul: [
-          'Domain registrations and renewals.',
-          'Hosting, platform and infrastructure fees already paid.',
-          'Font, stock imagery, plugin and software licences purchased for your project.',
-          'Third-party service subscriptions set up at your request.',
-          'Payment processing fees already deducted by a payment provider.',
+          'Where you have paid more than the value of the work completed, we refund the difference, less any non-refundable third-party costs listed above. Where you have paid less, the balance for completed work is invoiced and payable immediately.',
         ],
       },
       {
         h: 'If you cancel',
         p: [
           'Tell us in writing and we will stop work immediately and issue a final statement covering work completed and third-party costs incurred, set against what you have already paid.',
-          'Where the balance is in your favour, we refund it. Where the amounts committed exceed what you have paid, the difference is invoiced.',
-          'On cancellation, work in progress is not transferred to you unless it has been paid for. Where you have paid for a stage, we will hand over what that stage produced.',
+          'Where the balance is in your favour, we refund it. Where the amounts committed exceed what you have paid, the difference is invoiced and payable.',
+          'On cancellation, work in progress is not transferred to you unless it has been paid for. Where you have paid for a stage, we hand over what that stage produced and nothing further.',
         ],
       },
       {
         h: 'If we cancel',
         p: [
           'If we end a project for reasons other than your breach of the terms or non-payment — for example, we can no longer deliver it to the standard we promised — we will tell you promptly, hand over everything produced to that point at no additional charge, and refund every amount you have paid for work we did not perform.',
-          'Where we end a project because of non-payment or a serious breach of the terms by you, the ordinary cancellation position above applies and amounts paid for completed work are not refunded.',
+          'Where we end a project because of non-payment, abusive conduct or a serious breach of the terms by you, the ordinary cancellation position above applies and amounts paid are not refunded.',
         ],
       },
       {
-        h: 'Care plan cancellation',
+        h: 'Monthly plans',
         p: [
-          'The care plan is month-to-month with no lock-in. Cancel at any time and it runs to the end of the month you have paid for; we do not pro-rate part-months. Your site remains yours, and we will help you move hosting elsewhere.',
+          'Monthly plans are month-to-month with no lock-in and no minimum term. Cancel at any time, in writing, and the plan runs to the end of the month you have already paid for.',
+          'Part-months are not pro-rated and completed months are not refunded, including where the service went unused. Cancellation stops the next renewal; it does not reverse the current one. Your site remains yours, and we will help you move hosting elsewhere.',
         ],
       },
       {
-        h: 'Defects, and how they differ from preference',
+        h: 'Defects — the one thing we always fix',
         p: [
-          'These two things are treated very differently, so it is worth being precise.',
-          'A defect is a genuine fault in what we delivered — something broken, something that does not work as the agreed scope said it would, or work that does not meet the standard of reasonable care and skill. Report a defect and we will correct it at no charge. This is our obligation, not a discretionary gesture, and there is no time limit on us honouring it for a fault that was present at delivery.',
-          'A preference change is wanting something different from what was scoped and approved — a new direction, a different look, a change of mind after sign-off, or dissatisfaction with a decision you approved along the way. That is not a defect and is not grounds for a refund. It is quoted as additional work, and your included revision rounds exist precisely so that preferences get resolved before approval.',
+          'A defect is a genuine fault in what we delivered: something broken, something that does not work as the agreed scope said it would, or work that does not meet the standard of reasonable care and skill.',
+          'Report a defect and we will correct it at no charge. This is our obligation rather than a discretionary gesture, and there is no time limit on us honouring it for a fault that was present at delivery. The remedy for a defect is correction of the work, not a refund — we would rather fix the thing than argue about the invoice.',
         ],
       },
       {
-        h: 'Requesting a refund',
+        h: 'How to request a refund',
         p: [
-          `Email ${EMAIL} setting out the project, the amount and the reason. We will respond within a reasonable period, normally a few business days, and we will explain our decision rather than simply issuing one.`,
-          'Approved refunds are returned by the original payment method where possible. Timing after we issue it depends on your bank or payment provider and is outside our control.',
+          `Any refund request must be made in writing to ${EMAIL} within 7 days of the payment in question, setting out the project, the amount, the date of payment and the specific ground under this policy on which it is claimed. Requests made after 7 days, or on grounds not listed above, are not considered.`,
+          'We respond within a reasonable period, normally a few business days, and explain our decision rather than simply issuing one. Our determination of the value of work completed, made in good faith against the agreed scope, is final.',
+          `Approved refunds are issued in ${CURRENCY} to the original payment method only — we do not refund to a different account, card or person. Once issued, the money typically reaches you within 5 to 10 business days; the exact timing sits with your bank or payment provider and is outside our control.`,
+        ],
+      },
+      {
+        h: 'Duplicate and failed payments',
+        p: [
+          'A payment taken twice for the same invoice, or a payment debited against a transaction that failed, is not a refund question — it is an error, and we return it in full as soon as it is confirmed with the payment provider. Tell us and we will chase it.',
         ],
       },
       {
         h: 'Chargebacks',
         p: [
-          'If you believe something has gone wrong, please raise it with us first — most problems are quicker to fix directly than through a payment dispute. We would rather correct the work than argue about the invoice.',
+          'If you believe something has gone wrong, raise it with us first. Most problems are quicker to fix directly than through a payment dispute, and we would rather correct the work than argue about the invoice.',
+          'Raising a chargeback or payment dispute without first giving us a written opportunity to resolve the matter is a breach of our Terms. We contest disputes where this policy has been followed and we hold the scope, approvals, correspondence and delivery records to evidence it. While a dispute is open we may suspend all work, hosting and access on your project, and any costs we incur in responding to it are payable by you.',
         ],
       },
       {
         h: 'Your statutory rights',
         p: [
           'Nothing in this policy removes or limits any right you have under applicable consumer protection law that cannot lawfully be excluded, including rights relating to services not performed with reasonable care and skill.',
-          'Where mandatory law in your jurisdiction gives you a stronger right than this policy, that law applies.',
+          'Where mandatory law in your jurisdiction gives you a stronger right than this policy, that law applies and this policy is read accordingly. Everything above operates to the fullest extent that law allows.',
         ],
       },
       CONTACT_SECTION,
@@ -550,9 +636,10 @@ export const LEGAL_DOCS = [
     ],
   },
 ];
+}
 
 export const LEGAL_UPDATED = UPDATED;
 
-export function getLegalDoc(slug) {
-  return LEGAL_DOCS.find((d) => d.slug === slug) || null;
+export function getLegalDoc(slug, market) {
+  return legalDocs(market).find((d) => d.slug === slug) || null;
 }

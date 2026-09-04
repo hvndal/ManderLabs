@@ -1,13 +1,13 @@
 import { SITE_URL } from '@/lib/seo';
 import { REGIONS, allCities } from '@/lib/locations';
-import { LEGAL_DOCS } from '@/lib/legal';
+import { LEGAL_NAV } from '@/lib/legal';
 import { POSTS } from '@/lib/blog';
 
 export default function sitemap() {
   // A fixed date that tracks the last real content change. Using new Date()
   // reported "right now" on every crawl, which teaches Google to ignore the
   // lastmod signal entirely. Update this when content meaningfully changes.
-  const lastContentUpdate = new Date('2026-09-01');
+  const lastContentUpdate = new Date('2026-09-02');
 
   const regionUrls = REGIONS.map((region) => ({
     url: `${SITE_URL}/locations/${region.slug}`,
@@ -28,6 +28,8 @@ export default function sitemap() {
     { url: `${SITE_URL}/pricing`, lastModified: lastContentUpdate, changeFrequency: 'monthly', priority: 0.9 },
     { url: `${SITE_URL}/quote`, lastModified: lastContentUpdate, changeFrequency: 'monthly', priority: 0.8 },
     { url: `${SITE_URL}/locations`, lastModified: lastContentUpdate, changeFrequency: 'monthly', priority: 0.8 },
+    { url: `${SITE_URL}/contact`, lastModified: lastContentUpdate, changeFrequency: 'yearly', priority: 0.7 },
+    { url: `${SITE_URL}/about`, lastModified: lastContentUpdate, changeFrequency: 'yearly', priority: 0.6 },
     { url: `${SITE_URL}/careers`, lastModified: lastContentUpdate, changeFrequency: 'monthly', priority: 0.5 },
     { url: `${SITE_URL}/blog`, lastModified: lastContentUpdate, changeFrequency: 'monthly', priority: 0.7 },
     ...POSTS.map((post) => ({
@@ -38,7 +40,7 @@ export default function sitemap() {
     })),
     ...regionUrls,
     ...cityUrls,
-    ...LEGAL_DOCS.map((doc) => ({
+    ...LEGAL_NAV.map((doc) => ({
       url: `${SITE_URL}/legal/${doc.slug}`,
       lastModified: lastContentUpdate,
       changeFrequency: 'yearly',
