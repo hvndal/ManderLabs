@@ -7,6 +7,7 @@ import ProcessTimeline from '@/components/ProcessTimeline';
 import Faq from '@/components/Faq';
 import JsonLd from '@/components/JsonLd';
 import Icon from '@/components/Icon';
+import PageHeader from '@/components/PageHeader';
 import MarketProvider from '@/components/MarketProvider';
 import WhatsAppCta from '@/components/WhatsAppCta';
 import { REGIONS, getRegion } from '@/lib/locations';
@@ -63,7 +64,6 @@ export default function RegionPage({ params }) {
   const workCase = region.workRef ? WORK.find((w) => w.name === region.workRef) : null;
   // Market by URL, not by IP — see the note in lib/locations.js.
   const market = getMarket(region.market);
-  const startingAt = market.tiers[0];
   const mailto = (subject) =>
     `mailto:${BRAND.email}?subject=${encodeURIComponent(subject)}`;
 
@@ -82,22 +82,24 @@ export default function RegionPage({ params }) {
       <JsonLd data={faqSchema(region.faqs)} />
 
       {/* ---------------------------------------------------------------- Hero */}
-      <section className="relative overflow-hidden border-b border-line">
-        <GridField />
-        <div className="relative container-max py-stack-md">
-          <Breadcrumbs trail={trail} />
-          <Reveal>
-            <span className="eyebrow">{region.countryName}</span>
-          </Reveal>
-          <Reveal delay={80}>
-            <h1 className="h-display max-w-[16ch]">{region.h1}</h1>
-          </Reveal>
-          <Reveal delay={160} className="mt-8 max-w-text space-y-5 text-body-lg text-ink-soft">
+      <PageHeader
+        meta={[region.kicker, region.countryName, `${region.cities.length} markets`]}
+        eyebrow={region.countryName}
+        title={region.h1}
+        trail={trail}
+        lede={
+          <>
             {region.intro.map((para) => (
               <p key={para.slice(0, 24)}>{para}</p>
             ))}
-          </Reveal>
-          <Reveal delay={220} className="mt-9 flex flex-wrap gap-3">
+            <p className="text-label-sm text-ink-mute">
+              Fixed price, quoted in writing before anything starts — no hourly
+              billing and no revised invoice at the end.
+            </p>
+          </>
+        }
+        actions={
+          <>
             <a href={mailto(`${region.name} project enquiry`)} className="btn-primary">
               Contact sales
             </a>
@@ -105,18 +107,9 @@ export default function RegionPage({ params }) {
             <Link href="/quote" className="btn-outline">
               Get a quote
             </Link>
-          </Reveal>
-          <Reveal delay={260} className="mt-6">
-            <p className="text-label-sm text-ink-mute">
-              Websites from{' '}
-              <Link href="/pricing" className="link-underline text-ink">
-                {startingAt.fromLabel || startingAt.price}
-              </Link>{' '}
-              — fixed price, quoted before anything starts.
-            </p>
-          </Reveal>
-        </div>
-      </section>
+          </>
+        }
+      />
 
       {/* ------------------------------------------------------------ Industries */}
       <section className="bg-paper-2 py-stack-md">

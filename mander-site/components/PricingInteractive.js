@@ -1,6 +1,7 @@
 'use client';
 
 import { useState } from 'react';
+import Link from 'next/link';
 import { motion, AnimatePresence } from 'framer-motion';
 import Icon from './Icon';
 import WhatsAppCta from './WhatsAppCta';
@@ -101,36 +102,12 @@ export default function PricingInteractive({ tiers }) {
               />
             </motion.div>
 
-            {/* "Starting at" / "Per month" where a market needs it. The US
-                cards carry no qualifier and are unchanged. */}
-            {tier.priceQualifier && (
-              <motion.span
-                layout="position"
-                transition={SPRING}
-                className="label-caps mt-6 block text-[10px] text-ink-mute"
-              >
-                {tier.priceQualifier}
-              </motion.span>
-            )}
-
-            <motion.div
-              layout="position"
-              transition={SPRING}
-              className={`flex items-baseline gap-2 ${tier.priceQualifier ? 'mt-1.5' : 'mt-6'}`}
-            >
-              <AnimatePresence mode="popLayout">
-                <motion.span
-                  key={isOpen ? 'open' : 'closed'}
-                  initial={{ opacity: 0, y: 6, scale: 0.97 }}
-                  animate={{ opacity: 1, y: 0, scale: 1 }}
-                  transition={{ duration: 0.35, ease: EASE }}
-                  className={isOpen ? 'text-stat-lg text-ink' : 'text-stat-md text-ink'}
-                >
-                  {tier.price}
-                </motion.span>
-              </AnimatePresence>
-            </motion.div>
-
+            {/* No figure on the card. Published prices invite a comparison
+                against whoever is cheapest before anyone has explained what
+                is in the scope; a quote starts the conversation where that
+                can be said. The tier data still carries its price — this is
+                a display decision, and putting the numbers back is a change
+                to this block alone. */}
             <motion.p layout="position" transition={SPRING} className="mt-4 text-body-md text-ink-soft">
               {tier.blurb}
             </motion.p>
@@ -252,17 +229,27 @@ export default function PricingInteractive({ tiers }) {
                     }}
                     className="mt-8"
                   >
-                    {/* Buying is a conversation, not a checkout — this goes
-                        straight to a person rather than into the quiz. */}
+                    {/* Buying is a conversation, not a checkout. The quiz
+                        scopes it in sixty seconds and arrives as a lead with
+                        the answers attached, which is a better first contact
+                        than a blank mailto. */}
+                    <Link
+                      href="/quote"
+                      onClick={(e) => e.stopPropagation()}
+                      className="btn-primary w-full"
+                    >
+                      Get a quote
+                      <Icon name="arrow" className="h-4 w-4" strokeWidth={2} />
+                    </Link>
+
                     <a
                       href={`mailto:${BRAND.email}?subject=${encodeURIComponent(
                         `${tier.name} — enquiry from the MANDER site`
                       )}`}
                       onClick={(e) => e.stopPropagation()}
-                      className="btn-primary w-full"
+                      className="link-underline label-caps mt-4 block text-ink-soft"
                     >
-                      {tier.cta}
-                      <Icon name="arrow" className="h-4 w-4" strokeWidth={2} />
+                      Or email us about {tier.name}
                     </a>
 
                     {/* India only, and the faster route there — a plan

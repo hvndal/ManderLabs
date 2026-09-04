@@ -4,6 +4,7 @@ import Reveal from '@/components/Reveal';
 import Statement from '@/components/Statement';
 import Icon from '@/components/Icon';
 import PricingInteractive from '@/components/PricingInteractive';
+import PageHeader from '@/components/PageHeader';
 import AppPricing from '@/components/AppPricing';
 import GridField from '@/components/GridField';
 import Faq from '@/components/Faq';
@@ -62,30 +63,27 @@ export default function PricingPage() {
       <JsonLd data={faqSchema(market.faqs)} />
 
       {/* ---------------------------------------------------------------- Hero */}
-      <section className="relative overflow-hidden border-b border-line">
-        <GridField />
-        <div className="relative container-max py-stack-md">
-          <Reveal>
-            <span className="eyebrow">Pricing</span>
-          </Reveal>
-          <Reveal delay={80}>
-            <h1 className="h-display max-w-[15ch]">Plain prices. No games.</h1>
-          </Reveal>
-          <Reveal delay={160} className="mt-8 flex flex-col gap-6 md:flex-row md:items-end md:justify-between">
-            <p className="max-w-text text-body-lg text-ink-soft">
-              One-time build cost, quoted up front. Not sure which fits? The
-              60-second quiz recommends a starting point.
-            </p>
-            <div className="flex shrink-0 flex-col gap-3 sm:flex-row">
-              <Link href="/quote" className="btn-primary">
-                Take the fit quiz
-                <Icon name="arrow" className="h-4 w-4" strokeWidth={2} />
-              </Link>
-              <WhatsAppCta tone="outline" location="pricing-hero" />
-            </div>
-          </Reveal>
-        </div>
-      </section>
+      <PageHeader
+        meta={['Plans', market.region, 'Fixed scope']}
+        eyebrow="Plans"
+        title="Fixed scope. Fixed price."
+        lede={
+          <p>
+            Every plan is quoted in writing before a pixel is drawn, and the
+            number you approve is the number you pay. The 60-second quiz
+            recommends a starting point and comes back with a real figure.
+          </p>
+        }
+        actions={
+          <>
+            <Link href="/quote" className="btn-primary">
+              Get a quote
+              <Icon name="arrow" className="h-4 w-4" strokeWidth={2} />
+            </Link>
+            <WhatsAppCta tone="outline" location="pricing-hero" />
+          </>
+        }
+      />
 
       {/* --------------------------------------------------------- Tiers grid */}
       <section className="bg-paper-2">
@@ -137,9 +135,6 @@ export default function PricingPage() {
                       className={`px-6 py-5 text-center text-label-sm font-semibold ${tier.featured ? 'bg-ink text-paper' : 'text-ink'}`}
                     >
                       {tier.name}
-                      <span className={`mt-1 block text-label-sm font-normal ${tier.featured ? 'text-paper/60' : 'text-ink-mute'}`}>
-                        {tier.price}
-                      </span>
                     </th>
                   ))}
                 </tr>
@@ -176,7 +171,7 @@ export default function PricingPage() {
           <>
             <SectionHeading
               eyebrow="Ongoing"
-              title={market.monthlyHeading}
+              title="Keep it growing."
               body={market.monthlyBody}
               align="center"
             />
@@ -188,7 +183,7 @@ export default function PricingPage() {
           <>
             <SectionHeading
               eyebrow="Add-on"
-              title={`The Care Plan — ${market.carePlanPrice}.`}
+              title="The Care Plan."
               body={market.carePlanBody}
               align="center"
             />

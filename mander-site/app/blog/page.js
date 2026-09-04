@@ -1,6 +1,7 @@
 import Link from 'next/link';
 import Reveal from '@/components/Reveal';
 import GridField from '@/components/GridField';
+import PageHeader from '@/components/PageHeader';
 import Icon from '@/components/Icon';
 import { POSTS_BY_DATE } from '@/lib/blog';
 import { BRAND } from '@/lib/content';
@@ -43,24 +44,18 @@ export default function BlogIndex() {
   return (
     <>
       {/* ---------------------------------------------------------------- Hero */}
-      <section className="relative overflow-hidden border-b border-line">
-        <GridField />
-        <div className="relative container-max py-stack-md">
-          <Reveal>
-            <span className="eyebrow">Journal</span>
-          </Reveal>
-          <Reveal delay={80}>
-            <h1 className="h-display max-w-[16ch]">Straight answers, written down.</h1>
-          </Reveal>
-          <Reveal delay={160} className="mt-8">
-            <p className="max-w-text text-body-lg text-ink-soft">
-              Most of what gets written about small-business websites is either
-              a sales pitch or a list of forty tips with no ranking. These are
-              the answers we give clients on the phone, with the numbers left in.
-            </p>
-          </Reveal>
-        </div>
-      </section>
+      <PageHeader
+        meta={['Journal', 'Notes from the studio', 'Updated occasionally']}
+        eyebrow="Journal"
+        title="Straight answers, written down."
+        lede={
+          <p>
+            Most of what gets written about small-business websites is either a
+            sales pitch or a list of forty tips with no ranking. These are the
+            answers we give clients on the phone, with the numbers left in.
+          </p>
+        }
+      />
 
       {/* ------------------------------------------------------------ Lead post */}
       <section className="bg-paper-2">
@@ -155,7 +150,7 @@ export default function BlogIndex() {
               Rather just get a number?
             </h2>
             <p className="mx-auto mt-6 max-w-xl text-body-lg text-paper/70">
-              Every price is published, and the 60-second quiz recommends a
+              Skip the reading — the 60-second quiz recommends a
               starting point without asking for your email.
             </p>
             <div className="mt-10 flex flex-col justify-center gap-3 sm:flex-row">

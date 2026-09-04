@@ -6,6 +6,7 @@ import Breadcrumbs from '@/components/Breadcrumbs';
 import Faq from '@/components/Faq';
 import JsonLd from '@/components/JsonLd';
 import Icon from '@/components/Icon';
+import PageHeader from '@/components/PageHeader';
 import MarketProvider from '@/components/MarketProvider';
 import WhatsAppCta from '@/components/WhatsAppCta';
 import { getCity, allCities } from '@/lib/locations';
@@ -58,7 +59,6 @@ export default function CityPage({ params }) {
   // Boston quotes dollars to everyone. The provider makes the client
   // components below (the WhatsApp CTA) agree with the server ones.
   const market = getMarket(region.market);
-  const startingAt = market.tiers[0];
 
   const regionPath = `/locations/${region.slug}`;
   const path = `${regionPath}/${city.slug}`;
@@ -91,49 +91,32 @@ export default function CityPage({ params }) {
       <JsonLd data={faqSchema(city.faqs)} />
 
       {/* ---------------------------------------------------------------- Hero */}
-      <section className="relative overflow-hidden border-b border-line">
-        <GridField />
-        <div className="relative container-max py-stack-md">
-          <Breadcrumbs trail={trail} />
-          <Reveal>
-            <span className="eyebrow">
-              {region.name}, {region.countryName}
-            </span>
-          </Reveal>
-          <Reveal delay={80}>
-            <h1 className="h-display max-w-[16ch]">{city.h1}</h1>
-          </Reveal>
-          <Reveal delay={160} className="mt-8 max-w-text text-body-lg text-ink-soft">
+      <PageHeader
+        meta={[city.name, `${region.name}, ${region.countryName}`, 'Remote studio']}
+        eyebrow={`${region.name}, ${region.countryName}`}
+        title={city.h1}
+        trail={trail}
+        lede={
+          <>
             <p>{city.intro}</p>
-          </Reveal>
-          <Reveal delay={220} className="mt-9 flex flex-wrap gap-3">
+            <p className="text-label-sm text-ink-mute">
+              Fixed price, quoted in writing before anything starts — no hourly
+              billing and no revised invoice at the end.
+            </p>
+          </>
+        }
+        actions={
+          <>
             <a href={mailto(`${city.name} project enquiry`)} className="btn-primary">
               Contact sales
             </a>
-            {/* India pages only — the component renders nothing where the
-                market has no WhatsApp number. */}
             <WhatsAppCta tone="outline" location={`city-${city.slug}`} />
             <Link href="/quote" className="btn-outline">
               Get a quote
             </Link>
-          </Reveal>
-          {/* The starting figure stays on the page that ranks — someone who
-              searched a city and a service wants a sense of the number before
-              they want the philosophy — but it is a line of text pointing at
-              the pricing page, not the primary action. The button above asks
-              for a quote instead, because a scoped conversation converts
-              better than a price list does. */}
-          <Reveal delay={260} className="mt-6">
-            <p className="text-label-sm text-ink-mute">
-              Websites from{' '}
-              <Link href="/pricing" className="link-underline text-ink">
-                {startingAt.fromLabel || startingAt.price}
-              </Link>{' '}
-              — fixed price, quoted before anything starts.
-            </p>
-          </Reveal>
-        </div>
-      </section>
+          </>
+        }
+      />
 
       {/* ------------------------------------------------------------ Industries */}
       <section className="bg-paper-2 py-stack-md">
@@ -173,7 +156,7 @@ export default function CityPage({ params }) {
           </Reveal>
           <Reveal delay={120} className="mt-8">
             <Link href="/pricing" className="link-underline label-caps text-ink">
-              See fixed pricing
+              See what each plan includes
               <Icon name="arrow" className="h-4 w-4" strokeWidth={2} />
             </Link>
           </Reveal>

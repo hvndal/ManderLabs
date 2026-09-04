@@ -10,15 +10,7 @@
 // const inside app/pricing/page.js. It has to live per-market because its
 // rows are positional — one value per tier — so a market with a different
 // number of tiers needs its own table.
-import {
-  BRAND,
-  TIERS,
-  APP_TIERS,
-  CARE_PLAN,
-  CARE_PLAN_PRICE,
-  FAQS,
-  QUIZ,
-} from '../content';
+import { BRAND, TIERS, APP_TIERS, CARE_PLAN, FAQS, QUIZ } from '../content';
 
 const COMPARISON = [
   { feature: 'Pages', values: ['1', 'Up to 5', 'Up to 10', 'Unlimited'] },
@@ -36,6 +28,15 @@ const COMPARISON = [
   { feature: 'Priority support', values: [false, false, false, true] },
 ];
 
+// The internal price sheet, kept as a comment rather than as data. The site
+// no longer publishes figures — every project is quoted — and a `price` field
+// on a tier does not just render, it crosses to the browser in the RSC
+// payload, so "hidden in the interface" would still mean "readable in view
+// source". Numbers live here and in the quote, nowhere else.
+//
+//   Launch $299 · Starter $499 · Growth $899 · Business Pro $1,499+
+//   Care Plan $40/mo
+//   App Launch $2,999 · App Growth $5,999 · App Pro $9,999+
 export const US_MARKET = {
   id: 'us',
   currency: 'USD',
@@ -67,7 +68,6 @@ export const US_MARKET = {
 
   tiers: TIERS,
   appTiers: APP_TIERS,
-  appsFromLabel: '$2,999',
   comparison: COMPARISON,
 
   // The US care plan is one price with a feature grid. India sells two
@@ -75,7 +75,6 @@ export const US_MARKET = {
   // renders those as cards; see lib/markets/in.js.
   monthlyTiers: null,
   carePlan: CARE_PLAN,
-  carePlanPrice: CARE_PLAN_PRICE,
   carePlanBody:
     'Optional on every tier. Hosting, security, backups, and unlimited small edits so you never think about the site.',
 
@@ -86,17 +85,17 @@ export const US_MARKET = {
   quizTierAlias: null,
 
   priceNote:
-    'Prices in USD; Canadian clients invoiced in CAD on request. One-time build cost unless otherwise agreed. Hosting & maintenance available via the Care Plan.',
+    'Every project is quoted in writing before it starts, in USD; Canadian clients are invoiced in CAD on request at the same figures. One-time build cost unless otherwise agreed, with hosting and maintenance available monthly via the Care Plan.',
 
   meta: {
     title: 'MANDER | Affordable, Fast Website Design for Small Business',
     description:
-      'Remote website design for small business across the U.S. and Canada. Fixed-price builds from $299, with local SEO and ongoing care.',
+      'Remote website design for small business across the U.S. and Canada. Fixed-price builds quoted up front, with local SEO and ongoing care.',
     ogTitle: 'MANDER | Website Design for Small Business — U.S. & Canada',
     ogDescription:
-      'Remote website design, development and SEO for small and mid-sized businesses across the U.S. and Canada. Fixed-price builds from $299.',
+      'Remote website design, development and SEO for small and mid-sized businesses across the U.S. and Canada. Fixed scope, fixed price, quoted before work starts.',
     twitterDescription:
-      'Remote website design and SEO for small business across the U.S. and Canada. Fixed-price builds from $299.',
+      'Remote website design and SEO for small business across the U.S. and Canada. Fixed-price builds, quoted up front.',
     keywords: [
       'remote website design',
       'website design for small business',
@@ -109,14 +108,14 @@ export const US_MARKET = {
       'local SEO for small business',
       'Google Business Profile optimization',
       'website redesign small business',
-      'website design from $299',
+      'fixed price website design quote',
       'veteran owned business discount website',
       'nonprofit and small business website discount',
     ],
     pricing: {
-      title: 'Website Design Pricing — Plans from $299',
+      title: 'Plans — Fixed-Scope Website Design & Android Builds',
       description:
-        'One-time website design pricing for small business in Canada and the U.S. Four plans from $299, Android apps from $2,999. No hidden fees.',
+        'Four website plans and three Android plans for small business in Canada and the U.S. Fixed scope, fixed price, quoted in writing before work starts.',
     },
     quote: {
       title: 'Get a Quote — Fast Website Design, Custom Priced',
@@ -129,8 +128,8 @@ export const US_MARKET = {
   // schema so the schema shape stays in one place.
   schema: {
     description:
-      'Remote website design, development and SEO for small and mid-sized businesses across the United States and Canada. Fixed-price custom builds from $299.',
-    priceRange: '$299–$9999+',
+      'Remote website design, development and SEO for small and mid-sized businesses across the United States and Canada. Fixed-price custom builds, quoted before work starts.',
+    priceRange: '$$',
     currenciesAccepted: 'USD, CAD',
     offerCurrency: 'USD',
     countries: ['United States', 'Canada'],

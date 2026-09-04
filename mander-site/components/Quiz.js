@@ -105,9 +105,6 @@ export default function Quiz() {
       name: contact.name,
       email: contact.email,
       recommended_plan: planName,
-      // Already carries its own currency symbol, so the lead email reads
-      // correctly whichever market it came from.
-      from_price: recommended?.fromLabel || (recommended ? `$${recommended.from}` : ''),
       wants_sales: result.forceSales ? 'yes' : 'no',
       market: market.id.toUpperCase(),
       answers: summary,
@@ -157,9 +154,7 @@ export default function Quiz() {
                 {planName}
               </h2>
               {recommended && (
-                <p className="text-stat-md">
-                  from {recommended.fromLabel || `$${recommended.from}`}
-                </p>
+                <p className="label-caps text-paper/60">Fixed price, quoted</p>
               )}
             </div>
             <p className="mt-4 max-w-text text-body-lg text-paper/80">

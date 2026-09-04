@@ -4,6 +4,7 @@ import GridField from '@/components/GridField';
 import Breadcrumbs from '@/components/Breadcrumbs';
 import JsonLd from '@/components/JsonLd';
 import Icon from '@/components/Icon';
+import PageHeader from '@/components/PageHeader';
 import { REGIONS } from '@/lib/locations';
 import { BRAND } from '@/lib/content';
 import { breadcrumbSchema, OG_IMAGE, alternates } from '@/lib/seo';
@@ -57,30 +58,20 @@ export default function LocationsHubPage() {
         data={breadcrumbSchema(trail.map((t) => ({ name: t.name, path: t.href || '/locations' })))}
       />
 
-      <section className="relative overflow-hidden border-b border-line">
-        <GridField />
-        <div className="relative container-max py-stack-md">
-          <Breadcrumbs trail={trail} />
-          <Reveal>
-            <span className="eyebrow">Locations</span>
-          </Reveal>
-          <Reveal delay={80}>
-            <h1 className="h-display max-w-[16ch]">
-              Website design across India, the U.S. and Canada.
-            </h1>
-          </Reveal>
-          <Reveal delay={160} className="mt-8 max-w-text text-body-lg text-ink-soft">
-            <p>
-              MANDER works remotely with small and mid-sized businesses across
-              India, the United States and Canada — the process doesn&apos;t
-              change based on your address, and neither does the fixed-price
-              scope. These are the markets with dedicated local pages so far.
-              Indian pricing is in rupees and set for the Indian market rather
-              than converted from the North American card.
-            </p>
-          </Reveal>
-        </div>
-      </section>
+      <PageHeader
+        meta={['Locations', 'India · U.S. · Canada', `${GROUPS.length} countries`]}
+        eyebrow="Locations"
+        title="Website design across India, the U.S. and Canada."
+        trail={trail}
+        lede={
+          <p>
+            MANDER works remotely with small and mid-sized businesses across
+            India, the United States and Canada — the process doesn&apos;t
+            change based on your address, and neither does the fixed-scope
+            quote. These are the markets with dedicated local pages so far.
+          </p>
+        }
+      />
 
       <section className="bg-paper-2 py-stack-md">
         <div className="container-max flex flex-col gap-stack-md">

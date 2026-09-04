@@ -7,6 +7,7 @@ import Icon from '@/components/Icon';
 import TeamCard from '@/components/TeamCard';
 import WhatsAppCta from '@/components/WhatsAppCta';
 import JsonLd from '@/components/JsonLd';
+import PageHeader from '@/components/PageHeader';
 import { BRAND, TEAM, TERMS, SERVICES, PROCESS } from '@/lib/content';
 import { getServerMarket } from '@/lib/market-server';
 import { breadcrumbSchema, OG_IMAGE, alternates, SITE_URL } from '@/lib/seo';
@@ -24,8 +25,7 @@ import { breadcrumbSchema, OG_IMAGE, alternates, SITE_URL } from '@/lib/seo';
  */
 export async function generateMetadata() {
   const market = getServerMarket();
-  const entry = market.tiers[0];
-  const description = `MANDER is a small remote design and development studio building fixed-price websites for small and growing businesses across ${market.region}. Builds from ${entry.fromLabel || entry.price}.`;
+  const description = `MANDER is a small remote design and development studio building fixed-price websites, apps and local search presence for small and growing businesses across ${market.region}.`;
 
   return {
     title: 'About Us',
@@ -72,19 +72,13 @@ export default function AboutPage() {
         }}
       />
 
-      <section className="relative overflow-hidden border-b border-line">
-        <GridField />
-        <div className="relative container-max py-stack-md">
-          <Breadcrumbs trail={trail} />
-          <Reveal>
-            <span className="eyebrow">About</span>
-          </Reveal>
-          <Reveal delay={80}>
-            <h1 className="h-display max-w-[16ch]">
-              A small studio that ships finished work.
-            </h1>
-          </Reveal>
-          <Reveal delay={160} className="mt-8 max-w-text space-y-5 text-body-lg text-ink-soft">
+      <PageHeader
+        meta={['About', market.region, 'Remote studio']}
+        eyebrow="About"
+        title="A small studio that ships finished work."
+        trail={trail}
+        lede={
+          <>
             <p>
               MANDER is a remote design and development studio building
               websites, Android apps and local search presence for small and
@@ -97,19 +91,21 @@ export default function AboutPage() {
               and the people building the thing, which is most of why the
               prices look the way they do and all of why the work does.
             </p>
-          </Reveal>
-          <Reveal delay={220} className="mt-9 flex flex-wrap gap-3">
+          </>
+        }
+        actions={
+          <>
             <Link href="/contact" className="btn-primary">
               Contact us
               <Icon name="arrow" className="h-4 w-4" strokeWidth={2} />
             </Link>
             <WhatsAppCta tone="outline" location="about-page" />
-            <Link href="/pricing" className="btn-outline">
-              See full pricing
+            <Link href="/quote" className="btn-outline">
+              Get a quote
             </Link>
-          </Reveal>
-        </div>
-      </section>
+          </>
+        }
+      />
 
       {/* --------------------------------------------------- What we sell */}
       <section className="bg-paper-2 py-stack-md">
@@ -117,7 +113,7 @@ export default function AboutPage() {
           <SectionHeading
             eyebrow="What we sell"
             title="Products and prices, in one place."
-            body="The full breakdown lives on the pricing page. This is the summary — what the plans are, what they cost, and what is billed once versus monthly."
+            body="What the plans are, and what is billed once versus monthly. Every project is quoted in writing before it starts — ask and you get a real figure, not a range."
           />
 
           <div className="mt-12 grid grid-cols-1 gap-px overflow-hidden border border-line bg-line md:grid-cols-2">
@@ -126,7 +122,6 @@ export default function AboutPage() {
                 <div className="flex h-full flex-col p-8">
                   <span className="label-caps text-accent">One-time build</span>
                   <h3 className="mt-4 text-headline-md text-ink">{tier.name}</h3>
-                  <p className="mt-2 text-stat-md text-ink">{tier.price}</p>
                   <p className="mt-4 text-body-md text-ink-soft">{tier.blurb}</p>
                 </div>
               </Reveal>
@@ -140,9 +135,6 @@ export default function AboutPage() {
                   <div className="flex h-full flex-col p-8">
                     <span className="label-caps text-accent">Monthly, no lock-in</span>
                     <h3 className="mt-4 text-headline-md text-ink">{tier.name}</h3>
-                    <p className="mt-2 text-stat-md text-ink">
-                      {tier.fromLabel || tier.price}
-                    </p>
                     <p className="mt-4 text-body-md text-ink-soft">{tier.blurb}</p>
                   </div>
                 </Reveal>
@@ -154,7 +146,11 @@ export default function AboutPage() {
             <p className="mt-8 max-w-text text-label-sm text-ink-mute">
               {market.priceNote}{' '}
               <Link href="/pricing" className="link-underline text-ink">
-                Full pricing and what each plan includes
+                What each plan includes
+              </Link>
+              , or{' '}
+              <Link href="/quote" className="link-underline text-ink">
+                get a quote in 60 seconds
               </Link>
               .
             </p>

@@ -4,6 +4,7 @@ import Reveal from '@/components/Reveal';
 import Statement from '@/components/Statement';
 import Icon from '@/components/Icon';
 import GridField from '@/components/GridField';
+import PageHeader from '@/components/PageHeader';
 import Faq from '@/components/Faq';
 import ProcessTimeline from '@/components/ProcessTimeline';
 import { CAREERS, BRAND } from '@/lib/content';
@@ -120,37 +121,33 @@ export default function CareersPage() {
   return (
     <>
       {/* ---------------------------------------------------------------- Hero */}
-      <section className="relative overflow-hidden border-b border-line">
-        <GridField />
-        <div className="relative container-max py-stack-md">
-          <Reveal>
-            <span className="eyebrow">{CAREERS.intro.eyebrow}</span>
-          </Reveal>
-          <Reveal delay={80}>
-            <h1 className="h-display max-w-[18ch]">{CAREERS.intro.title}</h1>
-          </Reveal>
-          <Reveal delay={160} className="mt-8 flex flex-col gap-6 md:flex-row md:items-end md:justify-between">
-            <p className="max-w-text text-body-lg text-ink-soft">{CAREERS.intro.body}</p>
-            <a href="#apply" className="btn-primary shrink-0">
-              Apply now
-              <Icon name="arrow" className="h-4 w-4" strokeWidth={2} />
-            </a>
-          </Reveal>
-
-          {/* Says plainly whether there is a seat today. A careers page that
-              implies vacancies it doesn't have wastes the candidate's evening
-              and costs more goodwill than the application was worth. */}
-          <Reveal delay={220}>
-            <p className="mt-8 border-t border-line pt-6 text-label-sm text-ink-mute">
+      <PageHeader
+        meta={['Careers', 'Remote studio', openings > 0 ? 'Open roles' : 'Rolling applications']}
+        eyebrow={CAREERS.intro.eyebrow}
+        title={CAREERS.intro.title}
+        lede={
+          <>
+            <p>{CAREERS.intro.body}</p>
+            {/* Says plainly whether there is a seat today. A careers page that
+                implies vacancies it doesn't have wastes the candidate's
+                evening and costs more goodwill than the application was
+                worth. */}
+            <p className="text-label-sm text-ink-mute">
               {openings > 0
                 ? `${openings} role${openings > 1 ? 's' : ''} actively hiring. `
                 : 'No specific vacancy open this minute. '}
               We hire in bursts rather than continuously — applications for every
               discipline below are read and kept on file.
             </p>
-          </Reveal>
-        </div>
-      </section>
+          </>
+        }
+        actions={
+          <a href="#apply" className="btn-primary">
+            Apply now
+            <Icon name="arrow" className="h-4 w-4" strokeWidth={2} />
+          </a>
+        }
+      />
 
       {/* ------------------------------------------------------ What it's like */}
       <Section tone="alt">

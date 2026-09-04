@@ -7,6 +7,7 @@ import Icon from '@/components/Icon';
 import ContactForm from '@/components/ContactForm';
 import WhatsAppCta from '@/components/WhatsAppCta';
 import JsonLd from '@/components/JsonLd';
+import PageHeader from '@/components/PageHeader';
 import { BRAND } from '@/lib/content';
 import { getServerMarket } from '@/lib/market-server';
 import { breadcrumbSchema, OG_IMAGE, alternates, SITE_URL } from '@/lib/seo';
@@ -107,24 +108,20 @@ export default function ContactPage() {
         }}
       />
 
-      <section className="relative overflow-hidden border-b border-line">
-        <GridField />
-        <div className="relative container-max py-stack-md">
-          <Breadcrumbs trail={trail} />
-          <Reveal>
-            <span className="eyebrow">Contact</span>
-          </Reveal>
-          <Reveal delay={80}>
-            <h1 className="h-display max-w-[15ch]">Talk to a person.</h1>
-          </Reveal>
-          <Reveal delay={160} className="mt-8 max-w-text text-body-lg text-ink-soft">
-            <p>
-              No account managers, no ticket queue. Whoever answers is whoever
-              would build the thing — which is also why we reply within one
-              business day rather than instantly.
-            </p>
-          </Reveal>
-          <Reveal delay={220} className="mt-9 flex flex-wrap gap-3">
+      <PageHeader
+        meta={['Contact', market.region, 'Mon–Fri, 9–5 PT']}
+        eyebrow="Contact"
+        title="Talk to a person."
+        trail={trail}
+        lede={
+          <p>
+            No account managers, no ticket queue. Whoever answers is whoever
+            would build the thing — which is also why we reply within one
+            business day rather than instantly.
+          </p>
+        }
+        actions={
+          <>
             <WhatsAppCta location="contact-page" />
             {market.phone && (
               <a href={market.phone.href} className="btn-primary">
@@ -135,9 +132,9 @@ export default function ContactPage() {
             <Link href="/quote" className="btn-outline">
               Get a quote
             </Link>
-          </Reveal>
-        </div>
-      </section>
+          </>
+        }
+      />
 
       {/* --------------------------------------------------------- Channels */}
       <section className="bg-paper-2 py-stack-md">

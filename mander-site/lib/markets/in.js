@@ -18,10 +18,6 @@ import { QUIZ } from '../content';
 const TIERS = [
   {
     name: 'Starter Website',
-    price: '₹19,999',
-    priceQualifier: 'Starting at',
-    from: 19999,
-    fromLabel: '₹19,999',
     blurb:
       'A proper custom website for the business — fast, mobile-first, and built to turn a search into an enquiry.',
     specs: { pages: 'Up to 5 pages', timeline: '2–3 weeks', revisions: '2 rounds' },
@@ -53,10 +49,6 @@ const TIERS = [
   },
   {
     name: 'Website + Local',
-    price: '₹34,999',
-    priceQualifier: 'Starting at',
-    from: 34999,
-    fromLabel: '₹34,999',
     blurb:
       'The website plus everything that gets it found on Google Search and Maps in your own city.',
     specs: { pages: 'Up to 5 pages', timeline: '3–4 weeks', revisions: '2 rounds' },
@@ -87,10 +79,6 @@ const TIERS = [
 const MONTHLY_TIERS = [
   {
     name: 'Mander Care',
-    price: '₹2,499',
-    priceQualifier: 'Per month',
-    from: 2499,
-    fromLabel: '₹2,499/month',
     blurb:
       'The site stays fast, secure and current, and you never think about it again.',
     specs: { pages: 'Month to month', timeline: 'Same-week edits', revisions: 'Unlimited small' },
@@ -110,10 +98,6 @@ const MONTHLY_TIERS = [
   },
   {
     name: 'Mander Growth',
-    price: '₹4,999',
-    priceQualifier: 'Per month',
-    from: 4999,
-    fromLabel: '₹4,999/month',
     blurb:
       'Everything in Care, plus the ongoing search work that keeps new customers arriving.',
     specs: { pages: 'Month to month', timeline: 'Monthly cycle', revisions: 'Unlimited small' },
@@ -139,10 +123,6 @@ const MONTHLY_TIERS = [
 const APP_TIERS = [
   {
     name: 'App Launch',
-    price: '₹49,999',
-    priceQualifier: 'Starting at',
-    from: 49999,
-    fromLabel: '₹49,999',
     blurb:
       'A real native Android app on the Play Store — the core of what the business does, in your customers’ hands.',
     specs: [
@@ -170,10 +150,6 @@ const APP_TIERS = [
   },
   {
     name: 'App Growth',
-    price: '₹99,999',
-    priceQualifier: 'Starting at',
-    from: 99999,
-    fromLabel: '₹99,999',
     blurb:
       'The app that runs the business — accounts, UPI payments, bookings, and a dashboard to see it all from.',
     specs: [
@@ -201,10 +177,6 @@ const APP_TIERS = [
   },
   {
     name: 'App Pro',
-    price: '₹1,99,999',
-    priceQualifier: 'Starting at',
-    from: 199999,
-    fromLabel: '₹1,99,999',
     blurb:
       'Platform-grade Android — multiple roles, custom APIs, and workflows built to your operation rather than around it.',
     specs: [
@@ -254,7 +226,7 @@ const COMPARISON = [
 const FAQS = [
   {
     q: 'How much does a website cost?',
-    a: 'A custom five-page website starts at ₹19,999. Adding Google Business Profile setup and the local search work that gets you found on Maps takes it to ₹34,999. Both are fixed prices quoted before any work starts — there is no hourly billing and no surprise invoice at the end.',
+    a: 'Every project is quoted individually — a five-page site and the same site with Google Business Profile and local search work are different jobs. What is fixed is the process: we scope it, quote one number in writing before any work starts, and that is the number you pay. GST extra where applicable. Message us on WhatsApp and you will have a figure the same day.',
   },
   {
     q: 'How fast can you build my website?',
@@ -270,7 +242,7 @@ const FAQS = [
   },
   {
     q: 'Do I have to take a monthly plan?',
-    a: 'No. The build is a one-time cost and the site is yours whether or not you continue with us. Mander Care at ₹2,499/month covers hosting, backups, security and small edits; Mander Growth at ₹4,999/month adds the ongoing local SEO and a monthly report. Both are month to month with no lock-in.',
+    a: 'No. The build is a one-time cost and the site is yours whether or not you continue with us. Mander Care covers hosting, backups, security and small edits; Mander Growth adds ongoing local SEO and a monthly report. Both are month to month with no lock-in, and both are quoted with the build.',
   },
   {
     q: 'How do we talk?',
@@ -310,6 +282,13 @@ const QUIZ_IN = {
   },
 };
 
+// The internal price sheet, kept as a comment rather than as data — same
+// reasoning as the US file: a price field on a tier reaches the browser in
+// the RSC payload whether or not anything renders it.
+//
+//   Starter Website ₹19,999 · Website + Local ₹34,999
+//   Mander Care ₹2,499/mo · Mander Growth ₹4,999/mo
+//   App Launch ₹49,999 · App Growth ₹99,999 · App Pro ₹1,99,999+
 export const IN_MARKET = {
   id: 'in',
   currency: 'INR',
@@ -339,15 +318,13 @@ export const IN_MARKET = {
 
   tiers: TIERS,
   appTiers: APP_TIERS,
-  appsFromLabel: '₹49,999',
   comparison: COMPARISON,
 
   monthlyTiers: MONTHLY_TIERS,
-  monthlyHeading: 'Keep it growing — from ₹2,499/month.',
+  monthlyHeading: 'Keep it growing.',
   monthlyBody:
-    'Month to month, cancel any time. Care keeps the site fast, secure and current; Growth adds the ongoing local search work and a monthly report.',
+    'Month to month, cancel any time and quoted with the build. Care keeps the site fast, secure and current; Growth adds the ongoing local search work and a monthly report.',
   carePlan: null,
-  carePlanPrice: '₹2,499/month',
 
   faqs: FAQS,
   quiz: QUIZ_IN,
@@ -361,17 +338,17 @@ export const IN_MARKET = {
   },
 
   priceNote:
-    'Prices in INR, inclusive of build. One-time cost unless otherwise agreed — GST extra where applicable. Hosting and ongoing work are available monthly via Mander Care and Mander Growth.',
+    'Every project is quoted in writing before it starts, in INR, with GST extra where applicable. One-time build cost unless otherwise agreed; hosting and ongoing work are available monthly via Mander Care and Mander Growth.',
 
   meta: {
     title: 'MANDER | Website Design for Growing Businesses in India',
     description:
-      'Custom websites and digital experiences for growing businesses across India. Fixed-price builds from ₹19,999, with Google Business Profile and local SEO.',
+      'Custom websites and digital experiences for growing businesses across India. Fixed-price builds quoted up front, with Google Business Profile and local SEO.',
     ogTitle: 'MANDER | Websites & Digital Experiences for Growing Businesses',
     ogDescription:
-      'Custom website design, development and local SEO for growing businesses in India. Fixed-price builds from ₹19,999. WhatsApp us to start.',
+      'Custom website design, development and local SEO for growing businesses in India. Fixed scope, fixed price, quoted before work starts. WhatsApp us to start.',
     twitterDescription:
-      'Custom websites and local SEO for growing businesses across India. Fixed-price builds from ₹19,999.',
+      'Custom websites and local SEO for growing businesses across India. Fixed-price builds, quoted up front.',
     keywords: [
       'website design India',
       'website design for small business India',
@@ -380,14 +357,14 @@ export const IN_MARKET = {
       'local SEO India',
       'Google Business Profile setup India',
       'Google Maps listing for business',
-      'small business website ₹19999',
+      'small business website quote India',
       'website maintenance plan India',
       'Android app development for small business India',
     ],
     pricing: {
-      title: 'Website Design Pricing in India — Plans from ₹19,999',
+      title: 'Plans — Website Design & Local SEO in India',
       description:
-        'Fixed-price website design for growing businesses in India. Starter Website ₹19,999, Website + Local ₹34,999, monthly care from ₹2,499. No hidden fees.',
+        'Fixed-scope website plans for growing businesses in India — Starter Website, Website + Local, and monthly care. Quoted in writing before work starts.',
     },
     quote: {
       title: 'Get a Quote — Custom Website Design in India',
@@ -398,8 +375,8 @@ export const IN_MARKET = {
 
   schema: {
     description:
-      'Website design, development and local SEO for growing businesses across India. Fixed-price custom builds from ₹19,999.',
-    priceRange: '₹19,999–₹1,99,999+',
+      'Website design, development and local SEO for growing businesses across India. Fixed-price custom builds, quoted before work starts.',
+    priceRange: '₹₹',
     currenciesAccepted: 'INR',
     offerCurrency: 'INR',
     countries: ['India'],

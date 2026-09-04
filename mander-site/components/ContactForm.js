@@ -142,7 +142,7 @@ export default function ContactForm({ defaultPlan }) {
           <select id="cf-plan" name="plan" defaultValue={featuredPlan} className={FIELD}>
             {tiers.map((tier) => (
               <option key={tier.name} value={tier.name}>
-                {tier.name} — {tier.price}
+                {tier.name}
               </option>
             ))}
             <option value="Not sure yet">Not sure yet</option>

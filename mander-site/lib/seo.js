@@ -259,6 +259,11 @@ export function organizationSchema(marketOrId) {
     })),
     priceRange: schema.priceRange,
     currenciesAccepted: schema.currenciesAccepted,
+    // Offers without a price, deliberately. The site no longer publishes
+    // figures — every project is quoted — and structured data that names a
+    // number the page does not show is the contradiction Google is entitled
+    // to distrust. The plans are still declared so the catalogue is legible;
+    // `priceRange` carries the band instead.
     makesOffer: [
       ...market.tiers,
       ...(market.monthlyTiers || []),
@@ -266,7 +271,6 @@ export function organizationSchema(marketOrId) {
     ].map((tier) => ({
       '@type': 'Offer',
       name: tier.name,
-      price: String(tier.from),
       priceCurrency: schema.offerCurrency,
       description: tier.blurb,
       availability: 'https://schema.org/InStock',
@@ -374,15 +378,13 @@ export function locationServiceSchema({
       url: SITE_URL,
     },
     areaServed: { '@type': areaType, name: areaName },
-    // The entry price in the currency the page itself shows. A location page
-    // quoting rupees on the page and dollars in its structured data is the
-    // kind of contradiction that gets rich results dropped, and it would be
-    // easy to introduce here because the page's market comes from its URL
-    // rather than from the visitor.
+    // The entry plan in the currency the page itself works in, with no
+    // figure — the pages no longer publish one, and structured data naming a
+    // number the page does not show is the contradiction that gets rich
+    // results dropped.
     offers: {
       '@type': 'Offer',
       name: entry.name,
-      price: String(entry.from),
       priceCurrency: resolved.schema.offerCurrency,
       availability: 'https://schema.org/InStock',
       url: `${SITE_URL}/pricing`,

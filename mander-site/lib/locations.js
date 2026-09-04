@@ -94,11 +94,11 @@ const NA_REGIONS = [
           },
                   {
             q: "Do you build mobile apps as well as websites?",
-            a: "Yes — native Android apps start at $2,999 and ship to Google Play under your own developer account. For Boston professional-services and healthcare clients that usually means client portals, intake or appointment flows rather than a storefront.",
+            a: "Yes — native Android apps are quoted per build and ship to Google Play under your own developer account. For Boston professional-services and healthcare clients that usually means client portals, intake or appointment flows rather than a storefront.",
           },
           {
             q: "What does it cost to keep a Boston site running after launch?",
-            a: "The Care Plan is $40/month and covers hosting, security, backups and unlimited small edits. It is month to month, so a practice can drop it whenever it wants and keep the site either way.",
+            a: "The Care Plan covers hosting, security, backups and unlimited small edits. It is month to month, so a practice can drop it whenever it wants and keep the site either way.",
           },
         ],
       },
@@ -122,11 +122,11 @@ const NA_REGIONS = [
           },
                   {
             q: "Can you build an Android app for a Cambridge startup?",
-            a: "Yes. App Launch is $2,999 for up to eight screens with authentication and a basic backend, which is usually the right shape for a first product test rather than a full platform build.",
+            a: "Yes. App Launch covers up to eight screens with authentication and a basic backend, which is usually the right shape for a first product test rather than a full platform build.",
           },
           {
             q: "Can we start small and add pages as we grow?",
-            a: "That is the normal path here. Most Cambridge clients start at Starter ($499) for five pages and move to Growth ($899) once there is enough traction to justify the local SEO and integrations.",
+            a: "That is the normal path here. Most Cambridge clients start at Starter for five pages and move to Growth once there is enough traction to justify the local SEO and integrations.",
           },
         ],
       },
@@ -146,11 +146,11 @@ const NA_REGIONS = [
           },
           {
             q: 'Is a Worcester business too small for a custom build?',
-            a: 'No — Launch starts at $299 specifically for businesses that need a real, professional presence without agency-level spend.',
+            a: 'No — Launch exists specifically for businesses that need a real, professional presence without agency-level spend.',
           },
                   {
             q: "Do you build apps for trades or manufacturing businesses?",
-            a: "Yes — App Launch starts at $2,999 and App Growth at $5,999 adds bookings, payments and an admin dashboard. For Worcester manufacturers and trades that is usually job scheduling or a customer request flow.",
+            a: "Yes — App Launch covers the core build, and App Growth adds bookings, payments and an admin dashboard. For Worcester manufacturers and trades that is usually job scheduling or a customer request flow.",
           },
           {
             q: "Can you make our site work properly on a phone?",
@@ -163,7 +163,7 @@ const NA_REGIONS = [
         name: 'Springfield',
         h1: 'Website design in Springfield, Massachusetts.',
         metaDescription:
-          'Website design for Springfield, MA and the Pioneer Valley — manufacturing, logistics, healthcare and trades. Fixed-price builds from $299.',
+          'Website design for Springfield, MA and the Pioneer Valley — manufacturing, logistics, healthcare and trades. Fixed-price builds, quoted up front.',
         intro:
           "Springfield and the wider Pioneer Valley run on manufacturing, logistics and healthcare more than the Boston-centric image of Massachusetts suggests, and a lot of those businesses have never needed a marketing-forward website to get work — referrals and reputation have carried them. That's changing as procurement and hiring move online. We build sites that do the job of a credible first impression without pretending to be something the business isn't.",
         industries: ['Manufacturing & industrial', 'Logistics & distribution', 'Healthcare', 'Trades & contractors'],
@@ -178,7 +178,7 @@ const NA_REGIONS = [
           },
                   {
             q: "Is an app worth it for a logistics or contracting business?",
-            a: "Sometimes. App Growth at $5,999 covers bookings, accounts and an admin dashboard, which suits dispatch or job tracking. If the need is really just being found and contacted, a $899 Growth site does more for less.",
+            a: "Sometimes. App Growth covers bookings, accounts and an admin dashboard, which suits dispatch or job tracking. If the need is really just being found and contacted, a Growth site does more for less.",
           },
           {
             q: "Do you offer any discount for smaller Springfield businesses?",
@@ -197,7 +197,7 @@ const NA_REGIONS = [
         industries: ['Law & professional practices', 'Medical & dental practices', 'Real estate', 'Boutique retail'],
         faqs: [
           {
-            q: 'Is a $299 site too basic for a professional practice?',
+            q: 'Is a single-page Launch site too basic for a professional practice?',
             a: "Launch suits a new venture; most Newton practices land in Starter or Growth, where copywriting support and fuller SEO are included. We'll recommend the right tier rather than the cheapest one.",
           },
           {
@@ -206,7 +206,7 @@ const NA_REGIONS = [
           },
                   {
             q: "Would a patient-facing app make sense for a Newton practice?",
-            a: "For most practices, no — a $899 Growth site with booking integration covers it. If you genuinely need patient accounts and payments in an app, that is App Growth at $5,999.",
+            a: "For most practices, no — a Growth site with booking integration covers it. If you genuinely need patient accounts and payments in an app, that is App Growth.",
           },
           {
             q: "Who owns the site and the domain once it is built?",
@@ -234,7 +234,7 @@ const NA_REGIONS = [
           },
                   {
             q: "Can you build an app as well as a site?",
-            a: "Yes, from $2,999 on Google Play. For Lowell restaurants and retail that is usually ordering or loyalty; for the engineering side it is more often a customer or field-data tool.",
+            a: "Yes, quoted per build on Google Play. For Lowell restaurants and retail that is usually ordering or loyalty; for the engineering side it is more often a customer or field-data tool.",
           },
           {
             q: "How long does a Lowell project take start to finish?",
@@ -262,11 +262,11 @@ const NA_REGIONS = [
           },
                   {
             q: "Can an app be built for a multilingual customer base?",
-            a: "Yes — Android builds start at $2,999 and the interface language is a design decision, not an add-on. The same applies to the website copy for Quincy businesses serving two languages.",
+            a: "Yes — Android builds are quoted per project, and the interface language is a design decision, not an add-on. The same applies to the website copy for Quincy businesses serving two languages.",
           },
           {
             q: "Do you handle online ordering for a Quincy restaurant or shop?",
-            a: "Ordering and payments sit in Business Pro ($1,499+) on the web side, or App Growth ($5,999) if it needs to be an app. Growth at $899 covers bookings and enquiries but not a full store.",
+            a: "Ordering and payments sit in Business Pro on the web side, or App Growth if it needs to be an app. Growth covers bookings and enquiries but not a full store.",
           },
         ],
       },
@@ -290,11 +290,11 @@ const NA_REGIONS = [
           },
                   {
             q: "Is an app a way to stand out on a crowded retail corridor?",
-            a: "Occasionally, but rarely first. Local SEO on a $899 Growth site usually wins more Framingham customers per dollar than a $2,999 app, and the app makes sense once you have repeat customers to keep.",
+            a: "Occasionally, but rarely first. Local SEO on a Growth site usually wins more Framingham customers per dollar than an app build, and the app makes sense once you have repeat customers to keep.",
           },
           {
             q: "Can you build a site in Portuguese as well as English?",
-            a: "Copywriting support is included from Starter ($499) upward and the language is your call. A second full language version is scoped as extra pages rather than a separate product.",
+            a: "Copywriting support is included from Starter upward and the language is your call. A second full language version is scoped as extra pages rather than a separate product.",
           },
         ],
       },
@@ -310,19 +310,19 @@ const NA_REGIONS = [
         faqs: [
           {
             q: 'Is there a genuinely affordable option, not just a cheap-looking one?',
-            a: "That's specifically what Launch is — $299 for a single-page site that looks considered, not like a template. Most Brockton inquiries land in Launch or Starter.",
+            a: "That's specifically what Launch is — a single-page site that looks considered, not like a template. Most Brockton inquiries land in Launch or Starter.",
           },
           {
             q: 'Do you work with Cape Verdean or Haitian Creole-speaking business owners?',
             a: 'Yes — calls run in English, but the site itself can carry Creole or Portuguese content where your customers need it.',
           },
                   {
-            q: "Is a $2,999 app realistic for a Brockton business?",
-            a: "Honestly, for most it is not the right first spend. A $299 Launch or $499 Starter site with the 20% Community Rate applied does more for a trades or healthcare business here than an app would.",
+            q: "Is an app build realistic for a Brockton business?",
+            a: "Honestly, for most it is not the right first spend. A Launch or Starter site with the 20% Community Rate applied does more for a trades or healthcare business here than an app would.",
           },
           {
             q: "What is the cheapest way to get a real site online?",
-            a: "Launch at $299, less the 20% Community Rate if you ask for it. One page, mobile-first, a contact form and a Google Maps link — about two weeks.",
+            a: "Launch, less the 20% Community Rate if you ask for it. One page, mobile-first, a contact form and a Google Maps link — about two weeks.",
           },
         ],
       },
@@ -346,11 +346,11 @@ const NA_REGIONS = [
           },
                   {
             q: "Do you build Android apps for North Shore businesses?",
-            a: "Yes, from $2,999, deployed to Google Play under your own developer account. For trades and healthcare on the North Shore that is usually scheduling or a customer request flow.",
+            a: "Yes, quoted per build and deployed to Google Play under your own developer account. For trades and healthcare on the North Shore that is usually scheduling or a customer request flow.",
           },
           {
             q: "Can you take over a site someone else built badly?",
-            a: "Usually we rebuild rather than patch — a Growth rebuild at $899 costs less than untangling someone else’s work, and you end up owning something maintainable.",
+            a: "Usually we rebuild rather than patch — a Growth rebuild costs less than untangling someone else’s work, and you end up owning something maintainable.",
           },
         ],
       },
@@ -408,7 +408,7 @@ const NA_REGIONS = [
           },
                   {
             q: "Can you build an ordering or loyalty app for a Providence restaurant?",
-            a: "Yes — App Growth at $5,999 covers accounts, payments, bookings and an admin dashboard. If it is just table reservations, a $899 Growth site with booking integration is the cheaper answer.",
+            a: "Yes — App Growth covers accounts, payments, bookings and an admin dashboard. If it is just table reservations, a Growth site with booking integration is the cheaper answer.",
           },
           {
             q: "Will the site hold up next to Providence design studios?",
@@ -436,7 +436,7 @@ const NA_REGIONS = [
           },
                   {
             q: "Do we need an app, or is a website enough?",
-            a: "For most Warwick retail and trades, a website is enough — Growth at $899 with local SEO covers being found and contacted. Apps start at $2,999 and earn their keep when customers come back repeatedly.",
+            a: "For most Warwick retail and trades, a website is enough — Growth with local SEO covers being found and contacted. Apps are quoted per build and earn their keep when customers come back repeatedly.",
           },
           {
             q: "Do you cover the rest of Rhode Island, not just Warwick?",
@@ -464,11 +464,11 @@ const NA_REGIONS = [
           },
                   {
             q: "Could a booking app work for a Newport tourism business?",
-            a: "It can. App Growth at $5,999 includes a reservation system and payments, which suits venues and marine trades with repeat seasonal customers. A $899 Growth site with booking integration is the lighter option.",
+            a: "It can. App Growth includes a reservation system and payments, which suits venues and marine trades with repeat seasonal customers. A Growth site with booking integration is the lighter option.",
           },
           {
             q: "Can the site handle a seasonal traffic spike?",
-            a: "Yes. Every build gets a performance budget and a Core Web Vitals pass, and the $40/month Care Plan covers the hosting — which is the part that usually buckles in a Newport summer.",
+            a: "Yes. Every build gets a performance budget and a Core Web Vitals pass, and the Care Plan covers the hosting — which is the part that usually buckles in a Newport summer.",
           },
         ],
       },
@@ -526,11 +526,11 @@ const NA_REGIONS = [
           },
                   {
             q: "What does an Android app cost compared with a Vancouver agency?",
-            a: "App Launch is $2,999 and App Growth $5,999, fixed and quoted up front. That is a fraction of a Vancouver studio day rate for equivalent scope, for the same reason the websites are.",
+            a: "App Launch and App Growth are both fixed-scope and quoted up front. That is a fraction of a Vancouver studio day rate for equivalent scope, for the same reason the websites are.",
           },
           {
             q: "Do you work with early-stage Vancouver startups?",
-            a: "Often. A $499 Starter site is usually right before funding, and App Launch at $2,999 covers a first Play Store release with authentication and a basic backend.",
+            a: "Often. A Starter site is usually right before funding, and App Launch covers a first Play Store release with authentication and a basic backend.",
           },
         ],
       },
@@ -554,11 +554,11 @@ const NA_REGIONS = [
           },
                   {
             q: "Can you build an app for a Victoria tourism business?",
-            a: "Yes, from $2,999 on Google Play. For tourism and hospitality the useful version is usually bookings and notifications, which is App Growth at $5,999.",
+            a: "Yes, quoted per build on Google Play. For tourism and hospitality the useful version is usually bookings and notifications, which is App Growth.",
           },
           {
             q: "Can the site serve both tourists and local regulars?",
-            a: "That is a structure question more than a design one, and it is what the discovery call is for. Growth at $899 gives enough pages to separate the two audiences without splitting the brand.",
+            a: "That is a structure question more than a design one, and it is what the discovery call is for. Growth gives enough pages to separate the two audiences without splitting the brand.",
           },
         ],
       },
@@ -582,11 +582,11 @@ const NA_REGIONS = [
           },
                   {
             q: "Would an app suit a winery or agritourism brand?",
-            a: "Sometimes — App Growth at $5,999 covers bookings, payments and accounts, which fits club memberships and tastings. For most Kelowna wineries the $899 Growth site with booking integration does the job.",
+            a: "Sometimes — App Growth covers bookings, payments and accounts, which fits club memberships and tastings. For most Kelowna wineries the Growth site with booking integration does the job.",
           },
           {
             q: "Can you take online orders or club sign-ups?",
-            a: "Bookings and CRM integration are in Growth at $899. A full store with payments is Business Pro at $1,499+.",
+            a: "Bookings and CRM integration are in Growth. A full store with payments is Business Pro.",
           },
         ],
       },
@@ -610,7 +610,7 @@ const NA_REGIONS = [
           },
                   {
             q: "Do you build Android apps for Surrey businesses?",
-            a: "Yes, from $2,999, shipped to Google Play under your own developer account. For logistics and trades in Surrey that usually means dispatch, job tracking or a driver-facing tool.",
+            a: "Yes, quoted per build and shipped to Google Play under your own developer account. For logistics and trades in Surrey that usually means dispatch, job tracking or a driver-facing tool.",
           },
           {
             q: "Do you invoice Surrey clients in Canadian dollars?",

@@ -37,7 +37,7 @@ export const NAV_LINKS = [
   { label: 'Process', href: '/#process' },
   { label: 'Team', href: '/#team' },
   { label: 'Locations', href: '/locations' },
-  { label: 'Pricing', href: '/pricing' },
+  { label: 'Plans', href: '/pricing' },
 ];
 
 // Pexels — free to use, no attribution required (https://www.pexels.com/license/)
@@ -179,8 +179,6 @@ export const PROCESS = [
 export const TIERS = [
   {
     name: 'Launch',
-    price: '$299',
-    from: 299,
     blurb:
       'For businesses that need a sharp, professional online presence without the complexity.',
     specs: { pages: '1 page', timeline: '~2 weeks', revisions: '1 round' },
@@ -200,8 +198,6 @@ export const TIERS = [
   },
   {
     name: 'Starter',
-    price: '$499',
-    from: 499,
     blurb:
       'A proper small-business website with everything needed to establish a professional online presence.',
     specs: { pages: 'Up to 5 pages', timeline: '3–4 weeks', revisions: '2 rounds' },
@@ -229,8 +225,6 @@ export const TIERS = [
   },
   {
     name: 'Growth',
-    price: '$899',
-    from: 899,
     blurb:
       'For businesses ready to turn their website into a real customer-acquisition channel.',
     specs: { pages: 'Up to 10 pages', timeline: '4–6 weeks', revisions: '3 rounds' },
@@ -261,8 +255,6 @@ export const TIERS = [
   },
   {
     name: 'Business Pro',
-    price: '$1,499+',
-    from: 1499,
     blurb:
       'For established businesses that need custom functionality beyond a standard website.',
     specs: { pages: 'Unlimited', timeline: '6–10 weeks', revisions: 'Until signed off' },
@@ -298,8 +290,6 @@ export const TIERS = [
 export const APP_TIERS = [
   {
     name: 'App Launch',
-    price: '$2,999',
-    from: 2999,
     blurb:
       'A real native Android app on the Play Store — the core of what your business does, in your customers’ hands.',
     specs: [
@@ -330,8 +320,6 @@ export const APP_TIERS = [
   },
   {
     name: 'App Growth',
-    price: '$5,999',
-    from: 5999,
     blurb:
       'The app that runs the business — accounts, payments, bookings, and a dashboard to see it all from.',
     specs: [
@@ -362,8 +350,6 @@ export const APP_TIERS = [
   },
   {
     name: 'App Pro',
-    price: '$9,999+',
-    from: 9999,
     blurb:
       'Platform-grade Android — multiple roles, custom APIs, and workflows built to your operation rather than around it.',
     specs: [
@@ -444,7 +430,15 @@ export const COMMUNITY = {
 // Monthly, month-to-month, optional on every tier. Kept next to the list it
 // prices — it used to be hardcoded in the pricing page's JSX, which is how a
 // price ends up updated in one place and stale in another.
-export const CARE_PLAN_PRICE = '$40/mo';
+// The published price sheet is now a comment rather than data anywhere in
+// this codebase. A `price` field does not merely render — it crosses to the
+// browser inside the RSC payload whether or not a component prints it, so
+// "hidden in the interface" would still read in view-source. Every figure
+// lives in the quote instead.
+//
+//   Launch $299 · Starter $499 · Growth $899 · Business Pro $1,499+
+//   Care Plan $40/mo
+//   App Launch $2,999 · App Growth $5,999 · App Pro $9,999+
 
 export const CARE_PLAN = [
   { title: 'Managed Hosting', body: 'Fast, reliable infrastructure — we handle it end to end.' },
@@ -463,7 +457,7 @@ export const STATS = [
 export const FAQS = [
   {
     q: 'How much does a website cost?',
-    a: 'Custom builds start at $299 for a single-page site and run to $899 for a full multi-page build with SEO — well under typical agency rates. Every price is fixed and quoted up front before any work starts, so there is no surprise invoice at the end.',
+    a: 'Every project is quoted individually, because a one-page site and a ten-page site with local SEO are not the same job. What is fixed is the process: we scope it, quote one number in writing before any work starts, and that is the number you pay. No hourly billing, no surprise invoice at the end. The 60-second quiz returns a real figure for your situation.',
   },
   {
     q: 'How fast can you build my website?',
@@ -471,7 +465,7 @@ export const FAQS = [
   },
   {
     q: 'Do you have budget-friendly options for small businesses?',
-    a: 'That is the whole premise. Launch and Starter are built specifically for small businesses that need a real, professional site without agency-level spend — from $299, with no retainer required.',
+    a: 'That is the whole premise. Launch and Starter are built specifically for small businesses that need a real, professional site without agency-level spend, with no retainer required. Ask for a quote and you will get a fixed number rather than a range.',
   },
   {
     q: 'Do you only work with local businesses?',

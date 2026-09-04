@@ -11,7 +11,10 @@ import { BRAND } from './content';
 // to start quietly lying:
 //
 //   * Every number is one already published elsewhere on this site — the tier
-//     prices, the app prices, the $40 Care Plan, the 20% Community Rate.
+//     the market bands below, the Community Rate. The studio's own figures
+//     are no longer published anywhere on the site — every project is quoted
+//     — so this article describes what websites cost generally and does not
+//     name our numbers.
 //     No invented statistics, no "studies show", no made-up survey.
 //   * No claim about a client that is not on their live site.
 //   * Ranges are described as ranges. "Most" and "usually" are honest words;
@@ -46,7 +49,7 @@ export const POSTS = [
       {
         h: 'Under $500: a credible presence',
         p: [
-          'At this level you are buying existence, not acquisition. A one-page site with a contact form, a Google Maps link and a mobile-first build establishes that you are a real business when somebody searches your name after a referral. Our Launch tier is $299 and takes about two weeks.',
+          'At this level you are buying existence, not acquisition. A one-page site with a contact form, a Google Maps link and a mobile-first build establishes that you are a real business when somebody searches your name after a referral. Our Launch tier sits here and takes about two weeks.',
           'What it does not do is find you customers. There is no meaningful SEO at this level and no integration with anything. If your problem is "people hear about us and then cannot find us online", this solves it completely. If your problem is "not enough people hear about us", it will not move at all.',
         ],
       },
@@ -54,7 +57,7 @@ export const POSTS = [
         h: '$500 to $900: the range most businesses actually need',
         p: [
           'This is where the majority of Massachusetts small businesses land, and it covers two quite different products.',
-          'Around $499 buys a proper multi-page site — five pages, copywriting support, enquiry forms, basic technical SEO. It is a brochure that does its job well. Around $899 buys the same thing plus the machinery that makes it findable: local SEO, Google Business Profile optimisation, Search Console and Analytics setup, local keyword research, schema, and a booking or CRM integration.',
+          'Toward the lower end of this band you are buying a proper multi-page site — five pages, copywriting support, enquiry forms, basic technical SEO. It is a brochure that does its job well. Toward the upper end buys the same thing plus the machinery that makes it findable: local SEO, Google Business Profile optimisation, Search Console and Analytics setup, local keyword research, schema, and a booking or CRM integration.',
           'The gap between those two numbers is almost entirely the difference between a site people can find when they already know your name, and a site that brings you people who did not. For a business in a competitive market like Boston or Cambridge, that gap is the whole point.',
         ],
         ul: [
@@ -66,7 +69,7 @@ export const POSTS = [
       {
         h: '$1,500 and up: custom functionality',
         p: [
-          'Past this point you are paying for things a standard site cannot do — e-commerce, API integrations into software you already run, custom workflows, multi-location structure. Our Business Pro tier starts at $1,499 and runs six to ten weeks depending on what is actually being built.',
+          'Past this point you are paying for things a standard site cannot do — e-commerce, API integrations into software you already run, custom workflows, multi-location structure. Our Business Pro tier sits here and runs six to ten weeks depending on what is actually being built.',
           'Be suspicious of anyone who recommends this band before asking what software your business already uses. The honest version of this conversation starts with your operations, not with a package.',
         ],
       },
@@ -74,7 +77,7 @@ export const POSTS = [
         h: 'The costs that are not the build',
         p: [
           'A build price is not a total cost of ownership, and this is where quoted numbers usually get misleading.',
-          'Hosting, security, backups and small content edits are ongoing. We charge $40 a month for that as an optional Care Plan, month to month, and plenty of clients do not take it. Domain registration is yours and typically runs $15 to $25 a year. If you need paid advertising, that is a separate budget entirely and it is not a website cost.',
+          'Hosting, security, backups and small content edits are ongoing. We quote that as an optional Care Plan, month to month, and plenty of clients do not take it. Domain registration is yours and typically runs $15 to $25 a year. If you need paid advertising, that is a separate budget entirely and it is not a website cost.',
           'The number that matters is the one that includes all of it, and any studio should be able to give you that in a sentence.',
         ],
       },
@@ -219,7 +222,7 @@ export const POSTS = [
           'What you need is credibility, a clear list of services, and a way to get in touch',
         ],
         p: [
-          'This covers the large majority of trades, practices, restaurants, retailers and professional services. Our website tiers run $299 to $1,499 and up, and a $899 build with local SEO is the most common right answer.',
+          'This covers the large majority of trades, practices, restaurants, retailers and professional services. Our website plans sit across this band, quoted per project, and a mid-range build with local SEO is the most common right answer.',
         ],
       },
       {
@@ -231,7 +234,7 @@ export const POSTS = [
           'You are handling accounts and payments repeatedly for the same people',
         ],
         p: [
-          'Our Android builds start at $2,999 for up to eight screens with authentication and a basic backend, and $5,999 for the version with payments, bookings and an admin dashboard. Both ship to Google Play under your own developer account, which matters: the listing belongs to you, not to us.',
+          'Our Android builds are quoted per project — one covering up to eight screens with authentication and a basic backend, another adding payments, bookings and an admin dashboard. Both ship to Google Play under your own developer account, which matters: the listing belongs to you, not to us.',
         ],
       },
       {

@@ -4,6 +4,7 @@ import Reveal from '@/components/Reveal';
 import GridField from '@/components/GridField';
 import Breadcrumbs from '@/components/Breadcrumbs';
 import JsonLd from '@/components/JsonLd';
+import PageHeader from '@/components/PageHeader';
 import { LEGAL_NAV, LEGAL_UPDATED, legalDocs, getLegalDoc } from '@/lib/legal';
 import { getServerMarket } from '@/lib/market-server';
 import { BRAND } from '@/lib/content';
@@ -70,24 +71,13 @@ export default function LegalPage({ params }) {
       />
 
       {/* ---------------------------------------------------------------- Hero */}
-      <section className="relative overflow-hidden border-b border-line">
-        <GridField />
-        <div className="relative container-max py-stack-md">
-          <Breadcrumbs trail={trail} />
-          <Reveal>
-            <span className="eyebrow">Legal</span>
-          </Reveal>
-          <Reveal delay={80}>
-            <h1 className="h-display max-w-[16ch]">{doc.title}</h1>
-          </Reveal>
-          <Reveal delay={160} className="mt-8 max-w-text text-body-lg text-ink-soft">
-            <p>{doc.lede}</p>
-          </Reveal>
-          <Reveal delay={200} className="mt-8">
-            <span className="label-caps text-ink-mute">Last updated {LEGAL_UPDATED}</span>
-          </Reveal>
-        </div>
-      </section>
+      <PageHeader
+        meta={['Legal', doc.title, `Updated ${LEGAL_UPDATED}`]}
+        eyebrow="Legal"
+        title={doc.title}
+        trail={trail}
+        lede={<p>{doc.lede}</p>}
+      />
 
       {/* ------------------------------------------------------------- Document */}
       <section className="bg-paper py-stack-md">

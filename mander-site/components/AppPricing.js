@@ -78,8 +78,10 @@ export default function AppPricing() {
 
         <div className="flex shrink-0 items-center justify-between gap-5 border-t border-line pt-6 md:justify-end md:border-0 md:pt-0">
           <div className="md:text-right">
-            <span className="label-caps text-[10px] text-ink-mute">Apps from</span>
-            <span className="mt-1.5 block text-stat-md text-ink">{market.appsFromLabel}</span>
+            <span className="label-caps text-[10px] text-ink-mute">Android</span>
+            <span className="mt-1.5 block text-headline-md text-ink">
+              Quoted per build
+            </span>
           </div>
           <Icon
             name={isOpen ? 'minus' : 'plus'}

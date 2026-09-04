@@ -39,10 +39,10 @@ export const IN_REGIONS = [
     kicker: 'Punjab & Chandigarh',
     h1: 'Website design for businesses in Punjab & Chandigarh.',
     metaDescription:
-      'Fixed-price website design and local SEO for businesses across Punjab and Chandigarh — Mohali, Ludhiana, Amritsar, Jalandhar. Websites from ₹19,999.',
+      'Fixed-price website design and local SEO for businesses across Punjab and Chandigarh — Mohali, Ludhiana, Amritsar, Jalandhar. Fixed price, quoted up front.',
     intro: [
       'Punjab runs on businesses that already have the customers and the reputation — the manufacturer in Ludhiana with three decades of export orders, the clinic in Amritsar everyone in the neighbourhood knows, the IT services firm in the Mohali sector belt. What is usually missing is not demand. It is that when someone searches for them, or checks them before calling, there is a Justdial listing and a Facebook page and nothing that looks like the business itself.',
-      'That is the gap these builds close: a custom five-page site at ₹19,999, or the same site with Google Business Profile, Maps and local search work at ₹34,999. Fixed price, agreed before anything starts, and the domain and every account registered in your name. The tricity — Mohali, Chandigarh, Panchkula — and the Sector 67 IT and industrial belt are dense with businesses competing for the same searches, which is exactly where the local work earns its money.',
+      'That is the gap these builds close: a custom five-page site, or the same site with Google Business Profile, Maps and local search work included. One fixed price, agreed before anything starts, and the domain and every account registered in your name. The tricity — Mohali, Chandigarh, Panchkula — and the Sector 67 IT and industrial belt are dense with businesses competing for the same searches, which is exactly where the local work earns its money.',
     ],
     industries: [
       'Manufacturing & exports',
@@ -55,11 +55,11 @@ export const IN_REGIONS = [
     faqs: [
       {
         q: 'How much does a website cost in Punjab?',
-        a: 'A custom five-page website is ₹19,999. Website + Local, which adds Google Business Profile setup, Maps optimisation, schema and indexing, is ₹34,999. Both are fixed prices quoted before work starts, with GST extra where applicable. Nothing is billed hourly.',
+        a: 'Two plans: a custom five-page website, and Website + Local, which adds Google Business Profile setup, Maps optimisation, schema and indexing. Both are quoted as one fixed number in writing before work starts, with GST extra where applicable. Nothing is billed hourly — ask on WhatsApp and you will have a figure the same day.',
       },
       {
         q: 'Do you meet clients in Mohali or Chandigarh in person?',
-        a: 'We work remotely across India — calls on WhatsApp or video, reviews shared as links, handover over email. It is what keeps a five-page custom build at ₹19,999 instead of agency rates, and it does not change what gets built.',
+        a: 'We work remotely across India — calls on WhatsApp or video, reviews shared as links, handover over email. It is what keeps a five-page custom build well under agency rates, and it does not change what gets built.',
       },
       {
         q: 'Will this help me show up on Google Maps in my sector or market?',
@@ -76,14 +76,14 @@ export const IN_REGIONS = [
         name: 'Mohali',
         h1: 'Website design in Mohali (SAS Nagar).',
         metaDescription:
-          'Website design and local SEO for Mohali businesses — IT firms, clinics, real estate and retail across the sectors and the Sector 67 belt. From ₹19,999.',
+          'Website design and local SEO for Mohali businesses — IT firms, clinics, real estate and retail across the sectors and the Sector 67 belt. Quoted up front.',
         intro:
           'Mohali is a working city rather than a shopfront one: IT and services firms through the Sector 66–67 belt and the industrial pockets, healthcare along the sector roads, and a real estate and construction market that moves faster than most of its websites do. The result is a lot of credible businesses represented online by a template site from years ago, or by nothing at all. Because Mohali, Chandigarh and Panchkula are read as one market by anyone searching, a Mohali business is usually competing for the same query as a Chandigarh one — which makes Google Business Profile and Maps placement the difference between being found and being scrolled past, more than the homepage copy ever is.',
         industries: ['IT & software services', 'Healthcare & diagnostics', 'Real estate & construction', 'Retail & food'],
         faqs: [
           {
             q: 'What does a website for a Mohali business cost?',
-            a: 'Starter Website is ₹19,999 for a custom five-page build, and Website + Local is ₹34,999 with Google Business Profile, Maps and local SEO included. Fixed price, quoted up front, GST extra where applicable.',
+            a: 'Starter Website is a custom five-page build; Website + Local adds Google Business Profile, Maps and local SEO. Both are one fixed price, quoted up front in writing, GST extra where applicable.',
           },
           {
             q: 'Do you cover Chandigarh and Panchkula too?',
@@ -95,7 +95,7 @@ export const IN_REGIONS = [
           },
           {
             q: 'What happens after launch?',
-            a: 'Mander Care is ₹2,499/month for hosting, backups, security and small edits; Mander Growth is ₹4,999/month and adds ongoing local SEO, profile upkeep and a monthly report. Both are month to month, and the site stays yours either way.',
+            a: 'Mander Care covers hosting, backups, security and small edits; Mander Growth adds ongoing local SEO, profile upkeep and a monthly report. Both are month to month, quoted with the build, and the site stays yours either way.',
           },
         ],
       },
@@ -104,14 +104,14 @@ export const IN_REGIONS = [
         name: 'Chandigarh',
         h1: 'Website design in Chandigarh.',
         metaDescription:
-          'Website design and local SEO for Chandigarh businesses — professional practices, clinics, boutiques and consultancies across the sectors. From ₹19,999.',
+          'Website design and local SEO for Chandigarh businesses — professional practices, clinics, boutiques and consultancies across the sectors. Quoted up front.',
         intro:
           'Chandigarh has an unusually high concentration of professional practices for its size — advocates, chartered accountants, doctors, architects, consultants — and that shapes what a website has to do here. Nobody is buying from the page; they are checking whether the practice looks like one worth calling, usually after a referral. A clean, fast, honest site with the credentials visible does that job, and a stock-template page with a stretched logo quietly undoes it. Sector-level search matters too: someone searching in Sector 17 behaves differently from someone searching city-wide, and a Business Profile with the right service area and categories is what puts you in that first result set.',
         industries: ['Legal & financial practices', 'Healthcare & wellness', 'Education & coaching', 'Boutique retail & hospitality'],
         faqs: [
           {
             q: 'Do you work with individual professionals, not just companies?',
-            a: 'Most of the Chandigarh work is exactly that — a practice, a clinic, a consultancy. The five-page Starter build at ₹19,999 is usually the right size for it: who you are, what you do, credentials, contact, and one page that answers what people ring up to ask.',
+            a: 'Most of the Chandigarh work is exactly that — a practice, a clinic, a consultancy. The five-page Starter build is usually the right size for it: who you are, what you do, credentials, contact, and one page that answers what people ring up to ask.',
           },
           {
             q: 'Can you handle a booking or appointment flow?',
@@ -119,7 +119,7 @@ export const IN_REGIONS = [
           },
           {
             q: 'Is the price different for Chandigarh than the rest of India?',
-            a: 'No. ₹19,999 and ₹34,999 are the same everywhere in India, quoted before work starts. GST extra where applicable.',
+            a: 'No. The plans and the way they are quoted are the same everywhere in India — one fixed number agreed before work starts, GST extra where applicable.',
           },
         ],
       },
@@ -128,7 +128,7 @@ export const IN_REGIONS = [
         name: 'Ludhiana',
         h1: 'Website design in Ludhiana.',
         metaDescription:
-          'Website design for Ludhiana manufacturers, exporters and traders — product catalogues, enquiry flows and local SEO. Fixed-price builds from ₹19,999.',
+          'Website design for Ludhiana manufacturers, exporters and traders — product catalogues, enquiry flows and local SEO. Fixed-price builds, quoted up front.',
         intro:
           'Ludhiana sells to buyers who are not in Ludhiana. Hosiery, bicycle parts, machine tools, auto components — the customer is a wholesaler in another state or an importer in another country, and they will judge a supplier on a website before a single call happens. That changes what the site is for: it has to carry the product range legibly, make the enquiry obvious, load fast on a phone on a patchy connection, and look like a business with a factory behind it rather than a listing. A catalogue that a buyer can actually navigate does more for a Ludhiana exporter than any amount of homepage copy.',
         industries: ['Hosiery & textiles', 'Auto & bicycle components', 'Machine tools & engineering', 'Wholesale & export trading'],
@@ -152,7 +152,7 @@ export const IN_REGIONS = [
         name: 'Amritsar',
         h1: 'Website design in Amritsar.',
         metaDescription:
-          'Website design and Google Maps optimisation for Amritsar businesses — hospitality, clinics, retail and travel. Fixed-price builds from ₹19,999.',
+          'Website design and Google Maps optimisation for Amritsar businesses — hospitality, clinics, retail and travel. Fixed-price builds, quoted up front.',
         intro:
           'Amritsar gets an enormous volume of visitors, and a large share of local businesses live or die on being found by someone who arrived yesterday and is searching on a phone. Hotels and guest houses, restaurants, travel operators, clinics and shops around the walled city are all competing in the same few inches of a Maps result. For those businesses the ranking work is not an add-on to the website, it is the point of it: a Business Profile with correct hours, real photographs, the right categories and consistent details everywhere, backed by a site fast enough to open on mobile data in a queue.',
         industries: ['Hotels & hospitality', 'Restaurants & food', 'Travel & tour operators', 'Healthcare & retail'],
@@ -162,8 +162,8 @@ export const IN_REGIONS = [
             a: 'It decides it. Mobile speed, a phone number and WhatsApp button reachable in one tap, hours that are actually correct, and a Business Profile that shows up in the Maps result — those come before anything decorative.',
           },
           {
-            q: 'Is Website + Local worth ₹34,999 for a small hotel or restaurant?',
-            a: 'For a business people search for while nearby, usually yes — the Maps placement is where the customer is. If you already have a well-maintained profile that ranks, the ₹19,999 build plus your existing listing may be enough, and we will say so.',
+            q: 'Is Website + Local worth the step up for a small hotel or restaurant?',
+            a: 'For a business people search for while nearby, usually yes — the Maps placement is where the customer is. If you already have a well-maintained profile that ranks, the Starter build plus your existing listing may be enough, and we will say so.',
           },
           {
             q: 'Can you write the content?',
@@ -176,7 +176,7 @@ export const IN_REGIONS = [
         name: 'Jalandhar',
         h1: 'Website design in Jalandhar.',
         metaDescription:
-          'Website design for Jalandhar businesses — sports goods manufacturers, education consultants, clinics and retail. Fixed-price builds from ₹19,999.',
+          'Website design for Jalandhar businesses — sports goods manufacturers, education consultants, clinics and retail. Fixed-price builds, quoted up front.',
         intro:
           'Jalandhar carries two quite different economies on the same streets: long-established manufacturing, especially sports goods and leather, selling into export markets; and a dense services layer of education and visa consultants, coaching centres, clinics and showrooms selling entirely locally. The two need opposite websites. A manufacturer needs a catalogue and credibility for a buyer abroad; a consultant needs to be the first result someone in the city sees, with a WhatsApp button and enough visible proof to be worth a message. Both are built to the same fixed prices, and the local search work is where the second kind spends its money.',
         industries: ['Sports goods & manufacturing', 'Education & visa consultancy', 'Healthcare & diagnostics', 'Retail & showrooms'],
@@ -191,7 +191,7 @@ export const IN_REGIONS = [
           },
           {
             q: 'What if we need an app later?',
-            a: 'Android builds start at ₹49,999 and ship to the Play Store under your own developer account. Most businesses here do not need one — a fast website and a WhatsApp number cover it — and we will say so rather than sell you an app.',
+            a: 'Android builds are quoted per project and ship to the Play Store under your own developer account. Most businesses here do not need one — a fast website and a WhatsApp number cover it — and we will say so rather than sell you an app.',
           },
         ],
       },
@@ -206,10 +206,10 @@ export const IN_REGIONS = [
     kicker: 'Delhi NCR',
     h1: 'Website design for Delhi NCR businesses.',
     metaDescription:
-      'Website design and local SEO across Delhi NCR — New Delhi, Gurugram and Noida. Fixed-price custom builds from ₹19,999, with Google Business Profile setup.',
+      'Website design and local SEO across Delhi NCR — New Delhi, Gurugram and Noida. Fixed-price custom builds, quoted up front, with Google Business Profile setup.',
     intro: [
       'Delhi NCR is the most competitive search market in the country, and the least forgiving of a website that is only half a website. Whatever you sell, several other businesses within a few kilometres sell it too, they are all running ads, and the customer comparing you is doing it on a phone in under a minute. What wins that minute is rarely the fancier site — it is the one that loads immediately, says plainly what it does, shows a real address and a real number, and lets someone message without filling in a form.',
-      'The builds are fixed-price: ₹19,999 for a custom five-page site, ₹34,999 with Google Business Profile, Maps and local search work included. In NCR the second is usually the one that pays for itself, because the map pack sits above every organic result and most people never scroll past it. Each of the three markets below behaves differently enough to need its own page — a Gurugram B2B services firm and a Noida clinic are not competing for the same thing.',
+      'The builds are fixed-price: a custom five-page site, or the same site with Google Business Profile, Maps and local search work included, each quoted as one number before anything starts. In NCR the second is usually the one that pays for itself, because the map pack sits above every organic result and most people never scroll past it. Each of the three markets below behaves differently enough to need its own page — a Gurugram B2B services firm and a Noida clinic are not competing for the same thing.',
     ],
     industries: [
       'Professional & B2B services',
@@ -222,7 +222,7 @@ export const IN_REGIONS = [
     faqs: [
       {
         q: 'How much does a website cost in Delhi NCR?',
-        a: '₹19,999 for a custom five-page build, ₹34,999 with Google Business Profile, Maps optimisation, schema and indexing included. Fixed price agreed before work starts, GST extra where applicable — no hourly billing and no revised invoice at the end.',
+        a: 'A custom five-page build, or the same build with Google Business Profile, Maps optimisation, schema and indexing included. Fixed price agreed before work starts, GST extra where applicable — no hourly billing and no revised invoice at the end.',
       },
       {
         q: 'Everyone here runs Google Ads. Do I need SEO as well?',
@@ -239,7 +239,7 @@ export const IN_REGIONS = [
         name: 'Delhi',
         h1: 'Website design in Delhi.',
         metaDescription:
-          'Website design and local SEO for Delhi businesses — traders, clinics, professional practices and retail. Fixed-price custom builds from ₹19,999.',
+          'Website design and local SEO for Delhi businesses — traders, clinics, professional practices and retail. Fixed-price custom builds, quoted up front.',
         intro:
           'Delhi\u2019s business base is older and denser than the rest of NCR, and a great deal of it is trading, wholesale and family-run retail with decades of relationships behind it and no digital presence to match. For those businesses the website is not a marketing channel so much as a credential: the thing a new buyer, a bank, a supplier or a younger customer checks before deciding you are current. Alongside them sit the professional practices and clinics across South and Central Delhi competing on local search, where a Business Profile with correct details and real photographs outranks a decade-old website almost every time.',
         industries: ['Wholesale & trading', 'Clinics & practices', 'Retail & showrooms', 'Professional services'],
@@ -263,14 +263,14 @@ export const IN_REGIONS = [
         name: 'Gurugram',
         h1: 'Website design in Gurugram.',
         metaDescription:
-          'Website design for Gurugram businesses — B2B services, startups, clinics and hospitality. Fixed-price builds from ₹19,999 with local SEO from ₹34,999.',
+          'Website design for Gurugram businesses — B2B services, startups, clinics and hospitality. Fixed-price builds quoted up front, with local SEO included in the higher plan.',
         intro:
           'Gurugram is where the audience is most likely to judge you on the craft of the thing. A large share of the market sells to other businesses — consultancies, agencies, staffing, SaaS, logistics — to buyers who spend all day looking at good software and register a stretched logo or a slow page instantly. That does not mean spending more; it means spending it on the right things: type that holds up, a page that loads in a second, and one obvious next step. The other half of the market — clinics, salons, restaurants, studios across the sectors and DLF phases — competes on the map pack instead, where the Business Profile does the ranking and the site closes it.',
         industries: ['B2B & professional services', 'Startups & technology', 'Clinics & wellness', 'Restaurants & hospitality'],
         faqs: [
           {
-            q: 'Our clients are corporates. Will a ₹19,999 site look cheap?',
-            a: 'The price is low because the studio is remote and the scope is fixed, not because the work is thinner. Design, type and performance are the same as on the builds we ship in the US and Canada — the pricing page shows what those cost there.',
+            q: 'Our clients are corporates. Will a fixed-price site look cheap?',
+            a: 'The price is low because the studio is remote and the scope is fixed, not because the work is thinner. Design, type and performance are the same as on the builds we ship in the US and Canada.',
           },
           {
             q: 'Can you integrate with our CRM or booking tool?',
@@ -287,7 +287,7 @@ export const IN_REGIONS = [
         name: 'Noida',
         h1: 'Website design in Noida.',
         metaDescription:
-          'Website design and Google Maps optimisation for Noida and Greater Noida businesses — clinics, institutes, IT services and retail. From ₹19,999.',
+          'Website design and Google Maps optimisation for Noida and Greater Noida businesses — clinics, institutes, IT services and retail. Quoted up front.',
         intro:
           'Noida is sector-shaped, and so is the way people search in it: someone looking for a dentist, a coaching institute or a diagnostic lab searches with a sector number attached far more often than a city name. That is a local SEO problem before it is a website problem. A Business Profile with an accurate address, correct categories and a service area that matches the sectors you actually serve is what lands you in the map pack; the website is then what converts the tap into an enquiry, which is why speed and a visible WhatsApp button matter more here than an elaborate homepage. Greater Noida and the institutional belt behave the same way, with education and healthcare dominating the searches.',
         industries: ['Healthcare & diagnostics', 'Education & coaching', 'IT & business services', 'Retail & services'],
@@ -298,11 +298,11 @@ export const IN_REGIONS = [
           },
           {
             q: 'We have several branches. Does that cost more?',
-            a: 'Multiple locations are handled with a page and profile per branch and consistent details across all of them. It is scoped on top of the ₹34,999 plan depending on how many branches there are.',
+            a: 'Multiple locations are handled with a page and profile per branch and consistent details across all of them. It is scoped on top of the Website + Local plan depending on how many branches there are.',
           },
           {
             q: 'What does the monthly plan actually do?',
-            a: 'Mander Growth at ₹4,999/month keeps the profile current, adds and updates pages as you need them, monitors search performance and sends a monthly report. Mander Care at ₹2,499/month is hosting, backups, security and small edits only.',
+            a: 'Mander Growth keeps the profile current, adds and updates pages as you need them, monitors search performance and sends a monthly report. Mander Care is hosting, backups, security and small edits only. Both are quoted with the build.',
           },
         ],
       },
@@ -317,10 +317,10 @@ export const IN_REGIONS = [
     kicker: 'Maharashtra',
     h1: 'Website design for Maharashtra businesses.',
     metaDescription:
-      'Website design and local SEO across Maharashtra — Mumbai and Pune. Fixed-price custom builds from ₹19,999, with Google Business Profile setup from ₹34,999.',
+      'Website design and local SEO across Maharashtra — Mumbai and Pune. Fixed-price custom builds quoted up front, with Google Business Profile setup in the higher plan.',
     intro: [
       'Maharashtra holds the two Indian markets where a small business is most likely to be compared against something genuinely well made. Mumbai runs on speed and reputation; Pune runs on a technically literate audience with a lot of engineers in it. In both, the failure mode is the same and it is not ugliness — it is a site that takes four seconds to appear, buries the phone number, and reads like it was written for nobody in particular.',
-      'The builds are fixed-price at ₹19,999 and ₹34,999, quoted before anything starts, with the domain and every account in your name. What differs city to city is where the money goes: in Mumbai, usually into being findable at the moment of intent; in Pune, into a site that stands up to an audience which notices how it is built.',
+      'Both builds are fixed-price, quoted before anything starts, with the domain and every account in your name. What differs city to city is where the money goes: in Mumbai, usually into being findable at the moment of intent; in Pune, into a site that stands up to an audience which notices how it is built.',
     ],
     industries: [
       'Professional & financial services',
@@ -333,7 +333,7 @@ export const IN_REGIONS = [
     faqs: [
       {
         q: 'What does a website cost in Mumbai or Pune?',
-        a: '₹19,999 for a custom five-page site and ₹34,999 with Google Business Profile and local search work included — the same prices as everywhere else in India, fixed before work starts, GST extra where applicable.',
+        a: 'A custom five-page site, or the same site with Google Business Profile and local search work included — the same two plans as everywhere else in India, each a fixed number agreed before work starts, GST extra where applicable.',
       },
       {
         q: 'Do you work in Marathi?',
@@ -341,7 +341,7 @@ export const IN_REGIONS = [
       },
       {
         q: 'Is a monthly plan required?',
-        a: 'No. The build is one-time and the site is yours regardless. Mander Care is ₹2,499/month and Mander Growth ₹4,999/month, both month to month, taken by clients who would rather not think about hosting or keep doing the search work themselves.',
+        a: 'No. The build is one-time and the site is yours regardless. Mander Care and Mander Growth are both month to month, quoted with the build, and taken by clients who would rather not think about hosting or keep doing the search work themselves.',
       },
     ],
     cities: [
@@ -350,7 +350,7 @@ export const IN_REGIONS = [
         name: 'Mumbai',
         h1: 'Website design in Mumbai.',
         metaDescription:
-          'Website design and local SEO for Mumbai businesses — clinics, professional practices, restaurants, D2C and services. Fixed-price builds from ₹19,999.',
+          'Website design and local SEO for Mumbai businesses — clinics, professional practices, restaurants, D2C and services. Fixed-price builds, quoted up front.',
         intro:
           'Mumbai searches are short, impatient and overwhelmingly mobile: a locality plus a service, tapped while moving, with the decision made from the first screen of results. That makes two things decisive and everything else secondary — whether you appear in the map pack for your locality, and whether the page opens fast enough that nobody goes back. A business in Andheri is not competing with all of Mumbai, it is competing with the businesses on the same few streets, and a Business Profile with the right categories, real photographs, accurate hours and consistent details is what wins that fight. The website\u2019s job is to convert the tap: what you do, proof, and a way to call or message without a form standing in the way.',
         industries: ['Clinics & healthcare', 'Professional & financial services', 'Restaurants & hospitality', 'D2C, retail & studios'],
@@ -364,8 +364,8 @@ export const IN_REGIONS = [
             a: 'It is built to. A WhatsApp button sits on every page in the India builds, and it consistently gets used more than a contact form — which is the point, since the enquiry is worth more than the form fill.',
           },
           {
-            q: 'Is ₹19,999 really the full price?',
-            a: 'For the five-page Starter build, yes — fixed and quoted before work starts, GST extra where applicable. Domain and hosting are paid by you directly at cost, in your own name, which is how you keep ownership of them.',
+            q: 'Is the quoted number really the full price?',
+            a: 'Yes — the figure we quote for the build is the figure you pay, agreed before work starts, GST extra where applicable. Domain and hosting are paid by you directly at cost, in your own name, which is how you keep ownership of them.',
           },
         ],
       },
@@ -374,9 +374,9 @@ export const IN_REGIONS = [
         name: 'Pune',
         h1: 'Website design in Pune.',
         metaDescription:
-          'Website design for Pune businesses — IT services, education, clinics, manufacturing and hospitality. Fixed-price custom builds from ₹19,999.',
+          'Website design for Pune businesses — IT services, education, clinics, manufacturing and hospitality. Fixed-price custom builds, quoted up front.',
         intro:
-          'Pune has an unusual audience: a lot of engineers, a lot of students, and a manufacturing belt out towards Chakan and Hinjawadi selling to industrial buyers. That combination raises the technical bar on a website more than the decorative one. People here notice a slow page, a layout that breaks on their phone, a form that fails silently — and they are the same people who will check your site before an interview, an order or an admission. The builds are fixed at ₹19,999 and ₹34,999 and are shipped fast, mobile-first and clean, because in this city that is what reads as competence.',
+          'Pune has an unusual audience: a lot of engineers, a lot of students, and a manufacturing belt out towards Chakan and Hinjawadi selling to industrial buyers. That combination raises the technical bar on a website more than the decorative one. People here notice a slow page, a layout that breaks on their phone, a form that fails silently — and they are the same people who will check your site before an interview, an order or an admission. The builds are fixed-price and shipped fast, mobile-first and clean, because in this city that is what reads as competence.',
         industries: ['IT & engineering services', 'Education & training', 'Manufacturing & industrial suppliers', 'Clinics, retail & hospitality'],
         faqs: [
           {
@@ -404,10 +404,10 @@ export const IN_REGIONS = [
     kicker: 'Karnataka',
     h1: 'Website design for Karnataka businesses.',
     metaDescription:
-      'Website design and local SEO for businesses in Karnataka, led by Bengaluru — startups, clinics, services and retail. Fixed-price builds from ₹19,999.',
+      'Website design and local SEO for businesses in Karnataka, led by Bengaluru — startups, clinics, services and retail. Fixed-price builds, quoted up front.',
     intro: [
       'Karnataka\u2019s search market is dominated by Bengaluru, and Bengaluru is unusual: an audience that works in software and judges a website the way a chef judges a menu. What that rewards is not budget, it is restraint — a fast page, real type, no carousel, one clear action. What it punishes is a template with a stock photograph of a handshake on it.',
-      'Outside the city the pattern is ordinary and the local search work matters more than the design does: clinics, dealerships, institutes and shops competing inside their own town, where a correct Google Business Profile beats a better homepage almost every time. Both are built at the same fixed prices — ₹19,999 for a five-page site, ₹34,999 with the local work included.',
+      'Outside the city the pattern is ordinary and the local search work matters more than the design does: clinics, dealerships, institutes and shops competing inside their own town, where a correct Google Business Profile beats a better homepage almost every time. Both are built to the same two fixed-price plans — a five-page site, or the same site with the local work included.',
     ],
     industries: [
       'Startups & technology',
@@ -419,7 +419,7 @@ export const IN_REGIONS = [
     faqs: [
       {
         q: 'What does a website cost in Bengaluru?',
-        a: '₹19,999 for a custom five-page build and ₹34,999 with Google Business Profile and local SEO included — fixed, quoted before work starts, GST extra where applicable.',
+        a: 'A custom five-page build, or the same build with Google Business Profile and local SEO included — each one fixed number, quoted before work starts, GST extra where applicable.',
       },
       {
         q: 'Can you build in Kannada as well as English?',
@@ -427,7 +427,7 @@ export const IN_REGIONS = [
       },
       {
         q: 'Do you build Android apps too?',
-        a: 'Yes — from ₹49,999, shipped to the Play Store under your own developer account. Most small businesses do not need one, and we will say so before quoting for it.',
+        a: 'Yes — shipped to the Play Store under your own developer account, quoted per build. Most small businesses do not need one, and we will say so before quoting for it.',
       },
     ],
     cities: [
@@ -436,14 +436,14 @@ export const IN_REGIONS = [
         name: 'Bengaluru',
         h1: 'Website design in Bengaluru.',
         metaDescription:
-          'Website design for Bengaluru businesses — startups, clinics, studios, services and D2C brands. Fast, fixed-price custom builds from ₹19,999.',
+          'Website design for Bengaluru businesses — startups, clinics, studios, services and D2C brands. Fast, fixed-price custom builds, quoted up front.',
         intro:
           'Bengaluru is the hardest Indian city in which to get away with a mediocre website and the easiest one in which a good one pays off, because the audience reads the craft immediately. Startups and studios are compared against well-designed software all day; clinics, salons and restaurants across Indiranagar, Koramangala, Whitefield and HSR are compared against each other in a map pack, locality by locality. The build is the same either way and the emphasis shifts: performance and clarity for the first, Business Profile and locality signals for the second. Traffic here means a page that opens on a bad connection in a lift, which is a build decision, not a hosting one.',
         industries: ['Startups & SaaS', 'Clinics & wellness', 'Restaurants & retail', 'Studios & agencies'],
         faqs: [
           {
-            q: 'Our competitors all have big agency sites. Can a ₹19,999 build compete?',
-            a: 'On the things that decide it, yes — speed, clarity, and being findable. The studio is remote and the scope is fixed, which is where the price comes from; the same builds ship in the US and Canada at the prices shown on the pricing page.',
+            q: 'Our competitors all have big agency sites. Can a fixed-price build compete?',
+            a: 'On the things that decide it, yes — speed, clarity, and being findable. The studio is remote and the scope is fixed, which is where the price comes from; the same builds ship in the US and Canada.',
           },
           {
             q: 'We need to rank in one or two neighbourhoods, not the whole city.',
@@ -466,10 +466,10 @@ export const IN_REGIONS = [
     kicker: 'Telangana',
     h1: 'Website design for Telangana businesses.',
     metaDescription:
-      'Website design and local SEO for Telangana businesses, led by Hyderabad — clinics, services, education and retail. Fixed-price builds from ₹19,999.',
+      'Website design and local SEO for Telangana businesses, led by Hyderabad — clinics, services, education and retail. Fixed-price builds, quoted up front.',
     intro: [
       'Hyderabad carries most of Telangana\u2019s search volume, and it splits cleanly: a services and technology belt around HITEC City and Gachibowli selling to business buyers, and an enormous local economy of clinics, institutes, showrooms and restaurants across the older city competing on Maps.',
-      'The first needs a site that survives scrutiny; the second needs to be found at the moment someone is looking. Both are fixed-price at ₹19,999 and ₹34,999, with the domain and every account in your name from day one.',
+      'The first needs a site that survives scrutiny; the second needs to be found at the moment someone is looking. Both are fixed-price, quoted before work starts, with the domain and every account in your name from day one.',
     ],
     industries: [
       'IT & business services',
@@ -481,7 +481,7 @@ export const IN_REGIONS = [
     faqs: [
       {
         q: 'How much does a website cost in Hyderabad?',
-        a: '₹19,999 for a custom five-page site, ₹34,999 with Google Business Profile, Maps optimisation and indexing setup. Fixed prices, agreed before work starts, GST extra where applicable.',
+        a: 'A custom five-page site, or the same site with Google Business Profile, Maps optimisation and indexing setup. Both fixed prices, agreed before work starts, GST extra where applicable.',
       },
       {
         q: 'Can you work in Telugu?',
@@ -498,7 +498,7 @@ export const IN_REGIONS = [
         name: 'Hyderabad',
         h1: 'Website design in Hyderabad.',
         metaDescription:
-          'Website design and Google Maps optimisation for Hyderabad businesses — clinics, institutes, IT services, retail and restaurants. From ₹19,999.',
+          'Website design and Google Maps optimisation for Hyderabad businesses — clinics, institutes, IT services, retail and restaurants. Quoted up front.',
         intro:
           'Hyderabad rewards businesses that get the boring things right. The clinics, diagnostic centres, coaching institutes and showrooms that dominate local search here are usually competing with several near-identical listings, and the one that wins the tap is the one with correct hours, real photographs, consistent details across every listing, and a site that opens instantly on a phone. The technology belt out west is a different conversation — there the site is a credential shown to business buyers, and it has to look like the work you claim to do. Both are the same fixed-price builds; what changes is where the effort lands.',
         industries: ['Healthcare & diagnostics', 'Education & coaching', 'IT & business services', 'Retail & restaurants'],
@@ -513,7 +513,7 @@ export const IN_REGIONS = [
           },
           {
             q: 'What if we need changes after launch?',
-            a: 'Small content and image changes are included in Mander Care at ₹2,499/month. Without a plan, changes are quoted as small fixed-price jobs — there is no hourly meter either way.',
+            a: 'Small content and image changes are included in Mander Care. Without a plan, changes are quoted as small fixed-price jobs — there is no hourly meter either way.',
           },
         ],
       },
@@ -528,10 +528,10 @@ export const IN_REGIONS = [
     kicker: 'Tamil Nadu',
     h1: 'Website design for Tamil Nadu businesses.',
     metaDescription:
-      'Website design and local SEO for Tamil Nadu businesses, led by Chennai — clinics, manufacturers, services and retail. Fixed-price builds from ₹19,999.',
+      'Website design and local SEO for Tamil Nadu businesses, led by Chennai — clinics, manufacturers, services and retail. Fixed-price builds, quoted up front.',
     intro: [
       'Tamil Nadu has one of the deepest small-manufacturing bases in the country alongside a large urban services economy in Chennai, and the two want very different websites — a catalogue that a buyer can navigate, or a page that wins a local search.',
-      'Both are built to the same fixed prices, ₹19,999 and ₹34,999, and both are built mobile-first, because in practice almost every visitor arrives on a phone regardless of which one you are.',
+      'Both are built to the same two fixed-price plans, and both are built mobile-first, because in practice almost every visitor arrives on a phone regardless of which one you are.',
     ],
     industries: [
       'Manufacturing & industrial suppliers',
@@ -546,7 +546,7 @@ export const IN_REGIONS = [
         a: 'Yes. Bilingual pages are a normal request here and do not change the price band.',
       },
       {
-        q: 'What is included at ₹19,999?',
+        q: 'What is included in the Starter Website?',
         a: 'A custom five-page responsive site, mobile optimisation, contact and WhatsApp integration, basic on-page SEO, domain and hosting deployment, Google Search Console setup and basic analytics. Fixed, quoted before work starts.',
       },
       {
@@ -560,7 +560,7 @@ export const IN_REGIONS = [
         name: 'Chennai',
         h1: 'Website design in Chennai.',
         metaDescription:
-          'Website design for Chennai businesses — clinics, professional practices, manufacturers, institutes and retail. Fixed-price custom builds from ₹19,999.',
+          'Website design for Chennai businesses — clinics, professional practices, manufacturers, institutes and retail. Fixed-price custom builds, quoted up front.',
         intro:
           'Chennai is a city of established businesses rather than new ones, and it shows in what people search for: a specific clinic, a specific dealer, a specific institute, usually with a neighbourhood attached. The competitive question is rarely "who does this" but "which of these is real and open" — which puts the weight on a Business Profile with accurate hours, real photographs and consistent details, and on a website that answers the practical questions quickly rather than selling. The industrial and export side of the market wants the opposite build: product structure, specifications and a clear enquiry path for a buyer who may never call.',
         industries: ['Clinics & healthcare', 'Manufacturing & exports', 'Professional services', 'Education & retail'],
@@ -575,7 +575,7 @@ export const IN_REGIONS = [
           },
           {
             q: 'Is the price the same as elsewhere in India?',
-            a: 'Yes — ₹19,999 and ₹34,999, fixed and quoted before work starts, GST extra where applicable.',
+            a: 'Yes — the same two plans, each a fixed number quoted before work starts, GST extra where applicable.',
           },
         ],
       },
@@ -590,10 +590,10 @@ export const IN_REGIONS = [
     kicker: 'Gujarat',
     h1: 'Website design for Gujarat businesses.',
     metaDescription:
-      'Website design for Gujarat businesses — Ahmedabad and Surat. Trading, textiles, manufacturing and services. Fixed-price custom builds from ₹19,999.',
+      'Website design for Gujarat businesses — Ahmedabad and Surat. Trading, textiles, manufacturing and services. Fixed-price custom builds, quoted up front.',
     intro: [
       'Gujarat is a trading and manufacturing economy first, which changes what a website is for. The visitor is often a buyer, a distributor or an agent checking whether a supplier is real and worth an enquiry — not a consumer being persuaded.',
-      'That means product clarity, credibility and a fast enquiry path beat anything decorative, and it is why the same fixed prices — ₹19,999 and ₹34,999 — usually buy a catalogue-shaped site here rather than a brochure-shaped one.',
+      'That means product clarity, credibility and a fast enquiry path beat anything decorative, and it is why the same two fixed-price plans usually buy a catalogue-shaped site here rather than a brochure-shaped one.',
     ],
     industries: [
       'Textiles & apparel',
@@ -622,7 +622,7 @@ export const IN_REGIONS = [
         name: 'Ahmedabad',
         h1: 'Website design in Ahmedabad.',
         metaDescription:
-          'Website design for Ahmedabad businesses — traders, manufacturers, clinics, institutes and retail. Fixed-price custom builds from ₹19,999.',
+          'Website design for Ahmedabad businesses — traders, manufacturers, clinics, institutes and retail. Fixed-price custom builds, quoted up front.',
         intro:
           'Ahmedabad has an unusually high number of businesses that are substantial offline and invisible online — traders and manufacturers with long books of repeat customers, plus a fast-growing services layer of clinics, institutes and studios competing locally. For the first group the site is a credibility document that shortens the distance between an enquiry and an order; for the second it is a local search play where the Business Profile does most of the ranking. Both benefit from the same discipline: load fast, say plainly what you sell, make the enquiry one tap, and put the address and phone number where they can be seen and trusted.',
         industries: ['Trading & wholesale', 'Textiles & manufacturing', 'Clinics & practices', 'Education & retail'],
@@ -633,7 +633,7 @@ export const IN_REGIONS = [
           },
           {
             q: 'Can the site take orders?',
-            a: 'A full store is outside the ₹34,999 plan and is scoped separately. For most trading businesses an enquiry flow with WhatsApp converts better anyway, and does not publish rates competitors can read.',
+            a: 'A full store is outside the Website + Local plan and is scoped separately. For most trading businesses an enquiry flow with WhatsApp converts better anyway, and does not publish rates competitors can read.',
           },
           {
             q: 'How long does it take?',
@@ -646,7 +646,7 @@ export const IN_REGIONS = [
         name: 'Surat',
         h1: 'Website design in Surat.',
         metaDescription:
-          'Website design for Surat businesses — textiles, diamonds, manufacturing and services. Fixed-price custom builds from ₹19,999, with local SEO from ₹34,999.',
+          'Website design for Surat businesses — textiles, diamonds, manufacturing and services. Fixed-price custom builds quoted up front, with local SEO in the higher plan.',
         intro:
           'Surat trades at volume, and its two defining industries — textiles and diamonds — both run on relationships plus fast verification. A buyer in another state hears about a supplier, checks them in the next minute, and either finds a business that looks real or moves on. That is the entire job of a Surat website for most firms here: range, capability, credentials and an immediate enquiry route, working properly on a phone. The local services market — clinics, institutes, showrooms — plays the ordinary local search game, where the Business Profile and consistent details carry the ranking.',
         industries: ['Textiles & apparel', 'Diamonds & jewellery', 'Manufacturing & trading', 'Local services & retail'],
@@ -661,7 +661,7 @@ export const IN_REGIONS = [
           },
           {
             q: 'What does upkeep cost?',
-            a: 'Mander Care is ₹2,499/month for hosting, backups, security and small edits. Mander Growth at ₹4,999/month adds ongoing local SEO and a monthly report. Both month to month.',
+            a: 'Mander Care covers hosting, backups, security and small edits. Mander Growth adds ongoing local SEO and a monthly report. Both month to month, quoted with the build.',
           },
         ],
       },
@@ -676,10 +676,10 @@ export const IN_REGIONS = [
     kicker: 'West Bengal',
     h1: 'Website design for West Bengal businesses.',
     metaDescription:
-      'Website design and local SEO for West Bengal businesses, led by Kolkata — practices, clinics, trading and retail. Fixed-price builds from ₹19,999.',
+      'Website design and local SEO for West Bengal businesses, led by Kolkata — practices, clinics, trading and retail. Fixed-price builds, quoted up front.',
     intro: [
       'Kolkata carries most of the state\u2019s search volume, and much of its business base is long-established: family firms, professional practices, clinics and traders with reputations built over decades and, very often, no website at all or one built once and never touched.',
-      'The opportunity there is unusually good, because the bar in most categories is low. A fast, clean, honest site plus a properly set-up Business Profile is frequently enough to be the best result on the page — at ₹19,999 or ₹34,999 fixed.',
+      'The opportunity there is unusually good, because the bar in most categories is low. A fast, clean, honest site plus a properly set-up Business Profile is frequently enough to be the best result on the page — at a fixed price, quoted before it starts.',
     ],
     industries: [
       'Professional practices',
@@ -695,7 +695,7 @@ export const IN_REGIONS = [
       },
       {
         q: 'How much does it cost?',
-        a: '₹19,999 for a custom five-page site, ₹34,999 with Google Business Profile and local search work. Fixed before work starts, GST extra where applicable.',
+        a: 'A custom five-page site, or the same site with Google Business Profile and local search work. Fixed before work starts, GST extra where applicable.',
       },
       {
         q: 'We have no digital presence at all. Where do we start?',
@@ -708,7 +708,7 @@ export const IN_REGIONS = [
         name: 'Kolkata',
         h1: 'Website design in Kolkata.',
         metaDescription:
-          'Website design and Google Maps optimisation for Kolkata businesses — practices, clinics, traders, institutes and restaurants. From ₹19,999.',
+          'Website design and Google Maps optimisation for Kolkata businesses — practices, clinics, traders, institutes and restaurants. Quoted up front.',
         intro:
           'Kolkata is a city where a great many excellent businesses are hard to find online, and that cuts both ways: the competition for a local search is often weaker than in Mumbai or Bengaluru, so a properly built site and a claimed, well-maintained Business Profile can take the top of the map pack faster and cheaper than they would elsewhere. The categories where this is most obvious are the ones that run on trust — clinics, chambers, practices, coaching centres, established restaurants — where the searcher is checking that you are real, open and reachable rather than shopping around. That is a low bar to clear well, and most competitors have not cleared it.',
         industries: ['Clinics & chambers', 'Professional practices', 'Trading & wholesale', 'Education & restaurants'],
@@ -723,7 +723,7 @@ export const IN_REGIONS = [
           },
           {
             q: 'Do you charge for changes later?',
-            a: 'Small edits are included in Mander Care at ₹2,499/month. Without a plan they are quoted as small fixed-price jobs. Nothing is billed hourly.',
+            a: 'Small edits are included in Mander Care. Without a plan they are quoted as small fixed-price jobs. Nothing is billed hourly.',
           },
         ],
       },
