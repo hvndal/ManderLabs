@@ -84,6 +84,31 @@ const nextConfig = {
         destination: '/',
         permanent: true,
       },
+      // The BC region became Metro Vancouver, and two of its cities were
+      // removed as out of scope: local search is won by being genuinely
+      // relevant to one place, and Victoria and Kelowna are not in the target
+      // market. Redirects rather than 404s, because these URLs are in the
+      // sitemap Google has already been handed.
+      {
+        source: '/locations/british-columbia',
+        destination: '/locations/metro-vancouver',
+        permanent: true,
+      },
+      {
+        source: '/locations/british-columbia/vancouver',
+        destination: '/locations/metro-vancouver/vancouver',
+        permanent: true,
+      },
+      {
+        source: '/locations/british-columbia/surrey',
+        destination: '/locations/metro-vancouver/surrey',
+        permanent: true,
+      },
+      {
+        source: '/locations/british-columbia/:city',
+        destination: '/locations/metro-vancouver',
+        permanent: true,
+      },
     ];
   },
   async headers() {

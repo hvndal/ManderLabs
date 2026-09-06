@@ -103,6 +103,9 @@ export default function Footer() {
                 <WhatsAppLine className="transition-colors hover:text-paper" />
               </li>
               <li className="text-paper/50">Mon–Fri, 9–5 PT</li>
+              <li className="font-mono text-[10px] uppercase tracking-[0.22em] text-paper/35">
+                Metro Vancouver · 49.2827° N 123.1207° W
+              </li>
               <li className="pt-1">
                 <Link
                   href="/blog"

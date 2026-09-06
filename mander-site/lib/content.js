@@ -2,7 +2,7 @@
 
 export const BRAND = {
   name: 'MANDER',
-  tagline: 'Websites for Canadian & American small business.',
+  tagline: 'Brand, digital and growth. A studio in Metro Vancouver.',
   // The single public address. Every "Contact sales" button, the contact
   // form's fallback, and Community Rate requests all resolve here, so this
   // one string is the whole sales funnel.
@@ -31,12 +31,17 @@ export const BRAND = {
   region: 'Canada & the United States',
 };
 
+// The nav is the positioning. It used to be six links, four of them anchors
+// into the homepage — Work, Services, Process, Team, Locations, Plans — which
+// is a table of contents rather than an argument, and it made the studio look
+// like it did a bit of everything. Three pillars, then the two pages someone
+// ready to act needs. Everything else is reachable from the footer and from
+// the pages themselves.
 export const NAV_LINKS = [
+  { label: 'Brand', href: '/brand' },
+  { label: 'Digital', href: '/digital' },
+  { label: 'Growth', href: '/growth' },
   { label: 'Work', href: '/#work' },
-  { label: 'Services', href: '/#services' },
-  { label: 'Process', href: '/#process' },
-  { label: 'Team', href: '/#team' },
-  { label: 'Locations', href: '/locations' },
   { label: 'Plans', href: '/pricing' },
 ];
 

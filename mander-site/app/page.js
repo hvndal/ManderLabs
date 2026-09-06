@@ -24,7 +24,6 @@ import ContactForm from '@/components/ContactForm';
 import JsonLd from '@/components/JsonLd';
 import WhatsAppCta from '@/components/WhatsAppCta';
 import {
-  SERVICES,
   TERMS,
   PROCESS,
   STATS,
@@ -34,6 +33,8 @@ import {
   BRAND,
 } from '@/lib/content';
 import { getServerMarket } from '@/lib/market-server';
+import { PILLARS } from '@/lib/pillars';
+import { IndexList, IndexRow, FieldNote } from '@/components/Swiss';
 import { faqSchema, alternates } from '@/lib/seo';
 
 export const metadata = {
@@ -115,54 +116,69 @@ export default function HomePage() {
         </div>
       </Section>
 
-      {/* ------------------------------------------------------------ Services */}
-      {/* The one section with a living ground: a very low-contrast shader
-          drifting terracotta and rose through the paper colour. It is not
-          decoration sitting behind content — it is the surface itself moving,
-          which is why the contrast is kept near-invisible and the top and
-          bottom edges are feathered away. */}
+      {/* --------------------------------------------------------- The pillars */}
+      {/* Six services in a list became three in a sequence. The list read as
+          "we will take any work"; the sequence is an argument — who you are,
+          how people experience you, how the right people find you — and it is
+          also the order clients tend to need them in, which is what makes
+          expanding from one pillar into the next a conversation rather than a
+          pitch. */}
       <section id="services" className="relative border-y border-line bg-paper">
         <ShaderBackground className="opacity-90" />
 
-        <div className="relative container-max grid grid-cols-1 gap-y-8 py-stack-md md:grid-cols-12 md:gap-gutter">
-          <div className="md:col-span-3">
-            <Reveal>
-              <div className="flex items-baseline gap-4">
-                <span className="font-mono text-[10px] uppercase tracking-[0.22em] text-ink-mute">
-                  05
-                </span>
-                <span className="font-mono text-[10px] uppercase tracking-[0.22em] text-accent">
-                  What we do
-                </span>
-              </div>
-            </Reveal>
+        <div className="relative container-max py-stack-md">
+          <div className="grid grid-cols-1 gap-y-8 md:grid-cols-12 md:gap-gutter">
+            <div className="md:col-span-3">
+              <Reveal>
+                <div className="flex items-baseline gap-4">
+                  <span className="font-mono text-[10px] uppercase tracking-[0.22em] text-ink-mute">
+                    05
+                  </span>
+                  <span className="font-mono text-[10px] uppercase tracking-[0.22em] text-accent">
+                    What we do
+                  </span>
+                </div>
+              </Reveal>
+            </div>
+
+            <div className="md:col-span-6 md:self-end">
+              <Reveal delay={100}>
+                <h2 className="max-w-[16ch] font-display text-headline-lg-mobile font-normal leading-[1.02] text-ink md:text-display-lg">
+                  Define. Build. Grow.
+                </h2>
+              </Reveal>
+            </div>
+
+            <div className="md:col-span-3 md:self-end">
+              <Reveal delay={180}>
+                <p className="text-body-md text-ink-soft">
+                  Three pillars, one system. Hire one; most clients end up
+                  using the next.
+                </p>
+              </Reveal>
+            </div>
           </div>
 
-          <div className="md:col-span-6 md:col-start-5 md:self-end">
-            <Reveal delay={100}>
-              <h2 className="max-w-[14ch] font-display text-headline-lg-mobile font-normal text-ink md:text-display-lg">
-                Everything a small business needs online.
-              </h2>
-            </Reveal>
-          </div>
-
-          <div className="md:col-span-3 md:col-start-10 md:self-end">
-            <Reveal delay={180}>
-              <p className="text-body-md text-ink-soft">
-                Six disciplines, one outcome: more of the right customers
-                finding you and getting in touch.
-              </p>
-            </Reveal>
-          </div>
-        </div>
-
-        {/* Typographic rows — no photography, see ServiceBand.js */}
-        <div className="relative container-max pb-stack-md">
-          <div className="divide-y divide-line border-t border-line">
-            {SERVICES.map((service, index) => (
-              <ServiceBand key={service.title} service={service} index={index} />
+          <IndexList className="mt-14">
+            {PILLARS.map((pillar) => (
+              <IndexRow
+                key={pillar.id}
+                index={pillar.index}
+                title={pillar.label}
+                body={pillar.line}
+                meta={pillar.question}
+                href={pillar.href}
+                action="Open"
+              />
             ))}
-          </div>
+          </IndexList>
+
+          <Reveal delay={120} className="mt-8">
+            <FieldNote>
+              Identity → Experience → Demand. Local implementation focused on
+              Metro Vancouver.
+            </FieldNote>
+          </Reveal>
         </div>
       </section>
 

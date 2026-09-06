@@ -3,7 +3,7 @@
 import { useEffect, useRef, useState } from 'react';
 import Link from 'next/link';
 import { motion, useReducedMotion } from 'framer-motion';
-import Logo from './Logo';
+import { PILLARS } from '@/lib/pillars';
 
 /**
  * THE TRIPTYCH — three panels, one composition.
@@ -40,32 +40,18 @@ import Logo from './Logo';
 const EASE = [0.16, 1, 0.3, 1];
 const SPRING = { type: 'spring', stiffness: 150, damping: 26, mass: 0.9 };
 
-const PANELS = [
-  {
-    id: 'web',
-    label: 'WEB',
-    discipline: 'Web Design & Digital Experiences',
-    index: '01',
-    href: '/#services',
-    meta: ['Sites', 'Interfaces', 'Build'],
-  },
-  {
-    id: 'social',
-    label: 'SOCIAL',
-    discipline: 'Social Media & Content',
-    index: '02',
-    href: '/#work',
-    meta: ['Content', 'Direction', 'Reach'],
-  },
-  {
-    id: 'brand',
-    label: 'BRAND',
-    discipline: 'Brand Strategy & Identity',
-    index: '03',
-    href: '/#services',
-    meta: ['Identity', 'Systems', 'Voice'],
-  },
-];
+// The panels are the three pillars, in sequence. The order is the argument:
+// who you are, how people experience you, how the right people find you. Read
+// left to right it is also the order a client usually needs them in.
+const PANELS = PILLARS.map((pillar) => ({
+  id: pillar.id,
+  label: pillar.label,
+  discipline: pillar.line,
+  index: pillar.index,
+  href: pillar.href,
+  question: pillar.question,
+  meta: pillar.capabilities.slice(0, 3).map((c) => c.name),
+}));
 
 /** Panel 01 — film, cropped to a column and dimmed under the type. */
 function WebPanel({ active, quiet }) {
@@ -137,8 +123,8 @@ function WebPanel({ active, quiet }) {
   );
 }
 
-/** Panel 02 — motion and type, no faces. */
-function SocialPanel({ active, quiet }) {
+/** Panel 02 — the demand plot: a rising series drawn on the grid. */
+function GrowthPanel({ active, quiet }) {
   const [canPlay, setCanPlay] = useState(false);
 
   useEffect(() => {
@@ -152,16 +138,8 @@ function SocialPanel({ active, quiet }) {
 
   return (
     <div className="absolute inset-0 overflow-hidden bg-ink">
-      {/* The marble footage, not the team's headshots.
-          Portraits of the five people who work here were the wrong argument
-          for a panel about content: a studio's own staff photographs read as
-          an about page, and the panel is meant to read as the work. Stock is
-          the obvious alternative and could not be fetched — every image host
-          is unreachable from the build environment — so this uses the
-          abstract footage already in the repository, which is closer to the
-          right register anyway: a surface in motion behind type, rather than
-          a picture of somebody being creative. Swapping in real stock is one
-          `src` on this element; see the note in the README. */}
+      {/* Footage as ground rather than as subject — a surface moving behind
+          type, dimmed until it is nearly weather. */}
       <motion.div
         className="absolute inset-0"
         animate={{ scale: active ? 1.08 : 1 }}
@@ -180,49 +158,67 @@ function SocialPanel({ active, quiet }) {
           />
         ) : (
           // eslint-disable-next-line @next/next/no-img-element
-          <img
-            src="/marble-poster.jpg"
-            alt=""
-            className="h-full w-full object-cover"
-          />
+          <img src="/marble-poster.jpg" alt="" className="h-full w-full object-cover" />
         )}
       </motion.div>
+      <div className="absolute inset-0 bg-ink/55" />
+      <div className="absolute inset-0 bg-gradient-to-t from-ink via-ink/60 to-ink/25" />
 
-      {/* Graded to ink so the panel sits between the film on its left and the
-          cream on its right rather than competing with either. */}
-      <div className="absolute inset-0 bg-ink/45" />
-      <div className="absolute inset-0 bg-gradient-to-t from-ink via-ink/50 to-ink/20" />
-
-      {/* A contact sheet drawn rather than photographed: six frames on the
-          grid, one of them filled. It says "content, scheduled" in the
-          vocabulary the rest of the page is already using — rules and
-          proportion — instead of borrowing a stranger's face to say it. */}
-      <div className="pointer-events-none absolute inset-x-6 top-[16%] hidden md:block">
-        <motion.div
-          className="grid grid-cols-3 gap-2"
-          animate={{ opacity: active ? 1 : 0.55, y: active ? -6 : 0 }}
-          transition={{ duration: 0.8, ease: EASE }}
-        >
+      {/* A plotted series, drawn on the panel's own grid. Growth is the one
+          pillar whose product is a measurement, so its panel is a chart —
+          axis rules, six columns, a rising line, one marked point. It reads
+          as instrumentation rather than as a stock photo of success. */}
+      <div className="pointer-events-none absolute inset-x-6 top-[16%] hidden h-[38%] md:block">
+        <svg viewBox="0 0 120 60" className="h-full w-full" aria-hidden="true">
           {[0, 1, 2, 3, 4, 5].map((i) => (
-            <div
+            <line
               key={i}
-              className={`aspect-[4/5] border ${
-                i === 1
-                  ? 'border-accent-soft bg-accent-soft/25'
-                  : 'border-paper/25'
-              }`}
+              x1={i * 24}
+              y1="0"
+              x2={i * 24}
+              y2="60"
+              stroke="currentColor"
+              strokeWidth="0.3"
+              className="text-paper/20"
             />
           ))}
-        </motion.div>
+          <line
+            x1="0"
+            y1="59.7"
+            x2="120"
+            y2="59.7"
+            stroke="currentColor"
+            strokeWidth="0.5"
+            className="text-paper/40"
+          />
+          <motion.polyline
+            points="0,52 24,46 48,44 72,30 96,22 120,8"
+            fill="none"
+            stroke="currentColor"
+            strokeWidth="1.2"
+            className="text-accent-soft"
+            initial={{ pathLength: 0 }}
+            animate={{ pathLength: 1 }}
+            transition={{ duration: 1.6, ease: EASE }}
+          />
+          <motion.circle
+            cx="96"
+            cy="22"
+            r="2.2"
+            className="fill-accent-soft"
+            animate={{ opacity: active ? 1 : 0.5, r: active ? 3 : 2.2 }}
+            transition={{ duration: 0.5, ease: EASE }}
+          />
+        </svg>
       </div>
 
-      <div className="pointer-events-none absolute right-6 top-[58%] hidden max-w-[10rem] text-right md:block">
+      <div className="pointer-events-none absolute right-6 top-[58%] hidden max-w-[11rem] text-right md:block">
         <p className="font-mono text-[10px] uppercase leading-relaxed tracking-[0.14em] text-paper/70">
           Fig. 02
           <br />
-          six frames,
+          demand, measured
           <br />
-          one published
+          then built against
         </p>
       </div>
     </div>
@@ -277,7 +273,11 @@ function BrandPanel({ active }) {
   );
 }
 
-const ART = { web: WebPanel, social: SocialPanel, brand: BrandPanel };
+// BRAND is the quiet typographic panel, DIGITAL carries the film, GROWTH
+// carries the drawn plot. Which art belongs to which pillar is the only thing
+// that changed when the panels were renamed — the compositions themselves
+// were already built for these three registers.
+const ART = { brand: BrandPanel, digital: WebPanel, growth: GrowthPanel };
 
 export default function Triptych({ tagline, region }) {
   const [hovered, setHovered] = useState(null);
@@ -298,8 +298,11 @@ export default function Triptych({ tagline, region }) {
         <span className="hidden font-mono text-[10px] uppercase tracking-[0.22em] text-ink-mute sm:block">
           {tagline}
         </span>
+        {/* Place, stated the way a drawing states it. Vancouver is in the
+            work rather than in the pictures: no mountains, no skyline, no
+            water — a coordinate, a grid, and restraint. */}
         <span className="font-mono text-[10px] uppercase tracking-[0.22em] text-ink-mute">
-          Est. Studio
+          49.2827° N 123.1207° W
         </span>
       </div>
 

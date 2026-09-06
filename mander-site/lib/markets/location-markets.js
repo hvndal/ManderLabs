@@ -14,7 +14,7 @@ export const LOCATION_MARKETS = {
   // North America
   massachusetts: 'us',
   'rhode-island': 'us',
-  'british-columbia': 'us',
+  'metro-vancouver': 'us',
   // India
   punjab: 'in',
   'delhi-ncr': 'in',

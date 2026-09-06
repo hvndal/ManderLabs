@@ -476,33 +476,44 @@ const NA_REGIONS = [
   },
 
   {
-    slug: 'british-columbia',
-    name: 'British Columbia',
+    slug: 'metro-vancouver',
+    name: 'Metro Vancouver',
     abbr: 'BC',
     country: 'CA',
     countryName: 'Canada',
     kicker: 'British Columbia',
-    h1: 'Website design for British Columbia businesses.',
+    h1: 'Brand, digital and growth for Metro Vancouver.',
     metaDescription:
-      'Website design for British Columbia small businesses — Vancouver, Victoria, Kelowna, Surrey and beyond. Founded in Langley, CAD billing available.',
+      'Brand, web design and local growth systems for Metro Vancouver businesses — Vancouver and Surrey. Fixed-scope work from a studio with BC roots.',
     intro: [
-      "Our founder works out of Langley, so British Columbia is where MANDER actually started — not a market added after the fact. From Vancouver's competitive, design-literate business scene to the tourism and wine economy around Kelowna and the government and hospitality mix in Victoria, BC's small businesses are used to being sold slick, expensive agency work; the case here is the same calibre of design at a price a real small business can justify.",
-      "British Columbia clients are billed in CAD on request and dealt with in Pacific hours by default, with Eastern-hours coverage from the rest of the team when it's useful. The build process — fixed scope, fixed price, you own everything at the end — doesn't change based on province or country.",
+      "Metro Vancouver is where MANDER started — the founder works out of Langley — and it is where the local growth work is aimed. That is a deliberate narrowing rather than a limitation: local search is won by being genuinely relevant to one place before being thinly present in twenty, and a studio that claims every city on the map is telling you it has traction in none of them.",
+      'The work here spans all three pillars. Brand for businesses whose offer is sharper in the founder’s head than anywhere else. Digital for the ones whose site is quietly costing them enquiries. Growth for the ones nobody is finding — which in this market is usually a Business Profile problem before it is a website problem.',
     ],
     proximityNote: "MANDER's founder is based in Langley, British Columbia.",
-    industries: ['Technology & startups', 'Tourism & hospitality', 'Professional services', 'Trades & construction', 'Retail'],
+    industries: [
+      'Technology & startups',
+      'Professional services',
+      'Trades & construction',
+      'Health & wellness practices',
+      'Hospitality & food',
+      'Retail & studios',
+    ],
     faqs: [
       {
-        q: 'Is MANDER a BC-based company?',
-        a: "Our founder and the company's roots are in Langley. The rest of the team is in Massachusetts, so while the company is Canadian in origin, delivery is fully remote and covers clients in both countries equally.",
+        q: 'Is MANDER a BC company?',
+        a: "The founder and the company's roots are in Langley, with part of the team in Massachusetts. Delivery is remote either way, and Metro Vancouver is the market the local search work is built around.",
       },
       {
         q: 'Do you bill in Canadian dollars?',
-        a: 'Yes — prices are shown in USD by default, and Canadian clients are invoiced in CAD on request at no extra cost.',
+        a: 'Yes — quoted in USD by default and invoiced in CAD on request, at the same figures.',
       },
       {
-        q: "Can you compete with Vancouver's larger design agencies?",
-        a: 'On price and attention, yes — that\'s the whole model. You get senior people on a fixed-price, fixed-scope build without the overhead a larger studio agency carries, and you own the site outright when it\'s done.',
+        q: "Why only Vancouver and Surrey, when Metro Vancouver has twenty-one municipalities?",
+        a: 'Because a page is only worth building where we can say something true and specific about the market. The rest of Metro Vancouver — Burnaby, Richmond, the North Shore, the Tri-Cities, Langley, Delta and the rest — is served exactly the same way; it just does not have a page written for it yet. We add one when there is evidence the demand is there, not because the municipality exists.',
+      },
+      {
+        q: "Can you compete with Vancouver's larger agencies?",
+        a: "On attention and on price, yes — that is the model. Senior people, fixed scope, fixed price, and you own everything at the end. On a fifty-person pitch process, no, and we will say so.",
       },
     ],
     cities: [
@@ -531,62 +542,6 @@ const NA_REGIONS = [
           {
             q: "Do you work with early-stage Vancouver startups?",
             a: "Often. A Starter site is usually right before funding, and App Launch covers a first Play Store release with authentication and a basic backend.",
-          },
-        ],
-      },
-      {
-        slug: 'victoria',
-        name: 'Victoria',
-        h1: 'Website design in Victoria, British Columbia.',
-        metaDescription:
-          "Website design for Victoria, BC businesses — tourism, professional services and healthcare, built for both local and visitor traffic.",
-        intro:
-          "As the provincial capital, Victoria's small-business economy leans toward tourism, government-adjacent professional services, and a healthcare and wellness sector serving both residents and visitors — a different mix from Vancouver's tech-heavy market across the strait. Sites here tend to need to work equally well for a local resident and a tourist researching before a trip, which changes what belongs on the homepage.",
-        industries: ['Tourism & hospitality', 'Professional & government-adjacent services', 'Healthcare & wellness', 'Retail'],
-        faqs: [
-          {
-            q: 'Do you build sites aimed at both tourists and local customers?',
-            a: "Yes — it's a common brief in Victoria specifically, and it usually comes down to information architecture: getting both audiences to the page that's actually relevant to them within a click or two.",
-          },
-          {
-            q: 'Do you invoice in Canadian dollars for Victoria clients?',
-            a: 'Yes — CAD on request at no extra cost, the same as anywhere else in British Columbia.',
-          },
-                  {
-            q: "Can you build an app for a Victoria tourism business?",
-            a: "Yes, quoted per build on Google Play. For tourism and hospitality the useful version is usually bookings and notifications, which is App Growth.",
-          },
-          {
-            q: "Can the site serve both tourists and local regulars?",
-            a: "That is a structure question more than a design one, and it is what the discovery call is for. Growth gives enough pages to separate the two audiences without splitting the brand.",
-          },
-        ],
-      },
-      {
-        slug: 'kelowna',
-        name: 'Kelowna',
-        h1: 'Website design in Kelowna, British Columbia.',
-        metaDescription:
-          'Website design and redesign for Kelowna, BC — wine tourism, real estate and Okanagan tech businesses that have outgrown their first site.',
-        intro:
-          "Kelowna's economy has grown fast on wine tourism, real estate and an increasingly active tech sector centered around the Okanagan — which means a lot of local businesses are newer, growing quickly, and outgrowing whatever site got them started. We see a lot of Website Redesign work here for exactly that reason: the business has changed since the original site went up, and the site hasn't caught up.",
-        industries: ['Wine & agritourism', 'Real estate', 'Technology & startups', 'Hospitality'],
-        faqs: [
-          {
-            q: 'Our business has grown since our site was built — do we need to start over?',
-            a: "Usually not — Website Redesign is built for this: modernizing what's there and fixing the technical performance, rather than throwing away content and structure that's still working.",
-          },
-          {
-            q: 'Do you work with wine, agritourism or hospitality brands?',
-            a: 'Yes, including bilingual and booking-focused builds where direct reservations matter more than an information page.',
-          },
-                  {
-            q: "Would an app suit a winery or agritourism brand?",
-            a: "Sometimes — App Growth covers bookings, payments and accounts, which fits club memberships and tastings. For most Kelowna wineries the Growth site with booking integration does the job.",
-          },
-          {
-            q: "Can you take online orders or club sign-ups?",
-            a: "Bookings and CRM integration are in Growth. A full store with payments is Business Pro.",
           },
         ],
       },

@@ -62,8 +62,8 @@ export const US_MARKET = {
   tagline: BRAND.tagline,
   region: BRAND.region,
   colophon: {
-    headline: 'Websites that grow small business.',
-    body: 'Premium design and build for small and mid-sized businesses in Canada and the U.S. — at a rate that makes sense for you.',
+    headline: 'Define. Build. Grow.',
+    body: 'A Metro Vancouver studio working across three things: the identity people remember, the digital experience they judge you on, and the system that brings the right ones to you. Available across Canada and the U.S.; the local search work is aimed at Metro Vancouver first.',
   },
 
   tiers: TIERS,

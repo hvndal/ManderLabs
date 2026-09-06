@@ -1,13 +1,14 @@
 import { SITE_URL } from '@/lib/seo';
 import { REGIONS, allCities } from '@/lib/locations';
 import { LEGAL_NAV } from '@/lib/legal';
+import { PILLARS } from '@/lib/pillars';
 import { POSTS } from '@/lib/blog';
 
 export default function sitemap() {
   // A fixed date that tracks the last real content change. Using new Date()
   // reported "right now" on every crawl, which teaches Google to ignore the
   // lastmod signal entirely. Update this when content meaningfully changes.
-  const lastContentUpdate = new Date('2026-09-04');
+  const lastContentUpdate = new Date('2026-09-06');
 
   const regionUrls = REGIONS.map((region) => ({
     url: `${SITE_URL}/locations/${region.slug}`,
@@ -25,6 +26,14 @@ export default function sitemap() {
 
   return [
     { url: `${SITE_URL}/`, lastModified: lastContentUpdate, changeFrequency: 'weekly', priority: 1 },
+    // The three pillars sit directly under the homepage in priority: they are
+    // the pages the positioning rests on and the ones worth ranking.
+    ...PILLARS.map((pillar) => ({
+      url: `${SITE_URL}/${pillar.id}`,
+      lastModified: lastContentUpdate,
+      changeFrequency: 'monthly',
+      priority: 0.95,
+    })),
     { url: `${SITE_URL}/pricing`, lastModified: lastContentUpdate, changeFrequency: 'monthly', priority: 0.9 },
     { url: `${SITE_URL}/quote`, lastModified: lastContentUpdate, changeFrequency: 'monthly', priority: 0.8 },
     { url: `${SITE_URL}/locations`, lastModified: lastContentUpdate, changeFrequency: 'monthly', priority: 0.8 },
