@@ -22,13 +22,20 @@ export default function Faq({ items }) {
                 aria-expanded={isOpen}
                 aria-controls={panelId}
                 onClick={() => setOpenIndex(isOpen ? -1 : index)}
-                className="flex w-full items-start justify-between gap-6 py-7 text-left transition-colors hover:text-accent"
+                className="grid w-full grid-cols-1 items-baseline gap-3 py-7 text-left transition-colors hover:text-accent md:grid-cols-12 md:gap-gutter"
               >
-                <span className="text-headline-md text-ink">{item.q}</span>
-                <Icon
-                  name={isOpen ? 'minus' : 'plus'}
-                  className="mt-1.5 h-5 w-5 shrink-0 text-ink-mute"
-                />
+                <span className="font-mono text-[10px] uppercase tracking-[0.22em] text-ink-mute md:col-span-1">
+                  {String(index + 1).padStart(2, '0')}
+                </span>
+                <span className="text-headline-md text-ink md:col-span-10">
+                  {item.q}
+                </span>
+                <span className="md:col-span-1 md:justify-self-end">
+                  <Icon
+                    name={isOpen ? 'minus' : 'plus'}
+                    className="h-4 w-4 shrink-0 text-ink-mute"
+                  />
+                </span>
               </button>
             </h3>
             <div
@@ -36,9 +43,15 @@ export default function Faq({ items }) {
               role="region"
               aria-labelledby={buttonId}
               hidden={!isOpen}
-              className="pb-8 pr-8 md:pr-16"
+              className="pb-8 md:grid md:grid-cols-12 md:gap-gutter"
             >
-              <p className="max-w-text text-body-lg text-ink-soft">{item.a}</p>
+              {/* The answer starts in column two, under the question rather
+                  than under the number — the margin stays clear the whole way
+                  down, which is what makes a long list of these read as a
+                  document. */}
+              <p className="max-w-text text-body-lg text-ink-soft md:col-span-10 md:col-start-2">
+                {item.a}
+              </p>
             </div>
           </div>
         );

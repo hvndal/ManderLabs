@@ -183,9 +183,26 @@ export default function CareersPage() {
           body="These are the four disciplines the studio is built on. Apply against one of them, or send an open application if you do something adjacent and think we should know about it."
         />
 
-        <div className="mt-12 grid grid-cols-1 gap-px overflow-hidden border border-line bg-line lg:grid-cols-2">
-          {roles.map((role) => (
-            <RoleCard key={role.id} role={role} />
+        {/* Roles as rows on the shared grid. RoleCard still renders the
+            detail — the change is that the set is an index rather than a
+            two-column card wall. */}
+        <div className="mt-12 border-y border-line">
+          {roles.map((role, i) => (
+            <div
+              key={role.id}
+              className={i > 0 ? 'border-t border-line' : ''}
+            >
+              <div className="grid grid-cols-1 gap-3 md:grid-cols-12 md:gap-gutter">
+                <div className="pt-7 md:col-span-1">
+                  <span className="font-mono text-[10px] uppercase tracking-[0.22em] text-ink-mute">
+                    {String(i + 1).padStart(2, '0')}
+                  </span>
+                </div>
+                <div className="md:col-span-11">
+                  <RoleCard role={role} />
+                </div>
+              </div>
+            </div>
           ))}
         </div>
       </Section>

@@ -137,59 +137,92 @@ function WebPanel({ active, quiet }) {
   );
 }
 
-/** Panel 02 — photography, overlapped and cropped hard. */
-function SocialPanel({ active }) {
+/** Panel 02 — motion and type, no faces. */
+function SocialPanel({ active, quiet }) {
+  const [canPlay, setCanPlay] = useState(false);
+
+  useEffect(() => {
+    if (quiet) return;
+    const mq = window.matchMedia('(min-width: 768px)');
+    const decide = () => setCanPlay(mq.matches && !navigator.connection?.saveData);
+    decide();
+    mq.addEventListener('change', decide);
+    return () => mq.removeEventListener('change', decide);
+  }, [quiet]);
+
   return (
     <div className="absolute inset-0 overflow-hidden bg-ink">
-      {/* Two portraits, neither centred, both running off an edge, one
-          covering a corner of the other. Studio photographs rather than
-          stock: the panel is about people making content, and a licensed
-          picture of a stranger holding a phone would say the opposite.
-          Cropped to bleed, because a photograph with a margin around it is a
-          card, and cards are the thing this page is not made of. */}
+      {/* The marble footage, not the team's headshots.
+          Portraits of the five people who work here were the wrong argument
+          for a panel about content: a studio's own staff photographs read as
+          an about page, and the panel is meant to read as the work. Stock is
+          the obvious alternative and could not be fetched — every image host
+          is unreachable from the build environment — so this uses the
+          abstract footage already in the repository, which is closer to the
+          right register anyway: a surface in motion behind type, rather than
+          a picture of somebody being creative. Swapping in real stock is one
+          `src` on this element; see the note in the README. */}
       <motion.div
-        className="absolute inset-y-0 left-0 w-[78%]"
-        animate={{ scale: active ? 1.05 : 1, x: active ? -6 : 0 }}
-        transition={{ duration: 1, ease: EASE }}
+        className="absolute inset-0"
+        animate={{ scale: active ? 1.08 : 1 }}
+        transition={{ duration: 1.2, ease: EASE }}
       >
-        {/* eslint-disable-next-line @next/next/no-img-element */}
-        <img
-          src="/team/sophie.jpg"
-          alt=""
-          className="h-full w-full object-cover grayscale contrast-[1.1]"
-        />
+        {canPlay ? (
+          <video
+            className="h-full w-full object-cover"
+            src="/videos/marble.mp4"
+            poster="/marble-poster.jpg"
+            autoPlay
+            muted
+            loop
+            playsInline
+            preload="metadata"
+          />
+        ) : (
+          // eslint-disable-next-line @next/next/no-img-element
+          <img
+            src="/marble-poster.jpg"
+            alt=""
+            className="h-full w-full object-cover"
+          />
+        )}
       </motion.div>
 
-      <motion.div
-        className="absolute right-0 top-[12%] h-[46%] w-[52%] border-l border-t border-paper/25"
-        animate={{ scale: active ? 1.04 : 1, y: active ? -10 : 0 }}
-        transition={{ duration: 1.05, ease: EASE, delay: 0.05 }}
-      >
-        {/* eslint-disable-next-line @next/next/no-img-element */}
-        <img
-          src="/team/danielle.jpg"
-          alt=""
-          className="h-full w-full object-cover object-top grayscale contrast-[1.08]"
-        />
-      </motion.div>
+      {/* Graded to ink so the panel sits between the film on its left and the
+          cream on its right rather than competing with either. */}
+      <div className="absolute inset-0 bg-ink/45" />
+      <div className="absolute inset-0 bg-gradient-to-t from-ink via-ink/50 to-ink/20" />
 
-      {/* A wash of the blue over monochrome photography — the accent doing
-          colour-grading work rather than sitting in a badge. Blue rather than
-          the yellow because the yellow has one job on this screen, the thread
-          crossing all three panels, and an accent that appears everywhere
-          stops being an accent. Kept low enough to read as a print duotone
-          rather than a filter. */}
-      <div className="absolute inset-0 bg-accent/30 mix-blend-multiply" />
-      <div className="absolute inset-0 bg-gradient-to-t from-ink via-ink/45 to-ink/10" />
+      {/* A contact sheet drawn rather than photographed: six frames on the
+          grid, one of them filled. It says "content, scheduled" in the
+          vocabulary the rest of the page is already using — rules and
+          proportion — instead of borrowing a stranger's face to say it. */}
+      <div className="pointer-events-none absolute inset-x-6 top-[16%] hidden md:block">
+        <motion.div
+          className="grid grid-cols-3 gap-2"
+          animate={{ opacity: active ? 1 : 0.55, y: active ? -6 : 0 }}
+          transition={{ duration: 0.8, ease: EASE }}
+        >
+          {[0, 1, 2, 3, 4, 5].map((i) => (
+            <div
+              key={i}
+              className={`aspect-[4/5] border ${
+                i === 1
+                  ? 'border-accent-soft bg-accent-soft/25'
+                  : 'border-paper/25'
+              }`}
+            />
+          ))}
+        </motion.div>
+      </div>
 
-      {/* Plate number, set like a caption in a printed portfolio. */}
-      <div className="pointer-events-none absolute right-6 top-[62%] hidden max-w-[10rem] text-right md:block">
+      <div className="pointer-events-none absolute right-6 top-[58%] hidden max-w-[10rem] text-right md:block">
         <p className="font-mono text-[10px] uppercase leading-relaxed tracking-[0.14em] text-paper/70">
           Fig. 02
           <br />
-          content, shot
+          six frames,
           <br />
-          and scheduled
+          one published
         </p>
       </div>
     </div>

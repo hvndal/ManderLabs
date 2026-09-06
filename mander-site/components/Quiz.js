@@ -242,7 +242,7 @@ export default function Quiz() {
   const progress = Math.round((step / total) * 100);
 
   return (
-    <div className="mx-auto max-w-2xl">
+    <div className="mx-auto max-w-4xl">
       {/* Progress */}
       <div className="mb-10">
         <div className="flex items-center justify-between">
@@ -264,11 +264,18 @@ export default function Quiz() {
       </div>
 
       <div key={q.id} className="animate-slide-in">
-        <h2 className="font-display text-headline-lg-mobile font-normal text-ink md:text-headline-lg">
-          {q.question}
-        </h2>
+        <div className="grid grid-cols-1 gap-4 border-t border-line pt-6 md:grid-cols-12 md:gap-gutter">
+          <div className="md:col-span-2">
+            <span className="font-mono text-[10px] uppercase tracking-[0.22em] text-accent">
+              Question {String(step + 1).padStart(2, '0')}
+            </span>
+          </div>
+          <h2 className="font-display text-headline-lg-mobile font-normal leading-[1.05] text-ink md:col-span-10 md:text-headline-lg">
+            {q.question}
+          </h2>
+        </div>
 
-        <div className="mt-8 flex flex-col gap-3">
+        <div className="mt-10 flex flex-col">
           {q.options.map((opt, i) => {
             const selected = answers[q.id] === i;
             return (
@@ -276,20 +283,29 @@ export default function Quiz() {
                 key={opt.label}
                 type="button"
                 onClick={() => choose(q.id, i)}
-                className={`group flex items-center justify-between gap-4 border px-6 py-5 text-left transition-colors duration-200 ${
-                  selected
-                    ? 'border-ink bg-ink text-paper'
-                    : 'border-line bg-white text-ink hover:border-ink'
+                className={`group grid w-full grid-cols-1 items-baseline gap-3 border-t border-line py-6 text-left transition-colors duration-200 last:border-b md:grid-cols-12 md:gap-gutter ${
+                  selected ? 'bg-ink text-paper' : 'text-ink hover:bg-paper-2'
                 }`}
               >
-                <span className="text-body-lg">{opt.label}</span>
-                <Icon
-                  name="arrow"
-                  className={`h-4 w-4 shrink-0 transition-transform duration-200 ${
-                    selected ? 'text-paper' : 'text-ink-mute group-hover:translate-x-1 group-hover:text-ink'
+                <span
+                  className={`font-mono text-[10px] uppercase tracking-[0.22em] md:col-span-1 md:pl-2 ${
+                    selected ? 'text-paper/60' : 'text-ink-mute'
                   }`}
-                  strokeWidth={2}
-                />
+                >
+                  {String(i + 1).padStart(2, '0')}
+                </span>
+                <span className="text-body-lg md:col-span-10">{opt.label}</span>
+                <span className="md:col-span-1 md:justify-self-end md:pr-2">
+                  <Icon
+                    name="arrow"
+                    className={`h-4 w-4 shrink-0 transition-transform duration-200 ${
+                      selected
+                        ? 'text-paper'
+                        : 'text-ink-mute group-hover:translate-x-1 group-hover:text-ink'
+                    }`}
+                    strokeWidth={2}
+                  />
+                </span>
               </button>
             );
           })}

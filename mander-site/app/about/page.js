@@ -8,6 +8,7 @@ import TeamCard from '@/components/TeamCard';
 import WhatsAppCta from '@/components/WhatsAppCta';
 import JsonLd from '@/components/JsonLd';
 import PageHeader from '@/components/PageHeader';
+import { IndexList, IndexRow } from '@/components/Swiss';
 import { BRAND, TEAM, TERMS, SERVICES, PROCESS } from '@/lib/content';
 import { getServerMarket } from '@/lib/market-server';
 import { breadcrumbSchema, OG_IMAGE, alternates, SITE_URL } from '@/lib/seo';
@@ -108,115 +109,117 @@ export default function AboutPage() {
       />
 
       {/* --------------------------------------------------- What we sell */}
-      <section className="bg-paper-2 py-stack-md">
-        <div className="container-max">
-          <SectionHeading
-            index="01"
+      <Section tone="paper">
+        <SectionHeading
+          index="01"
           eyebrow="What we sell"
-            title="Products and prices, in one place."
-            body="What the plans are, and what is billed once versus monthly. Every project is quoted in writing before it starts — ask and you get a real figure, not a range."
-          />
+          title="Plans, once and monthly."
+          body="What the plans are, and what is billed once versus monthly. Every project is quoted in writing before it starts — ask and you get a real figure, not a range."
+          meta={`${buildTiers.length + (monthly?.length || 0)} plans`}
+        />
 
-          <div className="mt-12 grid grid-cols-1 gap-px overflow-hidden border border-line bg-line md:grid-cols-2">
-            {buildTiers.map((tier) => (
-              <Reveal key={tier.name} className="bg-paper">
-                <div className="flex h-full flex-col p-8">
-                  <span className="label-caps text-accent">One-time build</span>
-                  <h3 className="mt-4 text-headline-md text-ink">{tier.name}</h3>
-                  <p className="mt-4 text-body-md text-ink-soft">{tier.blurb}</p>
-                </div>
-              </Reveal>
-            ))}
-          </div>
-
-          {monthly && (
-            <div className="mt-px grid grid-cols-1 gap-px overflow-hidden border border-line bg-line md:grid-cols-2">
-              {monthly.map((tier) => (
-                <Reveal key={tier.name} className="bg-paper">
-                  <div className="flex h-full flex-col p-8">
-                    <span className="label-caps text-accent">Monthly, no lock-in</span>
-                    <h3 className="mt-4 text-headline-md text-ink">{tier.name}</h3>
-                    <p className="mt-4 text-body-md text-ink-soft">{tier.blurb}</p>
-                  </div>
-                </Reveal>
-              ))}
-            </div>
-          )}
-
-          <Reveal delay={80}>
-            <p className="mt-8 max-w-text text-label-sm text-ink-mute">
-              {market.priceNote}{' '}
-              <Link href="/pricing" className="link-underline text-ink">
-                What each plan includes
-              </Link>
-              , or{' '}
-              <Link href="/quote" className="link-underline text-ink">
-                get a quote in 60 seconds
-              </Link>
-              .
-            </p>
-          </Reveal>
-        </div>
-      </section>
-
-      {/* ------------------------------------------------------ Services */}
-      <Section tone="white">
-        <SectionHeading index="02"
-          eyebrow="Disciplines" title="What we actually do." />
-        <Reveal className="mt-10 flex flex-wrap gap-x-8 gap-y-3">
-          {SERVICES.map((service) => (
-            <Link
-              key={service.title}
-              href="/#services"
-              className="link-underline text-body-lg text-ink"
-            >
-              {service.title}
-            </Link>
+        <IndexList className="mt-14">
+          {buildTiers.map((tier, i) => (
+            <IndexRow
+              key={tier.name}
+              index={String(i + 1).padStart(2, '0')}
+              title={tier.name}
+              body={tier.blurb}
+              meta="One-time"
+              href="/quote"
+              action="Quote"
+              delay={i * 50}
+            />
           ))}
+          {(monthly || []).map((tier, i) => (
+            <IndexRow
+              key={tier.name}
+              index={String(buildTiers.length + i + 1).padStart(2, '0')}
+              title={tier.name}
+              body={tier.blurb}
+              meta="Monthly"
+              href="/quote"
+              action="Quote"
+              delay={i * 50}
+            />
+          ))}
+        </IndexList>
+
+        <Reveal delay={80}>
+          <p className="mt-8 max-w-text text-label-sm text-ink-mute">
+            {market.priceNote}{' '}
+            <Link href="/pricing" className="link-underline text-ink">
+              What each plan includes
+            </Link>
+            .
+          </p>
         </Reveal>
       </Section>
 
-      {/* --------------------------------------------------- Commitments */}
+      {/* ------------------------------------------------------ Disciplines */}
       <Section tone="alt">
+        <SectionHeading
+          index="02"
+          eyebrow="Disciplines"
+          title="What we actually do."
+          meta={`${SERVICES.length} total`}
+        />
+        <IndexList className="mt-14">
+          {SERVICES.map((service) => (
+            <IndexRow
+              key={service.title}
+              index={service.index}
+              title={service.title}
+              body={service.body}
+              href="/#services"
+              action="Read"
+            />
+          ))}
+        </IndexList>
+      </Section>
+
+      {/* --------------------------------------------------- Commitments */}
+      <Section tone="paper">
         <SectionHeading
           index="03"
           eyebrow="How we work"
-          title="Three commitments, and we mean them literally."
+          title="Three commitments, meant literally."
         />
-        <div className="mt-12 grid grid-cols-1 gap-px overflow-hidden border border-line bg-line md:grid-cols-3">
+        <IndexList className="mt-14">
           {TERMS.map((term) => (
-            <Reveal key={term.index} className="bg-paper-2">
-              <div className="flex h-full flex-col p-8">
-                <span className="label-caps text-ink-mute">{term.index}</span>
-                <h3 className="mt-4 text-headline-md text-ink">{term.title}</h3>
-                <p className="mt-4 text-body-md text-ink-soft">{term.body}</p>
-              </div>
-            </Reveal>
+            <IndexRow
+              key={term.index}
+              index={term.index}
+              title={term.title}
+              body={term.body}
+            />
           ))}
-        </div>
+        </IndexList>
       </Section>
 
       {/* ------------------------------------------------------- Process */}
-      <Section tone="paper">
-        <SectionHeading index="04"
-          eyebrow="Process" title="Four stages, start to handover." />
-        <div className="mt-12 grid grid-cols-1 gap-px overflow-hidden border border-line bg-line sm:grid-cols-2 lg:grid-cols-4">
+      <Section tone="alt">
+        <SectionHeading
+          index="04"
+          eyebrow="Process"
+          title="Four stages, start to handover."
+          meta={`${PROCESS.length} stages`}
+        />
+        <IndexList className="mt-14">
           {PROCESS.map((step) => (
-            <Reveal key={step.step} className="bg-paper-2">
-              <div className="flex h-full flex-col p-7">
-                <span className="label-caps text-accent">{step.step}</span>
-                <h3 className="mt-4 text-headline-md text-ink">{step.title}</h3>
-                <p className="mt-3 text-body-md text-ink-soft">{step.body}</p>
-              </div>
-            </Reveal>
+            <IndexRow
+              key={step.step}
+              index={step.step}
+              title={step.title}
+              body={step.body}
+            />
           ))}
-        </div>
+        </IndexList>
       </Section>
 
       {/* ---------------------------------------------------------- Team */}
       <Section tone="white">
-        <SectionHeading index="05"
-          eyebrow="Who you work with" title="The whole studio." />
+        <SectionHeading index="05" eyebrow="Who you work with" title="The whole studio." />
         <div className="mt-12 grid grid-cols-1 gap-gutter sm:grid-cols-2 lg:grid-cols-3">
           {TEAM.map((member, i) => (
             <TeamCard key={member.name} member={member} index={i} />

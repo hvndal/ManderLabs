@@ -8,6 +8,7 @@ import ContactForm from '@/components/ContactForm';
 import WhatsAppCta from '@/components/WhatsAppCta';
 import JsonLd from '@/components/JsonLd';
 import PageHeader from '@/components/PageHeader';
+import { IndexList, IndexRow, SpecRow } from '@/components/Swiss';
 import { BRAND } from '@/lib/content';
 import { getServerMarket } from '@/lib/market-server';
 import { breadcrumbSchema, OG_IMAGE, alternates, SITE_URL } from '@/lib/seo';
@@ -137,70 +138,70 @@ export default function ContactPage() {
       />
 
       {/* --------------------------------------------------------- Channels */}
-      <section className="bg-paper-2 py-stack-md">
-        <div className="container-max">
-          <div className="grid grid-cols-1 gap-px overflow-hidden border border-line bg-line md:grid-cols-3">
-            {channels.map((channel) => (
-              <Reveal key={channel.label} className="bg-paper">
-                <div className="flex h-full flex-col p-8">
-                  <span className="label-caps text-accent">{channel.label}</span>
-                  <a
-                    href={channel.href}
-                    {...(channel.external
-                      ? { target: '_blank', rel: 'noreferrer noopener' }
-                      : {})}
-                    className="link-underline mt-4 text-headline-md text-ink"
-                  >
-                    {channel.value}
-                  </a>
-                  <p className="mt-4 text-body-md text-ink-soft">{channel.note}</p>
-                </div>
-              </Reveal>
-            ))}
-          </div>
+      {/* Three bordered cards became three rows. Same information, and it now
+          reads as a directory rather than as an interface — which is what a
+          contact page is. */}
+      <Section tone="paper">
+        <SectionHeading
+          index="01"
+          eyebrow="Direct"
+          title="Ways through."
+          meta={`${channels.length} routes`}
+        />
 
-          <Reveal delay={80}>
-            <div className="mt-8 grid grid-cols-1 gap-8 border-t border-line pt-8 sm:grid-cols-3">
-              <div>
-                <span className="label-caps text-ink-mute">Hours</span>
-                <p className="mt-3 text-body-md text-ink-soft">
-                  Monday to Friday, 9am–5pm Pacific. Messages outside those
-                  hours are answered the next business day.
-                </p>
-              </div>
-              <div>
-                <span className="label-caps text-ink-mute">Where we work</span>
-                <p className="mt-3 text-body-md text-ink-soft">
-                  {market.region}. MANDER is a remote studio with no public
-                  office or walk-in premises — every project runs over call,
-                  video and email.
-                </p>
-              </div>
-              <div>
-                <span className="label-caps text-ink-mute">Billing & policies</span>
-                <p className="mt-3 text-body-md text-ink-soft">
-                  Billing, refund and privacy questions go to the same address
-                  and reach the same people. See{' '}
-                  <Link href="/legal/refunds" className="link-underline text-ink">
-                    refunds
-                  </Link>{' '}
-                  and{' '}
-                  <Link href="/legal/terms" className="link-underline text-ink">
-                    terms
-                  </Link>
-                  .
-                </p>
-              </div>
-            </div>
-          </Reveal>
+        <IndexList className="mt-14">
+          {channels.map((channel, i) => (
+            <IndexRow
+              key={channel.label}
+              index={String(i + 1).padStart(2, '0')}
+              title={channel.value}
+              body={channel.note}
+              meta={channel.label}
+              href={channel.href}
+              external={channel.external}
+              action="Open"
+              delay={i * 60}
+            />
+          ))}
+        </IndexList>
+
+        <div className="mt-stack-md">
+          <SpecRow label="Hours">
+            <p className="max-w-text text-body-md text-ink-soft">
+              Monday to Friday, 9am–5pm Pacific. Messages outside those hours
+              are answered the next business day.
+            </p>
+          </SpecRow>
+          <SpecRow label="Where we work" delay={60}>
+            <p className="max-w-text text-body-md text-ink-soft">
+              {market.region}. MANDER is a remote studio with no public office
+              or walk-in premises — every project runs over call, video and
+              email.
+            </p>
+          </SpecRow>
+          <SpecRow label="Billing & policies" delay={120}>
+            <p className="max-w-text text-body-md text-ink-soft">
+              Billing, refund and privacy questions go to the same address and
+              reach the same people. See{' '}
+              <Link href="/legal/refunds" className="link-underline text-ink">
+                refunds
+              </Link>{' '}
+              and{' '}
+              <Link href="/legal/terms" className="link-underline text-ink">
+                terms
+              </Link>
+              .
+            </p>
+          </SpecRow>
         </div>
-      </section>
+      </Section>
 
       {/* ------------------------------------------------------------- Form */}
       <Section tone="white">
         <div className="grid grid-cols-1 gap-gutter lg:grid-cols-12 lg:gap-16">
           <div className="lg:col-span-4">
             <SectionHeading
+              index="02"
               eyebrow="Or send it in writing"
               title="Tell us about the project."
               body="A few lines is enough to start. We reply within one business day — no obligation, and no sales sequence afterwards."

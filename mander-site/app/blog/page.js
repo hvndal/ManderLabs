@@ -2,6 +2,7 @@ import Link from 'next/link';
 import Reveal from '@/components/Reveal';
 import GridField from '@/components/GridField';
 import PageHeader from '@/components/PageHeader';
+import { IndexList, IndexRow } from '@/components/Swiss';
 import Icon from '@/components/Icon';
 import { POSTS_BY_DATE } from '@/lib/blog';
 import { BRAND } from '@/lib/content';
@@ -92,38 +93,24 @@ export default function BlogIndex() {
           </Reveal>
 
           {/* ------------------------------------------------------ The rest */}
+          {/* Cards became rows: number, title, lede, reading time. An archive
+              is a list, and a list of two-column boxes was the least
+              editorial thing on the site. */}
           {rest.length > 0 && (
-            <div className="mt-6 grid grid-cols-1 gap-px overflow-hidden border border-line bg-line md:grid-cols-2">
-              {rest.map((post) => (
-                <Reveal key={post.slug} className="bg-white">
-                  <Link
-                    href={`/blog/${post.slug}`}
-                    className="group flex h-full flex-col p-7 md:p-8"
-                  >
-                    <div className="flex flex-wrap items-center gap-x-4 gap-y-2">
-                      <span className="label-caps text-ink-mute">{post.tag}</span>
-                      <span className="label-caps text-ink-mute">{post.readingTime}</span>
-                    </div>
-
-                    <h3 className="mt-4 text-headline-md text-ink transition-colors duration-300 group-hover:text-accent">
-                      {post.title}
-                    </h3>
-
-                    <p className="mt-3 flex-1 text-body-md text-ink-soft">{post.lede}</p>
-
-                    <span className="mt-6 flex items-center gap-3">
-                      <span
-                        aria-hidden="true"
-                        className="h-px w-6 origin-left scale-x-0 bg-accent transition-transform duration-500 ease-premium group-hover:scale-x-100"
-                      />
-                      <span className="label-caps text-ink-mute transition-all duration-500 ease-premium group-hover:translate-x-1 group-hover:text-accent">
-                        Read it
-                      </span>
-                    </span>
-                  </Link>
-                </Reveal>
+            <IndexList className="mt-10">
+              {rest.map((post, i) => (
+                <IndexRow
+                  key={post.slug}
+                  index={String(i + 2).padStart(2, '0')}
+                  title={post.title}
+                  body={post.lede}
+                  meta={post.readingTime}
+                  href={`/blog/${post.slug}`}
+                  action="Read"
+                  delay={i * 60}
+                />
               ))}
-            </div>
+            </IndexList>
           )}
 
           <Reveal delay={120}>

@@ -8,6 +8,8 @@ import Faq from '@/components/Faq';
 import JsonLd from '@/components/JsonLd';
 import Icon from '@/components/Icon';
 import PageHeader from '@/components/PageHeader';
+import Section, { SectionHeading } from '@/components/Section';
+import { IndexList, IndexRow } from '@/components/Swiss';
 import MarketProvider from '@/components/MarketProvider';
 import WhatsAppCta from '@/components/WhatsAppCta';
 import { REGIONS, getRegion } from '@/lib/locations';
@@ -130,42 +132,28 @@ export default function RegionPage({ params }) {
         </div>
       </section>
 
-      {/* ----------------------------------------------------------- Cities grid */}
+      {/* ---------------------------------------------------------- Cities index */}
       {region.cities.length > 0 && (
-        <section className="bg-paper py-stack-md">
-          <div className="container-max">
-            <Reveal>
-              <span className="label-caps text-accent">Markets we serve</span>
-              <h2 className="mt-6 max-w-[18ch] font-display text-headline-lg-mobile font-normal text-ink md:text-headline-lg">
-                Major {region.name} markets.
-              </h2>
-            </Reveal>
-
-            <div className="mt-10 grid grid-cols-1 gap-px overflow-hidden border border-line bg-line sm:grid-cols-2 lg:grid-cols-3">
-              {region.cities.map((city, i) => (
-                <Reveal key={city.slug} delay={i * 60} className="bg-paper-2">
-                  <Link
-                    href={`${path}/${city.slug}`}
-                    className="group flex h-full flex-col justify-between p-7 transition-colors hover:bg-paper"
-                  >
-                    <div>
-                      <h3 className="text-headline-md font-semibold tracking-tight text-ink transition-colors group-hover:text-accent">
-                        {city.name}
-                      </h3>
-                      <p className="mt-3 text-body-md text-ink-soft">
-                        {city.industries.slice(0, 2).join(' · ')}
-                      </p>
-                    </div>
-                    <span className="label-caps mt-8 inline-flex items-center gap-2 text-ink-mute transition-colors group-hover:text-accent">
-                      View {city.name}
-                      <Icon name="arrow" className="h-3.5 w-3.5" strokeWidth={2} />
-                    </span>
-                  </Link>
-                </Reveal>
-              ))}
-            </div>
-          </div>
-        </section>
+        <Section tone="paper">
+          <SectionHeading
+            index="01"
+            eyebrow="Markets we serve"
+            title={`Major ${region.name} markets.`}
+            meta={`${region.cities.length} cities`}
+          />
+          <IndexList className="mt-14">
+            {region.cities.map((city, i) => (
+              <IndexRow
+                key={city.slug}
+                index={String(i + 1).padStart(2, '0')}
+                title={city.name}
+                body={city.industries.slice(0, 2).join(' · ')}
+                href={`${path}/${city.slug}`}
+                delay={i * 50}
+              />
+            ))}
+          </IndexList>
+        </Section>
       )}
 
       {/* --------------------------------------------------------------- Proof */}

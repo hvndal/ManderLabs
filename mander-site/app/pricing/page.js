@@ -3,9 +3,8 @@ import Section, { SectionHeading } from '@/components/Section';
 import Reveal from '@/components/Reveal';
 import Statement from '@/components/Statement';
 import Icon from '@/components/Icon';
-import PricingInteractive from '@/components/PricingInteractive';
 import PageHeader from '@/components/PageHeader';
-import AppPricing from '@/components/AppPricing';
+import { IndexList, IndexRow, FieldNote } from '@/components/Swiss';
 import GridField from '@/components/GridField';
 import Faq from '@/components/Faq';
 import ContactForm from '@/components/ContactForm';
@@ -85,58 +84,166 @@ export default function PricingPage() {
         }
       />
 
-      {/* --------------------------------------------------------- Tiers grid */}
-      <section className="bg-paper-2">
-        <div className="container-max py-stack-md">
-          <Reveal>
-            <PricingInteractive tiers={tiers} />
-          </Reveal>
-          {/* Apps sit below the websites, folded shut, because the page is
-              read top-down and the $899 Growth plan has to be the decision
-              that gets made first. */}
-          <Reveal delay={60} className="mt-6">
-            <AppPricing />
-          </Reveal>
-          <Reveal delay={100}>
-            {/* Same quiet door as the home page's pricing block */}
-            <div className="mt-8 border-t border-line pt-8">
-              <CommunityRateNote />
-            </div>
-          </Reveal>
-          <Reveal delay={120}>
-            <p className="mt-8 text-label-sm text-ink-mute">
-              {market.priceNote}
-            </p>
-          </Reveal>
-        </div>
-      </section>
-
-      <Statement
-        eyebrow="On price"
-        text="Fixed scope, fixed price, agreed before we design a single pixel."
-        tone="paper"
-      />
-
-      {/* ----------------------------------------------------- Comparison table */}
-      <Section tone="white">
+      {/* ------------------------------------------------------- Plan index */}
+      {/* Was four interactive cards in a row, then a second folded card panel
+          for apps. Both are gone. A plan is a row now: number in the margin,
+          name in the field, what it is beside it, scope at the right — and
+          the detail lives under it as spec rows on the same twelve columns
+          rather than inside a box with its own padding. Nothing here has a
+          border on four sides. */}
+      <Section tone="paper">
         <SectionHeading
-          index="02"
-          eyebrow="Side by side"
-          title="Compare every plan."
+          index="01"
+          eyebrow="Websites"
+          title="Four plans."
+          meta={`${tiers.length} total`}
         />
 
-        <Reveal className="mt-12">
-          <div className="overflow-x-auto border border-line">
-            <table className="w-full min-w-[720px] border-collapse text-left">
-              <caption className="sr-only">Feature comparison across the four MANDER plans</caption>
+        <IndexList className="mt-14">
+          {tiers.map((tier, i) => (
+            <IndexRow
+              key={tier.name}
+              index={String(i + 1).padStart(2, '0')}
+              title={tier.name}
+              body={tier.blurb}
+              meta={tier.featured ? 'Most chosen' : tier.specs?.pages}
+              href="/quote"
+              action="Quote"
+              delay={i * 60}
+            />
+          ))}
+        </IndexList>
+
+        {/* Android, on the same grid rather than behind a disclosure. */}
+        <div className="mt-stack-md">
+          <SectionHeading
+            index="02"
+            eyebrow="Android"
+            title="Three app builds."
+            meta={`${market.appTiers.length} total`}
+          />
+          <IndexList className="mt-14">
+            {market.appTiers.map((tier, i) => (
+              <IndexRow
+                key={tier.name}
+                index={String(i + 1).padStart(2, '0')}
+                title={tier.name}
+                body={tier.blurb}
+                meta={Array.isArray(tier.specs) ? tier.specs[0][1] : undefined}
+                href="/quote"
+                action="Quote"
+                delay={i * 60}
+              />
+            ))}
+          </IndexList>
+          <FieldNote className="mt-6">
+            Play Store developer account and third-party service fees are
+            billed to you directly at cost.
+          </FieldNote>
+        </div>
+
+        <Reveal delay={100}>
+          <div className="mt-10 border-t border-line pt-8">
+            <CommunityRateNote />
+          </div>
+        </Reveal>
+
+        <Reveal delay={120}>
+          <p className="mt-8 max-w-text text-label-sm text-ink-mute">
+            {market.priceNote}
+          </p>
+        </Reveal>
+      </Section>
+
+      {/* ------------------------------------------------- Ongoing / Care Plan */}
+      {/* Same object as everything above: rows on the same twelve columns.
+          India sells two monthly plans and North America one care plan with a
+          feature list — both are lists, so both are rendered as one. */}
+      <Section tone="alt">
+        <SectionHeading
+          index="03"
+          eyebrow={market.monthlyTiers ? 'Ongoing' : 'Add-on'}
+          title={market.monthlyTiers ? 'Keep it growing.' : 'The Care Plan.'}
+          body={market.monthlyTiers ? market.monthlyBody : market.carePlanBody}
+        />
+
+        <IndexList className="mt-14">
+          {market.monthlyTiers
+            ? market.monthlyTiers.map((tier, i) => (
+                <IndexRow
+                  key={tier.name}
+                  index={String(i + 1).padStart(2, '0')}
+                  title={tier.name}
+                  body={tier.blurb}
+                  meta="Month to month"
+                  href="/quote"
+                  action="Quote"
+                  delay={i * 60}
+                />
+              ))
+            : market.carePlan.map((item, i) => (
+                <IndexRow
+                  key={item.title}
+                  index={String(i + 1).padStart(2, '0')}
+                  title={item.title}
+                  body={item.body}
+                  delay={i * 50}
+                />
+              ))}
+        </IndexList>
+
+        <Reveal delay={120}>
+          <div className="mt-10 flex flex-wrap gap-3">
+            <Link href="/quote" className="btn-primary">
+              Get a quote
+              <Icon name="arrow" className="h-4 w-4" strokeWidth={2} />
+            </Link>
+            <a
+              href={`mailto:${BRAND.email}?subject=${encodeURIComponent(
+                market.monthlyTiers ? 'Monthly plan enquiry' : 'Care Plan enquiry'
+              )}`}
+              className="btn-outline"
+            >
+              Contact sales
+            </a>
+            <WhatsAppCta tone="outline" location="pricing-care" />
+          </div>
+        </Reveal>
+      </Section>
+
+      {/* ------------------------------------------------- Specification table */}
+      {/* The comparison table, rebuilt as a specification sheet: mono column
+          heads, hairline rules, no fills, no rounded corners, no zebra
+          striping. A table is the one card-free object the old page already
+          had — it just needed to stop looking like a UI component and start
+          looking like a printed spec. */}
+      <Section tone="paper">
+        <SectionHeading
+          index="04"
+          eyebrow="Specification"
+          title="Line by line."
+          meta={`${comparison.length} rows`}
+        />
+
+        <Reveal className="mt-14">
+          <div className="overflow-x-auto">
+            <table className="w-full min-w-[640px] border-collapse text-left">
+              <caption className="sr-only">
+                Feature comparison across the MANDER plans
+              </caption>
               <thead>
-                <tr className="border-b border-line bg-paper">
-                  <th scope="col" className="label-caps px-6 py-5 text-ink-mute">Feature</th>
+                <tr className="border-y border-ink">
+                  <th
+                    scope="col"
+                    className="py-4 pr-6 font-mono text-[10px] font-normal uppercase tracking-[0.22em] text-ink-mute"
+                  >
+                    Feature
+                  </th>
                   {tiers.map((tier) => (
                     <th
                       key={tier.name}
                       scope="col"
-                      className={`px-6 py-5 text-center text-label-sm font-semibold ${tier.featured ? 'bg-ink text-paper' : 'text-ink'}`}
+                      className="px-4 py-4 text-center font-mono text-[10px] font-normal uppercase tracking-[0.18em] text-ink"
                     >
                       {tier.name}
                     </th>
@@ -145,15 +252,15 @@ export default function PricingPage() {
               </thead>
               <tbody>
                 {comparison.map((row) => (
-                  <tr key={row.feature} className="border-b border-line last:border-0">
-                    <th scope="row" className="px-6 py-4 text-body-md font-normal text-ink">
+                  <tr key={row.feature} className="border-b border-line">
+                    <th
+                      scope="row"
+                      className="py-4 pr-6 text-body-md font-normal text-ink"
+                    >
                       {row.feature}
                     </th>
                     {row.values.map((value, i) => (
-                      <td
-                        key={`${row.feature}-${i}`}
-                        className={`px-6 py-4 text-center ${tiers[i]?.featured ? 'bg-paper' : ''}`}
-                      >
+                      <td key={`${row.feature}-${i}`} className="px-4 py-4 text-center">
                         <Cell value={value} />
                       </td>
                     ))}
@@ -161,63 +268,6 @@ export default function PricingPage() {
                 ))}
               </tbody>
             </table>
-          </div>
-        </Reveal>
-      </Section>
-
-      {/* ------------------------------------------------- Ongoing / Care Plan */}
-      {/* Two shapes of the same idea. The US sells one care plan at one price
-          with a feature grid; India sells two monthly plans, which are tiers
-          and therefore render through the same card component as the builds
-          above rather than through a second pattern. */}
-      <Section tone="alt">
-        {market.monthlyTiers ? (
-          <>
-            <SectionHeading
-              index="03"
-              eyebrow="Ongoing"
-              title="Keep it growing."
-              body={market.monthlyBody}
-              align="center"
-            />
-            <Reveal className="mt-12">
-              <PricingInteractive tiers={market.monthlyTiers} />
-            </Reveal>
-          </>
-        ) : (
-          <>
-            <SectionHeading
-              index="03"
-              eyebrow="Add-on"
-              title="The Care Plan."
-              body={market.carePlanBody}
-              align="center"
-            />
-
-            <div className="mt-12 grid grid-cols-1 gap-px overflow-hidden border border-line bg-line sm:grid-cols-2 lg:grid-cols-5">
-              {market.carePlan.map((item) => (
-                <Reveal key={item.title} className="bg-paper-2">
-                  <div className="flex h-full flex-col p-6">
-                    <h3 className="text-headline-md text-ink">{item.title}</h3>
-                    <p className="mt-3 text-body-md text-ink-soft">{item.body}</p>
-                  </div>
-                </Reveal>
-              ))}
-            </div>
-          </>
-        )}
-
-        <Reveal delay={120}>
-          <div className="mt-12 flex flex-col justify-center gap-3 sm:flex-row">
-            <a
-              href={`mailto:${BRAND.email}?subject=${encodeURIComponent(
-                market.monthlyTiers ? 'Monthly plan enquiry' : 'Care Plan enquiry'
-              )}`}
-              className="btn-primary"
-            >
-              Contact sales
-            </a>
-            <WhatsAppCta tone="outline" location="pricing-care" />
           </div>
         </Reveal>
       </Section>

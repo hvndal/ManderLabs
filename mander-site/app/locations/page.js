@@ -5,6 +5,8 @@ import Breadcrumbs from '@/components/Breadcrumbs';
 import JsonLd from '@/components/JsonLd';
 import Icon from '@/components/Icon';
 import PageHeader from '@/components/PageHeader';
+import Section, { SectionHeading } from '@/components/Section';
+import { IndexList, IndexRow } from '@/components/Swiss';
 import { REGIONS } from '@/lib/locations';
 import { BRAND } from '@/lib/content';
 import { breadcrumbSchema, OG_IMAGE, alternates } from '@/lib/seo';
@@ -73,52 +75,37 @@ export default function LocationsHubPage() {
         }
       />
 
-      <section className="bg-paper-2 py-stack-md">
-        <div className="container-max flex flex-col gap-stack-md">
-          {GROUPS.map((group) => (
-            <div key={group.code}>
-              <Reveal>
-                <div className="flex items-baseline justify-between gap-6 border-b border-line pb-5">
-                  <h2 className="text-headline-md font-semibold tracking-tight text-ink">
-                    {group.name}
-                  </h2>
-                  <span className="label-caps text-ink-mute">
-                    {group.regions.length}{' '}
-                    {group.regions.length === 1 ? 'region' : 'regions'}
-                  </span>
-                </div>
-              </Reveal>
+      <Section tone="paper">
+        {GROUPS.map((group, gi) => (
+          <div key={group.code} className={gi > 0 ? 'mt-stack-md' : ''}>
+            <SectionHeading
+              index={String(gi + 1).padStart(2, '0')}
+              eyebrow={group.name}
+              title={`${group.regions.length} ${
+                group.regions.length === 1 ? 'region' : 'regions'
+              }.`}
+              meta={`${group.regions.reduce(
+                (n, r) => n + r.cities.length,
+                0
+              )} cities`}
+            />
 
-              <div className="mt-8 grid grid-cols-1 gap-px overflow-hidden border border-line bg-line md:grid-cols-3">
-                {group.regions.map((region, i) => (
-                  <Reveal key={region.slug} delay={i * 70} className="bg-paper">
-                    <Link
-                      href={`/locations/${region.slug}`}
-                      className="group flex h-full flex-col justify-between p-8 transition-colors hover:bg-paper-2"
-                    >
-                      <div>
-                        <span className="label-caps text-accent">
-                          {region.countryName}
-                        </span>
-                        <h3 className="mt-4 text-headline-md font-semibold tracking-tight text-ink transition-colors group-hover:text-accent">
-                          {region.name}
-                        </h3>
-                        <p className="mt-4 text-body-md text-ink-soft">
-                          {region.cities.map((c) => c.name).join(', ')}
-                        </p>
-                      </div>
-                      <span className="label-caps mt-10 inline-flex items-center gap-2 text-ink-mute transition-colors group-hover:text-accent">
-                        View {region.name}
-                        <Icon name="arrow" className="h-3.5 w-3.5" strokeWidth={2} />
-                      </span>
-                    </Link>
-                  </Reveal>
-                ))}
-              </div>
-            </div>
-          ))}
-        </div>
-      </section>
+            <IndexList className="mt-14">
+              {group.regions.map((region, i) => (
+                <IndexRow
+                  key={region.slug}
+                  index={String(i + 1).padStart(2, '0')}
+                  title={region.name}
+                  body={region.cities.map((c) => c.name).join(', ')}
+                  meta={`${region.cities.length} cities`}
+                  href={`/locations/${region.slug}`}
+                  delay={i * 50}
+                />
+              ))}
+            </IndexList>
+          </div>
+        ))}
+      </Section>
 
       <section className="relative overflow-hidden bg-ink text-paper">
         <GridField tone="paper" />

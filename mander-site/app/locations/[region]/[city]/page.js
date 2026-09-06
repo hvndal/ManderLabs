@@ -7,6 +7,8 @@ import Faq from '@/components/Faq';
 import JsonLd from '@/components/JsonLd';
 import Icon from '@/components/Icon';
 import PageHeader from '@/components/PageHeader';
+import Section, { SectionHeading } from '@/components/Section';
+import { IndexList, IndexRow } from '@/components/Swiss';
 import MarketProvider from '@/components/MarketProvider';
 import WhatsAppCta from '@/components/WhatsAppCta';
 import { getCity, allCities } from '@/lib/locations';
@@ -119,49 +121,55 @@ export default function CityPage({ params }) {
       />
 
       {/* ------------------------------------------------------------ Industries */}
-      <section className="bg-paper-2 py-stack-md">
-        <div className="container-max">
-          <Reveal>
-            <span className="label-caps text-accent">Who we build for in {city.name}</span>
-          </Reveal>
-          <Reveal delay={80} className="mt-6 flex flex-wrap gap-2">
-            {city.industries.map((industry) => (
-              <span
-                key={industry}
-                className="label-caps border border-line bg-paper px-3 py-1.5 text-ink-mute"
-              >
-                {industry}
-              </span>
-            ))}
-          </Reveal>
+      <Section tone="paper">
+        <SectionHeading
+          index="01"
+          eyebrow={`Who we build for in ${city.name}`}
+          title="Sectors."
+          meta={`${city.industries.length} listed`}
+        />
+        <div className="mt-14 grid grid-cols-1 gap-px border-y border-line bg-line md:grid-cols-2">
+          {city.industries.map((industry, i) => (
+            <Reveal key={industry} delay={i * 50} className="bg-paper">
+              <div className="flex items-baseline gap-5 px-1 py-6 md:px-4">
+                <span className="font-mono text-[10px] uppercase tracking-[0.22em] text-ink-mute">
+                  {String(i + 1).padStart(2, '0')}
+                </span>
+                <span className="text-body-lg text-ink">{industry}</span>
+              </div>
+            </Reveal>
+          ))}
         </div>
-      </section>
+      </Section>
 
       {/* ---------------------------------------------------------------- Services */}
-      <section className="bg-paper py-stack-md">
-        <div className="container-max">
-          <Reveal>
-            <span className="label-caps text-accent">What we build</span>
-          </Reveal>
-          <Reveal delay={80} className="mt-6 flex flex-wrap gap-x-8 gap-y-3">
-            {SERVICES.map((service) => (
-              <Link
-                key={service.title}
-                href="/#services"
-                className="link-underline text-body-lg text-ink"
-              >
-                {service.title}
-              </Link>
-            ))}
-          </Reveal>
-          <Reveal delay={120} className="mt-8">
-            <Link href="/pricing" className="link-underline label-caps text-ink">
-              See what each plan includes
-              <Icon name="arrow" className="h-4 w-4" strokeWidth={2} />
-            </Link>
-          </Reveal>
-        </div>
-      </section>
+      <Section tone="alt">
+        <SectionHeading
+          index="02"
+          eyebrow="What we build"
+          title="Disciplines."
+          meta={`${SERVICES.length} total`}
+        />
+        <IndexList className="mt-14">
+          {SERVICES.map((service, i) => (
+            <IndexRow
+              key={service.title}
+              index={service.index}
+              title={service.title}
+              body={service.body}
+              href="/#services"
+              action="Read"
+              delay={i * 40}
+            />
+          ))}
+        </IndexList>
+        <Reveal delay={120} className="mt-8">
+          <Link href="/pricing" className="link-underline label-caps text-ink">
+            See what each plan includes
+            <Icon name="arrow" className="h-4 w-4" strokeWidth={2} />
+          </Link>
+        </Reveal>
+      </Section>
 
       {/* ---------------------------------------------------------------------- FAQ */}
       <section className="bg-paper-2 py-stack-md">
