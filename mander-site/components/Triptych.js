@@ -285,7 +285,7 @@ export default function Triptych({ tagline, region }) {
 
   return (
     <section
-      aria-label="MANDER — web, social, brand"
+      aria-label="MANDER — brand, digital, growth"
       className="relative border-b border-line bg-paper"
       onMouseLeave={() => setHovered(null)}
     >

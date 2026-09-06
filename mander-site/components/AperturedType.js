@@ -55,6 +55,10 @@ export default function AperturedType({
   offset = 0.5,
 }) {
   const [reducedMotion, setReducedMotion] = useState(false);
+  // Start still. The film is opted into on desktop rather than opted out of
+  // on mobile, so the first render — the one a phone pays for — never
+  // contains a <video> at all.
+  const [still, setStill] = useState(true);
   const hostRef = useRef(null);
   const videoRef = useRef(null);
 
@@ -64,6 +68,25 @@ export default function AperturedType({
     set();
     mq.addEventListener('change', set);
     return () => mq.removeEventListener('change', set);
+  }, []);
+
+  // Phones get the poster frame, not the film.
+  //
+  // This motif recurs a dozen times down the homepage. Pausing the offscreen
+  // ones (below) fixed the decode cost but not the fetch: a phone was still
+  // creating a dozen video elements and pulling the file for every one of
+  // them before a single pixel of it was visible — measured at five requests
+  // on the homepage alone, all off-screen. On a phone the apertures are small
+  // enough that the still frame reads identically, so the film is desktop-
+  // only, on the same rule the triptych already uses. Data Saver counts as
+  // the visitor asking for the same thing out loud.
+  useEffect(() => {
+    const mq = window.matchMedia('(min-width: 768px)');
+    const decide = () =>
+      setStill(!mq.matches || Boolean(navigator.connection?.saveData));
+    decide();
+    mq.addEventListener('change', decide);
+    return () => mq.removeEventListener('change', decide);
   }, []);
 
   // Play only while on screen.
@@ -81,7 +104,7 @@ export default function AperturedType({
   // autoplay promise is expected on some browsers and is not worth surfacing
   // for a decorative element.
   useEffect(() => {
-    if (reducedMotion) return;
+    if (reducedMotion || still) return;
     const host = hostRef.current;
     if (!host || typeof IntersectionObserver === 'undefined') return;
 
@@ -101,7 +124,7 @@ export default function AperturedType({
 
     observer.observe(host);
     return () => observer.disconnect();
-  }, [reducedMotion]);
+  }, [reducedMotion, still]);
 
   const id = maskId || `aperture-${text.replace(/[^a-z0-9]/gi, '')}`;
   const [, , vbW, vbH] = viewBox.split(' ').map(Number);
@@ -111,7 +134,7 @@ export default function AperturedType({
 
   return (
     <div ref={hostRef} className={`relative overflow-hidden ${className}`}>
-      {reducedMotion ? (
+      {reducedMotion || still ? (
         // eslint-disable-next-line @next/next/no-img-element
         <img
           src={poster}

@@ -11,7 +11,7 @@ import { REGIONS } from '@/lib/locations';
 import { BRAND } from '@/lib/content';
 import { breadcrumbSchema, OG_IMAGE, alternates } from '@/lib/seo';
 
-const TITLE = 'Locations — Website Design in India, the U.S. & Canada';
+const TITLE = 'Locations — Metro Vancouver, U.S. & India';
 const DESCRIPTION =
   'Remote website design across India, the United States and Canada — Mumbai, Delhi NCR, Bengaluru, Mohali, Boston, Vancouver and more. Fixed-price builds.';
 

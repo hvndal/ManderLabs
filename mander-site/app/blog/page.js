@@ -8,7 +8,7 @@ import { POSTS_BY_DATE } from '@/lib/blog';
 import { BRAND } from '@/lib/content';
 import { OG_IMAGE, alternates } from '@/lib/seo';
 
-const TITLE = 'Journal — Website Costs, Local SEO & Small Business Advice';
+const TITLE = 'Journal — Costs, Local SEO & Small Business';
 const DESCRIPTION =
   'Plain writing on what small-business websites cost, how local search actually works, and when an app is worth building.';
 

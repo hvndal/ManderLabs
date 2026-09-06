@@ -30,7 +30,7 @@ const AUTHOR = { name: 'Herman', role: 'Founder & Design Lead' };
 export const POSTS = [
   {
     slug: 'small-business-website-cost-massachusetts',
-    title: 'What a small-business website should cost in Massachusetts',
+    title: 'What a small-business website costs in Massachusetts',
     nav: 'Website costs in Massachusetts',
     date: '2026-08-18',
     readingTime: '6 min',

@@ -113,7 +113,7 @@ export const US_MARKET = {
       'nonprofit and small business website discount',
     ],
     pricing: {
-      title: 'Plans — Fixed-Scope Website Design & Android Builds',
+      title: 'Plans — Website Design & Android Builds',
       description:
         'Four website plans and three Android plans for small business in Canada and the U.S. Fixed scope, fixed price, quoted in writing before work starts.',
     },

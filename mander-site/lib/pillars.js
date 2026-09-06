@@ -28,6 +28,7 @@ export const PILLARS = [
     line: 'Identity people remember.',
     question: 'Who you are',
     href: '/brand',
+    meta: 'Brand strategy, positioning, identity and messaging for businesses whose offer is sharper in the founder’s head than anywhere else.',
     lede: 'Most businesses do not have a brand problem. They have a clarity problem that shows up as a brand problem — the offer is sharp in the founder’s head and vague everywhere else.',
     body: [
       'We work out what the business actually is, who it is for, and why anyone should pick it over the one down the street. Then we build the identity that carries that: the mark, the type, the colour, the rules that hold it together, and the language that makes it sound like one company rather than five people writing separately.',
@@ -50,6 +51,7 @@ export const PILLARS = [
     line: 'Digital experiences that work.',
     question: 'How people experience you',
     href: '/digital',
+    meta: 'Web design, UX, development, ecommerce and digital products. Fixed scope, quoted before anything starts, and you own it outright.',
     lede: 'A site is not a brochure and it is not a design exercise. It is the first employee that never sleeps, and most of them are quietly bad at the job.',
     body: [
       'We design and build the thing itself: sites, interfaces, stores, and the occasional piece of software that does not exist yet. Fast, accessible, built on foundations you own outright and can hand to any developer afterwards.',
@@ -72,6 +74,7 @@ export const PILLARS = [
     line: 'Systems that bring the right people to you.',
     question: 'How the right people find and choose you',
     href: '/growth',
+    meta: 'Not an SEO retainer — a demand engine. Research, gaps, assets, conversion paths, and measurement of which pages produce real enquiries.',
     lede: 'Not an SEO retainer. A demand engine: find what your market is already searching for, work out which of it is worth having, build the thing that answers it, and measure which of it turned into an enquiry.',
     body: [
       'Publishing content and hoping is the default and it does not work. The system underneath this is a loop — research demand, find the gap between what is searched and what exists, build the asset that fills it, put a conversion path under it, measure which pages produce actual business interest, and let that decide the next one.',

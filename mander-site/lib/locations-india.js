@@ -263,7 +263,7 @@ export const IN_REGIONS = [
         name: 'Gurugram',
         h1: 'Website design in Gurugram.',
         metaDescription:
-          'Website design for Gurugram businesses — B2B services, startups, clinics and hospitality. Fixed-price builds quoted up front, with local SEO included in the higher plan.',
+          'Website design for Gurugram businesses — B2B services, startups, clinics and hospitality. Fixed-price builds, quoted up front.',
         intro:
           'Gurugram is where the audience is most likely to judge you on the craft of the thing. A large share of the market sells to other businesses — consultancies, agencies, staffing, SaaS, logistics — to buyers who spend all day looking at good software and register a stretched logo or a slow page instantly. That does not mean spending more; it means spending it on the right things: type that holds up, a page that loads in a second, and one obvious next step. The other half of the market — clinics, salons, restaurants, studios across the sectors and DLF phases — competes on the map pack instead, where the Business Profile does the ranking and the site closes it.',
         industries: ['B2B & professional services', 'Startups & technology', 'Clinics & wellness', 'Restaurants & hospitality'],

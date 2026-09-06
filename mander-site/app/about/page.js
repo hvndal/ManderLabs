@@ -26,7 +26,10 @@ import { breadcrumbSchema, OG_IMAGE, alternates, SITE_URL } from '@/lib/seo';
  */
 export async function generateMetadata() {
   const market = getServerMarket();
-  const description = `MANDER is a small remote design and development studio building fixed-price websites, apps and local search presence for small and growing businesses across ${market.region}.`;
+  // Trimmed to survive truncation: a description that runs past ~160
+  // characters is cut mid-sentence in the result, which reads as carelessness
+  // on the one page a stranger opens to judge whether you are careful.
+  const description = `A small remote studio in Metro Vancouver: brand, digital and growth for small and growing businesses across ${market.region}.`;
 
   return {
     title: 'About Us',

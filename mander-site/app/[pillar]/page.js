@@ -40,7 +40,10 @@ export function generateMetadata({ params }) {
   if (!pillar) return {};
   const path = `/${pillar.id}`;
   const title = `${pillar.label} — ${pillar.line}`;
-  const description = pillar.lede;
+  // The page lede is written to be read on the page; a description is written
+  // to survive a 160-character truncation and still make someone click. They
+  // are different jobs, so pillars carry both.
+  const description = pillar.meta;
 
   return {
     title,
@@ -178,9 +181,27 @@ export default function PillarPage({ params }) {
               </Reveal>
             ))}
           </div>
-          <FieldNote className="mt-6">
-            Local implementation currently focused on Metro Vancouver.
-          </FieldNote>
+          {/* The locations tree is Growth's own output — the local pages are
+              what the loop produces — so it is linked from here rather than
+              from a nav item. Without this the whole /locations subtree has
+              no internal links pointing at it, which is how thirty-six pages
+              become invisible to a crawler while still sitting in the
+              sitemap. */}
+          <Reveal delay={80}>
+            <div className="mt-10 flex flex-wrap items-baseline gap-x-8 gap-y-3 border-t border-line pt-8">
+              <FieldNote>Local implementation — Metro Vancouver first</FieldNote>
+              <Link
+                href="/locations/metro-vancouver"
+                className="link-underline label-caps text-ink"
+              >
+                Metro Vancouver
+                <Icon name="arrow" className="h-4 w-4" strokeWidth={2} />
+              </Link>
+              <Link href="/locations" className="link-underline label-caps text-ink-soft">
+                All markets we have pages for
+              </Link>
+            </div>
+          </Reveal>
         </Section>
       )}
 

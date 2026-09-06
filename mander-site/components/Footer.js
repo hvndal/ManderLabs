@@ -24,6 +24,7 @@ const LEGAL = LEGAL_NAV.map((d) => ({ label: d.nav, href: `/legal/${d.slug}` }))
 // never have to hunt, and the footer is where all three look.
 const EXPLORE = [
   ...NAV_LINKS,
+  { label: 'Locations', href: '/locations' },
   { label: 'About', href: '/about' },
   { label: 'Contact', href: '/contact' },
 ];
