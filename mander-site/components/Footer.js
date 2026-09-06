@@ -116,6 +116,16 @@ export default function Footer() {
               </li>
               <li className="pt-1">
                 <a
+                  href={BRAND.googleBusinessShare}
+                  target="_blank"
+                  rel="noreferrer noopener"
+                  className="text-paper/60 underline decoration-paper/30 underline-offset-4 transition-colors hover:text-paper hover:decoration-paper"
+                >
+                  Find us on Google ↗
+                </a>
+              </li>
+              <li className="pt-1">
+                <a
                   href={BRAND.instagram}
                   target="_blank"
                   rel="noreferrer noopener"

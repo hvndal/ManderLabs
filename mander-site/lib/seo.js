@@ -90,6 +90,43 @@ const IN_STATES = [
   'Ladakh', 'Lakshadweep', 'Puducherry',
 ];
 
+// The Metro Vancouver municipalities, named individually.
+//
+// This is the one place where listing every city is right rather than lazy:
+// areaServed is a machine-readable claim about where the service is
+// delivered, not a page that has to justify itself with content. Naming them
+// tells Google the studio serves the region without publishing fifteen thin
+// city pages to say the same thing — which is the exact distinction between
+// the schema and the /locations tree, where only Vancouver and Surrey have
+// earned a page.
+//
+// Deliberately excludes Victoria, Nanaimo and Kelowna. They are not Metro
+// Vancouver, they are not in the target market, and an areaServed that
+// stretches to the Island and the Okanagan is the "we serve everywhere"
+// signal this repositioning was meant to remove.
+const METRO_VANCOUVER = [
+  'Vancouver',
+  'North Vancouver',
+  'West Vancouver',
+  'Burnaby',
+  'Richmond',
+  'Surrey',
+  'Coquitlam',
+  'Port Coquitlam',
+  'Port Moody',
+  'New Westminster',
+  'Delta',
+  'Langley',
+  'Maple Ridge',
+  'Pitt Meadows',
+  'White Rock',
+];
+
+export const METRO_VANCOUVER_AREA = METRO_VANCOUVER.map((name) => ({
+  '@type': 'City',
+  name,
+}));
+
 export const IN_SERVICE_AREA = [
   { '@type': 'Country', name: 'India' },
   ...IN_STATES.map((name) => ({ '@type': 'State', name })),
@@ -98,7 +135,9 @@ export const IN_SERVICE_AREA = [
 // The service area a market's schema claims. Keyed by market id so a new
 // market declares its own without touching the schema builders below.
 const MARKET_SERVICE_AREA = {
-  us: SERVICE_AREA,
+  // Metro Vancouver first, then the wider countries: the order is a priority
+  // signal as well as a list, and it matches where the local work is aimed.
+  us: [...METRO_VANCOUVER_AREA, ...SERVICE_AREA],
   in: IN_SERVICE_AREA,
 };
 
@@ -184,7 +223,17 @@ export function organizationSchema(marketOrId) {
     // sameAs is how Google confirms that this site, that Instagram account and
     // the business behind them are one entity. Both entries have to be profiles
     // that actually resolve, or the signal is worth less than nothing.
-    sameAs: [BRAND.instagram, BRAND.googleBusiness, BRAND.portfolio],
+    sameAs: [
+      BRAND.googleBusinessShare,
+      BRAND.googleBusiness,
+      BRAND.instagram,
+      BRAND.portfolio,
+    ],
+    // hasMap points at the Business Profile listing. Paired with the profile's
+    // own website field, it closes the loop Google uses to decide that the
+    // listing and the domain are one entity — which is the whole reason the
+    // local pack ever shows a website link.
+    hasMap: BRAND.googleBusinessShare,
     // Google matches a site to a Business Profile on the strength of the
     // entity looking like the same thing in both places, and logo is the
     // first thing it reads.
@@ -229,8 +278,25 @@ export function organizationSchema(marketOrId) {
         closes: '17:00',
       },
     ],
+    // No street address, because there is no public office and inventing one
+    // is what gets a local listing suspended. Region and country are true and
+    // are the parts that carry a local signal for a service-area business.
+    address: {
+      '@type': 'PostalAddress',
+      addressRegion: 'BC',
+      addressCountry: 'CA',
+    },
     // Remote-first: the service is delivered online everywhere it is sold.
     areaServed: MARKET_SERVICE_AREA[market.id] || SERVICE_AREA,
+    // The one action the site actually offers. QuoteAction is the correct
+    // type for it (Thing > Action > TradeAction > QuoteAction) and it points
+    // at the quiz, which is where a quote request is genuinely handled —
+    // pointing it at a contact page would be a claim the page cannot honour.
+    potentialAction: {
+      '@type': 'QuoteAction',
+      name: 'Request a fixed-price quote',
+      target: `${SITE_URL}/quote`,
+    },
     serviceType: SERVICES.map((s) => s.title),
     availableLanguage: 'English',
     contactPoint: {

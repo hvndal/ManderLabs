@@ -22,6 +22,12 @@ export const BRAND = {
   // knowledge-graph id inside it (/g/11zdgzpwn5) is the stable part, and it
   // is what ties this site to that listing in the eyes of the crawler.
   googleBusiness: 'https://www.google.com/search?kgmid=/g/11zdgzpwn5',
+  // The share link Google hands you from the Business Profile itself. Both
+  // are kept: the kgmid URL is the stable knowledge-graph identifier, and
+  // this is the one a person can actually be sent. Together they are the
+  // two-way link — the profile points at the site, sameAs and hasMap point
+  // back at the profile, and Google can tie the two records to one business.
+  googleBusinessShare: 'https://share.google/khVi6nsC9lzdEc4Jp',
   // Masthead furniture, set centred in caps under the mark. Kept short and
   // free of hyphenated compounds on purpose — the old line ("small &
   // mid-sized businesses across Canada and the U.S.") broke after "mid-" on
