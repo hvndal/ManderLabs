@@ -241,7 +241,7 @@ export default function CareersPage() {
 
           <div className="lg:col-span-7">
             <Reveal>
-              <div className="border border-line bg-white p-7 md:p-10">
+              <div className="border-t border-line pt-9 md:pt-12">
                 <span className="label-caps text-ink-mute">Applications to</span>
 
                 {/* The address set as the largest thing in the block. It is the

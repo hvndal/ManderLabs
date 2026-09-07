@@ -119,9 +119,13 @@ export default function HomePage() {
             <Reveal key={tier.name} delay={Math.min(i * 60, 120)}>
               <Link
                 href="/quote"
-                className="group grid grid-cols-1 gap-y-3 border-b border-line py-6 md:grid-cols-12 md:items-baseline md:gap-gutter md:py-8"
+                // Two columns on a phone so the action sits on the plan's own
+                // line rather than trailing under the specs as a stray label;
+                // twelve on a desktop, with the action ordered back to the
+                // right-hand edge where the eye finishes the row.
+                className="group grid grid-cols-[1fr_auto] gap-x-4 gap-y-3 border-b border-line py-6 md:grid-cols-12 md:items-baseline md:gap-gutter md:py-8"
               >
-                <div className="md:col-span-4">
+                <div className="md:order-1 md:col-span-4">
                   <span className="rail text-ink-mute">
                     {String(i + 1).padStart(2, '0')}
                   </span>
@@ -130,12 +134,17 @@ export default function HomePage() {
                   </span>
                 </div>
 
-                <div className="md:col-span-4">
+                <span className="label-caps flex items-center gap-2 justify-self-end text-ink-mute transition-all duration-300 group-hover:translate-x-1 group-hover:text-accent md:order-4 md:col-span-1">
+                  Quote
+                  <Icon name="arrow" className="h-3.5 w-3.5 md:hidden" strokeWidth={2} />
+                </span>
+
+                <div className="col-span-2 md:order-2 md:col-span-4">
                   <p className="text-body-md text-ink-soft">{tier.bestFor}</p>
                 </div>
 
                 {/* The three numbers a buyer actually compares. */}
-                <dl className="flex flex-wrap gap-x-8 gap-y-2 md:col-span-3">
+                <dl className="col-span-2 flex flex-wrap gap-x-8 gap-y-2 md:order-3 md:col-span-3">
                   {[
                     ['Scope', tier.specs.pages, false],
                     ['Timeline', tier.specs.timeline, false],
@@ -150,9 +159,6 @@ export default function HomePage() {
                   ))}
                 </dl>
 
-                <span className="label-caps text-ink-mute transition-all duration-300 group-hover:translate-x-1 group-hover:text-accent md:col-span-1 md:justify-self-end">
-                  Quote
-                </span>
               </Link>
             </Reveal>
           ))}

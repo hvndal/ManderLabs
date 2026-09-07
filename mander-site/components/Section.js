@@ -89,33 +89,37 @@ export function SectionHeading({
 
   return (
     <Reveal className={className}>
-      <div
-        className={`border-t pt-6 ${dark ? 'border-paper/20' : 'border-line'}`}
-      >
-        <div className="grid grid-cols-1 gap-6 md:grid-cols-12 md:gap-gutter">
-          <div className="md:col-span-3">
-            <div className="flex items-baseline gap-4">
-              {index && (
-                <span
-                  className={`rail ${
-                    dark ? 'text-paper/40' : 'text-ink-mute'
-                  }`}
-                >
-                  {index}
-                </span>
-              )}
-              {eyebrow && (
-                <span
-                  className={`rail ${
-                    dark ? 'text-paper/60' : 'text-accent'
-                  }`}
-                >
-                  {eyebrow}
-                </span>
-              )}
-            </div>
-          </div>
+      <div className={`border-t pt-6 ${dark ? 'border-paper/20' : 'border-line'}`}>
+        {/* The running head, on its own line above the title.
 
+            It used to sit in a three-column margin beside the title, which is
+            right on a full-width section and wrong everywhere else: inside a
+            four-column container — the contact page, the FAQ column — that
+            margin is 90px wide and an eyebrow like "Or send it in writing"
+            wrapped to three lines and collided with the headline beside it.
+            One line above the title holds at every width. */}
+        <div className="flex flex-wrap items-baseline justify-between gap-x-6 gap-y-2">
+          <span className="flex items-baseline gap-4">
+            {index && (
+              <span className={`rail ${dark ? 'text-paper/40' : 'text-ink-mute'}`}>
+                {index}
+              </span>
+            )}
+            {eyebrow && (
+              <span className={`rail ${dark ? 'text-paper/60' : 'text-accent'}`}>
+                {eyebrow}
+              </span>
+            )}
+          </span>
+
+          {meta && (
+            <span className={`rail ${dark ? 'text-paper/40' : 'text-ink-mute'}`}>
+              {meta}
+            </span>
+          )}
+        </div>
+
+        <div className="mt-6 grid grid-cols-1 gap-6 md:grid-cols-12 md:gap-gutter">
           <div className="md:col-span-8">
             <h2
               className={`font-display text-headline-lg-mobile leading-[1.02] md:text-headline-lg ${
@@ -124,26 +128,17 @@ export function SectionHeading({
             >
               {title}
             </h2>
-            {body && (
+          </div>
+
+          {body && (
+            <div className="md:col-span-4">
               <p
-                className={`mt-6 max-w-text text-body-lg ${
+                className={`max-w-text text-body-md ${
                   dark ? 'text-paper/70' : 'text-ink-soft'
                 }`}
               >
                 {body}
               </p>
-            )}
-          </div>
-
-          {meta && (
-            <div className="md:col-span-1 md:text-right">
-              <span
-                className={`rail ${
-                  dark ? 'text-paper/40' : 'text-ink-mute'
-                }`}
-              >
-                {meta}
-              </span>
             </div>
           )}
         </div>

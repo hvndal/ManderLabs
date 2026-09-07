@@ -67,21 +67,38 @@ export default function PageHeader({
             <h1 className="h-display max-w-[16ch]">{title}</h1>
           </Reveal>
 
-          {/* The hairline the triptych runs across its three panels, doing the
-              same job at the top of a page: separating the statement from the
+          {/* The hairline the cover runs under its masthead, doing the same
+              job at the top of a page: separating the statement from the
               explanation without a box or a background change. */}
           <Reveal delay={140}>
             <div className="mt-8 h-px w-full max-w-[34rem] bg-accent-soft" />
           </Reveal>
 
           {lede && (
-            <Reveal delay={180} className="mt-8 max-w-text space-y-5 text-body-lg text-ink-soft">
+            <Reveal
+              delay={180}
+              className={
+                // Two columns, because these ledes run to three or four
+                // paragraphs and a single 46rem measure four paragraphs deep
+                // is a wall rather than an opening. The first paragraph opens
+                // on a drop cap, exactly as the cover does — one page, one
+                // initial, which is what keeps it a device rather than a tic.
+                align === 'center'
+                  ? 'mt-8 max-w-text space-y-5 text-body-lg text-ink-soft'
+                  : 'mt-9 max-w-[62rem] text-body-lg leading-[1.65] text-ink-soft md:columns-2 md:gap-16 [&>p+p]:mt-5 [&>p]:break-inside-avoid [&>p:first-child]:first-letter:float-left [&>p:first-child]:first-letter:mr-2.5 [&>p:first-child]:first-letter:mt-[0.09em] [&>p:first-child]:first-letter:font-editorial [&>p:first-child]:first-letter:text-[3.4em] [&>p:first-child]:first-letter:leading-[0.78] [&>p:first-child]:first-letter:text-ink'
+              }
+            >
               {lede}
             </Reveal>
           )}
 
           {actions && (
-            <Reveal delay={240} className="mt-9 flex flex-wrap gap-3">
+            <Reveal
+              delay={240}
+              className={`mt-10 flex flex-wrap items-center gap-x-9 gap-y-4 ${
+                align === 'center' ? 'justify-center' : ''
+              }`}
+            >
               {actions}
             </Reveal>
           )}

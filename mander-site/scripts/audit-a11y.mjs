@@ -55,6 +55,10 @@ for(const r of routes){
       // not on screen, and sampling a point inside it reads whatever section
       // happens to be painted there.
       if(box.bottom<0||box.top>window.innerHeight||box.width===0||box.height===0) continue;
+      // Screen-reader-only text is clipped to a 1px box. It is never seen, so
+      // it has no contrast to measure — sampling it reads whatever section is
+      // painted behind the clip.
+      if(box.width<=1||box.height<=1) continue;
       seen.add(el);
       const t=el.textContent.trim();
       if(!t||el.children.length) continue;

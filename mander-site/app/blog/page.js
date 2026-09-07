@@ -64,7 +64,7 @@ export default function BlogIndex() {
           <Reveal>
             <Link
               href={`/blog/${lead.slug}`}
-              className="group flex flex-col gap-6 border border-line bg-white p-7 transition-colors duration-500 ease-premium hover:border-line-strong md:p-10"
+              className="group flex flex-col gap-6 border-t border-line py-9 transition-colors duration-500 ease-premium md:py-12"
             >
               <div className="flex flex-wrap items-center gap-x-4 gap-y-2">
                 <span className="label-caps bg-accent px-2 py-1 text-[10px] text-on-accent">

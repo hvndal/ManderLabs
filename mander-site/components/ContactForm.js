@@ -8,8 +8,13 @@ import { trackEvent } from '@/lib/analytics';
 import { useMarket } from './MarketProvider';
 import WhatsAppCta from './WhatsAppCta';
 
+// Underlined, not boxed. A bordered white card with bordered white inputs
+// inside it is the most generic object on a website, and this form is the
+// last thing a visitor sees before deciding whether the studio is any good.
+// The rule under each field is the same hairline the rest of the page is
+// drawn with, so the form belongs to the document rather than sitting on it.
 const FIELD =
-  'w-full border border-line bg-white px-4 py-3 text-body-md text-ink transition-colors duration-200 placeholder:text-ink-mute/60 focus:border-ink focus:outline-none focus:ring-0';
+  'w-full border-0 border-b border-line bg-transparent px-0 py-3 text-body-lg text-ink transition-colors duration-200 placeholder:text-ink-mute/50 focus:border-ink focus:outline-none focus:ring-0';
 
 /**
  * The site's contact form.
@@ -76,7 +81,7 @@ export default function ContactForm({ defaultPlan }) {
 
   if (status === 'sent') {
     return (
-      <div className="border border-line bg-white p-10 text-center">
+      <div className="border-t border-line py-12">
         <p className="label-caps mb-3 text-accent">Received</p>
         <p className="text-headline-md text-ink">
           Thanks — we&apos;ll be in touch within one business day.
@@ -93,7 +98,7 @@ export default function ContactForm({ defaultPlan }) {
   }
 
   return (
-    <form onSubmit={handleSubmit} className="border border-line bg-white p-8 md:p-10">
+    <form onSubmit={handleSubmit} className="border-t border-line pt-8">
       {/* Hidden from people and from assistive tech; only a bot fills it. */}
       <input
         type="checkbox"
@@ -104,9 +109,9 @@ export default function ContactForm({ defaultPlan }) {
         aria-hidden="true"
       />
 
-      <div className="grid grid-cols-1 gap-6 sm:grid-cols-2">
+      <div className="grid grid-cols-1 gap-x-gutter gap-y-8 sm:grid-cols-2">
         <div>
-          <label htmlFor="cf-name" className="label-caps mb-2 block text-ink-mute">
+          <label htmlFor="cf-name" className="rail mb-1 block text-ink-mute">
             Name
           </label>
           <input
@@ -121,7 +126,7 @@ export default function ContactForm({ defaultPlan }) {
         </div>
 
         <div>
-          <label htmlFor="cf-email" className="label-caps mb-2 block text-ink-mute">
+          <label htmlFor="cf-email" className="rail mb-1 block text-ink-mute">
             Email
           </label>
           <input
@@ -136,7 +141,7 @@ export default function ContactForm({ defaultPlan }) {
         </div>
 
         <div className="sm:col-span-2">
-          <label htmlFor="cf-plan" className="label-caps mb-2 block text-ink-mute">
+          <label htmlFor="cf-plan" className="rail mb-1 block text-ink-mute">
             Plan of interest
           </label>
           <select id="cf-plan" name="plan" defaultValue={featuredPlan} className={FIELD}>
@@ -150,7 +155,7 @@ export default function ContactForm({ defaultPlan }) {
         </div>
 
         <div className="sm:col-span-2">
-          <label htmlFor="cf-message" className="label-caps mb-2 block text-ink-mute">
+          <label htmlFor="cf-message" className="rail mb-1 block text-ink-mute">
             What are you building?
           </label>
           <textarea

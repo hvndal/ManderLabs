@@ -145,7 +145,7 @@ export default function Quiz() {
 
     return (
       <div className="mx-auto max-w-3xl">
-        <div className="border border-line bg-white">
+        <div>
           {/* Recommendation header — ink block */}
           <div className="bg-ink p-8 text-paper md:p-10">
             <span className="label-caps text-paper/60">Recommended for you</span>
@@ -163,7 +163,7 @@ export default function Quiz() {
           </div>
 
           {/* What's included + reasoning */}
-          <div className="p-8 md:p-10">
+          <div className="pt-8 md:pt-10">
             {result.forceSales && (
               <p className="mb-8 border border-accent/40 bg-accent/5 px-4 py-3 text-body-md text-ink">
                 Your answers suggest something custom — we&apos;ll want a quick
@@ -194,7 +194,7 @@ export default function Quiz() {
                   placeholder="Your name"
                   value={contact.name}
                   onChange={(e) => setContact((c) => ({ ...c, name: e.target.value }))}
-                  className="w-full border border-line bg-white px-4 py-3 text-body-md text-ink placeholder:text-ink-mute/60 focus:border-ink focus:outline-none"
+                  className="w-full border-0 border-b border-line bg-transparent px-0 py-3 text-body-lg text-ink placeholder:text-ink-mute/50 focus:border-ink focus:outline-none"
                 />
                 <input
                   type="email"
@@ -202,7 +202,7 @@ export default function Quiz() {
                   placeholder="Email"
                   value={contact.email}
                   onChange={(e) => setContact((c) => ({ ...c, email: e.target.value }))}
-                  className="w-full border border-line bg-white px-4 py-3 text-body-md text-ink placeholder:text-ink-mute/60 focus:border-ink focus:outline-none"
+                  className="w-full border-0 border-b border-line bg-transparent px-0 py-3 text-body-lg text-ink placeholder:text-ink-mute/50 focus:border-ink focus:outline-none"
                 />
               </div>
 
