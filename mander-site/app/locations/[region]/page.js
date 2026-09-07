@@ -94,8 +94,8 @@ export default function RegionPage({ params }) {
             <a href={mailto(`${region.name} project enquiry`)} className="btn-primary">
               Contact sales
             </a>
-            <Link href="/pricing" className="btn-outline">
-              See pricing
+            <Link href="/#quote" className="btn-outline">
+              Ask for quote
             </Link>
           </Reveal>
         </div>

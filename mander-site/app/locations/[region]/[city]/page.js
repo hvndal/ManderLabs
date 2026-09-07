@@ -98,8 +98,8 @@ export default function CityPage({ params }) {
             <a href={mailto(`${city.name} project enquiry`)} className="btn-primary">
               Contact sales
             </a>
-            <Link href="/pricing" className="btn-outline">
-              See pricing
+            <Link href="/#quote" className="btn-outline">
+              Ask for quote
             </Link>
           </Reveal>
         </div>
@@ -142,8 +142,8 @@ export default function CityPage({ params }) {
             ))}
           </Reveal>
           <Reveal delay={120} className="mt-8">
-            <Link href="/pricing" className="link-underline label-caps text-ink">
-              See fixed pricing
+            <Link href="/#quote" className="link-underline label-caps text-ink">
+              Ask for quote
               <Icon name="arrow" className="h-4 w-4" strokeWidth={2} />
             </Link>
           </Reveal>

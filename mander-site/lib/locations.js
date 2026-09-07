@@ -471,28 +471,32 @@ export const REGIONS = [
     abbr: 'BC',
     country: 'CA',
     countryName: 'Canada',
-    kicker: 'British Columbia',
-    h1: 'Website design for British Columbia businesses.',
+    kicker: 'Metro Vancouver & Fraser Valley',
+    h1: 'Website design for Metro Vancouver businesses.',
     metaDescription:
-      'Website design for British Columbia small businesses — Vancouver, Victoria, Kelowna, Surrey and beyond. Founded in Langley, CAD billing available.',
+      'Website design and digital flagships for Metro Vancouver small & mid-sized businesses — Vancouver, Surrey, Burnaby, Richmond, Langley, and Coquitlam.',
     intro: [
-      "Our founder works out of Langley, so British Columbia is where MANDER actually started — not a market added after the fact. From Vancouver's competitive, design-literate business scene to the tourism and wine economy around Kelowna and the government and hospitality mix in Victoria, BC's small businesses are used to being sold slick, expensive agency work; the case here is the same calibre of design at a price a real small business can justify.",
-      "British Columbia clients are billed in CAD on request and dealt with in Pacific hours by default, with Eastern-hours coverage from the rest of the team when it's useful. The build process — fixed scope, fixed price, you own everything at the end — doesn't change based on province or country.",
+      "Our roots and studio practice are grounded in Metro Vancouver — British Columbia is where MANDER originated, not an afterthought market. From Vancouver's competitive digital and hospitality culture to Burnaby's tech corridors, Richmond's international commercial hubs, and the rapidly growing business centres of Surrey, Langley, and Coquitlam, local businesses deserve design that commands real authority.",
+      "British Columbia clients are invoiced in CAD on request and collaborated with during Pacific business hours by default. Every engagement is built with architectural rigor, custom engineering, and transparent, tailored scoping without hourly surprises or template bloat.",
     ],
-    proximityNote: "MANDER's founder is based in Langley, British Columbia.",
-    industries: ['Technology & startups', 'Tourism & hospitality', 'Professional services', 'Trades & construction', 'Retail'],
+    proximityNote: "MANDER is based in Metro Vancouver, British Columbia.",
+    industries: ['Technology & Software', 'Hospitality & Culinary', 'Professional & Financial Services', 'Construction & Trades', 'Boutique Retail & Apparel'],
     faqs: [
       {
-        q: 'Is MANDER a BC-based company?',
-        a: "Our founder and the company's roots are in Langley. The rest of the team is in Massachusetts, so while the company is Canadian in origin, delivery is fully remote and covers clients in both countries equally.",
+        q: 'Is MANDER a Metro Vancouver studio?',
+        a: "Yes. Our practice and foundation are based in Metro Vancouver (Langley / Vancouver). We work directly with founders, directors, and business owners across the entire Lower Mainland.",
       },
       {
-        q: 'Do you bill in Canadian dollars?',
-        a: 'Yes — prices are shown in USD by default, and Canadian clients are invoiced in CAD on request at no extra cost.',
+        q: 'Do you invoice in Canadian dollars?',
+        a: 'Yes — Canadian clients are invoiced in CAD on request at no extra cost, with clear, written quotes for every engagement.',
       },
       {
-        q: "Can you compete with Vancouver's larger design agencies?",
-        a: 'On price and attention, yes — that\'s the whole model. You get senior people on a fixed-price, fixed-scope build without the overhead a larger studio agency carries, and you own the site outright when it\'s done.',
+        q: "How do you compare to traditional downtown Vancouver design agencies?",
+        a: 'We deliver the same top-tier art direction, custom engineering, and sub-second performance of a high-end downtown studio, but operate with an agile, focused model that eliminates unnecessary agency bloat and hidden markups.',
+      },
+      {
+        q: 'What is your turnaround time for Metro Vancouver projects?',
+        a: 'Typical production turnaround runs between 2 to 4 weeks depending on scope, moving in a straight line from strategic discovery and wireframing directly to launch.',
       },
     ],
     cities: [
@@ -501,82 +505,22 @@ export const REGIONS = [
         name: 'Vancouver',
         h1: 'Website design in Vancouver, British Columbia.',
         metaDescription:
-          'Website design for Vancouver, BC small businesses — fixed-price alternative to downtown agency rates. Tech, retail, hospitality and professional services.',
+          'High-end website design for Vancouver, BC businesses — modern art direction, sub-second performance, and tailored custom engineering.',
         intro:
-          "Vancouver's small-business market competes for attention against a genuinely large, well-funded tech and design scene, and against some of the highest agency rates in Canada. That combination pushes a lot of good small businesses toward DIY builders that undersell them. MANDER exists partly because of that gap — senior design and development, fixed-price, without the overhead a Vancouver studio agency has to charge for.",
-        industries: ['Technology & startups', 'Professional services', 'Retail & hospitality', 'Creative industries'],
+          "Vancouver's commercial market demands exceptional visual taste. Competing for attention against established tech companies, world-class restaurants, and lifestyle brands requires digital presence with genuine architectural rigor. MANDER engineers websites that combine contemporary editorial typography with custom React engineering — giving Vancouver businesses an authoritative flagship that converts.",
+        industries: ['Technology & Venture', 'Hospitality & Dining', 'Creative Studios & Architecture', 'Professional Services'],
         faqs: [
           {
-            q: 'How do you compete with Vancouver agency pricing?',
-            a: 'By keeping the studio small and remote rather than carrying downtown-Vancouver overhead — the design quality holds, the invoice comes down.',
+            q: 'How does MANDER compare to traditional downtown Vancouver agency pricing?',
+            a: 'We provide senior creative direction and bespoke code without charging for downtown office lease overhead. You get immaculate craft and transparent, scope-based quotes.',
           },
           {
-            q: 'Do you invoice in Canadian dollars?',
-            a: 'Yes, CAD on request at no extra cost, and every price is fixed and agreed before work starts.',
-          },
-                  {
-            q: "What does an Android app cost compared with a Vancouver agency?",
-            a: "App Launch is $2,999 and App Growth $5,999, fixed and quoted up front. That is a fraction of a Vancouver studio day rate for equivalent scope, for the same reason the websites are.",
+            q: 'Do you invoice in Canadian dollars for Vancouver clients?',
+            a: 'Yes, CAD invoicing is available on request at no extra cost with transparent, scope-based quotes.',
           },
           {
-            q: "Do you work with early-stage Vancouver startups?",
-            a: "Often. A $499 Starter site is usually right before funding, and App Launch at $2,999 covers a first Play Store release with authentication and a basic backend.",
-          },
-        ],
-      },
-      {
-        slug: 'victoria',
-        name: 'Victoria',
-        h1: 'Website design in Victoria, British Columbia.',
-        metaDescription:
-          "Website design for Victoria, BC businesses — tourism, professional services and healthcare, built for both local and visitor traffic.",
-        intro:
-          "As the provincial capital, Victoria's small-business economy leans toward tourism, government-adjacent professional services, and a healthcare and wellness sector serving both residents and visitors — a different mix from Vancouver's tech-heavy market across the strait. Sites here tend to need to work equally well for a local resident and a tourist researching before a trip, which changes what belongs on the homepage.",
-        industries: ['Tourism & hospitality', 'Professional & government-adjacent services', 'Healthcare & wellness', 'Retail'],
-        faqs: [
-          {
-            q: 'Do you build sites aimed at both tourists and local customers?',
-            a: "Yes — it's a common brief in Victoria specifically, and it usually comes down to information architecture: getting both audiences to the page that's actually relevant to them within a click or two.",
-          },
-          {
-            q: 'Do you invoice in Canadian dollars for Victoria clients?',
-            a: 'Yes — CAD on request at no extra cost, the same as anywhere else in British Columbia.',
-          },
-                  {
-            q: "Can you build an app for a Victoria tourism business?",
-            a: "Yes, from $2,999 on Google Play. For tourism and hospitality the useful version is usually bookings and notifications, which is App Growth at $5,999.",
-          },
-          {
-            q: "Can the site serve both tourists and local regulars?",
-            a: "That is a structure question more than a design one, and it is what the discovery call is for. Growth at $899 gives enough pages to separate the two audiences without splitting the brand.",
-          },
-        ],
-      },
-      {
-        slug: 'kelowna',
-        name: 'Kelowna',
-        h1: 'Website design in Kelowna, British Columbia.',
-        metaDescription:
-          'Website design and redesign for Kelowna, BC — wine tourism, real estate and Okanagan tech businesses that have outgrown their first site.',
-        intro:
-          "Kelowna's economy has grown fast on wine tourism, real estate and an increasingly active tech sector centered around the Okanagan — which means a lot of local businesses are newer, growing quickly, and outgrowing whatever site got them started. We see a lot of Website Redesign work here for exactly that reason: the business has changed since the original site went up, and the site hasn't caught up.",
-        industries: ['Wine & agritourism', 'Real estate', 'Technology & startups', 'Hospitality'],
-        faqs: [
-          {
-            q: 'Our business has grown since our site was built — do we need to start over?',
-            a: "Usually not — Website Redesign is built for this: modernizing what's there and fixing the technical performance, rather than throwing away content and structure that's still working.",
-          },
-          {
-            q: 'Do you work with wine, agritourism or hospitality brands?',
-            a: 'Yes, including bilingual and booking-focused builds where direct reservations matter more than an information page.',
-          },
-                  {
-            q: "Would an app suit a winery or agritourism brand?",
-            a: "Sometimes — App Growth at $5,999 covers bookings, payments and accounts, which fits club memberships and tastings. For most Kelowna wineries the $899 Growth site with booking integration does the job.",
-          },
-          {
-            q: "Can you take online orders or club sign-ups?",
-            a: "Bookings and CRM integration are in Growth at $899. A full store with payments is Business Pro at $1,499+.",
+            q: 'Do you build custom web applications and mobile apps?',
+            a: 'Yes. Beyond editorial marketing flagships, we design and build full-stack digital products, client portals, and Android applications tailored to your specific workflows.',
           },
         ],
       },
@@ -585,26 +529,118 @@ export const REGIONS = [
         name: 'Surrey',
         h1: 'Website design in Surrey, British Columbia.',
         metaDescription:
-          'Website design for Surrey, BC — logistics, trades, retail and multicultural small businesses across the Fraser Valley corridor.',
+          'High-performance website design for Surrey, BC — logistics, healthcare, professional services, and high-growth commercial enterprises.',
         intro:
-          "Surrey is one of the fastest-growing cities in Canada, with a small-business base that's more diverse — culturally and industrially — than almost anywhere else on this list, spanning logistics and trades tied to the Fraser Valley corridor alongside a fast-growing retail and service sector. Growth this fast usually outpaces marketing, so a lot of genuinely good Surrey businesses are still being found by word of mouth alone. A properly built site with real local SEO behind it tends to close that gap quickly.",
-        industries: ['Logistics & trades', 'Retail & food service', 'Professional services', 'Multicultural & community businesses'],
+          "Surrey is one of the fastest-growing economic engines in Canada. From corporate logistics and construction leaders to medical practices and retail hubs across City Centre and Guildford, Surrey companies are rapidly outgrowing generic word-of-mouth. MANDER builds authoritative, search-optimized websites that turn regional growth into verified inbound revenue.",
+        industries: ['Logistics & Supply Chain', 'Construction & Trades', 'Healthcare & Clinics', 'Commercial Services'],
         faqs: [
           {
-            q: 'Can you write copy for a business that serves a multilingual customer base?',
-            a: 'We write in English by default; if your customers search or read in another language too, bilingual builds — like the one we did for a hospitality client — are something we handle as part of Website Design.',
+            q: 'Why should an established Surrey business invest in a custom website?',
+            a: 'As Surrey expands into BC’s largest metropolitan center, commercial buyers and high-value clients evaluate your digital credibility first. A high-performance site establishes immediate market authority.',
           },
           {
-            q: "We've grown mainly through word of mouth — is a website still worth it?",
-            a: "Very much so, especially in a fast-growing market like Surrey — word of mouth gets undermined the moment a prospective customer searches you and finds nothing credible. Local Search is built for exactly that gap.",
-          },
-                  {
-            q: "Do you build Android apps for Surrey businesses?",
-            a: "Yes, from $2,999, shipped to Google Play under your own developer account. For logistics and trades in Surrey that usually means dispatch, job tracking or a driver-facing tool.",
+            q: 'Can you assist with local SEO and Google Business ranking in Surrey?',
+            a: 'Yes. Every project includes structured metadata, schema markup, and technical on-page optimization designed to capture high-intent regional search queries.',
           },
           {
-            q: "Do you invoice Surrey clients in Canadian dollars?",
-            a: "Yes on request. Prices are shown in USD by default and Canadian clients are invoiced in CAD at your preference.",
+            q: 'Do you invoice in Canadian dollars?',
+            a: 'Yes, all Metro Vancouver clients can be invoiced in CAD with no foreign exchange markups.',
+          },
+        ],
+      },
+      {
+        slug: 'burnaby',
+        name: 'Burnaby',
+        h1: 'Website design in Burnaby, British Columbia.',
+        metaDescription:
+          'Modern website design for Burnaby, BC — tech companies, film production, industrial innovators, and Brentwood/Metrotown retail.',
+        intro:
+          "Positioned at the geographic center of Metro Vancouver, Burnaby blends high-tech research parks, major film and visual effects facilities, industrial corridors, and dense urban retail hubs like Brentwood and Metrotown. We architect clean, high-performance websites engineered to match the precision of Burnaby's innovative business landscape.",
+        industries: ['Technology & R&D', 'Film & Media Production', 'Industrial & Manufacturing', 'Corporate Services'],
+        faqs: [
+          {
+            q: 'Do you design websites for Burnaby tech and industrial firms?',
+            a: 'Yes. We specialize in translating complex technical capabilities into clean, compelling digital narratives that resonate with enterprise clients and investors.',
+          },
+          {
+            q: 'How fast will our Burnaby website load?',
+            a: 'We engineer all sites on clean Next.js and React stacks, systematically targeting 95+ Google Lighthouse scores with sub-second time-to-first-byte.',
+          },
+          {
+            q: 'How do we get started?',
+            a: 'Submit a quote enquiry through our contact form. We reply within one business day with clear recommendations and a tailored project proposal.',
+          },
+        ],
+      },
+      {
+        slug: 'richmond',
+        name: 'Richmond',
+        h1: 'Website design in Richmond, British Columbia.',
+        metaDescription:
+          'Website design for Richmond, BC — international trade, aviation, hospitality, logistics, and bilingual commercial brands.',
+        intro:
+          "Richmond connects Metro Vancouver directly to international commerce, Pacific aviation, and advanced logistics, while hosting a premier culinary and retail market. We build sophisticated, multilingual-ready websites that appeal to both local Pacific Northwest clientele and international trade partners.",
+        industries: ['International Trade & Logistics', 'Aviation & Marine', 'Culinary & Hospitality', 'Professional Practices'],
+        faqs: [
+          {
+            q: 'Can you build bilingual or multilingual websites for Richmond businesses?',
+            a: 'Yes. We engineer seamless multilingual architectures (e.g., English, Traditional/Simplified Chinese) designed for localized readability and international search engines.',
+          },
+          {
+            q: 'Do you build e-commerce and reservation systems?',
+            a: 'Yes. We integrate custom checkout flows, booking engines, and CRM pipelines directly into your site.',
+          },
+          {
+            q: 'Are Richmond clients billed in CAD?',
+            a: 'Yes, Canadian billing in CAD is standard for all BC clients.',
+          },
+        ],
+      },
+      {
+        slug: 'langley',
+        name: 'Langley',
+        h1: 'Website design in Langley, British Columbia.',
+        metaDescription:
+          'Website design in Langley, BC — home base of MANDER. Premium digital design for Fraser Valley trades, commercial firms, and boutique brands.',
+        intro:
+          "Langley is where MANDER’s practice was founded. Combining a vibrant commercial center, rapidly expanding tech and light-industrial parks, and boutique retail and equestrian estates, Langley is one of the most dynamic markets in the Lower Mainland. We take immense pride in building flagship websites for our home community.",
+        industries: ['Trades & Commercial Contracting', 'Wineries & Agritourism', 'Manufacturing & Light Industry', 'Professional Practices'],
+        faqs: [
+          {
+            q: 'Is MANDER locally based in Langley?',
+            a: 'Yes. Our founder operates right here in Langley, giving local clients direct access to senior creative leadership and ongoing technical support.',
+          },
+          {
+            q: 'What types of Langley businesses do you work with?',
+            a: 'We work with established commercial contractors, professional practices, agricultural and estate brands, and growing retailers who want to elevate their brand authority.',
+          },
+          {
+            q: 'Can we meet in person to discuss our project?',
+            a: 'Yes, we are always pleased to coordinate in-person discovery meetings across Langley and the Fraser Highway corridor.',
+          },
+        ],
+      },
+      {
+        slug: 'coquitlam',
+        name: 'Coquitlam',
+        h1: 'Website design in Coquitlam, British Columbia.',
+        metaDescription:
+          'High-performance website design for Coquitlam & the Tri-Cities — healthcare, construction, retail, and growing small businesses.',
+        intro:
+          "Anchoring the Tri-Cities, Coquitlam is a thriving, diverse community experiencing rapid residential and commercial development. Whether your business is situated around Coquitlam Centre, Austin Heights, or industrial Maillardville, having a polished, mobile-optimized digital presence is vital for capturing local market share.",
+        industries: ['Healthcare & Wellness', 'Residential & Commercial Construction', 'Local Retail & Dining', 'Professional Services'],
+        faqs: [
+          {
+            q: 'Do you serve businesses across the entire Tri-Cities area?',
+            a: 'Yes, our Coquitlam coverage extends across Port Coquitlam and Port Moody, serving businesses throughout the entire Tri-Cities region.',
+          },
+          {
+            q: 'Will our website work seamlessly on mobile devices?',
+            a: 'Every site we produce is engineered mobile-first, ensuring responsive typography, tactile touch interactions, and lightning-fast loading speeds on all phones.',
+          },
+          {
+            q: 'How does your quoting process work?',
+            a: 'Every project receives a clear, written scope with guaranteed pricing based on your goals. No arbitrary hourly fees or hidden maintenance traps.',
           },
         ],
       },
