@@ -1,6 +1,8 @@
-﻿import Image from 'next/image';
+import Image from 'next/image';
 import Link from 'next/link';
 import Reveal from '@/components/Reveal';
+import CursorImage from '@/components/CursorImage';
+import MagneticButton from '@/components/MagneticButton';
 import { WORK } from '@/lib/content';
 import { alternates } from '@/lib/seo';
 
@@ -17,7 +19,7 @@ export default function WorkPage() {
       {/* Running Head */}
       <div className="border-b border-line bg-paper px-6 py-3 font-mono text-[10px] uppercase tracking-[0.25em] text-ink-mute flex flex-wrap items-center justify-between gap-4">
         <div className="flex items-center gap-2">
-          <span className="h-1.5 w-1.5 bg-accent rounded-full"></span>
+          <span className="h-1.5 w-1.5 bg-accent rounded-full" />
           <span>MANDER LABS // SELECTED WORK ARCHIVE</span>
         </div>
         <div className="flex items-center gap-6">
@@ -75,7 +77,7 @@ export default function WorkPage() {
               {/* UNBOXED CRISP SCREENSHOT CONTAINER */}
               <div className="relative w-full bg-black overflow-hidden border-b border-line group-hover:border-ink transition-colors">
                 {project.image ? (
-                  <div className="relative w-full aspect-[16/10] overflow-hidden">
+                  <CursorImage strength={3} className="relative w-full aspect-[16/10] overflow-hidden">
                     <Image
                       src={project.image}
                       alt={project.imageAlt || project.name}
@@ -84,7 +86,7 @@ export default function WorkPage() {
                       priority={index === 0}
                       className="object-cover object-top transition-transform duration-700 ease-out group-hover:scale-[1.01]"
                     />
-                  </div>
+                  </CursorImage>
                 ) : (
                   <div className="aspect-[16/10] flex items-center justify-center bg-ink p-12 text-center text-paper">
                     <div>
@@ -95,7 +97,7 @@ export default function WorkPage() {
                 )}
 
                 {/* Direct Corner Status Tag */}
-                <div className="absolute top-4 left-4 bg-ink/90 backdrop-blur-md text-white px-3 py-1 font-mono text-[10px] uppercase tracking-widest border border-white/10">
+                <div className="absolute top-4 left-4 bg-ink/90 backdrop-blur-md text-white px-3 py-1 font-mono text-[10px] uppercase tracking-widest border border-white/10 z-10">
                   {project.kind === 'studio' ? 'STUDIO BUILD' : 'CLIENT FLAGSHIP'} — VERIFIED DEPLOYMENT
                 </div>
               </div>
@@ -117,15 +119,17 @@ export default function WorkPage() {
 
                 <div className="md:col-span-4 flex flex-col sm:flex-row md:flex-col gap-3 justify-end">
                   {project.href ? (
-                    <a
-                      href={project.href}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="inline-flex items-center justify-center gap-2 bg-ink hover:bg-accent text-white font-mono text-xs uppercase tracking-[0.18em] px-6 py-3.5 transition-colors font-semibold shadow-md text-center"
-                    >
-                      <span>Launch Live Site</span>
-                      <span>↗</span>
-                    </a>
+                    <MagneticButton strength={6} radius={50}>
+                      <a
+                        href={project.href}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="inline-flex items-center justify-center gap-2 bg-ink hover:bg-accent text-white font-mono text-xs uppercase tracking-[0.18em] px-6 py-3.5 transition-colors font-semibold shadow-md text-center w-full"
+                      >
+                        <span>Launch Live Site</span>
+                        <span>↗</span>
+                      </a>
+                    </MagneticButton>
                   ) : (
                     <span className="font-mono text-xs uppercase tracking-widest text-ink-mute text-center py-2">
                       Regional Deployment
@@ -157,12 +161,14 @@ export default function WorkPage() {
             Every engagement is custom-scoped against your business targets with zero generic fixed rates. Tell us what you need.
           </p>
           <div className="flex flex-wrap justify-center gap-4">
-            <Link
-              href="/#quote"
-              className="bg-white hover:bg-paper text-ink font-mono text-xs uppercase tracking-[0.2em] px-8 py-4 font-bold transition-all shadow-xl"
-            >
-              Ask For A Quote ↗
-            </Link>
+            <MagneticButton strength={8} radius={60}>
+              <Link
+                href="/#quote"
+                className="bg-white hover:bg-paper text-ink font-mono text-xs uppercase tracking-[0.2em] px-8 py-4 font-bold transition-all shadow-xl inline-block"
+              >
+                Ask For A Quote ↗
+              </Link>
+            </MagneticButton>
             <Link
               href="/"
               className="border border-line/40 hover:border-line text-paper font-mono text-xs uppercase tracking-[0.2em] px-8 py-4 transition-colors"

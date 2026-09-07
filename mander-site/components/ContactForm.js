@@ -2,6 +2,7 @@
 
 import { useState } from 'react';
 import Icon from './Icon';
+import MagneticButton from './MagneticButton';
 import { TIERS, BRAND } from '@/lib/content';
 import { submitForm } from '@/lib/forms';
 
@@ -160,16 +161,18 @@ export default function ContactForm({ defaultPlan = 'Growth' }) {
       )}
 
       <div className="mt-8 flex flex-col gap-4 sm:flex-row sm:items-center">
-        <button
-          type="submit"
-          disabled={status === 'sending'}
-          className="btn-primary disabled:opacity-60"
-        >
-          {status === 'sending' ? 'Sending…' : 'Send enquiry'}
-          {status !== 'sending' && (
-            <Icon name="arrow" className="h-4 w-4" strokeWidth={2} />
-          )}
-        </button>
+        <MagneticButton strength={8} radius={60}>
+          <button
+            type="submit"
+            disabled={status === 'sending'}
+            className="btn-primary disabled:opacity-60 inline-flex items-center gap-2"
+          >
+            {status === 'sending' ? 'Sending…' : 'Send enquiry'}
+            {status !== 'sending' && (
+              <Icon name="arrow" className="h-4 w-4" strokeWidth={2} />
+            )}
+          </button>
+        </MagneticButton>
         <a
           href={`mailto:${BRAND.email}?subject=${encodeURIComponent(
             'New project enquiry'

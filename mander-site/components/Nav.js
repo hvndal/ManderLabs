@@ -7,6 +7,8 @@ import { NAV_LINKS, BRAND } from '@/lib/content';
 import Logo from './Logo';
 import Icon from './Icon';
 
+import MagneticButton from './MagneticButton';
+
 // Buying starts a conversation rather than a checkout, so the primary action
 // everywhere is a person, not a form.
 const SALES_MAILTO = `mailto:${BRAND.email}?subject=${encodeURIComponent(
@@ -96,9 +98,11 @@ export default function Nav() {
         </ul>
 
         <div className="hidden items-center gap-4 md:flex">
-          <a href={SALES_MAILTO} className="btn-sm">
-            Ask for Quote
-          </a>
+          <MagneticButton strength={6} radius={50}>
+            <a href={SALES_MAILTO} className="btn-sm inline-block">
+              Ask for Quote
+            </a>
+          </MagneticButton>
         </div>
 
         <button

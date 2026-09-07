@@ -1,39 +1,58 @@
+'use client';
+
 import Reveal from './Reveal';
+import ScrollVelocity from './ScrollVelocity';
+import GridField from './GridField';
 
 /**
- * SECTION THREE — the stats, as a constellation rather than a table.
+ * SECTION THREE — the stats as an architectural constellation.
  *
- * A row of three evenly-spaced stats is the single most generic module on
- * the modern agency web, and it wastes the only genuinely impressive number
- * on this site by giving it the same weight as the other two.
+ * Three stats, three scales, three positions, no shared baseline.
+ * The primary stat is wrapped in ScrollVelocity: when the visitor scrolls
+ * quickly, the massive 22vw display type subtly compresses along its vertical
+ * axis and springs back to rest upon stopping.
  *
- * So: three stats, three different scales, three different positions, no
- * shared baseline and no dividers. The first is set at display scale — as
- * large as it can go while staying fully legible, since cropping a number
- * costs more than the gesture is worth — with its caption dropped to the
- * baseline beside it. The second sits at roughly half that size, pushed far
- * right. The third is small, low and hard left. The eye travels a diagonal
- * instead of scanning a rule, and the hierarchy says which number matters.
- *
- * The generous empty space between them is the composition, not a gap.
+ * Subtle editorial metadata and architectural gridlines furnish the space
+ * without cluttering it.
  */
 export default function StatsConstellation({ stats }) {
   const [first, second, third] = stats;
 
   return (
-    <section className="relative overflow-hidden bg-paper-2 py-stack-lg">
-      <div className="container-max">
-        {/* One — enormous, cropped by the right edge */}
+    <section className="relative overflow-hidden bg-paper-2 py-stack-lg border-b border-line">
+      {/* Hairline architectural grid in background */}
+      <GridField tone="ink" className="opacity-40" />
+
+      <div className="container-max relative z-10">
+        {/* Editorial Eyebrow */}
+        <Reveal>
+          <div className="flex items-center justify-between border-b border-line/70 pb-4 mb-10 font-mono text-[10px] uppercase tracking-[0.22em] text-ink-mute">
+            <div className="flex items-center gap-2">
+              <span className="h-1.5 w-1.5 bg-accent" />
+              <span>AUDITED METRICS // PORTFOLIO DATA</span>
+            </div>
+            <span>CONFIRMED 2024–2026</span>
+          </div>
+        </Reveal>
+
+        {/* One — enormous, responsive to scroll velocity */}
         {first && (
           <Reveal>
             <div className="relative">
-              <div className="flex items-end gap-6 md:gap-10">
-                <span className="whitespace-nowrap font-display text-[22vw] font-normal leading-[0.82] tracking-[-0.02em] text-ink md:text-[15.5vw]">
-                  {first.value}
-                </span>
-                <span className="mb-3 max-w-[16ch] text-body-md text-ink-soft md:mb-5">
-                  {first.label}
-                </span>
+              <div className="flex flex-col lg:flex-row lg:items-end gap-4 lg:gap-10">
+                <ScrollVelocity intensity={0.045}>
+                  <span className="whitespace-nowrap font-display text-[22vw] font-normal leading-[0.80] tracking-[-0.03em] text-ink md:text-[15.5vw] select-none block">
+                    {first.value}
+                  </span>
+                </ScrollVelocity>
+                <div className="mb-2 lg:mb-6 max-w-[20ch] border-l-2 border-accent pl-4">
+                  <span className="font-mono text-[9.5px] uppercase tracking-widest text-accent font-semibold block mb-1">
+                    PRIMARY METRIC
+                  </span>
+                  <span className="text-body-md text-ink-soft leading-snug block">
+                    {first.label}
+                  </span>
+                </div>
               </div>
             </div>
           </Reveal>
@@ -43,11 +62,14 @@ export default function StatsConstellation({ stats }) {
         {second && (
           <Reveal delay={120}>
             <div className="mt-20 flex justify-end md:mt-28">
-              <div className="max-w-[34ch] text-right">
+              <div className="max-w-[34ch] text-right border-r-2 border-line pr-5">
+                <span className="font-mono text-[9px] uppercase tracking-widest text-ink-mute block mb-2">
+                  PERFORMANCE BENCHMARK
+                </span>
                 <span className="block font-display text-stat-xl font-normal leading-none text-ink">
                   {second.value}
                 </span>
-                <span className="mt-4 block text-body-md text-ink-soft">
+                <span className="mt-3 block text-body-md text-ink-soft">
                   {second.label}
                 </span>
               </div>
@@ -58,11 +80,14 @@ export default function StatsConstellation({ stats }) {
         {/* Three — small, hard left, quiet */}
         {third && (
           <Reveal delay={200}>
-            <div className="mt-16 max-w-[26ch] md:mt-20">
+            <div className="mt-16 max-w-[28ch] md:mt-20 border-l-2 border-line pl-4">
+              <span className="font-mono text-[9px] uppercase tracking-widest text-ink-mute block mb-1">
+                COMMERCIAL CONVERSION
+              </span>
               <span className="block font-display text-stat-md font-normal leading-none text-ink">
                 {third.value}
               </span>
-              <span className="mt-3 block text-body-md text-ink-soft">
+              <span className="mt-2 block text-body-md text-ink-soft">
                 {third.label}
               </span>
             </div>

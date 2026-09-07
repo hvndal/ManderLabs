@@ -1,10 +1,23 @@
-﻿'use client';
+'use client';
 
 import { useState } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
+import { motion, AnimatePresence } from 'framer-motion';
 import Reveal from './Reveal';
 import Icon from './Icon';
+import CursorImage from './CursorImage';
+
+const SPRING = { type: 'spring', stiffness: 300, damping: 30, mass: 0.8 };
+const STAGGER = {
+  show: {
+    transition: { staggerChildren: 0.05, delayChildren: 0.1 },
+  },
+};
+const CHILD = {
+  hidden: { opacity: 0, y: 12 },
+  show: { opacity: 1, y: 0, transition: SPRING },
+};
 
 export default function WorkSpotlight({ items }) {
   const [activeIdx, setActiveIdx] = useState(0);
@@ -34,7 +47,7 @@ export default function WorkSpotlight({ items }) {
           href="/work"
           className="shrink-0 text-accent font-semibold hover:underline flex items-center gap-1.5 px-3 py-1"
         >
-          <span>Full Archive (7 Sites)</span>
+          <span>Full Archive ({items.length} Sites)</span>
           <Icon name="arrow" className="h-3.5 w-3.5" />
         </Link>
       </div>
@@ -42,70 +55,91 @@ export default function WorkSpotlight({ items }) {
       {/* THE UNBOXED ARCHITECTURAL BOX: Less frame, direct presentation */}
       <div className="border border-line bg-white shadow-2xl overflow-hidden grid grid-cols-1 lg:grid-cols-12">
         {/* Dominant Image Viewport: Flush Edge-to-Edge */}
-        <div className="lg:col-span-8 relative bg-black min-h-[420px] sm:min-h-[540px] border-b lg:border-b-0 lg:border-r border-line overflow-hidden group">
-          {current.image ? (
-            <Image
-              src={current.image}
-              alt={current.imageAlt || current.name}
-              fill
-              sizes="(max-width: 1024px) 100vw, 800px"
-              priority
-              className="object-cover object-top transition-transform duration-700 ease-out group-hover:scale-[1.01]"
-            />
-          ) : (
-            <div className="w-full h-full flex items-center justify-center text-paper font-display text-4xl p-12">
-              {current.name}
-            </div>
-          )}
+        <div className="lg:col-span-8 relative bg-black min-h-[420px] sm:min-h-[540px] border-b lg:border-b-0 lg:border-r border-line overflow-hidden">
+          <AnimatePresence mode="wait">
+            <motion.div
+              key={current.name}
+              initial={{ opacity: 0, scale: 1.03 }}
+              animate={{ opacity: 1, scale: 1 }}
+              exit={{ opacity: 0, scale: 0.98 }}
+              transition={{ ...SPRING, duration: 0.5 }}
+              className="absolute inset-0"
+            >
+              <CursorImage className="w-full h-full" strength={3}>
+                {current.image ? (
+                  <Image
+                    src={current.image}
+                    alt={current.imageAlt || current.name}
+                    fill
+                    sizes="(max-width: 1024px) 100vw, 800px"
+                    priority
+                    className="object-cover object-top"
+                  />
+                ) : (
+                  <div className="w-full h-full flex items-center justify-center text-paper font-display text-4xl p-12 bg-ink">
+                    {current.name}
+                  </div>
+                )}
+              </CursorImage>
+            </motion.div>
+          </AnimatePresence>
 
           {/* Minimal Corner Stamp inside the box */}
-          <div className="absolute top-5 left-5 bg-ink/90 backdrop-blur-md text-white px-3 py-1 font-mono text-[10px] uppercase tracking-widest border border-white/10">
+          <div className="absolute top-5 left-5 z-10 bg-ink/90 backdrop-blur-md text-white px-3 py-1 font-mono text-[10px] uppercase tracking-widest border border-white/10">
             0{activeIdx + 1} / 0{items.length} — {current.kind === 'studio' ? 'STUDIO BUILD' : 'CLIENT FLAGSHIP'}
           </div>
 
-          <div className="absolute bottom-5 right-5 hidden sm:block bg-ink/90 backdrop-blur-md text-white/70 px-3 py-1 font-mono text-[10px] uppercase tracking-widest border border-white/10">
+          <div className="absolute bottom-5 right-5 z-10 hidden sm:block bg-ink/90 backdrop-blur-md text-white/70 px-3 py-1 font-mono text-[10px] uppercase tracking-widest border border-white/10">
             VERIFIED DEPLOYMENT
           </div>
         </div>
 
         {/* Editorial Metadata Panel */}
         <div className="lg:col-span-4 p-8 sm:p-10 flex flex-col justify-between bg-paper/40">
-          <div>
-            <div className="flex items-center gap-2 mb-4">
-              <span className="bg-ink/5 border border-line px-2.5 py-0.5 font-mono text-[10px] uppercase tracking-widest text-ink font-semibold">
-                {current.sector}
-              </span>
-              <span className="font-mono text-[10px] uppercase tracking-widest text-ink-mute">
-                {current.location}
-              </span>
-            </div>
+          <AnimatePresence mode="wait">
+            <motion.div
+              key={current.name + '-meta'}
+              variants={STAGGER}
+              initial="hidden"
+              animate="show"
+              exit="hidden"
+            >
+              <motion.div variants={CHILD} className="flex items-center gap-2 mb-4">
+                <span className="bg-ink/5 border border-line px-2.5 py-0.5 font-mono text-[10px] uppercase tracking-widest text-ink font-semibold">
+                  {current.sector}
+                </span>
+                <span className="font-mono text-[10px] uppercase tracking-widest text-ink-mute">
+                  {current.location}
+                </span>
+              </motion.div>
 
-            <h3 className="font-display text-3xl sm:text-4xl text-ink leading-tight mb-2">
-              {current.name}
-            </h3>
+              <motion.h3 variants={CHILD} className="font-display text-3xl sm:text-4xl text-ink leading-tight mb-2">
+                {current.name}
+              </motion.h3>
 
-            {/* Commercial outcome */}
-            <div className="p-4 bg-white border-l-2 border-accent my-4 shadow-sm">
-              <div className="font-mono text-[9px] uppercase tracking-widest text-ink-mute">Verified Result</div>
-              <div className="text-lg font-bold font-sans text-ink">{current.result}</div>
-            </div>
+              {/* Commercial outcome */}
+              <motion.div variants={CHILD} className="p-4 bg-white border-l-2 border-accent my-4 shadow-sm">
+                <div className="font-mono text-[9px] uppercase tracking-widest text-ink-mute">Verified Result</div>
+                <div className="text-lg font-bold font-sans text-ink">{current.result}</div>
+              </motion.div>
 
-            <p className="font-sans text-body-md text-ink-soft font-light leading-relaxed mb-6">
-              {current.body}
-            </p>
+              <motion.p variants={CHILD} className="font-sans text-body-md text-ink-soft font-light leading-relaxed mb-6">
+                {current.body}
+              </motion.p>
 
-            {/* Scope tags */}
-            <div className="border-t border-line pt-4 mb-6">
-              <div className="font-mono text-[9.5px] uppercase tracking-wider text-ink-mute mb-2">Scope Delivered</div>
-              <div className="flex flex-wrap gap-1.5 font-mono text-[10px]">
-                {current.services?.map((s) => (
-                  <span key={s} className="bg-white border border-line px-2 py-0.5 text-ink">
-                    {s}
-                  </span>
-                ))}
-              </div>
-            </div>
-          </div>
+              {/* Scope tags */}
+              <motion.div variants={CHILD} className="border-t border-line pt-4 mb-6">
+                <div className="font-mono text-[9.5px] uppercase tracking-wider text-ink-mute mb-2">Scope Delivered</div>
+                <div className="flex flex-wrap gap-1.5 font-mono text-[10px]">
+                  {current.services?.map((s) => (
+                    <span key={s} className="bg-white border border-line px-2 py-0.5 text-ink">
+                      {s}
+                    </span>
+                  ))}
+                </div>
+              </motion.div>
+            </motion.div>
+          </AnimatePresence>
 
           {/* Action Row */}
           <div className="pt-4 border-t border-line flex flex-col gap-3">
