@@ -78,29 +78,29 @@ export default function HomePage() {
         {/* Manifesto Content */}
         <div className="relative z-10 container-max py-24 sm:py-32 w-full">
           <Reveal>
-            <div className="max-w-3xl">
+            <div className="max-w-3xl bg-black/70 backdrop-blur-md border border-white/15 p-8 sm:p-12 shadow-2xl rounded-sm">
               {/* Eyebrow badge with signature Pacific red accent */}
               <div className="flex items-center gap-3 mb-6">
                 <span className="h-2 w-2 rounded-full bg-accent animate-pulse" />
-                <span className="font-mono text-label-caps text-white/80 tracking-[0.24em]">
+                <span className="font-mono text-label-caps text-white/90 tracking-[0.24em]">
                   01 // STUDIO MANIFESTO
                 </span>
                 <span className="h-px w-12 bg-white/30 hidden sm:inline-block" />
               </div>
 
               {/* Bold Manifesto Headline */}
-              <h2 className="font-display text-[2.8rem] sm:text-[4rem] lg:text-[5.4rem] text-white leading-[0.92] tracking-tight mb-8 text-balance">
+              <h2 className="font-display text-[2.8rem] sm:text-[4rem] lg:text-[5.4rem] text-white leading-[0.92] tracking-tight mb-8 text-balance drop-shadow-md">
                 BUILT FOR THE CITY.<br />
-                <span className="italic font-light text-white/90">MADE FOR GROWTH.</span>
+                <span className="italic font-light text-white/95">MADE FOR GROWTH.</span>
               </h2>
 
               {/* Minimal Supporting Copy */}
-              <p className="font-sans text-body-lg text-white/80 leading-relaxed font-light mb-10 max-w-xl">
+              <p className="font-sans text-body-lg text-white/90 leading-relaxed font-light mb-10 max-w-xl drop-shadow-sm">
                 Mander is an independent digital studio creating distinctive websites, identities and digital experiences for ambitious businesses in Vancouver and beyond.
               </p>
 
               {/* Micro Technical Metadata Stamp */}
-              <div className="border-t border-white/20 pt-5 flex flex-wrap items-center justify-between gap-4 max-w-xl font-mono text-[10px] uppercase tracking-[0.25em] text-white/60">
+              <div className="border-t border-white/20 pt-5 flex flex-wrap items-center justify-between gap-4 max-w-xl font-mono text-[10px] uppercase tracking-[0.25em] text-white/70">
                 <div className="flex items-center gap-2">
                   <span className="text-white font-semibold">49°16&apos;59&quot;N</span>
                   <span>123°07&apos;15&quot;W</span>
