@@ -10,8 +10,8 @@ import { BRAND } from './content';
 // Rules for anything added here, because a blog is the easiest place on a site
 // to start quietly lying:
 //
-//   * Every number is one already published elsewhere on this site — the tier
-//     prices, the app prices, the $40 Care Plan, the 20% Community Rate.
+//   * Every number is one already published elsewhere on this site — the scope
+//     tiers, the app capabilities, the Care Plan, the 20% Community Rate.
 //     No invented statistics, no "studies show", no made-up survey.
 //   * No claim about a client that is not on their live site.
 //   * Ranges are described as ranges. "Most" and "usually" are honest words;
@@ -74,7 +74,7 @@ export const POSTS = [
         h: 'The costs that are not the build',
         p: [
           'A build price is not a total cost of ownership, and this is where quoted numbers usually get misleading.',
-          'Hosting, security, backups and small content edits are ongoing. We charge $40 a month for that as an optional Care Plan, month to month, and plenty of clients do not take it. Domain registration is yours and typically runs $15 to $25 a year. If you need paid advertising, that is a separate budget entirely and it is not a website cost.',
+          'Hosting, security, backups and small content edits are ongoing. We provide that as an optional Care Plan, month to month, and plenty of clients do not take it. Domain registration is yours and typically runs $15 to $25 a year. If you need paid advertising, that is a separate budget entirely and it is not a website cost.',
           'The number that matters is the one that includes all of it, and any studio should be able to give you that in a sentence.',
         ],
       },
@@ -231,7 +231,7 @@ export const POSTS = [
           'You are handling accounts and payments repeatedly for the same people',
         ],
         p: [
-          'Our Android builds start at $2,999 for up to eight screens with authentication and a basic backend, and $5,999 for the version with payments, bookings and an admin dashboard. Both ship to Google Play under your own developer account, which matters: the listing belongs to you, not to us.',
+          'Our custom Android builds are scoped around your exact feature needs (from foundational builds with auth and backend to full platforms with payments, bookings, and dashboards). Both ship to Google Play under your own developer account, which matters: the listing belongs to you, not to us.',
         ],
       },
       {

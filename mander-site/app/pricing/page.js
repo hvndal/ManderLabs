@@ -99,7 +99,7 @@ export default function PricingPage() {
             <PricingInteractive tiers={TIERS} />
           </Reveal>
           {/* Apps sit below the websites, folded shut, because the page is
-              read top-down and the $899 Growth plan has to be the decision
+              read top-down and the Growth tier has to be the decision
               that gets made first. */}
           <Reveal delay={60} className="mt-6">
             <AppPricing />

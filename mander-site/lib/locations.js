@@ -84,11 +84,11 @@ export const REGIONS = [
           },
                   {
             q: "Do you build mobile apps as well as websites?",
-            a: "Yes — native Android apps start at $2,999 and ship to Google Play under your own developer account. For Boston professional-services and healthcare clients that usually means client portals, intake or appointment flows rather than a storefront.",
+            a: "Yes — native Android apps are scoped around your exact workflow and ship to Google Play under your own developer account. For Boston professional-services and healthcare clients that usually means client portals, intake or appointment flows rather than a storefront.",
           },
           {
             q: "What does it cost to keep a Boston site running after launch?",
-            a: "The Care Plan is $40/month and covers hosting, security, backups and unlimited small edits. It is month to month, so a practice can drop it whenever it wants and keep the site either way.",
+            a: "Our optional Care Plan covers hosting, security, backups and unlimited small edits on a month-to-month basis, so a practice can pause or cancel whenever it wants and keep full ownership either way.",
           },
         ],
       },
@@ -112,7 +112,7 @@ export const REGIONS = [
           },
                   {
             q: "Can you build an Android app for a Cambridge startup?",
-            a: "Yes. App Launch is $2,999 for up to eight screens with authentication and a basic backend, which is usually the right shape for a first product test rather than a full platform build.",
+            a: "Yes. App Launch covers up to eight screens with authentication and a basic backend under our bespoke scoping model, which is usually the right shape for a first product test rather than a full platform build.",
           },
           {
             q: "Can we start small and add pages as we grow?",
@@ -140,7 +140,7 @@ export const REGIONS = [
           },
                   {
             q: "Do you build apps for trades or manufacturing businesses?",
-            a: "Yes — App Launch starts at $2,999 and App Growth at $5,999 adds bookings, payments and an admin dashboard. For Worcester manufacturers and trades that is usually job scheduling or a customer request flow.",
+            a: "Yes — App Launch covers foundational workflows with authentication, while App Growth adds bookings, payments and an admin dashboard under tailored scoping. For Worcester manufacturers and trades that is usually job scheduling or a customer request flow.",
           },
           {
             q: "Can you make our site work properly on a phone?",
@@ -224,7 +224,7 @@ export const REGIONS = [
           },
                   {
             q: "Can you build an app as well as a site?",
-            a: "Yes, from $2,999 on Google Play. For Lowell restaurants and retail that is usually ordering or loyalty; for the engineering side it is more often a customer or field-data tool.",
+            a: "Yes, tailored native Android deployments shipped to Google Play. For Lowell restaurants and retail that is usually ordering or loyalty; for the engineering side it is more often a customer or field-data tool.",
           },
           {
             q: "How long does a Lowell project take start to finish?",

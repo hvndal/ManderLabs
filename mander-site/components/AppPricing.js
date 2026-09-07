@@ -15,9 +15,9 @@ const SPRING = { type: 'spring', stiffness: 210, damping: 30, mass: 0.9 };
  * The Android offering, folded shut.
  *
  * Deliberately one quiet row under the website tiers rather than a section of
- * its own. Most visitors came for a website, and the $899 Growth plan has to
- * stay the loudest number on the page — so this states that apps exist, shows
- * the entry price, and gets out of the way. Anyone it is actually for will
+ * its own. Most visitors came for a website, and the Growth tier has to
+ * stay the primary focus on the page — so this states that apps exist, shows
+ * the custom scoping model, and gets out of the way. Anyone it is actually for will
  * open it.
  *
  * Opened, it renders the app packages through PricingInteractive — the same
@@ -77,8 +77,8 @@ export default function AppPricing() {
 
         <div className="flex shrink-0 items-center justify-between gap-5 border-t border-line pt-6 md:justify-end md:border-0 md:pt-0">
           <div className="md:text-right">
-            <span className="label-caps text-[10px] text-ink-mute">Apps from</span>
-            <span className="mt-1.5 block text-stat-md text-ink">$2,999</span>
+            <span className="label-caps text-[10px] text-ink-mute">Native Android Scope</span>
+            <span className="mt-1.5 block text-stat-md text-ink">Bespoke</span>
           </div>
           <Icon
             name={isOpen ? 'minus' : 'plus'}

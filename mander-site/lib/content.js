@@ -225,7 +225,7 @@ export const TIERS = [
     ],
     // The ceiling here is deliberate and accurate: Starter builds the site,
     // Growth is where it starts getting found. Naming that gap is what makes
-    // the $400 step up read as an obvious decision rather than an upsell.
+    // the tier transition read as an obvious decision rather than an upsell.
     notIncluded: [
       'Local SEO / Google Business Profile',
       'Google Analytics + Search Console',
