@@ -61,14 +61,28 @@ export default function HomePage() {
           Negative space carrying bold editorial typography. */}
       <section className="relative w-full border-b border-line bg-ink overflow-hidden min-h-[620px] sm:min-h-[720px] lg:min-h-[820px] flex items-center">
         <CursorImage strength={5} className="absolute inset-0 w-full h-full">
-          <Image
-            src="/editorial/manifesto-urban.jpg"
-            alt="Moody night street in Vancouver with wet asphalt reflections and architectural shadows"
-            fill
-            priority
-            sizes="100vw"
-            className="object-cover object-center brightness-[0.78] contrast-[1.12]"
-          />
+          {/* Mobile picture variant — user's authentic high-contrast street capture */}
+          <div className="relative w-full h-full sm:hidden">
+            <Image
+              src="/editorial/manifesto-mobile.jpg"
+              alt="Night street in Vancouver with wet asphalt reflections, pedestrians in motion, and storefront lighting"
+              fill
+              priority
+              sizes="100vw"
+              className="object-cover object-center brightness-[0.78] contrast-[1.15]"
+            />
+          </div>
+          {/* Desktop & Tablet high-res 16:9 panoramic expansion */}
+          <div className="relative w-full h-full hidden sm:block">
+            <Image
+              src="/editorial/manifesto-desktop.jpg"
+              alt="Panoramic high-resolution street photography at night in Vancouver with sidewalk reflections and architecture"
+              fill
+              priority
+              sizes="100vw"
+              className="object-cover object-center brightness-[0.78] contrast-[1.15]"
+            />
+          </div>
         </CursorImage>
 
         {/* Cinematic Scrim — multi-stop gradient ensuring crystalline contrast */}
@@ -91,7 +105,7 @@ export default function HomePage() {
               {/* Bold Manifesto Headline */}
               <h2 className="font-display text-[2.8rem] sm:text-[4rem] lg:text-[5.4rem] text-white leading-[0.92] tracking-tight mb-8 text-balance">
                 BUILT FOR THE CITY.<br />
-                <span className="italic font-light text-white/90">MADE TO MOVE.</span>
+                <span className="italic font-light text-white/90">MADE FOR GROWTH.</span>
               </h2>
 
               {/* Minimal Supporting Copy */}
