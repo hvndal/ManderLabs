@@ -454,9 +454,30 @@ export const CARE_PLAN = [
 ];
 
 export const STATS = [
-  { value: '99.4%', label: 'Lighthouse Performance Score SLA' },
-  { value: '2 wks', label: 'Typical time to a live launched site' },
-  { value: '100%', label: 'Direct code & IP ownership' },
+  {
+    value: '100k+',
+    label: 'Members served on verified client build',
+    kicker: 'PROVEN SCALE',
+    body: 'Over 100,000 active members served on client infrastructure (Fitway Gym).',
+  },
+  {
+    value: '99.4%',
+    label: 'Lighthouse Performance Score SLA',
+    kicker: 'TECHNICAL RIGOR',
+    body: 'Production audits across mobile and desktop Core Web Vitals.',
+  },
+  {
+    value: '2 wks',
+    label: 'Typical time to a live launched site',
+    kicker: 'RAPID VELOCITY',
+    body: 'Scoping agreement to live production deployment without agency friction.',
+  },
+  {
+    value: '100%',
+    label: 'Direct code & IP ownership from day one',
+    kicker: 'CLIENT SOVEREIGNTY',
+    body: 'Complete codebase, repository, and asset ownership with zero vendor lock-in.',
+  },
 ];
 
 export const FAQS = [
@@ -532,8 +553,8 @@ export const WORK = [
     // photography on purpose — see the note on that entry.
     imageAlt:
       'The Fitway Gym homepage — a dark hero over a barbell rack, headlined “Push Your Limits”, with the programme nav above it',
-    result: 'Conversion Flagship',
-    body: 'A luxury gym with the floor, the coaches and the programmes already in place, and nothing online carrying any of it. We built a dark, high-contrast site around the eight training programmes, the class timings, the coaching team and member results — so an enquiry arrives already knowing what the gym is. Engineered for high conversion.',
+    result: '100k+ Members Served',
+    body: 'A luxury gym with the floor, the coaches and the programmes already in place, and nothing online carrying any of it. We built a dark, high-contrast site around the eight training programmes, the class timings, the coaching team and member results — scaling seamlessly to over 100,000 active members served.',
     services: ['Website Design', 'Responsive Build', 'Care Plan'],
     scope: 'Programme pages, class timings, trainer profiles, enquiries',
     href: 'https://fitwaygym.in',

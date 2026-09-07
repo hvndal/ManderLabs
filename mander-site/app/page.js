@@ -114,8 +114,8 @@ export default function HomePage() {
       </section>
 
       {/* ------------------------------------------ 05 · Stats as Constellation */}
-      {/* Upgraded with ScrollVelocity on the massive display numeral */}
-      <StatsConstellation stats={STATS} />
+      {/* High-contrast monochrome background with 100k+ ScrollVelocity display & Fitway Gym flagship showcase */}
+      <StatsConstellation stats={STATS} featuredProject={WORK[0]} />
 
       {/* ------------------------------------------ 06 · Curated Work Showcase */}
       {/* Architectural box with Framer Motion AnimatePresence cross-fades */}
