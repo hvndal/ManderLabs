@@ -1,6 +1,7 @@
 'use client';
 
 import { useState } from 'react';
+import Image from 'next/image';
 
 /**
  * The MANDER identity, in three cuts.
@@ -50,17 +51,22 @@ export default function Logo({ className = '', variant = 'full', tone = 'light' 
 
   return (
     <span className={`relative inline-block ${className}`}>
-      {/* eslint-disable-next-line @next/next/no-img-element */}
-      <img
+      {/* Through next/image, not a bare <img>. These two PNGs were shipping
+          at their full source weight — 324 KB for the footer lockup and
+          167 KB for a mark rendered 44 px tall — which was over three
+          quarters of the homepage's image payload and the whole of an
+          "improve image delivery" audit finding. Resized and served as AVIF
+          they are a few kilobytes.
+
+          `sizes` is what makes that resizing happen: without it the largest
+          candidate is picked regardless of the rendered box. */}
+      <Image
         src={src}
         alt="MANDER"
-        // The intrinsic size of whichever file this variant points at. The
-        // rendered box comes from the className; these are here so the header
-        // reserves the right ratio while the image decodes, which is what a
-        // layout-shift audit flags when they are missing.
         width={set.w}
         height={set.h}
-        decoding="async"
+        sizes={variant === 'mark' ? '56px' : '220px'}
+        priority={variant === 'mark'}
         className="h-full w-auto object-contain"
         style={inkFilter ? { filter: inkFilter } : undefined}
         onError={() => {

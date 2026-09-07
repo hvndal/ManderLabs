@@ -2,6 +2,7 @@
 
 import { useEffect, useRef, useState } from 'react';
 import Link from 'next/link';
+import Image from 'next/image';
 import { motion, useReducedMotion } from 'framer-motion';
 import { PILLARS } from '@/lib/pillars';
 
@@ -92,13 +93,15 @@ function WebPanel({ active, quiet }) {
               preload="metadata"
             />
           ) : (
-            // eslint-disable-next-line @next/next/no-img-element
-            <img
+            // next/image, because on a phone this still frame *is* the
+            // panel — the film never loads there — and the source JPEG is
+            // 111 KB for a 390 px-wide box.
+            <Image
               src="/hero-poster.jpg"
               alt=""
-              width={1600}
-              height={900}
-              className="h-full w-full object-cover"
+              fill
+              sizes="(max-width: 768px) 100vw, 33vw"
+              className="object-cover"
             />
           )}
         </motion.div>
@@ -159,13 +162,12 @@ function GrowthPanel({ active, quiet }) {
             preload="metadata"
           />
         ) : (
-          // eslint-disable-next-line @next/next/no-img-element
-          <img
+          <Image
             src="/marble-poster.jpg"
             alt=""
-            width={1600}
-            height={900}
-            className="h-full w-full object-cover"
+            fill
+            sizes="(max-width: 768px) 100vw, 33vw"
+            className="object-cover"
           />
         )}
       </motion.div>
