@@ -8,10 +8,14 @@
     scroll-padding-top: 80px; /* matches the 76px sticky header + a hair */
     -webkit-font-smoothing: antialiased;
     text-rendering: optimizeLegibility;
+    overflow-x: clip;
+    max-width: 100vw;
   }
 
   body {
     @apply bg-paper font-sans text-ink;
+    overflow-x: clip;
+    max-width: 100vw;
   }
 
   ::selection {

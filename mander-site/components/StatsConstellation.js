@@ -35,13 +35,13 @@ export default function StatsConstellation({ stats, featuredProject }) {
       <div className="container-max relative z-10">
         {/* Editorial Eyebrow */}
         <Reveal>
-          <div className="flex items-center justify-between border-b border-white/15 pb-4 mb-12 font-mono text-[10px] uppercase tracking-[0.22em] text-white/60">
-            <div className="flex items-center gap-2">
-              <span className="h-1.5 w-1.5 rounded-full bg-accent" />
-              <span className="text-white font-medium">AUDITED METRICS // PORTFOLIO DATA</span>
+          <div className="flex items-center justify-between border-b border-white/15 pb-4 mb-12 font-mono text-[9px] sm:text-[10px] uppercase tracking-[0.14em] sm:tracking-[0.22em] text-white/60">
+            <div className="flex items-center gap-2 truncate">
+              <span className="h-1.5 w-1.5 rounded-full bg-accent flex-shrink-0" />
+              <span className="text-white font-medium truncate">AUDITED METRICS // DATA</span>
             </div>
-            <div className="flex items-center gap-4">
-              <span className="hidden sm:inline">SCALE &amp; RIGOR</span>
+            <div className="hidden sm:flex items-center gap-4 flex-shrink-0">
+              <span>SCALE &amp; RIGOR</span>
               <span className="text-white/40">CONFIRMED 2024–2026</span>
             </div>
           </div>

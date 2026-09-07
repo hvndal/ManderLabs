@@ -4,7 +4,7 @@ import Section from '@/components/Section';
 import Reveal from '@/components/Reveal';
 import Icon from '@/components/Icon';
 import ServiceBand from '@/components/ServiceBand';
-import Masthead from '@/components/Masthead';
+import Hero from '@/components/Hero';
 import Colophon from '@/components/Colophon';
 import ClientMarquee from '@/components/ClientMarquee';
 import StatsConstellation from '@/components/StatsConstellation';
@@ -41,16 +41,13 @@ export default function HomePage() {
     <>
       <JsonLd data={faqSchema(FAQS)} />
 
-      {/* -------------------------------------------------- 01 · The Masthead */}
-      {/* The word is the aperture: MANDER knocked out of a cream stencil over
-          full-bleed film, scaling out of frame on scroll. Preserving exact MANDER font. */}
-      <Masthead tagline="VANCOUVER CONTEMPORARY // DIGITAL PRACTICE" mono={BRAND.region} />
+      {/* -------------------------------------------------- 01 · The Hero Broadside */}
+      <Hero />
 
-      {/* ------------------------------------------- 02 · Colophon / The Sheet */}
-      {/* Furnished architectural spread: vertical crop + coordinates + magnetic CTA */}
+      {/* ------------------------------------------- 02 · Colophon / Studio Dispatch */}
       <Colophon
-        headline="Digital Architecture For Contemporary Practice."
-        body="Custom digital engineering and restrained editorial identity for ambitious commercial practices, studios, and founders across the Pacific Northwest and North America. Every system is built from scratch — zero templates, verified Lighthouse 99+ performance, and measured commercial return."
+        headline="Form Follows Commerce. Built To Outlast Trends."
+        body="Digital systems should carry the structural permanence of timeless architecture. We engineer custom Next.js platforms, restrained typography, and disciplined conversion pathways that perform for years, not quarters."
       />
 
       {/* ------------------------------------------- 03 · Stripe-Style Client Marquee */}

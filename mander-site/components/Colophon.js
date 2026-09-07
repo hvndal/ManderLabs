@@ -26,7 +26,7 @@ export default function Colophon({ headline, body }) {
             <div className="space-y-4">
               <div className="flex items-center gap-2 font-mono text-[9px] uppercase tracking-[0.25em] text-ink-mute">
                 <span className="h-1 w-4 bg-accent" />
-                <span>STUDIO DISPATCH // 01</span>
+                <span>STUDIO DISPATCH // 02</span>
               </div>
               <div className="relative aspect-[4/3] md:aspect-[3/4] w-full border border-line bg-black/5 overflow-hidden shadow-sm group">
                 <CursorImage strength={3} className="w-full h-full">
@@ -63,7 +63,7 @@ export default function Colophon({ headline, body }) {
             <Reveal>
               <div className="flex items-center gap-3 mb-6">
                 <span className="font-mono text-[10px] uppercase tracking-[0.24em] text-accent font-semibold">
-                  01 // STATEMENT OF PRACTICE
+                  02 // STATEMENT OF PRACTICE
                 </span>
                 <span className="h-px flex-1 bg-line max-w-[120px]" />
               </div>
