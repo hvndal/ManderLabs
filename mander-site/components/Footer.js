@@ -36,7 +36,7 @@ export default function Footer() {
     <footer className="relative overflow-hidden bg-ink text-paper">
       <GridField tone="paper" />
 
-      <div className="relative container-max py-stack-lg">
+      <div className="relative container-max stack-y">
         <div className="grid grid-cols-1 gap-stack-md md:grid-cols-12">
           <div className="md:col-span-6">
             {/* The one place the pale rose lockup has enough contrast to work */}

@@ -47,7 +47,7 @@ export const NAV_LINKS = [
   { label: 'Brand', href: '/brand' },
   { label: 'Digital', href: '/digital' },
   { label: 'Growth', href: '/growth' },
-  { label: 'Work', href: '/#work' },
+  { label: 'Work', href: '/work' },
   { label: 'Plans', href: '/pricing' },
 ];
 
@@ -451,6 +451,11 @@ export const CARE_PLAN = [
   { title: 'Priority Support', body: 'A direct line to the people who built your site.' },
 ];
 
+// Three numbers that were set as a "constellation" on the homepage. Two of
+// them restated copy that was already on the page in words ("2 wks", "100%
+// sites you own outright") and the section existed mainly to fill a screen.
+// Kept as data because the 100k+ figure is real and sourced from the Fitway
+// engagement — it is quoted on the work page instead.
 export const STATS = [
   { value: '100k+', label: 'Members served on one client build' },
   { value: '2 wks', label: 'Typical time to a launched site' },

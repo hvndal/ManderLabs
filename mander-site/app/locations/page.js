@@ -109,7 +109,7 @@ export default function LocationsHubPage() {
 
       <section className="relative overflow-hidden bg-ink text-paper">
         <GridField tone="paper" />
-        <div className="relative container-max py-stack-lg text-center">
+        <div className="relative container-max stack-y text-center">
           <Reveal className="mx-auto max-w-3xl">
             <h2 className="font-display text-headline-lg-mobile md:text-display-lg">
               Don&apos;t see your market listed?

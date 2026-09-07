@@ -1,7 +1,6 @@
 import Link from 'next/link';
 import Section, { SectionHeading } from '@/components/Section';
 import Reveal from '@/components/Reveal';
-import Statement from '@/components/Statement';
 import Icon from '@/components/Icon';
 import PageHeader from '@/components/PageHeader';
 import { IndexList, IndexRow, FieldNote } from '@/components/Swiss';
@@ -320,7 +319,7 @@ export default function PricingPage() {
 
       {/* ------------------------------------------------------------ Final CTA */}
       <section className="bg-ink text-paper">
-        <div className="container-max py-stack-lg text-center">
+        <div className="container-max stack-y text-center">
           <Reveal className="mx-auto max-w-3xl">
             <h2 className="font-display text-headline-lg-mobile md:text-display-lg">
               Find your fit in 60 seconds.

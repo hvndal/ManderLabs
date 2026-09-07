@@ -12,7 +12,7 @@ process.on('unhandledRejection',e=>console.log('UR',e));
 const b=await chromium.launch(process.env.CHROMIUM ? { executablePath: process.env.CHROMIUM } : {});
 
 // --- console errors + network failures across the main routes
-const routes=['/','/brand','/digital','/growth','/pricing','/quote','/contact','/about','/locations/metro-vancouver/vancouver','/legal/refunds'];
+const routes=['/','/work','/brand','/digital','/growth','/pricing','/quote','/contact','/about','/locations/metro-vancouver/vancouver','/legal/refunds'];
 const errs=[], bad=[];
 for(const r of routes){
   const p=await b.newPage();

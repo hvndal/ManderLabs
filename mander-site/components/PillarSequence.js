@@ -43,7 +43,7 @@ export default function PillarSequence() {
       <div className="grid grid-cols-1 md:grid-cols-3 md:gap-gutter">
         {PILLARS.map((pillar, i) => (
           <Reveal key={pillar.id} delay={i * 90}>
-            <div className="border-l border-line pl-5 pt-8 md:border-l-0 md:pl-0 md:pt-7">
+            <div className="border-l border-line pl-5 pt-6 md:border-l-0 md:pl-0 md:pt-7">
               {/* The number only appears here on a phone — on desktop it is
                   already sitting on the rule above. */}
               <span className="rail mb-3 block text-ink-mute md:hidden">
@@ -67,10 +67,10 @@ export default function PillarSequence() {
                 </span>
               </Link>
 
-              {/* Four of the seven or eight. The pillar page carries the full
-                  list; this is here to make the pillar concrete, not to be
-                  the list. */}
-              <ul className="mt-8 border-t border-line">
+              {/* Four of the seven or eight, desktop only. The pillar page
+                  carries the full list; on a phone three of these stacked is
+                  twelve rows of small type between the reader and the work. */}
+              <ul className="mt-8 hidden border-t border-line md:block">
                 {pillar.capabilities.slice(0, 4).map((c) => (
                   <li
                     key={c.name}

@@ -26,6 +26,10 @@ export default function sitemap() {
 
   return [
     { url: `${SITE_URL}/`, lastModified: lastContentUpdate, changeFrequency: 'weekly', priority: 1 },
+    // The work index. High priority: it is the page the nav points at, the
+    // one the homepage hands off to, and the only place the full portfolio
+    // exists now that the homepage shows three projects.
+    { url: `${SITE_URL}/work`, lastModified: lastContentUpdate, changeFrequency: 'monthly', priority: 0.9 },
     // The three pillars sit directly under the homepage in priority: they are
     // the pages the positioning rests on and the ones worth ranking.
     ...PILLARS.map((pillar) => ({

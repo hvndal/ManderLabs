@@ -16,7 +16,7 @@ export default function NotFound() {
   return (
     <section className="relative flex min-h-[70vh] items-center overflow-hidden border-b border-line">
       <GridField />
-      <div className="relative container-max py-stack-lg">
+      <div className="relative container-max stack-y">
         <span className="label-caps text-accent">404</span>
         <h1 className="h-display mt-6 max-w-[14ch]">
           That page moved, or never existed.

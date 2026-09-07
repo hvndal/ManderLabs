@@ -36,8 +36,8 @@ export default function ProcessTimeline({ steps }) {
           <Reveal
             key={step.step}
             as="li"
-            delay={index * 110}
-            className={`${place.col} process-step pt-7 md:pt-9`}
+            delay={Math.min(index * 60, 120)}
+            className={`${place.col} process-step pt-4 md:pt-9`}
           >
             {/* The rule draws itself left-to-right as the step arrives, so the
                 staircase builds rather than simply appearing. Transform-only,
@@ -47,23 +47,23 @@ export default function ProcessTimeline({ steps }) {
               className="process-rule block h-px w-full origin-left bg-line-strong"
             />
 
-            <div className="flex items-start gap-6 pt-7 md:gap-10 md:pt-9">
+            <div className="flex items-baseline gap-5 pt-4 md:items-start md:gap-10 md:pt-9">
               {/* The staircase numerals are the largest type in the section,
                   so they set in the display serif with the other display
                   type. In the mono they were reading as a code, which put
                   them in the same voice as the tiny section labels. */}
               <span
-                className={`font-display text-stat-lg leading-[0.78] text-line-strong ${place.num}`}
+                className={`font-display text-[1.75rem] leading-[0.78] text-line-strong md:text-stat-lg ${place.num}`}
                 aria-hidden="true"
               >
                 {step.step}
               </span>
 
-              <div className="flex-1 pb-10 md:pb-14">
+              <div className="flex-1 pb-7 md:pb-14">
                 <h3 className="font-display text-[1.65rem] leading-[1.15] text-ink md:text-[2rem]">
                   {step.title}
                 </h3>
-                <p className="mt-3 max-w-text text-body-lg text-ink-soft">
+                <p className="mt-2.5 max-w-text text-body-md text-ink-soft md:mt-3 md:text-body-lg">
                   {step.body}
                 </p>
               </div>

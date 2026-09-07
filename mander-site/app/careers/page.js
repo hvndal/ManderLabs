@@ -312,7 +312,7 @@ export default function CareersPage() {
 
       {/* ------------------------------------------------------------ Final CTA */}
       <section className="bg-ink text-paper">
-        <div className="container-max py-stack-lg text-center">
+        <div className="container-max stack-y text-center">
           <Reveal className="mx-auto max-w-3xl">
             <h2 className="font-display text-headline-lg-mobile md:text-display-lg">
               Not sure you fit? Apply anyway.

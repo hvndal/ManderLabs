@@ -62,23 +62,30 @@ module.exports = {
       fontFamily: {
         sans: ['var(--font-hanken)', 'ui-sans-serif', 'system-ui', 'sans-serif'],
         mono: ['var(--font-jetbrains)', 'ui-monospace', 'SFMono-Regular', 'monospace'],
-        // Display grotesque — headings and mastheads. See the note in layout.js.
-        display: ['var(--font-archivo)', 'ui-sans-serif', 'Helvetica Neue', 'Arial', 'sans-serif'],
-        // The one editorial counterpoint, used only by Statement's pull-quote.
+        // Display serif — headings and mastheads. See the note in layout.js.
+        display: ['var(--font-instrument)', 'ui-serif', 'Georgia', 'serif'],
+        // Kept as an alias so Statement and the drop cap can name the serif
+        // explicitly rather than relying on it also being the display face.
         editorial: ['var(--font-instrument)', 'ui-serif', 'Georgia', 'serif'],
       },
       fontSize: {
         // High contrast: statements are large, labels are tiny. Nothing sits
         // in the comfortable middle — that middle is what read as "generic".
         //
-        // The display and headline steps are set in the grotesque, so they
-        // want the opposite treatment to the serif that used to hold them:
-        // tracking pulled well negative, leading pulled under 1. A grotesk at
-        // 5rem with neutral tracking reads as a default browser heading; the
-        // negative letterspacing is most of what makes it read as set type.
-        'display-lg': ['clamp(2.75rem, 6.5vw, 5.5rem)', { lineHeight: '0.9', letterSpacing: '-0.04em', fontWeight: '600' }],
-        'headline-lg': ['clamp(2.25rem, 4.4vw, 3.6rem)', { lineHeight: '0.95', letterSpacing: '-0.032em', fontWeight: '600' }],
-        'headline-lg-mobile': ['2.15rem', { lineHeight: '0.98', letterSpacing: '-0.03em', fontWeight: '600' }],
+        // Back in the serif, so the tracking goes back to near-neutral: the
+        // tight negative letterspacing a grotesque needs at size will collapse
+        // a high-contrast serif's sidebearings and clot the joins. Leading is
+        // a touch looser for the same reason — serif ascenders and descenders
+        // need the room.
+        //
+        // `display-cover` is new and exists for exactly one element: the
+        // headline on the homepage cover, which has to be the largest thing on
+        // the site by a clear margin rather than one step up from a section
+        // heading.
+        'display-cover': ['clamp(3rem, 9vw, 8rem)', { lineHeight: '0.92', letterSpacing: '-0.022em', fontWeight: '400' }],
+        'display-lg': ['clamp(2.75rem, 6.5vw, 5.5rem)', { lineHeight: '0.97', letterSpacing: '-0.018em', fontWeight: '400' }],
+        'headline-lg': ['clamp(2.25rem, 4.4vw, 3.6rem)', { lineHeight: '1.03', letterSpacing: '-0.015em', fontWeight: '400' }],
+        'headline-lg-mobile': ['2.15rem', { lineHeight: '1.05', letterSpacing: '-0.012em', fontWeight: '400' }],
         // Stays in the grotesk — it's a card/row title doing UI work, not a
         // display line, and the serif gets muddy this small.
         'headline-md': ['1.35rem', { lineHeight: '1.2', letterSpacing: '-0.015em', fontWeight: '500' }],
@@ -87,7 +94,7 @@ module.exports = {
         'stat-md': ['1.6rem', { lineHeight: '1.05', letterSpacing: '-0.02em', fontWeight: '600' }],
         'body-lg': ['1.0625rem', { lineHeight: '1.65', letterSpacing: '0em', fontWeight: '400' }],
         'body-md': ['0.9375rem', { lineHeight: '1.6', letterSpacing: '0em', fontWeight: '400' }],
-        'label-caps': ['0.6875rem', { lineHeight: '1.3', letterSpacing: '0.18em', fontWeight: '500' }],
+        'label-caps': ['0.6875rem', { lineHeight: '1.3', letterSpacing: '0.22em', fontWeight: '500' }],
         'label-sm': ['0.75rem', { lineHeight: '1.4', letterSpacing: '0.02em', fontWeight: '500' }],
       },
       borderRadius: {
@@ -104,7 +111,7 @@ module.exports = {
         gutter: '24px',
         'margin-desktop': '48px',
         'margin-mobile': '20px',
-        'stack-lg': '112px',
+        'stack-lg': '140px',
         'stack-md': '48px',
         'stack-sm': '16px',
       },

@@ -30,7 +30,7 @@ export function Section({
       id={id}
       className={`${tones[tone] || tones.paper} ${
         rule ? 'border-t border-line' : ''
-      } py-stack-lg ${className}`}
+      } stack-y ${className}`}
     >
       <div className="container-max">{children}</div>
     </section>

@@ -81,8 +81,8 @@ export function CommunityRateSection() {
 
   return (
     <section id="community-rate" className="bg-ink text-paper">
-      <div className="container-max py-stack-lg">
-        <div className="grid grid-cols-1 gap-y-14 md:grid-cols-12 md:gap-gutter">
+      <div className="container-max stack-y">
+        <div className="grid grid-cols-1 gap-y-8 md:grid-cols-12 md:gap-gutter md:gap-y-14">
           {/* The number.
               Set as apertured type rather than flat paper-white: at this
               scale a solid numeral sat right against the body column and the
@@ -106,7 +106,7 @@ export function CommunityRateSection() {
                   trick that arrived with a display face this site no longer
                   uses, and that pulled a video file onto a page whose whole
                   job is a form. Grotesk at this size does not need help. */}
-              <p className="mt-8 font-display text-[6rem] leading-[0.82] tracking-[-0.05em] text-paper md:text-[8rem]">
+              <p className="mt-6 font-display text-[4.5rem] leading-[0.82] tracking-[-0.03em] text-paper md:mt-8 md:text-[8rem]">
                 {COMMUNITY.rate}
               </p>
 
@@ -122,13 +122,13 @@ export function CommunityRateSection() {
               <p className="max-w-[26ch] font-display text-headline-lg-mobile leading-[1.12] text-paper md:text-headline-lg">
                 {COMMUNITY.lede}
               </p>
-              <p className="mt-8 max-w-text text-body-lg text-paper/70">
+              <p className="mt-6 max-w-text text-body-md text-paper/70 md:mt-8 md:text-body-lg">
                 {COMMUNITY.body}
               </p>
             </Reveal>
 
             <Reveal delay={180}>
-              <ul className="mt-10 flex flex-col divide-y divide-paper/15 border-y border-paper/15">
+              <ul className="mt-8 hidden flex-col divide-y divide-paper/15 border-y border-paper/15 md:mt-10 md:flex">
                 {COMMUNITY.categories
                   .filter((c) => c.id !== 'other')
                   .map((c) => (
@@ -140,7 +140,7 @@ export function CommunityRateSection() {
             </Reveal>
 
             <Reveal delay={220}>
-              <div className="mt-12 border-l-2 border-accent pl-6">
+              <div className="mt-8 hidden border-l-2 border-accent pl-6 md:mt-12 md:block">
                 <h3 className="text-headline-md font-semibold tracking-tight text-paper">
                   {COMMUNITY.smallBusinessTitle}
                 </h3>
@@ -151,7 +151,7 @@ export function CommunityRateSection() {
             </Reveal>
 
             <Reveal delay={260}>
-              <div className="mt-12 flex flex-col items-start gap-5">
+              <div className="mt-8 flex flex-col items-start gap-5 md:mt-12">
                 <button type="button" onClick={open} className="btn-on-dark">
                   {COMMUNITY.cta}
                   <Icon name="arrow" className="h-4 w-4" strokeWidth={2} />
@@ -164,7 +164,7 @@ export function CommunityRateSection() {
 
         {/* The terms, kept in the room rather than hidden on another page */}
         <Reveal delay={120}>
-          <details className="group mt-24 border-t border-paper/15 pt-8">
+          <details className="group mt-12 border-t border-paper/15 pt-8 md:mt-24">
             <summary className="label-caps flex cursor-pointer items-center gap-3 text-paper/50 transition-colors hover:text-paper/80">
               How the rate works
               <span

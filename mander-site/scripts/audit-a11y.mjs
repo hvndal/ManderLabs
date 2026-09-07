@@ -8,7 +8,7 @@
 import { chromium } from 'playwright';
 const BASE = process.env.BASE || 'http://localhost:3000';
 const b=await chromium.launch(process.env.CHROMIUM ? { executablePath: process.env.CHROMIUM } : {});
-const routes=['/','/brand','/digital','/growth','/pricing','/quote','/contact','/about','/locations/metro-vancouver/vancouver','/legal/refunds','/blog','/careers','/locations'];
+const routes=['/','/work','/brand','/digital','/growth','/pricing','/quote','/contact','/about','/locations/metro-vancouver/vancouver','/legal/refunds','/blog','/careers','/locations'];
 const bad=[], vague=[], noalt=[], heads=[];
 const VAGUE=new Set(['view','open','more','learn more','read more','click here','here','link','site','visit site','quote','details']);
 for(const r of routes){

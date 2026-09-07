@@ -1,42 +1,36 @@
 import Link from 'next/link';
-import Section, { SectionHeading } from '@/components/Section';
 import Reveal from '@/components/Reveal';
 import Icon from '@/components/Icon';
-import Triptych from '@/components/Triptych';
-import Colophon from '@/components/Colophon';
-import StatsConstellation from '@/components/StatsConstellation';
-import GridField from '@/components/GridField';
+import Cover from '@/components/Cover';
+import ClientMarks from '@/components/ClientMarks';
+import PillarSequence from '@/components/PillarSequence';
+import { Spread, PullQuote, Standfirst } from '@/components/Editorial';
 import {
   CommunityRateSection,
   CommunityRateNote,
   CommunityRateFooterLink,
 } from '@/components/CommunityRate';
-import Statement from '@/components/Statement';
 import WorkFeatures from '@/components/WorkFeatures';
-import TeamCard from '@/components/TeamCard';
-import ProcessTimeline from '@/components/ProcessTimeline';
-import Testimonials from '@/components/Testimonials';
-import Faq from '@/components/Faq';
 import ContactForm from '@/components/ContactForm';
-import JsonLd from '@/components/JsonLd';
 import WhatsAppCta from '@/components/WhatsAppCta';
-import {
-  TERMS,
-  PROCESS,
-  STATS,
-  WORK,
-  CLIENTS,
-  TEAM,
-  BRAND,
-} from '@/lib/content';
+import { TERMS, WORK, CLIENTS, BRAND } from '@/lib/content';
 import { getServerMarket } from '@/lib/market-server';
-import { FieldNote } from '@/components/Swiss';
-import PillarSequence from '@/components/PillarSequence';
-import { faqSchema, alternates } from '@/lib/seo';
+import { alternates } from '@/lib/seo';
 
 export const metadata = {
   alternates: alternates('/'),
 };
+
+// Three on the homepage, the rest on /work. Eight full features was most of
+// the page's length and asked a first-time visitor to read a portfolio before
+// finding out what any of it costs.
+const HOME_WORK = 3;
+
+// The process and the questions are not on this page any more. Both exist in
+// full elsewhere — the stages on /about, every question on /pricing — and a
+// homepage that reprints them is the reason a phone had to scroll through
+// seventeen screens to reach a contact form. The cover's contents list is
+// what a magazine uses instead of printing the whole issue on page one.
 
 export default function HomePage() {
   // Prices, positioning line and FAQ all come from the visitor's market; the
@@ -45,370 +39,118 @@ export default function HomePage() {
 
   return (
     <>
-      <JsonLd data={faqSchema(market.faqs)} />
-
-      {/* ------------------------------------------------- 01 · The triptych */}
-      {/* WEB / SOCIAL / BRAND standing side by side at full height, read as
-          one spread rather than three cards. See Triptych.js. */}
-      <Triptych tagline={market.tagline} region={market.region} />
-
-      {/* ------------------------------------------- 02 · Colophon / the sheet */}
-      <Colophon
+      {/* ------------------------------------------------------------ Cover */}
+      <Cover
+        tagline={market.tagline}
+        region={market.region}
         headline={market.colophon.headline}
-        body={market.colophon.body}
-        clients={CLIENTS}
+        standfirst={market.colophon.body}
       />
 
-      {/* -------------------------------------------------- Statement · breathe */}
-      <Statement
-        eyebrow="Our take"
-        text="A website is not a brochure. It is the first employee your business hires that never sleeps."
-        tone="warm"
-        align="editorial"
-      />
+      <ClientMarks clients={CLIENTS} />
 
-      {/* ------------------------------------------ 03 · Stats as constellation */}
-      <StatsConstellation stats={STATS} />
-
-      {/* ----------------------------------------------------------------- Work */}
-      <Section id="work" tone="paper" className="!py-stack-md">
-        {/* The running head, in the same grammar as every other section: index
-            and label in the margin, statement in the field, one link hung off
-            the right edge. */}
-        <Reveal>
-          <div className="border-t border-line pt-6">
-            <div className="grid grid-cols-1 gap-6 md:grid-cols-12 md:gap-gutter">
-              <div className="md:col-span-3">
-                <div className="flex items-baseline gap-4">
-                  <span className="rail text-ink-mute">
-                    04
-                  </span>
-                  <span className="rail text-accent">
-                    Selected work
-                  </span>
-                </div>
-              </div>
-              <div className="md:col-span-6">
-                <h2 className="font-display text-headline-lg-mobile leading-[1.02] text-ink md:text-headline-lg">
-                  A few recent builds.
-                </h2>
-              </div>
-              <div className="md:col-span-3 md:text-right">
-                <a
-                  href={`mailto:${BRAND.email}?subject=${encodeURIComponent(
-                    'New project enquiry'
-                  )}`}
-                  className="link-underline label-caps text-ink"
-                >
-                  Start your project
-                  <Icon name="arrow" className="h-4 w-4" strokeWidth={2} />
-                </a>
-              </div>
-            </div>
-          </div>
-        </Reveal>
-
-        <div className="mt-12">
-          <WorkFeatures items={WORK} />
-        </div>
-      </Section>
-
-      {/* --------------------------------------------------------- The pillars */}
+      {/* --------------------------------------------------- 01 · The offer */}
       {/* Six services in a list became three in a sequence. The list read as
           "we will take any work"; the sequence is an argument — who you are,
-          how people experience you, how the right people find you — and it is
-          also the order clients tend to need them in, which is what makes
-          expanding from one pillar into the next a conversation rather than a
-          pitch. */}
-      <section id="services" className="relative overflow-hidden border-y border-line bg-paper">
-        {/* Drawn structure rather than an animated wash. What used to sit here
-            was a fullscreen fragment shader tinting the section warm rose —
-            constants left behind by a palette this site no longer uses, run on
-            a permanent render loop to fight the colours above and below it. */}
-        <GridField />
+          how people experience you, how the right people find you. */}
+      <Spread id="services" index="01" folio="What we do">
+        <h2 className="h-display max-w-[14ch]">Define. Build. Grow.</h2>
+        <Standfirst className="mt-8" dropCap>
+          Three pillars, one system. Most clients arrive needing one of them
+          and end up using the next, which is the reason the studio is
+          organised this way rather than as a menu of services.
+        </Standfirst>
+        <PillarSequence />
+      </Spread>
 
-        <div className="relative container-max py-stack-md">
-          <div className="grid grid-cols-1 gap-y-8 md:grid-cols-12 md:gap-gutter">
-            <div className="md:col-span-3">
-              <Reveal>
-                <div className="flex items-baseline gap-4">
-                  <span className="rail text-ink-mute">
-                    05
-                  </span>
-                  <span className="rail text-accent">
-                    What we do
-                  </span>
-                </div>
-              </Reveal>
-            </div>
-
-            <div className="md:col-span-6 md:self-end">
-              <Reveal delay={100}>
-                <h2 className="max-w-[16ch] font-display text-headline-lg-mobile leading-[1.02] text-ink md:text-display-lg">
-                  Define. Build. Grow.
-                </h2>
-              </Reveal>
-            </div>
-
-            <div className="md:col-span-3 md:self-end">
-              <Reveal delay={180}>
-                <p className="text-body-md text-ink-soft">
-                  Three pillars, one system. Hire one; most clients end up
-                  using the next.
-                </p>
-              </Reveal>
-            </div>
-          </div>
-
-          <PillarSequence />
-
-          <Reveal delay={120} className="mt-8">
-            <FieldNote>
-              Identity → Experience → Demand. Local implementation focused on
-              Metro Vancouver.
-            </FieldNote>
-          </Reveal>
+      {/* -------------------------------------------------- 02 · The work */}
+      <Spread id="work" index="02" folio="Selected work" className="!pt-0">
+        <div className="flex flex-wrap items-end justify-between gap-6">
+          <h2 className="h-display max-w-[12ch]">A few recent builds.</h2>
+          <Link href="/work" className="btn-outline">
+            All work
+            <Icon name="arrow" className="h-4 w-4" strokeWidth={2} />
+          </Link>
         </div>
-      </section>
-
-      {/* -------------------------------------------------- Statement · breathe */}
-      <Statement
-        eyebrow="No surprises"
-        text="Fixed price. Fixed scope. You see it before you approve it."
-        tone="alt"
-      />
-
-      {/* --------------------------------------------------------------- Terms */}
-      {/* Was a stock photograph beside a tick-list — the last generic block on
-          the route and the only remaining stock image outside Work. These are
-          commitments, so they're set as clauses: numbered, ruled, each one a
-          line of display serif with its qualification hung out in the right
-          margin. Same grammar as the services index, so the page stops
-          switching languages halfway down. */}
-      <section className="relative overflow-hidden bg-paper py-stack-lg">
-        <GridField />
-
-        <div className="relative container-max">
-        <div className="grid grid-cols-1 gap-y-8 md:grid-cols-12 md:gap-gutter">
-          <div className="md:col-span-3">
-            <Reveal>
-              <div className="flex items-baseline gap-4">
-                <span className="rail text-ink-mute">
-                  03
-                </span>
-                <span className="rail text-accent">
-                  Why MANDER
-                </span>
-              </div>
-            </Reveal>
-          </div>
-          <div className="md:col-span-8 md:col-start-4">
-            <Reveal delay={80}>
-              <h2 className="h-display max-w-[15ch]">
-                Big-firm quality, without the big-firm invoice.
-              </h2>
-              <p className="mt-8 max-w-text text-body-lg text-ink-soft md:mt-10">
-                Most agencies price small businesses out, or hand them a
-                template and disappear. We do neither — and these three hold
-                whatever you spend.
-              </p>
-            </Reveal>
-          </div>
+        <div className="mt-12">
+          <WorkFeatures items={WORK} limit={HOME_WORK} compact />
         </div>
+      </Spread>
 
-        <div className="mt-16 border-t border-line md:mt-24">
-          {TERMS.map((term, index) => (
-            <Reveal key={term.index} delay={index * 70}>
-              <div className="group grid grid-cols-1 gap-y-3 border-b border-line py-9 md:grid-cols-12 md:items-baseline md:gap-gutter md:py-12">
-                {/* Flat numerals. These carried video inside the letterforms
-                    — a trick, and the least Swiss thing on the page. A clause
-                    number is furniture: it is set, ruled and left alone. */}
-                <div className="md:col-span-2">
-                  <span className="block font-display text-[3.25rem] leading-none tracking-[-0.04em] text-ink-mute transition-colors duration-500 group-hover:text-accent md:text-[4rem]">
-                    {term.index}
-                  </span>
-                </div>
-                <h3 className="font-display text-headline-lg-mobile text-ink md:col-span-6 md:text-headline-lg">
-                  {term.title}
-                </h3>
-                <p className="max-w-text text-body-md text-ink-soft md:col-span-4">
-                  {term.body}
-                </p>
-              </div>
-            </Reveal>
-          ))}
-        </div>
-        </div>
-      </section>
-
-      {/* -------------------------------------------------------------- Process */}
-      {/* The heading is pinned hard left and the steps descend away from it
-          diagonally (see ProcessTimeline) — the section's own shape states
-          the sequence before the copy does. */}
-      <Section id="process" tone="alt">
-        <div className="grid grid-cols-1 gap-y-10 md:grid-cols-12 md:gap-gutter">
-          <div className="md:col-span-4">
-            <Reveal>
-              <div className="flex items-baseline gap-4">
-                <span className="rail text-ink-mute">
-                  06
-                </span>
-                <span className="rail text-accent">
-                  How it works
-                </span>
-              </div>
-              <h2 className="mt-6 max-w-[12ch] font-display text-headline-lg-mobile text-ink md:text-headline-lg">
-                A straight line from call to launch.
-              </h2>
-            </Reveal>
+      {/* -------------------------------------------------- 03 · The terms */}
+      <section className="border-y border-line bg-paper-2">
+        <div className="container-max grid grid-cols-1 gap-y-10 stack-y md:grid-cols-12 md:gap-gutter">
+          <div className="md:col-span-5">
+            <PullQuote>Fixed price. Fixed scope. You see it before you approve it.</PullQuote>
           </div>
-          <div className="md:col-span-12">
-            <ProcessTimeline steps={PROCESS} />
-          </div>
-        </div>
-      </Section>
-
-      {/* ----------------------------------------------------------------- Team */}
-      <Section id="team" tone="paper">
-        {/* Title left, supporting line dropped to the right margin and set
-            small — the asymmetry keeps it from reading as another centred
-            title card, and the gap between them is the composition. */}
-        <div className="grid grid-cols-1 gap-y-6 md:grid-cols-12 md:gap-gutter">
-          <div className="md:col-span-6">
-            <Reveal>
-              <div className="flex items-baseline gap-4">
-                <span className="rail text-ink-mute">
-                  07
-                </span>
-                <span className="rail text-accent">
-                  The team
-                </span>
-              </div>
-              <h2 className="mt-6 max-w-[14ch] font-display text-headline-lg-mobile text-ink md:text-headline-lg">
-                Small, senior, and reachable.
-              </h2>
-            </Reveal>
-          </div>
-          <div className="md:col-span-4 md:col-start-9 md:self-end">
-            <Reveal delay={120}>
-              <p className="text-body-md text-ink-soft">
-                No account-manager relay. The people who scope your project are
-                the people who build it.
-              </p>
-            </Reveal>
-          </div>
-        </div>
-
-        {/* Five across three columns reads as a small, concentrated studio —
-            and the empty sixth cell is left empty on purpose. Stretching the
-            grid to close the gap would make a five-person team look like it
-            was arranged to fill space. */}
-        {/* `items-stretch` plus `h-full` on both the Reveal wrapper and the
-            card is what actually makes the row share a baseline — without it
-            each card sizes to its own content and the portraits step up and
-            down across the row. */}
-        <div className="mt-14 grid grid-cols-2 items-stretch gap-x-6 gap-y-12 sm:grid-cols-3 lg:max-w-4xl">
-          {TEAM.map((member, index) => (
-            <Reveal key={member.name} delay={index * 60} className="flex h-full">
-              <TeamCard member={member} />
-            </Reveal>
-          ))}
-        </div>
-      </Section>
-
-      {/* ------------------------------------------------------------ Engagements */}
-      {/* Was "In their words" — the quotes it ran on were invented, so this
-          now shows the verifiable side of the same engagements instead. */}
-      {/* Set as a running head on a rule, matching Selected Work above rather
-          than the centred title card it used to use — a centred heading in the
-          middle of a page built on asymmetry is the thing that made this
-          section read as bolted on. */}
-      <Section tone="warm">
-        <Reveal>
-          <div className="flex flex-col gap-5 border-b border-line pb-7 sm:flex-row sm:items-baseline sm:justify-between sm:gap-10">
-            <div className="flex flex-wrap items-baseline gap-x-6 gap-y-2">
-              <span className="label-caps shrink-0 text-accent">Engagements</span>
-              <h2 className="font-display text-headline-lg-mobile text-ink md:text-headline-lg">
-                What we actually delivered.
-              </h2>
-            </div>
-            <p className="max-w-[34ch] shrink-0 text-body-md text-ink-soft sm:text-right">
-              Scope and outcome for three recent builds — no paraphrasing, no
-              invented praise.
-            </p>
-          </div>
-        </Reveal>
-        <div className="mt-14">
-          <Testimonials items={CLIENTS} />
-        </div>
-      </Section>
-
-      {/* ------------------------------------------------------- Quiz CTA (red) */}
-      <section className="bg-accent text-on-accent">
-        <div className="container-max py-stack-lg">
-          <div className="grid grid-cols-1 gap-10 lg:grid-cols-12 lg:items-end">
-            <div className="lg:col-span-8">
-              <span className="label-caps text-white/70">Not sure where to start?</span>
-              {/* Pushed up to display scale. On a full-bleed accent field a
-                  headline set at the same size as the ones on paper looks
-                  timid — the block needs the type to fill it. */}
-              <h2 className="mt-5 font-display text-headline-lg-mobile md:text-display-lg">
-                Take the 60-second fit quiz.
-              </h2>
-              <p className="mt-5 max-w-text text-body-lg text-white/85">
-                Six quick questions. We recommend a plan and a starting price
-                based on your answers — or route you straight to a person if
-                that is the better call.
-              </p>
-            </div>
-            <div className="lg:col-span-4 lg:text-right">
-              <Link href="/quote" className="btn-on-dark">
-                Start the quiz
-                <Icon name="arrow" className="h-4 w-4" strokeWidth={2} />
-              </Link>
-              <p className="mt-4 text-label-sm text-white/70">
-                Prefer to talk?{' '}
-                <a href={`mailto:${BRAND.email}`} className="underline underline-offset-4">
-                  Email us
-                </a>
-              </p>
-            </div>
+          <div className="md:col-span-6 md:col-start-7">
+            <dl className="border-t border-line">
+              {TERMS.map((term) => (
+                <Reveal key={term.index}>
+                  <div className="border-b border-line py-7">
+                    <dt className="font-display text-[1.6rem] leading-none text-ink md:text-[2rem]">
+                      {term.title}
+                    </dt>
+                    <dd className="mt-3 max-w-text text-body-md text-ink-soft">{term.body}</dd>
+                  </div>
+                </Reveal>
+              ))}
+            </dl>
           </div>
         </div>
       </section>
 
-      {/* ---------------------------------------------------------------- Plans */}
-      {/* Was a pricing block: four cards, an app panel, a note. All of it was
-          furniture for numbers that are no longer published, and a card row
-          is the single most SaaS-shaped thing a page can contain. What is
-          actually useful here is the shape of the offer — three or four named
-          plans — and one door into a quote. The full scope lives one click
-          away on /pricing. */}
-      <Section id="pricing" tone="paper">
-        <SectionHeading
-          index="08"
-          eyebrow="Plans"
-          title="Fixed scope, fixed price, agreed before we start."
-          body="Every project is quoted in writing against a written scope. The number you approve is the number you pay — there is no hourly meter running behind it."
-          meta={`${market.tiers.length} plans`}
-        />
+      {/* -------------------------------------------------- 04 · The plans */}
+      {/* Was four plan names in a row of links, with everything that makes a
+          plan a plan — how many pages, how long, how many rounds, who it is
+          for — buried on /pricing. Prices are quoted rather than published,
+          which makes it doubly important that the shape of the offer is
+          legible without clicking anything. */}
+      <Spread id="pricing" index="04" folio="Plans">
+        <h2 className="h-display max-w-[13ch]">What you get, and how it is priced.</h2>
+        <Standfirst className="mt-8">
+          Every project is quoted in writing against a written scope before any
+          work starts. The number you approve is the number you pay — no hourly
+          meter, no surprise invoice at the end.
+        </Standfirst>
 
-        <div className="mt-14 grid grid-cols-1 gap-px overflow-hidden border-y border-line bg-line md:grid-cols-2">
+        <div className="mt-14 border-t border-line">
           {market.tiers.map((tier, i) => (
-            <Reveal key={tier.name} delay={i * 60} className="bg-paper">
+            <Reveal key={tier.name} delay={Math.min(i * 60, 120)}>
               <Link
                 href="/quote"
-                className="group flex h-full items-baseline justify-between gap-6 px-2 py-7 transition-colors hover:bg-paper-2 md:px-6"
+                className="group grid grid-cols-1 gap-y-3 border-b border-line py-6 md:grid-cols-12 md:items-baseline md:gap-gutter md:py-8"
               >
-                <span className="flex items-baseline gap-5">
+                <div className="md:col-span-4">
                   <span className="rail text-ink-mute">
                     {String(i + 1).padStart(2, '0')}
                   </span>
-                  <span className="font-display text-headline-lg-mobile leading-none text-ink transition-colors group-hover:text-accent">
+                  <span className="mt-2 block font-display text-[2rem] leading-none text-ink transition-colors group-hover:text-accent md:text-[2.6rem]">
                     {tier.name}
                   </span>
-                </span>
-                <span className="label-caps shrink-0 text-ink-mute transition-all duration-300 group-hover:translate-x-1 group-hover:text-accent">
+                </div>
+
+                <div className="md:col-span-4">
+                  <p className="text-body-md text-ink-soft">{tier.bestFor}</p>
+                </div>
+
+                {/* The three numbers a buyer actually compares. */}
+                <dl className="flex flex-wrap gap-x-8 gap-y-2 md:col-span-3">
+                  {[
+                    ['Scope', tier.specs.pages, false],
+                    ['Timeline', tier.specs.timeline, false],
+                    // Three specs stacked under a paragraph is four blocks per
+                    // plan on a phone. The third one waits for the room.
+                    ['Revisions', tier.specs.revisions, true],
+                  ].map(([label, value, desktopOnly]) => (
+                    <div key={label} className={desktopOnly ? 'hidden md:block' : undefined}>
+                      <dt className="rail text-ink-mute">{label}</dt>
+                      <dd className="mt-1 text-label-sm text-ink">{value}</dd>
+                    </div>
+                  ))}
+                </dl>
+
+                <span className="label-caps text-ink-mute transition-all duration-300 group-hover:translate-x-1 group-hover:text-accent md:col-span-1 md:justify-self-end">
                   Quote
                 </span>
               </Link>
@@ -416,86 +158,75 @@ export default function HomePage() {
           ))}
         </div>
 
-        <Reveal delay={140}>
-          <div className="mt-8 flex flex-col gap-3 md:flex-row md:items-baseline md:justify-between md:gap-8">
-            <p className="text-label-sm text-ink-mute">
-              Android builds are quoted the same way.{' '}
+        <Reveal delay={120}>
+          <div className="mt-8 flex flex-col gap-5 md:flex-row md:items-baseline md:justify-between md:gap-8">
+            <p className="max-w-[52ch] text-label-sm text-ink-mute">
+              The 60-second quiz returns a real figure for your situation.{' '}
               <Link href="/pricing" className="link-underline text-ink">
-                What each plan includes
+                What each plan includes, and every question answered
               </Link>
               .
             </p>
-            {/* Quiet second door into the Community Rate — text, not a button. */}
             <CommunityRateNote />
           </div>
         </Reveal>
-      </Section>
+
+        <Reveal delay={160} className="mt-10 flex flex-wrap items-center gap-x-9 gap-y-5">
+          <Link href="/quote" className="btn-primary">
+            Take the fit quiz
+            <Icon name="arrow" className="h-4 w-4" strokeWidth={2} />
+          </Link>
+          <a href={`mailto:${BRAND.email}`} className="btn-outline">
+            Or talk to sales
+          </a>
+        </Reveal>
+      </Spread>
 
       {/* ------------------------------------------------ Community Rate · 20% */}
       <CommunityRateSection />
 
-      {/* ------------------------------------------------------------------ FAQ */}
-      {/* The heading column runs mostly empty below the title on desktop — an
-          accordion is tall and a two-line heading is not. The column rules
-          give that gutter something to be rather than nothing. */}
-      <section id="faq" className="relative overflow-hidden bg-paper py-stack-lg">
-        <GridField />
-        <div className="relative container-max">
+      {/* ----------------------------------------------------- 07 · Contact */}
+      <section className="border-t border-line bg-paper">
+        <Spread id="contact" index="05" folio="Get in touch">
           <div className="grid grid-cols-1 gap-gutter lg:grid-cols-12 lg:gap-16">
-            <div className="lg:col-span-4">
-              <SectionHeading
-                index="09"
-                eyebrow="Questions"
-                title="Before you ask."
-              />
+            <div className="lg:col-span-5">
+              <h2 className="h-display max-w-[12ch]">Tell us about the project.</h2>
+              <Standfirst className="mt-8">
+                A few lines is enough to start. We reply within one business day,
+                and there is no obligation attached to asking.
+              </Standfirst>
+              {/* The team page is one click away rather than five portraits
+                  on the homepage — see /about. */}
+              <Reveal delay={80} className="mt-8 flex flex-wrap items-center gap-x-9 gap-y-4">
+                <Link href="/about" className="btn-outline">
+                  Who you would be working with
+                </Link>
+                <WhatsAppCta tone="link" location="home-contact" />
+              </Reveal>
             </div>
-            <div className="lg:col-span-8">
+            <div className="lg:col-span-7">
               <Reveal>
-                <Faq items={market.faqs} />
+                <ContactForm />
               </Reveal>
             </div>
           </div>
-        </div>
+        </Spread>
       </section>
 
-      {/* -------------------------------------------------------------- Contact */}
-      {/* The site had no working contact form at all — every route out was a
-          mailto, which loses anyone reading on a phone without a mail client
-          configured. Same column split as the FAQ above it. */}
-      <Section id="contact" tone="paper">
-        <div className="grid grid-cols-1 gap-gutter lg:grid-cols-12 lg:gap-16">
-          <div className="lg:col-span-4">
-            <SectionHeading
-              index="10"
-              eyebrow="Get in touch"
-              title="Tell us about the project."
-              body="A few lines is enough to start. We reply within one business day — no obligation."
-            />
-            <Reveal delay={80}>
-              <WhatsAppCta className="mt-8" location="home-contact" />
-            </Reveal>
-          </div>
-          <div className="lg:col-span-8">
+      {/* ------------------------------------------------------------ Colophon */}
+      <section className="bg-ink text-paper">
+        <div className="container-max grid grid-cols-1 gap-y-10 stack-y md:grid-cols-12 md:gap-gutter">
+          <div className="md:col-span-7">
             <Reveal>
-              <ContactForm />
+              <h2 className="font-display text-headline-lg-mobile leading-[1.05] md:text-display-lg">
+                Let&apos;s build something that pulls its weight.
+              </h2>
             </Reveal>
           </div>
-        </div>
-      </Section>
-
-      {/* ------------------------------------------------------------ Final CTA */}
-      <section className="relative overflow-hidden bg-ink text-paper">
-        <GridField tone="paper" />
-        <div className="relative container-max py-stack-lg text-center">
-          <Reveal className="mx-auto max-w-3xl">
-            <h2 className="font-display text-headline-lg-mobile md:text-display-lg">
-              Let&apos;s build something that pulls its weight.
-            </h2>
-            <div className="mt-10 flex flex-col justify-center gap-3 sm:flex-row">
+          <div className="md:col-span-4 md:col-start-9 md:self-end">
+            <Reveal delay={80} className="flex flex-col items-start gap-6">
               <a
-                href={`mailto:${BRAND.email}?subject=${encodeURIComponent(
-                  'New project enquiry'
-                )}`}
+                href={`mailto:${BRAND.email}?subject=${encodeURIComponent('New project enquiry')}`}
                 className="btn-on-dark"
               >
                 Contact sales
@@ -503,17 +234,11 @@ export default function HomePage() {
               {/* India only — returns null in every other market, so the
                   number is not in the US page at all. */}
               <WhatsAppCta tone="on-dark" location="home-final-cta" />
-              <Link
-                href="/quote"
-                className="label-caps inline-flex items-center justify-center gap-2 border border-paper/40 px-8 py-4 text-paper transition-colors duration-300 hover:border-paper"
-              >
-                Take the fit quiz
-              </Link>
-            </div>
-            <p className="mt-6 text-label-sm text-paper/50">
-              <CommunityRateFooterLink className="underline decoration-paper/25 underline-offset-4 transition-colors hover:text-paper/80 hover:decoration-paper/60" />
-            </p>
-          </Reveal>
+              <p className="text-label-sm text-paper/50">
+                <CommunityRateFooterLink className="underline decoration-paper/25 underline-offset-4 transition-colors hover:text-paper/80 hover:decoration-paper/60" />
+              </p>
+            </Reveal>
+          </div>
         </div>
       </section>
     </>

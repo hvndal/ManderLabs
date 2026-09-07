@@ -30,7 +30,7 @@ export default function Statement({ eyebrow, text, tone = 'paper', align = 'cent
   if (align === 'editorial') {
     return (
       <section className={`${tones[tone] || tones.paper}`}>
-        <div className="container-max grid grid-cols-1 gap-y-8 py-stack-lg md:grid-cols-12 md:gap-gutter">
+        <div className="container-max grid grid-cols-1 gap-y-8 stack-y md:grid-cols-12 md:gap-gutter">
           {eyebrow && (
             <div className="md:col-span-2">
               <Reveal>
@@ -61,7 +61,7 @@ export default function Statement({ eyebrow, text, tone = 'paper', align = 'cent
 
   return (
     <section className={`${tones[tone] || tones.paper} border-b border-line`}>
-      <div className="container-max py-stack-lg">
+      <div className="container-max stack-y">
         <Reveal className="mx-auto max-w-4xl text-center">
           {eyebrow && (
             <span

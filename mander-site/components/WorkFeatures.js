@@ -1,5 +1,6 @@
 import Image from 'next/image';
 import Reveal from './Reveal';
+import { Caption } from './Editorial';
 import Icon from './Icon';
 
 /**
@@ -18,28 +19,32 @@ import Icon from './Icon';
  * photograph of their sector, which is also how the last remote-CDN image
  * dependency left this codebase.
  */
-export default function WorkFeatures({ items }) {
-  const [lead, ...rest] = items;
+export default function WorkFeatures({ items, limit, startIndex = 1, compact = false }) {
+  // The homepage shows three; /work shows everything. Slicing here rather
+  // than at the call site keeps the figure numbering continuous when the same
+  // component renders a second run of projects further down a page.
+  const shown = limit ? items.slice(0, limit) : items;
+  const [lead, ...rest] = shown;
 
   return (
     <div className="border-t border-line">
       <Reveal>
-        <Feature project={lead} index={1} lead />
+        <Feature project={lead} index={startIndex} lead={startIndex === 1} compact={compact} />
       </Reveal>
       {rest.map((project, i) => (
         <Reveal key={project.name} delay={40}>
-          <Feature project={project} index={i + 2} flipped={i % 2 === 1} />
+          <Feature project={project} index={startIndex + i + 1} flipped={i % 2 === 1} compact={compact} />
         </Reveal>
       ))}
     </div>
   );
 }
 
-function Feature({ project, index, lead = false, flipped = false }) {
+function Feature({ project, index, lead = false, flipped = false, compact = false }) {
   const num = String(index).padStart(2, '0');
 
   return (
-    <article className="grid grid-cols-1 gap-y-8 border-b border-line py-12 md:grid-cols-12 md:gap-gutter md:py-16">
+    <article className="grid grid-cols-1 gap-y-6 border-b border-line py-9 md:grid-cols-12 md:gap-gutter md:py-16">
       {/* Visual. On the lead it spans the field; below it swaps sides so the
           list reads as a spread rather than a stack. */}
       <div
@@ -52,9 +57,10 @@ function Feature({ project, index, lead = false, flipped = false }) {
         }
       >
         {project.image ? (
+          <figure>
           <div
             className={`relative w-full overflow-hidden bg-paper-2 ${
-              lead ? 'aspect-[16/9]' : 'aspect-[4/3]'
+              lead ? 'aspect-[3/2] md:aspect-[16/9]' : 'aspect-[3/2] md:aspect-[4/3]'
             }`}
           >
             <Image
@@ -67,6 +73,12 @@ function Feature({ project, index, lead = false, flipped = false }) {
               className="object-cover object-top"
             />
           </div>
+          {/* Every image on this site used to sit there unexplained, which is
+              what made the photography read as decoration. */}
+          <Caption figure={num}>
+            {project.name} — {project.location}
+          </Caption>
+          </figure>
         ) : (
           <Plate project={project} lead={lead} />
         )}
@@ -98,11 +110,18 @@ function Feature({ project, index, lead = false, flipped = false }) {
           {project.name}
         </h3>
 
-        <p className="mt-5 max-w-text text-body-md text-ink-soft md:text-body-lg">
+        <p className="mt-4 max-w-text text-body-md text-ink-soft md:mt-5 md:text-body-lg">
           {project.body}
         </p>
 
-        <dl className="mt-8 grid grid-cols-1 gap-px border-y border-line bg-line sm:grid-cols-2">
+        <dl
+          className={`mt-6 grid-cols-1 gap-px border-y border-line bg-line sm:grid-cols-2 md:mt-8 md:grid ${
+            // On the homepage teaser this reference detail is hidden on a
+            // phone — the reader has not chosen to look at projects yet, and
+            // /work carries it in full for the reader who has.
+            compact ? 'hidden' : 'grid'
+          }`}
+        >
           <div className="bg-paper py-4 pr-4">
             <dt className="rail text-ink-mute">Disciplines</dt>
             <dd className="mt-2 text-body-md text-ink">
@@ -154,7 +173,7 @@ function Plate({ project, lead }) {
       // gets its own ratio on a phone rather than being the desktop one
       // squeezed.
       className={`relative flex w-full flex-col justify-between gap-8 overflow-hidden border border-line bg-paper-2 p-7 md:gap-10 md:p-9 ${
-        lead ? 'aspect-[4/3] md:aspect-[21/9]' : 'aspect-[4/3] md:aspect-[3/2]'
+        lead ? 'aspect-[5/4] md:aspect-[21/9]' : 'aspect-[5/4] md:aspect-[3/2]'
       }`}
     >
       <div
