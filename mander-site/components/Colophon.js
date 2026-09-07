@@ -81,11 +81,25 @@ export default function Colophon({ headline, body }) {
               </Reveal>
 
               <Reveal delay={160}>
-                <div className="border-l border-line pl-6 font-mono text-[10.5px] uppercase tracking-wider text-ink-mute space-y-2">
-                  <div className="text-ink font-semibold">DELIVERY PROTOCOL:</div>
-                  <div>• CUSTOM TAILORED SCOPES ONLY (NO TEMPLATES)</div>
-                  <div>• FULL PRODUCT DESIGN + REACT STACK</div>
-                  <div>• LIGHTHOUSE 99+ PERFORMANCE SLA</div>
+                <div className="border-l border-line pl-6 space-y-3">
+                  <div className="font-mono text-[9.5px] uppercase tracking-[0.24em] text-accent font-semibold flex items-center gap-2">
+                    <span>DELIVERY PROTOCOL</span>
+                    <span className="h-px flex-1 bg-line max-w-[80px]" />
+                  </div>
+                  <dl className="space-y-2 font-mono text-[10px] tracking-wide text-ink-soft uppercase">
+                    <div className="flex items-baseline gap-2.5">
+                      <span className="text-ink font-semibold">01 /</span>
+                      <span>Proprietary Scoping // Zero Templates</span>
+                    </div>
+                    <div className="flex items-baseline gap-2.5">
+                      <span className="text-ink font-semibold">02 /</span>
+                      <span>Full Product Architecture + Next.js</span>
+                    </div>
+                    <div className="flex items-baseline gap-2.5">
+                      <span className="text-ink font-semibold">03 /</span>
+                      <span>Lighthouse 99+ Performance SLA</span>
+                    </div>
+                  </dl>
                 </div>
               </Reveal>
             </div>

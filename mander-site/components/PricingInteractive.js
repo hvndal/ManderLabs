@@ -89,8 +89,8 @@ export default function PricingInteractive({ tiers }) {
               <div>
                 <h3 className="text-headline-md text-ink">{tier.name}</h3>
                 {tier.featured && (
-                  <span className="label-caps mt-2 inline-block bg-accent px-2 py-1 text-[10px] text-on-accent">
-                    Most chosen
+                  <span className="label-caps mt-2 inline-block bg-accent px-2 py-1 text-[10px] text-on-accent tracking-widest font-semibold">
+                    COMMISSIONED FLAGSHIP
                   </span>
                 )}
               </div>

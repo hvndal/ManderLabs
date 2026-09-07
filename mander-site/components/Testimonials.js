@@ -43,16 +43,9 @@ export default function Testimonials({ items }) {
             {/* What was built */}
             <div className="md:col-span-5">
               <p className="text-body-lg text-ink-soft">{item.scope}</p>
-              <ul className="mt-4 flex flex-wrap gap-x-2 gap-y-2">
-                {item.services.map((service) => (
-                  <li
-                    key={service}
-                    className="label-caps border border-line px-3 py-1.5 text-ink-mute transition-colors duration-500 group-hover:border-line-strong"
-                  >
-                    {service}
-                  </li>
-                ))}
-              </ul>
+              <p className="mt-3 font-mono text-[10px] uppercase tracking-wider text-ink-mute">
+                {item.services.join('  /  ')}
+              </p>
             </div>
 
             {/* Outcome — set in the display serif and stepped up a size. It is

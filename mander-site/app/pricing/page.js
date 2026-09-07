@@ -77,12 +77,11 @@ export default function PricingPage() {
             <span className="eyebrow">Pricing</span>
           </Reveal>
           <Reveal delay={80}>
-            <h1 className="h-display max-w-[15ch]">Fixed scope. No games.</h1>
+            <h1 className="h-display max-w-[15ch]">Fixed Scope. Architectural Rigour.</h1>
           </Reveal>
           <Reveal delay={160} className="mt-8 flex flex-col gap-6 md:flex-row md:items-end md:justify-between">
             <p className="max-w-text text-body-lg text-ink-soft">
-              Tailored build cost, quoted up front. Not sure which fits? The
-              60-second quiz recommends a starting point.
+              Tailored build investment, agreed before production. Every scope is engineered for commercial performance, verified uptime, and measurable ROI.
             </p>
             <Link href="/quote" className="btn-primary shrink-0">
               Take the fit quiz

@@ -49,8 +49,8 @@ export default function HomePage() {
       {/* ------------------------------------------- 02 · Colophon / The Sheet */}
       {/* Furnished architectural spread: vertical crop + coordinates + magnetic CTA */}
       <Colophon
-        headline="Websites that grow real businesses."
-        body="Premium design and custom high-end engineering for ambitious small and mid-sized businesses across Canada and the U.S. — priced to deliver measurable ROI."
+        headline="Digital Architecture For Contemporary Practice."
+        body="Custom digital engineering and restrained editorial identity for ambitious commercial practices, studios, and founders across the Pacific Northwest and North America. Every system is built from scratch — zero templates, verified Lighthouse 99+ performance, and measured commercial return."
       />
 
       {/* ------------------------------------------- 03 · Stripe-Style Client Marquee */}
@@ -81,7 +81,7 @@ export default function HomePage() {
             <div className="max-w-3xl">
               {/* Eyebrow badge with signature Pacific red accent */}
               <div className="flex items-center gap-3 mb-6">
-                <span className="h-2 w-2 rounded-full bg-accent animate-pulse" />
+                <span className="h-1.5 w-1.5 bg-accent inline-block" />
                 <span className="font-mono text-label-caps text-white/90 tracking-[0.24em] drop-shadow">
                   02 // STUDIO MANIFESTO
                 </span>
@@ -186,16 +186,32 @@ export default function HomePage() {
             </Reveal>
 
             <Reveal delay={120}>
-              <div className="border-t border-line pt-6 font-mono text-[10px] uppercase tracking-[0.2em] text-ink-mute grid grid-cols-1 sm:grid-cols-2 gap-4">
+              <div className="border-t border-line pt-6 font-mono text-[10px] uppercase tracking-[0.2em] text-ink-mute grid grid-cols-1 sm:grid-cols-2 gap-6">
                 <div>
-                  <span className="text-ink font-semibold block mb-1">FOUNDATIONAL CRITERIA</span>
-                  <div>• ZERO RUNTIME BLOAT</div>
-                  <div>• LIGHTHOUSE 99+ SCORE</div>
+                  <span className="text-ink font-semibold block mb-2 text-[10.5px]">FOUNDATIONAL CRITERIA</span>
+                  <div className="space-y-1.5 text-ink-soft">
+                    <div className="flex items-baseline gap-2">
+                      <span className="text-accent font-semibold">01 /</span>
+                      <span>Zero Runtime Bloat</span>
+                    </div>
+                    <div className="flex items-baseline gap-2">
+                      <span className="text-accent font-semibold">02 /</span>
+                      <span>Lighthouse 99+ Audited SLA</span>
+                    </div>
+                  </div>
                 </div>
                 <div>
-                  <span className="text-ink font-semibold block mb-1">ENGINEERING BASIS</span>
-                  <div>• APPAREL & HOSPITALITY RIGOR</div>
-                  <div>• SUB-SECOND TTFB</div>
+                  <span className="text-ink font-semibold block mb-2 text-[10.5px]">ENGINEERING BASIS</span>
+                  <div className="space-y-1.5 text-ink-soft">
+                    <div className="flex items-baseline gap-2">
+                      <span className="text-accent font-semibold">03 /</span>
+                      <span>Apparel & Hospitality Rigor</span>
+                    </div>
+                    <div className="flex items-baseline gap-2">
+                      <span className="text-accent font-semibold">04 /</span>
+                      <span>Sub-Second TTFB Performance</span>
+                    </div>
+                  </div>
                 </div>
               </div>
             </Reveal>
@@ -302,7 +318,7 @@ export default function HomePage() {
                 06 // Delivery Protocol
               </span>
               <h2 className="font-display text-4xl sm:text-5xl text-ink">
-                Discover the process. A straight line from discovery to launch.
+                The Delivery Sequence. From Architectural Scoping To Production Deployment.
               </h2>
             </div>
             <div className="flex items-center gap-3 font-mono text-xs text-ink-mute uppercase tracking-widest">

@@ -63,6 +63,10 @@ const CSP = [
 const nextConfig = {
   reactStrictMode: true,
   trailingSlash: false,
+  experimental: {
+    workerThreads: false,
+    cpus: 1,
+  },
   images: {
     remotePatterns: [
       {

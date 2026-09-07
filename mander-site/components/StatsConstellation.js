@@ -80,27 +80,26 @@ export default function StatsConstellation({ stats, featuredProject }) {
             )}
           </div>
 
-          {/* Right Column: 100k+ Client Website Mockup in Black & White */}
+          {/* Right Column: 100k+ Client Architectural Plate */}
           <div className="lg:col-span-6">
             <Reveal delay={100}>
-              <div className="relative group overflow-hidden border border-white/20 bg-black/60 backdrop-blur-md rounded-sm shadow-2xl transition-all duration-500 hover:border-accent/60">
-                {/* Browser Chrome Header */}
-                <div className="flex items-center justify-between border-b border-white/10 px-4 py-3 bg-[#151210]/95 text-white/50 font-mono text-[10px]">
-                  <div className="flex items-center gap-1.5">
-                    <span className="h-2.5 w-2.5 rounded-full bg-white/20 group-hover:bg-accent transition-colors" />
-                    <span className="h-2.5 w-2.5 rounded-full bg-white/20" />
-                    <span className="h-2.5 w-2.5 rounded-full bg-white/20" />
+              <div className="relative group overflow-hidden border border-white/20 bg-black/80 backdrop-blur-md shadow-2xl transition-all duration-500 hover:border-accent/60">
+                {/* Architectural Plate Header */}
+                <div className="flex items-center justify-between border-b border-white/10 px-4 py-2.5 bg-[#151210]/95 text-white/50 font-mono text-[9.5px] uppercase tracking-wider">
+                  <div className="flex items-center gap-2">
+                    <span className="text-accent font-mono font-bold">+</span>
+                    <span className="text-white/80 font-medium">PLATE 05.1 // PRODUCTION ARCHITECTURE</span>
                   </div>
-                  <div className="flex items-center gap-2 text-white/70 tracking-wider bg-white/[0.05] px-3 py-1 rounded-sm border border-white/10">
-                    <span className="text-[10px] text-accent">●</span>
-                    <span>fitwaygym.in</span>
+                  <div className="flex items-center gap-2 text-white/70 bg-white/[0.04] px-2.5 py-0.5 border border-white/10">
+                    <span className="text-accent">■</span>
+                    <span className="tracking-widest">fitwaygym.in</span>
                   </div>
                   <span className="text-[9px] uppercase tracking-widest text-accent font-semibold hidden sm:inline">
                     100K+ MEMBERS
                   </span>
                 </div>
 
-                {/* Mockup Frame */}
+                {/* Architectural Exhibition Viewport */}
                 <a
                   href={featuredProject?.href || 'https://fitwaygym.in'}
                   target="_blank"
@@ -115,12 +114,16 @@ export default function StatsConstellation({ stats, featuredProject }) {
                     className="object-cover object-top grayscale contrast-125 brightness-95 group-hover:grayscale-0 group-hover:contrast-100 group-hover:brightness-100 transition-all duration-700 ease-out"
                   />
                   {/* Subtle Dark Vignette */}
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-80 group-hover:opacity-30 transition-opacity duration-500" />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/25 to-transparent opacity-80 group-hover:opacity-30 transition-opacity duration-500" />
+
+                  {/* Corner Crosshairs */}
+                  <div className="absolute top-2 left-2 pointer-events-none font-mono text-[9px] text-white/40 select-none">+</div>
+                  <div className="absolute top-2 right-2 pointer-events-none font-mono text-[9px] text-white/40 select-none">+</div>
 
                   {/* Stamp & CTA */}
                   <div className="absolute bottom-3 left-3 right-3 sm:bottom-4 sm:left-4 sm:right-4 flex items-center justify-between pointer-events-none">
-                    <div className="bg-black/85 backdrop-blur-md border border-white/15 px-3 py-1.5 font-mono text-[9.5px] uppercase tracking-wider text-white">
-                      <span className="text-accent font-bold mr-1.5">●</span> FITWAY GYM // 100K+ SERVED
+                    <div className="bg-black/90 backdrop-blur-md border border-white/15 px-3 py-1.5 font-mono text-[9.5px] uppercase tracking-wider text-white">
+                      <span className="text-accent font-bold mr-1.5">■</span> FITWAY GYM // 100K+ SERVED
                     </div>
                     <span className="bg-accent text-white font-mono text-[9.5px] uppercase tracking-widest px-3 py-1.5 font-semibold opacity-0 group-hover:opacity-100 transition-opacity duration-300 shadow-md">
                       VIEW LIVE SITE ↗
@@ -130,30 +133,32 @@ export default function StatsConstellation({ stats, featuredProject }) {
 
                 {/* Technical Specs Footer */}
                 <div className="border-t border-white/10 px-4 py-2.5 bg-[#151210]/95 flex flex-wrap items-center justify-between gap-2 font-mono text-[9px] uppercase tracking-widest text-white/50">
-                  <span>PRODUCTION ARCHITECTURE</span>
-                  <span className="text-white/80">NEXT.JS // HIGH CONVERSION</span>
+                  <span className="text-white/70">PROPRIETARY DESIGN SYSTEM</span>
+                  <span className="text-accent font-medium">NEXT.JS // HIGH CONVERSION</span>
                 </div>
               </div>
             </Reveal>
           </div>
         </div>
 
-        {/* Bottom Constellation: 3 Secondary Architectural Metrics */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 pt-10 border-t border-white/15">
+        {/* Bottom Constellation: Architectural Metrics Ledger */}
+        <div className="border-t border-b border-white/15 divide-y md:divide-y-0 md:divide-x divide-white/15 grid grid-cols-1 md:grid-cols-3">
           {second && (
             <Reveal delay={120}>
-              <div className="border border-white/10 bg-white/[0.03] p-6 backdrop-blur-sm hover:border-white/20 transition-all duration-300">
-                <span className="font-mono text-[9px] uppercase tracking-[0.22em] text-white/40 block mb-2">
-                  {second.kicker || 'PERFORMANCE SLA'}
-                </span>
-                <span className="block font-display text-4xl sm:text-5xl font-normal leading-none text-white mb-3">
+              <div className="py-8 sm:py-10 md:px-8 first:md:pl-0">
+                <div className="flex items-center gap-2 mb-3">
+                  <span className="font-mono text-[9px] uppercase tracking-[0.25em] text-accent font-semibold">
+                    01 // {second.kicker || 'PERFORMANCE SLA'}
+                  </span>
+                </div>
+                <span className="block font-display text-5xl sm:text-6xl font-normal leading-none text-white mb-3 tracking-tight">
                   {second.value}
                 </span>
-                <span className="font-sans text-sm text-white/70 block leading-snug">
+                <span className="font-sans text-sm text-white/80 block leading-snug font-medium">
                   {second.label}
                 </span>
                 {second.body && (
-                  <span className="font-sans text-xs text-white/40 block mt-2 font-light">
+                  <span className="font-sans text-xs text-white/50 block mt-2 font-light leading-relaxed">
                     {second.body}
                   </span>
                 )}
@@ -163,18 +168,20 @@ export default function StatsConstellation({ stats, featuredProject }) {
 
           {third && (
             <Reveal delay={180}>
-              <div className="border border-white/10 bg-white/[0.03] p-6 backdrop-blur-sm hover:border-white/20 transition-all duration-300">
-                <span className="font-mono text-[9px] uppercase tracking-[0.22em] text-white/40 block mb-2">
-                  {third.kicker || 'DELIVERY VELOCITY'}
-                </span>
-                <span className="block font-display text-4xl sm:text-5xl font-normal leading-none text-white mb-3">
+              <div className="py-8 sm:py-10 md:px-8">
+                <div className="flex items-center gap-2 mb-3">
+                  <span className="font-mono text-[9px] uppercase tracking-[0.25em] text-accent font-semibold">
+                    02 // {third.kicker || 'DELIVERY VELOCITY'}
+                  </span>
+                </div>
+                <span className="block font-display text-5xl sm:text-6xl font-normal leading-none text-white mb-3 tracking-tight">
                   {third.value}
                 </span>
-                <span className="font-sans text-sm text-white/70 block leading-snug">
+                <span className="font-sans text-sm text-white/80 block leading-snug font-medium">
                   {third.label}
                 </span>
                 {third.body && (
-                  <span className="font-sans text-xs text-white/40 block mt-2 font-light">
+                  <span className="font-sans text-xs text-white/50 block mt-2 font-light leading-relaxed">
                     {third.body}
                   </span>
                 )}
@@ -184,18 +191,20 @@ export default function StatsConstellation({ stats, featuredProject }) {
 
           {fourth && (
             <Reveal delay={240}>
-              <div className="border border-white/10 bg-white/[0.03] p-6 backdrop-blur-sm hover:border-white/20 transition-all duration-300">
-                <span className="font-mono text-[9px] uppercase tracking-[0.22em] text-white/40 block mb-2">
-                  {fourth.kicker || 'IP AUTONOMY'}
-                </span>
-                <span className="block font-display text-4xl sm:text-5xl font-normal leading-none text-white mb-3">
+              <div className="py-8 sm:py-10 md:px-8 last:md:pr-0">
+                <div className="flex items-center gap-2 mb-3">
+                  <span className="font-mono text-[9px] uppercase tracking-[0.25em] text-accent font-semibold">
+                    03 // {fourth.kicker || 'IP AUTONOMY'}
+                  </span>
+                </div>
+                <span className="block font-display text-5xl sm:text-6xl font-normal leading-none text-white mb-3 tracking-tight">
                   {fourth.value}
                 </span>
-                <span className="font-sans text-sm text-white/70 block leading-snug">
+                <span className="font-sans text-sm text-white/80 block leading-snug font-medium">
                   {fourth.label}
                 </span>
                 {fourth.body && (
-                  <span className="font-sans text-xs text-white/40 block mt-2 font-light">
+                  <span className="font-sans text-xs text-white/50 block mt-2 font-light leading-relaxed">
                     {fourth.body}
                   </span>
                 )}

@@ -26,30 +26,31 @@ export default function WorkSpotlight({ items }) {
   return (
     <div className="w-full">
       {/* Top running index rail */}
-      <div className="border border-line bg-white mb-6 p-2 flex items-center justify-between overflow-x-auto gap-4 font-mono text-[11px] uppercase tracking-wider text-ink-mute">
-        <div className="flex items-center gap-4 shrink-0 px-2">
-          <span className="text-ink font-bold">SELECT //</span>
+      <div className="border border-line bg-paper-2 mb-6 p-2 flex items-center justify-between overflow-x-auto gap-4 font-mono text-[10.5px] uppercase tracking-wider text-ink-mute">
+        <div className="flex items-center gap-2 shrink-0">
+          <span className="text-ink font-semibold px-2">FOLIO //</span>
           {items.slice(0, 4).map((p, idx) => (
             <button
               key={p.name}
               onClick={() => setActiveIdx(idx)}
-              className={`py-1 px-3 transition-colors ${
+              className={`py-1.5 px-3 transition-all duration-200 flex items-center gap-1.5 border ${
                 activeIdx === idx
-                  ? 'bg-ink text-white font-bold'
-                  : 'hover:text-ink text-ink-soft'
+                  ? 'border-ink bg-ink text-white font-medium shadow-sm'
+                  : 'border-transparent text-ink-soft hover:text-ink hover:border-line'
               }`}
             >
-              0{idx + 1} {p.name}
+              <span className={activeIdx === idx ? 'text-accent' : 'text-ink-mute'}>0{idx + 1} /</span>
+              <span>{p.name}</span>
             </button>
           ))}
         </div>
-        <span className="shrink-0 font-mono text-[10.5px] uppercase tracking-wider text-ink-mute px-3 py-1">
+        <span className="shrink-0 font-mono text-[10px] uppercase tracking-[0.2em] text-ink-mute px-3 py-1 hidden sm:inline">
           4 CURATED DEPLOYMENTS
         </span>
       </div>
 
-      {/* THE UNBOXED ARCHITECTURAL BOX: Less frame, direct presentation */}
-      <div className="border border-line bg-white shadow-2xl overflow-hidden grid grid-cols-1 lg:grid-cols-12">
+      {/* THE ARCHITECTURAL SPREAD */}
+      <div className="border border-line bg-white shadow-xl overflow-hidden grid grid-cols-1 lg:grid-cols-12">
         {/* Dominant Image Viewport: Flush Edge-to-Edge */}
         <div className="lg:col-span-8 relative bg-black min-h-[420px] sm:min-h-[540px] border-b lg:border-b-0 lg:border-r border-line overflow-hidden">
           <AnimatePresence mode="wait">
@@ -91,7 +92,7 @@ export default function WorkSpotlight({ items }) {
         </div>
 
         {/* Editorial Metadata Panel */}
-        <div className="lg:col-span-4 p-8 sm:p-10 flex flex-col justify-between bg-paper/40">
+        <div className="lg:col-span-4 p-8 sm:p-10 flex flex-col justify-between bg-paper">
           <AnimatePresence mode="wait">
             <motion.div
               key={current.name + '-meta'}
@@ -100,39 +101,38 @@ export default function WorkSpotlight({ items }) {
               animate="show"
               exit="hidden"
             >
-              <motion.div variants={CHILD} className="flex items-center gap-2 mb-4">
-                <span className="bg-ink/5 border border-line px-2.5 py-0.5 font-mono text-[10px] uppercase tracking-widest text-ink font-semibold">
-                  {current.sector}
-                </span>
-                <span className="font-mono text-[10px] uppercase tracking-widest text-ink-mute">
-                  {current.location}
-                </span>
+              <motion.div variants={CHILD} className="flex items-center gap-2.5 mb-4 font-mono text-[10px] uppercase tracking-[0.2em]">
+                <span className="text-accent font-semibold">{current.sector}</span>
+                <span className="text-line-strong">/</span>
+                <span className="text-ink-mute">{current.location}</span>
               </motion.div>
 
-              <motion.h3 variants={CHILD} className="font-display text-3xl sm:text-4xl text-ink leading-tight mb-2">
+              <motion.h3 variants={CHILD} className="font-display text-3xl sm:text-4xl text-ink leading-[1.05] tracking-tight mb-4">
                 {current.name}
               </motion.h3>
 
               {/* Commercial outcome */}
-              <motion.div variants={CHILD} className="p-4 bg-white border-l-2 border-accent my-4 shadow-sm">
-                <div className="font-mono text-[9px] uppercase tracking-widest text-ink-mute">Verified Result</div>
-                <div className="text-lg font-bold font-sans text-ink">{current.result}</div>
+              <motion.div variants={CHILD} className="py-4 my-4 border-y border-line">
+                <div className="font-mono text-[9px] uppercase tracking-[0.24em] text-accent font-semibold mb-1">
+                  VERIFIED COMMERCIAL RESULT
+                </div>
+                <div className="text-2xl sm:text-3xl font-display text-ink tracking-tight font-normal">
+                  {current.result}
+                </div>
               </motion.div>
 
               <motion.p variants={CHILD} className="font-sans text-body-md text-ink-soft font-light leading-relaxed mb-6">
                 {current.body}
               </motion.p>
 
-              {/* Scope tags */}
+              {/* Scope delivered */}
               <motion.div variants={CHILD} className="border-t border-line pt-4 mb-6">
-                <div className="font-mono text-[9.5px] uppercase tracking-wider text-ink-mute mb-2">Scope Delivered</div>
-                <div className="flex flex-wrap gap-1.5 font-mono text-[10px]">
-                  {current.services?.map((s) => (
-                    <span key={s} className="bg-white border border-line px-2 py-0.5 text-ink">
-                      {s}
-                    </span>
-                  ))}
+                <div className="font-mono text-[9.5px] uppercase tracking-[0.22em] text-ink-mute mb-2">
+                  DELIVERED SCOPE
                 </div>
+                <p className="font-mono text-[10px] uppercase tracking-wider text-ink-soft leading-relaxed">
+                  {current.services?.join('  /  ')}
+                </p>
               </motion.div>
             </motion.div>
           </AnimatePresence>

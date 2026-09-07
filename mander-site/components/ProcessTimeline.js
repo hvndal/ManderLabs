@@ -37,26 +37,31 @@ export default function ProcessTimeline({ steps, sidebar }) {
 
   return (
     <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-14 items-start">
-      {/* Left Column: 4-Stage Protocol Sequence */}
-      <ol className="lg:col-span-7 space-y-4">
+      {/* Left Column: Integrated Architectural Delivery Sequence */}
+      <ol className="lg:col-span-7 border-t border-b border-line divide-y divide-line">
         {steps.map((step, index) => {
           const isActive = activeStep === index;
 
           return (
             <Reveal key={step.step} delay={index * 80}>
-              <div
+              <li
                 onMouseEnter={() => setActiveStep(index)}
-                className={`group relative border transition-all duration-300 ease-premium p-6 sm:p-8 cursor-pointer ${
+                className={`group relative transition-all duration-300 ease-premium p-6 sm:p-8 cursor-pointer ${
                   isActive
-                    ? 'border-ink bg-white shadow-lg -translate-y-0.5'
-                    : 'border-line bg-white/60 hover:border-line-strong hover:bg-white'
+                    ? 'bg-paper-2'
+                    : 'bg-transparent hover:bg-paper-2/60'
                 }`}
               >
+                {/* Active Left Indicator Rule */}
+                {isActive && (
+                  <span className="absolute left-0 top-0 bottom-0 w-1 bg-accent transition-all duration-300" />
+                )}
+
                 {/* Top Row: Stage Number, Timing Badge & Title */}
                 <div className="flex items-start justify-between gap-4 mb-4">
-                  <div className="flex items-center gap-4">
+                  <div className="flex items-baseline gap-4">
                     <span
-                      className={`font-display text-4xl sm:text-5xl font-normal leading-none transition-colors duration-300 ${
+                      className={`font-display text-3xl sm:text-4xl font-normal leading-none transition-colors duration-300 ${
                         isActive ? 'text-accent' : 'text-line-strong group-hover:text-ink'
                       }`}
                     >
@@ -73,32 +78,27 @@ export default function ProcessTimeline({ steps, sidebar }) {
                   </div>
 
                   <span
-                    className={`h-2 w-2 rounded-full transition-all duration-300 shrink-0 mt-2 ${
-                      isActive ? 'bg-accent scale-125' : 'bg-line-strong'
+                    className={`font-mono text-[10px] uppercase tracking-widest transition-colors duration-300 shrink-0 mt-1 ${
+                      isActive ? 'text-accent font-semibold' : 'text-ink-mute'
                     }`}
-                  />
+                  >
+                    PHASE // 0{index + 1}
+                  </span>
                 </div>
 
                 {/* Body Rationale */}
-                <p className="font-sans text-sm sm:text-base text-ink-soft leading-relaxed font-light mb-5">
+                <p className="font-sans text-sm sm:text-base text-ink-soft leading-relaxed font-light mb-4 max-w-xl">
                   {step.body}
                 </p>
 
-                {/* Deliverables Tags */}
+                {/* Deliverables Taxonomy */}
                 {step.deliverables && step.deliverables.length > 0 && (
-                  <div className="border-t border-line/70 pt-4 flex flex-wrap gap-2">
-                    {step.deliverables.map((deliv, dIdx) => (
-                      <span
-                        key={dIdx}
-                        className="font-mono text-[9.5px] uppercase tracking-wider px-2.5 py-1 bg-paper border border-line text-ink-mute flex items-center gap-1.5"
-                      >
-                        <span className="h-1 w-1 rounded-full bg-accent/60" />
-                        <span>{deliv}</span>
-                      </span>
-                    ))}
+                  <div className="pt-3 flex items-center gap-2 font-mono text-[10px] uppercase tracking-wider text-ink-mute">
+                    <span className="text-ink font-semibold">DELIVERABLES //</span>
+                    <span className="text-ink-soft">{step.deliverables.join('  ·  ')}</span>
                   </div>
                 )}
-              </div>
+              </li>
             </Reveal>
           );
         })}
@@ -136,15 +136,18 @@ export default function ProcessTimeline({ steps, sidebar }) {
                 {side.body}
               </p>
 
-              {/* Technical Criteria Checklist */}
-              <div className="border-t border-line pt-5 space-y-2.5 font-mono text-[10px] uppercase tracking-wider text-ink-mute">
-                <div className="flex items-center gap-2 text-ink font-semibold">
-                  <span className="h-1.5 w-1.5 rounded-full bg-accent" />
+              {/* Technical Criteria Checklist with Architectural Numbering */}
+              <div className="border-t border-line pt-5 space-y-3 font-mono text-[10px] uppercase tracking-wider text-ink-mute">
+                <div className="flex items-center gap-2 text-ink font-semibold text-[10.5px]">
+                  <span className="h-1.5 w-1.5 bg-accent" />
                   <span>{side.standardsTitle}</span>
                 </div>
-                <div className="pl-3.5 space-y-1.5">
+                <div className="space-y-2">
                   {side.standards.map((std, idx) => (
-                    <div key={idx}>✓ {std}</div>
+                    <div key={idx} className="flex items-baseline gap-2.5 text-ink-soft">
+                      <span className="text-accent font-semibold">0{idx + 1} /</span>
+                      <span>{std}</span>
+                    </div>
                   ))}
                 </div>
               </div>
