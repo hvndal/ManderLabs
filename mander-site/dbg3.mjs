@@ -1,0 +1,10 @@
+import { chromium } from 'playwright';
+const b=await chromium.launch({executablePath:'/opt/pw-browsers/chromium-1194/chrome-linux/chrome'});
+const p=await b.newPage();
+await p.goto('http://localhost:3416/brand',{waitUntil:'domcontentloaded'});
+console.log('before scroll', await p.evaluate(()=>document.querySelectorAll('h1').length));
+await p.evaluate(()=>window.scrollTo(0,document.body.scrollHeight));
+await p.waitForTimeout(900);
+console.log('after scroll', await p.evaluate(()=>document.querySelectorAll('h1').length));
+console.log(await p.evaluate(()=>document.querySelector('h1')?.outerHTML.slice(0,120)));
+await b.close();

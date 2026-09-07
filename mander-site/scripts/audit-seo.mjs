@@ -6,7 +6,7 @@
 // Run against a production build:  npx next build && npx next start &  then
 //   node scripts/audit-seo.mjs
 // Point BASE at the running server. No dependencies beyond Node's fetch.
-const BASE = 'http://localhost:3511';
+const BASE = process.env.BASE || 'http://localhost:3511';
 const US = {}, IN = { 'x-vercel-ip-country': 'IN' };
 
 const sitemapXml = await (await fetch(`${BASE}/sitemap.xml`)).text();

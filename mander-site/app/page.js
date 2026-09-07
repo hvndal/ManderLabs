@@ -224,7 +224,7 @@ export default function HomePage() {
                     — a trick, and the least Swiss thing on the page. A clause
                     number is furniture: it is set, ruled and left alone. */}
                 <div className="md:col-span-2">
-                  <span className="block font-display text-[3.25rem] leading-none tracking-[-0.04em] text-line-strong transition-colors duration-500 group-hover:text-accent md:text-[4rem]">
+                  <span className="block font-display text-[3.25rem] leading-none tracking-[-0.04em] text-ink-mute transition-colors duration-500 group-hover:text-accent md:text-[4rem]">
                     {term.index}
                   </span>
                 </div>

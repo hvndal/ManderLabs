@@ -47,7 +47,9 @@ const CSP = [
   // React Refresh needs eval; that stays out of production.
   `script-src 'self' 'unsafe-inline'${isProd ? '' : " 'unsafe-eval'"} ${GA_SCRIPT} ${COOKIEHUB}`,
   `style-src 'self' 'unsafe-inline' ${COOKIEHUB}`,
-  `img-src 'self' data: blob: https://images.pexels.com https://www.google-analytics.com ${COOKIEHUB}`,
+  // No remote image host any more — the portfolio's last Pexels URL went
+  // with the carousel, so nothing off-origin may load as an image.
+  `img-src 'self' data: blob: https://www.google-analytics.com ${COOKIEHUB}`,
   `font-src 'self' data: ${COOKIEHUB}`,
   "media-src 'self'",
   // Dev additionally opens a websocket back to the dev server for HMR.
@@ -64,13 +66,9 @@ const nextConfig = {
   reactStrictMode: true,
   trailingSlash: false,
   images: {
-    remotePatterns: [
-      {
-        protocol: 'https',
-        hostname: 'images.pexels.com',
-        pathname: '/**',
-      },
-    ],
+    // AVIF first, WebP behind it. Every image on the site is now first-party
+    // and served through next/image, so there is no remote pattern to allow.
+    formats: ['image/avif', 'image/webp'],
   },
   async redirects() {
     return [

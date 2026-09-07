@@ -6,7 +6,7 @@
 // every page offers both a quote path and a way to reach a person.
 //
 // Run against a production build, as above:  node scripts/audit-site.mjs
-const BASE = 'http://localhost:3511';
+const BASE = process.env.BASE || 'http://localhost:3511';
 const IN = { 'x-vercel-ip-country': 'IN' };
 const get = async (p, h = {}) => {
   const r = await fetch(BASE + p, { headers: h, redirect: 'manual' });
@@ -43,9 +43,12 @@ ok('US visitor gets neither rupees nor WhatsApp', !/₹/.test(usHome.html) && !/
 ok('US visitor gets the phone line', /857\) 758-7182/.test(usHome.html));
 
 // 3. URL-scoped markets on location pages (what the crawler sees).
+// The India city pages are gone — India is an IP-resolved experience now, not
+// a public URL tree — so what is checked here is that the retired paths are
+// retired and that a Canadian city page still ignores the visitor's own IP.
 const mohali = await get('/locations/punjab/mohali');
 const van = await get('/locations/metro-vancouver/vancouver', IN);
-ok('India city page shows India market to a US crawler', /wa\.me/.test(mohali.html) && !/857\) 758-7182/.test(mohali.html));
+ok('retired India city URL redirects rather than 404s', mohali.status === 301 || mohali.status === 308);
 ok('Canadian city page shows NA market to an India visitor', !/wa\.me/.test(van.html) && /857\) 758-7182/.test(van.html));
 
 // 4. Redirects for the retired BC URLs.
@@ -94,7 +97,7 @@ ok('Search Console verification token set', /google-site-verification/.test(usHo
 
 // 9. GBP two-way link.
 ok('GBP link in schema and footer',
-  /share\.google\/khVi6nsC9lzdEc4Jp/.test(usHome.html) && /Find us on Google/.test(usHome.html));
+  /share\.google\/DXHNvMYsz0VNBpVOs/.test(usHome.html) && /Find us on Google/.test(usHome.html));
 
 // 10. Analytics wiring.
 ok('analytics gated on consent, market-stamped',

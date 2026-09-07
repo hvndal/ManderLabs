@@ -146,8 +146,11 @@ function Plate({ project, lead }) {
 
   return (
     <div
-      className={`relative flex w-full flex-col justify-between overflow-hidden border border-line bg-paper-2 p-7 md:p-9 ${
-        lead ? 'aspect-[16/9]' : 'aspect-[4/3]'
+      // Shallower than the screenshot slot it stands in for. A plate is a
+      // specimen band — name, swatches, disciplines — and at 16:9 the middle
+      // third of it is empty paper doing nothing.
+      className={`relative flex w-full flex-col justify-between gap-10 overflow-hidden border border-line bg-paper-2 p-7 md:p-9 ${
+        lead ? 'aspect-[21/9]' : 'aspect-[3/2]'
       }`}
     >
       <div

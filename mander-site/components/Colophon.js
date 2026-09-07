@@ -32,6 +32,8 @@ export default function Colophon({ headline, body, clients }) {
                   <img
                     src={c.logo}
                     alt={`${c.name} logo`}
+                    width={130}
+                    height={20}
                     className="h-5 w-auto max-w-[130px] object-contain opacity-40 transition-opacity duration-500 ease-premium hover:opacity-100"
                   />
                 </li>

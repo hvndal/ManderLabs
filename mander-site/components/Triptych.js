@@ -96,6 +96,8 @@ function WebPanel({ active, quiet }) {
             <img
               src="/hero-poster.jpg"
               alt=""
+              width={1600}
+              height={900}
               className="h-full w-full object-cover"
             />
           )}
@@ -158,7 +160,13 @@ function GrowthPanel({ active, quiet }) {
           />
         ) : (
           // eslint-disable-next-line @next/next/no-img-element
-          <img src="/marble-poster.jpg" alt="" className="h-full w-full object-cover" />
+          <img
+            src="/marble-poster.jpg"
+            alt=""
+            width={1600}
+            height={900}
+            className="h-full w-full object-cover"
+          />
         )}
       </motion.div>
       <div className="absolute inset-0 bg-ink/55" />
@@ -204,8 +212,12 @@ function GrowthPanel({ active, quiet }) {
           <motion.circle
             cx="96"
             cy="22"
-            r="2.2"
             className="fill-accent-soft"
+            // `r` has to be in `initial` as well as `animate`. With only the
+            // animate value, framer-motion's first frame writes r="undefined"
+            // and Chrome logs an SVG attribute error on every homepage load —
+            // one of the console errors a Best-Practices audit reports.
+            initial={{ opacity: 0.5, r: 2.2 }}
             animate={{ opacity: active ? 1 : 0.5, r: active ? 3 : 2.2 }}
             transition={{ duration: 0.5, ease: EASE }}
           />
@@ -296,18 +308,14 @@ export default function Triptych({ tagline, region }) {
       <div className="relative z-20 border-b border-line px-margin-mobile py-4 md:px-margin-desktop">
         <div className="flex items-baseline justify-between gap-6">
           <span className="rail text-ink">MANDER — Design Studio</span>
-          <span className="rail hidden text-ink-mute lg:block">{tagline}</span>
           <span className="rail text-ink-mute">49.2827° N 123.1207° W</span>
         </div>
-        <div className="mt-2 flex items-baseline justify-between gap-6">
-          <ul className="flex items-baseline gap-5">
-            {PANELS.map((panel) => (
-              <li key={panel.id} className="rail text-ink-mute">
-                <span className="text-line-strong">{panel.index}</span>{' '}
-                {panel.label}
-              </li>
-            ))}
-          </ul>
+        {/* The positioning line and the service region are furniture for a
+            wide measure. On a phone they wrapped the rail onto four lines of
+            mono before the composition had started, so below lg the rail is
+            the studio and the coordinate only. */}
+        <div className="mt-2 hidden items-baseline justify-between gap-6 lg:flex">
+          <span className="rail text-ink-mute">{tagline}</span>
           <span className="rail text-ink-mute">{region}</span>
         </div>
       </div>
@@ -428,14 +436,6 @@ export default function Triptych({ tagline, region }) {
           className="pointer-events-none absolute inset-x-0 top-[38%] z-[5] hidden h-px bg-accent-soft md:block"
         />
 
-        {/* Its mobile equivalent: the same line rotated, running the full
-            height of the stack down the left margin and through every panel
-            edge. Stacking three panels loses the thread entirely otherwise,
-            and the thread is what makes them one object. */}
-        <div
-          aria-hidden="true"
-          className="pointer-events-none absolute bottom-0 left-5 top-0 z-[5] w-px bg-accent-soft/70 md:hidden"
-        />
       </div>
     </section>
   );

@@ -198,7 +198,9 @@ export default function Footer() {
         <p
           aria-hidden="true"
           className="font-display leading-[0.78] tracking-[-0.05em] text-paper/90"
-          style={{ fontSize: 'clamp(3.5rem, 17vw, 15rem)' }}
+          // Sized to fill the measure rather than to sit politely inside it —
+          // at 17vw it stopped a third of the page short of the right margin.
+          style={{ fontSize: 'clamp(3.5rem, 22vw, 19rem)' }}
         >
           {BRAND.name}
         </p>

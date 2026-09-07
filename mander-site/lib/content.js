@@ -27,7 +27,7 @@ export const BRAND = {
   // this is the one a person can actually be sent. Together they are the
   // two-way link — the profile points at the site, sameAs and hasMap point
   // back at the profile, and Google can tie the two records to one business.
-  googleBusinessShare: 'https://share.google/khVi6nsC9lzdEc4Jp',
+  googleBusinessShare: 'https://share.google/DXHNvMYsz0VNBpVOs',
   // Masthead furniture, set centred in caps under the mark. Kept short and
   // free of hyphenated compounds on purpose — the old line ("small &
   // mid-sized businesses across Canada and the U.S.") broke after "mid-" on
@@ -52,19 +52,11 @@ export const NAV_LINKS = [
 ];
 
 // Pexels — free to use, no attribution required (https://www.pexels.com/license/)
-export const IMAGES = {
-  // Still fallback for the hero — a graded frame pulled straight from
-  // hero.mp4 so reduced-motion/no-video visitors see the same warm grade
-  // instead of a mismatched stock photo. Regenerate from the video if it
-  // ever changes (see setup-video.bat).
-  heroWorkspace: {
-    src: '/hero-poster.jpg',
-    alt: 'Designer sketching on a graphics tablet, warm editorial tone',
-  },
-  // `growthOwner` (a Pexels shot of an owner holding a tablet) was removed
-  // with the value-prop section it sat in — see TERMS below. The homepage now
-  // carries no stock photography outside the Work grid.
-};
+// The IMAGES export lived here to name the shared stock photography. There is
+// none left: the hero poster is referenced directly by the component that
+// shows it, and the last remote Pexels image left the portfolio with the
+// carousel. Nothing imported this.
+
 
 // --- Services --------------------------------------------------------------
 // Deliberately no images. These used to be six full-bleed stock photo bands;

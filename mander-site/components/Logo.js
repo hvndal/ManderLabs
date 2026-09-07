@@ -22,8 +22,8 @@ const SOURCES = {
   // (x 197–808, y 239–786). The lockup files bake in the wordmark and the
   // tagline, so at nav scale they render as an illegible smudge with type
   // inside type. This is the same artwork with the furniture removed.
-  mark: { light: '/logo-figure.png', rose: '/logo-figure.png' },
-  full: { light: '/logo-mander.png', rose: '/logo-mander.png' },
+  mark: { light: '/logo-figure.png', rose: '/logo-figure.png', w: 536, h: 480 },
+  full: { light: '/logo-mander.png', rose: '/logo-mander.png', w: 1024, h: 1024 },
 };
 
 export default function Logo({ className = '', variant = 'full', tone = 'light' }) {
@@ -54,6 +54,12 @@ export default function Logo({ className = '', variant = 'full', tone = 'light' 
       <img
         src={src}
         alt="MANDER"
+        // The intrinsic size of whichever file this variant points at. The
+        // rendered box comes from the className; these are here so the header
+        // reserves the right ratio while the image decodes, which is what a
+        // layout-shift audit flags when they are missing.
+        width={set.w}
+        height={set.h}
         decoding="async"
         className="h-full w-auto object-contain"
         style={inkFilter ? { filter: inkFilter } : undefined}

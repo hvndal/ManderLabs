@@ -49,7 +49,17 @@ export async function generateMetadata() {
 // sells two plans rather than four.
 function Cell({ value }) {
   if (value === true) return <Icon name="check" className="mx-auto h-4 w-4 text-ink" strokeWidth={2} />;
-  if (value === false) return <span className="text-line-strong">—</span>;
+  // The dash is real content — it is the answer "no" in a comparison table —
+  // so it has to carry text contrast and a word for anyone not reading the
+  // column visually. At line-strong it was 1.6:1 and silent to a screen
+  // reader both.
+  if (value === false)
+    return (
+      <span className="text-ink-mute">
+        <span aria-hidden="true">—</span>
+        <span className="sr-only">Not included</span>
+      </span>
+    );
   return <span className="text-body-md text-ink-soft">{value}</span>;
 }
 

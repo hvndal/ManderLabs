@@ -1,0 +1,10 @@
+import { chromium } from 'playwright';
+const b=await chromium.launch({executablePath:'/opt/pw-browsers/chromium-1194/chrome-linux/chrome'});
+const p=await b.newPage();
+p.on('pageerror',e=>console.log('PAGEERROR',e.message.slice(0,200)));
+await p.goto('http://localhost:3414/contact',{waitUntil:'domcontentloaded'});
+await p.waitForTimeout(2500);
+console.log('count', await p.locator('#cf-name').count());
+console.log('box', await p.locator('#cf-name').first().boundingBox());
+console.log('vis', await p.locator('#cf-name').first().isVisible());
+await b.close();

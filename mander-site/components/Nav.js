@@ -29,7 +29,7 @@ function NavLink({ href, index, children, onClick, className = '' }) {
       onClick={onClick}
       className={`group relative inline-flex items-baseline gap-1.5 ${className}`}
     >
-      <span className="rail text-line-strong transition-colors duration-300 group-hover:text-accent">
+      <span className="rail text-ink-mute transition-colors duration-300 group-hover:text-accent">
         {index}
       </span>
       <span className="label-caps text-ink-soft transition-colors duration-300 group-hover:text-ink">
@@ -142,8 +142,12 @@ export default function Nav() {
           and numbered, and the actions sit at the foot where a thumb is. */}
       <div
         id="mobile-menu"
-        hidden={!open}
-        className="fixed inset-x-0 bottom-0 top-[76px] z-40 flex flex-col overflow-y-auto border-t border-line bg-paper md:hidden"
+        // Not the `hidden` attribute: it sets display:none from the UA
+        // stylesheet, and the `flex` utility on this same element overrides
+        // it — which left the panel open over the hero on every phone load.
+        className={`fixed inset-x-0 bottom-0 top-[76px] z-40 flex-col overflow-y-auto border-t border-line bg-paper md:hidden ${
+          open ? 'flex' : 'hidden'
+        }`}
       >
         <ul className="flex flex-col px-margin-mobile pt-2">
           {NAV_LINKS.map((link, i) => (
@@ -152,7 +156,7 @@ export default function Nav() {
                 href={link.href}
                 className="group flex items-baseline gap-4 py-6"
               >
-                <span className="rail text-line-strong">{navIndex(i)}</span>
+                <span className="rail text-ink-mute">{navIndex(i)}</span>
                 <span className="font-display text-headline-lg-mobile text-ink transition-colors group-hover:text-accent">
                   {link.label}
                 </span>
