@@ -11,19 +11,11 @@
 // without deciding its market fails loudly instead of silently serving the
 // wrong currency.
 export const LOCATION_MARKETS = {
-  // North America
+  // North America. India has no location pages — the India market is an
+  // IP-resolved experience only, never a set of indexed city pages.
   massachusetts: 'us',
   'rhode-island': 'us',
   'metro-vancouver': 'us',
-  // India
-  punjab: 'in',
-  'delhi-ncr': 'in',
-  maharashtra: 'in',
-  karnataka: 'in',
-  telangana: 'in',
-  'tamil-nadu': 'in',
-  gujarat: 'in',
-  'west-bengal': 'in',
 };
 
 /**

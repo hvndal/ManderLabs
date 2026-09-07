@@ -109,6 +109,32 @@ const nextConfig = {
         destination: '/locations/metro-vancouver',
         permanent: true,
       },
+      // The Indian city pages are retired. India remains a live market for
+      // visitors in India — rupee pricing, WhatsApp, the picker option — but
+      // it is no longer a set of indexed pages anyone else can reach. These
+      // URLs were in a sitemap Google has already been handed, so they
+      // redirect rather than 404.
+      ...[
+        'punjab',
+        'delhi-ncr',
+        'maharashtra',
+        'karnataka',
+        'telangana',
+        'tamil-nadu',
+        'gujarat',
+        'west-bengal',
+      ].flatMap((region) => [
+        {
+          source: `/locations/${region}`,
+          destination: '/locations',
+          permanent: true,
+        },
+        {
+          source: `/locations/${region}/:city`,
+          destination: '/locations',
+          permanent: true,
+        },
+      ]),
     ];
   },
   async headers() {

@@ -1,4 +1,4 @@
-// Location SEO data — North America here, India in ./locations-india.js.
+// Location SEO data — North America.
 //
 // Two routes read this file: app/locations/[region]/page.js and
 // app/locations/[region]/[city]/page.js. Both are data-driven templates, not
@@ -32,7 +32,6 @@
 // India, and a page about Boston has to show dollars to an Indian visitor or
 // it is answering a question nobody asked. The market pages (home, pricing,
 // quote) are still resolved by IP; these are resolved by their own URL.
-import { IN_REGIONS } from './locations-india';
 import { LOCATION_MARKETS } from './markets/location-markets';
 
 const NA_REGIONS = [
@@ -586,7 +585,7 @@ const NA_REGIONS = [
 // answer would eventually disagree, and the failure would be a page showing
 // rupees with dollars in its structured data — invisible in review and
 // expensive in search.
-export const REGIONS = [...NA_REGIONS, ...IN_REGIONS].map((region) => {
+export const REGIONS = NA_REGIONS.map((region) => {
   const market = LOCATION_MARKETS[region.slug];
   if (!market) {
     // Loud on purpose. A region with no market would silently inherit the
