@@ -32,12 +32,11 @@ export const BRAND = {
 };
 
 export const NAV_LINKS = [
-  { label: 'Work', href: '/#work' },
+  { label: 'Work', href: '/work' },
   { label: 'Services', href: '/#services' },
   { label: 'Process', href: '/#process' },
-  { label: 'Team', href: '/#team' },
   { label: 'Locations', href: '/locations' },
-  { label: 'Pricing', href: '/pricing' },
+  { label: 'Quote', href: '/#quote' },
 ];
 
 // Pexels — free to use, no attribution required (https://www.pexels.com/license/)
@@ -179,8 +178,8 @@ export const PROCESS = [
 export const TIERS = [
   {
     name: 'Launch',
-    price: '$299',
-    from: 299,
+    price: 'Bespoke Scope',
+    from: 0,
     blurb:
       'For businesses that need a sharp, professional online presence without the complexity.',
     specs: { pages: '1 page', timeline: '~2 weeks', revisions: '1 round' },
@@ -195,13 +194,13 @@ export const TIERS = [
       '1 revision round',
     ],
     notIncluded: ['Multi-page structure', 'Copywriting support', 'SEO beyond the basics'],
-    cta: 'Contact sales',
+    cta: 'Ask for Quote',
     featured: false,
   },
   {
     name: 'Starter',
-    price: '$499',
-    from: 499,
+    price: 'Bespoke Scope',
+    from: 0,
     blurb:
       'A proper small-business website with everything needed to establish a professional online presence.',
     specs: { pages: 'Up to 5 pages', timeline: '3–4 weeks', revisions: '2 rounds' },
@@ -224,13 +223,13 @@ export const TIERS = [
       'Google Analytics + Search Console',
       'Booking / CRM integration',
     ],
-    cta: 'Contact sales',
+    cta: 'Ask for Quote',
     featured: false,
   },
   {
     name: 'Growth',
-    price: '$899',
-    from: 899,
+    price: 'Bespoke Scope',
+    from: 0,
     blurb:
       'For businesses ready to turn their website into a real customer-acquisition channel.',
     specs: { pages: 'Up to 10 pages', timeline: '4–6 weeks', revisions: '3 rounds' },
@@ -256,13 +255,13 @@ export const TIERS = [
       '3 revision rounds',
     ],
     notIncluded: ['Custom architecture', 'E-commerce', 'API integrations'],
-    cta: 'Contact sales',
+    cta: 'Ask for Quote',
     featured: true,
   },
   {
     name: 'Business Pro',
-    price: '$1,499+',
-    from: 1499,
+    price: 'Bespoke Scope',
+    from: 0,
     blurb:
       'For established businesses that need custom functionality beyond a standard website.',
     specs: { pages: 'Unlimited', timeline: '6–10 weeks', revisions: 'Until signed off' },
@@ -281,7 +280,7 @@ export const TIERS = [
       'Priority support',
     ],
     notIncluded: [],
-    cta: 'Contact sales',
+    cta: 'Ask for Quote',
     featured: false,
   },
 ];
@@ -298,8 +297,8 @@ export const TIERS = [
 export const APP_TIERS = [
   {
     name: 'App Launch',
-    price: '$2,999',
-    from: 2999,
+    price: 'Bespoke Scope',
+    from: 0,
     blurb:
       'A real native Android app on the Play Store — the core of what your business does, in your customers’ hands.',
     specs: [
@@ -325,13 +324,13 @@ export const APP_TIERS = [
       '30 days post-launch support',
     ],
     notIncluded: ['Payments', 'Admin dashboard', 'Booking / reservations'],
-    cta: 'Contact sales',
+    cta: 'Ask for Quote',
     featured: false,
   },
   {
     name: 'App Growth',
-    price: '$5,999',
-    from: 5999,
+    price: 'Bespoke Scope',
+    from: 0,
     blurb:
       'The app that runs the business — accounts, payments, bookings, and a dashboard to see it all from.',
     specs: [
@@ -357,13 +356,13 @@ export const APP_TIERS = [
       '60 days post-launch support',
     ],
     notIncluded: ['Multiple user roles', 'Custom API development', 'AI integrations'],
-    cta: 'Contact sales',
+    cta: 'Ask for Quote',
     featured: true,
   },
   {
     name: 'App Pro',
-    price: '$9,999+',
-    from: 9999,
+    price: 'Bespoke Scope',
+    from: 0,
     blurb:
       'Platform-grade Android — multiple roles, custom APIs, and workflows built to your operation rather than around it.',
     specs: [
@@ -388,7 +387,7 @@ export const APP_TIERS = [
       '90 days post-launch support',
     ],
     notIncluded: [],
-    cta: 'Contact sales',
+    cta: 'Ask for Quote',
     featured: false,
   },
 ];
@@ -444,7 +443,7 @@ export const COMMUNITY = {
 // Monthly, month-to-month, optional on every tier. Kept next to the list it
 // prices — it used to be hardcoded in the pricing page's JSX, which is how a
 // price ends up updated in one place and stale in another.
-export const CARE_PLAN_PRICE = '$40/mo';
+export const CARE_PLAN_PRICE = 'Month-to-month';
 
 export const CARE_PLAN = [
   { title: 'Managed Hosting', body: 'Fast, reliable infrastructure — we handle it end to end.' },
@@ -463,7 +462,7 @@ export const STATS = [
 export const FAQS = [
   {
     q: 'How much does a website cost?',
-    a: 'Custom builds start at $299 for a single-page site and run to $899 for a full multi-page build with SEO — well under typical agency rates. Every price is fixed and quoted up front before any work starts, so there is no surprise invoice at the end.',
+    a: 'Every engagement is quoted individually against a clear, written scope based on your exact commercial objectives. Tell us what you need and we provide a transparent, bespoke quote within one business day — no surprise invoices or hourly billing.',
   },
   {
     q: 'How fast can you build my website?',
@@ -471,7 +470,7 @@ export const FAQS = [
   },
   {
     q: 'Do you have budget-friendly options for small businesses?',
-    a: 'That is the whole premise. Launch and Starter are built specifically for small businesses that need a real, professional site without agency-level spend — from $299, with no retainer required.',
+    a: 'That is the whole premise. Our scoping tiers are built specifically for small and mid-sized businesses that need a real, authoritative site without agency-level bloat — quoted up front with no retainer required.',
   },
   {
     q: 'Do you only work with local businesses?',

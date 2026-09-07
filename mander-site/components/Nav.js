@@ -97,7 +97,7 @@ export default function Nav() {
 
         <div className="hidden items-center gap-4 md:flex">
           <a href={SALES_MAILTO} className="btn-sm">
-            Contact sales
+            Ask for Quote
           </a>
         </div>
 
@@ -133,7 +133,7 @@ export default function Nav() {
         </ul>
         <div className="flex flex-col gap-3 px-margin-mobile py-5">
           <a href={SALES_MAILTO} className="btn-primary w-full">
-            Contact sales
+            Ask for Quote
           </a>
           <Link href="/quote" className="btn-outline w-full">
             Take the fit quiz

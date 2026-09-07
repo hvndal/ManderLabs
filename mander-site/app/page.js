@@ -1,3 +1,4 @@
+﻿import Image from 'next/image';
 import Link from 'next/link';
 import Section, { SectionHeading } from '@/components/Section';
 import Reveal from '@/components/Reveal';
@@ -15,7 +16,7 @@ import {
   CommunityRateFooterLink,
 } from '@/components/CommunityRate';
 import Statement from '@/components/Statement';
-import WorkCompact from '@/components/WorkCompact';
+import WorkSpotlight from '@/components/WorkSpotlight';
 import TeamCard from '@/components/TeamCard';
 import ProcessTimeline from '@/components/ProcessTimeline';
 import Testimonials from '@/components/Testimonials';
@@ -47,93 +48,179 @@ export default function HomePage() {
     <>
       <JsonLd data={faqSchema(FAQS)} />
 
-      {/* -------------------------------------------------- 01 · The masthead */}
+      {/* -------------------------------------------------- 01 · The Masthead */}
       {/* The word is the aperture: MANDER knocked out of a cream stencil over
-          full-bleed film, scaling out of frame on scroll. See Masthead.js. */}
-      <Masthead tagline={BRAND.tagline} mono={BRAND.region} />
+          full-bleed film, scaling out of frame on scroll. Preserving exact MANDER font. */}
+      <Masthead tagline="VANCOUVER CONTEMPORARY // DIGITAL PRACTICE" mono={BRAND.region} />
 
-      {/* ------------------------------------------- 02 · Colophon / the sheet */}
+      {/* ------------------------------------------- 02 · Colophon / The Sheet */}
       <Colophon
-        headline="Websites that grow small business."
-        body="Premium design and build for small and mid-sized businesses in Canada and the U.S. — at a rate that makes sense for you."
+        headline="Websites that grow real businesses."
+        body="Premium design and bespoke engineering for ambitious small and mid-sized businesses across Canada and the U.S. — priced to deliver measurable ROI."
         clients={CLIENTS}
       />
 
-      {/* -------------------------------------------------- Statement · breathe */}
-      <Statement
-        eyebrow="Our take"
-        text="A website is not a brochure. It is the first employee your business hires that never sleeps."
-        tone="warm"
-        align="editorial"
-      />
+      {/* ------------------------------------------- 03 · Vancouver Studio Environment (Moment 02) */}
+      <section className="relative border-y border-line bg-paper py-16 sm:py-24 overflow-hidden">
+        <div className="container-max">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+            
+            {/* Left: Editorial Statement & Metadata */}
+            <div className="lg:col-span-5 flex flex-col justify-between">
+              <Reveal>
+                <div className="flex items-center gap-3 mb-4">
+                  <span className="h-2 w-2 rounded-full bg-accent animate-pulse"></span>
+                  <span className="font-mono text-label-caps text-accent">
+                    FIELD NOTE 01 // THE VANCOUVER ENVIRONMENT
+                  </span>
+                </div>
+                <h2 className="font-display text-headline-lg text-ink leading-[0.98] tracking-tight mb-6">
+                  "A website is not a brochure. It is the <span className="italic underline decoration-accent/40 underline-offset-8">first employee</span> your business hires that never sleeps."
+                </h2>
+                <p className="font-sans text-body-md text-ink-soft leading-relaxed font-light mb-6">
+                  Conceived and engineered between the rain on Water Street and cold Pacific harbor light. We blend Scandinavian restraint with Swiss functionalism to build websites that command immediate market authority.
+                </p>
+                <div className="font-mono text-[10px] uppercase tracking-[0.25em] text-ink-mute border-t border-line pt-4 flex items-center justify-between">
+                  <span>VANCOUVER STUDIO AXIS</span>
+                  <span className="text-ink font-semibold">49°17'N 123°07'W</span>
+                </div>
+              </Reveal>
+            </div>
 
-      {/* ------------------------------------------ 03 · Stats as constellation */}
+            {/* Right: Authentic $50k Camera Environmental Studio Shot */}
+            <div className="lg:col-span-7">
+              <Reveal delay={120}>
+                <div className="relative border border-line bg-black shadow-2xl overflow-hidden aspect-[16/10] group">
+                  <Image
+                    src="/editorial/studio-set.jpg"
+                    alt="MANDER creative production studio in Vancouver with cinema camera and broadcast microphone overlooking rain on window"
+                    fill
+                    sizes="(max-width: 1024px) 100vw, 700px"
+                    className="object-cover transition-transform duration-700 ease-out group-hover:scale-[1.02]"
+                  />
+                  <div className="absolute top-4 left-4 bg-ink/90 backdrop-blur-md text-white px-3 py-1 font-mono text-[9.5px] uppercase tracking-widest border border-white/10">
+                    STUDIO 01 // AUDIO & CINEMA PRODUCTION
+                  </div>
+                  <div className="absolute bottom-4 right-4 hidden sm:block bg-ink/90 backdrop-blur-md text-white/70 px-3 py-1 font-mono text-[9.5px] uppercase tracking-widest border border-white/10">
+                    NATURAL LIGHT · PACIFIC RAIN
+                  </div>
+                </div>
+              </Reveal>
+            </div>
+
+          </div>
+        </div>
+      </section>
+
+      {/* ------------------------------------------ 04 · Stats as Constellation */}
       <StatsConstellation stats={STATS} />
 
-      {/* ----------------------------------------------------------------- Work */}
+      {/* ------------------------------------------ 05 · THE PACIFIC RED EVENT (Moment 03) */}
+      {/* A high-contrast, rare editorial interruption in deep oxblood/brick red,
+          then returns immediately to quiet cream. */}
+      <section className="relative bg-[#8a1c22] text-white py-20 sm:py-28 px-6 sm:px-12 border-y border-[#6e1418] overflow-hidden">
+        <div className="container-max relative z-10">
+          <Reveal>
+            <div className="flex flex-col lg:flex-row lg:items-end justify-between pb-10 border-b border-white/20 gap-6">
+              <div>
+                <span className="font-mono text-label-caps text-white/70 block mb-2">
+                  03 // THE PACIFIC STANDARD
+                </span>
+                <h2 className="font-display text-4xl sm:text-6xl text-white leading-[0.95] tracking-tight max-w-2xl">
+                  We don't build templates. We build flagships that pull revenue.
+                </h2>
+              </div>
+              <p className="font-mono text-xs text-white/80 uppercase tracking-widest max-w-sm font-light">
+                BUILT IN VANCOUVER · SERVING AMBITIOUS ENTERPRISES ACROSS NORTH AMERICA
+              </p>
+            </div>
+
+            {/* Three Standing Clauses in Red */}
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mt-12">
+              <div className="border-l border-white/30 pl-6">
+                <div className="font-mono text-xs font-bold text-white mb-2">01 // FIXED SCOPE</div>
+                <h3 className="font-display text-2xl text-white mb-2">Every line quoted in writing.</h3>
+                <p className="font-sans text-xs text-white/80 leading-relaxed font-light">
+                  The scope you approve is the scope delivered. No open-ended hourly billing meters or surprise line items.
+                </p>
+              </div>
+
+              <div className="border-l border-white/30 pl-6">
+                <div className="font-mono text-xs font-bold text-white mb-2">02 // TOTAL OWNERSHIP</div>
+                <h3 className="font-display text-2xl text-white mb-2">You own 100% of the code.</h3>
+                <p className="font-sans text-xs text-white/80 leading-relaxed font-light">
+                  Domains, repositories, assets, and accounts are registered in your name from day one. Never held hostage.
+                </p>
+              </div>
+
+              <div className="border-l border-white/30 pl-6">
+                <div className="font-mono text-xs font-bold text-white mb-2">03 // MONTH-TO-MONTH</div>
+                <h3 className="font-display text-2xl text-white mb-2">Zero retainer lock-in.</h3>
+                <p className="font-sans text-xs text-white/80 leading-relaxed font-light">
+                  Our hosting and care support runs on simple trust. Leave whenever you wish; the flagship remains yours.
+                </p>
+              </div>
+            </div>
+          </Reveal>
+        </div>
+      </section>
+
+      {/* ----------------------------------------------------------------- 06 · Curated Work Spotlight (Moment 04) */}
+      {/* Less is more on the homepage: ONE unboxed flagship box + full link to dedicated /work landing page */}
       <Section id="work" tone="paper" className="!py-stack-md">
-        {/* Label and title on one baseline rather than stacked, with the link
-            hung off the opposite edge — a running head, not a title card. */}
         <Reveal>
-          <div className="flex flex-col gap-5 border-b border-line pb-7 sm:flex-row sm:items-baseline sm:justify-between sm:gap-10">
+          <div className="flex flex-col gap-5 border-b border-line pb-7 sm:flex-row sm:items-baseline sm:justify-between sm:gap-10 mb-8">
             <div className="flex flex-wrap items-baseline gap-x-6 gap-y-2">
-              <span className="label-caps shrink-0 text-accent">Selected work</span>
+              <span className="label-caps shrink-0 text-accent">04 // Curated Work</span>
               <h2 className="text-headline-md font-semibold tracking-tight text-ink">
-                A few recent builds.
+                Selected Commercial Build.
               </h2>
             </div>
-            <a
-              href={`mailto:${BRAND.email}?subject=${encodeURIComponent(
-                'New project enquiry'
-              )}`}
-              className="link-underline label-caps shrink-0 text-ink"
+            <Link
+              href="/work"
+              className="link-underline label-caps shrink-0 text-ink flex items-center gap-1.5"
             >
-              Start your project
+              <span>Explore Dedicated Work Page (7 Sites)</span>
               <Icon name="arrow" className="h-4 w-4" strokeWidth={2} />
-            </a>
+            </Link>
           </div>
         </Reveal>
 
-        <div className="mt-12">
-          <WorkCompact items={WORK} />
-        </div>
+        {/* Unboxed Spotlight Box */}
+        <Reveal delay={80}>
+          <WorkSpotlight items={WORK} />
+        </Reveal>
       </Section>
 
-      {/* ------------------------------------------------------------ Services */}
-      {/* The one section with a living ground: a very low-contrast shader
-          drifting terracotta and rose through the paper colour. It is not
-          decoration sitting behind content — it is the surface itself moving,
-          which is why the contrast is kept near-invisible and the top and
-          bottom edges are feathered away. */}
+      {/* ------------------------------------------------------------ 07 · Services (Moment 05) */}
       <section id="services" className="relative border-y border-line bg-paper">
         <ShaderBackground className="opacity-90" />
 
         <div className="relative container-max grid grid-cols-1 gap-y-8 py-stack-md md:grid-cols-12 md:gap-gutter">
           <div className="md:col-span-3">
             <Reveal>
-              <span className="label-caps text-accent">What we do</span>
+              <span className="label-caps text-accent">05 // Capabilities</span>
             </Reveal>
           </div>
 
           <div className="md:col-span-6 md:col-start-5 md:self-end">
             <Reveal delay={100}>
               <h2 className="max-w-[14ch] font-display text-headline-lg-mobile font-normal text-ink md:text-display-lg">
-                Everything a small business needs online.
+                Everything an ambitious brand needs online.
               </h2>
             </Reveal>
           </div>
 
           <div className="md:col-span-3 md:col-start-10 md:self-end">
             <Reveal delay={180}>
-              <p className="text-body-md text-ink-soft">
-                Six disciplines, one outcome: more of the right customers
-                finding you and getting in touch.
+              <p className="text-body-md text-ink-soft font-light">
+                Six focused disciplines, one commercial outcome: more qualified customers discovering your business and booking with confidence.
               </p>
             </Reveal>
           </div>
         </div>
 
-        {/* Typographic rows — no photography, see ServiceBand.js */}
+        {/* Typographic rows with numbered indices */}
         <div className="relative container-max pb-stack-md">
           <div className="divide-y divide-line border-t border-line">
             {SERVICES.map((service, index) => (
@@ -141,313 +228,176 @@ export default function HomePage() {
             ))}
           </div>
         </div>
-      </section>
 
-      {/* -------------------------------------------------- Statement · breathe */}
-      <Statement
-        eyebrow="No surprises"
-        text="Fixed price. Fixed scope. You see it before you approve it."
-        tone="alt"
-      />
-
-      {/* --------------------------------------------------------------- Terms */}
-      {/* Was a stock photograph beside a tick-list — the last generic block on
-          the route and the only remaining stock image outside Work. These are
-          commitments, so they're set as clauses: numbered, ruled, each one a
-          line of display serif with its qualification hung out in the right
-          margin. Same grammar as the services index, so the page stops
-          switching languages halfway down. */}
-      <section className="relative overflow-hidden bg-paper py-stack-lg">
-        <GridField />
-
-        <div className="relative container-max">
-        <div className="grid grid-cols-1 gap-y-8 md:grid-cols-12 md:gap-gutter">
-          <div className="md:col-span-3">
+        {/* Production Studio & Creator Ecosystem Spread */}
+        <div className="relative container-max pb-stack-lg">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 border-t border-line pt-12">
             <Reveal>
-              <span className="label-caps text-accent">Why MANDER</span>
-            </Reveal>
-          </div>
-          <div className="md:col-span-8 md:col-start-4">
-            <Reveal delay={80}>
-              <h2 className="h-display max-w-[15ch]">
-                Big-firm quality, without the big-firm invoice.
-              </h2>
-              <p className="mt-8 max-w-text text-body-lg text-ink-soft md:mt-10">
-                Most agencies price small businesses out, or hand them a
-                template and disappear. We do neither — and these three hold
-                whatever you spend.
-              </p>
-            </Reveal>
-          </div>
-        </div>
-
-        <div className="mt-16 border-t border-line md:mt-24">
-          {TERMS.map((term, index) => (
-            <Reveal key={term.index} delay={index * 70}>
-              <div className="group grid grid-cols-1 gap-y-3 border-b border-line py-9 md:grid-cols-12 md:items-baseline md:gap-gutter md:py-12">
-                {/* Apertured, like the service indices — the numerals carry
-                    film instead of sitting flat in mono, so the same motif
-                    recurs on both of the page's numbered lists rather than
-                    appearing once. */}
-                <div className="md:col-span-2">
-                  <AperturedType
-                    text={term.index}
-                    viewBox="0 0 200 120"
-                    fontSize={116}
-                    baselineY={96}
-                    maskId={`term-${term.index}`}
-                    offset={0.15 + index * 0.35}
-                    className="w-[86px] opacity-80 transition-opacity duration-500 group-hover:opacity-100 md:w-[104px]"
-                    mediaClassName="brightness-[0.8] saturate-[1.2]"
+              <div className="border border-line bg-white p-4 shadow-lg group">
+                <div className="relative aspect-[16/10] overflow-hidden bg-black mb-4">
+                  <Image
+                    src="/editorial/interview-set.jpg"
+                    alt="Creative director podcast and interview setup in Vancouver"
+                    fill
+                    sizes="(max-width: 768px) 100vw, 500px"
+                    className="object-cover transition-transform duration-500 group-hover:scale-105"
                   />
+                  <div className="absolute top-3 left-3 bg-ink/90 text-white font-mono text-[9px] uppercase tracking-widest px-2.5 py-1">
+                    PRODUCTION STUDIO // CREATOR AUDIO
+                  </div>
                 </div>
-                <h3 className="font-display text-headline-lg-mobile font-normal text-ink md:col-span-6 md:text-headline-lg">
-                  {term.title}
-                </h3>
-                <p className="max-w-text text-body-md text-ink-soft md:col-span-4">
-                  {term.body}
+                <h4 className="font-display text-2xl text-ink mb-1">High-Production Broadcast Craft</h4>
+                <p className="font-sans text-xs text-ink-soft leading-relaxed font-light">
+                  From commercial podcasts to cinematic founder interviews, we engineer digital environments that command serious cultural authority.
                 </p>
               </div>
             </Reveal>
-          ))}
-        </div>
+
+            <Reveal delay={100}>
+              <div className="border border-line bg-white p-4 shadow-lg group">
+                <div className="relative aspect-[16/10] overflow-hidden bg-black mb-4">
+                  <Image
+                    src="/editorial/designer-table.jpg"
+                    alt="Architectural brand guidelines, Leica camera, and typography proofs in Vancouver studio"
+                    fill
+                    sizes="(max-width: 768px) 100vw, 500px"
+                    className="object-cover transition-transform duration-500 group-hover:scale-105"
+                  />
+                  <div className="absolute top-3 left-3 bg-ink/90 text-white font-mono text-[9px] uppercase tracking-widest px-2.5 py-1">
+                    BRAND MATERIALS // TACTILE PROOFS
+                  </div>
+                </div>
+                <h4 className="font-display text-2xl text-ink mb-1">Physical Typographic Discipline</h4>
+                <p className="font-sans text-xs text-ink-soft leading-relaxed font-light">
+                  Every letterform, grid coordinate, and baseline ratio is tested on paper before committing to production code.
+                </p>
+              </div>
+            </Reveal>
+          </div>
         </div>
       </section>
 
-      {/* -------------------------------------------------------------- Process */}
-      {/* The heading is pinned hard left and the steps descend away from it
-          diagonally (see ProcessTimeline) — the section's own shape states
-          the sequence before the copy does. */}
-      <Section id="process" tone="alt">
-        <div className="grid grid-cols-1 gap-y-10 md:grid-cols-12 md:gap-gutter">
-          <div className="md:col-span-4">
-            <Reveal>
-              <span className="label-caps text-accent">How it works</span>
-              <h2 className="mt-6 max-w-[12ch] font-display text-headline-lg-mobile font-normal text-ink md:text-headline-lg">
+      {/* -------------------------------------------------------------- 08 · Process (Moment 06) */}
+      <section id="process" className="relative border-b border-line bg-paper py-stack-lg">
+        <div className="container-max">
+          <div className="flex flex-col md:flex-row md:items-end justify-between pb-8 border-b border-line gap-6 mb-12">
+            <div>
+              <span className="font-mono text-label-caps text-accent block mb-2">
+                06 // Sequence
+              </span>
+              <h2 className="font-display text-4xl sm:text-5xl text-ink">
                 A straight line from call to launch.
               </h2>
-            </Reveal>
-          </div>
-          <div className="md:col-span-12">
-            <ProcessTimeline steps={PROCESS} />
-          </div>
-        </div>
-      </Section>
-
-      {/* ----------------------------------------------------------------- Team */}
-      <Section id="team" tone="paper">
-        {/* Title left, supporting line dropped to the right margin and set
-            small — the asymmetry keeps it from reading as another centred
-            title card, and the gap between them is the composition. */}
-        <div className="grid grid-cols-1 gap-y-6 md:grid-cols-12 md:gap-gutter">
-          <div className="md:col-span-6">
-            <Reveal>
-              <span className="label-caps text-accent">The team</span>
-              <h2 className="mt-6 max-w-[14ch] font-display text-headline-lg-mobile font-normal text-ink md:text-headline-lg">
-                Small, senior, and reachable.
-              </h2>
-            </Reveal>
-          </div>
-          <div className="md:col-span-4 md:col-start-9 md:self-end">
-            <Reveal delay={120}>
-              <p className="text-body-md text-ink-soft">
-                No account-manager relay. The people who scope your project are
-                the people who build it.
-              </p>
-            </Reveal>
-          </div>
-        </div>
-
-        {/* Five across three columns reads as a small, concentrated studio —
-            and the empty sixth cell is left empty on purpose. Stretching the
-            grid to close the gap would make a five-person team look like it
-            was arranged to fill space. */}
-        {/* `items-stretch` plus `h-full` on both the Reveal wrapper and the
-            card is what actually makes the row share a baseline — without it
-            each card sizes to its own content and the portraits step up and
-            down across the row. */}
-        <div className="mt-14 grid grid-cols-2 items-stretch gap-x-6 gap-y-12 sm:grid-cols-3 lg:max-w-4xl">
-          {TEAM.map((member, index) => (
-            <Reveal key={member.name} delay={index * 60} className="flex h-full">
-              <TeamCard member={member} />
-            </Reveal>
-          ))}
-        </div>
-      </Section>
-
-      {/* ------------------------------------------------------------ Engagements */}
-      {/* Was "In their words" — the quotes it ran on were invented, so this
-          now shows the verifiable side of the same engagements instead. */}
-      {/* Set as a running head on a rule, matching Selected Work above rather
-          than the centred title card it used to use — a centred heading in the
-          middle of a page built on asymmetry is the thing that made this
-          section read as bolted on. */}
-      <Section tone="warm">
-        <Reveal>
-          <div className="flex flex-col gap-5 border-b border-line pb-7 sm:flex-row sm:items-baseline sm:justify-between sm:gap-10">
-            <div className="flex flex-wrap items-baseline gap-x-6 gap-y-2">
-              <span className="label-caps shrink-0 text-accent">Engagements</span>
-              <h2 className="font-display text-headline-lg-mobile font-normal text-ink md:text-headline-lg">
-                What we actually delivered.
-              </h2>
             </div>
-            <p className="max-w-[34ch] shrink-0 text-body-md text-ink-soft sm:text-right">
-              Scope and outcome for three recent builds — no paraphrasing, no
-              invented praise.
+            <p className="font-mono text-xs text-ink-mute uppercase tracking-widest">
+              3–4 WEEKS TYPICAL ENGAGEMENT
             </p>
           </div>
-        </Reveal>
-        <div className="mt-14">
-          <Testimonials items={CLIENTS} />
-        </div>
-      </Section>
 
-      {/* ------------------------------------------------------- Quiz CTA (red) */}
-      <section className="bg-accent text-on-accent">
-        <div className="container-max py-stack-lg">
-          <div className="grid grid-cols-1 gap-10 lg:grid-cols-12 lg:items-end">
-            <div className="lg:col-span-8">
-              <span className="label-caps text-white/70">Not sure where to start?</span>
-              {/* Pushed up to display scale. On a full-bleed accent field a
-                  headline set at the same size as the ones on paper looks
-                  timid — the block needs the type to fill it. */}
-              <h2 className="mt-5 font-display text-headline-lg-mobile font-normal md:text-display-lg">
-                Take the 60-second fit quiz.
-              </h2>
-              <p className="mt-5 max-w-text text-body-lg text-white/85">
-                Six quick questions. We recommend a plan and a starting price
-                based on your answers — or route you straight to a person if
-                that is the better call.
-              </p>
+          <ProcessTimeline steps={PROCESS} />
+        </div>
+      </section>
+
+      {/* -------------------------------------------------- 09 · Vancouver Dusk Field Note */}
+      <section className="relative border-b border-line bg-white py-16 sm:py-24">
+        <div className="container-max">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 items-center">
+            <div className="lg:col-span-7">
+              <div className="relative aspect-[16/10] border border-line overflow-hidden shadow-2xl group">
+                <Image
+                  src="/editorial/rain-street.jpg"
+                  alt="Vancouver evening street with rain, coffee bar, and warm reflections"
+                  fill
+                  sizes="(max-width: 1024px) 100vw, 700px"
+                  className="object-cover transition-transform duration-700 group-hover:scale-[1.02]"
+                />
+                <div className="absolute bottom-4 left-4 bg-ink/90 text-white font-mono text-[9.5px] uppercase tracking-widest px-3 py-1">
+                  VANCOUVER // WATER STREET DUSK
+                </div>
+              </div>
             </div>
-            <div className="lg:col-span-4 lg:text-right">
-              <Link href="/quote" className="btn-on-dark">
-                Start the quiz
-                <Icon name="arrow" className="h-4 w-4" strokeWidth={2} />
-              </Link>
-              <p className="mt-4 text-label-sm text-white/70">
-                Prefer to talk?{' '}
-                <a href={`mailto:${BRAND.email}`} className="underline underline-offset-4">
-                  Email us
-                </a>
+            <div className="lg:col-span-5">
+              <span className="font-mono text-label-caps text-accent block mb-3">
+                07 // Pacific Philosophy
+              </span>
+              <h3 className="font-display text-3xl sm:text-4xl text-ink leading-tight mb-4">
+                "Quiet luxury is knowing you don't have to shout."
+              </h3>
+              <p className="font-sans text-body-md text-ink-soft leading-relaxed font-light mb-6">
+                The most authoritative brands don't rely on screaming neon buttons or aggressive marketing popups. They win through pristine visual taste, disciplined restraint, and flawless technical execution.
               </p>
+              <div className="font-mono text-xs uppercase tracking-widest text-ink font-semibold">
+                — MANDER CREATIVE DIRECTIVE
+              </div>
             </div>
           </div>
         </div>
       </section>
 
-      {/* -------------------------------------------------------------- Pricing */}
-      <Section id="pricing" tone="warm">
-        <div className="flex flex-col justify-between gap-6 md:flex-row md:items-end">
-          <SectionHeading
-            eyebrow="Pricing"
-            title="Plain prices. No games."
-            body="One-time build cost. Every tier includes a strategy call before a pixel is drawn."
-          />
-          <Reveal>
-            <Link href="/pricing" className="link-underline label-caps text-ink">
-              Full breakdown
-              <Icon name="arrow" className="h-4 w-4" strokeWidth={2} />
-            </Link>
-          </Reveal>
-        </div>
-
-        <Reveal delay={80} className="mt-12">
-          <PricingInteractive tiers={TIERS} />
-        </Reveal>
-
-        {/* Apps, folded shut — stated, priced, and out of the way so the
-            website tiers above stay the decision on this page. */}
-        <Reveal delay={120} className="mt-6">
-          <AppPricing />
-        </Reveal>
-
-        <Reveal delay={140}>
-          <div className="mt-8 flex flex-col gap-3 border-t border-line pt-8 md:flex-row md:items-baseline md:justify-between md:gap-8">
-            <p className="text-label-sm text-ink-mute">
-              Tap a plan to see everything it includes.
+      {/* -------------------------------------------------- 10 · Bespoke Scoping & Quote (Moment 07 - NO FIXED RATES) */}
+      <section id="quote" className="relative border-b border-line bg-paper py-stack-lg">
+        <div className="container-max">
+          <div className="flex flex-col md:flex-row md:items-end justify-between pb-8 border-b border-line gap-6 mb-12">
+            <div>
+              <span className="font-mono text-label-caps text-accent block mb-2">
+                08 // Bespoke Scoping
+              </span>
+              <h2 className="font-display text-4xl sm:text-5xl text-ink">
+                Tailored Scope. Ask For A Quote.
+              </h2>
+            </div>
+            <p className="font-sans text-sm text-ink-soft font-light max-w-md">
+              No generic fixed rates. Every project is scoped against your exact business targets, technical requirements, and timeline.
             </p>
-            {/* Quiet second door into the Community Rate — text, not a button,
-                so it never competes with the plan CTAs above it. */}
+          </div>
+
+          {/* Interactive Pricing Cards */}
+          <PricingInteractive tiers={TIERS} />
+
+          {/* Community Rate Callout */}
+          <div className="mt-12">
             <CommunityRateNote />
           </div>
-        </Reveal>
-      </Section>
+        </div>
+      </section>
 
-      {/* ------------------------------------------------ Community Rate · 20% */}
-      <CommunityRateSection />
+      {/* -------------------------------------------------- 11 · Proof & Social Ground */}
+      <Testimonials items={CLIENTS} />
 
-      {/* ------------------------------------------------------------------ FAQ */}
-      {/* The heading column runs mostly empty below the title on desktop — an
-          accordion is tall and a two-line heading is not. The column rules
-          give that gutter something to be rather than nothing. */}
-      <section id="faq" className="relative overflow-hidden bg-paper py-stack-lg">
-        <GridField />
-        <div className="relative container-max">
-          <div className="grid grid-cols-1 gap-gutter lg:grid-cols-12 lg:gap-16">
-            <div className="lg:col-span-4">
-              <SectionHeading eyebrow="Questions" title="Before you ask." />
-            </div>
-            <div className="lg:col-span-8">
+      {/* -------------------------------------------------- 12 · Direct Engagement & Contact Form */}
+      <Section id="contact" tone="alt" className="!py-stack-lg">
+        <div className="container-max">
+          <div className="grid grid-cols-1 gap-y-12 lg:grid-cols-12 lg:gap-gutter">
+            <div className="lg:col-span-5">
               <Reveal>
-                <Faq items={FAQS} />
+                <span className="label-caps text-accent block mb-3">09 // Direct Engagement</span>
+                <h2 className="font-display text-4xl sm:text-6xl text-ink leading-[0.95] tracking-tight mb-6">
+                  Let’s build something that commands authority.
+                </h2>
+                <p className="font-sans text-body-lg text-ink-soft leading-relaxed font-light mb-8">
+                  Tell us about your project. We reply within one business day with plain advice and a transparent, written bespoke quote.
+                </p>
+                <div className="border-t border-line pt-6 font-mono text-xs text-ink-mute space-y-2 uppercase tracking-wider">
+                  <div>DIRECT INBOX: <a href="mailto:herman@mander.tech" className="text-ink font-bold hover:underline">HERMAN@MANDER.TECH</a></div>
+                  <div>OFFICES: VANCOUVER, BC × BOSTON, MA</div>
+                </div>
+              </Reveal>
+            </div>
+
+            <div className="lg:col-span-7">
+              <Reveal delay={100}>
+                <div className="border border-line bg-white p-8 sm:p-12 shadow-xl">
+                  <ContactForm />
+                </div>
               </Reveal>
             </div>
           </div>
         </div>
-      </section>
-
-      {/* -------------------------------------------------------------- Contact */}
-      {/* The site had no working contact form at all — every route out was a
-          mailto, which loses anyone reading on a phone without a mail client
-          configured. Same column split as the FAQ above it. */}
-      <Section id="contact" tone="paper">
-        <div className="grid grid-cols-1 gap-gutter lg:grid-cols-12 lg:gap-16">
-          <div className="lg:col-span-4">
-            <SectionHeading
-              eyebrow="Get in touch"
-              title="Tell us about the project."
-              body="A few lines is enough to start. We reply within one business day — no obligation."
-            />
-          </div>
-          <div className="lg:col-span-8">
-            <Reveal>
-              <ContactForm />
-            </Reveal>
-          </div>
-        </div>
       </Section>
 
-      {/* ------------------------------------------------------------ Final CTA */}
-      <section className="relative overflow-hidden bg-ink text-paper">
-        <GridField tone="paper" />
-        <div className="relative container-max py-stack-lg text-center">
-          <Reveal className="mx-auto max-w-3xl">
-            <h2 className="font-display text-headline-lg-mobile font-normal md:text-display-lg">
-              Let&apos;s build something that pulls its weight.
-            </h2>
-            <div className="mt-10 flex flex-col justify-center gap-3 sm:flex-row">
-              <a
-                href={`mailto:${BRAND.email}?subject=${encodeURIComponent(
-                  'New project enquiry'
-                )}`}
-                className="btn-on-dark"
-              >
-                Contact sales
-              </a>
-              <Link
-                href="/quote"
-                className="label-caps inline-flex items-center justify-center gap-2 border border-paper/40 px-8 py-4 text-paper transition-colors duration-300 hover:border-paper"
-              >
-                Take the fit quiz
-              </Link>
-            </div>
-            <p className="mt-6 text-label-sm text-paper/50">
-              <CommunityRateFooterLink className="underline decoration-paper/25 underline-offset-4 transition-colors hover:text-paper/80 hover:decoration-paper/60" />
-            </p>
-          </Reveal>
-        </div>
-      </section>
+      {/* -------------------------------------------------- 13 · FAQs */}
+      <Faq items={FAQS} />
     </>
   );
 }
+
