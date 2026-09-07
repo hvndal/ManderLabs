@@ -7,8 +7,7 @@ import { motion, useSpring } from 'framer-motion';
  * CursorImage — wraps an image container and applies subtle inverse
  * displacement on pointer move, creating depth without scroll hijacking.
  *
- * Ensures relative positioning and 100% width/height so Next.js <Image fill />
- * always expands to the exact container dimensions.
+ * Preserves explicit absolute positioning when passed, preventing position collisions.
  */
 const SPRING = { stiffness: 150, damping: 20, mass: 0.5 };
 
@@ -57,14 +56,17 @@ export default function CursorImage({
     y.set(0);
   }, [x, y]);
 
+  const hasPos = className.includes('absolute') || className.includes('fixed') || className.includes('relative');
+  const posClass = hasPos ? '' : 'relative';
+
   if (reduced || isTouch) {
-    return <div className={`relative overflow-hidden ${className}`}>{children}</div>;
+    return <div className={`${posClass} overflow-hidden ${className}`}>{children}</div>;
   }
 
   return (
     <div
       ref={ref}
-      className={`relative overflow-hidden ${className}`}
+      className={`${posClass} overflow-hidden ${className}`}
       onPointerMove={handlePointerMove}
       onPointerLeave={handlePointerLeave}
     >
