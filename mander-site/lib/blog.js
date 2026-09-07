@@ -40,33 +40,33 @@ export const POSTS = [
         h: 'Why nobody will give you a price',
         p: [
           'Ask five studios what a website costs and you will get five requests for a discovery call. There is a reason for it that is not entirely cynical: scope genuinely varies, and a five-page site for a dental practice is a different job from a booking platform for a restaurant group. But the practical effect is that a business owner cannot compare anything, and ends up choosing on whoever answered the phone most convincingly.',
-          'We publish fixed prices instead. Below is what each band buys, and — more usefully — what it does not.',
+          'We publish transparent scope tiers instead. Below is what each band buys, and — more usefully — what it does not.',
         ],
       },
       {
-        h: 'Under $500: a credible presence',
+        h: 'Launch Tier: A Credible Online Presence',
         p: [
-          'At this level you are buying existence, not acquisition. A one-page site with a contact form, a Google Maps link and a mobile-first build establishes that you are a real business when somebody searches your name after a referral. Our Launch tier is $299 and takes about two weeks.',
+          'At this level you are buying existence, not acquisition. A one-page site with a contact form, a Google Maps link and a mobile-first build establishes that you are a real business when somebody searches your name after a referral. Our Launch tier takes about two weeks and establishes a clean foundation.',
           'What it does not do is find you customers. There is no meaningful SEO at this level and no integration with anything. If your problem is "people hear about us and then cannot find us online", this solves it completely. If your problem is "not enough people hear about us", it will not move at all.',
         ],
       },
       {
-        h: '$500 to $900: the range most businesses actually need',
+        h: 'Starter & Growth: The Range Most Businesses Actually Need',
         p: [
-          'This is where the majority of Massachusetts small businesses land, and it covers two quite different products.',
-          'Around $499 buys a proper multi-page site — five pages, copywriting support, enquiry forms, basic technical SEO. It is a brochure that does its job well. Around $899 buys the same thing plus the machinery that makes it findable: local SEO, Google Business Profile optimisation, Search Console and Analytics setup, local keyword research, schema, and a booking or CRM integration.',
-          'The gap between those two numbers is almost entirely the difference between a site people can find when they already know your name, and a site that brings you people who did not. For a business in a competitive market like Boston or Cambridge, that gap is the whole point.',
+          'This is where the majority of growing small businesses land, and it covers two distinct strategic stages.',
+          'The Starter tier delivers a proper multi-page site — up to five pages, copywriting support, enquiry forms, basic technical SEO. It is an authoritative digital brochure that does its job well. The Growth tier delivers the same thing plus the machinery that makes it findable: local SEO, Google Business Profile optimisation, Search Console and Analytics setup, local keyword research, schema, and a booking or CRM integration.',
+          'The gap between those two tiers is almost entirely the difference between a site people can find when they already know your name, and a site that brings you people who did not. For a business in a competitive market like Vancouver, Boston, or Cambridge, that gap is the whole point.',
         ],
         ul: [
-          'Choose the lower end if you are a referral-driven business and mostly need to look legitimate',
-          'Choose the higher end if customers search a category before they choose a supplier',
+          'Choose Starter if you are a referral-driven business and mostly need to look legitimate',
+          'Choose Growth if customers search a category before they choose a supplier',
           'The deciding question is not budget — it is whether search is how your customers find people like you',
         ],
       },
       {
-        h: '$1,500 and up: custom functionality',
+        h: 'Business Pro & Custom Functional Architecture',
         p: [
-          'Past this point you are paying for things a standard site cannot do — e-commerce, API integrations into software you already run, custom workflows, multi-location structure. Our Business Pro tier starts at $1,499 and runs six to ten weeks depending on what is actually being built.',
+          'Past this point you are paying for things a standard site cannot do — e-commerce, API integrations into software you already run, custom workflows, multi-location structure. Our Business Pro tier runs six to ten weeks depending on what is actually being built.',
           'Be suspicious of anyone who recommends this band before asking what software your business already uses. The honest version of this conversation starts with your operations, not with a package.',
         ],
       },
@@ -219,7 +219,7 @@ export const POSTS = [
           'What you need is credibility, a clear list of services, and a way to get in touch',
         ],
         p: [
-          'This covers the large majority of trades, practices, restaurants, retailers and professional services. Our website tiers run $299 to $1,499 and up, and a $899 build with local SEO is the most common right answer.',
+          'This covers the large majority of trades, practices, restaurants, retailers and professional services. Our website tiers cover everything from focused Launch to full Growth and Business Pro, and an audited build with local SEO is the most common right answer.',
         ],
       },
       {
