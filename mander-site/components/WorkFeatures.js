@@ -149,8 +149,12 @@ function Plate({ project, lead }) {
       // Shallower than the screenshot slot it stands in for. A plate is a
       // specimen band — name, swatches, disciplines — and at 16:9 the middle
       // third of it is empty paper doing nothing.
-      className={`relative flex w-full flex-col justify-between gap-10 overflow-hidden border border-line bg-paper-2 p-7 md:p-9 ${
-        lead ? 'aspect-[21/9]' : 'aspect-[3/2]'
+      // 21:9 is a desktop proportion. At 390px wide it is 167px tall, which
+      // clipped the project name and hid the swatches entirely — the plate
+      // gets its own ratio on a phone rather than being the desktop one
+      // squeezed.
+      className={`relative flex w-full flex-col justify-between gap-8 overflow-hidden border border-line bg-paper-2 p-7 md:gap-10 md:p-9 ${
+        lead ? 'aspect-[4/3] md:aspect-[21/9]' : 'aspect-[4/3] md:aspect-[3/2]'
       }`}
     >
       <div
@@ -161,7 +165,7 @@ function Plate({ project, lead }) {
         <span className="rail text-ink-mute">{project.location}</span>
         <p
           className={`mt-4 font-display leading-[0.88] tracking-[-0.04em] text-ink ${
-            lead ? 'text-[13vw] md:text-[7rem]' : 'text-[9vw] md:text-[3.5rem]'
+            lead ? 'text-[11vw] md:text-[7rem]' : 'text-[8vw] md:text-[3.5rem]'
           }`}
         >
           {project.name}
