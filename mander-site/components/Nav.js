@@ -72,8 +72,12 @@ export default function Nav() {
   return (
     <header
       className={`sticky top-0 z-50 w-full border-b transition-[background-color,border-color,backdrop-filter] duration-500 ease-premium ${
+        // Opaque, not paper/90 with a blur behind it. Translucent over the
+        // dark hero panels dropped the nav's own labels to 4.3:1 — under AA —
+        // and a backdrop-filter across the full width of a sticky header is
+        // the most expensive thing on the page to composite while scrolling.
         scrolled || open
-          ? 'border-line bg-paper/90 backdrop-blur-md'
+          ? 'border-line bg-paper'
           : 'border-transparent bg-transparent'
       }`}
     >

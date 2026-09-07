@@ -358,7 +358,9 @@ export default function Triptych({ tagline, region }) {
                 <div className="flex items-start justify-between gap-4">
                   <span
                     className={`rail ${
-                      dark ? 'text-paper/70' : 'text-ink-mute'
+                      // /70 measured 4.26:1 on the panel ground — just under
+                      // AA for text this size. /80 clears it.
+                      dark ? 'text-paper/80' : 'text-ink-mute'
                     }`}
                   >
                     {panel.index}

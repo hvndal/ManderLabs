@@ -1,8 +1,15 @@
+// The functional regression: console errors, failed first-party requests,
+// the contact form and the quiz posting real payloads, market gating in both
+// directions, the mobile menu, no video on a phone, and images that declare
+// their size.
+//
+// Needs a production build running, and a Chromium:
+//   BASE=http://localhost:3000 node scripts/audit-functional.mjs
 import { chromium } from 'playwright';
-const BASE='http://localhost:3441';
+const BASE = process.env.BASE || 'http://localhost:3000';
 const out=[]; const ok=(l,c,d='')=>out.push(`${c?'PASS':'FAIL'}  ${l}${d?' — '+d:''}`);
 process.on('unhandledRejection',e=>console.log('UR',e));
-const b=await chromium.launch({executablePath:'/opt/pw-browsers/chromium-1194/chrome-linux/chrome'});
+const b=await chromium.launch(process.env.CHROMIUM ? { executablePath: process.env.CHROMIUM } : {});
 
 // --- console errors + network failures across the main routes
 const routes=['/','/brand','/digital','/growth','/pricing','/quote','/contact','/about','/locations/metro-vancouver/vancouver','/legal/refunds'];
