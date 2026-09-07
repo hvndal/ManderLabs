@@ -187,6 +187,29 @@
 }
 
 /* ---------------------------------------------------------------------- */
+/* Stripe-Style Brand Marquee — smooth, infinite horizontal loop           */
+/* ---------------------------------------------------------------------- */
+@keyframes marquee {
+  0% {
+    transform: translate3d(0, 0, 0);
+  }
+  100% {
+    transform: translate3d(-50%, 0, 0);
+  }
+}
+
+.animate-marquee {
+  animation: marquee 38s linear infinite;
+  will-change: transform;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .animate-marquee {
+    animation: none;
+  }
+}
+
+/* ---------------------------------------------------------------------- */
 /* Grain — a whisper of texture over flat colour fields, never over photos */
 /* ---------------------------------------------------------------------- */
 .grain-overlay {

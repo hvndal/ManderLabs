@@ -17,32 +17,11 @@ import { BRAND } from '@/lib/content';
  * spectacle of the masthead and the argument of the page, and it is the
  * reason the headline lands.
  */
-export default function Colophon({ headline, body, clients }) {
+export default function Colophon({ headline, body }) {
   return (
     <section className="relative bg-paper">
-      {/* Client marks — small, low, unlabelled. They are evidence, not a badge row. */}
-      <div className="container-max pt-10 md:pt-14">
-        <Reveal>
-          <div className="flex flex-wrap items-center gap-x-10 gap-y-5">
-            <span className="label-caps text-ink-mute">Selected clients</span>
-            <ul className="flex flex-wrap items-center gap-x-10 gap-y-5">
-              {clients.map((c) => (
-                <li key={c.name}>
-                  {/* eslint-disable-next-line @next/next/no-img-element */}
-                  <img
-                    src={c.logo}
-                    alt={`${c.name} logo`}
-                    className="h-5 w-auto max-w-[130px] object-contain opacity-40 transition-opacity duration-500 ease-premium hover:opacity-100"
-                  />
-                </li>
-              ))}
-            </ul>
-          </div>
-        </Reveal>
-      </div>
-
       {/* The proposition — pushed off the left edge into the 4th column */}
-      <div className="container-max grid grid-cols-1 gap-y-10 pb-stack-lg pt-16 md:grid-cols-12 md:pt-28">
+      <div className="container-max grid grid-cols-1 gap-y-10 pb-stack-md pt-16 md:grid-cols-12 md:pt-24">
         <div className="md:col-start-4 md:col-span-8">
           <Reveal>
             <h1 className="max-w-[16ch] font-display text-headline-lg-mobile font-normal text-ink md:text-display-lg">
@@ -62,11 +41,11 @@ export default function Colophon({ headline, body, clients }) {
           <Reveal delay={200} className="flex flex-wrap items-center gap-8">
             <a
               href={`mailto:${BRAND.email}?subject=${encodeURIComponent(
-                'New project enquiry'
+                'Project Quote Enquiry'
               )}`}
               className="btn-primary"
             >
-              Contact sales
+              Ask for Quote
               <Icon name="arrow" className="h-4 w-4" strokeWidth={2} />
             </a>
             <Link href="#work" className="link-underline label-caps text-ink">

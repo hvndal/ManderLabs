@@ -1,4 +1,4 @@
-﻿import Image from 'next/image';
+import Image from 'next/image';
 import Link from 'next/link';
 import Section, { SectionHeading } from '@/components/Section';
 import Reveal from '@/components/Reveal';
@@ -6,6 +6,7 @@ import Icon from '@/components/Icon';
 import ServiceBand from '@/components/ServiceBand';
 import Masthead from '@/components/Masthead';
 import Colophon from '@/components/Colophon';
+import ClientMarquee from '@/components/ClientMarquee';
 import StatsConstellation from '@/components/StatsConstellation';
 import AperturedType from '@/components/AperturedType';
 import ShaderBackground from '@/components/ShaderBackground';
@@ -57,113 +58,56 @@ export default function HomePage() {
       <Colophon
         headline="Websites that grow real businesses."
         body="Premium design and bespoke engineering for ambitious small and mid-sized businesses across Canada and the U.S. — priced to deliver measurable ROI."
-        clients={CLIENTS}
       />
 
-      {/* ------------------------------------------- 03 · Vancouver Studio Environment (Moment 02) */}
-      <section className="relative border-y border-line bg-paper py-16 sm:py-24 overflow-hidden">
-        <div className="container-max">
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
-            
-            {/* Left: Editorial Statement & Metadata */}
-            <div className="lg:col-span-5 flex flex-col justify-between">
-              <Reveal>
-                <div className="flex items-center gap-3 mb-4">
-                  <span className="h-2 w-2 rounded-full bg-accent animate-pulse"></span>
-                  <span className="font-mono text-label-caps text-accent">
-                    FIELD NOTE 01 // THE VANCOUVER ENVIRONMENT
-                  </span>
-                </div>
-                <h2 className="font-display text-headline-lg text-ink leading-[0.98] tracking-tight mb-6">
-                  "A website is not a brochure. It is the <span className="italic underline decoration-accent/40 underline-offset-8">first employee</span> your business hires that never sleeps."
-                </h2>
-                <p className="font-sans text-body-md text-ink-soft leading-relaxed font-light mb-6">
-                  Conceived and engineered between the rain on Water Street and cold Pacific harbor light. We blend Scandinavian restraint with Swiss functionalism to build websites that command immediate market authority.
-                </p>
-                <div className="font-mono text-[10px] uppercase tracking-[0.25em] text-ink-mute border-t border-line pt-4 flex items-center justify-between">
-                  <span>VANCOUVER STUDIO AXIS</span>
-                  <span className="text-ink font-semibold">49°17'N 123°07'W</span>
-                </div>
-              </Reveal>
-            </div>
+      {/* ------------------------------------------- 03 · Stripe-Style Rotating Client Marquee */}
+      <ClientMarquee />
 
-            {/* Right: Authentic $50k Camera Environmental Studio Shot */}
-            <div className="lg:col-span-7">
-              <Reveal delay={120}>
-                <div className="relative border border-line bg-black shadow-2xl overflow-hidden aspect-[16/10] group">
-                  <Image
-                    src="/editorial/studio-set.jpg"
-                    alt="MANDER creative production studio in Vancouver with cinema camera and broadcast microphone overlooking rain on window"
-                    fill
-                    sizes="(max-width: 1024px) 100vw, 700px"
-                    className="object-cover transition-transform duration-700 ease-out group-hover:scale-[1.02]"
-                  />
-                  <div className="absolute top-4 left-4 bg-ink/90 backdrop-blur-md text-white px-3 py-1 font-mono text-[9.5px] uppercase tracking-widest border border-white/10">
-                    STUDIO 01 // AUDIO & CINEMA PRODUCTION
-                  </div>
-                  <div className="absolute bottom-4 right-4 hidden sm:block bg-ink/90 backdrop-blur-md text-white/70 px-3 py-1 font-mono text-[9.5px] uppercase tracking-widest border border-white/10">
-                    NATURAL LIGHT · PACIFIC RAIN
-                  </div>
-                </div>
-              </Reveal>
-            </div>
+      {/* ------------------------------------------- 04 · Vancouver Studio Environment (Full-Bleed Statement) */}
+      <section className="relative w-full border-y border-line bg-ink overflow-hidden min-h-[560px] sm:min-h-[640px] lg:min-h-[720px] flex items-center">
+        {/* Full-bleed cinematic photo */}
+        <Image
+          src="/editorial/studio-set.jpg"
+          alt="MANDER Vancouver production studio"
+          fill
+          priority
+          sizes="100vw"
+          className="object-cover object-center scale-[1.01]"
+        />
+        {/* Editorial scrim gradient — pure dark gradient for crystalline text readability */}
+        <div className="absolute inset-0 bg-gradient-to-r from-black/92 via-black/80 to-black/35 sm:to-black/20" />
+        <div className="absolute inset-0 bg-black/20" />
 
-          </div>
-        </div>
-      </section>
-
-      {/* ------------------------------------------ 04 · Stats as Constellation */}
-      <StatsConstellation stats={STATS} />
-
-      {/* ------------------------------------------ 05 · THE PACIFIC RED EVENT (Moment 03) */}
-      {/* A high-contrast, rare editorial interruption in deep oxblood/brick red,
-          then returns immediately to quiet cream. */}
-      <section className="relative bg-[#8a1c22] text-white py-20 sm:py-28 px-6 sm:px-12 border-y border-[#6e1418] overflow-hidden">
-        <div className="container-max relative z-10">
+        {/* Text layered directly on top of the picture */}
+        <div className="relative z-10 container-max py-20 sm:py-28">
           <Reveal>
-            <div className="flex flex-col lg:flex-row lg:items-end justify-between pb-10 border-b border-white/20 gap-6">
-              <div>
-                <span className="font-mono text-label-caps text-white/70 block mb-2">
-                  03 // THE PACIFIC STANDARD
+            <div className="max-w-3xl">
+              <div className="flex items-center gap-3 mb-5">
+                <span className="h-2 w-2 rounded-full bg-white/70 animate-pulse" />
+                <span className="font-mono text-label-caps text-white/75 tracking-[0.2em]">
+                  FIELD NOTE 01 // THE VANCOUVER ENVIRONMENT
                 </span>
-                <h2 className="font-display text-4xl sm:text-6xl text-white leading-[0.95] tracking-tight max-w-2xl">
-                  We don't build templates. We build flagships that pull revenue.
-                </h2>
               </div>
-              <p className="font-mono text-xs text-white/80 uppercase tracking-widest max-w-sm font-light">
-                BUILT IN VANCOUVER · SERVING AMBITIOUS ENTERPRISES ACROSS NORTH AMERICA
+
+              <h2 className="font-display text-headline-lg-mobile sm:text-headline-lg lg:text-display-lg text-white leading-[0.98] tracking-tight mb-6 text-balance">
+                &ldquo;A website is not a brochure. It is the <span className="italic underline decoration-white/40 underline-offset-8">first employee</span> your business hires that never sleeps.&rdquo;
+              </h2>
+
+              <p className="font-sans text-body-lg text-white/80 leading-relaxed font-light mb-8 max-w-xl">
+                Conceived and engineered between the rain on Water Street and cold Pacific harbor light. We blend Scandinavian restraint with Swiss functionalism to build websites that command immediate market authority.
               </p>
-            </div>
 
-            {/* Three Standing Clauses in Red */}
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mt-12">
-              <div className="border-l border-white/30 pl-6">
-                <div className="font-mono text-xs font-bold text-white mb-2">01 // FIXED SCOPE</div>
-                <h3 className="font-display text-2xl text-white mb-2">Every line quoted in writing.</h3>
-                <p className="font-sans text-xs text-white/80 leading-relaxed font-light">
-                  The scope you approve is the scope delivered. No open-ended hourly billing meters or surprise line items.
-                </p>
-              </div>
-
-              <div className="border-l border-white/30 pl-6">
-                <div className="font-mono text-xs font-bold text-white mb-2">02 // TOTAL OWNERSHIP</div>
-                <h3 className="font-display text-2xl text-white mb-2">You own 100% of the code.</h3>
-                <p className="font-sans text-xs text-white/80 leading-relaxed font-light">
-                  Domains, repositories, assets, and accounts are registered in your name from day one. Never held hostage.
-                </p>
-              </div>
-
-              <div className="border-l border-white/30 pl-6">
-                <div className="font-mono text-xs font-bold text-white mb-2">03 // MONTH-TO-MONTH</div>
-                <h3 className="font-display text-2xl text-white mb-2">Zero retainer lock-in.</h3>
-                <p className="font-sans text-xs text-white/80 leading-relaxed font-light">
-                  Our hosting and care support runs on simple trust. Leave whenever you wish; the flagship remains yours.
-                </p>
+              <div className="font-mono text-[10px] uppercase tracking-[0.25em] text-white/60 border-t border-white/20 pt-4 flex items-center justify-between max-w-md">
+                <span>VANCOUVER STUDIO AXIS</span>
+                <span className="text-white font-semibold">49°17&apos;N 123°07&apos;W</span>
               </div>
             </div>
           </Reveal>
         </div>
       </section>
+
+      {/* ------------------------------------------ 05 · Stats as Constellation */}
+      <StatsConstellation stats={STATS} />
 
       {/* ----------------------------------------------------------------- 06 · Curated Work Spotlight (Moment 04) */}
       {/* Less is more on the homepage: ONE unboxed flagship box + full link to dedicated /work landing page */}
