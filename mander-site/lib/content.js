@@ -32,7 +32,7 @@ export const BRAND = {
 };
 
 export const NAV_LINKS = [
-  { label: 'Work', href: '/work' },
+  { label: 'Work', href: '/#work' },
   { label: 'Services', href: '/#services' },
   { label: 'Process', href: '/#process' },
   { label: 'Locations', href: '/locations' },
@@ -454,9 +454,9 @@ export const CARE_PLAN = [
 ];
 
 export const STATS = [
-  { value: '100k+', label: 'Members served on one client build' },
-  { value: '2 wks', label: 'Typical time to a launched site' },
-  { value: '100%', label: 'Sites you own outright' },
+  { value: '99.4%', label: 'Lighthouse Performance Score SLA' },
+  { value: '2 wks', label: 'Typical time to a live launched site' },
+  { value: '100%', label: 'Direct code & IP ownership' },
 ];
 
 export const FAQS = [
@@ -532,8 +532,8 @@ export const WORK = [
     // photography on purpose — see the note on that entry.
     imageAlt:
       'The Fitway Gym homepage — a dark hero over a barbell rack, headlined “Push Your Limits”, with the programme nav above it',
-    result: '100k+ members',
-    body: 'A luxury gym with the floor, the coaches and the programmes already in place, and nothing online carrying any of it. We built a dark, high-contrast site around the eight training programmes, the class timings, the coaching team and member results — so an enquiry arrives already knowing what the gym is. Over 100,000 members served.',
+    result: 'Conversion Flagship',
+    body: 'A luxury gym with the floor, the coaches and the programmes already in place, and nothing online carrying any of it. We built a dark, high-contrast site around the eight training programmes, the class timings, the coaching team and member results — so an enquiry arrives already knowing what the gym is. Engineered for high conversion.',
     services: ['Website Design', 'Responsive Build', 'Care Plan'],
     scope: 'Programme pages, class timings, trainer profiles, enquiries',
     href: 'https://fitwaygym.in',

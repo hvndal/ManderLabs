@@ -43,13 +43,9 @@ export default function WorkSpotlight({ items }) {
             </button>
           ))}
         </div>
-        <Link
-          href="/work"
-          className="shrink-0 text-accent font-semibold hover:underline flex items-center gap-1.5 px-3 py-1"
-        >
-          <span>Full Archive ({items.length} Sites)</span>
-          <Icon name="arrow" className="h-3.5 w-3.5" />
-        </Link>
+        <span className="shrink-0 font-mono text-[10.5px] uppercase tracking-wider text-ink-mute px-3 py-1">
+          4 CURATED DEPLOYMENTS
+        </span>
       </div>
 
       {/* THE UNBOXED ARCHITECTURAL BOX: Less frame, direct presentation */}
@@ -154,12 +150,12 @@ export default function WorkSpotlight({ items }) {
                 <span>↗</span>
               </a>
             )}
-            <Link
-              href="/work"
+            <a
+              href="#quote"
               className="w-full inline-flex items-center justify-center gap-2 border border-line hover:border-ink text-ink font-mono text-xs uppercase tracking-[0.18em] py-3 px-6 transition-colors text-center"
             >
-              <span>See Full Screenshot Archive →</span>
-            </Link>
+              <span>Ask For Similar Scope ↗</span>
+            </a>
           </div>
         </div>
       </div>

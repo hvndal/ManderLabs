@@ -128,13 +128,10 @@ export default function HomePage() {
                 Selected Commercial Deployments.
               </h2>
             </div>
-            <Link
-              href="/work"
-              className="link-underline label-caps shrink-0 text-ink flex items-center gap-1.5"
-            >
-              <span>Explore Complete Archive (7 Sites)</span>
-              <Icon name="arrow" className="h-4 w-4" strokeWidth={2} />
-            </Link>
+            <div className="font-mono text-xs uppercase tracking-widest text-ink-mute flex items-center gap-2">
+              <span className="h-1.5 w-1.5 rounded-full bg-accent" />
+              <span>LIVE VERIFIED FLAGSHIPS</span>
+            </div>
           </div>
         </Reveal>
 
