@@ -1,7 +1,6 @@
 import Link from 'next/link';
 import Logo from './Logo';
 import GridField from './GridField';
-import AperturedType from './AperturedType';
 import { CommunityRateFooterLink } from './CommunityRate';
 import { CookiePreferencesLink } from './CookieHub';
 import WhatsAppCta, { WhatsAppLine } from './WhatsAppCta';
@@ -187,36 +186,22 @@ export default function Footer() {
         </div>
       </div>
 
-      {/* The masthead's move, returned at the other end of the document.
-          MANDER knocked out of an ink stencil with film running behind it,
-          set wide enough that the M and the R are cut by the viewport edges
-          exactly as they are in the hero — so the page opens and closes on
-          the same gesture rather than trailing off into a link list.
+      {/* The wordmark, at the foot, set as large as the measure allows.
 
-          A flat tinted wordmark was tried here first. It filled the space
-          but it was inert, and next to a hero whose entire idea is
-          type-as-aperture it read as a different design speaking. This is
-          the same idea, quieter.
-
-          The marble clip, not the hero clip: the hero footage is a scene and
-          turns to mush cropped inside letterforms, where the marble has
-          structure at any scale. It is already cached from the service
-          indices further up, so this costs no extra download.
-
-          Brightened hard because the stencil is ink — wherever a dark
-          passage of film meets the dark stencil the letterform silently
-          disappears, and MANDER dissolving halfway through its own loop is
-          not a subtle bug. */}
-      <div className="relative">
-        <AperturedType
-          text={BRAND.name}
-          viewBox="0 0 1000 210"
-          fontSize={240}
-          baselineY={182}
-          stencil="#1b242c"
-          maskId="footer-wordmark"
-          mediaClassName="brightness-[1.4] saturate-[1.15] contrast-[1.08]"
-        />
+          This was MANDER knocked out of an ink stencil with film running
+          behind the letterforms. The trick belonged to a serif display face
+          and a masthead that no longer exist, and it put a video decoder on
+          every route on the site for a signature. A grotesque cut this large,
+          tracked tight and ruled off, is the same statement made by setting
+          type rather than by hiding it behind an effect. */}
+      <div className="relative border-t border-paper/15 px-margin-mobile pb-8 pt-10 md:px-margin-desktop">
+        <p
+          aria-hidden="true"
+          className="font-display leading-[0.78] tracking-[-0.05em] text-paper/90"
+          style={{ fontSize: 'clamp(3.5rem, 17vw, 15rem)' }}
+        >
+          {BRAND.name}
+        </p>
       </div>
     </footer>
   );

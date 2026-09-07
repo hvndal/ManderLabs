@@ -12,7 +12,7 @@ import {
   CommunityRateFooterLink,
 } from '@/components/CommunityRate';
 import Statement from '@/components/Statement';
-import WorkCompact from '@/components/WorkCompact';
+import WorkFeatures from '@/components/WorkFeatures';
 import TeamCard from '@/components/TeamCard';
 import ProcessTimeline from '@/components/ProcessTimeline';
 import Testimonials from '@/components/Testimonials';
@@ -109,7 +109,7 @@ export default function HomePage() {
         </Reveal>
 
         <div className="mt-12">
-          <WorkCompact items={WORK} />
+          <WorkFeatures items={WORK} />
         </div>
       </Section>
 

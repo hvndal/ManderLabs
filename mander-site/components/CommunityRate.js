@@ -3,7 +3,6 @@
 import { createContext, useContext, useState, useCallback } from 'react';
 import { COMMUNITY } from '@/lib/content';
 import CommunityRateDialog from './CommunityRateDialog';
-import AperturedType from './AperturedType';
 import Reveal from './Reveal';
 import Icon from './Icon';
 
@@ -102,16 +101,14 @@ export function CommunityRateSection() {
                 </span>
               </div>
 
-              <AperturedType
-                text={COMMUNITY.rate}
-                viewBox="0 0 460 300"
-                fontSize={250}
-                baselineY={238}
-                stencil="#1b242c"
-                maskId="aperture-community-rate"
-                mediaClassName="brightness-[1.32] contrast-[0.88] saturate-[1.05]"
-                className="mt-8 w-full max-w-[420px]"
-              />
+              {/* The figure, set. It used to be the percentage knocked out
+                  of a stencil with video running behind the counters — a
+                  trick that arrived with a display face this site no longer
+                  uses, and that pulled a video file onto a page whose whole
+                  job is a form. Grotesk at this size does not need help. */}
+              <p className="mt-8 font-display text-[6rem] leading-[0.82] tracking-[-0.05em] text-paper md:text-[8rem]">
+                {COMMUNITY.rate}
+              </p>
 
               <h2 className="mt-7 max-w-[18ch] text-headline-md font-semibold tracking-tight text-paper">
                 {COMMUNITY.title}

@@ -16,48 +16,49 @@ const SALES_MAILTO = `mailto:${BRAND.email}?subject=${encodeURIComponent(
   'New project enquiry'
 )}`;
 
-function NavLink({ href, children, onClick, className = '' }) {
+/**
+ * A navigation item set as an editorial entry: its index in mono, then the
+ * label. The number is not decoration — it is what stops five equal-weight
+ * words in a row from reading as a generic site header, and it matches the
+ * numbering every section of the site is already built on.
+ */
+function NavLink({ href, index, children, onClick, className = '' }) {
   return (
-    <Link href={href} onClick={onClick} className={`group relative inline-block ${className}`}>
+    <Link
+      href={href}
+      onClick={onClick}
+      className={`group relative inline-flex items-baseline gap-1.5 ${className}`}
+    >
+      <span className="rail text-line-strong transition-colors duration-300 group-hover:text-accent">
+        {index}
+      </span>
       <span className="label-caps text-ink-soft transition-colors duration-300 group-hover:text-ink">
         {children}
       </span>
-      {/* Underline draws in from the centre on hover — never present at rest */}
-      <span className="pointer-events-none absolute -bottom-1.5 left-0 h-px w-full origin-center scale-x-0 bg-ink transition-transform duration-300 ease-premium group-hover:scale-x-100" />
+      {/* Underline draws in on hover — never present at rest */}
+      <span className="pointer-events-none absolute -bottom-1.5 left-0 h-px w-full origin-left scale-x-0 bg-ink transition-transform duration-300 ease-premium group-hover:scale-x-100" />
     </Link>
   );
 }
+
+const navIndex = (i) => String(i + 1).padStart(2, '0');
 
 export default function Nav() {
   const market = useMarket();
   const [open, setOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
-  const [cleared, setCleared] = useState(false);
   const pathname = usePathname();
 
-  // The nav used to withhold itself on the home page until the masthead had
-  // been scrolled past — the masthead's composition depended on an empty
-  // first viewport. The triptych that replaced it carries its own running
-  // head and needs the mark present from the first frame, so the header now
-  // behaves the same on every route.
-  const isHome = false;
-
+  // Scroll state used to feed two flags. One of them, `cleared`, existed for a
+  // home-page behaviour that was switched off with a hard-coded `false` and
+  // never removed — so a listener ran on every scroll to compute a value
+  // nothing read. Only the border-and-blur threshold is left.
   useEffect(() => {
-    const onScroll = () => {
-      const y = window.scrollY;
-      setScrolled(y > 24);
-      setCleared(y > window.innerHeight * 0.72);
-    };
+    const onScroll = () => setScrolled(window.scrollY > 24);
     onScroll();
     window.addEventListener('scroll', onScroll, { passive: true });
-    window.addEventListener('resize', onScroll);
-    return () => {
-      window.removeEventListener('scroll', onScroll);
-      window.removeEventListener('resize', onScroll);
-    };
+    return () => window.removeEventListener('scroll', onScroll);
   }, []);
-
-  const hidden = isHome && !cleared && !open;
 
   useEffect(() => setOpen(false), [pathname]);
 
@@ -70,15 +71,10 @@ export default function Nav() {
 
   return (
     <header
-      aria-hidden={hidden}
-      className={`sticky top-0 z-50 w-full border-b transition-[background-color,border-color,backdrop-filter,opacity,transform] duration-500 ease-premium ${
+      className={`sticky top-0 z-50 w-full border-b transition-[background-color,border-color,backdrop-filter] duration-500 ease-premium ${
         scrolled || open
           ? 'border-line bg-paper/90 backdrop-blur-md'
           : 'border-transparent bg-transparent'
-      } ${
-        hidden
-          ? 'pointer-events-none -translate-y-3 opacity-0'
-          : 'translate-y-0 opacity-100'
       }`}
     >
       <nav
@@ -91,10 +87,12 @@ export default function Nav() {
           <Logo variant="mark" tone="ink" className="h-11 md:h-12" />
         </Link>
 
-        <ul className="hidden items-center gap-9 md:flex">
-          {NAV_LINKS.map((link) => (
+        <ul className="hidden items-center gap-8 md:flex">
+          {NAV_LINKS.map((link, i) => (
             <li key={link.label}>
-              <NavLink href={link.href}>{link.label}</NavLink>
+              <NavLink href={link.href} index={navIndex(i)}>
+                {link.label}
+              </NavLink>
             </li>
           ))}
         </ul>
@@ -137,25 +135,33 @@ export default function Nav() {
         </button>
       </nav>
 
+      {/* Full-screen typographic panel rather than a dropdown list. A
+          max-height accordion of five small-caps rows is the phone equivalent
+          of a card grid — it is the least considered surface on a site whose
+          traffic is mostly phones. Here the labels are set at display scale
+          and numbered, and the actions sit at the foot where a thumb is. */}
       <div
         id="mobile-menu"
-        className={`overflow-hidden border-t bg-paper transition-[max-height] duration-300 ease-premium md:hidden ${
-          open ? 'max-h-[520px] border-line' : 'max-h-0 border-transparent'
-        }`}
+        hidden={!open}
+        className="fixed inset-x-0 bottom-0 top-[76px] z-40 flex flex-col overflow-y-auto border-t border-line bg-paper md:hidden"
       >
-        <ul className="flex flex-col px-margin-mobile py-1">
-          {NAV_LINKS.map((link) => (
-            <li key={link.label} className="border-b border-line last:border-0">
+        <ul className="flex flex-col px-margin-mobile pt-2">
+          {NAV_LINKS.map((link, i) => (
+            <li key={link.label} className="border-b border-line">
               <Link
                 href={link.href}
-                className="label-caps block py-5 text-ink-soft transition-colors hover:text-ink"
+                className="group flex items-baseline gap-4 py-6"
               >
-                {link.label}
+                <span className="rail text-line-strong">{navIndex(i)}</span>
+                <span className="font-display text-headline-lg-mobile text-ink transition-colors group-hover:text-accent">
+                  {link.label}
+                </span>
               </Link>
             </li>
           ))}
         </ul>
-        <div className="flex flex-col gap-3 px-margin-mobile py-5">
+
+        <div className="mt-auto flex flex-col gap-3 px-margin-mobile py-8">
           {market.phone && (
             <a
               href={market.phone.href}
@@ -180,6 +186,7 @@ export default function Nav() {
           </Link>
         </div>
       </div>
+
     </header>
   );
 }

@@ -289,21 +289,27 @@ export default function Triptych({ tagline, region }) {
       className="relative border-b border-line bg-paper"
       onMouseLeave={() => setHovered(null)}
     >
-      {/* Masthead line. Not a hero — one line of metadata across the top of
-          the spread, the way a magazine sets a running head. */}
-      <div className="relative z-20 flex items-baseline justify-between gap-6 border-b border-line px-margin-mobile py-4 md:px-margin-desktop">
-        <span className="rail text-ink-mute">
-          {region}
-        </span>
-        <span className="hidden rail text-ink-mute sm:block">
-          {tagline}
-        </span>
-        {/* Place, stated the way a drawing states it. Vancouver is in the
-            work rather than in the pictures: no mountains, no skyline, no
-            water — a coordinate, a grid, and restraint. */}
-        <span className="rail text-ink-mute">
-          49.2827° N 123.1207° W
-        </span>
+      {/* Cover furniture. Not a hero line — the top of a journal cover: who
+          it is, what is inside it numbered in the order it appears, where it
+          is made. Vancouver is stated as a coordinate rather than pictured;
+          no mountains, no skyline, no water. */}
+      <div className="relative z-20 border-b border-line px-margin-mobile py-4 md:px-margin-desktop">
+        <div className="flex items-baseline justify-between gap-6">
+          <span className="rail text-ink">MANDER — Design Studio</span>
+          <span className="rail hidden text-ink-mute lg:block">{tagline}</span>
+          <span className="rail text-ink-mute">49.2827° N 123.1207° W</span>
+        </div>
+        <div className="mt-2 flex items-baseline justify-between gap-6">
+          <ul className="flex items-baseline gap-5">
+            {PANELS.map((panel) => (
+              <li key={panel.id} className="rail text-ink-mute">
+                <span className="text-line-strong">{panel.index}</span>{' '}
+                {panel.label}
+              </li>
+            ))}
+          </ul>
+          <span className="rail text-ink-mute">{region}</span>
+        </div>
       </div>
 
       <div className="relative flex flex-col md:h-[calc(100svh-76px-42px)] md:min-h-[560px] md:flex-row">
@@ -319,7 +325,7 @@ export default function Triptych({ tagline, region }) {
           return (
             <motion.div
               key={panel.id}
-              className={`group relative h-[62svh] min-h-[420px] overflow-hidden md:h-auto ${
+              className={`group relative h-[76svh] min-h-[440px] overflow-hidden md:h-auto ${
                 i > 0 ? 'border-t border-line md:border-l md:border-t-0' : ''
               }`}
               style={{ flexBasis: 0, flexGrow: 1 }}
@@ -420,6 +426,15 @@ export default function Triptych({ tagline, region }) {
         <div
           aria-hidden="true"
           className="pointer-events-none absolute inset-x-0 top-[38%] z-[5] hidden h-px bg-accent-soft md:block"
+        />
+
+        {/* Its mobile equivalent: the same line rotated, running the full
+            height of the stack down the left margin and through every panel
+            edge. Stacking three panels loses the thread entirely otherwise,
+            and the thread is what makes them one object. */}
+        <div
+          aria-hidden="true"
+          className="pointer-events-none absolute bottom-0 left-5 top-0 z-[5] w-px bg-accent-soft/70 md:hidden"
         />
       </div>
     </section>

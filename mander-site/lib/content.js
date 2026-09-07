@@ -523,6 +523,39 @@ export const FAQS = [
 // below instead (see Testimonials.js). Add quotes back only when they are
 // real and you have permission to publish them.
 export const WORK = [
+  // Her Homes Co. — the most recent client build, and the reason the palette
+  // this site now runs on exists. It leads the portfolio because it is the
+  // clearest single piece of evidence for what the studio actually sells: one
+  // engagement covering identity, the store and the words, rather than three
+  // suppliers arguing about a logo.
+  //
+  // No screenshot yet — herhomes.shop is not reachable from this build
+  // environment, so inventing a crop of it was not an option. It renders as a
+  // designed specimen instead: its real palette, its real services, its real
+  // mark. `image` takes the screenshot the day there is one, and the specimen
+  // steps aside.
+  {
+    name: 'Her Homes Co.',
+    sector: 'Home Services',
+    location: 'Vancouver, British Columbia',
+    image: null,
+    specimen: {
+      // Sampled from the delivered identity, and the source of this site's
+      // own accent pair.
+      palette: [
+        { name: 'Denim', hex: '#2f6690' },
+        { name: 'Sun', hex: '#f2c230' },
+        { name: 'Slate', hex: '#1b242c' },
+        { name: 'Paper', hex: '#f6f7f7' },
+      ],
+      services: ['Interior design', 'Home organizing', 'Deep cleaning'],
+    },
+    result: 'Identity and store',
+    body: 'Three services — interior design, organizing and deep cleaning — that had been sold as three separate things by one business. We built the identity that holds them together, then the store that sells them: a denim-and-sun palette, a typographic system that survives being used by someone who is not a designer, and booking that does not ask a customer to guess which service they need.',
+    services: ['Brand Identity', 'Website Design', 'Ecommerce'],
+    scope: 'Identity system, service architecture, storefront, booking',
+    href: 'https://herhomes.shop',
+  },
   {
     name: 'Fitway Gym',
     sector: 'Commercial Fitness',
@@ -570,9 +603,11 @@ export const WORK = [
     sector: 'Waste Management',
     location: 'Rhode Island & Massachusetts',
     logo: '/logos/waste-universe.svg',
-    image: 'https://images.pexels.com/photos/16891361/pexels-photo-16891361.jpeg?auto=compress&cs=tinysrgb&w=1200',
-    imageAlt:
-      'A rear-loading refuse truck lit up in a collection depot at night',
+    // Was a remote Pexels photograph of somebody else's refuse truck — a
+    // stock picture of the sector, standing in for work we are not allowed to
+    // show. It bought nothing and made the portfolio depend on a third-party
+    // CDN. The typographic plate says the same thing honestly.
+    image: null,
     result: 'RI & MA coverage',
     body: 'A family-run waste operation — roll-off dumpster rental, residential curbside and commercial collection across Rhode Island and Massachusetts — sold through a site that looked smaller than the business. We rebuilt it around the three services and a quote request, with local SEO tuned to the towns they actually cover.',
     services: ['Website Redesign', 'Local SEO', 'Local Search'],
@@ -588,8 +623,8 @@ export const WORK = [
   // work would be inventing a client, which is the one thing the rest of this
   // file is careful never to do. Keep the tag.
   //
-  // `image: null` is a supported state — WorkCompact falls back to a
-  // typographic tile. KERN's deployment is currently down and TvCan is a
+  // `image: null` is a supported state — WorkFeatures falls back to a
+  // typographic plate. KERN's deployment is currently down and TvCan is a
   // Windows desktop app, so neither has a usable screenshot yet; drop one
   // into /public/work and add the path here when they do.
   {
