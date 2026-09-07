@@ -155,8 +155,8 @@ export default function BlogIndex() {
               Rather just get a number?
             </h2>
             <p className="mx-auto mt-6 max-w-xl text-body-lg text-paper/70">
-              Every price is published, and the 60-second quiz recommends a
-              starting point without asking for your email.
+              Every scope is transparently framed, and the 60-second quiz recommends a
+              tailored direction without asking for your email.
             </p>
             <div className="mt-10 flex flex-col justify-center gap-3 sm:flex-row">
               <Link href="/pricing" className="btn-on-dark">

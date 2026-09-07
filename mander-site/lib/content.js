@@ -187,7 +187,6 @@ export const TIERS = [
   {
     name: 'Launch',
     price: 'Bespoke Scope',
-    from: 0,
     blurb:
       'For businesses that need a sharp, professional online presence without the complexity.',
     specs: { pages: '1 page', timeline: '~2 weeks', revisions: '1 round' },
@@ -208,7 +207,6 @@ export const TIERS = [
   {
     name: 'Starter',
     price: 'Bespoke Scope',
-    from: 0,
     blurb:
       'A proper small-business website with everything needed to establish a professional online presence.',
     specs: { pages: 'Up to 5 pages', timeline: '3–4 weeks', revisions: '2 rounds' },
@@ -237,7 +235,6 @@ export const TIERS = [
   {
     name: 'Growth',
     price: 'Bespoke Scope',
-    from: 0,
     blurb:
       'For businesses ready to turn their website into a real customer-acquisition channel.',
     specs: { pages: 'Up to 10 pages', timeline: '4–6 weeks', revisions: '3 rounds' },
@@ -269,7 +266,6 @@ export const TIERS = [
   {
     name: 'Business Pro',
     price: 'Bespoke Scope',
-    from: 0,
     blurb:
       'For established businesses that need custom functionality beyond a standard website.',
     specs: { pages: 'Unlimited', timeline: '6–10 weeks', revisions: 'Until signed off' },
@@ -306,7 +302,6 @@ export const APP_TIERS = [
   {
     name: 'App Launch',
     price: 'Bespoke Scope',
-    from: 0,
     blurb:
       'A real native Android app on the Play Store — the core of what your business does, in your customers’ hands.',
     specs: [
@@ -338,7 +333,6 @@ export const APP_TIERS = [
   {
     name: 'App Growth',
     price: 'Bespoke Scope',
-    from: 0,
     blurb:
       'The app that runs the business — accounts, payments, bookings, and a dashboard to see it all from.',
     specs: [
@@ -370,7 +364,6 @@ export const APP_TIERS = [
   {
     name: 'App Pro',
     price: 'Bespoke Scope',
-    from: 0,
     blurb:
       'Platform-grade Android — multiple roles, custom APIs, and workflows built to your operation rather than around it.',
     specs: [
@@ -498,8 +491,8 @@ export const FAQS = [
     a: 'A one-page Launch site typically ships in about two weeks. A fuller Starter or Growth build usually takes four to six weeks, mostly gated by how quickly content and feedback come back from you — not by us.',
   },
   {
-    q: 'Do you have budget-friendly options for small businesses?',
-    a: 'That is the whole premise. Our scoping tiers are built specifically for small and mid-sized businesses that need a real, authoritative site without agency-level bloat — quoted up front with no retainer required.',
+    q: 'How do you accommodate growing businesses with strict budgets?',
+    a: 'That is the foundational premise. Our scoping tiers are engineered specifically for small and mid-sized businesses that require an authoritative, bespoke digital presence without bloated agency overhead — quoted transparently up front with no retainer locked in.',
   },
   {
     q: 'Do you only work with local businesses?',

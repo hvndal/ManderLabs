@@ -3,9 +3,9 @@ import Reveal from '@/components/Reveal';
 import { QUIZ } from '@/lib/content';
 import { OG_IMAGE, alternates } from '@/lib/seo';
 
-const TITLE = 'Get a Quote — Fast Website Design, Custom Priced';
+const TITLE = 'Get a Quote — Scoping & Architectural Web Design | MANDER';
 const DESCRIPTION =
-  'Answer six quick questions and get a recommended plan and starting price for a custom, budget-friendly website — or route straight to a person.';
+  'Answer six quick questions to receive a recommended scope tier and delivery timeframe for an authoritative, high-performance website — or route straight to a lead designer.';
 
 export const metadata = {
   title: TITLE,

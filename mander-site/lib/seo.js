@@ -188,9 +188,7 @@ export const organizationSchema = {
   currenciesAccepted: 'USD, CAD',
   makesOffer: [...TIERS, ...APP_TIERS].map((tier) => ({
     '@type': 'Offer',
-    name: tier.name,
-    price: String(tier.from),
-    priceCurrency: 'USD',
+    name: `${tier.name} — Bespoke Scope`,
     description: tier.blurb,
     availability: 'https://schema.org/InStock',
     areaServed: ['US', 'CA'],
