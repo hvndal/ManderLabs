@@ -7,10 +7,10 @@ import { BRAND } from '@/lib/content';
 // product rather than a document.
 export default function manifest() {
   return {
-    name: 'MANDER — Website Design for Small Business',
+    name: 'MANDER — Vancouver Contemporary Digital Practice',
     short_name: BRAND.name,
     description:
-      'Remote website design, development and SEO for small and mid-sized businesses across the U.S. and Canada. Fixed-price builds from $299.',
+      'Architectural web design, digital craft, and organic local search for businesses across Vancouver, Surrey, Langley, Burnaby, and the Pacific Northwest. Bespoke scope, sub-second performance.',
     start_url: '/',
     scope: '/',
     display: 'standalone',

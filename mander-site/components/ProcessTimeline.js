@@ -1,76 +1,140 @@
+'use client';
+
+import { useState } from 'react';
+import Image from 'next/image';
 import Reveal from './Reveal';
+import CursorImage from './CursorImage';
 
 /**
- * The process, as a staircase.
+ * SECTION NINE — The Delivery Protocol as an architectural sequence.
  *
- * This was a vertical connecting line with four evenly-weighted rows — legible,
- * but it read as a checklist and every step looked equally important, which is
- * exactly the flatness that makes a page feel unauthored.
- *
- * Now each step is indented one column further than the last, so the four of
- * them descend across the grid and the shape of the section itself describes
- * a sequence — you can see it's a progression before you read a word. The step
- * numeral grows with the indent and the rule above each row shortens, which
- * gives the whole block a diagonal without any element being decorative.
- *
- * Deliberately no connecting line: the offset does the work, and a line would
- * only re-impose the single axis this is trying to escape.
+ * Replaces the plain text list with an authoritative 4-stage protocol:
+ * - 4 interactive stage cards with timing pills, clear deliverables, and hover elevation.
+ * - Right column: authentic physical design craft proof (/editorial/studio-set.jpg)
+ *   grounding the methodology in physical grid rigor and tactile prototyping.
+ * - Hardware-accelerated GPU transitions optimized for 120fps / 165Hz displays.
  */
-
-// 12-col placements per step. Kept explicit rather than computed so the
-// classes survive Tailwind's static extraction.
-const PLACEMENT = [
-  { col: 'md:col-span-9 md:col-start-1', num: 'md:text-[7vw]', rule: 'md:w-full' },
-  { col: 'md:col-span-8 md:col-start-3', num: 'md:text-[7.8vw]', rule: 'md:w-4/5' },
-  { col: 'md:col-span-7 md:col-start-5', num: 'md:text-[8.6vw]', rule: 'md:w-3/5' },
-  { col: 'md:col-span-6 md:col-start-7', num: 'md:text-[9.4vw]', rule: 'md:w-2/5' },
-];
-
 export default function ProcessTimeline({ steps }) {
+  const [activeStep, setActiveStep] = useState(0);
+
   return (
-    <ol className="grid grid-cols-1 gap-y-4 md:grid-cols-12">
-      {steps.map((step, index) => {
-        const place = PLACEMENT[index] || PLACEMENT[PLACEMENT.length - 1];
+    <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-14 items-start">
+      {/* Left Column: 4-Stage Protocol Sequence */}
+      <ol className="lg:col-span-7 space-y-4">
+        {steps.map((step, index) => {
+          const isActive = activeStep === index;
 
-        return (
-          <Reveal
-            key={step.step}
-            as="li"
-            delay={index * 110}
-            className={`${place.col} process-step pt-7 md:pt-9`}
-          >
-            {/* The rule draws itself left-to-right as the step arrives, so the
-                staircase builds rather than simply appearing. Transform-only,
-                so it stays on the compositor at high refresh rates. */}
-            <span
-              aria-hidden="true"
-              className="process-rule block h-px w-full origin-left bg-line-strong"
-            />
-
-            <div className="flex items-start gap-6 pt-7 md:gap-10 md:pt-9">
-              {/* The staircase numerals are the largest type in the section,
-                  so they set in the display serif with the other display
-                  type. In the mono they were reading as a code, which put
-                  them in the same voice as the tiny section labels. */}
-              <span
-                className={`font-display text-stat-lg font-normal leading-[0.78] text-line-strong ${place.num}`}
-                aria-hidden="true"
+          return (
+            <Reveal key={step.step} delay={index * 80}>
+              <div
+                onMouseEnter={() => setActiveStep(index)}
+                className={`group relative border transition-all duration-300 ease-premium p-6 sm:p-8 cursor-pointer ${
+                  isActive
+                    ? 'border-ink bg-white shadow-lg -translate-y-0.5'
+                    : 'border-line bg-white/60 hover:border-line-strong hover:bg-white'
+                }`}
               >
-                {step.step}
-              </span>
+                {/* Top Row: Stage Number, Timing Badge & Title */}
+                <div className="flex items-start justify-between gap-4 mb-4">
+                  <div className="flex items-center gap-4">
+                    <span
+                      className={`font-display text-4xl sm:text-5xl font-normal leading-none transition-colors duration-300 ${
+                        isActive ? 'text-accent' : 'text-line-strong group-hover:text-ink'
+                      }`}
+                    >
+                      {step.step}
+                    </span>
+                    <div>
+                      <span className="font-mono text-[9px] uppercase tracking-[0.25em] text-accent block font-semibold">
+                        {step.timing || `PHASE 0${index + 1}`}
+                      </span>
+                      <h3 className="font-display text-2xl sm:text-3xl text-ink leading-tight mt-0.5">
+                        {step.title}
+                      </h3>
+                    </div>
+                  </div>
 
-              <div className="flex-1 pb-10 md:pb-14">
-                <h3 className="font-display text-[1.65rem] font-normal leading-[1.15] text-ink md:text-[2rem]">
-                  {step.title}
-                </h3>
-                <p className="mt-3 max-w-text text-body-lg text-ink-soft">
+                  <span
+                    className={`h-2 w-2 rounded-full transition-all duration-300 shrink-0 mt-2 ${
+                      isActive ? 'bg-accent scale-125' : 'bg-line-strong'
+                    }`}
+                  />
+                </div>
+
+                {/* Body Rationale */}
+                <p className="font-sans text-sm sm:text-base text-ink-soft leading-relaxed font-light mb-5">
                   {step.body}
                 </p>
+
+                {/* Deliverables Tags */}
+                {step.deliverables && step.deliverables.length > 0 && (
+                  <div className="border-t border-line/70 pt-4 flex flex-wrap gap-2">
+                    {step.deliverables.map((deliv, dIdx) => (
+                      <span
+                        key={dIdx}
+                        className="font-mono text-[9.5px] uppercase tracking-wider px-2.5 py-1 bg-paper border border-line text-ink-mute flex items-center gap-1.5"
+                      >
+                        <span className="h-1 w-1 rounded-full bg-accent/60" />
+                        <span>{deliv}</span>
+                      </span>
+                    ))}
+                  </div>
+                )}
+              </div>
+            </Reveal>
+          );
+        })}
+      </ol>
+
+      {/* Right Column: Authentic Editorial Design Craft Panel */}
+      <div className="lg:col-span-5 lg:sticky lg:top-28">
+        <Reveal delay={120}>
+          <div className="border border-line bg-white p-6 sm:p-8 shadow-xl">
+            {/* Visual Photo: UX Wireframing & Notebook Prototype */}
+            <div className="relative aspect-[4/3] border border-line bg-black/5 overflow-hidden group mb-6">
+              <CursorImage strength={3} className="w-full h-full">
+                <Image
+                  src="/editorial/studio-set.jpg"
+                  alt="Mander tactile UI wireframing in design notebook alongside mobile test device"
+                  fill
+                  sizes="(max-width: 1024px) 100vw, 450px"
+                  className="object-cover grayscale contrast-125 group-hover:grayscale-0 transition-all duration-700"
+                />
+              </CursorImage>
+              <div className="absolute bottom-3 left-3 bg-ink/90 text-white font-mono text-[9px] uppercase tracking-widest px-2.5 py-1 border border-white/10">
+                STAGE 02 // PROTOTYPING ON PAPER
               </div>
             </div>
-          </Reveal>
-        );
-      })}
-    </ol>
+
+            {/* Protocol Summary Card */}
+            <div>
+              <span className="font-mono text-[9.5px] uppercase tracking-[0.24em] text-accent block font-semibold mb-2">
+                DELIVERY COMMITMENTS
+              </span>
+              <h4 className="font-display text-2xl text-ink mb-3 leading-snug">
+                Transparent Execution. Zero Friction.
+              </h4>
+              <p className="font-sans text-sm text-ink-soft leading-relaxed font-light mb-6">
+                We believe ambitious small business owners should never wonder where their website build stands. We ship on a fixed schedule with weekly video updates and transparent milestones.
+              </p>
+
+              {/* Technical Criteria Checklist */}
+              <div className="border-t border-line pt-5 space-y-2.5 font-mono text-[10px] uppercase tracking-wider text-ink-mute">
+                <div className="flex items-center gap-2 text-ink font-semibold">
+                  <span className="h-1.5 w-1.5 rounded-full bg-accent" />
+                  <span>COMMERCIAL PROTOCOL STANDARDS:</span>
+                </div>
+                <div className="pl-3.5 space-y-1.5">
+                  <div>✓ FIXED SCOPE &amp; PRICE (NO HOURLY OVERRUNS)</div>
+                  <div>✓ CONTINUOUS LIVE PREVIEW ENVIRONMENTS</div>
+                  <div>✓ LIGHTHOUSE 99+ AUDITED PERFORMANCE SLA</div>
+                  <div>✓ COMPLETE CODE, REPO &amp; IP OWNERSHIP HANDOVER</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </Reveal>
+      </div>
+    </div>
   );
 }

@@ -44,8 +44,8 @@ export default function Reveal({
       {
         // Any sliver counts on mobile. A 12% threshold on a tall block can
         // require most of a phone screen before it trips.
-        threshold: isMobile ? 0 : 0.08,
-        rootMargin: isMobile ? '0px 0px 22% 0px' : '0px 0px -8% 0px',
+        threshold: isMobile ? 0 : 0.04,
+        rootMargin: isMobile ? '0px 0px 24% 0px' : '0px 0px 48px 0px',
       }
     );
 

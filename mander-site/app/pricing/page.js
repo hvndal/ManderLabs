@@ -16,9 +16,9 @@ import {
 import { TIERS, CARE_PLAN, CARE_PLAN_PRICE, FAQS, BRAND } from '@/lib/content';
 import { faqSchema, OG_IMAGE, alternates } from '@/lib/seo';
 
-const TITLE = 'Website Design Pricing — Plans from $299';
+const TITLE = 'Website Design Pricing & Scoping — MANDER';
 const DESCRIPTION =
-  'One-time website design pricing for small business in Canada and the U.S. Four plans from $299, Android apps from $2,999. No hidden fees.';
+  'Tailored website design pricing and clear scope for businesses in Canada and the U.S. Four bespoke plans, Android applications, zero hidden fees.';
 
 export const metadata = {
   title: TITLE,
@@ -77,11 +77,11 @@ export default function PricingPage() {
             <span className="eyebrow">Pricing</span>
           </Reveal>
           <Reveal delay={80}>
-            <h1 className="h-display max-w-[15ch]">Plain prices. No games.</h1>
+            <h1 className="h-display max-w-[15ch]">Fixed scope. No games.</h1>
           </Reveal>
           <Reveal delay={160} className="mt-8 flex flex-col gap-6 md:flex-row md:items-end md:justify-between">
             <p className="max-w-text text-body-lg text-ink-soft">
-              One-time build cost, quoted up front. Not sure which fits? The
+              Tailored build cost, quoted up front. Not sure which fits? The
               60-second quiz recommends a starting point.
             </p>
             <Link href="/quote" className="btn-primary shrink-0">

@@ -53,35 +53,33 @@
     @apply font-display text-headline-lg-mobile font-normal text-ink md:text-headline-lg;
   }
 
-  /* Buttons — square, solid, no radius. Underline-reveal on the text link. */
+  /* Buttons — square, solid, no radius. Underline-reveal on the text link.
+     Tactile micro-interaction: active:scale-[0.985] active:translate-y-px for 120Hz/165Hz mechanical responsiveness */
   .btn-primary {
-    @apply label-caps inline-flex items-center justify-center gap-2 bg-ink px-8 py-4 text-paper transition-colors duration-300 ease-premium hover:bg-accent;
+    @apply label-caps inline-flex items-center justify-center gap-2 bg-ink px-8 py-4 text-paper transition-all duration-200 ease-premium hover:bg-accent active:scale-[0.985] active:translate-y-px;
   }
   .btn-outline {
-    @apply label-caps inline-flex items-center justify-center gap-2 border border-ink px-8 py-4 text-ink transition-colors duration-300 ease-premium hover:bg-ink hover:text-paper;
+    @apply label-caps inline-flex items-center justify-center gap-2 border border-ink px-8 py-4 text-ink transition-all duration-200 ease-premium hover:bg-ink hover:text-paper active:scale-[0.985] active:translate-y-px;
   }
   .btn-on-dark {
-    @apply label-caps inline-flex items-center justify-center gap-2 bg-paper px-8 py-4 text-ink transition-colors duration-300 ease-premium hover:bg-accent hover:text-white;
+    @apply label-caps inline-flex items-center justify-center gap-2 bg-paper px-8 py-4 text-ink transition-all duration-200 ease-premium hover:bg-accent hover:text-white active:scale-[0.985] active:translate-y-px;
   }
-  /* btn-outline's pair for an ink background — this exact border/hover
-     combination was already duplicated inline across three final-CTA
-     sections (careers, pricing, blog) before it needed a fourth home in the
-     cookie banner. Promoted here rather than copied a fourth time. */
+  /* btn-outline's pair for an ink background */
   .btn-outline-dark {
-    @apply label-caps inline-flex items-center justify-center gap-2 border border-paper/40 px-8 py-4 text-paper transition-colors duration-300 ease-premium hover:border-paper;
+    @apply label-caps inline-flex items-center justify-center gap-2 border border-paper/40 px-8 py-4 text-paper transition-all duration-200 ease-premium hover:border-paper active:scale-[0.985] active:translate-y-px;
   }
   .btn-sm {
-    @apply label-caps inline-flex items-center justify-center gap-2 bg-ink px-5 py-2.5 text-paper transition-colors duration-300 ease-premium hover:bg-accent;
+    @apply label-caps inline-flex items-center justify-center gap-2 bg-ink px-5 py-2.5 text-paper transition-all duration-200 ease-premium hover:bg-accent active:scale-[0.985] active:translate-y-px;
   }
 
   /* Text link with an underline that draws in on hover */
   .link-underline {
-    @apply relative inline-flex items-center gap-2 text-ink transition-colors duration-300;
+    @apply relative inline-flex items-center gap-2 text-ink transition-colors duration-200;
     background-image: linear-gradient(currentColor, currentColor);
     background-position: 0 100%;
     background-repeat: no-repeat;
     background-size: 0% 1px;
-    transition: background-size 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+    transition: background-size 0.35s cubic-bezier(0.16, 1, 0.3, 1);
   }
   .link-underline:hover {
     background-size: 100% 1px;
@@ -89,52 +87,42 @@
 
   /* Subtle hover on interactive rows/cards — border darkens, no lift/shadow */
   .row-hover {
-    @apply transition-colors duration-300 ease-premium;
+    @apply transition-colors duration-200 ease-premium;
   }
 
-  /* Thin-border card that lifts a hair on hover — never a shadow-heavy card */
+  /* Thin-border card that lifts a hair on hover — hardware accelerated */
   .edit-card {
-    @apply border border-line bg-white transition-all duration-[350ms] ease-premium;
+    @apply border border-line bg-white transition-all duration-250 ease-premium transform-gpu;
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
   }
   .edit-card:hover {
     @apply border-line-strong;
-    transform: translateY(-3px);
+    transform: translate3d(0, -3px, 0);
   }
 
   /* Slow, deliberate image zoom — the only "flashy" motion this system allows */
   .img-zoom {
-    @apply transition-transform duration-[1400ms] ease-premium;
+    @apply transition-transform duration-[1200ms] ease-premium transform-gpu;
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
   }
   .img-zoom:hover {
-    transform: scale(1.045);
+    transform: scale3d(1.045, 1.045, 1);
   }
 }
 
 /* ---------------------------------------------------------------------- */
-/* Reveal-on-scroll — text fades upward, respects reduced motion           */
+/* Reveal-on-scroll — hardware-accelerated for 120fps / 165Hz displays     */
 /* ---------------------------------------------------------------------- */
-/* Reveal.
-   Two things made this feel clunky. The travel was 24px over 0.7s, which is
-   slow enough that the eye tracks the element moving instead of just finding
-   it already there — a reveal should be felt, not watched. And opacity ran on
-   the same curve as the transform, so a block spent most of its travel at low
-   alpha and appeared to "arrive late".
-
-   Now: shorter travel, opacity front-loaded on its own faster curve so the
-   element is legible almost immediately and the last of the movement is a
-   settle rather than an entrance. `translate3d` keeps it on the compositor.
-
-   will-change is NOT set here. Declaring it up front promotes every reveal on
-   the page to its own layer at once — on a phone that is dozens of layers
-   competing for VRAM, which is itself a cause of jank. It's applied only
-   while an element is armed (see .reveal:not(.is-visible)) and dropped the
-   moment it lands. */
 .reveal {
   opacity: 0;
-  transform: translate3d(0, 16px, 0);
+  transform: translate3d(0, 14px, 0);
   transition:
-    opacity 0.45s cubic-bezier(0.33, 1, 0.68, 1),
-    transform 0.75s cubic-bezier(0.16, 1, 0.3, 1);
+    opacity 0.38s cubic-bezier(0.2, 0.9, 0.2, 1),
+    transform 0.58s cubic-bezier(0.16, 1, 0.3, 1);
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
 }
 .reveal:not(.is-visible) {
   will-change: opacity, transform;

@@ -21,33 +21,36 @@ export default function Colophon({ headline, body }) {
     <section className="relative bg-paper border-b border-line overflow-hidden">
       <div className="container-max grid grid-cols-1 gap-y-12 pb-stack-md pt-16 md:grid-cols-12 md:gap-gutter md:pt-24">
         {/* Architectural Fragment (Left Column) */}
-        <div className="hidden md:col-span-3 md:flex md:flex-col md:justify-between border-r border-line pr-6">
+        <div className="md:col-span-3 flex flex-col justify-between border-b md:border-b-0 md:border-r border-line pb-8 md:pb-0 md:pr-6">
           <Reveal>
             <div className="space-y-4">
               <div className="flex items-center gap-2 font-mono text-[9px] uppercase tracking-[0.25em] text-ink-mute">
                 <span className="h-1 w-4 bg-accent" />
-                <span>STUDIO DISPATCH</span>
+                <span>STUDIO DISPATCH // 01</span>
               </div>
-              <div className="relative aspect-[3/4] w-full border border-line bg-black/5 overflow-hidden shadow-sm">
+              <div className="relative aspect-[4/3] md:aspect-[3/4] w-full border border-line bg-black/5 overflow-hidden shadow-sm group">
                 <CursorImage strength={3} className="w-full h-full">
                   <Image
                     src="/editorial/colophon-arch.jpg"
-                    alt="Vancouver contemporary architectural lines and concrete geometry"
+                    alt="Mander creative studio workstation with dual displays showing digital wireframe architecture"
                     fill
-                    sizes="260px"
-                    className="object-cover grayscale contrast-125 hover:grayscale-0 transition-all duration-700"
+                    sizes="(max-width: 768px) 100vw, 260px"
+                    className="object-cover grayscale contrast-125 group-hover:grayscale-0 transition-all duration-700"
                   />
                 </CursorImage>
+                <div className="absolute bottom-2 left-2 bg-ink/90 text-white font-mono text-[8px] uppercase tracking-widest px-2 py-0.5 border border-white/10">
+                  DIGITAL CRAFT
+                </div>
               </div>
               <p className="font-mono text-[9px] uppercase tracking-[0.2em] text-ink-mute leading-relaxed">
-                49°17&apos;N 123°07&apos;W<br />
+                49°16&apos;59&quot;N 123°07&apos;15&quot;W<br />
                 WATER STREET // PACIFIC COAST
               </p>
             </div>
           </Reveal>
 
           <Reveal delay={100}>
-            <div className="pt-8 border-t border-line/60 font-mono text-[9px] uppercase tracking-[0.2em] text-ink-soft">
+            <div className="hidden md:block pt-8 border-t border-line/60 font-mono text-[9px] uppercase tracking-[0.2em] text-ink-soft">
               IND. STUDIO NO. 04<br />
               EST. MMXXIV
             </div>

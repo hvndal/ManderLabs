@@ -51,30 +51,25 @@ const instrument = Instrument_Serif({
 export const metadata = {
   metadataBase: new URL(SITE_URL),
   title: {
-    default: 'MANDER | Affordable, Fast Website Design for Small Business',
+    default: 'MANDER — Vancouver Contemporary Digital Practice & Website Design',
     template: '%s | MANDER',
   },
   description:
-    'Remote website design for small business across the U.S. and Canada. Fixed-price builds from $299, with local SEO and ongoing care.',
-  // Keywords carry almost no ranking weight now, but they cost nothing and a
-  // few engines still read them. The real work is done by the description,
-  // headings and JSON-LD service area. Weighted toward remote/nationwide
-  // intent rather than a single city, because that's how the business sells.
+    'Architectural web design, digital craft, and organic local search for businesses across Vancouver, Surrey, Langley, Burnaby, and the Pacific Northwest. Bespoke scope, sub-second performance, verified Lighthouse 99+.',
   keywords: [
-    'remote website design',
-    'website design for small business',
-    'affordable website design USA',
-    'website design Canada',
-    'small business web design agency',
-    'custom website design remote',
-    'fixed price website design',
-    'small business SEO',
-    'local SEO for small business',
-    'Google Business Profile optimization',
-    'website redesign small business',
-    'website design from $299',
-    'veteran owned business discount website',
-    'nonprofit and small business website discount',
+    'Vancouver website design',
+    'Langley web design',
+    'Surrey website designer',
+    'Burnaby web design agency',
+    'Coquitlam web development',
+    'Pacific Northwest digital studio',
+    'bespoke website design Canada',
+    'high performance Next.js agency',
+    'small business SEO Vancouver',
+    'local SEO Metro Vancouver',
+    'Google Business Profile optimization BC',
+    'custom web application design',
+    'digital craft studio',
   ],
   alternates: alternates('/'),
   category: 'Web Design',
@@ -97,9 +92,9 @@ export const metadata = {
     },
   },
   openGraph: {
-    title: 'MANDER | Website Design for Small Business — U.S. & Canada',
+    title: 'MANDER — Vancouver Contemporary Digital Practice & Website Design',
     description:
-      'Remote website design, development and SEO for small and mid-sized businesses across the U.S. and Canada. Fixed-price builds from $299.',
+      'Architectural web design, digital craft, and organic local search for businesses across Vancouver, Surrey, Langley, Burnaby, and the Pacific Northwest. Bespoke scope, sub-second performance, verified Lighthouse 99+.',
     type: 'website',
     url: SITE_URL,
     siteName: 'MANDER',
@@ -108,9 +103,9 @@ export const metadata = {
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'MANDER | Website Design for Small Business — U.S. & Canada',
+    title: 'MANDER — Vancouver Contemporary Digital Practice & Website Design',
     description:
-      'Remote website design and SEO for small business across the U.S. and Canada. Fixed-price builds from $299.',
+      'Architectural web design, digital craft, and organic local search for businesses across Vancouver, Surrey, Langley, Burnaby, and the Pacific Northwest. Bespoke scope, sub-second performance, verified Lighthouse 99+.',
     images: [OG_IMAGE.url],
   },
 };

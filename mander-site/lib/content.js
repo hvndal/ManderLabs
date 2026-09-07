@@ -143,23 +143,31 @@ export const TERMS = [
 export const PROCESS = [
   {
     step: '01',
-    title: 'Discovery',
-    body: 'A short call to understand the business, the customer, and what a win actually looks like for you.',
+    title: 'Discovery & Scope',
+    timing: 'Week 01',
+    body: 'A focused discovery session to map the business model, target customer intent, and commercial objectives. We define an exact scope before taking a deposit.',
+    deliverables: ['Customer intent mapping', 'Technical architecture brief', 'Written fixed-price proposal'],
   },
   {
     step: '02',
-    title: 'Strategy',
-    body: 'A tight plan — structure, messaging, and the exact scope — priced up front with no moving targets.',
+    title: 'Strategy & Art Direction',
+    timing: 'Weeks 01–02',
+    body: 'Crafting the typographic hierarchy, component system, and layout rhythms. We proof designs against real copy and physical grids before building.',
+    deliverables: ['Figma design system', 'Interactive wireframe flow', 'Editorial typography proof'],
   },
   {
     step: '03',
-    title: 'Build',
-    body: 'Design and development in one motion, shown to you as it comes together, not sprung on you at the end.',
+    title: 'Next.js & React Engineering',
+    timing: 'Weeks 02–03',
+    body: 'Clean Next.js 14 App Router development with Tailwind CSS, sub-second TTFB, and zero runtime bloat. Shared continuously so you see your site live as it matures.',
+    deliverables: ['Production Next.js build', 'Mobile-first responsive pass', 'Forms, CRM & SEO metadata wiring'],
   },
   {
     step: '04',
-    title: 'Launch',
-    body: 'Testing, handover, and a site you own outright. We stay on for support if you want us to.',
+    title: 'Audited Launch & Handover',
+    timing: 'Week 04',
+    body: 'Core Web Vitals validation, Lighthouse 99+ SLA audit, domain deployment, and complete IP handover. You own 100% of the code, domain, and accounts.',
+    deliverables: ['Lighthouse 99+ audit report', 'Direct repository & domain transfer', '30 days hypercare support'],
   },
 ];
 

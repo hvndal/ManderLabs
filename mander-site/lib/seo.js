@@ -134,7 +134,7 @@ export const organizationSchema = {
   '@id': `${SITE_URL}/#organization`,
   name: BRAND.name,
   description:
-    'Remote website design, development and SEO for small and mid-sized businesses across the United States and Canada. Fixed-price custom builds from $299.',
+    'Architectural web design, digital craft, and organic local search for businesses across Vancouver, Surrey, Langley, Burnaby, and the Pacific Northwest. Bespoke scope, sub-second performance, verified Lighthouse 99+.',
   url: SITE_URL,
   email: BRAND.email,
   slogan: BRAND.tagline,
@@ -184,7 +184,7 @@ export const organizationSchema = {
     name: m.name,
     jobTitle: m.role,
   })),
-  priceRange: '$299–$9999+',
+  priceRange: 'Bespoke / Tailored Scope',
   currenciesAccepted: 'USD, CAD',
   makesOffer: [...TIERS, ...APP_TIERS].map((tier) => ({
     '@type': 'Offer',

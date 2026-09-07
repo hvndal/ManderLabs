@@ -83,7 +83,7 @@ export default function HomePage() {
               <div className="flex items-center gap-3 mb-6">
                 <span className="h-2 w-2 rounded-full bg-accent animate-pulse" />
                 <span className="font-mono text-label-caps text-white/90 tracking-[0.24em] drop-shadow">
-                  01 // STUDIO MANIFESTO
+                  02 // STUDIO MANIFESTO
                 </span>
                 <span className="h-px w-12 bg-white/40 hidden sm:inline-block" />
               </div>
@@ -123,7 +123,7 @@ export default function HomePage() {
         <Reveal>
           <div className="flex flex-col gap-5 border-b border-line pb-7 sm:flex-row sm:items-baseline sm:justify-between sm:gap-10 mb-8">
             <div className="flex flex-wrap items-baseline gap-x-6 gap-y-2">
-              <span className="label-caps shrink-0 text-accent">02 // Selected Archive</span>
+              <span className="label-caps shrink-0 text-accent">03 // Selected Archive</span>
               <h2 className="text-headline-md font-semibold tracking-tight text-ink">
                 Selected Commercial Deployments.
               </h2>
@@ -171,7 +171,7 @@ export default function HomePage() {
             <Reveal>
               <div className="flex items-center gap-3 mb-6">
                 <span className="font-mono text-[10px] uppercase tracking-[0.24em] text-accent font-semibold">
-                  03 // ARCHITECTURAL RIGOR
+                  04 // ARCHITECTURAL RIGOR
                 </span>
                 <span className="h-px w-10 bg-accent/40" />
               </div>
@@ -211,7 +211,7 @@ export default function HomePage() {
         <div className="relative container-max grid grid-cols-1 gap-y-8 py-stack-md md:grid-cols-12 md:gap-gutter">
           <div className="md:col-span-3">
             <Reveal>
-              <span className="label-caps text-accent">04 // Capabilities</span>
+              <span className="label-caps text-accent">05 // Capabilities</span>
             </Reveal>
           </div>
 
@@ -299,10 +299,10 @@ export default function HomePage() {
           <div className="flex flex-col md:flex-row md:items-end justify-between pb-8 border-b border-line gap-6 mb-12">
             <div>
               <span className="font-mono text-label-caps text-accent block mb-2">
-                05 // Sequence
+                06 // Delivery Protocol
               </span>
               <h2 className="font-display text-4xl sm:text-5xl text-ink">
-                A straight line from discovery to launch.
+                Discover the process. A straight line from discovery to launch.
               </h2>
             </div>
             <div className="flex items-center gap-3 font-mono text-xs text-ink-mute uppercase tracking-widest">
@@ -341,7 +341,7 @@ export default function HomePage() {
             {/* Editorial Card overlapping visually */}
             <div className="lg:col-span-5 bg-ink text-paper p-8 sm:p-12 shadow-2xl border border-white/10">
               <span className="font-mono text-label-caps text-accent block mb-4">
-                06 // PACIFIC PHILOSOPHY
+                07 // PACIFIC PHILOSOPHY
               </span>
               <h3 className="font-display text-3xl sm:text-4xl text-white leading-[1.05] mb-5">
                 &ldquo;Quiet luxury is knowing you don&apos;t have to shout.&rdquo;
@@ -364,7 +364,7 @@ export default function HomePage() {
           <div className="flex flex-col md:flex-row md:items-end justify-between pb-8 border-b border-line gap-6 mb-12">
             <div>
               <span className="font-mono text-label-caps text-accent block mb-2">
-                07 // Bespoke Scoping
+                08 // Bespoke Scoping
               </span>
               <h2 className="font-display text-4xl sm:text-5xl text-ink">
                 Tailored Scope. Ask For A Quote.
@@ -406,7 +406,7 @@ export default function HomePage() {
                 <div className="flex items-center gap-2 mb-3">
                   <span className="h-1.5 w-1.5 bg-accent" />
                   <span className="font-mono text-label-caps text-accent">
-                    08 // Direct Engagement
+                    09 // Direct Engagement
                   </span>
                 </div>
 
@@ -443,7 +443,33 @@ export default function HomePage() {
       </Section>
 
       {/* ------------------------------------------ 14 · FAQs */}
-      <Faq items={FAQS} />
+      <Section id="faq" tone="paper" className="!py-stack-lg border-b border-line">
+        <div className="container-max">
+          <div className="grid grid-cols-1 gap-gutter lg:grid-cols-12 lg:gap-16">
+            <div className="lg:col-span-4">
+              <Reveal>
+                <div className="flex items-center gap-2 mb-3">
+                  <span className="h-1.5 w-1.5 bg-accent" />
+                  <span className="font-mono text-label-caps text-accent">
+                    10 // Common Inquiries
+                  </span>
+                </div>
+                <h2 className="font-display text-4xl sm:text-5xl text-ink leading-tight">
+                  Everything answered.
+                </h2>
+                <p className="font-sans text-sm text-ink-soft font-light mt-4 leading-relaxed">
+                  Clear answers regarding our bespoke scoping model, design rigor, delivery timeline, and technical guarantees.
+                </p>
+              </Reveal>
+            </div>
+            <div className="lg:col-span-8">
+              <Reveal delay={80}>
+                <Faq items={FAQS} />
+              </Reveal>
+            </div>
+          </div>
+        </div>
+      </Section>
     </>
   );
 }
