@@ -14,8 +14,26 @@ import CursorImage from './CursorImage';
  *   grounding the methodology in physical grid rigor and tactile prototyping.
  * - Hardware-accelerated GPU transitions optimized for 120fps / 165Hz displays.
  */
-export default function ProcessTimeline({ steps }) {
+export default function ProcessTimeline({ steps, sidebar }) {
   const [activeStep, setActiveStep] = useState(0);
+
+  const defaultSidebar = {
+    eyebrow: 'DELIVERY COMMITMENTS',
+    title: 'Transparent Execution. Zero Friction.',
+    body: 'We believe ambitious small business owners should never wonder where their website build stands. We ship on a fixed schedule with weekly video updates and transparent milestones.',
+    image: '/editorial/studio-set.jpg',
+    imageAlt: 'Mander tactile UI wireframing in design notebook alongside mobile test device',
+    imageTag: 'STAGE 02 // PROTOTYPING ON PAPER',
+    standardsTitle: 'COMMERCIAL PROTOCOL STANDARDS:',
+    standards: [
+      'FIXED SCOPE & PRICE (NO HOURLY OVERRUNS)',
+      'CONTINUOUS LIVE PREVIEW ENVIRONMENTS',
+      'LIGHTHOUSE 99+ AUDITED PERFORMANCE SLA',
+      'COMPLETE CODE, REPO & IP OWNERSHIP HANDOVER',
+    ],
+  };
+
+  const side = { ...defaultSidebar, ...sidebar };
 
   return (
     <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-14 items-start">
@@ -90,45 +108,44 @@ export default function ProcessTimeline({ steps }) {
       <div className="lg:col-span-5 lg:sticky lg:top-28">
         <Reveal delay={120}>
           <div className="border border-line bg-white p-6 sm:p-8 shadow-xl">
-            {/* Visual Photo: UX Wireframing & Notebook Prototype */}
+            {/* Visual Photo: UX Wireframing & Prototype */}
             <div className="relative aspect-[4/3] border border-line bg-black/5 overflow-hidden group mb-6">
               <CursorImage strength={3} className="w-full h-full">
                 <Image
-                  src="/editorial/studio-set.jpg"
-                  alt="Mander tactile UI wireframing in design notebook alongside mobile test device"
+                  src={side.image}
+                  alt={side.imageAlt}
                   fill
                   sizes="(max-width: 1024px) 100vw, 450px"
                   className="object-cover grayscale contrast-125 group-hover:grayscale-0 transition-all duration-700"
                 />
               </CursorImage>
               <div className="absolute bottom-3 left-3 bg-ink/90 text-white font-mono text-[9px] uppercase tracking-widest px-2.5 py-1 border border-white/10">
-                STAGE 02 // PROTOTYPING ON PAPER
+                {side.imageTag}
               </div>
             </div>
 
             {/* Protocol Summary Card */}
             <div>
               <span className="font-mono text-[9.5px] uppercase tracking-[0.24em] text-accent block font-semibold mb-2">
-                DELIVERY COMMITMENTS
+                {side.eyebrow}
               </span>
               <h4 className="font-display text-2xl text-ink mb-3 leading-snug">
-                Transparent Execution. Zero Friction.
+                {side.title}
               </h4>
               <p className="font-sans text-sm text-ink-soft leading-relaxed font-light mb-6">
-                We believe ambitious small business owners should never wonder where their website build stands. We ship on a fixed schedule with weekly video updates and transparent milestones.
+                {side.body}
               </p>
 
               {/* Technical Criteria Checklist */}
               <div className="border-t border-line pt-5 space-y-2.5 font-mono text-[10px] uppercase tracking-wider text-ink-mute">
                 <div className="flex items-center gap-2 text-ink font-semibold">
                   <span className="h-1.5 w-1.5 rounded-full bg-accent" />
-                  <span>COMMERCIAL PROTOCOL STANDARDS:</span>
+                  <span>{side.standardsTitle}</span>
                 </div>
                 <div className="pl-3.5 space-y-1.5">
-                  <div>✓ FIXED SCOPE &amp; PRICE (NO HOURLY OVERRUNS)</div>
-                  <div>✓ CONTINUOUS LIVE PREVIEW ENVIRONMENTS</div>
-                  <div>✓ LIGHTHOUSE 99+ AUDITED PERFORMANCE SLA</div>
-                  <div>✓ COMPLETE CODE, REPO &amp; IP OWNERSHIP HANDOVER</div>
+                  {side.standards.map((std, idx) => (
+                    <div key={idx}>✓ {std}</div>
+                  ))}
                 </div>
               </div>
             </div>

@@ -84,7 +84,7 @@ export default function Quiz() {
       name: contact.name,
       email: contact.email,
       recommended_plan: result.tier,
-      from_price: recommended ? `$${recommended.from}` : '',
+      from_price: recommended ? recommended.price : 'Bespoke Scope',
       wants_sales: result.forceSales ? 'yes' : 'no',
       answers: summary,
     });
@@ -124,8 +124,8 @@ export default function Quiz() {
                 {result.tier}
               </h2>
               {recommended && (
-                <p className="text-stat-md">
-                  from ${recommended.from}
+                <p className="font-mono text-sm uppercase tracking-widest text-paper/90">
+                  {recommended.price}
                 </p>
               )}
             </div>

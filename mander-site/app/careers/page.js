@@ -201,7 +201,24 @@ export default function CareersPage() {
           body="No take-home marathons, no rounds of panel interviews, and no silence at the end of it."
         />
         <div className="mt-16">
-          <ProcessTimeline steps={CAREERS.process} />
+          <ProcessTimeline
+            steps={CAREERS.process}
+            sidebar={{
+              eyebrow: 'HIRING COMMITMENTS',
+              title: 'Respect For Your Time. Paid Trials.',
+              body: 'We do not believe in unpaid take-homes, endless interview loops, or ghosting applicants. Every candidate receives a clear response within one week, and final candidates complete a scoped, fully paid trial project.',
+              image: '/editorial/interview-set.jpg',
+              imageAlt: 'Mander design tools and tactile typography proofing materials',
+              imageTag: 'STAGE 04 // PAID TRIAL WORK',
+              standardsTitle: 'RECRUITMENT PROTOCOL STANDARDS:',
+              standards: [
+                'GUARANTEED RESPONSE WITHIN 1 WEEK',
+                'PAID SCOPED TEST PROJECT AT YOUR RATE',
+                'NO WHITEBOARD PUZZLES OR TRIVIA',
+                'DIRECT DISCUSSIONS WITH STUDIO LEADERSHIP',
+              ],
+            }}
+          />
         </div>
       </Section>
 
