@@ -2,12 +2,9 @@ import Link from 'next/link';
 import Section, { SectionHeading } from '@/components/Section';
 import Reveal from '@/components/Reveal';
 import Icon from '@/components/Icon';
-import ServiceBand from '@/components/ServiceBand';
 import Triptych from '@/components/Triptych';
 import Colophon from '@/components/Colophon';
 import StatsConstellation from '@/components/StatsConstellation';
-import AperturedType from '@/components/AperturedType';
-import ShaderBackground from '@/components/ShaderBackground';
 import GridField from '@/components/GridField';
 import {
   CommunityRateSection,
@@ -33,8 +30,8 @@ import {
   BRAND,
 } from '@/lib/content';
 import { getServerMarket } from '@/lib/market-server';
-import { PILLARS } from '@/lib/pillars';
-import { IndexList, IndexRow, FieldNote } from '@/components/Swiss';
+import { FieldNote } from '@/components/Swiss';
+import PillarSequence from '@/components/PillarSequence';
 import { faqSchema, alternates } from '@/lib/seo';
 
 export const metadata = {
@@ -83,16 +80,16 @@ export default function HomePage() {
             <div className="grid grid-cols-1 gap-6 md:grid-cols-12 md:gap-gutter">
               <div className="md:col-span-3">
                 <div className="flex items-baseline gap-4">
-                  <span className="font-mono text-[10px] uppercase tracking-[0.22em] text-ink-mute">
+                  <span className="rail text-ink-mute">
                     04
                   </span>
-                  <span className="font-mono text-[10px] uppercase tracking-[0.22em] text-accent">
+                  <span className="rail text-accent">
                     Selected work
                   </span>
                 </div>
               </div>
               <div className="md:col-span-6">
-                <h2 className="font-display text-headline-lg-mobile font-normal leading-[1.02] text-ink md:text-headline-lg">
+                <h2 className="font-display text-headline-lg-mobile leading-[1.02] text-ink md:text-headline-lg">
                   A few recent builds.
                 </h2>
               </div>
@@ -123,18 +120,22 @@ export default function HomePage() {
           also the order clients tend to need them in, which is what makes
           expanding from one pillar into the next a conversation rather than a
           pitch. */}
-      <section id="services" className="relative border-y border-line bg-paper">
-        <ShaderBackground className="opacity-90" />
+      <section id="services" className="relative overflow-hidden border-y border-line bg-paper">
+        {/* Drawn structure rather than an animated wash. What used to sit here
+            was a fullscreen fragment shader tinting the section warm rose —
+            constants left behind by a palette this site no longer uses, run on
+            a permanent render loop to fight the colours above and below it. */}
+        <GridField />
 
         <div className="relative container-max py-stack-md">
           <div className="grid grid-cols-1 gap-y-8 md:grid-cols-12 md:gap-gutter">
             <div className="md:col-span-3">
               <Reveal>
                 <div className="flex items-baseline gap-4">
-                  <span className="font-mono text-[10px] uppercase tracking-[0.22em] text-ink-mute">
+                  <span className="rail text-ink-mute">
                     05
                   </span>
-                  <span className="font-mono text-[10px] uppercase tracking-[0.22em] text-accent">
+                  <span className="rail text-accent">
                     What we do
                   </span>
                 </div>
@@ -143,7 +144,7 @@ export default function HomePage() {
 
             <div className="md:col-span-6 md:self-end">
               <Reveal delay={100}>
-                <h2 className="max-w-[16ch] font-display text-headline-lg-mobile font-normal leading-[1.02] text-ink md:text-display-lg">
+                <h2 className="max-w-[16ch] font-display text-headline-lg-mobile leading-[1.02] text-ink md:text-display-lg">
                   Define. Build. Grow.
                 </h2>
               </Reveal>
@@ -159,19 +160,7 @@ export default function HomePage() {
             </div>
           </div>
 
-          <IndexList className="mt-14">
-            {PILLARS.map((pillar) => (
-              <IndexRow
-                key={pillar.id}
-                index={pillar.index}
-                title={pillar.label}
-                body={pillar.line}
-                meta={pillar.question}
-                href={pillar.href}
-                action="Open"
-              />
-            ))}
-          </IndexList>
+          <PillarSequence />
 
           <Reveal delay={120} className="mt-8">
             <FieldNote>
@@ -204,10 +193,10 @@ export default function HomePage() {
           <div className="md:col-span-3">
             <Reveal>
               <div className="flex items-baseline gap-4">
-                <span className="font-mono text-[10px] uppercase tracking-[0.22em] text-ink-mute">
+                <span className="rail text-ink-mute">
                   03
                 </span>
-                <span className="font-mono text-[10px] uppercase tracking-[0.22em] text-accent">
+                <span className="rail text-accent">
                   Why MANDER
                 </span>
               </div>
@@ -231,23 +220,15 @@ export default function HomePage() {
           {TERMS.map((term, index) => (
             <Reveal key={term.index} delay={index * 70}>
               <div className="group grid grid-cols-1 gap-y-3 border-b border-line py-9 md:grid-cols-12 md:items-baseline md:gap-gutter md:py-12">
-                {/* Apertured, like the service indices — the numerals carry
-                    film instead of sitting flat in mono, so the same motif
-                    recurs on both of the page's numbered lists rather than
-                    appearing once. */}
+                {/* Flat numerals. These carried video inside the letterforms
+                    — a trick, and the least Swiss thing on the page. A clause
+                    number is furniture: it is set, ruled and left alone. */}
                 <div className="md:col-span-2">
-                  <AperturedType
-                    text={term.index}
-                    viewBox="0 0 200 120"
-                    fontSize={116}
-                    baselineY={96}
-                    maskId={`term-${term.index}`}
-                    offset={0.15 + index * 0.35}
-                    className="w-[86px] opacity-80 transition-opacity duration-500 group-hover:opacity-100 md:w-[104px]"
-                    mediaClassName="brightness-[0.8] saturate-[1.2]"
-                  />
+                  <span className="block font-display text-[3.25rem] leading-none tracking-[-0.04em] text-line-strong transition-colors duration-500 group-hover:text-accent md:text-[4rem]">
+                    {term.index}
+                  </span>
                 </div>
-                <h3 className="font-display text-headline-lg-mobile font-normal text-ink md:col-span-6 md:text-headline-lg">
+                <h3 className="font-display text-headline-lg-mobile text-ink md:col-span-6 md:text-headline-lg">
                   {term.title}
                 </h3>
                 <p className="max-w-text text-body-md text-ink-soft md:col-span-4">
@@ -269,14 +250,14 @@ export default function HomePage() {
           <div className="md:col-span-4">
             <Reveal>
               <div className="flex items-baseline gap-4">
-                <span className="font-mono text-[10px] uppercase tracking-[0.22em] text-ink-mute">
+                <span className="rail text-ink-mute">
                   06
                 </span>
-                <span className="font-mono text-[10px] uppercase tracking-[0.22em] text-accent">
+                <span className="rail text-accent">
                   How it works
                 </span>
               </div>
-              <h2 className="mt-6 max-w-[12ch] font-display text-headline-lg-mobile font-normal text-ink md:text-headline-lg">
+              <h2 className="mt-6 max-w-[12ch] font-display text-headline-lg-mobile text-ink md:text-headline-lg">
                 A straight line from call to launch.
               </h2>
             </Reveal>
@@ -296,14 +277,14 @@ export default function HomePage() {
           <div className="md:col-span-6">
             <Reveal>
               <div className="flex items-baseline gap-4">
-                <span className="font-mono text-[10px] uppercase tracking-[0.22em] text-ink-mute">
+                <span className="rail text-ink-mute">
                   07
                 </span>
-                <span className="font-mono text-[10px] uppercase tracking-[0.22em] text-accent">
+                <span className="rail text-accent">
                   The team
                 </span>
               </div>
-              <h2 className="mt-6 max-w-[14ch] font-display text-headline-lg-mobile font-normal text-ink md:text-headline-lg">
+              <h2 className="mt-6 max-w-[14ch] font-display text-headline-lg-mobile text-ink md:text-headline-lg">
                 Small, senior, and reachable.
               </h2>
             </Reveal>
@@ -347,7 +328,7 @@ export default function HomePage() {
           <div className="flex flex-col gap-5 border-b border-line pb-7 sm:flex-row sm:items-baseline sm:justify-between sm:gap-10">
             <div className="flex flex-wrap items-baseline gap-x-6 gap-y-2">
               <span className="label-caps shrink-0 text-accent">Engagements</span>
-              <h2 className="font-display text-headline-lg-mobile font-normal text-ink md:text-headline-lg">
+              <h2 className="font-display text-headline-lg-mobile text-ink md:text-headline-lg">
                 What we actually delivered.
               </h2>
             </div>
@@ -371,7 +352,7 @@ export default function HomePage() {
               {/* Pushed up to display scale. On a full-bleed accent field a
                   headline set at the same size as the ones on paper looks
                   timid — the block needs the type to fill it. */}
-              <h2 className="mt-5 font-display text-headline-lg-mobile font-normal md:text-display-lg">
+              <h2 className="mt-5 font-display text-headline-lg-mobile md:text-display-lg">
                 Take the 60-second fit quiz.
               </h2>
               <p className="mt-5 max-w-text text-body-lg text-white/85">
@@ -420,7 +401,7 @@ export default function HomePage() {
                 className="group flex h-full items-baseline justify-between gap-6 px-2 py-7 transition-colors hover:bg-paper-2 md:px-6"
               >
                 <span className="flex items-baseline gap-5">
-                  <span className="font-mono text-[10px] uppercase tracking-[0.22em] text-ink-mute">
+                  <span className="rail text-ink-mute">
                     {String(i + 1).padStart(2, '0')}
                   </span>
                   <span className="font-display text-headline-lg-mobile leading-none text-ink transition-colors group-hover:text-accent">
@@ -507,7 +488,7 @@ export default function HomePage() {
         <GridField tone="paper" />
         <div className="relative container-max py-stack-lg text-center">
           <Reveal className="mx-auto max-w-3xl">
-            <h2 className="font-display text-headline-lg-mobile font-normal md:text-display-lg">
+            <h2 className="font-display text-headline-lg-mobile md:text-display-lg">
               Let&apos;s build something that pulls its weight.
             </h2>
             <div className="mt-10 flex flex-col justify-center gap-3 sm:flex-row">

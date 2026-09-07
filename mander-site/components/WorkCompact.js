@@ -182,7 +182,7 @@ function WorkTile({ project }) {
              site uses — it reads as a designed panel instead of a gap. */
           <div className="absolute inset-0 flex flex-col justify-between bg-ink p-5">
             <span className="label-caps text-paper/45">{project.sector}</span>
-            <span className="font-display text-headline-lg-mobile font-normal leading-none text-paper">
+            <span className="font-display text-headline-lg-mobile leading-none text-paper">
               {project.name}
             </span>
             {project.stack && (

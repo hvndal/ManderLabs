@@ -169,7 +169,7 @@ export default function RegionPage({ params }) {
                 <p className="md:col-span-6 max-w-text text-body-md text-ink-soft">
                   {workCase.body}
                 </p>
-                <span className="md:col-span-2 md:text-right font-display text-stat-md font-normal text-ink">
+                <span className="md:col-span-2 md:text-right font-display text-stat-md text-ink">
                   {workCase.result}
                 </span>
               </div>
@@ -207,7 +207,7 @@ export default function RegionPage({ params }) {
         <div className="container-max">
           <Reveal>
             <span className="label-caps text-accent">How it works</span>
-            <h2 className="mt-6 max-w-[14ch] font-display text-headline-lg-mobile font-normal text-ink md:text-headline-lg">
+            <h2 className="mt-6 max-w-[14ch] font-display text-headline-lg-mobile text-ink md:text-headline-lg">
               The same process, wherever you are.
             </h2>
           </Reveal>
@@ -223,7 +223,7 @@ export default function RegionPage({ params }) {
           <div className="grid grid-cols-1 gap-gutter lg:grid-cols-12 lg:gap-16">
             <div className="lg:col-span-4">
               <span className="label-caps text-accent">Questions</span>
-              <h2 className="mt-6 font-display text-headline-lg-mobile font-normal text-ink md:text-headline-lg">
+              <h2 className="mt-6 font-display text-headline-lg-mobile text-ink md:text-headline-lg">
                 {region.name}, answered.
               </h2>
             </div>
@@ -241,7 +241,7 @@ export default function RegionPage({ params }) {
         <GridField tone="paper" />
         <div className="relative container-max py-stack-lg text-center">
           <Reveal className="mx-auto max-w-3xl">
-            <h2 className="font-display text-headline-lg-mobile font-normal md:text-display-lg">
+            <h2 className="font-display text-headline-lg-mobile md:text-display-lg">
               Let&apos;s build something for {region.name}.
             </h2>
             <div className="mt-10 flex flex-col justify-center gap-3 sm:flex-row">

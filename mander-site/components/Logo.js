@@ -6,7 +6,6 @@ import { useState } from 'react';
  * The MANDER identity, in three cuts.
  *
  *   variant="mark"   → the illustration only, no wordmark.
- *   variant="nav"    → the wordmark alone, recoloured to ink.
  *   variant="full"   → wordmark + illustration lockup, in the original rose.
  *
  * Why three: the supplied artwork is a tall stacked lockup in a pale rose
@@ -24,7 +23,6 @@ const SOURCES = {
   // tagline, so at nav scale they render as an illegible smudge with type
   // inside type. This is the same artwork with the furniture removed.
   mark: { light: '/logo-figure.png', rose: '/logo-figure.png' },
-  nav: { light: '/logo-mander-nav.png', rose: '/logo-mander.png' },
   full: { light: '/logo-mander.png', rose: '/logo-mander.png' },
 };
 

@@ -97,7 +97,7 @@ export function SectionHeading({
             <div className="flex items-baseline gap-4">
               {index && (
                 <span
-                  className={`font-mono text-[10px] uppercase tracking-[0.22em] ${
+                  className={`rail ${
                     dark ? 'text-paper/40' : 'text-ink-mute'
                   }`}
                 >
@@ -106,7 +106,7 @@ export function SectionHeading({
               )}
               {eyebrow && (
                 <span
-                  className={`font-mono text-[10px] uppercase tracking-[0.22em] ${
+                  className={`rail ${
                     dark ? 'text-paper/60' : 'text-accent'
                   }`}
                 >
@@ -118,7 +118,7 @@ export function SectionHeading({
 
           <div className="md:col-span-8">
             <h2
-              className={`font-display text-headline-lg-mobile font-normal leading-[1.02] md:text-headline-lg ${
+              className={`font-display text-headline-lg-mobile leading-[1.02] md:text-headline-lg ${
                 dark ? 'text-paper' : 'text-ink'
               }`}
             >
@@ -138,7 +138,7 @@ export function SectionHeading({
           {meta && (
             <div className="md:col-span-1 md:text-right">
               <span
-                className={`font-mono text-[10px] uppercase tracking-[0.22em] ${
+                className={`rail ${
                   dark ? 'text-paper/40' : 'text-ink-mute'
                 }`}
               >

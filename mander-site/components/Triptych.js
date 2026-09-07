@@ -292,16 +292,16 @@ export default function Triptych({ tagline, region }) {
       {/* Masthead line. Not a hero — one line of metadata across the top of
           the spread, the way a magazine sets a running head. */}
       <div className="relative z-20 flex items-baseline justify-between gap-6 border-b border-line px-margin-mobile py-4 md:px-margin-desktop">
-        <span className="font-mono text-[10px] uppercase tracking-[0.22em] text-ink-mute">
+        <span className="rail text-ink-mute">
           {region}
         </span>
-        <span className="hidden font-mono text-[10px] uppercase tracking-[0.22em] text-ink-mute sm:block">
+        <span className="hidden rail text-ink-mute sm:block">
           {tagline}
         </span>
         {/* Place, stated the way a drawing states it. Vancouver is in the
             work rather than in the pictures: no mountains, no skyline, no
             water — a coordinate, a grid, and restraint. */}
-        <span className="font-mono text-[10px] uppercase tracking-[0.22em] text-ink-mute">
+        <span className="rail text-ink-mute">
           49.2827° N 123.1207° W
         </span>
       </div>
@@ -343,7 +343,7 @@ export default function Triptych({ tagline, region }) {
               >
                 <div className="flex items-start justify-between gap-4">
                   <span
-                    className={`font-mono text-[10px] uppercase tracking-[0.22em] ${
+                    className={`rail ${
                       dark ? 'text-paper/70' : 'text-ink-mute'
                     }`}
                   >
@@ -352,7 +352,7 @@ export default function Triptych({ tagline, region }) {
                   <motion.span
                     animate={{ opacity: isActive ? 1 : 0 }}
                     transition={{ duration: 0.35, ease: EASE }}
-                    className={`font-mono text-[10px] uppercase tracking-[0.22em] ${
+                    className={`rail ${
                       dark ? 'text-paper' : 'text-accent'
                     }`}
                   >

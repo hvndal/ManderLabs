@@ -150,7 +150,7 @@ export default function Quiz() {
           <div className="bg-ink p-8 text-paper md:p-10">
             <span className="label-caps text-paper/60">Recommended for you</span>
             <div className="mt-4 flex flex-wrap items-end justify-between gap-4">
-              <h2 className="font-display text-headline-lg-mobile font-normal md:text-headline-lg">
+              <h2 className="font-display text-headline-lg-mobile md:text-headline-lg">
                 {planName}
               </h2>
               {recommended && (
@@ -266,11 +266,11 @@ export default function Quiz() {
       <div key={q.id} className="animate-slide-in">
         <div className="grid grid-cols-1 gap-4 border-t border-line pt-6 md:grid-cols-12 md:gap-gutter">
           <div className="md:col-span-2">
-            <span className="font-mono text-[10px] uppercase tracking-[0.22em] text-accent">
+            <span className="rail text-accent">
               Question {String(step + 1).padStart(2, '0')}
             </span>
           </div>
-          <h2 className="font-display text-headline-lg-mobile font-normal leading-[1.05] text-ink md:col-span-10 md:text-headline-lg">
+          <h2 className="font-display text-headline-lg-mobile leading-[1.05] text-ink md:col-span-10 md:text-headline-lg">
             {q.question}
           </h2>
         </div>
@@ -288,7 +288,7 @@ export default function Quiz() {
                 }`}
               >
                 <span
-                  className={`font-mono text-[10px] uppercase tracking-[0.22em] md:col-span-1 md:pl-2 ${
+                  className={`rail md:col-span-1 md:pl-2 ${
                     selected ? 'text-paper/60' : 'text-ink-mute'
                   }`}
                 >

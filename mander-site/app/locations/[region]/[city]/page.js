@@ -132,7 +132,7 @@ export default function CityPage({ params }) {
           {city.industries.map((industry, i) => (
             <Reveal key={industry} delay={i * 50} className="bg-paper">
               <div className="flex items-baseline gap-5 px-1 py-6 md:px-4">
-                <span className="font-mono text-[10px] uppercase tracking-[0.22em] text-ink-mute">
+                <span className="rail text-ink-mute">
                   {String(i + 1).padStart(2, '0')}
                 </span>
                 <span className="text-body-lg text-ink">{industry}</span>
@@ -177,7 +177,7 @@ export default function CityPage({ params }) {
           <div className="grid grid-cols-1 gap-gutter lg:grid-cols-12 lg:gap-16">
             <div className="lg:col-span-4">
               <span className="label-caps text-accent">Questions</span>
-              <h2 className="mt-6 font-display text-headline-lg-mobile font-normal text-ink md:text-headline-lg">
+              <h2 className="mt-6 font-display text-headline-lg-mobile text-ink md:text-headline-lg">
                 {city.name}, answered.
               </h2>
             </div>
@@ -218,7 +218,7 @@ export default function CityPage({ params }) {
         <GridField tone="paper" />
         <div className="relative container-max py-stack-lg text-center">
           <Reveal className="mx-auto max-w-3xl">
-            <h2 className="font-display text-headline-lg-mobile font-normal md:text-display-lg">
+            <h2 className="font-display text-headline-lg-mobile md:text-display-lg">
               Let&apos;s build something for {city.name}.
             </h2>
             <div className="mt-10 flex flex-col justify-center gap-3 sm:flex-row">

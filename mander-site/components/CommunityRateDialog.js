@@ -145,7 +145,7 @@ export default function CommunityRateDialog({ open, onClose }) {
             <div className="flex items-start justify-between gap-6 px-7 pt-7 md:px-10 md:pt-9">
               <div>
                 <p className="label-caps text-accent">{COMMUNITY.rate} off</p>
-                <h2 className="mt-3 font-display text-headline-lg-mobile font-normal text-ink">
+                <h2 className="mt-3 font-display text-headline-lg-mobile text-ink">
                   {COMMUNITY.title}
                 </h2>
               </div>

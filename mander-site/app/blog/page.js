@@ -74,7 +74,7 @@ export default function BlogIndex() {
                 <span className="label-caps text-ink-mute">{lead.readingTime}</span>
               </div>
 
-              <h2 className="max-w-[20ch] font-display text-headline-lg-mobile font-normal text-ink transition-colors duration-300 group-hover:text-accent md:text-headline-lg">
+              <h2 className="max-w-[20ch] font-display text-headline-lg-mobile text-ink transition-colors duration-300 group-hover:text-accent md:text-headline-lg">
                 {lead.title}
               </h2>
 
@@ -133,7 +133,7 @@ export default function BlogIndex() {
       <section className="bg-ink text-paper">
         <div className="container-max py-stack-lg text-center">
           <Reveal className="mx-auto max-w-3xl">
-            <h2 className="font-display text-headline-lg-mobile font-normal md:text-display-lg">
+            <h2 className="font-display text-headline-lg-mobile md:text-display-lg">
               Rather just get a number?
             </h2>
             <p className="mx-auto mt-6 max-w-xl text-body-lg text-paper/70">

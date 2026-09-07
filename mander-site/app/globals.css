@@ -41,16 +41,22 @@
     @apply inline-block h-px w-8 bg-accent;
   }
 
-  /* Every display-scale heading routes through these two, so the serif is
-     applied here once rather than sprinkled across thirty call sites.
-     `font-normal` is deliberate — the face ships one weight and asking the
-     browser for 600 triggers synthetic bolding, which smears the thin
-     strokes that are the whole reason for using it. */
+  /* Every display-scale heading routes through these two, so the display face
+     is applied here once rather than sprinkled across thirty call sites. The
+     weight comes from the size token, which carries the tracking that goes
+     with it — see tailwind.config.js. */
   .h-display {
-    @apply font-display text-headline-lg-mobile font-normal text-ink md:text-display-lg;
+    @apply font-display text-headline-lg-mobile text-ink md:text-display-lg;
   }
   .h-section {
-    @apply font-display text-headline-lg-mobile font-normal text-ink md:text-headline-lg;
+    @apply font-display text-headline-lg-mobile text-ink md:text-headline-lg;
+  }
+
+  /* The running head — mono, tiny, wide. This exact triplet was written out
+     twenty-odd times across nine files, in two slightly different sizes,
+     which is how a system drifts. One class now; the drift is a bug. */
+  .rail {
+    @apply font-mono text-[10px] uppercase tracking-[0.22em];
   }
 
   /* Buttons — square, solid, no radius. Underline-reveal on the text link. */
@@ -90,15 +96,6 @@
   /* Subtle hover on interactive rows/cards — border darkens, no lift/shadow */
   .row-hover {
     @apply transition-colors duration-300 ease-premium;
-  }
-
-  /* Thin-border card that lifts a hair on hover — never a shadow-heavy card */
-  .edit-card {
-    @apply border border-line bg-white transition-all duration-[350ms] ease-premium;
-  }
-  .edit-card:hover {
-    @apply border-line-strong;
-    transform: translateY(-3px);
   }
 
   /* Slow, deliberate image zoom — the only "flashy" motion this system allows */
@@ -172,21 +169,6 @@
 }
 
 /* ---------------------------------------------------------------------- */
-/* Ken Burns — slow, barely-there zoom for hero / editorial photography    */
-/* ---------------------------------------------------------------------- */
-@keyframes ken-burns {
-  0% {
-    transform: scale(1.02);
-  }
-  100% {
-    transform: scale(1.1);
-  }
-}
-.ken-burns {
-  animation: ken-burns 18s cubic-bezier(0.16, 1, 0.3, 1) infinite alternate;
-}
-
-/* ---------------------------------------------------------------------- */
 /* Grain — a whisper of texture over flat colour fields, never over photos */
 /* ---------------------------------------------------------------------- */
 .grain-overlay {
@@ -206,9 +188,6 @@
     opacity: 1;
     transform: none;
     transition: none;
-  }
-  .ken-burns {
-    animation: none;
   }
 }
 
@@ -231,6 +210,7 @@
 @media (max-width: 767px) {
   .label-caps,
   .eyebrow,
+  .rail,
   [class~="text-[10px]"],
   [class~="text-[11px]"],
   [class~="text-[9.5px]"] {

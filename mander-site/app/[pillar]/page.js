@@ -170,10 +170,10 @@ export default function PillarPage({ params }) {
             {pillar.engine.map((step, i) => (
               <Reveal key={step.step} delay={i * 60} className="bg-paper">
                 <div className="flex h-full flex-col p-6 md:p-8">
-                  <span className="font-mono text-[10px] uppercase tracking-[0.22em] text-accent">
+                  <span className="rail text-accent">
                     {step.step}
                   </span>
-                  <h3 className="mt-4 font-display text-headline-lg-mobile font-normal leading-none text-ink">
+                  <h3 className="mt-4 font-display text-headline-lg-mobile leading-none text-ink">
                     {step.name}
                   </h3>
                   <p className="mt-4 text-body-md text-ink-soft">{step.note}</p>

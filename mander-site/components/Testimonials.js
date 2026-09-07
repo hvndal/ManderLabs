@@ -26,7 +26,7 @@ export default function Testimonials({ items }) {
             <div className="flex items-baseline gap-5 md:col-span-4">
               <span
                 aria-hidden="true"
-                className="font-display text-[2.6rem] font-normal leading-none text-line-strong transition-colors duration-500 group-hover:text-accent-soft md:text-[3.4rem]"
+                className="font-display text-[2.6rem] leading-none text-line-strong transition-colors duration-500 group-hover:text-accent-soft md:text-[3.4rem]"
               >
                 {String(index + 1).padStart(2, '0')}
               </span>
@@ -59,7 +59,7 @@ export default function Testimonials({ items }) {
                 the one number on the row that matters and it was previously
                 the same weight as the scope copy beside it. */}
             <div className="md:col-span-3 md:text-right">
-              <span className="font-display text-stat-lg font-normal leading-none text-ink">
+              <span className="font-display text-stat-lg leading-none text-ink">
                 {item.result}
               </span>
             </div>

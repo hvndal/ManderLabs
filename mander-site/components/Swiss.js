@@ -35,13 +35,13 @@ export function IndexRow({
   const inner = (
     <div className="grid grid-cols-1 gap-3 py-7 md:grid-cols-12 md:items-baseline md:gap-gutter">
       <div className="md:col-span-1">
-        <span className="font-mono text-[10px] uppercase tracking-[0.22em] text-ink-mute">
+        <span className="rail text-ink-mute">
           {index}
         </span>
       </div>
 
       <div className={body ? 'md:col-span-5' : 'md:col-span-8'}>
-        <h3 className="font-display text-headline-lg-mobile font-normal leading-[1.05] text-ink transition-colors duration-300 group-hover:text-accent">
+        <h3 className="font-display text-headline-lg-mobile leading-[1.05] text-ink transition-colors duration-300 group-hover:text-accent">
           {title}
         </h3>
       </div>
@@ -109,7 +109,7 @@ export function SpecRow({ label, children, delay = 0 }) {
     <Reveal delay={delay}>
       <div className="grid grid-cols-1 gap-3 border-t border-line py-6 md:grid-cols-12 md:gap-gutter">
         <div className="md:col-span-3">
-          <span className="font-mono text-[10px] uppercase tracking-[0.22em] text-ink-mute">
+          <span className="rail text-ink-mute">
             {label}
           </span>
         </div>

@@ -41,7 +41,7 @@ export default function PageHeader({
           {meta.map((item, i) => (
             <span
               key={item}
-              className={`font-mono text-[10px] uppercase tracking-[0.22em] text-ink-mute ${
+              className={`rail text-ink-mute ${
                 i === 1 ? 'hidden sm:block' : ''
               }`}
             >

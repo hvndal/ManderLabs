@@ -111,7 +111,7 @@ export default function LocationsHubPage() {
         <GridField tone="paper" />
         <div className="relative container-max py-stack-lg text-center">
           <Reveal className="mx-auto max-w-3xl">
-            <h2 className="font-display text-headline-lg-mobile font-normal md:text-display-lg">
+            <h2 className="font-display text-headline-lg-mobile md:text-display-lg">
               Don&apos;t see your market listed?
             </h2>
             <p className="mx-auto mt-5 max-w-text text-body-lg text-paper/70">

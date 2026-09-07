@@ -194,7 +194,7 @@ export default function CareersPage() {
             >
               <div className="grid grid-cols-1 gap-3 md:grid-cols-12 md:gap-gutter">
                 <div className="pt-7 md:col-span-1">
-                  <span className="font-mono text-[10px] uppercase tracking-[0.22em] text-ink-mute">
+                  <span className="rail text-ink-mute">
                     {String(i + 1).padStart(2, '0')}
                   </span>
                 </div>
@@ -314,7 +314,7 @@ export default function CareersPage() {
       <section className="bg-ink text-paper">
         <div className="container-max py-stack-lg text-center">
           <Reveal className="mx-auto max-w-3xl">
-            <h2 className="font-display text-headline-lg-mobile font-normal md:text-display-lg">
+            <h2 className="font-display text-headline-lg-mobile md:text-display-lg">
               Not sure you fit? Apply anyway.
             </h2>
             <p className="mx-auto mt-6 max-w-xl text-body-lg text-paper/70">

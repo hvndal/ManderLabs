@@ -24,7 +24,7 @@ export default function Faq({ items }) {
                 onClick={() => setOpenIndex(isOpen ? -1 : index)}
                 className="grid w-full grid-cols-1 items-baseline gap-3 py-7 text-left transition-colors hover:text-accent md:grid-cols-12 md:gap-gutter"
               >
-                <span className="font-mono text-[10px] uppercase tracking-[0.22em] text-ink-mute md:col-span-1">
+                <span className="rail text-ink-mute md:col-span-1">
                   {String(index + 1).padStart(2, '0')}
                 </span>
                 <span className="text-headline-md text-ink md:col-span-10">

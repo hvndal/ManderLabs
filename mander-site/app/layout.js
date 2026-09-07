@@ -1,5 +1,5 @@
 import './globals.css';
-import { Hanken_Grotesk, JetBrains_Mono, Instrument_Serif } from 'next/font/google';
+import { Archivo, Hanken_Grotesk, JetBrains_Mono, Instrument_Serif } from 'next/font/google';
 import Nav from '@/components/Nav';
 import Footer from '@/components/Footer';
 import Grain from '@/components/Grain';
@@ -33,16 +33,24 @@ const jetbrains = JetBrains_Mono({
   variable: '--font-jetbrains',
 });
 
-// The display face. Hanken alone was doing every job, which is why the page
-// read competent-but-generic below the masthead — a single grotesk at three
-// sizes is a UI kit, not a type system. Instrument Serif is high-contrast and
-// slightly condensed: it carries an editorial voice at large sizes the way a
-// masthead needs to, and it sets up the three-way contrast the design system
-// was always describing — serif display, grotesk body, mono label.
+// The display face. Instrument Serif held this job and read as fashion
+// editorial; the studio's reference is Swiss/international and architectural
+// publication culture, which is grotesk territory. Archivo is a grotesque cut
+// for exactly that use — flat-sided, tightly spaced, and stable from a
+// masthead down to a running head. Variable, so 500 through 700 all come from
+// one file.
+const archivo = Archivo({
+  subsets: ['latin'],
+  display: 'swap',
+  variable: '--font-archivo',
+});
+
+// Instrument Serif survives in exactly one role: the pull-quote in
+// components/Statement.js. It is the counterpoint the grotesk is measured
+// against, and one voice used once is worth more than one used everywhere.
 //
-// Single weight (400) on purpose. It's a display cut; faux-bolding it or
-// pulling a heavier optical size would flatten exactly the contrast that
-// makes it worth loading.
+// Single weight (400) on purpose. It's a display cut; faux-bolding it would
+// flatten exactly the contrast that makes it worth loading.
 const instrument = Instrument_Serif({
   subsets: ['latin'],
   display: 'swap',
@@ -141,7 +149,7 @@ export default function RootLayout({ children }) {
   return (
     <html
       lang="en"
-      className={`${hanken.variable} ${jetbrains.variable} ${instrument.variable}`}
+      className={`${hanken.variable} ${jetbrains.variable} ${archivo.variable} ${instrument.variable}`}
     >
       <body>
         <JsonLd data={organizationSchema(market)} />
