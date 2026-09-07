@@ -50,7 +50,7 @@ export default function HomePage() {
       {/* Furnished architectural spread: vertical crop + coordinates + magnetic CTA */}
       <Colophon
         headline="Websites that grow real businesses."
-        body="Premium design and bespoke engineering for ambitious small and mid-sized businesses across Canada and the U.S. — priced to deliver measurable ROI."
+        body="Premium design and custom high-end engineering for ambitious small and mid-sized businesses across Canada and the U.S. — priced to deliver measurable ROI."
       />
 
       {/* ------------------------------------------- 03 · Stripe-Style Client Marquee */}

@@ -80,7 +80,7 @@ export default function Colophon({ headline, body }) {
               <Reveal delay={160}>
                 <div className="border-l border-line pl-6 font-mono text-[10.5px] uppercase tracking-wider text-ink-mute space-y-2">
                   <div className="text-ink font-semibold">DELIVERY PROTOCOL:</div>
-                  <div>• BESPOKE SCOPES ONLY (NO TEMPLATES)</div>
+                  <div>• CUSTOM TAILORED SCOPES ONLY (NO TEMPLATES)</div>
                   <div>• FULL PRODUCT DESIGN + REACT STACK</div>
                   <div>• LIGHTHOUSE 99+ PERFORMANCE SLA</div>
                 </div>
