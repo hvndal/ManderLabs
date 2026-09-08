@@ -495,7 +495,7 @@ export const FAQS = [
   },
   {
     q: 'Where are you based, and does it matter?',
-    a: 'MANDER is founded and based in Metro Vancouver (Langley / Vancouver, British Columbia). We operate on Pacific time and collaborate directly with clients across the Lower Mainland, while seamlessly delivering remote builds for select clients beyond.',
+    a: 'MANDER was founded by Herman (from Langley, BC), with creative direction in Coquitlam and our team collaborating remotely across Pacific time. We operate during Pacific business hours and collaborate directly with clients across Metro Vancouver, the Lower Mainland, and select remote clients beyond.',
   },
   {
     q: 'Can you do local SEO if you are not in my town?',
@@ -688,22 +688,22 @@ export const TEAM = [
   {
     name: 'Herman',
     role: 'Founder & Design Lead',
-    location: 'Langley, BC',
-    bio: 'Studied computing science and philosophy at Trinity Western in Langley — the mix of building things and asking why they should exist that still runs the shop. Designs and builds alongside the team rather than above it.',
+    location: 'From Langley, BC',
+    bio: 'From Langley, BC. Studied computing science and philosophy at Trinity Western — the mix of building things and asking why they should exist that still runs the shop. Designs and builds alongside the team rather than above it.',
     photo: '/team/herman.jpg',
     link: { label: 'Personal portfolio', href: BRAND.portfolio },
   },
   {
-    name: 'Danielle Brooks',
+    name: 'Daniella Brooks',
     role: 'Creative Director',
-    location: 'Vancouver, BC',
-    bio: 'Came out of print — three years art-directing an independent design quarterly. Sets everything on a grid first and adds colour last, if at all.',
+    location: 'Coquitlam, BC',
+    bio: 'Based in Coquitlam, BC. Came out of print — three years art-directing an independent design quarterly. Sets everything on a grid first and adds colour last, if at all.',
     photo: '/team/danielle.jpg',
   },
   {
     name: 'Tyler Nakamura',
     role: 'Design Engineer',
-    location: 'Vancouver, BC',
+    location: 'Remote (Pacific Time)',
     bio: 'Trained as an industrial designer, moved to the web when tooling cycles got shorter than furniture ones. Owns the component library and most of the front end.',
     photo: '/team/tyler.jpg',
     crop: 'half',
@@ -718,7 +718,7 @@ export const TEAM = [
   {
     name: 'Evan Mercado',
     role: 'Sales & Client Relations',
-    location: 'Vancouver, BC',
+    location: 'Remote (Pacific Time)',
     bio: 'Oversees first calls, clear scoping, and ongoing communication — so you are never chasing a project update.',
     photo: '/team/evan.jpg',
   },

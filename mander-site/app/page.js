@@ -454,7 +454,7 @@ export default function HomePage() {
               </h2>
             </div>
             <p className="font-sans text-sm text-ink-soft font-light max-w-md leading-relaxed">
-              Five practitioners. The founder in Langley and senior craftspeople across Vancouver and Pacific time. No account managers between you and the person engineering your interface.
+              Five practitioners. The founder from Langley, creative direction in Coquitlam, and senior engineers collaborating remotely across Pacific time. No account managers between you and the person engineering your interface.
             </p>
           </div>
 

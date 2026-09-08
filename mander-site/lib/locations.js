@@ -208,7 +208,7 @@ export const REGIONS = [
         name: 'Langley',
         h1: 'Website design in Langley, British Columbia.',
         metaDescription:
-          'Website design in Langley, BC — home base of MANDER. Premium digital flagships for Fraser Valley trades, commercial firms, estate wineries, and boutique brands.',
+          'Website design in Langley, BC — where MANDER was founded. Premium digital flagships for Fraser Valley trades, commercial firms, estate wineries, and boutique brands.',
         intro:
           "Langley is where MANDER’s practice was founded. Combining a vibrant commercial center, rapidly expanding tech and light-industrial parks, and boutique retail and equestrian estates, Langley is one of the most dynamic markets in the Lower Mainland. We take immense pride in building flagship websites for our home community.",
         industries: [
@@ -219,8 +219,8 @@ export const REGIONS = [
         ],
         faqs: [
           {
-            q: 'Is MANDER locally based in Langley?',
-            a: 'Yes. Our founder operates right here in Langley, giving local clients direct access to senior creative leadership and ongoing technical support.',
+            q: 'Is MANDER connected to Langley?',
+            a: 'Yes. Our founder Herman is from Langley, giving local Fraser Valley clients direct access to senior creative leadership and continuous collaboration.',
           },
           {
             q: 'What types of Langley businesses do you work with?',
