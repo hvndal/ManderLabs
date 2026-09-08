@@ -132,7 +132,12 @@ export const organizationSchema = {
   // sameAs is how Google confirms that this site, that Instagram account and
   // the business behind them are one entity. Both entries have to be profiles
   // that actually resolve, or the signal is worth less than nothing.
-  sameAs: [BRAND.instagram, BRAND.googleBusiness, BRAND.portfolio],
+  sameAs: [
+    BRAND.instagram,
+    BRAND.googleBusiness,
+    BRAND.googleKnowledgeGraph,
+    BRAND.portfolio,
+  ].filter(Boolean),
   // Google matches a site to a Business Profile on the strength of the
   // entity looking like the same thing in both places. logo and image are
   // the two it reads first and the site was sending neither.

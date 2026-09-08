@@ -66,7 +66,7 @@ export default function BlogPost({ params }) {
 
   const path = `/blog/${post.slug}`;
   const trail = [
-    { name: 'Home', href: '/' },
+    { name: 'MANDER', href: '/' },
     { name: 'Journal', href: '/blog' },
     { name: post.nav || post.title },
   ];

@@ -95,6 +95,16 @@ export default function Footer() {
                 </a>
               </li>
               <li className="pt-1">
+                <a
+                  href={BRAND.googleBusiness}
+                  target="_blank"
+                  rel="noreferrer noopener"
+                  className="text-paper/60 underline decoration-paper/30 underline-offset-4 transition-colors hover:text-paper hover:decoration-paper"
+                >
+                  Google Profile ↗
+                </a>
+              </li>
+              <li className="pt-1">
                 <Link
                   href="/careers"
                   className="text-paper/60 underline decoration-paper/30 underline-offset-4 transition-colors hover:text-paper hover:decoration-paper"

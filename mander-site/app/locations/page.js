@@ -8,7 +8,7 @@ import { REGIONS } from '@/lib/locations';
 import { BRAND } from '@/lib/content';
 import { breadcrumbSchema, OG_IMAGE, alternates } from '@/lib/seo';
 
-const TITLE = 'Metro Vancouver Web Design & Digital Practice | MANDER';
+const TITLE = 'Metro Vancouver Web Design & Digital Practice';
 const DESCRIPTION =
   'Architectural web design, Next.js engineering, and local search for businesses across Metro Vancouver, BC — Vancouver, Burnaby, Richmond, Surrey, North Vancouver, Langley, and the Tri-Cities.';
 
@@ -75,8 +75,18 @@ export default function LocationsHubPage() {
       {/* Overarching Region Bar */}
       <section className="border-b border-line bg-paper-2 py-6">
         <div className="container-max flex flex-wrap items-center justify-between gap-4">
-          <div className="font-mono text-[10px] uppercase tracking-widest text-ink-mute">
-            PROVINCIAL DIRECTORY // <span className="text-ink font-semibold">BRITISH COLUMBIA</span>
+          <div className="flex items-center gap-4 font-mono text-[10px] uppercase tracking-widest text-ink-mute">
+            <span>PROVINCIAL DIRECTORY // <strong className="text-ink font-semibold">BRITISH COLUMBIA</strong></span>
+            <span className="hidden sm:inline text-line-strong">|</span>
+            <a
+              href={BRAND.googleBusiness}
+              target="_blank"
+              rel="noreferrer noopener"
+              className="hidden sm:inline-flex items-center gap-1.5 text-ink-soft hover:text-accent transition-colors"
+            >
+              <span className="h-1.5 w-1.5 rounded-full bg-emerald-600 inline-block" />
+              <span>GOOGLE VERIFIED PROFILE ↗</span>
+            </a>
           </div>
           <Link
             href="/locations/british-columbia"

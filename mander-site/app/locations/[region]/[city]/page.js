@@ -141,9 +141,17 @@ export default function CityPage({ params }) {
               </Link>
             ))}
           </Reveal>
-          <Reveal delay={120} className="mt-8">
-            <Link href="/#quote" className="link-underline label-caps text-ink">
-              Ask for quote
+          <Reveal delay={120} className="mt-8 flex flex-wrap items-center gap-6">
+            <Link href="/#quote" className="link-underline label-caps text-ink inline-flex items-center gap-2">
+              <span>Ask for quote</span>
+              <Icon name="arrow" className="h-4 w-4" strokeWidth={2} />
+            </Link>
+            <Link href="/#work" className="link-underline label-caps text-ink-soft hover:text-ink inline-flex items-center gap-2">
+              <span>Verified commercial flagships</span>
+              <Icon name="arrow" className="h-4 w-4" strokeWidth={2} />
+            </Link>
+            <Link href="/blog/small-business-website-cost-vancouver" className="link-underline label-caps text-ink-soft hover:text-ink inline-flex items-center gap-2">
+              <span>Metro Vancouver website pricing guide</span>
               <Icon name="arrow" className="h-4 w-4" strokeWidth={2} />
             </Link>
           </Reveal>

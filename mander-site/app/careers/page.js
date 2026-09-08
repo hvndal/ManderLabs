@@ -9,7 +9,7 @@ import ProcessTimeline from '@/components/ProcessTimeline';
 import { CAREERS, BRAND } from '@/lib/content';
 import { OG_IMAGE, alternates } from '@/lib/seo';
 
-const TITLE = 'Careers — Design & Development Roles at MANDER';
+const TITLE = 'Careers — Design & Development Roles';
 const DESCRIPTION =
   'Design, front-end, Android and SEO roles at a boutique practice based in Metro Vancouver, building digital flagships for businesses across BC and beyond.';
 

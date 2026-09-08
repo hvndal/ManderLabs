@@ -25,16 +25,22 @@ export default function NotFound() {
           The link that brought you here is out of date. Try the homepage, or
           get in touch directly if you were looking for something specific.
         </p>
-        <div className="mt-9 flex flex-wrap gap-3">
+        <div className="mt-9 flex flex-wrap items-center gap-3">
           <Link href="/" className="btn-primary">
             Back to home
           </Link>
           <Link href="/locations" className="btn-outline">
             Browse locations
           </Link>
+          <Link href="/pricing" className="btn-outline">
+            Pricing &amp; scope
+          </Link>
+          <Link href="/blog" className="btn-outline">
+            Journal
+          </Link>
           <a
             href={`mailto:${BRAND.email}`}
-            className="link-underline label-caps inline-flex items-center text-ink"
+            className="link-underline label-caps inline-flex items-center text-ink ml-1"
           >
             {BRAND.email}
           </a>

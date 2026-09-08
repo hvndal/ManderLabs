@@ -16,7 +16,7 @@ import {
 import { TIERS, CARE_PLAN, CARE_PLAN_PRICE, FAQS, BRAND } from '@/lib/content';
 import { faqSchema, OG_IMAGE, alternates } from '@/lib/seo';
 
-const TITLE = 'Website Design Pricing & Scoping — MANDER';
+const TITLE = 'Website Design Pricing & Scoping';
 const DESCRIPTION =
   'Tailored website design pricing and clear scope for businesses in Metro Vancouver, BC and beyond. Four bespoke plans, Android applications, zero hidden fees.';
 

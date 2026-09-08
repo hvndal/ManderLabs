@@ -102,7 +102,10 @@ export default function HomePage() {
                   <span>123°07&apos;15&quot;W</span>
                 </div>
                 <span>ELEVATION 4M // PACIFIC BASIN</span>
-                <span className="text-accent font-semibold">VERIFIED PRACTICE</span>
+                <Link href="/locations" className="text-accent hover:text-white font-semibold transition-colors flex items-center gap-1">
+                  <span>METRO VANCOUVER PRACTICE</span>
+                  <span>→</span>
+                </Link>
               </div>
             </div>
           </Reveal>
@@ -228,11 +231,40 @@ export default function HomePage() {
         </div>
 
         {/* Typographic rows with apertured numerals */}
-        <div className="relative container-max pb-stack-md">
+        <div className="relative container-max pb-8">
           <div className="divide-y divide-line border-t border-line">
             {SERVICES.map((service, index) => (
               <ServiceBand key={service.title} service={service} index={index} />
             ))}
+          </div>
+        </div>
+
+        {/* Contextual Regional Practice Strip */}
+        <div className="relative container-max pb-stack-md">
+          <div className="flex flex-wrap items-center justify-between gap-4 border-t border-line/70 pt-5 font-mono text-[9.5px] uppercase tracking-[0.2em] text-ink-mute">
+            <div className="flex items-center gap-2">
+              <span className="h-1.5 w-1.5 bg-accent inline-block" />
+              <span>REGIONAL FOOTPRINT:</span>
+              <span className="text-ink font-medium">METRO VANCOUVER &middot; PACIFIC NORTHWEST</span>
+            </div>
+            <div className="flex flex-wrap items-center gap-x-5 gap-y-2 text-ink-soft">
+              <Link href="/locations/british-columbia/vancouver" className="hover:text-accent transition-colors">
+                Vancouver
+              </Link>
+              <Link href="/locations/british-columbia/burnaby" className="hover:text-accent transition-colors">
+                Burnaby
+              </Link>
+              <Link href="/locations/british-columbia/surrey" className="hover:text-accent transition-colors">
+                Surrey
+              </Link>
+              <Link href="/locations/british-columbia/richmond" className="hover:text-accent transition-colors">
+                Richmond
+              </Link>
+              <Link href="/locations" className="text-accent hover:underline font-semibold flex items-center gap-1">
+                <span>All 8 Municipal Hubs</span>
+                <span>→</span>
+              </Link>
+            </div>
           </div>
         </div>
 
