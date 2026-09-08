@@ -31,7 +31,7 @@ import {
   BRAND,
   TEAM,
 } from '@/lib/content';
-import { faqSchema, alternates } from '@/lib/seo';
+import { faqSchema, alternates, heroVideoSchema } from '@/lib/seo';
 
 export const metadata = {
   alternates: alternates('/'),
@@ -41,6 +41,7 @@ export default function HomePage() {
   return (
     <>
       <JsonLd data={faqSchema(FAQS)} />
+      <JsonLd data={heroVideoSchema()} />
 
       {/* -------------------------------------------------- 01 · The Hero Broadside */}
       <Hero />

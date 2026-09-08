@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 import { motion } from 'framer-motion';
@@ -47,12 +47,25 @@ const maskVariants = {
 
 export default function Hero() {
   const [reducedMotion, setReducedMotion] = useState(false);
+  const [viewMode, setViewMode] = useState('film');
+  const [isPlaying, setIsPlaying] = useState(true);
+  const videoRef = useRef(null);
 
   useEffect(() => {
     setReducedMotion(
       window.matchMedia?.('(prefers-reduced-motion: reduce)').matches ?? false
     );
   }, []);
+
+  const togglePlay = () => {
+    if (!videoRef.current) return;
+    if (isPlaying) {
+      videoRef.current.pause();
+      setIsPlaying(false);
+    } else {
+      videoRef.current.play().then(() => setIsPlaying(true)).catch(() => {});
+    }
+  };
 
   return (
     <section
@@ -147,16 +160,42 @@ export default function Hero() {
           className="lg:col-span-5 relative flex flex-col justify-between border-t lg:border-t-0 lg:border-l border-line pt-6 sm:pt-8 lg:pt-8 xl:pt-10 lg:pl-8 xl:pl-10 pb-6 lg:pb-7 bg-paper/40"
         >
           <div>
-            {/* Plate Meta Bar */}
-            <div className="flex items-center justify-between font-mono text-[9px] uppercase tracking-[0.2em] sm:tracking-[0.22em] text-ink-mute pb-2.5 mb-3.5 border-b border-line/70">
+            {/* Plate Meta Bar with View Switcher */}
+            <div className="flex items-center justify-between font-mono text-[9px] uppercase tracking-[0.18em] sm:tracking-[0.22em] text-ink-mute pb-2.5 mb-3.5 border-b border-line/70">
               <span className="flex items-center gap-1.5 text-ink font-medium">
                 <span className="inline-block w-1.5 h-1.5 bg-accent" />
-                PLATE 01 // TECTONIC GEOMETRY
+                {viewMode === 'film' ? 'PLATE 01 // DIGITAL CRAFT ATELIER' : 'PLATE 01 // TECTONIC GEOMETRY'}
               </span>
-              <span className="text-ink-mute text-[8.5px] sm:text-[9px]">REF: VAN-MIES-24</span>
+              <div className="flex items-center gap-2 font-mono text-[8.5px]">
+                <button
+                  type="button"
+                  onClick={() => setViewMode('film')}
+                  aria-pressed={viewMode === 'film'}
+                  className={`transition-colors cursor-pointer px-1.5 py-0.5 ${
+                    viewMode === 'film'
+                      ? 'text-ink font-bold border-b border-accent'
+                      : 'text-ink-mute hover:text-ink'
+                  }`}
+                >
+                  FILM
+                </button>
+                <span className="text-line-strong">/</span>
+                <button
+                  type="button"
+                  onClick={() => setViewMode('still')}
+                  aria-pressed={viewMode === 'still'}
+                  className={`transition-colors cursor-pointer px-1.5 py-0.5 ${
+                    viewMode === 'still'
+                      ? 'text-ink font-bold border-b border-accent'
+                      : 'text-ink-mute hover:text-ink'
+                  }`}
+                >
+                  STILL
+                </button>
+              </div>
             </div>
 
-            {/* Image Container with Swiss Registration Marks */}
+            {/* Container with Swiss Registration Marks */}
             <div className="relative border border-line bg-paper-2/60 shadow-sm p-2 sm:p-2.5">
               {/* Registration Crosshairs */}
               <span className="absolute -top-2 -left-2 font-mono text-[11px] leading-none text-ink-mute/70 select-none z-20">
@@ -172,35 +211,86 @@ export default function Hero() {
                 +
               </span>
 
-              {/* Architectural Image with Cursor Parallax */}
+              {/* Visual Display Frame */}
               <div className="relative aspect-[4/3] sm:aspect-[16/10] lg:aspect-[4/5] max-h-[360px] xl:max-h-[420px] w-full overflow-hidden bg-ink/5">
-                <CursorImage strength={4} className="w-full h-full">
-                  <Image
-                    src="/editorial/concrete-geometry.jpg"
-                    alt="Vancouver contemporary architectural grid — steel and glass tectonic geometry"
-                    fill
-                    priority
-                    sizes="(max-width: 1024px) 100vw, 480px"
-                    className="object-cover object-center contrast-[1.08] brightness-[0.98]"
-                  />
-                </CursorImage>
+                {viewMode === 'film' ? (
+                  reducedMotion ? (
+                    <Image
+                      src="/hero-poster-graded.jpg"
+                      alt="Mander studio designer sketching digital architecture on graphics tablet in Vancouver atelier"
+                      fill
+                      priority
+                      sizes="(max-width: 1024px) 100vw, 480px"
+                      className="object-cover object-center"
+                    />
+                  ) : (
+                    <div className="relative w-full h-full">
+                      <video
+                        ref={videoRef}
+                        autoPlay
+                        muted
+                        loop
+                        playsInline
+                        webkit-playsinline="true"
+                        preload="auto"
+                        poster="/hero-poster-graded.jpg"
+                        disablePictureInPicture
+                        onPlay={() => setIsPlaying(true)}
+                        onPause={() => setIsPlaying(false)}
+                        className="w-full h-full object-cover object-center grayscale sepia-[0.18] contrast-[1.15] brightness-[0.96] transition-transform duration-700 hover:scale-[1.02]"
+                      >
+                        <source src="/videos/hero.mp4" type="video/mp4" />
+                      </video>
+                      <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-ink/65 via-transparent to-ink/20" />
 
-                {/* Architectural Plate Stamp */}
-                <div className="absolute top-2.5 left-2.5 bg-ink/90 text-paper font-mono text-[8px] uppercase tracking-[0.2em] px-2.5 py-1 border border-white/10 backdrop-blur-xs">
-                  PACIFIC URBAN RIGOUR
-                </div>
+                      {/* Film Stamp */}
+                      <div className="absolute top-2.5 left-2.5 bg-ink/90 text-paper font-mono text-[8px] uppercase tracking-[0.2em] px-2.5 py-1 border border-white/10 backdrop-blur-xs flex items-center gap-1.5">
+                        <span className="h-1.5 w-1.5 rounded-full bg-emerald-400 animate-pulse" />
+                        <span>PACIFIC ATELIER // PROCESS</span>
+                      </div>
+
+                      {/* Playback Control Button */}
+                      <button
+                        type="button"
+                        onClick={togglePlay}
+                        aria-label={isPlaying ? 'Pause studio film' : 'Play studio film'}
+                        className="absolute bottom-2.5 right-2.5 bg-paper/95 text-ink hover:text-accent font-mono text-[8px] uppercase tracking-[0.16em] px-2 py-1 border border-line backdrop-blur-xs transition-colors cursor-pointer flex items-center gap-1"
+                      >
+                        <span>{isPlaying ? 'PAUSE' : 'PLAY'}</span>
+                        <span className="text-[9px]">{isPlaying ? '⏸' : '▶'}</span>
+                      </button>
+                    </div>
+                  )
+                ) : (
+                  <CursorImage strength={4} className="w-full h-full">
+                    <Image
+                      src="/editorial/concrete-geometry.jpg"
+                      alt="Vancouver contemporary architectural grid — steel and glass tectonic geometry"
+                      fill
+                      priority
+                      sizes="(max-width: 1024px) 100vw, 480px"
+                      className="object-cover object-center contrast-[1.08] brightness-[0.98]"
+                    />
+                    <div className="absolute top-2.5 left-2.5 bg-ink/90 text-paper font-mono text-[8px] uppercase tracking-[0.2em] px-2.5 py-1 border border-white/10 backdrop-blur-xs">
+                      PACIFIC URBAN RIGOUR
+                    </div>
+                  </CursorImage>
+                )}
               </div>
             </div>
 
-            {/* Plate Caption */}
+            {/* Dynamic Plate Caption */}
             <div className="mt-3.5 pt-2.5 border-t border-line/60 space-y-1.5">
               <div className="flex items-center justify-between font-mono text-[9px] uppercase tracking-[0.2em] text-ink-soft">
-                <span>SURFACE TECTONICS</span>
-                <span className="text-accent font-semibold">NEXT.JS 14 SSG</span>
+                <span>{viewMode === 'film' ? 'ATELIER DRAFTING & CODE' : 'SURFACE TECTONICS'}</span>
+                <span className="text-accent font-semibold">
+                  {viewMode === 'film' ? 'VANCOUVER ATELIER' : 'NEXT.JS 14 SSG'}
+                </span>
               </div>
               <p className="font-mono text-[9px] sm:text-[9.5px] leading-relaxed text-ink-mute tracking-wide">
-                Every line of code and typographic datum is calibrated with structural
-                precision — engineered to convert discerning commercial clientele.
+                {viewMode === 'film'
+                  ? 'Inside the studio: translating architectural wireframes and custom typographic systems into production React components.'
+                  : 'Every line of code and typographic datum is calibrated with structural precision — engineered to convert discerning commercial clientele.'}
               </p>
             </div>
           </div>

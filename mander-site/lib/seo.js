@@ -107,6 +107,38 @@ export function articleSchema(post) {
   };
 }
 
+/**
+ * VideoObject structured data for the studio atelier craft film.
+ * Signals video richness, authoritativeness, and brand production to Google.
+ */
+export function heroVideoSchema() {
+  return {
+    '@context': 'https://schema.org',
+    '@type': 'VideoObject',
+    '@id': `${SITE_URL}/#hero-video`,
+    name: 'Mander Studio — Digital Craft & Architectural Web Engineering',
+    description:
+      'Inside the Mander design atelier: crafting bespoke, high-performance web systems and digital architecture for ambitious commercial brands across Vancouver and the Pacific Northwest.',
+    thumbnailUrl: [
+      `${SITE_URL}/hero-poster-graded.jpg`,
+      `${SITE_URL}/hero-poster.jpg`,
+      OG_IMAGE.url,
+    ],
+    uploadDate: '2025-01-15T08:00:00-08:00',
+    duration: 'PT15S',
+    contentUrl: `${SITE_URL}/videos/hero.mp4`,
+    embedUrl: `${SITE_URL}/#hero`,
+    inLanguage: 'en',
+    publisher: { '@id': `${SITE_URL}/#organization` },
+    author: {
+      '@type': 'Person',
+      name: 'Herman',
+      jobTitle: 'Founder & Design Lead',
+      url: BRAND.portfolio,
+    },
+  };
+}
+
 export function alternates(path) {
   return {
     canonical: path,
