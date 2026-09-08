@@ -483,7 +483,7 @@ const NA_REGIONS = [
     kicker: 'British Columbia',
     h1: 'Brand, digital and growth for Metro Vancouver.',
     metaDescription:
-      'Brand, web design and local growth systems for Metro Vancouver businesses — Vancouver and Surrey. Fixed-scope work from a studio with BC roots.',
+      'Brand, web design and local growth systems for Metro Vancouver — Vancouver, Burnaby, Richmond, Surrey, North Vancouver, Langley, Coquitlam and New Westminster.',
     intro: [
       "Metro Vancouver is where MANDER started — the founder works out of Langley — and it is where the local growth work is aimed. That is a deliberate narrowing rather than a limitation: local search is won by being genuinely relevant to one place before being thinly present in twenty, and a studio that claims every city on the map is telling you it has traction in none of them.",
       'The work here spans all three pillars. Brand for businesses whose offer is sharper in the founder’s head than anywhere else. Digital for the ones whose site is quietly costing them enquiries. Growth for the ones nobody is finding — which in this market is usually a Business Profile problem before it is a website problem.',
@@ -507,8 +507,8 @@ const NA_REGIONS = [
         a: 'Yes — quoted in USD by default and invoiced in CAD on request, at the same figures.',
       },
       {
-        q: "Why only Vancouver and Surrey, when Metro Vancouver has twenty-one municipalities?",
-        a: 'Because a page is only worth building where we can say something true and specific about the market. The rest of Metro Vancouver — Burnaby, Richmond, the North Shore, the Tri-Cities, Langley, Delta and the rest — is served exactly the same way; it just does not have a page written for it yet. We add one when there is evidence the demand is there, not because the municipality exists.',
+        q: 'Why these eight municipalities, when Metro Vancouver has twenty-one?',
+        a: 'Because a page is only worth building where we can say something true and specific about the market. These eight are the ones with a genuinely distinct paragraph written for them; the rest of Metro Vancouver — Delta, Maple Ridge, White Rock and the others — is served exactly the same way, it just does not have a page yet. We add one when there is evidence the demand is there, not because the municipality exists.',
       },
       {
         q: "Can you compete with Vancouver's larger agencies?",
@@ -569,6 +569,174 @@ const NA_REGIONS = [
           {
             q: "Do you invoice Surrey clients in Canadian dollars?",
             a: "Yes on request. Prices are shown in USD by default and Canadian clients are invoiced in CAD at your preference.",
+          },
+        ],
+      },
+      {
+        slug: 'burnaby',
+        name: 'Burnaby',
+        h1: 'Website design in Burnaby, British Columbia.',
+        metaDescription:
+          'Website design for Burnaby, BC small businesses — Metrotown retail, SFU-adjacent tech and services, and Lower Mainland trades. Fixed-price, no agency overhead.',
+        intro:
+          "Burnaby sits between two of Metro Vancouver's busiest commercial centres, Metrotown and Brentwood, with SFU up on the mountain feeding a steady run of small tech and professional-services businesses down into the city. That mix — retail density on one side, a university on the other — means a lot of Burnaby businesses are competing for attention in a market that never stops moving. A site that loads fast and actually shows up in a Burnaby search does more work here than a bigger budget spent on the wrong things.",
+        industries: ['Retail & commercial services', 'Technology & professional services', 'Trades & light industrial', 'Food & hospitality'],
+        faqs: [
+          {
+            q: 'Do you work with businesses near Metrotown or Brentwood specifically?',
+            a: 'Yes — both are covered under Burnaby, and the local SEO work is built around wherever your customers actually search from, not a single neighbourhood.',
+          },
+          {
+            q: 'Do you invoice in Canadian dollars?',
+            a: 'Yes, CAD on request at no extra cost, with the price fixed and agreed before anything starts.',
+          },
+          {
+            q: 'Do you build Android apps for Burnaby businesses?',
+            a: 'Yes, quoted per build. App Launch is the usual starting point for a first Play Store release.',
+          },
+          {
+            q: 'Can you help a Burnaby business compete with bigger Metrotown-area retailers online?',
+            a: 'That is mostly a local-search problem, not a budget problem — a properly optimised Business Profile and a fast site close most of the gap that a bigger competitor’s ad spend opens up.',
+          },
+        ],
+      },
+      {
+        slug: 'richmond',
+        name: 'Richmond',
+        h1: 'Website design in Richmond, British Columbia.',
+        metaDescription:
+          'Website design for Richmond, BC — international trade, food and hospitality, and professional services near YVR. Fixed-price, quoted in writing.',
+        intro:
+          "Richmond runs on trade — YVR sits inside it, and the city has one of the most internationally connected small-business communities in the Lower Mainland, from import/export operations to a food and hospitality scene that draws visitors well beyond the neighbourhood. A lot of that business still gets found by word of mouth or a listing on a directory nobody maintains, which is a real gap when the customer base is this used to searching before they choose.",
+        industries: ['International trade & logistics', 'Food & hospitality', 'Professional & financial services', 'Retail'],
+        faqs: [
+          {
+            q: 'Can you build a bilingual site for a Richmond business?',
+            a: 'Yes — English by default, and a second language handled the same way we did for a hospitality client, as part of Website Design rather than a separate line item.',
+          },
+          {
+            q: 'Do you invoice Richmond clients in Canadian dollars?',
+            a: 'Yes on request. Prices are shown in USD by default and Canadian clients are invoiced in CAD at your preference.',
+          },
+          {
+            q: 'Do you build Android apps for Richmond businesses?',
+            a: 'Yes, quoted per build and shipped to Google Play under your own developer account.',
+          },
+          {
+            q: 'Do you do local SEO for a business that mostly serves visitors and travellers?',
+            a: 'Yes — Local Search covers Google Business Profile and map-pack visibility, which matters more, not less, for a customer base that’s new to the area and searching cold.',
+          },
+        ],
+      },
+      {
+        slug: 'north-vancouver',
+        name: 'North Vancouver',
+        h1: 'Website design in North Vancouver, British Columbia.',
+        metaDescription:
+          'Website design for North Vancouver, BC — outdoor and recreation brands, the Shipyards district, and North Shore trades. Fixed-price website design.',
+        intro:
+          "The North Shore's small-business base leans outdoor and recreation — gear, guiding, food and craft businesses built around the mountains at the edge of the city — alongside the marine and trades work that's been part of the Shipyards district for decades. Both sides of that mix are competing for a customer who researches before they buy, on a phone, usually outdoors themselves. A site that's slow or hard to find on a map costs more here than it would somewhere less search-driven.",
+        industries: ['Outdoor & recreation brands', 'Marine & waterfront trades', 'Food & hospitality', 'Professional services'],
+        faqs: [
+          {
+            q: 'Do you build sites for outdoor or recreation brands specifically?',
+            a: 'We build for whatever the business actually is — the site is built around real photography and a clear structure either way, not a template that happens to look outdoorsy.',
+          },
+          {
+            q: 'Do you invoice in Canadian dollars?',
+            a: 'Yes, CAD on request at no extra cost, with the price fixed and agreed before anything starts.',
+          },
+          {
+            q: 'Do you build Android apps for North Vancouver businesses?',
+            a: 'Yes, quoted per build — App Launch covers a first Play Store release with authentication and a basic backend.',
+          },
+          {
+            q: 'How fast can a North Vancouver business get local search set up?',
+            a: 'Local Search typically runs alongside a Growth-tier build; Google Business Profile changes themselves can show up within days once they’re live.',
+          },
+        ],
+      },
+      {
+        slug: 'langley',
+        name: 'Langley',
+        h1: 'Website design in Langley, British Columbia.',
+        metaDescription:
+          "Website design in Langley, BC, where MANDER's founder is based — trades, agriculture and professional services in the Fraser Valley. Fixed-price builds.",
+        intro:
+          "Langley is where MANDER's founder is actually based, so this is the one market on the list the studio has direct, everyday familiarity with rather than research alone. It's a Fraser Valley mix of trades and construction, agriculture, and a growing professional-services base — businesses that mostly built their reputation locally and are only now working out that reputation doesn't show up in a Google search unless something is actually built to be found.",
+        industries: ['Trades & construction', 'Agriculture & agritourism', 'Professional services', 'Retail'],
+        faqs: [
+          {
+            q: 'Is MANDER actually based in Langley?',
+            a: "Yes — the founder is based in Langley, and the rest of the team works remotely, part of it out of Massachusetts. It's the one market on this list the studio knows first-hand rather than through research.",
+          },
+          {
+            q: 'Do you invoice in Canadian dollars?',
+            a: 'Yes, CAD on request at no extra cost, with the price fixed and agreed before anything starts.',
+          },
+          {
+            q: 'Do you build Android apps for Langley businesses?',
+            a: 'Yes, quoted per build. For trades and agricultural operations that’s usually a dispatch, scheduling or a customer-facing ordering tool.',
+          },
+          {
+            q: 'Do you work with agricultural or estate businesses?',
+            a: 'Yes — wineries, farms and agritourism operations are part of the local mix here, and the same fixed-scope approach applies.',
+          },
+        ],
+      },
+      {
+        slug: 'coquitlam',
+        name: 'Coquitlam',
+        h1: 'Website design in Coquitlam, British Columbia.',
+        metaDescription:
+          'Website design for Coquitlam and the Tri-Cities, BC — healthcare, construction and hospitality across Coquitlam, Port Moody and Port Coquitlam.',
+        intro:
+          "Coquitlam anchors the Tri-Cities — Port Moody and Port Coquitlam alongside it — in one of the faster-growing residential and commercial corridors in the Lower Mainland. Healthcare and wellness practices, construction tied to that growth, and a genuine craft-brewing scene around Port Moody's Brewers Row all compete for a local customer base that's expanding faster than most of these businesses' own marketing has kept up with.",
+        industries: ['Healthcare & wellness', 'Construction & development', 'Craft brewing & hospitality', 'Professional services'],
+        faqs: [
+          {
+            q: 'Do you cover the whole Tri-Cities area, not just Coquitlam itself?',
+            a: 'Yes — Port Moody and Port Coquitlam are covered under the same page, and the local SEO work follows wherever your actual customers search from.',
+          },
+          {
+            q: 'Do you invoice in Canadian dollars?',
+            a: 'Yes, CAD on request at no extra cost, with the price fixed and agreed before anything starts.',
+          },
+          {
+            q: 'Do you build booking systems for healthcare or wellness practices?',
+            a: 'Yes — appointment booking and intake forms are part of Growth-tier and above, built to the practice’s own scheduling needs rather than a generic plugin.',
+          },
+          {
+            q: 'Do you build Android apps for Coquitlam businesses?',
+            a: 'Yes, quoted per build and shipped to Google Play under your own developer account.',
+          },
+        ],
+      },
+      {
+        slug: 'new-westminster',
+        name: 'New Westminster',
+        h1: 'Website design in New Westminster, British Columbia.',
+        metaDescription:
+          'Website design for New Westminster, BC — heritage retail, healthcare near Royal Columbian, and waterfront businesses in the Royal City.',
+        intro:
+          "New Westminster carries more history than most of the cities on this list — it was British Columbia's first capital — and that shows up in a downtown built around independent, long-standing businesses rather than chain retail, alongside a healthcare economy anchored by Royal Columbian Hospital. A lot of that independence is a strength that doesn't automatically translate online: a business that's been trusted on Columbia Street for twenty years still needs to show up in a search from someone who's never heard of it.",
+        industries: ['Heritage & independent retail', 'Healthcare & medical services', 'Professional & legal services', 'Hospitality'],
+        faqs: [
+          {
+            q: 'Do you work with long-established, not just new, New Westminster businesses?',
+            a: 'Most of the work here is exactly that — a business with a real local reputation that has never had a site doing anything for it. That’s a straightforward Starter or Growth build, not a special case.',
+          },
+          {
+            q: 'Do you invoice in Canadian dollars?',
+            a: 'Yes, CAD on request at no extra cost, with the price fixed and agreed before anything starts.',
+          },
+          {
+            q: 'Do you build intake or booking tools for healthcare practices near Royal Columbian?',
+            a: 'Yes — appointment booking and patient intake are part of Growth-tier and above, built around the practice’s own workflow.',
+          },
+          {
+            q: 'Do you build Android apps for New Westminster businesses?',
+            a: 'Yes, quoted per build. App Launch is the usual starting point for a first Play Store release.',
           },
         ],
       },
