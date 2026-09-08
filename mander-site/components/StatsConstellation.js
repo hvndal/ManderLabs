@@ -12,11 +12,11 @@ import GridField from './GridField';
  * combined with the verified 100k+ client flagship build (Fitway Gym) and core performance SLAs.
  * The primary 100k+ numeral reacts dynamically to scroll velocity.
  */
-export default function StatsConstellation({ stats, featuredProject }) {
+export default function StatsConstellation({ id, stats, featuredProject }) {
   const [first, second, third, fourth] = stats || [];
 
   return (
-    <section className="relative overflow-hidden bg-[#100d0b] text-white py-20 sm:py-28 border-b border-white/10">
+    <section id={id} className="relative overflow-hidden bg-[#100d0b] text-white py-20 sm:py-28 border-b border-white/10">
       {/* Atmospheric Aerial Urban Photography Backdrop */}
       <div className="absolute inset-0 z-0 pointer-events-none select-none">
         <Image

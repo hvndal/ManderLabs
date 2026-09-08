@@ -10,7 +10,6 @@ import ClientMarquee from '@/components/ClientMarquee';
 import StatsConstellation from '@/components/StatsConstellation';
 import ShaderBackground from '@/components/ShaderBackground';
 import GridField from '@/components/GridField';
-import WorkSpotlight from '@/components/WorkSpotlight';
 import ProcessTimeline from '@/components/ProcessTimeline';
 import Testimonials from '@/components/Testimonials';
 import PricingInteractive from '@/components/PricingInteractive';
@@ -110,35 +109,9 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* ------------------------------------------ 05 · Stats as Constellation */}
+      {/* ------------------------------------------ 05 · Stats as Constellation (Audited Scale & Commercial Flagships) */}
       {/* High-contrast monochrome background with 100k+ ScrollVelocity display & Fitway Gym flagship showcase */}
-      <StatsConstellation stats={STATS} featuredProject={WORK[0]} />
-
-      {/* ------------------------------------------ 06 · Curated Work Showcase */}
-      {/* Architectural box with Framer Motion AnimatePresence cross-fades */}
-      <Section id="work" tone="paper" className="!py-stack-lg">
-        <Reveal>
-          <div className="flex flex-col gap-5 border-b border-line pb-7 sm:flex-row sm:items-baseline sm:justify-between sm:gap-10 mb-8">
-            <div className="flex flex-wrap items-baseline gap-x-6 gap-y-2">
-              <span className="font-mono text-[9.5px] sm:text-[10.5px] uppercase tracking-[0.22em] text-accent font-semibold shrink-0 flex items-center gap-2">
-                <span className="h-1.5 w-1.5 bg-accent inline-block" />
-                06 // SELECTED ARCHIVE
-              </span>
-              <h2 className="font-display text-3xl sm:text-4xl lg:text-[2.65rem] text-ink leading-[1.05] tracking-tight">
-                Selected Commercial <span className="italic font-light text-accent">Deployments.</span>
-              </h2>
-            </div>
-            <div className="font-mono text-[10px] uppercase tracking-widest text-ink-mute flex items-center gap-2 shrink-0">
-              <span className="h-1.5 w-1.5 rounded-full bg-accent" />
-              <span>LIVE VERIFIED FLAGSHIPS</span>
-            </div>
-          </div>
-        </Reveal>
-
-        <Reveal delay={80}>
-          <WorkSpotlight items={WORK} />
-        </Reveal>
-      </Section>
+      <StatsConstellation id="work" stats={STATS} featuredProject={WORK[0]} />
 
       {/* ------------------------------------------ 06 · ASYMMETRICAL ARCHITECTURAL INTERLUDE */}
       {/* 80% photography, edge-to-edge bleed breaking completely out of card containers */}
@@ -172,7 +145,7 @@ export default function HomePage() {
               <div className="flex items-center gap-3 mb-6">
                 <span className="h-1.5 w-1.5 bg-accent inline-block" />
                 <span className="font-mono text-[9.5px] sm:text-[10.5px] uppercase tracking-[0.22em] text-accent font-semibold">
-                  07 // ARCHITECTURAL RIGOR
+                  06 // ARCHITECTURAL RIGOR
                 </span>
                 <span className="h-px w-10 bg-accent/40" />
               </div>
@@ -220,7 +193,7 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* ------------------------------------------ 08 · Capabilities / Services */}
+      {/* ------------------------------------------ 07 · Capabilities / Services */}
       {/* WebGL Shader Background + Typographic Rows + Dual Edge-to-Edge Spread */}
       <section id="services" className="relative border-b border-line bg-paper">
         <ShaderBackground className="opacity-90" />
@@ -231,7 +204,7 @@ export default function HomePage() {
               <div className="flex items-center gap-2 mb-2">
                 <span className="h-1.5 w-1.5 bg-accent" />
                 <span className="font-mono text-[9.5px] sm:text-[10.5px] uppercase tracking-[0.22em] text-accent font-semibold">
-                  08 // STUDIO CAPABILITIES
+                  07 // STUDIO CAPABILITIES
                 </span>
               </div>
             </Reveal>
@@ -317,7 +290,7 @@ export default function HomePage() {
       </Reveal>
     </section>
 
-      {/* ------------------------------------------ 09 · Delivery Protocol */}
+      {/* ------------------------------------------ 08 · Delivery Protocol */}
       <section id="process" className="relative border-b border-line bg-paper py-stack-lg">
         <div className="container-max">
           <div className="flex flex-col md:flex-row md:items-end justify-between pb-8 border-b border-line gap-6 mb-12">
@@ -325,7 +298,7 @@ export default function HomePage() {
               <div className="flex items-center gap-2 mb-2.5">
                 <span className="h-1.5 w-1.5 bg-accent" />
                 <span className="font-mono text-[9.5px] sm:text-[10.5px] uppercase tracking-[0.22em] text-accent font-semibold">
-                  09 // DELIVERY PROTOCOL
+                  08 // DELIVERY PROTOCOL
                 </span>
               </div>
               <h2 className="font-display text-4xl sm:text-5xl lg:text-[3.25rem] text-ink leading-[1.02] tracking-tight text-balance">
@@ -342,7 +315,7 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* ------------------------------------------ 10 · Pacific Philosophy */}
+      {/* ------------------------------------------ 09 · Pacific Philosophy */}
       {/* Magazine Centerfold Broadside: Panoramic Pacific Rain & Monumental Philosophy */}
       <section className="relative border-b border-line bg-paper-2 py-20 sm:py-28 overflow-hidden">
         <div className="container-max">
@@ -350,7 +323,7 @@ export default function HomePage() {
           <div className="flex flex-wrap items-center justify-between gap-4 pb-6 border-b border-line/80 mb-10 font-mono text-[9.5px] sm:text-[10.5px] uppercase tracking-[0.22em] text-ink-mute">
             <div className="flex items-center gap-2">
               <span className="h-1.5 w-1.5 bg-accent" />
-              <span className="text-accent font-semibold">10 // PACIFIC PHILOSOPHY</span>
+              <span className="text-accent font-semibold">09 // PACIFIC PHILOSOPHY</span>
               <span className="text-ink-mute/50 hidden sm:inline">· DIRECTIVE ON RESTRAINT</span>
             </div>
             <div className="tracking-[0.2em] text-ink-soft">
@@ -387,7 +360,7 @@ export default function HomePage() {
                   <div className="absolute bottom-3 right-3 pointer-events-none font-mono text-[10px] text-white/50 select-none">+</div>
 
                   <div className="absolute bottom-4 left-4 bg-ink/90 text-white font-mono text-[9px] uppercase tracking-widest px-3 py-1 border border-white/10 backdrop-blur-xs">
-                    PLATE 10 // PACIFIC PRECIPITATION &amp; GLASS
+                    PLATE 09 // PACIFIC PRECIPITATION &amp; GLASS
                   </div>
                 </div>
               </Reveal>
@@ -430,7 +403,7 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* ------------------------------------------ 11 · Bespoke Scoping & Quote */}
+      {/* ------------------------------------------ 10 · Bespoke Scoping & Quote */}
       <section id="quote" className="relative border-b border-line bg-paper py-stack-lg">
         <div className="container-max">
           <div className="flex flex-col md:flex-row md:items-end justify-between pb-8 border-b border-line gap-6 mb-12">
@@ -438,7 +411,7 @@ export default function HomePage() {
               <div className="flex items-center gap-2 mb-2.5">
                 <span className="h-1.5 w-1.5 bg-accent" />
                 <span className="font-mono text-[9.5px] sm:text-[10.5px] uppercase tracking-[0.22em] text-accent font-semibold">
-                  11 // BESPOKE SCOPING
+                  10 // BESPOKE SCOPING
                 </span>
               </div>
               <h2 className="font-display text-4xl sm:text-5xl text-ink leading-tight">
@@ -458,14 +431,14 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* ------------------------------------------ 12 · Audited Deliverables */}
+      {/* ------------------------------------------ 11 · Audited Deliverables */}
       <Section id="proof" tone="paper" className="!py-stack-lg border-b border-line">
         <div className="flex flex-col md:flex-row md:items-end justify-between pb-8 border-b border-line gap-6 mb-12">
           <div>
             <div className="flex items-center gap-2 mb-2.5">
               <span className="h-1.5 w-1.5 bg-accent" />
               <span className="font-mono text-[9.5px] sm:text-[10.5px] uppercase tracking-[0.22em] text-accent font-semibold">
-                12 // AUDITED DELIVERABLES
+                11 // AUDITED DELIVERABLES
               </span>
             </div>
             <h2 className="font-display text-4xl sm:text-5xl text-ink leading-tight">
@@ -479,7 +452,7 @@ export default function HomePage() {
         <Testimonials items={CLIENTS} />
       </Section>
 
-      {/* ------------------------------------------ 13 · Common Inquiries */}
+      {/* ------------------------------------------ 12 · Common Inquiries */}
       <Section id="faq" tone="paper" className="!py-stack-lg border-b border-line">
         <div className="container-max">
           <div className="grid grid-cols-1 gap-gutter lg:grid-cols-12 lg:gap-16">
@@ -488,7 +461,7 @@ export default function HomePage() {
                 <div className="flex items-center gap-2 mb-3">
                   <span className="h-1.5 w-1.5 bg-accent" />
                   <span className="font-mono text-[9.5px] sm:text-[10.5px] uppercase tracking-[0.22em] text-accent font-semibold">
-                    13 // COMMON INQUIRIES
+                    12 // COMMON INQUIRIES
                   </span>
                 </div>
                 <h2 className="font-display text-4xl sm:text-5xl text-ink leading-tight">
@@ -508,7 +481,7 @@ export default function HomePage() {
         </div>
       </Section>
 
-      {/* ------------------------------------------ 14 · Direct Engagement & Contact */}
+      {/* ------------------------------------------ 13 · Direct Engagement & Contact */}
       <Section id="contact" tone="ink" className="!py-stack-lg border-b border-line relative overflow-hidden">
         {/* Subtle abstract architectural background at low opacity */}
         <div className="absolute inset-0 opacity-15 pointer-events-none">
@@ -528,7 +501,7 @@ export default function HomePage() {
                 <div className="flex items-center gap-2 mb-3">
                   <span className="h-1.5 w-1.5 bg-accent" />
                   <span className="font-mono text-[9.5px] sm:text-[10.5px] uppercase tracking-[0.22em] text-accent font-semibold">
-                    14 // DIRECT ENGAGEMENT
+                    13 // DIRECT ENGAGEMENT
                   </span>
                 </div>
 
@@ -548,7 +521,7 @@ export default function HomePage() {
                       HERMAN@MANDER.TECH
                     </a>
                   </div>
-                  <div>OFFICES: VANCOUVER, BC × BOSTON, MA</div>
+                  <div>STUDIO: GASTOWN, VANCOUVER, BC</div>
                 </div>
               </Reveal>
             </div>
