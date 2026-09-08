@@ -579,10 +579,10 @@ export default function HomePage() {
                   <div>
                     DIRECT INBOX:{' '}
                     <a
-                      href="mailto:herman@mander.tech"
+                      href={`mailto:${BRAND.email}`}
                       className="text-white font-bold hover:underline"
                     >
-                      HERMAN@MANDER.TECH
+                      {BRAND.email.toUpperCase()}
                     </a>
                   </div>
                   <div>STUDIO: GASTOWN, VANCOUVER, BC</div>

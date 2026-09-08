@@ -11,7 +11,7 @@ export const BRAND = {
   // (Cloudflare Email Routing is free) pointed at an inbox that's actually
   // read — otherwise mail sent here bounces. Register the Web3Forms key to
   // this same address once forwarding is live; see .env.local.example.
-  email: 'herman@mander.tech',
+  email: 'sales@mander.tech',
   portfolio: 'https://hermanify.online',
   // The only social profile that exists today. When a second one does, add it
   // here and to `sameAs` in lib/seo.js — those are the two places a crawler

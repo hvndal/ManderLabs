@@ -58,9 +58,9 @@ silently swallowing enquiries.
 
 ---
 
-## 4. Forward herman@mander.tech
+## 4. Forward sales@mander.tech
 
-`herman@mander.tech` is shown all over the site, but mail sent there will
+`sales@mander.tech` is shown all over the site, but mail sent there will
 bounce until you set up forwarding at whoever hosts `mander.tech` — Cloudflare
 Email Routing is free and takes about five minutes. Point it at
 hundalg968@gmail.com.
