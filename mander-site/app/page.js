@@ -80,7 +80,7 @@ export default function HomePage() {
               <div className="flex items-center gap-3 mb-6">
                 <span className="h-1.5 w-1.5 bg-accent inline-block" />
                 <span className="font-mono text-[9.5px] sm:text-[10.5px] uppercase tracking-[0.22em] text-white/90 font-semibold drop-shadow">
-                  03 // PACIFIC MANIFESTO
+                  04 // PACIFIC MANIFESTO
                 </span>
                 <span className="h-px w-12 bg-white/40 hidden sm:inline-block" />
               </div>
@@ -110,11 +110,11 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* ------------------------------------------ 04 · Stats as Constellation */}
+      {/* ------------------------------------------ 05 · Stats as Constellation */}
       {/* High-contrast monochrome background with 100k+ ScrollVelocity display & Fitway Gym flagship showcase */}
       <StatsConstellation stats={STATS} featuredProject={WORK[0]} />
 
-      {/* ------------------------------------------ 05 · Curated Work Showcase */}
+      {/* ------------------------------------------ 06 · Curated Work Showcase */}
       {/* Architectural box with Framer Motion AnimatePresence cross-fades */}
       <Section id="work" tone="paper" className="!py-stack-lg">
         <Reveal>
@@ -122,7 +122,7 @@ export default function HomePage() {
             <div className="flex flex-wrap items-baseline gap-x-6 gap-y-2">
               <span className="font-mono text-[9.5px] sm:text-[10.5px] uppercase tracking-[0.22em] text-accent font-semibold shrink-0 flex items-center gap-2">
                 <span className="h-1.5 w-1.5 bg-accent inline-block" />
-                05 // SELECTED ARCHIVE
+                06 // SELECTED ARCHIVE
               </span>
               <h2 className="font-display text-3xl sm:text-4xl lg:text-[2.65rem] text-ink leading-[1.05] tracking-tight">
                 Selected Commercial <span className="italic font-light text-accent">Deployments.</span>
@@ -172,7 +172,7 @@ export default function HomePage() {
               <div className="flex items-center gap-3 mb-6">
                 <span className="h-1.5 w-1.5 bg-accent inline-block" />
                 <span className="font-mono text-[9.5px] sm:text-[10.5px] uppercase tracking-[0.22em] text-accent font-semibold">
-                  06 // ARCHITECTURAL RIGOR
+                  07 // ARCHITECTURAL RIGOR
                 </span>
                 <span className="h-px w-10 bg-accent/40" />
               </div>
@@ -220,7 +220,7 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* ------------------------------------------ 07 · Capabilities / Services */}
+      {/* ------------------------------------------ 08 · Capabilities / Services */}
       {/* WebGL Shader Background + Typographic Rows + Dual Edge-to-Edge Spread */}
       <section id="services" className="relative border-b border-line bg-paper">
         <ShaderBackground className="opacity-90" />
@@ -231,7 +231,7 @@ export default function HomePage() {
               <div className="flex items-center gap-2 mb-2">
                 <span className="h-1.5 w-1.5 bg-accent" />
                 <span className="font-mono text-[9.5px] sm:text-[10.5px] uppercase tracking-[0.22em] text-accent font-semibold">
-                  07 // STUDIO CAPABILITIES
+                  08 // STUDIO CAPABILITIES
                 </span>
               </div>
             </Reveal>
@@ -317,7 +317,7 @@ export default function HomePage() {
       </Reveal>
     </section>
 
-      {/* ------------------------------------------ 08 · Delivery Protocol */}
+      {/* ------------------------------------------ 09 · Delivery Protocol */}
       <section id="process" className="relative border-b border-line bg-paper py-stack-lg">
         <div className="container-max">
           <div className="flex flex-col md:flex-row md:items-end justify-between pb-8 border-b border-line gap-6 mb-12">
@@ -325,7 +325,7 @@ export default function HomePage() {
               <div className="flex items-center gap-2 mb-2.5">
                 <span className="h-1.5 w-1.5 bg-accent" />
                 <span className="font-mono text-[9.5px] sm:text-[10.5px] uppercase tracking-[0.22em] text-accent font-semibold">
-                  08 // DELIVERY PROTOCOL
+                  09 // DELIVERY PROTOCOL
                 </span>
               </div>
               <h2 className="font-display text-4xl sm:text-5xl lg:text-[3.25rem] text-ink leading-[1.02] tracking-tight text-balance">
@@ -342,61 +342,95 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* ------------------------------------------ 09 · Pacific Philosophy */}
-      {/* Magazine double-spread: rain on glass window + offset dark card */}
-      <section className="relative border-b border-line bg-paper-2 py-16 sm:py-24 overflow-hidden">
+      {/* ------------------------------------------ 10 · Pacific Philosophy */}
+      {/* Magazine Centerfold Broadside: Panoramic Pacific Rain & Monumental Philosophy */}
+      <section className="relative border-b border-line bg-paper-2 py-20 sm:py-28 overflow-hidden">
         <div className="container-max">
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
-            {/* Cinematic Rain Photo */}
+          {/* Top Broadside Folio Meta */}
+          <div className="flex flex-wrap items-center justify-between gap-4 pb-6 border-b border-line/80 mb-10 font-mono text-[9.5px] sm:text-[10.5px] uppercase tracking-[0.22em] text-ink-mute">
+            <div className="flex items-center gap-2">
+              <span className="h-1.5 w-1.5 bg-accent" />
+              <span className="text-accent font-semibold">10 // PACIFIC PHILOSOPHY</span>
+              <span className="text-ink-mute/50 hidden sm:inline">· DIRECTIVE ON RESTRAINT</span>
+            </div>
+            <div className="tracking-[0.2em] text-ink-soft">
+              49°16&apos;59&quot;N 123°07&apos;15&quot;W · WATER STREET GASTOWN
+            </div>
+          </div>
+
+          {/* Monumental Centerfold Typography Statement */}
+          <Reveal variant="mask">
+            <h3 className="font-display text-3xl sm:text-5xl lg:text-[4rem] text-ink leading-[0.98] tracking-tight max-w-5xl mb-12 text-balance">
+              &ldquo;<span className="italic font-light text-accent">Quiet luxury</span> is knowing you don&apos;t have to shout.&rdquo;
+            </h3>
+          </Reveal>
+
+          {/* Split Panoramic Exhibition Spread */}
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-stretch">
+            {/* Left 7 cols: Letterbox Panoramic Rain Frame with Swiss Crosshairs */}
             <div className="lg:col-span-7">
               <Reveal variant="scale">
-                <div className="relative aspect-[16/10] border border-line bg-ink overflow-hidden group">
+                <div className="relative aspect-[16/9] border border-line bg-ink overflow-hidden group shadow-sm">
                   <CursorImage strength={4} className="w-full h-full absolute inset-0">
                     <Image
                       src="/editorial/pacific-rain.jpg"
                       alt="Vancouver evening rain on glass window with glowing street reflections"
                       fill
-                      sizes="(max-width: 1024px) 100vw, 700px"
+                      sizes="(max-width: 1024px) 100vw, 750px"
                       className="object-cover transition-transform duration-700 group-hover:scale-[1.02]"
                     />
                   </CursorImage>
+                  {/* Swiss Registration Marks */}
                   <div className="absolute top-3 left-3 pointer-events-none font-mono text-[10px] text-white/50 select-none">+</div>
                   <div className="absolute top-3 right-3 pointer-events-none font-mono text-[10px] text-white/50 select-none">+</div>
-                  <div className="absolute bottom-4 left-4 bg-ink/90 text-white font-mono text-[9.5px] uppercase tracking-widest px-3 py-1 border border-white/10">
-                    FIELD NOTE 02 // PACIFIC RAIN
+                  <div className="absolute bottom-3 left-3 pointer-events-none font-mono text-[10px] text-white/50 select-none">+</div>
+                  <div className="absolute bottom-3 right-3 pointer-events-none font-mono text-[10px] text-white/50 select-none">+</div>
+
+                  <div className="absolute bottom-4 left-4 bg-ink/90 text-white font-mono text-[9px] uppercase tracking-widest px-3 py-1 border border-white/10 backdrop-blur-xs">
+                    PLATE 10 // PACIFIC PRECIPITATION &amp; GLASS
                   </div>
                 </div>
               </Reveal>
             </div>
 
-            {/* Editorial Card overlapping visually */}
-            <div className="lg:col-span-5">
-              <Reveal variant="slide-left" delay={80}>
-                <div className="bg-ink text-paper p-8 sm:p-12 border border-white/15">
-                  <div className="flex items-center gap-2 mb-4">
-                    <span className="h-1.5 w-1.5 bg-accent" />
-                    <span className="font-mono text-[9.5px] sm:text-[10.5px] uppercase tracking-[0.22em] text-accent font-semibold">
-                      09 // PACIFIC PHILOSOPHY
-                    </span>
-                  </div>
-                  <h3 className="font-display text-3xl sm:text-4xl text-white leading-[1.05] mb-5">
-                    &ldquo;Quiet luxury is knowing you don&apos;t have to shout.&rdquo;
-                  </h3>
-                  <p className="font-sans text-body-md text-white/80 leading-relaxed font-light mb-8 max-w-[46ch]">
-                    The most authoritative brands don&apos;t rely on screaming neon buttons or aggressive marketing popups. They win through pristine visual taste, disciplined restraint, and flawless technical execution.
+            {/* Right 5 cols: Architectural Marginalia Ledger */}
+            <div className="lg:col-span-5 flex flex-col justify-between p-8 sm:p-10 border border-line bg-white shadow-sm">
+              <Reveal delay={100}>
+                <div>
+                  <span className="font-mono text-[9px] uppercase tracking-[0.25em] text-accent block font-semibold mb-3">
+                    THE RESTRAINT ADVANTAGE
+                  </span>
+                  <p className="font-sans text-body-md text-ink-soft leading-relaxed font-light mb-8">
+                    The most authoritative brands don&apos;t rely on screaming neon buttons, aggressive popups, or noisy marketing templates. They win through pristine visual taste, disciplined architectural restraint, and sub-second performance.
                   </p>
-                  <div className="border-t border-white/20 pt-4 font-mono text-xs uppercase tracking-widest text-white/70 flex items-center justify-between">
-                    <span>VANCOUVER, BC</span>
-                    <span className="text-accent font-semibold">— MANDER DIRECTIVE</span>
+                </div>
+
+                <div className="border-t border-line pt-6 space-y-3 font-mono text-[10px] uppercase tracking-wider text-ink-mute">
+                  <div className="flex items-baseline gap-2.5 text-ink-soft">
+                    <span className="text-accent font-semibold">01 /</span>
+                    <span>Typographic Leading Over Clutter</span>
+                  </div>
+                  <div className="flex items-baseline gap-2.5 text-ink-soft">
+                    <span className="text-accent font-semibold">02 /</span>
+                    <span>Architectural Space Over Popups</span>
+                  </div>
+                  <div className="flex items-baseline gap-2.5 text-ink-soft">
+                    <span className="text-accent font-semibold">03 /</span>
+                    <span>Sub-Second TTFB Over Heavy Scripts</span>
                   </div>
                 </div>
               </Reveal>
+
+              <div className="mt-8 pt-4 border-t border-line/70 flex items-center justify-between font-mono text-[9px] uppercase tracking-[0.2em] text-ink-mute">
+                <span>PACIFIC NORTHWEST ATELIER</span>
+                <span className="text-accent font-semibold">— MANDER DIRECTIVE</span>
+              </div>
             </div>
           </div>
         </div>
       </section>
 
-      {/* ------------------------------------------ 10 · Bespoke Scoping & Quote */}
+      {/* ------------------------------------------ 11 · Bespoke Scoping & Quote */}
       <section id="quote" className="relative border-b border-line bg-paper py-stack-lg">
         <div className="container-max">
           <div className="flex flex-col md:flex-row md:items-end justify-between pb-8 border-b border-line gap-6 mb-12">
@@ -404,7 +438,7 @@ export default function HomePage() {
               <div className="flex items-center gap-2 mb-2.5">
                 <span className="h-1.5 w-1.5 bg-accent" />
                 <span className="font-mono text-[9.5px] sm:text-[10.5px] uppercase tracking-[0.22em] text-accent font-semibold">
-                  10 // BESPOKE SCOPING
+                  11 // BESPOKE SCOPING
                 </span>
               </div>
               <h2 className="font-display text-4xl sm:text-5xl text-ink leading-tight">
@@ -424,14 +458,14 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* ------------------------------------------ 11 · Audited Deliverables */}
+      {/* ------------------------------------------ 12 · Audited Deliverables */}
       <Section id="proof" tone="paper" className="!py-stack-lg border-b border-line">
         <div className="flex flex-col md:flex-row md:items-end justify-between pb-8 border-b border-line gap-6 mb-12">
           <div>
             <div className="flex items-center gap-2 mb-2.5">
               <span className="h-1.5 w-1.5 bg-accent" />
               <span className="font-mono text-[9.5px] sm:text-[10.5px] uppercase tracking-[0.22em] text-accent font-semibold">
-                11 // AUDITED DELIVERABLES
+                12 // AUDITED DELIVERABLES
               </span>
             </div>
             <h2 className="font-display text-4xl sm:text-5xl text-ink leading-tight">
@@ -445,7 +479,36 @@ export default function HomePage() {
         <Testimonials items={CLIENTS} />
       </Section>
 
-      {/* ------------------------------------------ 12 · Direct Engagement & Contact */}
+      {/* ------------------------------------------ 13 · Common Inquiries */}
+      <Section id="faq" tone="paper" className="!py-stack-lg border-b border-line">
+        <div className="container-max">
+          <div className="grid grid-cols-1 gap-gutter lg:grid-cols-12 lg:gap-16">
+            <div className="lg:col-span-4">
+              <Reveal>
+                <div className="flex items-center gap-2 mb-3">
+                  <span className="h-1.5 w-1.5 bg-accent" />
+                  <span className="font-mono text-[9.5px] sm:text-[10.5px] uppercase tracking-[0.22em] text-accent font-semibold">
+                    13 // COMMON INQUIRIES
+                  </span>
+                </div>
+                <h2 className="font-display text-4xl sm:text-5xl text-ink leading-tight">
+                  Clear Answers. <span className="italic font-light text-accent">Zero Ambiguity.</span>
+                </h2>
+                <p className="font-sans text-sm text-ink-soft font-light mt-4 leading-relaxed max-w-[40ch]">
+                  Clear answers regarding our bespoke scoping model, design rigor, delivery timeline, and technical guarantees.
+                </p>
+              </Reveal>
+            </div>
+            <div className="lg:col-span-8">
+              <Reveal delay={80}>
+                <Faq items={FAQS} />
+              </Reveal>
+            </div>
+          </div>
+        </div>
+      </Section>
+
+      {/* ------------------------------------------ 14 · Direct Engagement & Contact */}
       <Section id="contact" tone="ink" className="!py-stack-lg border-b border-line relative overflow-hidden">
         {/* Subtle abstract architectural background at low opacity */}
         <div className="absolute inset-0 opacity-15 pointer-events-none">
@@ -465,7 +528,7 @@ export default function HomePage() {
                 <div className="flex items-center gap-2 mb-3">
                   <span className="h-1.5 w-1.5 bg-accent" />
                   <span className="font-mono text-[9.5px] sm:text-[10.5px] uppercase tracking-[0.22em] text-accent font-semibold">
-                    12 // DIRECT ENGAGEMENT
+                    14 // DIRECT ENGAGEMENT
                   </span>
                 </div>
 
@@ -493,35 +556,6 @@ export default function HomePage() {
             <div className="lg:col-span-7">
               <Reveal delay={100}>
                 <ContactForm />
-              </Reveal>
-            </div>
-          </div>
-        </div>
-      </Section>
-
-      {/* ------------------------------------------ 13 · Common Inquiries */}
-      <Section id="faq" tone="paper" className="!py-stack-lg border-b border-line">
-        <div className="container-max">
-          <div className="grid grid-cols-1 gap-gutter lg:grid-cols-12 lg:gap-16">
-            <div className="lg:col-span-4">
-              <Reveal>
-                <div className="flex items-center gap-2 mb-3">
-                  <span className="h-1.5 w-1.5 bg-accent" />
-                  <span className="font-mono text-[9.5px] sm:text-[10.5px] uppercase tracking-[0.22em] text-accent font-semibold">
-                    13 // COMMON INQUIRIES
-                  </span>
-                </div>
-                <h2 className="font-display text-4xl sm:text-5xl text-ink leading-tight">
-                  Clear Answers. <span className="italic font-light text-accent">Zero Ambiguity.</span>
-                </h2>
-                <p className="font-sans text-sm text-ink-soft font-light mt-4 leading-relaxed max-w-[40ch]">
-                  Clear answers regarding our bespoke scoping model, design rigor, delivery timeline, and technical guarantees.
-                </p>
-              </Reveal>
-            </div>
-            <div className="lg:col-span-8">
-              <Reveal delay={80}>
-                <Faq items={FAQS} />
               </Reveal>
             </div>
           </div>

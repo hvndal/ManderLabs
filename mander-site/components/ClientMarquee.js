@@ -19,9 +19,13 @@ export default function ClientMarquee() {
 
   return (
     <div className="w-full border-y border-line bg-paper py-6 overflow-hidden select-none">
-      <div className="container-max mb-3 flex items-center justify-between font-mono text-[9px] sm:text-[10px] uppercase tracking-[0.14em] sm:tracking-[0.25em] text-ink-mute">
-        <span className="truncate">CLIENTS &amp; COLLABORATIONS // SELECTED PARTNERS</span>
-        <span className="hidden sm:inline flex-shrink-0">2020 — 2026</span>
+      <div className="container-max mb-3.5 flex items-center justify-between font-mono text-[9px] sm:text-[10px] uppercase tracking-[0.16em] sm:tracking-[0.24em] text-ink-mute">
+        <div className="flex items-center gap-2">
+          <span className="h-1.5 w-1.5 bg-accent" />
+          <span className="text-accent font-semibold">03 // SELECTED COLLABORATIONS</span>
+          <span className="text-ink-mute/60 hidden md:inline">· COMMERCIAL PARTNERS</span>
+        </div>
+        <span className="hidden sm:inline flex-shrink-0 text-ink-mute">2020 — 2026</span>
       </div>
 
       {/* Marquee with subtle gradient feathering at edges like Stripe */}

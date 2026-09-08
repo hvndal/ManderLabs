@@ -38,7 +38,7 @@ export default function StatsConstellation({ stats, featuredProject }) {
           <div className="flex items-center justify-between border-b border-white/15 pb-4 mb-12 font-mono text-[9px] sm:text-[10px] uppercase tracking-[0.14em] sm:tracking-[0.22em] text-white/60">
             <div className="flex items-center gap-2 truncate">
               <span className="h-1.5 w-1.5 rounded-full bg-accent flex-shrink-0" />
-              <span className="text-white font-medium truncate">AUDITED METRICS // DATA</span>
+              <span className="text-white font-medium truncate">05 // AUDITED SCALE &amp; METRICS</span>
             </div>
             <div className="hidden sm:flex items-center gap-4 flex-shrink-0">
               <span>SCALE &amp; RIGOR</span>
