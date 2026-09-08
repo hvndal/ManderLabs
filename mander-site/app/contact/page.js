@@ -1,13 +1,11 @@
 import Link from 'next/link';
-import Section, { SectionHeading } from '@/components/Section';
 import Reveal from '@/components/Reveal';
-import GridField from '@/components/GridField';
-import Breadcrumbs from '@/components/Breadcrumbs';
 import Icon from '@/components/Icon';
 import ContactForm from '@/components/ContactForm';
 import WhatsAppCta from '@/components/WhatsAppCta';
 import JsonLd from '@/components/JsonLd';
 import PageHeader from '@/components/PageHeader';
+import { Spread } from '@/components/Editorial';
 import { IndexList, IndexRow, SpecRow } from '@/components/Swiss';
 import { BRAND } from '@/lib/content';
 import { getServerMarket } from '@/lib/market-server';
@@ -141,13 +139,11 @@ export default function ContactPage() {
       {/* Three bordered cards became three rows. Same information, and it now
           reads as a directory rather than as an interface — which is what a
           contact page is. */}
-      <Section tone="paper">
-        <SectionHeading
-          index="01"
-          eyebrow="Direct"
-          title="Ways through."
-          meta={`${channels.length} routes`}
-        />
+      <Spread index="01" folio="Direct">
+        <div className="flex flex-wrap items-end justify-between gap-6">
+          <h2 className="h-display max-w-[10ch]">Ways through.</h2>
+          <span className="rail text-ink-mute">{channels.length} routes</span>
+        </div>
 
         <IndexList className="mt-14">
           {channels.map((channel, i) => (
@@ -194,26 +190,27 @@ export default function ContactPage() {
             </p>
           </SpecRow>
         </div>
-      </Section>
+      </Spread>
 
       {/* ------------------------------------------------------------- Form */}
-      <Section tone="white">
-        <div className="grid grid-cols-1 gap-gutter lg:grid-cols-12 lg:gap-16">
-          <div className="lg:col-span-4">
-            <SectionHeading
-              index="02"
-              eyebrow="Or send it in writing"
-              title="Tell us about the project."
-              body="A few lines is enough to start. We reply within one business day — no obligation, and no sales sequence afterwards."
-            />
+      <section className="border-t border-line bg-white">
+        <Spread index="02" folio="Or send it in writing">
+          <div className="grid grid-cols-1 gap-gutter lg:grid-cols-12 lg:gap-16">
+            <div className="lg:col-span-4">
+              <h2 className="h-display max-w-[13ch]">Tell us about the project.</h2>
+              <p className="mt-6 max-w-text text-body-md text-ink-soft">
+                A few lines is enough to start. We reply within one business
+                day — no obligation, and no sales sequence afterwards.
+              </p>
+            </div>
+            <div className="lg:col-span-8">
+              <Reveal>
+                <ContactForm />
+              </Reveal>
+            </div>
           </div>
-          <div className="lg:col-span-8">
-            <Reveal>
-              <ContactForm />
-            </Reveal>
-          </div>
-        </div>
-      </Section>
+        </Spread>
+      </section>
     </>
   );
 }

@@ -1,10 +1,9 @@
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
 import Reveal from '@/components/Reveal';
-import GridField from '@/components/GridField';
-import Breadcrumbs from '@/components/Breadcrumbs';
 import JsonLd from '@/components/JsonLd';
 import PageHeader from '@/components/PageHeader';
+import { Spread } from '@/components/Editorial';
 import { LEGAL_NAV, LEGAL_UPDATED, legalDocs, getLegalDoc } from '@/lib/legal';
 import { getServerMarket } from '@/lib/market-server';
 import { BRAND } from '@/lib/content';
@@ -80,8 +79,8 @@ export default function LegalPage({ params }) {
       />
 
       {/* ------------------------------------------------------------- Document */}
-      <section className="bg-paper py-stack-md">
-        <div className="container-max">
+      <section className="border-t border-line bg-paper">
+        <Spread index="01" folio="Document">
           <div className="grid grid-cols-1 gap-gutter lg:grid-cols-12 lg:gap-16">
             {/* Contents — sticky on desktop, a plain list on phones */}
             <nav aria-label="On this page" className="lg:col-span-4">
@@ -137,15 +136,14 @@ export default function LegalPage({ params }) {
               ))}
             </div>
           </div>
-        </div>
+        </Spread>
       </section>
 
       {/* ---------------------------------------------------------- Other docs */}
-      <section className="bg-paper-2 py-stack-md">
-        <div className="container-max">
+      <section className="border-t border-line bg-paper-2">
+        <Spread index="02" folio="Also in legal">
           <Reveal>
-            <span className="label-caps text-accent">Also in legal</span>
-            <div className="mt-6 flex flex-wrap gap-x-8 gap-y-3">
+            <div className="flex flex-wrap gap-x-8 gap-y-3">
               {others.map((d) => (
                 <Link
                   key={d.slug}
@@ -165,7 +163,7 @@ export default function LegalPage({ params }) {
               .
             </p>
           </Reveal>
-        </div>
+        </Spread>
       </section>
     </>
   );

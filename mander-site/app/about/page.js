@@ -1,13 +1,12 @@
 import Link from 'next/link';
-import Section, { SectionHeading } from '@/components/Section';
 import Reveal from '@/components/Reveal';
 import GridField from '@/components/GridField';
-import Breadcrumbs from '@/components/Breadcrumbs';
 import Icon from '@/components/Icon';
 import TeamCard from '@/components/TeamCard';
 import WhatsAppCta from '@/components/WhatsAppCta';
 import JsonLd from '@/components/JsonLd';
 import PageHeader from '@/components/PageHeader';
+import { Spread } from '@/components/Editorial';
 import { IndexList, IndexRow } from '@/components/Swiss';
 import { BRAND, TEAM, TERMS, SERVICES, PROCESS } from '@/lib/content';
 import { getServerMarket } from '@/lib/market-server';
@@ -112,14 +111,18 @@ export default function AboutPage() {
       />
 
       {/* --------------------------------------------------- What we sell */}
-      <Section tone="paper">
-        <SectionHeading
-          index="01"
-          eyebrow="What we sell"
-          title="Plans, once and monthly."
-          body="What the plans are, and what is billed once versus monthly. Every project is quoted in writing before it starts — ask and you get a real figure, not a range."
-          meta={`${buildTiers.length + (monthly?.length || 0)} plans`}
-        />
+      <Spread index="01" folio="What we sell">
+        <div className="flex flex-wrap items-end justify-between gap-6">
+          <h2 className="h-display max-w-[16ch]">Plans, once and monthly.</h2>
+          <span className="rail text-ink-mute">
+            {buildTiers.length + (monthly?.length || 0)} plans
+          </span>
+        </div>
+        <p className="mt-6 max-w-text text-body-md text-ink-soft">
+          What the plans are, and what is billed once versus monthly. Every
+          project is quoted in writing before it starts — ask and you get a
+          real figure, not a range.
+        </p>
 
         <IndexList className="mt-14">
           {buildTiers.map((tier, i) => (
@@ -157,78 +160,78 @@ export default function AboutPage() {
             .
           </p>
         </Reveal>
-      </Section>
+      </Spread>
 
       {/* ------------------------------------------------------ Disciplines */}
-      <Section tone="alt">
-        <SectionHeading
-          index="02"
-          eyebrow="Disciplines"
-          title="What we actually do."
-          meta={`${SERVICES.length} total`}
-        />
-        <IndexList className="mt-14">
-          {SERVICES.map((service) => (
-            <IndexRow
-              key={service.title}
-              index={service.index}
-              title={service.title}
-              body={service.body}
-              href="/#services"
-              action="Read"
-            />
-          ))}
-        </IndexList>
-      </Section>
+      <section className="border-t border-line bg-paper-2">
+        <Spread index="02" folio="Disciplines">
+          <div className="flex flex-wrap items-end justify-between gap-6">
+            <h2 className="h-display max-w-[14ch]">What we actually do.</h2>
+            <span className="rail text-ink-mute">{SERVICES.length} total</span>
+          </div>
+          <IndexList className="mt-14">
+            {SERVICES.map((service) => (
+              <IndexRow
+                key={service.title}
+                index={service.index}
+                title={service.title}
+                body={service.body}
+                href="/#services"
+                action="Read"
+              />
+            ))}
+          </IndexList>
+        </Spread>
+      </section>
 
       {/* --------------------------------------------------- Commitments */}
-      <Section tone="paper">
-        <SectionHeading
-          index="03"
-          eyebrow="How we work"
-          title="Three commitments, meant literally."
-        />
-        <IndexList className="mt-14">
-          {TERMS.map((term) => (
-            <IndexRow
-              key={term.index}
-              index={term.index}
-              title={term.title}
-              body={term.body}
-            />
-          ))}
-        </IndexList>
-      </Section>
+      <section className="border-t border-line bg-paper">
+        <Spread index="03" folio="How we work">
+          <h2 className="h-display max-w-[16ch]">Three commitments, meant literally.</h2>
+          <IndexList className="mt-14">
+            {TERMS.map((term) => (
+              <IndexRow
+                key={term.index}
+                index={term.index}
+                title={term.title}
+                body={term.body}
+              />
+            ))}
+          </IndexList>
+        </Spread>
+      </section>
 
       {/* ------------------------------------------------------- Process */}
-      <Section tone="alt">
-        <SectionHeading
-          index="04"
-          eyebrow="Process"
-          title="Four stages, start to handover."
-          meta={`${PROCESS.length} stages`}
-        />
-        <IndexList className="mt-14">
-          {PROCESS.map((step) => (
-            <IndexRow
-              key={step.step}
-              index={step.step}
-              title={step.title}
-              body={step.body}
-            />
-          ))}
-        </IndexList>
-      </Section>
+      <section className="border-t border-line bg-paper-2">
+        <Spread index="04" folio="Process">
+          <div className="flex flex-wrap items-end justify-between gap-6">
+            <h2 className="h-display max-w-[14ch]">Four stages, start to handover.</h2>
+            <span className="rail text-ink-mute">{PROCESS.length} stages</span>
+          </div>
+          <IndexList className="mt-14">
+            {PROCESS.map((step) => (
+              <IndexRow
+                key={step.step}
+                index={step.step}
+                title={step.title}
+                body={step.body}
+              />
+            ))}
+          </IndexList>
+        </Spread>
+      </section>
 
       {/* ---------------------------------------------------------- Team */}
-      <Section tone="white">
-        <SectionHeading index="05" eyebrow="Who you work with" title="The whole studio." />
-        <div className="mt-12 grid grid-cols-1 gap-gutter sm:grid-cols-2 lg:grid-cols-3">
-          {TEAM.map((member, i) => (
-            <TeamCard key={member.name} member={member} index={i} />
-          ))}
-        </div>
-      </Section>
+      <section className="border-t border-line bg-white">
+        <Spread index="05" folio="Who you work with">
+          <h2 className="h-display max-w-[12ch]">The whole studio.</h2>
+          <div className="mt-12 grid grid-cols-1 gap-gutter sm:grid-cols-2 lg:grid-cols-3">
+            {TEAM.map((member, i) => (
+              <TeamCard key={member.name} member={member} index={i} />
+            ))}
+          </div>
+        </Spread>
+      </section>
 
       {/* ----------------------------------------------------- Final CTA */}
       <section className="relative overflow-hidden bg-ink text-paper">
@@ -252,10 +255,7 @@ export default function AboutPage() {
                 Contact sales
               </a>
               <WhatsAppCta tone="on-dark" location="about-final-cta" />
-              <Link
-                href="/contact"
-                className="label-caps inline-flex items-center justify-center gap-2 border border-paper/40 px-8 py-4 text-paper transition-colors duration-300 hover:border-paper"
-              >
+              <Link href="/contact" className="btn-outline-dark">
                 All contact details
               </Link>
             </div>

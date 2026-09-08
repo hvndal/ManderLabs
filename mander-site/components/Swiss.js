@@ -53,13 +53,9 @@ export function IndexRow({
       )}
 
       <div className="flex items-baseline justify-between gap-4 md:col-span-2 md:justify-end">
-        {meta && (
-          <span className="font-mono text-[10px] uppercase tracking-[0.18em] text-ink-mute">
-            {meta}
-          </span>
-        )}
+        {meta && <span className="rail text-ink-mute">{meta}</span>}
         {href && (
-          <span className="font-mono text-[10px] uppercase tracking-[0.18em] text-ink-mute transition-all duration-300 group-hover:translate-x-1 group-hover:text-accent">
+          <span className="rail text-ink-mute transition-all duration-300 group-hover:translate-x-1 group-hover:text-accent">
             {action} ↗
           </span>
         )}
@@ -122,10 +118,44 @@ export function SpecRow({ label, children, delay = 0 }) {
 /** Small caption type — figure numbers, notes under a block. */
 export function FieldNote({ children, className = '' }) {
   return (
-    <p
-      className={`font-mono text-[10px] uppercase leading-relaxed tracking-[0.14em] text-ink-mute ${className}`}
-    >
+    <p className={`rail leading-relaxed text-ink-mute ${className}`}>
       {children}
     </p>
+  );
+}
+
+/**
+ * A grid of items, ruled rather than boxed.
+ *
+ * This replaces the `bg-line`/`gap-px` trick — a grid of filled, padded cells
+ * that reads as a card wall no matter what colour it is — with the same
+ * device the rest of the kit uses: a hairline between items and nothing
+ * behind them. Used for engine steps, "more posts", city industries — any
+ * grid of short items that isn't a row list because the items are meant to
+ * sit side by side, not stack.
+ */
+export function CellGrid({ children, cols = 3, className = '' }) {
+  const colClass = { 2: 'md:grid-cols-2', 3: 'md:grid-cols-3', 4: 'md:grid-cols-4' }[cols] || 'md:grid-cols-3';
+  return (
+    <div className={`grid grid-cols-1 border-l border-t border-line ${colClass} ${className}`}>
+      {children}
+    </div>
+  );
+}
+
+/**
+ * One cell of a CellGrid — ruled on the trailing edges only, no fill.
+ *
+ * Padding is not applied here: most cells hold static content and want
+ * `p-6 md:p-8` on their own root, but a cell whose whole content is a link
+ * needs the padding *inside* the `<Link>` so the click target covers the
+ * full cell rather than a smaller box floating inside it. Owning padding at
+ * this level would force every interactive cell to fight it.
+ */
+export function Cell({ children, delay = 0, className = '' }) {
+  return (
+    <Reveal delay={delay} className={`h-full border-b border-r border-line ${className}`}>
+      {children}
+    </Reveal>
   );
 }

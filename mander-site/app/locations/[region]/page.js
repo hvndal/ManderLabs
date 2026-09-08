@@ -2,13 +2,12 @@ import Link from 'next/link';
 import { notFound } from 'next/navigation';
 import Reveal from '@/components/Reveal';
 import GridField from '@/components/GridField';
-import Breadcrumbs from '@/components/Breadcrumbs';
 import ProcessTimeline from '@/components/ProcessTimeline';
 import Faq from '@/components/Faq';
 import JsonLd from '@/components/JsonLd';
 import Icon from '@/components/Icon';
 import PageHeader from '@/components/PageHeader';
-import Section, { SectionHeading } from '@/components/Section';
+import { Spread } from '@/components/Editorial';
 import { IndexList, IndexRow } from '@/components/Swiss';
 import MarketProvider from '@/components/MarketProvider';
 import WhatsAppCta from '@/components/WhatsAppCta';
@@ -32,7 +31,12 @@ export function generateMetadata({ params }) {
   const region = getRegion(params.region);
   if (!region) return {};
   const path = `/locations/${region.slug}`;
-  const title = `Website Design in ${region.name}`;
+  // Was a flat "Website Design in {region}" template — 33-42 characters
+  // against a ~50-60 target, and it undersold Metro Vancouver specifically:
+  // that region's own H1 is "Brand, digital and growth for Metro Vancouver",
+  // broader positioning the generic title didn't carry. Using the H1 itself
+  // (already written per-region, already accurate) fixes both at once.
+  const title = region.h1.replace(/\.$/, '');
   return {
     title,
     description: region.metaDescription,
@@ -69,6 +73,12 @@ export default function RegionPage({ params }) {
   const mailto = (subject) =>
     `mailto:${BRAND.email}?subject=${encodeURIComponent(subject)}`;
 
+  // Sections below this line render in order and each consumes one index —
+  // Proof only exists when there's a real client engagement in the region, so
+  // the numbering has to be computed rather than hardcoded.
+  let sectionIndex = 0;
+  const nextIndex = () => String(++sectionIndex).padStart(2, '0');
+
   return (
     <MarketProvider market={market}>
       <JsonLd data={breadcrumbSchema(trail.map((t) => ({ name: t.name, path: t.href || path })))} />
@@ -89,6 +99,8 @@ export default function RegionPage({ params }) {
         eyebrow={region.countryName}
         title={region.h1}
         trail={trail}
+        media
+        mediaCaption={`MANDER — serving ${region.name}.`}
         lede={
           <>
             {region.intro.map((para) => (
@@ -114,56 +126,55 @@ export default function RegionPage({ params }) {
       />
 
       {/* ------------------------------------------------------------ Industries */}
-      <section className="bg-paper-2 py-stack-md">
-        <div className="container-max">
-          <Reveal>
-            <span className="label-caps text-accent">Who we build for</span>
-          </Reveal>
-          <Reveal delay={80} className="mt-6 flex flex-wrap gap-2">
+      <section className="border-t border-line bg-paper-2">
+        <Spread index={nextIndex()} folio="Who we build for">
+          <h2 className="h-display max-w-[14ch]">
+            Industries in {region.name}.
+          </h2>
+          <Reveal delay={80} className="mt-8 flex flex-wrap gap-2">
             {region.industries.map((industry) => (
               <span
                 key={industry}
-                className="label-caps border border-line bg-paper px-3 py-1.5 text-ink-mute"
+                className="label-caps border-b border-line pb-1.5 text-ink-mute"
               >
                 {industry}
               </span>
             ))}
           </Reveal>
-        </div>
+        </Spread>
       </section>
 
       {/* ---------------------------------------------------------- Cities index */}
       {region.cities.length > 0 && (
-        <Section tone="paper">
-          <SectionHeading
-            index="01"
-            eyebrow="Markets we serve"
-            title={`Major ${region.name} markets.`}
-            meta={`${region.cities.length} cities`}
-          />
-          <IndexList className="mt-14">
-            {region.cities.map((city, i) => (
-              <IndexRow
-                key={city.slug}
-                index={String(i + 1).padStart(2, '0')}
-                title={city.name}
-                body={city.industries.slice(0, 2).join(' · ')}
-                href={`${path}/${city.slug}`}
-                delay={i * 50}
-              />
-            ))}
-          </IndexList>
-        </Section>
+        <section className="border-t border-line bg-paper">
+          <Spread index={nextIndex()} folio="Markets we serve">
+            <div className="flex flex-wrap items-end justify-between gap-6">
+              <h2 className="h-display max-w-[14ch]">Major {region.name} markets.</h2>
+              <span className="rail text-ink-mute">{region.cities.length} cities</span>
+            </div>
+            <IndexList className="mt-14">
+              {region.cities.map((city, i) => (
+                <IndexRow
+                  key={city.slug}
+                  index={String(i + 1).padStart(2, '0')}
+                  title={city.name}
+                  body={city.industries.slice(0, 2).join(' · ')}
+                  href={`${path}/${city.slug}`}
+                  delay={i * 50}
+                />
+              ))}
+            </IndexList>
+          </Spread>
+        </section>
       )}
 
       {/* --------------------------------------------------------------- Proof */}
       {workCase && (
-        <section className="bg-paper-2 py-stack-md">
-          <div className="container-max">
+        <section className="border-t border-line bg-paper-2">
+          <Spread index={nextIndex()} folio={`Recent work in ${region.name}`}>
             <Reveal>
-              <span className="label-caps text-accent">Recent work in {region.name}</span>
-              <div className="mt-6 grid grid-cols-1 gap-6 md:grid-cols-12 md:items-baseline md:gap-gutter">
-                <h3 className="md:col-span-4 text-headline-md font-semibold tracking-tight text-ink">
+              <div className="grid grid-cols-1 gap-6 md:grid-cols-12 md:items-baseline md:gap-gutter">
+                <h3 className="md:col-span-4 font-display text-headline-lg-mobile leading-none text-ink md:text-headline-md">
                   {workCase.name}
                 </h3>
                 <p className="md:col-span-6 max-w-text text-body-md text-ink-soft">
@@ -173,22 +184,20 @@ export default function RegionPage({ params }) {
                   {workCase.result}
                 </span>
               </div>
-              <Link href="/#work" className="link-underline label-caps mt-6 inline-flex text-ink">
+              <Link href="/work" className="link-underline label-caps mt-6 inline-flex text-ink">
                 See more work
                 <Icon name="arrow" className="h-4 w-4" strokeWidth={2} />
               </Link>
             </Reveal>
-          </div>
+          </Spread>
         </section>
       )}
 
       {/* ---------------------------------------------------------------- Services */}
-      <section className="bg-paper py-stack-md">
-        <div className="container-max">
-          <Reveal>
-            <span className="label-caps text-accent">What we build</span>
-          </Reveal>
-          <Reveal delay={80} className="mt-6 flex flex-wrap gap-x-8 gap-y-3">
+      <section className="border-t border-line bg-paper">
+        <Spread index={nextIndex()} folio="What we build">
+          <h2 className="h-display max-w-[14ch]">What we build in {region.name}.</h2>
+          <Reveal delay={80} className="mt-8 flex flex-wrap gap-x-8 gap-y-3">
             {SERVICES.map((service) => (
               <Link
                 key={service.title}
@@ -199,33 +208,25 @@ export default function RegionPage({ params }) {
               </Link>
             ))}
           </Reveal>
-        </div>
+        </Spread>
       </section>
 
       {/* ----------------------------------------------------------------- Process */}
-      <section id="process" className="bg-paper-2 py-stack-md">
-        <div className="container-max">
-          <Reveal>
-            <span className="label-caps text-accent">How it works</span>
-            <h2 className="mt-6 max-w-[14ch] font-display text-headline-lg-mobile text-ink md:text-headline-lg">
-              The same process, wherever you are.
-            </h2>
-          </Reveal>
+      <section id="process" className="border-t border-line bg-paper-2">
+        <Spread index={nextIndex()} folio="How it works">
+          <h2 className="h-display max-w-[16ch]">The same process, wherever you are.</h2>
           <div className="mt-10">
             <ProcessTimeline steps={PROCESS} />
           </div>
-        </div>
+        </Spread>
       </section>
 
       {/* ---------------------------------------------------------------------- FAQ */}
-      <section className="bg-paper py-stack-md">
-        <div className="container-max">
+      <section className="border-t border-line bg-paper">
+        <Spread index={nextIndex()} folio="Questions">
           <div className="grid grid-cols-1 gap-gutter lg:grid-cols-12 lg:gap-16">
             <div className="lg:col-span-4">
-              <span className="label-caps text-accent">Questions</span>
-              <h2 className="mt-6 font-display text-headline-lg-mobile text-ink md:text-headline-lg">
-                {region.name}, answered.
-              </h2>
+              <h2 className="h-display max-w-[12ch]">{region.name}, answered.</h2>
             </div>
             <div className="lg:col-span-8">
               <Reveal>
@@ -233,7 +234,7 @@ export default function RegionPage({ params }) {
               </Reveal>
             </div>
           </div>
-        </div>
+        </Spread>
       </section>
 
       {/* ------------------------------------------------------------------ Final CTA */}
@@ -249,10 +250,7 @@ export default function RegionPage({ params }) {
                 Contact sales
               </a>
               <WhatsAppCta tone="on-dark" location={`region-${region.slug}-cta`} />
-              <Link
-                href="/quote"
-                className="label-caps inline-flex items-center justify-center gap-2 border border-paper/40 px-8 py-4 text-paper transition-colors duration-300 hover:border-paper"
-              >
+              <Link href="/quote" className="btn-outline-dark">
                 Take the fit quiz
               </Link>
             </div>

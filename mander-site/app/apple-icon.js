@@ -23,11 +23,17 @@ export const contentType = 'image/png';
 // measured bounds (x 197-808, y 239-786 of the 1024² original), resampled
 // to 35 kB from 331 kB, and inlined rather than fetched.
 //
-// The rose is the artwork's own #e9a8a6. On white it's roughly 1.6:1 and
-// vanishes — the same reason Logo.js won't put this cut on the cream page —
-// so it sits on the ink field, where it's about 8:1. icon.svg uses the same
-// two colours, so the tab, the home screen and the search result read as one
-// family rather than three unrelated marks.
+// This is the one surface left where the artwork's own line colour, a dusty
+// rose (#e9a8a6), is shown raw rather than recoloured — Logo.js knocks the
+// same drawing out to ink or paper everywhere else it appears, because rose
+// belongs to a palette this site no longer uses. It survives here on
+// purpose: on white it's roughly 1.6:1 and vanishes, but on the ink field
+// it's about 8:1, and at 180px the detail in the drawing reads well enough
+// that recolouring it to flat ink or paper would lose more than the rose
+// costs. icon.svg (the favicon) uses ink and the accent yellow instead — a
+// different, smaller mark for a different, smaller size — so this is not
+// trying to match it stroke-for-stroke, just to sit in the same family of
+// dark-ground marks.
 export default async function AppleIcon() {
   const glyph = await fetch(new URL('./logo-glyph.png', import.meta.url)).then(
     (res) => res.arrayBuffer()

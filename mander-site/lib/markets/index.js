@@ -24,7 +24,6 @@ export {
   REGIONS,
   isRegion,
   marketForRegion,
-  marketIdForCountry,
   regionForCountry,
 } from './geo';
 

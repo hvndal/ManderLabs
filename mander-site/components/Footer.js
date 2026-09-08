@@ -39,8 +39,7 @@ export default function Footer() {
       <div className="relative container-max stack-y">
         <div className="grid grid-cols-1 gap-stack-md md:grid-cols-12">
           <div className="md:col-span-6">
-            {/* The one place the pale rose lockup has enough contrast to work */}
-            <Logo variant="full" tone="rose" className="h-24 md:h-28" />
+            <Logo variant="full" tone="paper" className="h-24 md:h-28" />
             <p className="mt-6 max-w-sm text-body-lg text-paper/70">
               {market.tagline}
             </p>

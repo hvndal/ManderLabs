@@ -141,19 +141,3 @@ export function PullQuote({ children, tone = 'light' }) {
     </Reveal>
   );
 }
-
-/**
- * Long-form body copy in two columns.
- *
- * A 46rem single measure is the right shape for three paragraphs and a wall
- * for eight. Single column below md, where two would be four words wide.
- */
-export function Columns({ children, className = '' }) {
-  return (
-    <div
-      className={`text-body-lg leading-[1.7] text-ink-soft md:columns-2 md:gap-gutter [&>p+p]:mt-5 [&>p]:break-inside-avoid ${className}`}
-    >
-      {children}
-    </div>
-  );
-}

@@ -10,11 +10,18 @@ import Reveal from './Reveal';
  * compensation.
  */
 export default function ClientMarks({ clients }) {
+  // Not every client has a mark to show — Her Homes Co. has no live
+  // screenshot and no logo file, so it renders as a specimen plate on
+  // /work instead of a card here (see WorkFeatures.js). Rendering it here
+  // too would mean an <img> with no src, which is a broken image for every
+  // visitor rather than a missing one.
+  const withLogo = clients.filter((c) => c.logo);
+
   return (
     <div className="container-max flex flex-wrap items-center gap-x-10 gap-y-5 border-b border-line py-7">
       <span className="rail text-ink-mute">Selected clients</span>
       <ul className="flex flex-wrap items-center gap-x-10 gap-y-5">
-        {clients.map((c) => (
+        {withLogo.map((c) => (
           <li key={c.name}>
             {/* eslint-disable-next-line @next/next/no-img-element */}
             <img

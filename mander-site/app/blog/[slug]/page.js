@@ -5,6 +5,7 @@ import GridField from '@/components/GridField';
 import Breadcrumbs from '@/components/Breadcrumbs';
 import Icon from '@/components/Icon';
 import JsonLd from '@/components/JsonLd';
+import { CellGrid, Cell } from '@/components/Swiss';
 import { POSTS, POSTS_BY_DATE, getPost } from '@/lib/blog';
 import { BRAND } from '@/lib/content';
 import { articleSchema, breadcrumbSchema, OG_IMAGE, alternates } from '@/lib/seo';
@@ -203,19 +204,19 @@ export default function BlogPost({ params }) {
         <section className="bg-paper-2 py-stack-md">
           <div className="container-max">
             <span className="label-caps text-ink-mute">More from the journal</span>
-            <div className="mt-8 grid grid-cols-1 gap-px overflow-hidden border border-line bg-line md:grid-cols-2">
-              {more.map((p) => (
-                <Reveal key={p.slug} className="bg-white">
-                  <Link href={`/blog/${p.slug}`} className="group flex h-full flex-col p-7 md:p-8">
+            <CellGrid cols={2} className="mt-8">
+              {more.map((p, i) => (
+                <Cell key={p.slug} delay={i * 50}>
+                  <Link href={`/blog/${p.slug}`} className="group flex h-full flex-col p-6 md:p-8">
                     <span className="label-caps text-ink-mute">{p.tag}</span>
                     <h3 className="mt-3 text-headline-md text-ink transition-colors duration-300 group-hover:text-accent">
                       {p.title}
                     </h3>
                     <p className="mt-3 text-body-md text-ink-soft">{p.description}</p>
                   </Link>
-                </Reveal>
+                </Cell>
               ))}
-            </div>
+            </CellGrid>
           </div>
         </section>
       )}

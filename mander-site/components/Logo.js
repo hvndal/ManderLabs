@@ -4,39 +4,35 @@ import { useState } from 'react';
 import Image from 'next/image';
 
 /**
- * The MANDER identity, in three cuts.
+ * The MANDER identity, in two cuts.
  *
  *   variant="mark"   → the illustration only, no wordmark.
- *   variant="full"   → wordmark + illustration lockup, in the original rose.
+ *   variant="full"   → wordmark + illustration lockup.
  *
- * Why three: the supplied artwork is a tall stacked lockup in a pale rose
- * (~1.6:1 against the cream page), which is illegible at header scale and
- * fights a horizontal bar. So the pieces are used where each actually works —
- * the ink mark on light surfaces, the rose lockup only on ink-dark fields
- * like the footer, where the pale rose finally has the contrast to sing.
- *
- * `tone="rose"` forces the untouched rose artwork for use on dark grounds.
- * Everything falls back to a text wordmark rather than a broken image.
+ * The supplied artwork is line art drawn in a dusty rose that belonged to an
+ * earlier palette this site no longer uses — the current system is ink,
+ * paper, denim blue and yellow (see tailwind.config.js), and rose appears
+ * nowhere else in it. Rather than ship the artwork's native colour anywhere,
+ * both tones below knock the colour out and recolour the drawing to fit the
+ * ground it sits on: `tone="ink"` for light surfaces, `tone="paper"` for
+ * dark ones like the footer. There is no path left that shows the raw file.
  */
 const SOURCES = {
   // The figure alone, cropped out of the 1024² lockup at its measured bounds
   // (x 197–808, y 239–786). The lockup files bake in the wordmark and the
   // tagline, so at nav scale they render as an illegible smudge with type
   // inside type. This is the same artwork with the furniture removed.
-  mark: { light: '/logo-figure.png', rose: '/logo-figure.png', w: 536, h: 480 },
-  full: { light: '/logo-mander.png', rose: '/logo-mander.png', w: 1024, h: 1024 },
+  mark: { src: '/logo-figure.png', w: 536, h: 480 },
+  full: { src: '/logo-mander.png', w: 1024, h: 1024 },
 };
 
 export default function Logo({ className = '', variant = 'full', tone = 'light' }) {
-  // The artwork is rose line art on transparency — the palette it was drawn
-  // for. Against the slate-and-blue system it now sits in, that rose is the
-  // one warm thing on the page and it reads as a leftover. `tone="ink"`
-  // renders the same drawing in the page's own ink by knocking the colour out
-  // of it, rather than shipping a second copy of the file in another colour
-  // that would then have to be kept in sync with it.
-  const inkFilter = tone === 'ink' ? 'brightness(0) saturate(100%)' : undefined;
+  // `brightness(0)` flattens the drawing to a solid silhouette on its own
+  // transparency; `invert(1)` on top of that turns black to white, for the
+  // one case (paper-on-dark) that needs the opposite of the default.
+  const filter =
+    tone === 'paper' ? 'brightness(0) invert(1)' : 'brightness(0) saturate(100%)';
   const set = SOURCES[variant] || SOURCES.full;
-  const [src, setSrc] = useState(tone === 'rose' ? set.rose : set.light);
   const [failed, setFailed] = useState(false);
 
   if (failed) {
@@ -61,18 +57,15 @@ export default function Logo({ className = '', variant = 'full', tone = 'light' 
           `sizes` is what makes that resizing happen: without it the largest
           candidate is picked regardless of the rendered box. */}
       <Image
-        src={src}
+        src={set.src}
         alt="MANDER"
         width={set.w}
         height={set.h}
         sizes={variant === 'mark' ? '56px' : '220px'}
         priority={variant === 'mark'}
         className="h-full w-auto object-contain"
-        style={inkFilter ? { filter: inkFilter } : undefined}
-        onError={() => {
-          if (src !== set.rose) setSrc(set.rose);
-          else setFailed(true);
-        }}
+        style={{ filter }}
+        onError={() => setFailed(true)}
       />
     </span>
   );

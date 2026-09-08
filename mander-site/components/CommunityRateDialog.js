@@ -135,10 +135,13 @@ export default function CommunityRateDialog({ open, onClose }) {
             transition={{ duration: 0.55, ease: EASE }}
             className="absolute inset-y-0 right-0 flex w-full max-w-[560px] flex-col overflow-y-auto bg-paper"
           >
-            {/* A single hairline of flag colour — the only patriotic gesture */}
+            {/* A single hairline of flag colour — the only patriotic gesture.
+                Same three values as the full section's own flag hairline
+                (CommunityRate.js) — one reference, not two that happen to be
+                adjacent features. */}
             <div aria-hidden="true" className="flex h-[3px] w-full shrink-0">
               <span className="h-full flex-1 bg-accent" />
-              <span className="h-full flex-1 bg-paper-3" />
+              <span className="h-full flex-1 bg-[#4a6da8]" />
               <span className="h-full flex-1 bg-[#1f3a63]" />
             </div>
 

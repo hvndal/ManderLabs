@@ -78,16 +78,3 @@ export function regionForCountry(country) {
 export const COUNTRY_MARKETS = {
   IN: 'in',
 };
-
-/**
- * Market id for an ISO 3166-1 alpha-2 country code.
- *
- * Tolerant of what the platform actually hands over: lowercase, padded, the
- * literal 'XX' Vercel returns when it cannot place an IP, or nothing at all
- * on a local dev request. All of those mean "not India", which means the
- * existing US site.
- */
-export function marketIdForCountry(country) {
-  if (!country) return DEFAULT_MARKET_ID;
-  return COUNTRY_MARKETS[String(country).trim().toUpperCase()] || DEFAULT_MARKET_ID;
-}

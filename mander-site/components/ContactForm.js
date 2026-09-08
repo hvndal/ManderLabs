@@ -171,7 +171,7 @@ export default function ContactForm({ defaultPlan }) {
       {status === 'error' && (
         <p
           role="alert"
-          className="mt-6 border border-accent/40 bg-accent/5 px-4 py-3 text-label-sm text-ink"
+          className="mt-6 border border-error/30 bg-error/5 px-4 py-3 text-label-sm text-error"
         >
           {error}{' '}
           <a

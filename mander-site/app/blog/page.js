@@ -1,7 +1,7 @@
 import Link from 'next/link';
 import Reveal from '@/components/Reveal';
-import GridField from '@/components/GridField';
 import PageHeader from '@/components/PageHeader';
+import { Spread } from '@/components/Editorial';
 import { IndexList, IndexRow } from '@/components/Swiss';
 import Icon from '@/components/Icon';
 import { POSTS_BY_DATE } from '@/lib/blog';
@@ -31,14 +31,6 @@ export const metadata = {
   },
 };
 
-const readable = (iso) =>
-  new Date(iso + 'T00:00:00Z').toLocaleDateString('en-US', {
-    year: 'numeric',
-    month: 'long',
-    day: 'numeric',
-    timeZone: 'UTC',
-  });
-
 export default function BlogIndex() {
   const [lead, ...rest] = POSTS_BY_DATE;
 
@@ -59,17 +51,15 @@ export default function BlogIndex() {
       />
 
       {/* ------------------------------------------------------------ Lead post */}
-      <section className="bg-paper-2">
-        <div className="container-max py-stack-md">
+      <section className="border-t border-line bg-paper-2">
+        <Spread index="01" folio="Latest">
           <Reveal>
             <Link
               href={`/blog/${lead.slug}`}
               className="group flex flex-col gap-6 border-t border-line py-9 transition-colors duration-500 ease-premium md:py-12"
             >
               <div className="flex flex-wrap items-center gap-x-4 gap-y-2">
-                <span className="label-caps bg-accent px-2 py-1 text-[10px] text-on-accent">
-                  Latest
-                </span>
+                <span className="rail text-accent">Latest</span>
                 <span className="label-caps text-ink-mute">{lead.tag}</span>
                 <span className="label-caps text-ink-mute">{lead.readingTime}</span>
               </div>
@@ -126,7 +116,7 @@ export default function BlogIndex() {
               .
             </p>
           </Reveal>
-        </div>
+        </Spread>
       </section>
 
       {/* ------------------------------------------------------------ Final CTA */}
@@ -144,10 +134,7 @@ export default function BlogIndex() {
               <Link href="/pricing" className="btn-on-dark">
                 See pricing
               </Link>
-              <Link
-                href="/quote"
-                className="label-caps inline-flex items-center justify-center gap-2 border border-paper/40 px-8 py-4 text-paper transition-colors duration-300 hover:border-paper"
-              >
+              <Link href="/quote" className="btn-outline-dark">
                 Take the fit quiz
                 <Icon name="arrow" className="h-4 w-4" strokeWidth={2} />
               </Link>

@@ -1,10 +1,9 @@
 import Link from 'next/link';
-import Section, { SectionHeading } from '@/components/Section';
 import Reveal from '@/components/Reveal';
 import Icon from '@/components/Icon';
 import PageHeader from '@/components/PageHeader';
+import { Spread } from '@/components/Editorial';
 import { IndexList, IndexRow, FieldNote } from '@/components/Swiss';
-import GridField from '@/components/GridField';
 import Faq from '@/components/Faq';
 import ContactForm from '@/components/ContactForm';
 import JsonLd from '@/components/JsonLd';
@@ -100,13 +99,11 @@ export default function PricingPage() {
           the detail lives under it as spec rows on the same twelve columns
           rather than inside a box with its own padding. Nothing here has a
           border on four sides. */}
-      <Section tone="paper">
-        <SectionHeading
-          index="01"
-          eyebrow="Websites"
-          title="Four plans."
-          meta={`${tiers.length} total`}
-        />
+      <Spread index="01" folio="Websites">
+        <div className="flex flex-wrap items-end justify-between gap-6">
+          <h2 className="h-display max-w-[10ch]">Four plans.</h2>
+          <span className="rail text-ink-mute">{tiers.length} total</span>
+        </div>
 
         <IndexList className="mt-14">
           {tiers.map((tier, i) => (
@@ -123,14 +120,27 @@ export default function PricingPage() {
           ))}
         </IndexList>
 
-        {/* Android, on the same grid rather than behind a disclosure. */}
-        <div className="mt-stack-md">
-          <SectionHeading
-            index="02"
-            eyebrow="Android"
-            title="Three app builds."
-            meta={`${market.appTiers.length} total`}
-          />
+        <Reveal delay={100}>
+          <div className="mt-10 border-t border-line pt-8">
+            <CommunityRateNote />
+          </div>
+        </Reveal>
+
+        <Reveal delay={120}>
+          <p className="mt-8 max-w-text text-label-sm text-ink-mute">
+            {market.priceNote}
+          </p>
+        </Reveal>
+      </Spread>
+
+      {/* Android, its own numbered section rather than folded under Websites —
+          it is a distinct offer with its own scope, not an add-on. */}
+      <section className="border-t border-line bg-paper">
+        <Spread index="02" folio="Android">
+          <div className="flex flex-wrap items-end justify-between gap-6">
+            <h2 className="h-display max-w-[12ch]">Three app builds.</h2>
+            <span className="rail text-ink-mute">{market.appTiers.length} total</span>
+          </div>
           <IndexList className="mt-14">
             {market.appTiers.map((tier, i) => (
               <IndexRow
@@ -149,32 +159,21 @@ export default function PricingPage() {
             Play Store developer account and third-party service fees are
             billed to you directly at cost.
           </FieldNote>
-        </div>
-
-        <Reveal delay={100}>
-          <div className="mt-10 border-t border-line pt-8">
-            <CommunityRateNote />
-          </div>
-        </Reveal>
-
-        <Reveal delay={120}>
-          <p className="mt-8 max-w-text text-label-sm text-ink-mute">
-            {market.priceNote}
-          </p>
-        </Reveal>
-      </Section>
+        </Spread>
+      </section>
 
       {/* ------------------------------------------------- Ongoing / Care Plan */}
       {/* Same object as everything above: rows on the same twelve columns.
           India sells two monthly plans and North America one care plan with a
           feature list — both are lists, so both are rendered as one. */}
-      <Section tone="alt">
-        <SectionHeading
-          index="03"
-          eyebrow={market.monthlyTiers ? 'Ongoing' : 'Add-on'}
-          title={market.monthlyTiers ? 'Keep it growing.' : 'The Care Plan.'}
-          body={market.monthlyTiers ? market.monthlyBody : market.carePlanBody}
-        />
+      <section className="border-t border-line bg-paper-2">
+        <Spread index="03" folio={market.monthlyTiers ? 'Ongoing' : 'Add-on'}>
+        <h2 className="h-display max-w-[14ch]">
+          {market.monthlyTiers ? 'Keep it growing.' : 'The Care Plan.'}
+        </h2>
+        <p className="mt-6 max-w-text text-body-md text-ink-soft">
+          {market.monthlyTiers ? market.monthlyBody : market.carePlanBody}
+        </p>
 
         <IndexList className="mt-14">
           {market.monthlyTiers
@@ -218,7 +217,8 @@ export default function PricingPage() {
             <WhatsAppCta tone="outline" location="pricing-care" />
           </div>
         </Reveal>
-      </Section>
+        </Spread>
+      </section>
 
       {/* ------------------------------------------------- Specification table */}
       {/* The comparison table, rebuilt as a specification sheet: mono column
@@ -226,13 +226,12 @@ export default function PricingPage() {
           striping. A table is the one card-free object the old page already
           had — it just needed to stop looking like a UI component and start
           looking like a printed spec. */}
-      <Section tone="paper">
-        <SectionHeading
-          index="04"
-          eyebrow="Specification"
-          title="Line by line."
-          meta={`${comparison.length} rows`}
-        />
+      <section className="border-t border-line bg-paper">
+        <Spread index="04" folio="Specification">
+        <div className="flex flex-wrap items-end justify-between gap-6">
+          <h2 className="h-display max-w-[12ch]">Line by line.</h2>
+          <span className="rail text-ink-mute">{comparison.length} rows</span>
+        </div>
 
         <Reveal className="mt-14">
           <div className="overflow-x-auto">
@@ -279,43 +278,47 @@ export default function PricingPage() {
             </table>
           </div>
         </Reveal>
-      </Section>
+        </Spread>
+      </section>
 
       {/* ------------------------------------------------ Community Rate · 20% */}
       <CommunityRateSection />
 
       {/* ------------------------------------------------------------------ FAQ */}
-      <Section tone="paper">
-        <div className="grid grid-cols-1 gap-gutter lg:grid-cols-12 lg:gap-16">
-          <div className="lg:col-span-4">
-            <SectionHeading index="04" eyebrow="Questions" title="Answered." />
+      <section id="faq" className="border-t border-line bg-paper">
+        <Spread index="05" folio="Questions">
+          <div className="grid grid-cols-1 gap-gutter lg:grid-cols-12 lg:gap-16">
+            <div className="lg:col-span-4">
+              <h2 className="h-display max-w-[10ch]">Answered.</h2>
+            </div>
+            <div className="lg:col-span-8">
+              <Reveal>
+                <Faq items={market.faqs} />
+              </Reveal>
+            </div>
           </div>
-          <div className="lg:col-span-8">
-            <Reveal>
-              <Faq items={market.faqs} />
-            </Reveal>
-          </div>
-        </div>
-      </Section>
+        </Spread>
+      </section>
 
       {/* -------------------------------------------------------------- Contact */}
-      <Section id="contact" tone="white">
-        <div className="grid grid-cols-1 gap-gutter lg:grid-cols-12 lg:gap-16">
-          <div className="lg:col-span-4">
-            <SectionHeading
-              index="05"
-              eyebrow="Get in touch"
-              title="Ready when you are."
-              body="Tell us which plan fits and what you're building. We reply within one business day."
-            />
+      <section id="contact" className="border-t border-line bg-white">
+        <Spread index="06" folio="Get in touch">
+          <div className="grid grid-cols-1 gap-gutter lg:grid-cols-12 lg:gap-16">
+            <div className="lg:col-span-4">
+              <h2 className="h-display max-w-[12ch]">Ready when you are.</h2>
+              <p className="mt-6 max-w-text text-body-md text-ink-soft">
+                Tell us which plan fits and what you&apos;re building. We
+                reply within one business day.
+              </p>
+            </div>
+            <div className="lg:col-span-8">
+              <Reveal>
+                <ContactForm />
+              </Reveal>
+            </div>
           </div>
-          <div className="lg:col-span-8">
-            <Reveal>
-              <ContactForm />
-            </Reveal>
-          </div>
-        </div>
-      </Section>
+        </Spread>
+      </section>
 
       {/* ------------------------------------------------------------ Final CTA */}
       <section className="bg-ink text-paper">
@@ -334,10 +337,7 @@ export default function PricingPage() {
                 Contact sales
               </a>
               <WhatsAppCta tone="on-dark" location="pricing-final-cta" />
-              <Link
-                href="/quote"
-                className="label-caps inline-flex items-center justify-center gap-2 border border-paper/40 px-8 py-4 text-paper transition-colors duration-300 hover:border-paper"
-              >
+              <Link href="/quote" className="btn-outline-dark">
                 Take the fit quiz
               </Link>
             </div>

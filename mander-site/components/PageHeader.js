@@ -1,6 +1,8 @@
+import Image from 'next/image';
 import Reveal from './Reveal';
 import GridField from './GridField';
 import Breadcrumbs from './Breadcrumbs';
+import { Caption } from './Editorial';
 
 /**
  * The running head — the triptych's grammar, applied to every other route.
@@ -22,6 +24,15 @@ import Breadcrumbs from './Breadcrumbs';
  * it was last changed. Anything longer than about four words per item breaks
  * the line on a phone, so the middle item is hidden below `sm` rather than
  * allowed to wrap into a paragraph.
+ *
+ * `media` is optional and opt-in: a still from the marble footage
+ * (public/marble-poster.jpg), graded to grayscale exactly as the homepage
+ * cover grades its own footage, run as a right-hand column on desktop. Most
+ * interior pages stay quiet with just GridField — this exists for the
+ * location pages specifically, which had no photography at all despite
+ * being the pages most likely to sit next to a search result. Never behind
+ * the text: a column beside it, so there is no legibility question to
+ * answer.
  */
 export default function PageHeader({
   eyebrow,
@@ -31,10 +42,12 @@ export default function PageHeader({
   trail,
   actions,
   align = 'left',
+  media = false,
+  mediaCaption,
 }) {
   return (
     <section className="relative overflow-hidden border-b border-line bg-paper">
-      <GridField />
+      {!media && <GridField />}
 
       {meta.length > 0 && (
         <div className="relative z-10 flex items-baseline justify-between gap-6 border-b border-line px-margin-mobile py-4 md:px-margin-desktop">
@@ -51,7 +64,12 @@ export default function PageHeader({
         </div>
       )}
 
-      <div className="relative container-max py-stack-md">
+      <div
+        className={`relative container-max py-stack-md ${
+          media ? 'grid grid-cols-1 items-start gap-10 lg:grid-cols-12 lg:gap-16' : ''
+        }`}
+      >
+        <div className={media ? 'lg:col-span-7' : ''}>
         {trail && <Breadcrumbs trail={trail} />}
 
         <div className={align === 'center' ? 'mx-auto max-w-3xl text-center' : ''}>
@@ -103,6 +121,24 @@ export default function PageHeader({
             </Reveal>
           )}
         </div>
+        </div>
+
+        {media && (
+          <Reveal delay={120} className="lg:col-span-5">
+            <figure>
+              <div className="relative aspect-[4/3] w-full overflow-hidden bg-ink lg:aspect-[3/4]">
+                <Image
+                  src="/marble-poster.jpg"
+                  alt=""
+                  fill
+                  sizes="(max-width: 1024px) 100vw, 40vw"
+                  className="object-cover grayscale contrast-[1.08]"
+                />
+              </div>
+              {mediaCaption && <Caption figure="01">{mediaCaption}</Caption>}
+            </figure>
+          </Reveal>
+        )}
       </div>
     </section>
   );

@@ -1,12 +1,12 @@
 import Link from 'next/link';
-import Section, { SectionHeading } from '@/components/Section';
 import Reveal from '@/components/Reveal';
 import Statement from '@/components/Statement';
 import Icon from '@/components/Icon';
-import GridField from '@/components/GridField';
 import PageHeader from '@/components/PageHeader';
 import Faq from '@/components/Faq';
 import ProcessTimeline from '@/components/ProcessTimeline';
+import { Spread } from '@/components/Editorial';
+import { CellGrid, Cell } from '@/components/Swiss';
 import { CAREERS, BRAND } from '@/lib/content';
 import { OG_IMAGE, alternates } from '@/lib/seo';
 
@@ -43,33 +43,33 @@ const applyMailto = (role) =>
 
 // 'open' is a live vacancy; 'rolling' means we take applications for the
 // discipline without promising a seat. 'closed' never reaches the page.
+// Text-only, differentiated by colour rather than by a pill/border — a
+// status label is metadata, not a badge.
 const STATUS = {
-  open: { label: 'Now hiring', className: 'bg-accent text-on-accent' },
-  rolling: { label: 'Applications open', className: 'border border-line-strong text-ink-mute' },
+  open: { label: 'Now hiring', className: 'text-accent' },
+  rolling: { label: 'Applications open', className: 'text-ink-mute' },
 };
 
 function RoleCard({ role }) {
   const status = STATUS[role.status] || STATUS.rolling;
 
   return (
-    <Reveal className="flex h-full flex-col bg-white p-7 md:p-8">
+    <Reveal className="flex h-full flex-col">
       <div className="flex items-start justify-between gap-4">
         <div>
           <span className="label-caps text-ink-mute">{role.discipline}</span>
           <h3 className="mt-2.5 text-headline-md text-ink">{role.title}</h3>
         </div>
-        <span className={`label-caps shrink-0 px-2 py-1 text-[10px] ${status.className}`}>
-          {status.label}
-        </span>
+        <span className={`rail shrink-0 ${status.className}`}>{status.label}</span>
       </div>
 
       <dl className="mt-6 grid grid-cols-2 gap-3 border-y border-line py-4">
         <div>
-          <dt className="label-caps text-[10px] text-ink-mute">Type</dt>
+          <dt className="rail text-ink-mute">Type</dt>
           <dd className="mt-1.5 text-label-sm font-medium text-ink">{role.type}</dd>
         </div>
         <div>
-          <dt className="label-caps text-[10px] text-ink-mute">Location</dt>
+          <dt className="rail text-ink-mute">Location</dt>
           <dd className="mt-1.5 text-label-sm font-medium text-ink">{role.location}</dd>
         </div>
       </dl>
@@ -150,24 +150,27 @@ export default function CareersPage() {
       />
 
       {/* ------------------------------------------------------ What it's like */}
-      <Section tone="alt">
-        <SectionHeading
-          eyebrow="How we work"
-          title="A small studio, run deliberately."
-          body="Four things that are true of the work here, all of them downstream of how the studio sells rather than how it likes to describe itself."
-        />
+      <section className="border-t border-line bg-paper-2">
+        <Spread index="01" folio="How we work">
+          <h2 className="h-display max-w-[16ch]">A small studio, run deliberately.</h2>
+          <p className="mt-6 max-w-text text-body-md text-ink-soft">
+            Four things that are true of the work here, all of them
+            downstream of how the studio sells rather than how it likes to
+            describe itself.
+          </p>
 
-        <div className="mt-12 grid grid-cols-1 gap-px overflow-hidden border border-line bg-line md:grid-cols-2">
-          {CAREERS.culture.map((item) => (
-            <Reveal key={item.title} className="bg-paper-2">
-              <div className="flex h-full flex-col p-7 md:p-8">
-                <h3 className="text-headline-md text-ink">{item.title}</h3>
-                <p className="mt-3 text-body-md text-ink-soft">{item.body}</p>
-              </div>
-            </Reveal>
-          ))}
-        </div>
-      </Section>
+          <CellGrid cols={2} className="mt-12">
+            {CAREERS.culture.map((item, i) => (
+              <Cell key={item.title} delay={i * 50}>
+                <div className="p-6 md:p-8">
+                  <h3 className="text-headline-md text-ink">{item.title}</h3>
+                  <p className="mt-3 text-body-md text-ink-soft">{item.body}</p>
+                </div>
+              </Cell>
+            ))}
+          </CellGrid>
+        </Spread>
+      </section>
 
       <Statement
         eyebrow="On hiring"
@@ -176,60 +179,66 @@ export default function CareersPage() {
       />
 
       {/* --------------------------------------------------------------- Roles */}
-      <Section id="roles" tone="white">
-        <SectionHeading
-          eyebrow="Disciplines"
-          title="What we hire for."
-          body="These are the four disciplines the studio is built on. Apply against one of them, or send an open application if you do something adjacent and think we should know about it."
-        />
+      <section id="roles" className="border-t border-line bg-white">
+        <Spread index="02" folio="Disciplines">
+          <h2 className="h-display max-w-[14ch]">What we hire for.</h2>
+          <p className="mt-6 max-w-text text-body-md text-ink-soft">
+            These are the four disciplines the studio is built on. Apply
+            against one of them, or send an open application if you do
+            something adjacent and think we should know about it.
+          </p>
 
-        {/* Roles as rows on the shared grid. RoleCard still renders the
-            detail — the change is that the set is an index rather than a
-            two-column card wall. */}
-        <div className="mt-12 border-y border-line">
-          {roles.map((role, i) => (
-            <div
-              key={role.id}
-              className={i > 0 ? 'border-t border-line' : ''}
-            >
-              <div className="grid grid-cols-1 gap-3 md:grid-cols-12 md:gap-gutter">
-                <div className="pt-7 md:col-span-1">
-                  <span className="rail text-ink-mute">
-                    {String(i + 1).padStart(2, '0')}
-                  </span>
-                </div>
-                <div className="md:col-span-11">
-                  <RoleCard role={role} />
+          {/* Roles as rows on the shared grid. RoleCard still renders the
+              detail — the change is that the set is an index rather than a
+              two-column card wall. */}
+          <div className="mt-12 border-y border-line">
+            {roles.map((role, i) => (
+              <div
+                key={role.id}
+                className={i > 0 ? 'border-t border-line' : ''}
+              >
+                <div className="grid grid-cols-1 gap-3 md:grid-cols-12 md:gap-gutter">
+                  <div className="pt-7 md:col-span-1">
+                    <span className="rail text-ink-mute">
+                      {String(i + 1).padStart(2, '0')}
+                    </span>
+                  </div>
+                  <div className="md:col-span-11">
+                    <RoleCard role={role} />
+                  </div>
                 </div>
               </div>
-            </div>
-          ))}
-        </div>
-      </Section>
+            ))}
+          </div>
+        </Spread>
+      </section>
 
       {/* ------------------------------------------------------------- Process */}
-      <Section tone="alt">
-        <SectionHeading
-          eyebrow="What happens next"
-          title="The hiring process, in four steps."
-          body="No take-home marathons, no rounds of panel interviews, and no silence at the end of it."
-        />
-        <div className="mt-16">
-          <ProcessTimeline steps={CAREERS.process} />
-        </div>
-      </Section>
+      <section className="border-t border-line bg-paper-2">
+        <Spread index="03" folio="What happens next">
+          <h2 className="h-display max-w-[16ch]">The hiring process, in four steps.</h2>
+          <p className="mt-6 max-w-text text-body-md text-ink-soft">
+            No take-home marathons, no rounds of panel interviews, and no
+            silence at the end of it.
+          </p>
+          <div className="mt-16">
+            <ProcessTimeline steps={CAREERS.process} />
+          </div>
+        </Spread>
+      </section>
 
       {/* --------------------------------------------------------------- Apply */}
       {/* No form. One address, and a list of what to put in the email — which
           is the only thing a form was doing better than a mailto anyway. */}
-      <Section id="apply" tone="paper">
+      <section id="apply" className="border-t border-line bg-paper">
+        <Spread index="04" folio="Apply">
         <div className="grid grid-cols-1 gap-gutter lg:grid-cols-12 lg:gap-16">
           <div className="lg:col-span-5">
-            <SectionHeading
-              eyebrow="Apply"
-              title="Send us an email."
-              body="That is the whole process. No form, no portal, no account to create — just a message to a person who reads it."
-            />
+            <h2 className="h-display max-w-[12ch]">Send us an email.</h2>
+            <p className="mt-6 max-w-text text-body-md text-ink-soft">
+              That is the whole process. No form, no portal, no account to
+              create — just a message to a person who reads it.
+            </p>
             <Reveal delay={120}>
               <p className="mt-8 border-l-2 border-accent/40 pl-4 text-body-md text-ink-soft">
                 <span className="label-caps mb-1.5 block text-ink-mute">One promise</span>
@@ -294,21 +303,24 @@ export default function CareersPage() {
             </Reveal>
           </div>
         </div>
-      </Section>
+        </Spread>
+      </section>
 
       {/* ----------------------------------------------------------------- FAQ */}
-      <Section tone="white">
-        <div className="grid grid-cols-1 gap-gutter lg:grid-cols-12 lg:gap-16">
-          <div className="lg:col-span-4">
-            <SectionHeading eyebrow="Questions" title="Before you apply." />
+      <section className="border-t border-line bg-white">
+        <Spread index="05" folio="Questions">
+          <div className="grid grid-cols-1 gap-gutter lg:grid-cols-12 lg:gap-16">
+            <div className="lg:col-span-4">
+              <h2 className="h-display max-w-[12ch]">Before you apply.</h2>
+            </div>
+            <div className="lg:col-span-8">
+              <Reveal>
+                <Faq items={CAREERS.faqs} />
+              </Reveal>
+            </div>
           </div>
-          <div className="lg:col-span-8">
-            <Reveal>
-              <Faq items={CAREERS.faqs} />
-            </Reveal>
-          </div>
-        </div>
-      </Section>
+        </Spread>
+      </section>
 
       {/* ------------------------------------------------------------ Final CTA */}
       <section className="bg-ink text-paper">
@@ -327,7 +339,7 @@ export default function CareersPage() {
               </a>
               <a
                 href={`mailto:${BRAND.email}?subject=${encodeURIComponent('Careers question')}`}
-                className="label-caps inline-flex items-center justify-center gap-2 border border-paper/40 px-8 py-4 text-paper transition-colors duration-300 hover:border-paper"
+                className="btn-outline-dark"
               >
                 Ask a question first
               </a>

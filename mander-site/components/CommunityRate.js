@@ -94,10 +94,13 @@ export function CommunityRateSection() {
             <Reveal>
               <div className="flex items-center gap-3">
                 <span className="label-caps text-paper/50">The rate</span>
+                {/* Same three values as the drawer's own flag hairline
+                    (CommunityRateDialog.js) — one reference, not two that
+                    happen to be adjacent features. */}
                 <span aria-hidden="true" className="flex h-[3px] w-12">
                   <span className="h-full flex-1 bg-accent" />
-                  <span className="h-full flex-1 bg-paper/70" />
                   <span className="h-full flex-1 bg-[#4a6da8]" />
+                  <span className="h-full flex-1 bg-[#1f3a63]" />
                 </span>
               </div>
 

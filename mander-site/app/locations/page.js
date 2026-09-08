@@ -1,19 +1,17 @@
 import Link from 'next/link';
 import Reveal from '@/components/Reveal';
 import GridField from '@/components/GridField';
-import Breadcrumbs from '@/components/Breadcrumbs';
 import JsonLd from '@/components/JsonLd';
-import Icon from '@/components/Icon';
 import PageHeader from '@/components/PageHeader';
-import Section, { SectionHeading } from '@/components/Section';
+import { Spread } from '@/components/Editorial';
 import { IndexList, IndexRow } from '@/components/Swiss';
 import { REGIONS } from '@/lib/locations';
 import { BRAND } from '@/lib/content';
 import { breadcrumbSchema, OG_IMAGE, alternates } from '@/lib/seo';
 
-const TITLE = 'Locations — Metro Vancouver, U.S. & India';
+const TITLE = 'Locations — Metro Vancouver, MA & RI';
 const DESCRIPTION =
-  'Remote website design across India, the United States and Canada — Mumbai, Delhi NCR, Bengaluru, Mohali, Boston, Vancouver and more. Fixed-price builds.';
+  'Remote website design and local SEO in Metro Vancouver, Massachusetts and Rhode Island — Vancouver, Boston, Providence and more. Fixed-price, quoted in writing.';
 
 export const metadata = {
   title: TITLE,
@@ -38,12 +36,14 @@ const trail = [{ name: 'MANDER', href: '/' }, { name: 'Locations' }];
 
 // Grouped by country rather than listed flat, and — this is the part that
 // matters — every group is rendered for every visitor. The hub is the crawl
-// path into the city pages, and Googlebot crawls from the United States: if
-// the Indian regions were hidden from non-Indian visitors the way the
-// homepage's prices are, the Indian pages would have no internal links
-// pointing at them and would effectively not exist to search.
+// path into the city pages, and Googlebot crawls from the United States, so
+// nothing here is gated by IP the way the homepage's prices are.
+//
+// India has no entry: it's an IP-resolved market experience only (rupee
+// pricing, WhatsApp), never a set of indexed city pages — see
+// lib/markets/location-markets.js. This page used to advertise India
+// location pages that didn't exist; don't reintroduce that.
 const COUNTRY_ORDER = [
-  { code: 'IN', name: 'India' },
   { code: 'US', name: 'United States' },
   { code: 'CA', name: 'Canada' },
 ];
@@ -61,34 +61,36 @@ export default function LocationsHubPage() {
       />
 
       <PageHeader
-        meta={['Locations', 'India · U.S. · Canada', `${GROUPS.length} countries`]}
+        meta={['Locations', 'U.S. · Canada', `${GROUPS.length} countries`]}
         eyebrow="Locations"
-        title="Website design across India, the U.S. and Canada."
+        title="Website design across Metro Vancouver and the U.S."
         trail={trail}
+        media
+        mediaCaption="MANDER — remote studio, Metro Vancouver."
         lede={
           <p>
             MANDER works remotely with small and mid-sized businesses across
-            India, the United States and Canada — the process doesn&apos;t
-            change based on your address, and neither does the fixed-scope
-            quote. These are the markets with dedicated local pages so far.
+            the United States and Canada — the process doesn&apos;t change
+            based on your address, and neither does the fixed-scope quote.
+            These are the markets with dedicated local pages so far.
           </p>
         }
       />
 
-      <Section tone="paper">
-        {GROUPS.map((group, gi) => (
-          <div key={group.code} className={gi > 0 ? 'mt-stack-md' : ''}>
-            <SectionHeading
-              index={String(gi + 1).padStart(2, '0')}
-              eyebrow={group.name}
-              title={`${group.regions.length} ${
-                group.regions.length === 1 ? 'region' : 'regions'
-              }.`}
-              meta={`${group.regions.reduce(
-                (n, r) => n + r.cities.length,
-                0
-              )} cities`}
-            />
+      {GROUPS.map((group, gi) => (
+        <section
+          key={group.code}
+          className={`${gi > 0 ? 'border-t border-line' : ''} ${gi % 2 === 0 ? 'bg-paper' : 'bg-paper-2'}`}
+        >
+          <Spread index={String(gi + 1).padStart(2, '0')} folio={group.name}>
+            <div className="flex flex-wrap items-end justify-between gap-6">
+              <h2 className="h-display max-w-[12ch]">
+                {group.regions.length} {group.regions.length === 1 ? 'region' : 'regions'}.
+              </h2>
+              <span className="rail text-ink-mute">
+                {group.regions.reduce((n, r) => n + r.cities.length, 0)} cities
+              </span>
+            </div>
 
             <IndexList className="mt-14">
               {group.regions.map((region, i) => (
@@ -103,9 +105,9 @@ export default function LocationsHubPage() {
                 />
               ))}
             </IndexList>
-          </div>
-        ))}
-      </Section>
+          </Spread>
+        </section>
+      ))}
 
       <section className="relative overflow-hidden bg-ink text-paper">
         <GridField tone="paper" />
@@ -115,8 +117,8 @@ export default function LocationsHubPage() {
               Don&apos;t see your market listed?
             </h2>
             <p className="mx-auto mt-5 max-w-text text-body-lg text-paper/70">
-              We build for businesses anywhere in India, the U.S. and Canada —
-              get in touch and we&apos;ll treat it exactly the same.
+              We build for businesses anywhere in the U.S. and Canada — get in
+              touch and we&apos;ll treat it exactly the same.
             </p>
             <div className="mt-10 flex flex-col justify-center gap-3 sm:flex-row">
               <a
@@ -125,10 +127,7 @@ export default function LocationsHubPage() {
               >
                 Contact sales
               </a>
-              <Link
-                href="/quote"
-                className="label-caps inline-flex items-center justify-center gap-2 border border-paper/40 px-8 py-4 text-paper transition-colors duration-300 hover:border-paper"
-              >
+              <Link href="/quote" className="btn-outline-dark">
                 Take the fit quiz
               </Link>
             </div>
