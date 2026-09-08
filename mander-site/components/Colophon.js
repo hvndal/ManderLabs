@@ -68,14 +68,14 @@ export default function Colophon({ headline, body }) {
                 <span className="h-px flex-1 bg-line max-w-[120px]" />
               </div>
 
-              <h1 className="max-w-[15ch] font-display text-headline-lg-mobile font-normal text-ink md:text-display-lg leading-[0.96] tracking-tight">
+              <h2 className="max-w-[15ch] font-display text-headline-lg-mobile font-normal text-ink md:text-display-lg leading-[0.96] tracking-tight">
                 {headline}
-              </h1>
+              </h2>
             </Reveal>
 
             <div className="mt-8 md:mt-10 grid grid-cols-1 md:grid-cols-2 gap-8 items-start">
               <Reveal delay={120}>
-                <p className="text-body-lg leading-relaxed text-ink-soft font-light text-balance">
+                <p className="text-body-lg leading-relaxed text-ink-soft font-light text-balance max-w-[46ch]">
                   {body}
                 </p>
               </Reveal>

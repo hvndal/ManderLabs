@@ -1,7 +1,9 @@
 'use client';
 
+import { useState, useEffect } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
+import { motion } from 'framer-motion';
 import Icon from './Icon';
 import MagneticButton from './MagneticButton';
 import CursorImage from './CursorImage';
@@ -11,7 +13,47 @@ const SALES_MAILTO = `mailto:${BRAND.email}?subject=${encodeURIComponent(
   'Project Quote Enquiry — Mander Studio'
 )}`;
 
+const HERO_EASE = [0.16, 1, 0.3, 1];
+
+const containerVariants = {
+  hidden: { opacity: 0 },
+  visible: {
+    opacity: 1,
+    transition: {
+      staggerChildren: 0.09,
+      delayChildren: 0.05,
+    },
+  },
+};
+
+const itemVariants = {
+  hidden: { opacity: 0, y: 12 },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: { duration: 0.55, ease: HERO_EASE },
+  },
+};
+
+const maskVariants = {
+  hidden: { clipPath: 'inset(0 0 100% 0)', opacity: 0, y: 16 },
+  visible: {
+    clipPath: 'inset(0 0 0% 0)',
+    opacity: 1,
+    y: 0,
+    transition: { duration: 0.7, ease: HERO_EASE },
+  },
+};
+
 export default function Hero() {
+  const [reducedMotion, setReducedMotion] = useState(false);
+
+  useEffect(() => {
+    setReducedMotion(
+      window.matchMedia?.('(prefers-reduced-motion: reduce)').matches ?? false
+    );
+  }, []);
+
   return (
     <section
       id="hero"
@@ -22,34 +64,48 @@ export default function Hero() {
       <div className="container-max w-full flex-1 grid grid-cols-1 lg:grid-cols-12 gap-y-8 lg:gap-gutter items-stretch">
         
         {/* Left Column: Monumental Proposition & Action Cluster (7 cols on lg) */}
-        <div className="lg:col-span-7 flex flex-col justify-between pt-7 sm:pt-9 lg:pt-8 xl:pt-10 pb-6 lg:pb-7 lg:pr-8 xl:pr-10">
+        <motion.div
+          variants={containerVariants}
+          initial={reducedMotion ? false : 'hidden'}
+          animate="visible"
+          className="lg:col-span-7 flex flex-col justify-between pt-7 sm:pt-9 lg:pt-8 xl:pt-10 pb-6 lg:pb-7 lg:pr-8 xl:pr-10"
+        >
           <div>
             {/* Folio Eyebrow Badge */}
-            <div className="flex items-center gap-2.5 sm:gap-3 mb-4 sm:mb-6">
+            <motion.div variants={itemVariants} className="flex items-center gap-2.5 sm:gap-3 mb-4 sm:mb-6">
               <span className="h-1.5 w-1.5 bg-accent inline-block flex-shrink-0" />
               <span className="font-mono text-[9.5px] sm:text-[10.5px] uppercase tracking-[0.18em] sm:tracking-[0.24em] text-accent font-semibold">
-                MANDER // VANCOUVER CONTEMPORARY DIGITAL PRACTICE
+                01 // VANCOUVER CONTEMPORARY DIGITAL PRACTICE
               </span>
               <span className="h-px flex-1 bg-line/80 max-w-[60px] hidden sm:inline-block" />
-            </div>
+            </motion.div>
 
-            {/* Monumental Silhouette Headline */}
-            <h1 className="font-display text-[2.65rem] sm:text-[3.6rem] md:text-[4rem] lg:text-[4.25rem] xl:text-[4.85rem] text-ink leading-[0.94] tracking-[-0.035em] text-balance mb-5 sm:mb-6 font-normal">
+            {/* Monumental Silhouette Headline with masked clip reveal */}
+            <motion.h1
+              variants={maskVariants}
+              className="font-display text-[2.65rem] sm:text-[3.6rem] md:text-[4rem] lg:text-[4.25rem] xl:text-[4.85rem] text-ink leading-[0.94] tracking-[-0.035em] text-balance mb-5 sm:mb-6 font-normal"
+            >
               Websites Engineered With{' '}
               <span className="italic font-light text-accent">Architectural</span>{' '}
               Rigour.
-            </h1>
+            </motion.h1>
 
             {/* Editorial Supporting Proposition */}
-            <p className="font-sans text-[1rem] sm:text-[1.12rem] lg:text-[1.15rem] text-ink-soft leading-[1.5] font-light max-w-[45ch] text-balance mb-6 sm:mb-8">
+            <motion.p
+              variants={itemVariants}
+              className="font-sans text-[1rem] sm:text-[1.12rem] lg:text-[1.15rem] text-ink-soft leading-[1.5] font-light max-w-[45ch] text-balance mb-6 sm:mb-8"
+            >
               Bespoke digital engineering and restrained identity systems for
               forward-thinking commercial practices, design studios, and founders
               across the Pacific Northwest and North America. Zero templates.
               Verified Lighthouse 99+ speed.
-            </p>
+            </motion.p>
 
             {/* Primary Action Cluster — perfectly responsive stack on mobile */}
-            <div className="flex flex-col sm:flex-row sm:items-center gap-3.5 sm:gap-6 w-full sm:w-auto">
+            <motion.div
+              variants={itemVariants}
+              className="flex flex-col sm:flex-row sm:items-center gap-3.5 sm:gap-6 w-full sm:w-auto"
+            >
               <MagneticButton strength={8} radius={65} className="w-full sm:w-auto">
                 <a
                   href={SALES_MAILTO}
@@ -65,11 +121,14 @@ export default function Hero() {
               >
                 Explore Selected Work ↓
               </Link>
-            </div>
+            </motion.div>
           </div>
 
           {/* Technical Metadata Stamp (Anchored to base of Left Column) */}
-          <div className="mt-8 pt-5 border-t border-line/70 flex flex-wrap items-center justify-between gap-3 sm:gap-4 font-mono text-[9px] uppercase tracking-[0.16em] sm:tracking-[0.2em] text-ink-mute">
+          <motion.div
+            variants={itemVariants}
+            className="mt-8 pt-5 border-t border-line/70 flex flex-wrap items-center justify-between gap-3 sm:gap-4 font-mono text-[9px] uppercase tracking-[0.16em] sm:tracking-[0.2em] text-ink-mute"
+          >
             <div className="flex items-center gap-2">
               <span className="inline-block h-1.5 w-1.5 rounded-full bg-emerald-700 animate-pulse" />
               <span className="text-ink font-medium">STUDIO INTAKE OPEN // 2025–2026</span>
@@ -77,11 +136,16 @@ export default function Hero() {
             <div className="tracking-[0.18em] sm:tracking-[0.22em]">
               49°16&apos;59&quot;N 123°07&apos;15&quot;W · GASTOWN
             </div>
-          </div>
-        </div>
+          </motion.div>
+        </motion.div>
 
         {/* Right Column: Museum-Grade Architectural Exhibition Plate (5 cols on lg) */}
-        <div className="lg:col-span-5 relative flex flex-col justify-between border-t lg:border-t-0 lg:border-l border-line pt-6 sm:pt-8 lg:pt-8 xl:pt-10 lg:pl-8 xl:pl-10 pb-6 lg:pb-7 bg-paper/40">
+        <motion.div
+          initial={reducedMotion ? false : { opacity: 0, scale: 0.985 }}
+          animate={{ opacity: 1, scale: 1 }}
+          transition={{ duration: 0.65, ease: HERO_EASE, delay: 0.18 }}
+          className="lg:col-span-5 relative flex flex-col justify-between border-t lg:border-t-0 lg:border-l border-line pt-6 sm:pt-8 lg:pt-8 xl:pt-10 lg:pl-8 xl:pl-10 pb-6 lg:pb-7 bg-paper/40"
+        >
           <div>
             {/* Plate Meta Bar */}
             <div className="flex items-center justify-between font-mono text-[9px] uppercase tracking-[0.2em] sm:tracking-[0.22em] text-ink-mute pb-2.5 mb-3.5 border-b border-line/70">
@@ -149,12 +213,17 @@ export default function Hero() {
             <span>WATER STREET // SEATTLE &amp; VANCOUVER</span>
             <span className="text-ink font-semibold">EST. MMXXIV</span>
           </div>
-        </div>
+        </motion.div>
 
       </div>
 
       {/* 4-Station Datum Ledger Line (Anchored across base of viewport) */}
-      <div className="w-full border-t border-line bg-paper-2/60">
+      <motion.div
+        initial={reducedMotion ? false : { opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ duration: 0.5, ease: HERO_EASE, delay: 0.3 }}
+        className="w-full border-t border-line bg-paper-2/60"
+      >
         <div className="container-max py-3 sm:py-3.5">
           <div className="grid grid-cols-2 md:grid-cols-4 gap-2.5 sm:gap-4 md:gap-6 font-mono text-[8.5px] sm:text-[9.5px] uppercase tracking-[0.14em] sm:tracking-[0.16em]">
             <div className="flex items-baseline gap-1.5 sm:gap-2 text-ink-soft">
@@ -175,7 +244,7 @@ export default function Hero() {
             </div>
           </div>
         </div>
-      </div>
+      </motion.div>
     </section>
   );
 }

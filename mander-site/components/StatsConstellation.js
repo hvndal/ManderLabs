@@ -83,12 +83,12 @@ export default function StatsConstellation({ stats, featuredProject }) {
           {/* Right Column: 100k+ Client Architectural Plate */}
           <div className="lg:col-span-6">
             <Reveal delay={100}>
-              <div className="relative group overflow-hidden border border-white/20 bg-black/80 backdrop-blur-md shadow-2xl transition-all duration-500 hover:border-accent/60">
+              <div className="relative group overflow-hidden border border-white/20 bg-black/80 backdrop-blur-md transition-all duration-500 hover:border-accent/60">
                 {/* Architectural Plate Header */}
                 <div className="flex items-center justify-between border-b border-white/10 px-4 py-2.5 bg-[#151210]/95 text-white/50 font-mono text-[9.5px] uppercase tracking-wider">
                   <div className="flex items-center gap-2">
                     <span className="text-accent font-mono font-bold">+</span>
-                    <span className="text-white/80 font-medium">PLATE 05.1 // PRODUCTION ARCHITECTURE</span>
+                    <span className="text-white/80 font-medium">PLATE 04.1 // PRODUCTION ARCHITECTURE</span>
                   </div>
                   <div className="flex items-center gap-2 text-white/70 bg-white/[0.04] px-2.5 py-0.5 border border-white/10">
                     <span className="text-accent">■</span>
@@ -125,7 +125,7 @@ export default function StatsConstellation({ stats, featuredProject }) {
                     <div className="bg-black/90 backdrop-blur-md border border-white/15 px-3 py-1.5 font-mono text-[9.5px] uppercase tracking-wider text-white">
                       <span className="text-accent font-bold mr-1.5">■</span> FITWAY GYM // 100K+ SERVED
                     </div>
-                    <span className="bg-accent text-white font-mono text-[9.5px] uppercase tracking-widest px-3 py-1.5 font-semibold opacity-0 group-hover:opacity-100 transition-opacity duration-300 shadow-md">
+                    <span className="bg-accent text-white font-mono text-[9.5px] uppercase tracking-widest px-3 py-1.5 font-semibold opacity-0 group-hover:opacity-100 transition-opacity duration-300">
                       VIEW LIVE SITE ↗
                     </span>
                   </div>

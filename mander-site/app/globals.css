@@ -76,6 +76,23 @@
     @apply label-caps inline-flex items-center justify-center gap-2 bg-ink px-5 py-2.5 text-paper transition-all duration-200 ease-premium hover:bg-accent active:scale-[0.985] active:translate-y-px;
   }
 
+  /* Button arrow micro-interaction: subtle 3px nudge on hover */
+  .btn-primary svg,
+  .btn-outline svg,
+  .btn-on-dark svg,
+  .btn-outline-dark svg,
+  .btn-sm svg {
+    transition: transform 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+    will-change: transform;
+  }
+  .btn-primary:hover svg,
+  .btn-outline:hover svg,
+  .btn-on-dark:hover svg,
+  .btn-outline-dark:hover svg,
+  .btn-sm:hover svg {
+    transform: translate3d(3px, 0, 0);
+  }
+
   /* Text link with an underline that draws in on hover */
   .link-underline {
     @apply relative inline-flex items-center gap-2 text-ink transition-colors duration-200;
@@ -132,6 +149,65 @@
   will-change: opacity, transform;
 }
 .reveal.is-visible {
+  opacity: 1;
+  transform: translate3d(0, 0, 0);
+}
+
+/* Masked reveal: clips up from bottom for monumental headlines */
+.reveal-mask {
+  clip-path: inset(0 0 100% 0);
+  opacity: 0;
+  transform: translate3d(0, 16px, 0);
+  transition:
+    clip-path 0.75s cubic-bezier(0.16, 1, 0.3, 1),
+    opacity 0.45s cubic-bezier(0.2, 0.9, 0.2, 1),
+    transform 0.65s cubic-bezier(0.16, 1, 0.3, 1);
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+}
+.reveal-mask.is-visible {
+  clip-path: inset(0 0 0% 0);
+  opacity: 1;
+  transform: translate3d(0, 0, 0);
+}
+
+/* Scale reveal: subtle 0.975 -> 1.0 zoom for architectural photographic plates */
+.reveal-scale {
+  opacity: 0;
+  transform: scale3d(0.975, 0.975, 1);
+  transition:
+    opacity 0.45s cubic-bezier(0.2, 0.9, 0.2, 1),
+    transform 0.65s cubic-bezier(0.16, 1, 0.3, 1);
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+}
+.reveal-scale.is-visible {
+  opacity: 1;
+  transform: scale3d(1, 1, 1);
+}
+
+/* Line reveal: horizontal rule draws across smoothly like drafting pen */
+.reveal-line {
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.85s cubic-bezier(0.16, 1, 0.3, 1);
+  will-change: transform;
+}
+.reveal-line.is-visible {
+  transform: scaleX(1);
+}
+
+/* Slide left reveal: enters horizontally from the right */
+.reveal-slide-left {
+  opacity: 0;
+  transform: translate3d(24px, 0, 0);
+  transition:
+    opacity 0.4s cubic-bezier(0.2, 0.9, 0.2, 1),
+    transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+}
+.reveal-slide-left.is-visible {
   opacity: 1;
   transform: translate3d(0, 0, 0);
 }
@@ -217,13 +293,26 @@
   html {
     scroll-behavior: auto;
   }
-  .reveal {
-    opacity: 1;
-    transform: none;
-    transition: none;
+  .reveal,
+  .reveal-mask,
+  .reveal-scale,
+  .reveal-line,
+  .reveal-slide-left {
+    opacity: 1 !important;
+    transform: none !important;
+    clip-path: none !important;
+    transition: none !important;
   }
   .ken-burns {
-    animation: none;
+    animation: none !important;
+  }
+  .btn-primary svg,
+  .btn-outline svg,
+  .btn-on-dark svg,
+  .btn-outline-dark svg,
+  .btn-sm svg {
+    transition: none !important;
+    transform: none !important;
   }
 }
 

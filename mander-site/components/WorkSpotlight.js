@@ -33,7 +33,7 @@ export default function WorkSpotlight({ items }) {
             <button
               key={p.name}
               onClick={() => setActiveIdx(idx)}
-              className={`py-1.5 px-3 transition-all duration-200 flex items-center gap-1.5 border ${
+              className={`py-1.5 px-3 transition-all duration-200 active:scale-[0.97] flex items-center gap-1.5 border ${
                 activeIdx === idx
                   ? 'border-ink bg-ink text-white font-medium shadow-sm'
                   : 'border-transparent text-ink-soft hover:text-ink hover:border-line'
@@ -50,7 +50,7 @@ export default function WorkSpotlight({ items }) {
       </div>
 
       {/* THE ARCHITECTURAL SPREAD */}
-      <div className="border border-line bg-white shadow-xl overflow-hidden grid grid-cols-1 lg:grid-cols-12">
+      <div className="border border-line bg-paper-2 overflow-hidden grid grid-cols-1 lg:grid-cols-12">
         {/* Dominant Image Viewport: Flush Edge-to-Edge */}
         <div className="lg:col-span-8 relative bg-black min-h-[420px] sm:min-h-[540px] border-b lg:border-b-0 lg:border-r border-line overflow-hidden">
           <AnimatePresence mode="wait">
@@ -144,17 +144,22 @@ export default function WorkSpotlight({ items }) {
                 href={current.href}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="w-full inline-flex items-center justify-center gap-2 bg-ink hover:bg-accent text-white font-mono text-xs uppercase tracking-[0.18em] py-3.5 px-6 font-semibold transition-colors shadow-md text-center"
+                className="group w-full inline-flex items-center justify-center gap-2 bg-ink hover:bg-accent text-white font-mono text-xs uppercase tracking-[0.18em] py-3.5 px-6 font-semibold transition-all duration-200 active:scale-[0.985] text-center"
               >
                 <span>Launch Live Site</span>
-                <span>↗</span>
+                <span className="transition-transform duration-200 ease-premium group-hover:translate-x-0.5 group-hover:-translate-y-0.5">
+                  ↗
+                </span>
               </a>
             )}
             <a
               href="#quote"
-              className="w-full inline-flex items-center justify-center gap-2 border border-line hover:border-ink text-ink font-mono text-xs uppercase tracking-[0.18em] py-3 px-6 transition-colors text-center"
+              className="group w-full inline-flex items-center justify-center gap-2 border border-line hover:border-ink text-ink font-mono text-xs uppercase tracking-[0.18em] py-3 px-6 transition-all duration-200 active:scale-[0.985] text-center"
             >
-              <span>Ask For Similar Scope ↗</span>
+              <span>Ask For Similar Scope</span>
+              <span className="transition-transform duration-200 ease-premium group-hover:translate-x-0.5 group-hover:-translate-y-0.5">
+                ↗
+              </span>
             </a>
           </div>
         </div>

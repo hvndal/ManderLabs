@@ -30,16 +30,27 @@ function NavLink({ href, children, onClick, className = '' }) {
 export default function Nav() {
   const [open, setOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
+  const [scrollProgress, setScrollProgress] = useState(0);
   const pathname = usePathname();
 
   useEffect(() => {
+    let rafId = null;
     const onScroll = () => {
-      setScrolled(window.scrollY > 20);
+      if (rafId) return;
+      rafId = requestAnimationFrame(() => {
+        rafId = null;
+        setScrolled(window.scrollY > 20);
+        const totalHeight = document.documentElement.scrollHeight - window.innerHeight;
+        if (totalHeight > 0) {
+          setScrollProgress(Math.min(Math.max(window.scrollY / totalHeight, 0), 1));
+        }
+      });
     };
     onScroll();
     window.addEventListener('scroll', onScroll, { passive: true });
     return () => {
       window.removeEventListener('scroll', onScroll);
+      if (rafId) cancelAnimationFrame(rafId);
     };
   }, []);
 
@@ -62,10 +73,17 @@ export default function Nav() {
     >
       <nav
         aria-label="Primary"
-        className="mx-auto flex h-[76px] w-full max-w-container items-center justify-between px-margin-mobile md:px-margin-desktop"
+        className={`mx-auto flex w-full max-w-container items-center justify-between px-margin-mobile md:px-margin-desktop transition-[height] duration-300 ease-premium ${
+          scrolled ? 'h-[64px]' : 'h-[76px]'
+        }`}
       >
         <Link href="/" aria-label="MANDER home" className="group flex items-center gap-3 text-ink">
-          <Logo variant="mark" className="h-10 md:h-11 transition-transform duration-300 group-hover:scale-105" />
+          <Logo
+            variant="mark"
+            className={`transition-all duration-300 group-hover:scale-105 ${
+              scrolled ? 'h-9 md:h-10' : 'h-10 md:h-11'
+            }`}
+          />
           <div className="flex flex-col">
             <span className="font-sans font-bold text-[17px] tracking-[-0.03em] leading-none text-ink">
               MANDER
@@ -134,6 +152,13 @@ export default function Nav() {
           </Link>
         </div>
       </div>
+
+      {/* Hairline scroll progress tracker along header baseline */}
+      <div
+        aria-hidden="true"
+        className="absolute bottom-0 left-0 right-0 h-[1.5px] bg-accent origin-left pointer-events-none transition-transform duration-75 ease-out"
+        style={{ transform: `scaleX(${scrollProgress})` }}
+      />
     </header>
   );
 }

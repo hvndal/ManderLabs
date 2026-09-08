@@ -45,6 +45,7 @@ export default function ProcessTimeline({ steps, sidebar }) {
           return (
             <Reveal key={step.step} delay={index * 80}>
               <li
+                onClick={() => setActiveStep(index)}
                 onMouseEnter={() => setActiveStep(index)}
                 className={`group relative transition-all duration-300 ease-premium p-6 sm:p-8 cursor-pointer ${
                   isActive
@@ -52,10 +53,12 @@ export default function ProcessTimeline({ steps, sidebar }) {
                     : 'bg-transparent hover:bg-paper-2/60'
                 }`}
               >
-                {/* Active Left Indicator Rule */}
-                {isActive && (
-                  <span className="absolute left-0 top-0 bottom-0 w-1 bg-accent transition-all duration-300" />
-                )}
+                {/* Active Left Indicator Rule with smooth vertical wipe */}
+                <span
+                  className={`absolute left-0 top-0 bottom-0 w-1 bg-accent transition-transform duration-300 ease-premium origin-top ${
+                    isActive ? 'scale-y-100' : 'scale-y-0'
+                  }`}
+                />
 
                 {/* Top Row: Stage Number, Timing Badge & Title */}
                 <div className="flex items-start justify-between gap-4 mb-4">

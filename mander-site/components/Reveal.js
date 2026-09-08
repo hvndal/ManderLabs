@@ -3,12 +3,20 @@
 import { useEffect, useRef, useState } from 'react';
 
 /**
- * Fades + lifts children into view once. Degrades to "always visible" if
- * IntersectionObserver is missing or the user prefers reduced motion.
+ * Context-aware scroll reveal primitive with varied motion signatures:
+ * - 'fade-up' (default): subtle 12px lift for cards and paragraphs
+ * - 'mask': vertical clip-curtain reveal for monumental editorial headlines
+ * - 'scale': 0.975 -> 1.0 soft zoom for architectural photographic plates
+ * - 'line': horizontal rule drawing across like drafting pen
+ * - 'slide-left': horizontal entry from the right for asymmetrical accents
+ * - 'none': static stillness without scroll animations
+ *
+ * Degrades to "always visible" if IntersectionObserver is missing or the user prefers reduced motion.
  */
 export default function Reveal({
   children,
   delay = 0,
+  variant = 'fade-up',
   as: Tag = 'div',
   className = '',
 }) {
@@ -20,7 +28,10 @@ export default function Reveal({
     const el = ref.current;
     if (!el) return;
 
-    if (typeof IntersectionObserver === 'undefined') {
+    if (
+      typeof IntersectionObserver === 'undefined' ||
+      window.matchMedia?.('(prefers-reduced-motion: reduce)').matches
+    ) {
       setVisible(true);
       return;
     }
@@ -29,10 +40,6 @@ export default function Reveal({
     setMobile(isMobile);
 
     // Fire *before* the element reaches the viewport, not as it crosses.
-    // Waiting for it to be on screen means the animation plays over content
-    // the eye has already landed on, which is what reads as lag. A positive
-    // bottom margin arms it roughly a third of a screen early on phones, so
-    // by the time it's actually looked at it has already settled.
     const observer = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
@@ -42,8 +49,6 @@ export default function Reveal({
         });
       },
       {
-        // Any sliver counts on mobile. A 12% threshold on a tall block can
-        // require most of a phone screen before it trips.
         threshold: isMobile ? 0 : 0.04,
         rootMargin: isMobile ? '0px 0px 24% 0px' : '0px 0px 48px 0px',
       }
@@ -53,17 +58,24 @@ export default function Reveal({
     return () => observer.disconnect();
   }, []);
 
-  // Stagger is a desktop device. On a phone the items in a stagger are
-  // stacked rather than side by side, so a 60–70ms step compounds down the
-  // column into a visible cascade — the "one at a time" clunk. Compressed to
-  // a third and capped, it's a soft offset instead of a queue.
+  if (variant === 'none') {
+    return <Tag className={className}>{children}</Tag>;
+  }
+
+  // Stagger is compressed on phones to prevent cascading queues
   const stagger = mobile ? Math.min(delay * 0.34, 90) : delay;
+
+  let variantClass = 'reveal';
+  if (variant === 'mask') variantClass = 'reveal-mask';
+  else if (variant === 'scale') variantClass = 'reveal-scale';
+  else if (variant === 'line') variantClass = 'reveal-line';
+  else if (variant === 'slide-left') variantClass = 'reveal-slide-left';
 
   return (
     <Tag
       ref={ref}
       style={stagger ? { transitionDelay: `${Math.round(stagger)}ms` } : undefined}
-      className={`reveal ${visible ? 'is-visible' : ''} ${className}`}
+      className={`${variantClass} ${visible ? 'is-visible' : ''} ${className}`}
     >
       {children}
     </Tag>
