@@ -2,7 +2,7 @@ import { ImageResponse } from 'next/og';
 
 export const runtime = 'edge';
 export const alt =
-  'MANDER — website design for small business across Canada and the U.S.';
+  'MANDER — Vancouver Contemporary Digital Practice & Website Design';
 export const size = { width: 1200, height: 630 };
 export const contentType = 'image/png';
 
@@ -83,7 +83,7 @@ export default async function Image() {
               color: '#e3b2a8',
             }}
           >
-            Web design for small business — Canada &amp; U.S.
+            Web design &amp; digital craft — Metro Vancouver, BC
           </div>
 
           {/* The accent rule is the one piece of the site's own furniture that

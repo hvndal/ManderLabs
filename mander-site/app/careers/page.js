@@ -11,7 +11,7 @@ import { OG_IMAGE, alternates } from '@/lib/seo';
 
 const TITLE = 'Careers — Design & Development Roles at MANDER';
 const DESCRIPTION =
-  'Design, front-end, Android and SEO roles at a small remote studio building for small business in Canada and the U.S.';
+  'Design, front-end, Android and SEO roles at a boutique practice based in Metro Vancouver, building digital flagships for businesses across BC and beyond.';
 
 export const metadata = {
   title: TITLE,

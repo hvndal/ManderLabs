@@ -88,6 +88,21 @@ const nextConfig = {
         destination: '/',
         permanent: true,
       },
+      {
+        source: '/locations/massachusetts/:path*',
+        destination: '/locations',
+        permanent: true,
+      },
+      {
+        source: '/locations/rhode-island/:path*',
+        destination: '/locations',
+        permanent: true,
+      },
+      {
+        source: '/blog/small-business-website-cost-massachusetts',
+        destination: '/blog/small-business-website-cost-vancouver',
+        permanent: true,
+      },
     ];
   },
   async headers() {

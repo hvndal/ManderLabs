@@ -18,7 +18,7 @@ import { faqSchema, OG_IMAGE, alternates } from '@/lib/seo';
 
 const TITLE = 'Website Design Pricing & Scoping — MANDER';
 const DESCRIPTION =
-  'Tailored website design pricing and clear scope for businesses in Canada and the U.S. Four bespoke plans, Android applications, zero hidden fees.';
+  'Tailored website design pricing and clear scope for businesses in Metro Vancouver, BC and beyond. Four bespoke plans, Android applications, zero hidden fees.';
 
 export const metadata = {
   title: TITLE,

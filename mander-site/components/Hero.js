@@ -210,7 +210,7 @@ export default function Hero() {
 
           {/* Sub-label at foot of right column */}
           <div className="mt-5 pt-3.5 border-t border-line/60 flex items-center justify-between font-mono text-[8.5px] sm:text-[9px] uppercase tracking-[0.2em] text-ink-mute">
-            <span>WATER STREET // SEATTLE &amp; VANCOUVER</span>
+            <span>WATER STREET // GASTOWN, VANCOUVER</span>
             <span className="text-ink font-semibold">EST. MMXXIV</span>
           </div>
         </motion.div>

@@ -2,7 +2,7 @@
 
 export const BRAND = {
   name: 'MANDER',
-  tagline: 'Websites for Canadian & American small business.',
+  tagline: 'Contemporary digital practice & web design in Metro Vancouver.',
   // The single public address. Every "Contact sales" button, the contact
   // form's fallback, and Community Rate requests all resolve here, so this
   // one string is the whole sales funnel.
@@ -23,12 +23,8 @@ export const BRAND = {
   // is what ties this site to that listing in the eyes of the crawler.
   googleBusiness: 'https://www.google.com/search?kgmid=/g/11zdgzpwn5',
   // Masthead furniture, set centred in caps under the mark. Kept short and
-  // free of hyphenated compounds on purpose — the old line ("small &
-  // mid-sized businesses across Canada and the U.S.") broke after "mid-" on
-  // a phone, which is the one place a masthead cannot afford a bad break.
-  // The small-business keyword work is carried by the metadata, the H1 and
-  // the schema, not by this line.
-  region: 'Canada & the United States',
+  // free of hyphenated compounds on purpose.
+  region: 'Vancouver, British Columbia',
 };
 
 export const NAV_LINKS = [
@@ -496,15 +492,15 @@ export const FAQS = [
   },
   {
     q: 'Do you only work with local businesses?',
-    a: 'No — we work remotely with small and mid-sized businesses anywhere in the United States and Canada. Everything from the first call to handover happens over email and video, so your location makes no difference to the price or the timeline.',
+    a: 'While our core studio practice and local SEO focus are concentrated in Metro Vancouver, we work remotely with ambitious businesses across British Columbia, the Pacific Northwest, Canada, and the United States. Everything from discovery to handover is delivered with identical architectural rigor.',
   },
   {
     q: 'Where are you based, and does it matter?',
-    a: 'The team is split between Langley, British Columbia and Maynard, Massachusetts, and we deliver every project remotely across both countries. In practice that means you get the same senior people whether you are in Vancouver, Boston, Austin or a town of four thousand — and we cover both Pacific and Eastern hours between us.',
+    a: 'MANDER is founded and based in Metro Vancouver (Langley / Vancouver, British Columbia). We operate on Pacific time and collaborate directly with clients across the Lower Mainland, while seamlessly delivering remote builds for select clients beyond.',
   },
   {
     q: 'Can you do local SEO if you are not in my town?',
-    a: 'Yes, and it is one of the things we do most. Local search is won with your Google Business Profile, location-specific pages, citations and reviews — none of which require us to be down the road from you. We have ranked clients in towns none of us have visited.',
+    a: 'Yes, and it is one of our primary disciplines. Local search is driven by your Google Business Profile, municipality-specific schema, localized landing structures, citations and reviews — we engineer these with rigorous geographic precision.',
   },
   {
     q: 'Do I own the website?',
@@ -516,7 +512,7 @@ export const FAQS = [
   },
   {
     q: 'Do you charge in USD or CAD?',
-    a: 'Either. Prices are shown in USD by default; we invoice Canadian clients in CAD at your preference.',
+    a: 'We invoice Canadian clients in CAD by default with transparent fixed scopes and no exchange markups. U.S. and international clients can be invoiced in USD.',
   },
   {
     q: 'Do you offer any discounts?',
@@ -701,14 +697,14 @@ export const TEAM = [
   {
     name: 'Danielle Brooks',
     role: 'Creative Director',
-    location: 'Maynard, MA',
+    location: 'Vancouver, BC',
     bio: 'Came out of print — three years art-directing an independent design quarterly. Sets everything on a grid first and adds colour last, if at all.',
     photo: '/team/danielle.jpg',
   },
   {
     name: 'Tyler Nakamura',
     role: 'Design Engineer',
-    location: 'Maynard, MA',
+    location: 'Vancouver, BC',
     bio: 'Trained as an industrial designer, moved to the web when tooling cycles got shorter than furniture ones. Owns the component library and most of the front end.',
     photo: '/team/tyler.jpg',
     crop: 'half',
@@ -716,15 +712,15 @@ export const TEAM = [
   {
     name: 'Sophie Bennett',
     role: 'Technical Lead',
-    location: 'Maynard, MA',
+    location: 'Remote (Pacific Time)',
     bio: 'Handles the parts clients never see — hosting, performance budgets, integrations, and the security work that keeps a small business off an incident report.',
     photo: '/team/sophie.jpg',
   },
   {
     name: 'Evan Mercado',
     role: 'Sales & Client Relations',
-    location: 'Maynard, MA',
-    bio: 'Moved from the Philippines to New England as a child and has been translating between people ever since. First call, scoping, and the one who keeps you posted — so you are never chasing an update.',
+    location: 'Vancouver, BC',
+    bio: 'Oversees first calls, clear scoping, and ongoing communication — so you are never chasing a project update.',
     photo: '/team/evan.jpg',
   },
 ];
@@ -843,7 +839,7 @@ export const CAREERS = {
   intro: {
     eyebrow: 'Careers',
     title: 'Work on sites that have to earn their keep.',
-    body: 'MANDER is a small remote studio building websites and Android apps for small businesses across Canada and the United States. Every project is fixed-scope and fixed-price, which changes what the work feels like day to day more than anything else on this page.',
+    body: 'MANDER is a boutique digital practice based in Metro Vancouver building websites and digital platforms for ambitious businesses across British Columbia and beyond. Every project is fixed-scope and fixed-price, which changes what the work feels like day to day more than anything else on this page.',
   },
 
   // What it is actually like. Each of these is downstream of something the
@@ -859,8 +855,8 @@ export const CAREERS = {
       body: 'There is no layer between what you make and the person paying for it. You will talk to the business owner, hear what actually broke, and see your work carry real traffic instead of disappearing into a backlog.',
     },
     {
-      title: 'Remote across two countries',
-      body: 'The team works from British Columbia and Massachusetts. Overlap matters more than location — a few reliable hours against Pacific time is worth more than sitting in a particular city.',
+      title: 'Metro Vancouver & Pacific Time',
+      body: 'The studio operates on Pacific time out of Metro Vancouver (Gastown / Langley). Overlap and clarity matter — working during Pacific business hours gives our clients and team a predictable, focused rhythm.',
     },
     {
       title: 'Craft is the product',

@@ -34,44 +34,34 @@ export const OG_IMAGE = {
   url: `${SITE_URL}/opengraph-image`,
   width: 1200,
   height: 630,
-  alt: 'MANDER — website design for small business across Canada and the U.S.',
+  alt: 'MANDER — Contemporary digital practice & architectural website design in Metro Vancouver, BC.',
 };
 
-// The business is delivered remotely across two countries, so the schema has
-// to say that explicitly. A ProfessionalService with no address and no
-// areaServed reads to Google like a local business that forgot its address,
-// and it will try to rank the site for one city. Naming the countries plus
-// the individual states and provinces is what tells it the service area is
-// national on both sides of the border.
-//
-// Deliberately NO aggregateRating or review markup. There are no collected
-// reviews, and inventing them is both a Google structured-data violation and
-// the kind of thing that gets a site manually penalised. Add it the day real
-// reviews exist, not before.
-const US_STATES = [
-  'Alabama', 'Alaska', 'Arizona', 'Arkansas', 'California', 'Colorado',
-  'Connecticut', 'Delaware', 'Florida', 'Georgia', 'Hawaii', 'Idaho',
-  'Illinois', 'Indiana', 'Iowa', 'Kansas', 'Kentucky', 'Louisiana', 'Maine',
-  'Maryland', 'Massachusetts', 'Michigan', 'Minnesota', 'Mississippi',
-  'Missouri', 'Montana', 'Nebraska', 'Nevada', 'New Hampshire', 'New Jersey',
-  'New Mexico', 'New York', 'North Carolina', 'North Dakota', 'Ohio',
-  'Oklahoma', 'Oregon', 'Pennsylvania', 'Rhode Island', 'South Carolina',
-  'South Dakota', 'Tennessee', 'Texas', 'Utah', 'Vermont', 'Virginia',
-  'Washington', 'West Virginia', 'Wisconsin', 'Wyoming',
-];
-
-const CA_PROVINCES = [
-  'Alberta', 'British Columbia', 'Manitoba', 'New Brunswick',
-  'Newfoundland and Labrador', 'Northwest Territories', 'Nova Scotia',
-  'Nunavut', 'Ontario', 'Prince Edward Island', 'Quebec', 'Saskatchewan',
-  'Yukon',
+// Strategic local positioning: Metro Vancouver / Greater Vancouver, British Columbia.
+// Structured data communicates core locality, regional footprint, and remote delivery.
+export const METRO_VANCOUVER_MUNICIPALITIES = [
+  'Vancouver',
+  'Burnaby',
+  'Richmond',
+  'Surrey',
+  'North Vancouver',
+  'West Vancouver',
+  'Langley',
+  'Coquitlam',
+  'Port Coquitlam',
+  'Port Moody',
+  'New Westminster',
+  'Delta',
+  'White Rock',
 ];
 
 export const SERVICE_AREA = [
-  { '@type': 'Country', name: 'United States' },
+  { '@type': 'AdministrativeArea', name: 'Metro Vancouver' },
+  { '@type': 'AdministrativeArea', name: 'Greater Vancouver' },
+  { '@type': 'State', name: 'British Columbia' },
+  ...METRO_VANCOUVER_MUNICIPALITIES.map((name) => ({ '@type': 'City', name })),
   { '@type': 'Country', name: 'Canada' },
-  ...US_STATES.map((name) => ({ '@type': 'State', name })),
-  ...CA_PROVINCES.map((name) => ({ '@type': 'State', name })),
+  { '@type': 'Country', name: 'United States' },
 ];
 
 /**
@@ -161,8 +151,18 @@ export const organizationSchema = {
       closes: '17:00',
     },
   ],
-  // Remote-first: the team works from Langley BC and Maynard MA, but the
-  // service is delivered online everywhere in both countries.
+  // Studio roots in Metro Vancouver (Gastown / Langley, BC)
+  address: {
+    '@type': 'PostalAddress',
+    addressLocality: 'Vancouver',
+    addressRegion: 'BC',
+    addressCountry: 'CA',
+  },
+  geo: {
+    '@type': 'GeoCoordinates',
+    latitude: '49.2838',
+    longitude: '-123.1097',
+  },
   areaServed: SERVICE_AREA,
   serviceType: SERVICES.map((s) => s.title),
   availableLanguage: 'English',
@@ -170,7 +170,7 @@ export const organizationSchema = {
     '@type': 'ContactPoint',
     contactType: 'sales',
     email: BRAND.email,
-    areaServed: ['US', 'CA'],
+    areaServed: ['CA', 'US'],
     availableLanguage: ['English'],
   },
   founder: {
@@ -206,7 +206,8 @@ export const organizationSchema = {
         serviceType: service.title,
         provider: { '@id': `${SITE_URL}/#organization` },
         areaServed: [
-          { '@type': 'Country', name: 'United States' },
+          { '@type': 'AdministrativeArea', name: 'Metro Vancouver' },
+          { '@type': 'State', name: 'British Columbia' },
           { '@type': 'Country', name: 'Canada' },
         ],
       },
@@ -230,7 +231,8 @@ export const serviceSchemas = SERVICES.map((service) => ({
     url: SITE_URL,
   },
   areaServed: [
-    { '@type': 'Country', name: 'United States' },
+    { '@type': 'AdministrativeArea', name: 'Metro Vancouver' },
+    { '@type': 'State', name: 'British Columbia' },
     { '@type': 'Country', name: 'Canada' },
   ],
   audience: {

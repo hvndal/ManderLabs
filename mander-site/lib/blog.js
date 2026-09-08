@@ -26,14 +26,14 @@ const AUTHOR = { name: 'Herman', role: 'Founder & Design Lead' };
 
 export const POSTS = [
   {
-    slug: 'small-business-website-cost-massachusetts',
-    title: 'What a small-business website should cost in Massachusetts',
-    nav: 'Website costs in Massachusetts',
+    slug: 'small-business-website-cost-vancouver',
+    title: 'What a small-business website should cost in Metro Vancouver',
+    nav: 'Website costs in Vancouver',
     date: '2026-08-18',
     readingTime: '6 min',
     tag: 'Pricing',
     description:
-      'Real numbers for a Massachusetts small-business website in 2026 — what each price band actually buys, and where the money goes.',
+      'Real numbers for a Metro Vancouver small-business website in 2026 — what each price band actually buys, how CAD scoping works, and where the money goes.',
     lede: 'Almost nobody publishes web design prices, which is why every business owner asking this question gets a different answer. Here are ours, and what sits behind each number.',
     sections: [
       {
@@ -55,7 +55,7 @@ export const POSTS = [
         p: [
           'This is where the majority of growing small businesses land, and it covers two distinct strategic stages.',
           'The Starter tier delivers a proper multi-page site — up to five pages, copywriting support, enquiry forms, basic technical SEO. It is an authoritative digital brochure that does its job well. The Growth tier delivers the same thing plus the machinery that makes it findable: local SEO, Google Business Profile optimisation, Search Console and Analytics setup, local keyword research, schema, and a booking or CRM integration.',
-          'The gap between those two tiers is almost entirely the difference between a site people can find when they already know your name, and a site that brings you people who did not. For a business in a competitive market like Vancouver, Boston, or Cambridge, that gap is the whole point.',
+          'The gap between those two tiers is almost entirely the difference between a site people can find when they already know your name, and a site that brings you people who did not. For a business in a competitive market like Vancouver, Burnaby, or Surrey, that gap is the whole point.',
         ],
         ul: [
           'Choose Starter if you are a referral-driven business and mostly need to look legitimate',
@@ -91,16 +91,16 @@ export const POSTS = [
       {
         h: 'A note on the cheapest option',
         p: [
-          'Massachusetts is not one market. What is a reasonable spend in Newton is not a reasonable spend in Brockton, and pretending otherwise is how studios end up quoting one number and building for a different city.',
+          'Metro Vancouver is not one homogeneous market. What is an expected spend in Downtown Vancouver or Mount Pleasant is different from what an early-stage contractor needs in Surrey or Langley, and pretending otherwise is how studios end up quoting one number and delivering something unmaintainable.',
           'We run a Community Rate — 20% off any build, granted on trust rather than proof — for exactly that reason. It is not a promotion and it does not expire. If the price is the only thing standing between you and a working website, ask for it.',
         ],
       },
     ],
     related: [
-      { label: 'Website design in Boston', href: '/locations/massachusetts/boston' },
-      { label: 'Website design in Worcester', href: '/locations/massachusetts/worcester' },
-      { label: 'Website design in Springfield', href: '/locations/massachusetts/springfield' },
-      { label: 'Website design in Brockton', href: '/locations/massachusetts/brockton' },
+      { label: 'Website design in Vancouver', href: '/locations/british-columbia/vancouver' },
+      { label: 'Website design in Burnaby', href: '/locations/british-columbia/burnaby' },
+      { label: 'Website design in Surrey', href: '/locations/british-columbia/surrey' },
+      { label: 'Website design in Richmond', href: '/locations/british-columbia/richmond' },
       { label: 'See all pricing', href: '/pricing' },
     ],
   },
@@ -185,9 +185,9 @@ export const POSTS = [
       },
     ],
     related: [
-      { label: 'Website design in Providence', href: '/locations/rhode-island/providence' },
       { label: 'Website design in Vancouver', href: '/locations/british-columbia/vancouver' },
-      { label: 'Website design in Cambridge', href: '/locations/massachusetts/cambridge' },
+      { label: 'Website design in Burnaby', href: '/locations/british-columbia/burnaby' },
+      { label: 'Website design in Surrey', href: '/locations/british-columbia/surrey' },
       { label: 'Every market we cover', href: '/locations' },
     ],
   },
@@ -251,6 +251,7 @@ export const POSTS = [
     related: [
       { label: 'Pricing for websites and apps', href: '/pricing' },
       { label: 'Take the 60-second fit quiz', href: '/quote' },
+      { label: 'Website design in Vancouver', href: '/locations/british-columbia/vancouver' },
       { label: 'Website design in Surrey', href: '/locations/british-columbia/surrey' },
     ],
   },

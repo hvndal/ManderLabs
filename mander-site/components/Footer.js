@@ -123,9 +123,14 @@ export default function Footer() {
         </div>
 
         <div className="mt-stack-md flex flex-col gap-4 border-t border-paper/15 pt-8 md:flex-row md:items-center md:justify-between">
-          <p className="text-label-sm text-paper/45">
-            © {new Date().getFullYear()} {BRAND.name}. Built for Canadian &amp; American business.
-          </p>
+          <div className="flex flex-col gap-1">
+            <p className="text-label-sm text-paper/60">
+              © {new Date().getFullYear()} {BRAND.name}. Contemporary digital practice based in Vancouver, British Columbia.
+            </p>
+            <p className="font-mono text-[10px] tracking-wider uppercase text-paper/35">
+              Metro Vancouver &middot; Fraser Valley &middot; Pacific Northwest
+            </p>
+          </div>
           <ul className="flex flex-wrap gap-6">
             {LEGAL.map((item) => (
               <li key={item.label}>
