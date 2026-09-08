@@ -5,7 +5,7 @@ import { CommunityRateFooterLink } from './CommunityRate';
 import { CookiePreferencesLink } from './CookieHub';
 import WhatsAppCta, { WhatsAppLine } from './WhatsAppCta';
 import CountryPicker from './CountryPicker';
-import { BRAND, NAV_LINKS } from '@/lib/content';
+import { BRAND, NAV_LINKS, NAV_MORE_LINKS } from '@/lib/content';
 import { getServerMarket, getServerRegion } from '@/lib/market-server';
 import { LEGAL_NAV } from '@/lib/legal';
 
@@ -23,8 +23,7 @@ const LEGAL = LEGAL_NAV.map((d) => ({ label: d.nav, href: `/legal/${d.slug}` }))
 // never have to hunt, and the footer is where all three look.
 const EXPLORE = [
   ...NAV_LINKS,
-  { label: 'Locations', href: '/locations' },
-  { label: 'About', href: '/about' },
+  ...NAV_MORE_LINKS,
   { label: 'Contact', href: '/contact' },
 ];
 

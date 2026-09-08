@@ -44,6 +44,7 @@ export default function PageHeader({
   align = 'left',
   media = false,
   mediaCaption,
+  mediaSrc = '/marble-poster.jpg',
 }) {
   return (
     <section className="relative overflow-hidden border-b border-line bg-paper">
@@ -128,7 +129,7 @@ export default function PageHeader({
             <figure>
               <div className="relative aspect-[4/3] w-full overflow-hidden bg-ink lg:aspect-[3/4]">
                 <Image
-                  src="/marble-poster.jpg"
+                  src={mediaSrc}
                   alt=""
                   fill
                   sizes="(max-width: 1024px) 100vw, 40vw"

@@ -112,6 +112,9 @@ export default function ContactPage() {
         eyebrow="Contact"
         title="Talk to a person."
         trail={trail}
+        media
+        mediaSrc="/editorial/manifesto-city.jpg"
+        mediaCaption="MANDER — reply within one business day."
         lede={
           <p>
             No account managers, no ticket queue. Whoever answers is whoever

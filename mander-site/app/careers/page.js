@@ -125,6 +125,9 @@ export default function CareersPage() {
         meta={['Careers', 'Remote studio', openings > 0 ? 'Open roles' : 'Rolling applications']}
         eyebrow={CAREERS.intro.eyebrow}
         title={CAREERS.intro.title}
+        media
+        mediaSrc="/editorial/studio-set.jpg"
+        mediaCaption="MANDER — how the work actually gets made."
         lede={
           <>
             <p>{CAREERS.intro.body}</p>

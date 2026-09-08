@@ -80,6 +80,9 @@ export default function AboutPage() {
         eyebrow="About"
         title="A small studio that ships finished work."
         trail={trail}
+        media
+        mediaSrc="/editorial/interview-set.jpg"
+        mediaCaption="MANDER — a small studio, deliberately."
         lede={
           <>
             <p>

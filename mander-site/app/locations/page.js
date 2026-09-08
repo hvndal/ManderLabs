@@ -66,7 +66,8 @@ export default function LocationsHubPage() {
         title="Website design across Metro Vancouver and the U.S."
         trail={trail}
         media
-        mediaCaption="MANDER — remote studio, Metro Vancouver."
+        mediaSrc="/editorial/urban-aerial.jpg"
+        mediaCaption="MANDER — remote studio, wherever you are."
         lede={
           <p>
             MANDER works remotely with small and mid-sized businesses across

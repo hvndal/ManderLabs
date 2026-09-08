@@ -3,7 +3,7 @@
 import { useEffect, useState } from 'react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
-import { NAV_LINKS, BRAND } from '@/lib/content';
+import { NAV_LINKS, NAV_MORE_LINKS, BRAND } from '@/lib/content';
 import Logo from './Logo';
 import Icon from './Icon';
 import WhatsAppCta from './WhatsAppCta';
@@ -46,6 +46,7 @@ const navIndex = (i) => String(i + 1).padStart(2, '0');
 export default function Nav() {
   const market = useMarket();
   const [open, setOpen] = useState(false);
+  const [moreOpen, setMoreOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const pathname = usePathname();
 
@@ -60,7 +61,10 @@ export default function Nav() {
     return () => window.removeEventListener('scroll', onScroll);
   }, []);
 
-  useEffect(() => setOpen(false), [pathname]);
+  useEffect(() => {
+    setOpen(false);
+    setMoreOpen(false);
+  }, [pathname]);
 
   useEffect(() => {
     document.body.style.overflow = open ? 'hidden' : '';
@@ -99,6 +103,49 @@ export default function Nav() {
               </NavLink>
             </li>
           ))}
+          <li className="relative">
+            <button
+              type="button"
+              onClick={() => setMoreOpen((v) => !v)}
+              aria-expanded={moreOpen}
+              aria-haspopup="true"
+              className="group relative inline-flex items-baseline gap-1.5"
+            >
+              <span className="rail text-ink-mute transition-colors duration-300 group-hover:text-accent">
+                {navIndex(NAV_LINKS.length)}
+              </span>
+              <span className="label-caps text-ink-soft transition-colors duration-300 group-hover:text-ink">
+                More
+              </span>
+              <span className="pointer-events-none absolute -bottom-1.5 left-0 h-px w-full origin-left scale-x-0 bg-ink transition-transform duration-300 ease-premium group-hover:scale-x-100" />
+            </button>
+
+            {moreOpen && (
+              <>
+                {/* Click-catcher so an outside click closes the panel */}
+                <button
+                  type="button"
+                  aria-hidden="true"
+                  tabIndex={-1}
+                  onClick={() => setMoreOpen(false)}
+                  className="fixed inset-0 z-40 cursor-default"
+                />
+                <ul className="absolute right-0 top-full z-50 mt-4 w-52 border border-line bg-paper py-2 shadow-[0_16px_40px_-16px_rgba(20,20,20,0.18)]">
+                  {NAV_MORE_LINKS.map((link) => (
+                    <li key={link.label}>
+                      <Link
+                        href={link.href}
+                        onClick={() => setMoreOpen(false)}
+                        className="label-caps block px-5 py-2.5 text-ink-soft transition-colors hover:bg-paper-2 hover:text-ink"
+                      >
+                        {link.label}
+                      </Link>
+                    </li>
+                  ))}
+                </ul>
+              </>
+            )}
+          </li>
         </ul>
 
         <div className="hidden items-center gap-3 md:flex">
@@ -164,6 +211,16 @@ export default function Nav() {
                 <span className="font-display text-headline-lg-mobile text-ink transition-colors group-hover:text-accent">
                   {link.label}
                 </span>
+              </Link>
+            </li>
+          ))}
+        </ul>
+
+        <ul className="flex flex-wrap gap-x-6 gap-y-1 px-margin-mobile pb-6 pt-5">
+          {NAV_MORE_LINKS.map((link) => (
+            <li key={link.label}>
+              <Link href={link.href} className="label-caps text-ink-mute transition-colors hover:text-ink">
+                {link.label}
               </Link>
             </li>
           ))}

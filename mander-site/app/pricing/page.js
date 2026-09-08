@@ -74,6 +74,9 @@ export default function PricingPage() {
         meta={['Plans', market.region, 'Fixed scope']}
         eyebrow="Plans"
         title="Fixed scope. Fixed price."
+        media
+        mediaSrc="/editorial/concrete-geometry.jpg"
+        mediaCaption="MANDER — one number, quoted before we start."
         lede={
           <p>
             Every plan is quoted in writing before a pixel is drawn, and the

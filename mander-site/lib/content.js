@@ -40,15 +40,22 @@ export const BRAND = {
 // The nav is the positioning. It used to be six links, four of them anchors
 // into the homepage — Work, Services, Process, Team, Locations, Plans — which
 // is a table of contents rather than an argument, and it made the studio look
-// like it did a bit of everything. Three pillars, then the two pages someone
-// ready to act needs. Everything else is reachable from the footer and from
-// the pages themselves.
+// like it did a bit of everything. Three pillars, then the one page someone
+// ready to act needs, plus a "More" overflow for the rest — Work included,
+// since a portfolio page is proof, not positioning, and doesn't need equal
+// billing with what the studio actually sells.
 export const NAV_LINKS = [
   { label: 'Brand', href: '/brand' },
   { label: 'Digital', href: '/digital' },
   { label: 'Growth', href: '/growth' },
-  { label: 'Work', href: '/work' },
   { label: 'Plans', href: '/pricing' },
+];
+
+export const NAV_MORE_LINKS = [
+  { label: 'Work', href: '/work' },
+  { label: 'About', href: '/about' },
+  { label: 'Locations', href: '/locations' },
+  { label: 'Careers', href: '/careers' },
 ];
 
 // Pexels — free to use, no attribution required (https://www.pexels.com/license/)

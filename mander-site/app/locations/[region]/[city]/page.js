@@ -102,6 +102,7 @@ export default function CityPage({ params }) {
         title={city.h1}
         trail={trail}
         media
+        mediaSrc="/editorial/pacific-rain.jpg"
         mediaCaption={`MANDER — website design for ${city.name}.`}
         lede={
           <>

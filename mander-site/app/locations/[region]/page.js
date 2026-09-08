@@ -100,6 +100,7 @@ export default function RegionPage({ params }) {
         title={region.h1}
         trail={trail}
         media
+        mediaSrc="/editorial/colophon-arch.jpg"
         mediaCaption={`MANDER — serving ${region.name}.`}
         lede={
           <>
