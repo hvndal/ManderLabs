@@ -39,7 +39,7 @@ export default function TeamCard({ member }) {
             // alt text is read in place of the image, not alongside it.
             alt={`${member.name} — ${member.role}`}
             fill
-            sizes="(max-width: 640px) 45vw, (max-width: 1024px) 30vw, 220px"
+            sizes="(max-width: 640px) 100vw, (max-width: 1024px) 33vw, 20vw"
             style={half ? { objectPosition: '82% 22%' } : undefined}
             className={`object-cover grayscale transition-all duration-700 ease-premium group-hover:grayscale-0 ${
               half
@@ -57,15 +57,8 @@ export default function TeamCard({ member }) {
         )}
       </div>
 
-      {/* Fixed vertical rhythm below the portrait.
-          Name, then role/location on a reserved two-line block, then the bio
-          clamped to four lines. Without the reserved heights the cards drift:
-          a two-line role or a longer bio pushes that card's baselines out of
-          step with its neighbours, and in a grid of five that misalignment is
-          the first thing the eye catches. Clamping costs a few words of bio
-          and buys a shared baseline across every card in the row. */}
       <h3 className="mt-4 text-body-lg font-medium text-ink">{member.name}</h3>
-      <p className="label-caps mt-1.5 flex min-h-[2.4em] items-start text-ink-mute">
+      <p className="label-caps mt-1.5 flex min-h-[2.8em] items-start text-ink-mute">
         <span>
           {member.role}
           {member.location ? ` · ${member.location}` : ''}

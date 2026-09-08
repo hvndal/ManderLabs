@@ -185,12 +185,9 @@ export default function Hero() {
                   />
                 </CursorImage>
 
-                {/* Overlaid Badges */}
+                {/* Architectural Plate Stamp */}
                 <div className="absolute top-2.5 left-2.5 bg-ink/90 text-paper font-mono text-[8px] uppercase tracking-[0.2em] px-2.5 py-1 border border-white/10 backdrop-blur-xs">
                   PACIFIC URBAN RIGOUR
-                </div>
-                <div className="absolute bottom-2.5 right-2.5 bg-paper/95 text-ink font-mono text-[8px] uppercase tracking-[0.18em] px-2.5 py-1 border border-line backdrop-blur-xs">
-                  SLA // 99+ SPEED INDEX
                 </div>
               </div>
             </div>

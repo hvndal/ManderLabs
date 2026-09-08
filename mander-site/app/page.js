@@ -13,6 +13,7 @@ import GridField from '@/components/GridField';
 import ProcessTimeline from '@/components/ProcessTimeline';
 import Testimonials from '@/components/Testimonials';
 import PricingInteractive from '@/components/PricingInteractive';
+import TeamCard from '@/components/TeamCard';
 import Faq from '@/components/Faq';
 import ContactForm from '@/components/ContactForm';
 import JsonLd from '@/components/JsonLd';
@@ -28,6 +29,7 @@ import {
   WORK,
   CLIENTS,
   BRAND,
+  TEAM,
 } from '@/lib/content';
 import { faqSchema, alternates } from '@/lib/seo';
 
@@ -435,7 +437,37 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* ------------------------------------------ 10 · Bespoke Scoping & Quote */}
+      {/* ------------------------------------------ 10 · Studio Leadership */}
+      <section id="team" className="relative border-b border-line bg-paper py-stack-lg">
+        <div className="container-max">
+          <div className="flex flex-col md:flex-row md:items-end justify-between pb-8 border-b border-line gap-6 mb-12">
+            <div>
+              <div className="flex items-center gap-2 mb-2.5">
+                <span className="h-1.5 w-1.5 bg-accent" />
+                <span className="font-mono text-[9.5px] sm:text-[10.5px] uppercase tracking-[0.22em] text-accent font-semibold">
+                  10 // STUDIO LEADERSHIP
+                </span>
+              </div>
+              <h2 className="font-display text-4xl sm:text-5xl text-ink leading-tight">
+                Small, senior, and <span className="italic font-light text-accent">reachable.</span>
+              </h2>
+            </div>
+            <p className="font-sans text-sm text-ink-soft font-light max-w-md leading-relaxed">
+              Five practitioners. The founder in Langley and senior craftspeople across Vancouver and Pacific time. No account managers between you and the person engineering your interface.
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 gap-y-12 sm:grid-cols-2 sm:gap-x-6 sm:gap-y-10 md:grid-cols-3 lg:grid-cols-5 lg:gap-6">
+            {TEAM.map((member, index) => (
+              <Reveal key={member.name} delay={index * 80}>
+                <TeamCard member={member} />
+              </Reveal>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ------------------------------------------ 11 · Bespoke Scoping & Quote */}
       <section id="quote" className="relative border-b border-line bg-paper py-stack-lg">
         <div className="container-max">
           <div className="flex flex-col md:flex-row md:items-end justify-between pb-8 border-b border-line gap-6 mb-12">
@@ -443,7 +475,7 @@ export default function HomePage() {
               <div className="flex items-center gap-2 mb-2.5">
                 <span className="h-1.5 w-1.5 bg-accent" />
                 <span className="font-mono text-[9.5px] sm:text-[10.5px] uppercase tracking-[0.22em] text-accent font-semibold">
-                  10 // BESPOKE SCOPING
+                  11 // BESPOKE SCOPING
                 </span>
               </div>
               <h2 className="font-display text-4xl sm:text-5xl text-ink leading-tight">
@@ -463,14 +495,14 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* ------------------------------------------ 11 · Audited Deliverables */}
+      {/* ------------------------------------------ 12 · Audited Deliverables */}
       <Section id="proof" tone="paper" className="!py-stack-lg border-b border-line">
         <div className="flex flex-col md:flex-row md:items-end justify-between pb-8 border-b border-line gap-6 mb-12">
           <div>
             <div className="flex items-center gap-2 mb-2.5">
               <span className="h-1.5 w-1.5 bg-accent" />
               <span className="font-mono text-[9.5px] sm:text-[10.5px] uppercase tracking-[0.22em] text-accent font-semibold">
-                11 // AUDITED DELIVERABLES
+                12 // AUDITED DELIVERABLES
               </span>
             </div>
             <h2 className="font-display text-4xl sm:text-5xl text-ink leading-tight">
@@ -484,7 +516,7 @@ export default function HomePage() {
         <Testimonials items={CLIENTS} />
       </Section>
 
-      {/* ------------------------------------------ 12 · Common Inquiries */}
+      {/* ------------------------------------------ 13 · Common Inquiries */}
       <Section id="faq" tone="paper" className="!py-stack-lg border-b border-line">
         <div className="container-max">
           <div className="grid grid-cols-1 gap-gutter lg:grid-cols-12 lg:gap-16">
@@ -493,7 +525,7 @@ export default function HomePage() {
                 <div className="flex items-center gap-2 mb-3">
                   <span className="h-1.5 w-1.5 bg-accent" />
                   <span className="font-mono text-[9.5px] sm:text-[10.5px] uppercase tracking-[0.22em] text-accent font-semibold">
-                    12 // COMMON INQUIRIES
+                    13 // COMMON INQUIRIES
                   </span>
                 </div>
                 <h2 className="font-display text-4xl sm:text-5xl text-ink leading-tight">
@@ -513,7 +545,7 @@ export default function HomePage() {
         </div>
       </Section>
 
-      {/* ------------------------------------------ 13 · Direct Engagement & Contact */}
+      {/* ------------------------------------------ 14 · Direct Engagement & Contact */}
       <Section id="contact" tone="ink" className="!py-stack-lg border-b border-line relative overflow-hidden">
         {/* Subtle abstract architectural background at low opacity */}
         <div className="absolute inset-0 opacity-15 pointer-events-none">
@@ -533,7 +565,7 @@ export default function HomePage() {
                 <div className="flex items-center gap-2 mb-3">
                   <span className="h-1.5 w-1.5 bg-accent" />
                   <span className="font-mono text-[9.5px] sm:text-[10.5px] uppercase tracking-[0.22em] text-accent font-semibold">
-                    13 // DIRECT ENGAGEMENT
+                    14 // DIRECT ENGAGEMENT
                   </span>
                 </div>
 
