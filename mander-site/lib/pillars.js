@@ -43,6 +43,24 @@ export const PILLARS = [
       { name: 'Creative direction', note: 'Photography, art direction, and what to say no to.' },
       { name: 'Brand guidelines', note: 'One document your team and suppliers can work from.' },
     ],
+    faqs: [
+      {
+        q: 'Is a brand identity project just a logo?',
+        a: 'No. The mark is one piece of it. The output is the mark, the type, the colour, the rules that hold them together and the language that makes the business sound like one company rather than five people writing separately — a system you can run without us, not a logo and a hopeful PDF.',
+      },
+      {
+        q: 'How long does a brand identity project take?',
+        a: 'It depends on scope, which is why the timeline is quoted as part of a written plan rather than a fixed number up front — the same four stages run every time: discovery, a scoped strategy, the build itself, then handover.',
+      },
+      {
+        q: 'Do I own the finished identity outright?',
+        a: 'Yes. The site, the code and every account it touches are registered in your name from day one — the same rule applies to a brand identity project, so the files, the mark and the guidelines document are yours to use anywhere, with anyone, after handover.',
+      },
+      {
+        q: 'What do I actually receive at the end?',
+        a: 'Working files for the mark and type system, the colour rules, and one guidelines document your own team or future suppliers can work from without asking us first — not a single exported logo file.',
+      },
+    ],
   },
   {
     id: 'digital',
@@ -65,6 +83,24 @@ export const PILLARS = [
       { name: 'Web applications', note: 'When the workflow does not fit an off-the-shelf tool.' },
       { name: 'Digital products', note: 'Android builds, portals, internal tools.' },
       { name: 'Technical implementation', note: 'Analytics, integrations, migrations, handover.' },
+    ],
+    faqs: [
+      {
+        q: 'What is the difference between a redesign and a new build?',
+        a: 'A redesign takes a site that has aged out and rebuilds it for better experience, sharper design and the technical performance search engines reward, generally around what already exists. A new build starts from the brand and structure outward — the right call when the existing foundation cannot carry what the business needs next.',
+      },
+      {
+        q: 'Do you build ecommerce sites?',
+        a: 'Yes — selling online without a third-party platform effectively running the business is one of the standing capabilities here, built into the same fixed-scope process as any other site.',
+      },
+      {
+        q: 'What if my workflow does not fit an off-the-shelf website builder?',
+        a: 'That is what a web application is for — a piece of software built around the workflow rather than the workflow bent to fit a template. It sits alongside standard web development as a separate capability precisely because not every project is a normal website.',
+      },
+      {
+        q: 'Do I own the site and code once it is finished?',
+        a: 'Yes, outright. Fast, accessible and maintainable foundations, built to be handed to any developer afterward — not locked to this studio or to a proprietary platform.',
+      },
     ],
   },
   {
@@ -101,6 +137,24 @@ export const PILLARS = [
       { step: '04', name: 'Convert', note: 'A path from that asset to a conversation, sized to the intent.' },
       { step: '05', name: 'Measure', note: 'Which assets produce enquiries, not which produce sessions.' },
       { step: '06', name: 'Repeat', note: 'The next asset is chosen by what the last one taught us.' },
+    ],
+    faqs: [
+      {
+        q: 'Is this the same thing as an SEO retainer?',
+        a: 'No — deliberately not. SEO is one channel inside it, not the whole service. What is actually being run is a demand engine: research what a market is searching for, find the gap between what is searched and what already exists, build the asset that answers it properly, put a conversion path under it, then measure which of it produced a real enquiry rather than which produced traffic.',
+      },
+      {
+        q: 'What counts as an "asset" in this system?',
+        a: 'Some are pages. Some are calculators, assessments or audits — the things people actually use, link to and come back to. The point is not publishing volume; it is that each thing built teaches the studio what to build next.',
+      },
+      {
+        q: 'How is success measured?',
+        a: 'By which pages produce a real business opportunity, not by which pages get the most sessions. That distinction is the last step of the loop on purpose — traffic that never turns into an enquiry is not treated as a result.',
+      },
+      {
+        q: 'Does Mander guarantee my site will be cited in Google AI Overviews or AI Mode?',
+        a: 'No — and any provider that promises this is promising something outside anyone’s control. What "AI search visibility" actually means here is doing the work that makes a site easy for any retrieval system, human or automated, to understand, trust and quote: clear structure, real entities, direct answers, and genuine authority on the topic. Those are the same fundamentals that improve ordinary search results too, which is the honest reason to do them.',
+      },
     ],
   },
 ];

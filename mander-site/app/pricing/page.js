@@ -14,7 +14,7 @@ import {
 import WhatsAppCta from '@/components/WhatsAppCta';
 import { BRAND } from '@/lib/content';
 import { getServerMarket } from '@/lib/market-server';
-import { faqSchema, OG_IMAGE, alternates } from '@/lib/seo';
+import { faqSchema, serviceSchemas, OG_IMAGE, alternates } from '@/lib/seo';
 
 export async function generateMetadata() {
   const { pricing } = getServerMarket().meta;
@@ -67,6 +67,12 @@ export default function PricingPage() {
 
   return (
     <>
+      {/* Every tier on this page is a variation on the same six services —
+          naming them here, not just on the homepage, is what lets a
+          "<service> pricing" query resolve independently of it. */}
+      {serviceSchemas(market).map((schema) => (
+        <JsonLd key={schema.name} data={schema} />
+      ))}
       <JsonLd data={faqSchema(market.faqs)} />
 
       {/* ---------------------------------------------------------------- Hero */}

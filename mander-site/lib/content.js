@@ -499,6 +499,18 @@ export const FAQS = [
     q: 'Do you offer any discounts?',
     a: 'Yes — a standing 20% Community Rate for veterans and active-duty military, single parents, people living with a disability, anyone facing financial hardship, and small, independent, owner-operated businesses. There is no application process: tell us which applies and we take it from there. At most we might ask for something small like a business email or a link.',
   },
+  {
+    q: 'How does a fixed-price quote compare to an hourly agency?',
+    a: 'With an hourly arrangement, the final number is unknown until the project ends and depends on how efficiently the hours were spent. With a fixed-price quote, the scope is agreed first, the number is fixed before anything starts, and that number does not move unless you change the scope. The tradeoff is that the scope has to be defined properly up front, which is why every quote comes from a real conversation rather than a form.',
+  },
+  {
+    q: 'What should I look for when choosing a web design provider?',
+    a: 'Three things that are simple to verify before you commit: whether the price is fixed in writing before work starts, whether you own the finished site, the code and the domain outright, and whether ongoing support is optional rather than a required retainer. If a provider cannot answer those three plainly, that is worth asking about directly.',
+  },
+  {
+    q: 'Does Mander guarantee my site will be cited by Google’s AI Overviews?',
+    a: 'No — no legitimate provider can guarantee inclusion in any specific AI-generated search feature, and we will not claim otherwise. What we do is build sites with clear structure, accurate structured data and direct, well-organised answers to real questions — the same fundamentals that improve ordinary search results, and the best honest way to make a site easy for any system, human or automated, to understand and trust.',
+  },
 ];
 
 // --- Work -----------------------------------------------------------------

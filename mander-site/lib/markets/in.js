@@ -248,6 +248,14 @@ const FAQS = [
     q: 'How do we talk?',
     a: 'WhatsApp is the fastest route — message us on +91 81462 98024 and you will get a person, not a form. Email works too, and everything from the first conversation to handover happens remotely, so where you are in India makes no difference to the price or the timeline.',
   },
+  {
+    q: 'What should I look for when choosing a website provider?',
+    a: 'Three things that are simple to check before you commit: whether the price is fixed in writing before work starts (not an hourly estimate that can grow), whether you own the finished site, code and domain outright, and whether ongoing support is optional rather than a required monthly plan. If a provider will not answer those three plainly, ask again before paying anything.',
+  },
+  {
+    q: 'Does Mander guarantee my site will be cited by Google’s AI Overviews?',
+    a: 'No — no legitimate provider can guarantee inclusion in any specific AI-generated search feature, and we will not claim otherwise. What we do is build sites with clear structure, accurate structured data and direct, well-organised answers to real questions — the same fundamentals that improve ordinary search results, and the honest way to make a site easy for any system, human or automated, to understand and trust.',
+  },
 ];
 
 // The quiz is the US quiz with two changes: the one question denominated in

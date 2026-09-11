@@ -4,13 +4,18 @@ import Statement from '@/components/Statement';
 import Icon from '@/components/Icon';
 import PageHeader from '@/components/PageHeader';
 import Faq from '@/components/Faq';
+import JsonLd from '@/components/JsonLd';
 import ProcessTimeline from '@/components/ProcessTimeline';
 import { Spread } from '@/components/Editorial';
 import { CellGrid, Cell } from '@/components/Swiss';
 import { CAREERS, BRAND } from '@/lib/content';
-import { OG_IMAGE, alternates } from '@/lib/seo';
+import { faqSchema, OG_IMAGE, alternates } from '@/lib/seo';
 
-const TITLE = 'Careers — Design & Development Roles at MANDER';
+// No trailing "at MANDER" — the root layout's title template already
+// appends " | MANDER" to every page title, and this constant used to
+// include the brand name too, producing "...at MANDER | MANDER" in the
+// rendered <title>.
+const TITLE = 'Careers — Design & Development Roles';
 const DESCRIPTION =
   'Design, front-end, Android and SEO roles at a small remote studio building for small business in Canada and the U.S.';
 
@@ -120,6 +125,12 @@ export default function CareersPage() {
 
   return (
     <>
+      {/* Visible FAQ content lives further down this page (CAREERS.faqs,
+          rendered via <Faq>) — this is the same array, so the schema never
+          diverges from what a visitor actually sees, matching the rule
+          every other FAQ-bearing page on the site already follows. */}
+      <JsonLd data={faqSchema(CAREERS.faqs)} />
+
       {/* ---------------------------------------------------------------- Hero */}
       <PageHeader
         meta={['Careers', 'Remote studio', openings > 0 ? 'Open roles' : 'Rolling applications']}
@@ -130,7 +141,13 @@ export default function CareersPage() {
         mediaCaption="MANDER — how the work actually gets made."
         lede={
           <>
-            <p>{CAREERS.intro.body}</p>
+            <p>
+              {CAREERS.intro.body}{' '}
+              <Link href="/about" className="link-underline text-ink">
+                Read more about the studio
+              </Link>{' '}
+              before you apply.
+            </p>
             {/* Says plainly whether there is a seat today. A careers page that
                 implies vacancies it doesn't have wastes the candidate's
                 evening and costs more goodwill than the application was

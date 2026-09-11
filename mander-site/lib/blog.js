@@ -189,7 +189,7 @@ export const POSTS = [
     ],
     related: [
       { label: 'Website design in Providence', href: '/locations/rhode-island/providence' },
-      { label: 'Website design in Vancouver', href: '/locations/british-columbia/vancouver' },
+      { label: 'Website design in Vancouver', href: '/locations/metro-vancouver/vancouver' },
       { label: 'Website design in Cambridge', href: '/locations/massachusetts/cambridge' },
       { label: 'Every market we cover', href: '/locations' },
     ],
@@ -254,7 +254,7 @@ export const POSTS = [
     related: [
       { label: 'Pricing for websites and apps', href: '/pricing' },
       { label: 'Take the 60-second fit quiz', href: '/quote' },
-      { label: 'Website design in Surrey', href: '/locations/british-columbia/surrey' },
+      { label: 'Website design in Surrey', href: '/locations/metro-vancouver/surrey' },
     ],
   },
 ];

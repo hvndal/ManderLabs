@@ -15,7 +15,6 @@ import {
   OG_IMAGE,
   organizationSchema,
   websiteSchema,
-  serviceSchemas,
   alternates,
 } from '@/lib/seo';
 
@@ -144,13 +143,16 @@ export default function RootLayout({ children }) {
       className={`${hanken.variable} ${jetbrains.variable} ${instrument.variable}`}
     >
       <body>
+        {/* Organization and WebSite are genuinely site-wide entities — every
+            page is part of the same site, published by the same
+            organization — so these two stay here. The six Service schemas
+            used to render from here too, meaning every page (including
+            /legal/privacy and every blog post) carried six Service blocks
+            unrelated to that page's actual topic. Moved to just the pages
+            where a service entity is topically relevant: the homepage, the
+            three pillar pages, /pricing and /work. See those files. */}
         <JsonLd data={organizationSchema(market)} />
         <JsonLd data={websiteSchema} />
-        {/* One Service entity per discipline — these can surface independently
-            of the homepage for "<service> for small business" queries. */}
-        {serviceSchemas(market).map((schema) => (
-          <JsonLd key={schema.name} data={schema} />
-        ))}
         <a
           href="#main"
           className="label-caps sr-only focus:not-sr-only focus:absolute focus:left-4 focus:top-4 focus:z-[100] focus:bg-ink focus:px-4 focus:py-2 focus:text-paper"

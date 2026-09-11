@@ -119,7 +119,11 @@ export default function ContactPage() {
           <p>
             No account managers, no ticket queue. Whoever answers is whoever
             would build the thing — which is also why we reply within one
-            business day rather than instantly.
+            business day rather than instantly. See{' '}
+            <Link href="/about" className="link-underline text-ink">
+              who is actually behind the studio
+            </Link>{' '}
+            before you write in, if that helps.
           </p>
         }
         actions={

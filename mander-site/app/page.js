@@ -15,9 +15,10 @@ import {
 import WorkFeatures from '@/components/WorkFeatures';
 import ContactForm from '@/components/ContactForm';
 import WhatsAppCta from '@/components/WhatsAppCta';
+import JsonLd from '@/components/JsonLd';
 import { TERMS, WORK, CLIENTS, TEAM, BRAND } from '@/lib/content';
 import { getServerMarket } from '@/lib/market-server';
-import { alternates } from '@/lib/seo';
+import { serviceSchemas, alternates } from '@/lib/seo';
 
 export const metadata = {
   alternates: alternates('/'),
@@ -41,6 +42,15 @@ export default function HomePage() {
 
   return (
     <>
+      {/* One Service entity per discipline the homepage actually describes —
+          these can surface independently of the page itself for "<service>
+          for small business" queries. Organization/WebSite stay in the root
+          layout; this is the one page (plus the pillar/pricing/work pages)
+          where naming every service is genuinely on-topic. */}
+      {serviceSchemas(market).map((schema) => (
+        <JsonLd key={schema.name} data={schema} />
+      ))}
+
       {/* ------------------------------------------------------------ Cover */}
       <Cover
         tagline={market.tagline}
@@ -70,7 +80,7 @@ export default function HomePage() {
               <div className="relative aspect-[4/5] w-full overflow-hidden bg-ink">
                 <Image
                   src="/editorial/studio-set.jpg"
-                  alt=""
+                  alt="A designer's desk with a wireframe sketch, notebook and phone — the studio's working setup"
                   fill
                   sizes="(max-width: 1024px) 100vw, 40vw"
                   className="object-cover contrast-[1.08]"

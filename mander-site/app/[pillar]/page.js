@@ -8,10 +8,11 @@ import ContactForm from '@/components/ContactForm';
 import JsonLd from '@/components/JsonLd';
 import { Spread } from '@/components/Editorial';
 import { IndexList, IndexRow, FieldNote, CellGrid, Cell } from '@/components/Swiss';
+import Faq from '@/components/Faq';
 import { PILLARS, getPillar } from '@/lib/pillars';
 import { BRAND } from '@/lib/content';
 import { getServerMarket } from '@/lib/market-server';
-import { breadcrumbSchema, OG_IMAGE, alternates, SITE_URL } from '@/lib/seo';
+import { breadcrumbSchema, faqSchema, serviceSchemas, OG_IMAGE, alternates, SITE_URL } from '@/lib/seo';
 
 /**
  * One page per pillar: /brand, /digital, /growth.
@@ -77,6 +78,13 @@ export default function PillarPage({ params }) {
 
   return (
     <>
+      {/* Same six Service entities named on the homepage/pricing/work — a
+          pillar page is exactly where naming the discipline it covers is
+          on-topic. Organization/WebSite live in the root layout only. */}
+      {serviceSchemas(market).map((schema) => (
+        <JsonLd key={schema.name} data={schema} />
+      ))}
+      {pillar.faqs && <JsonLd data={faqSchema(pillar.faqs)} />}
       <JsonLd
         data={breadcrumbSchema(
           trail.map((t) => ({ name: t.name, path: t.href || `/${pillar.id}` }))
@@ -200,9 +208,27 @@ export default function PillarPage({ params }) {
         </section>
       )}
 
+      {/* ------------------------------------------------------- Questions */}
+      {pillar.faqs && (
+        <section className="border-t border-line bg-paper-2">
+          <Spread index={pillar.engine ? '03' : '02'} folio="Questions">
+            <div className="grid grid-cols-1 gap-gutter lg:grid-cols-12 lg:gap-16">
+              <div className="lg:col-span-4">
+                <h2 className="h-display max-w-[12ch]">{pillar.label.charAt(0)}{pillar.label.slice(1).toLowerCase()}, answered.</h2>
+              </div>
+              <div className="lg:col-span-8">
+                <Reveal>
+                  <Faq items={pillar.faqs} />
+                </Reveal>
+              </div>
+            </div>
+          </Spread>
+        </section>
+      )}
+
       {/* ----------------------------------------------------- The other two */}
       <section className="border-t border-line bg-paper">
-        <Spread index={pillar.engine ? '03' : '02'} folio="The other two">
+        <Spread index={pillar.engine ? '04' : '03'} folio="The other two">
           <h2 className="h-display max-w-[16ch]">
             It works on its own. It works better in sequence.
           </h2>
@@ -229,7 +255,7 @@ export default function PillarPage({ params }) {
 
       {/* ------------------------------------------------------------ Contact */}
       <section id="contact" className="border-t border-line bg-white">
-        <Spread index={pillar.engine ? '04' : '03'} folio="Start here">
+        <Spread index={pillar.engine ? '05' : '04'} folio="Start here">
           <div className="grid grid-cols-1 gap-gutter lg:grid-cols-12 lg:gap-16">
             <div className="lg:col-span-4">
               <h2 className="h-display max-w-[14ch]">

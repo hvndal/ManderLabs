@@ -9,7 +9,7 @@ import JsonLd from '@/components/JsonLd';
 import { Spread, Standfirst } from '@/components/Editorial';
 import { WORK, CLIENTS, BRAND } from '@/lib/content';
 import { getServerMarket } from '@/lib/market-server';
-import { breadcrumbSchema, OG_IMAGE, alternates, SITE_URL } from '@/lib/seo';
+import { breadcrumbSchema, serviceSchemas, OG_IMAGE, alternates, SITE_URL } from '@/lib/seo';
 
 /**
  * Selected work.
@@ -60,6 +60,12 @@ export default function WorkPage() {
 
   return (
     <>
+      {/* Every project on this page is delivered work in one of these six
+          disciplines — naming them here is what lets the page independently
+          answer a "<service> examples" or "<service> portfolio" query. */}
+      {serviceSchemas(market).map((schema) => (
+        <JsonLd key={schema.name} data={schema} />
+      ))}
       <JsonLd
         data={breadcrumbSchema(trail.map((t) => ({ name: t.name, path: t.href || '/work' })))}
       />
