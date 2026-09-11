@@ -38,6 +38,26 @@ module.exports = {
         'accent-ink': '#24506f', // pressed/hover state for accent fills
         'accent-soft': '#f2c230', // the yellow — rules, threads, tints only
         'on-accent': '#ffffff',
+        // Two extensions to the two-accent rule above, both reusing color
+        // that already exists in this brand rather than inventing new hue:
+        //
+        // ROSE is the MANDER logo's own line color, long suppressed via a
+        // CSS filter everywhere the mark renders (see Logo.js) so the site
+        // carried a real brand color it never actually showed. Same rule as
+        // accent-soft: ~1.6:1 on paper, decorative only — washes, thin
+        // rules, fills behind dark or light text at scale, never body copy
+        // or a small mark directly on paper/paper-2. `rose-ink` is a
+        // deepened, more saturated version of the same hue for the rare
+        // case text or an icon needs it at AA contrast — 5.81:1 on paper,
+        // matching accent's own margin.
+        rose: '#e9a8a6',
+        'rose-ink': '#a83c38',
+        // The two extra blues CommunityRate's "flag" stripe already used as
+        // inline hex in two different files — tokenized here so both copies
+        // read from one source instead of two hardcoded strings that can
+        // silently drift apart.
+        'accent-mid': '#4a6da8',
+        'accent-deep': '#1f3a63',
 
         // Back-compat aliases so older class names keep resolving
         primary: '#1b242c',

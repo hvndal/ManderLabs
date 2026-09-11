@@ -99,8 +99,8 @@ export function CommunityRateSection() {
                     happen to be adjacent features. */}
                 <span aria-hidden="true" className="flex h-[3px] w-12">
                   <span className="h-full flex-1 bg-accent" />
-                  <span className="h-full flex-1 bg-[#4a6da8]" />
-                  <span className="h-full flex-1 bg-[#1f3a63]" />
+                  <span className="h-full flex-1 bg-accent-mid" />
+                  <span className="h-full flex-1 bg-accent-deep" />
                 </span>
               </div>
 

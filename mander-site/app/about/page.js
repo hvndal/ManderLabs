@@ -2,7 +2,7 @@ import Link from 'next/link';
 import Reveal from '@/components/Reveal';
 import GridField from '@/components/GridField';
 import Icon from '@/components/Icon';
-import TeamCard from '@/components/TeamCard';
+import TeamShowcase from '@/components/TeamShowcase';
 import WhatsAppCta from '@/components/WhatsAppCta';
 import JsonLd from '@/components/JsonLd';
 import PageHeader from '@/components/PageHeader';
@@ -225,14 +225,17 @@ export default function AboutPage() {
       </section>
 
       {/* ---------------------------------------------------------- Team */}
-      <section className="border-t border-line bg-white">
-        <Spread index="05" folio="Who you work with">
-          <h2 className="h-display max-w-[12ch]">The whole studio.</h2>
-          <div className="mt-12 grid grid-cols-1 gap-gutter sm:grid-cols-2 lg:grid-cols-3">
-            {TEAM.map((member, i) => (
-              <TeamCard key={member.name} member={member} index={i} />
-            ))}
-          </div>
+      {/* Same TeamShowcase as the homepage's team section — one team-display
+          implementation, not a plain grid here and a showcase there.
+          `.h-display` hardcodes text-ink (globals.css) and would be
+          invisible on this bg-ink section, so the heading is spelled out
+          manually instead, same as every other dark section on the site. */}
+      <section className="border-t border-line border-b border-paper/10 bg-ink">
+        <Spread index="05" folio="Who you work with" tone="dark">
+          <h2 className="max-w-[12ch] font-display text-headline-lg-mobile leading-[0.98] text-paper md:text-display-lg">
+            The whole studio.
+          </h2>
+          <TeamShowcase members={TEAM} />
         </Spread>
       </section>
 

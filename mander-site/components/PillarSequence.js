@@ -3,6 +3,15 @@ import Reveal from './Reveal';
 import Icon from './Icon';
 import { PILLARS } from '@/lib/pillars';
 
+// Same three colors as the through-line below, keyed by pillar id so the
+// mobile left rule (each pillar stacked, not laid side by side) carries the
+// identical color story as the desktop through-line segment.
+const PILLAR_BORDER = {
+  brand: 'border-rose',
+  digital: 'border-accent',
+  growth: 'border-accent-soft',
+};
+
 /**
  * BRAND → DIGITAL → GROWTH, set as one connected composition.
  *
@@ -24,15 +33,29 @@ export default function PillarSequence() {
     <div className="mt-16">
       {/* The through-line. Desktop only — on a phone each pillar carries its
           own left rule instead, so the thread is still drawn but never has to
-          span a scroll the reader cannot see the end of. */}
+          span a scroll the reader cannot see the end of.
+
+          Each third of the rule now carries its own pillar's color — brand,
+          digital, growth — the same "rule/thread" use tailwind.config.js's
+          rose and accent-soft tokens are meant for, rather than one uniform
+          line. The node dot stays neutral ink: a 9px fill is too small to
+          safely carry a low-contrast decorative color, so the line does that
+          job instead. */}
       <div className="relative hidden md:block">
-        <div className="absolute left-0 right-0 top-[7px] h-px bg-line" aria-hidden="true" />
+        <div
+          className="absolute left-0 right-0 top-[7px] grid h-px grid-cols-3 gap-gutter"
+          aria-hidden="true"
+        >
+          <span className="h-px bg-rose" />
+          <span className="h-px bg-accent" />
+          <span className="h-px bg-accent-soft" />
+        </div>
         <div className="relative grid grid-cols-3 gap-gutter">
           {PILLARS.map((pillar) => (
             <div key={pillar.id} className="flex items-start gap-3">
               <span
                 aria-hidden="true"
-                className="mt-[3px] h-[9px] w-[9px] shrink-0 bg-accent"
+                className="mt-[3px] h-[9px] w-[9px] shrink-0 bg-ink"
               />
               <span className="rail text-ink-mute">{pillar.index}</span>
             </div>
@@ -43,7 +66,11 @@ export default function PillarSequence() {
       <div className="grid grid-cols-1 md:grid-cols-3 md:gap-gutter">
         {PILLARS.map((pillar, i) => (
           <Reveal key={pillar.id} delay={i * 90}>
-            <div className="border-l border-line pl-5 pt-6 md:border-l-0 md:pl-0 md:pt-7">
+            <div
+              className={`border-l-2 pl-5 pt-6 md:border-l-0 md:pl-0 md:pt-7 ${
+                PILLAR_BORDER[pillar.id] || 'border-line'
+              }`}
+            >
               {/* The number only appears here on a phone — on desktop it is
                   already sitting on the rule above. */}
               <span className="rail mb-3 block text-ink-mute md:hidden">

@@ -25,14 +25,13 @@ import { Caption } from './Editorial';
  * the line on a phone, so the middle item is hidden below `sm` rather than
  * allowed to wrap into a paragraph.
  *
- * `media` is optional and opt-in: a still from the marble footage
- * (public/marble-poster.jpg), graded to grayscale exactly as the homepage
- * cover grades its own footage, run as a right-hand column on desktop. Most
- * interior pages stay quiet with just GridField — this exists for the
- * location pages specifically, which had no photography at all despite
- * being the pages most likely to sit next to a search result. Never behind
- * the text: a column beside it, so there is no legibility question to
- * answer.
+ * `media` is optional and opt-in: real photography (or the marble still as a
+ * fallback), shown in color with a light contrast lift, run as a right-hand
+ * column on desktop. Most interior pages stay quiet with just GridField —
+ * this exists for the location pages specifically, which had no photography
+ * at all despite being the pages most likely to sit next to a search
+ * result. Never behind the text: a column beside it, so there is no
+ * legibility question to answer.
  */
 export default function PageHeader({
   eyebrow,
@@ -133,7 +132,7 @@ export default function PageHeader({
                   alt=""
                   fill
                   sizes="(max-width: 1024px) 100vw, 40vw"
-                  className="object-cover grayscale contrast-[1.08]"
+                  className="object-cover contrast-[1.08]"
                 />
               </div>
               {mediaCaption && <Caption figure="01">{mediaCaption}</Caption>}

@@ -1,9 +1,11 @@
 import Link from 'next/link';
+import Image from 'next/image';
 import Reveal from '@/components/Reveal';
 import Icon from '@/components/Icon';
 import Cover from '@/components/Cover';
 import ClientMarks from '@/components/ClientMarks';
 import PillarSequence from '@/components/PillarSequence';
+import TeamShowcase from '@/components/TeamShowcase';
 import { Spread, PullQuote, Standfirst } from '@/components/Editorial';
 import {
   CommunityRateSection,
@@ -13,7 +15,7 @@ import {
 import WorkFeatures from '@/components/WorkFeatures';
 import ContactForm from '@/components/ContactForm';
 import WhatsAppCta from '@/components/WhatsAppCta';
-import { TERMS, WORK, CLIENTS, BRAND } from '@/lib/content';
+import { TERMS, WORK, CLIENTS, TEAM, BRAND } from '@/lib/content';
 import { getServerMarket } from '@/lib/market-server';
 import { alternates } from '@/lib/seo';
 
@@ -47,7 +49,57 @@ export default function HomePage() {
         standfirst={market.colophon.body}
       />
 
-      <ClientMarks clients={CLIENTS} />
+      <div className="bg-paper-2">
+        <ClientMarks clients={CLIENTS} />
+      </div>
+
+      {/* -------------------------------------------------- Who we are */}
+      {/* A homepage-exclusive image: most of the recovered photos were only
+          ever placed on interior pages, which is how a site ends up with
+          real photography and a photo-free homepage at the same time.
+          studio-set.jpg over manifesto-desktop.jpg specifically — the latter
+          is a genuinely black-and-white photo (not a CSS artifact) of a real
+          third-party storefront, wrong on two counts for the one section
+          meant to prove this page isn't monochrome. Copy below is adapted
+          from the About page's own intro rather than stating anything new —
+          same facts, a different first stop. */}
+      <section className="border-b border-line bg-paper">
+        <div className="container-max grid grid-cols-1 items-center gap-10 stack-y lg:grid-cols-12 lg:gap-16">
+          <div className="lg:col-span-5">
+            <Reveal>
+              <div className="relative aspect-[4/5] w-full overflow-hidden bg-ink">
+                <Image
+                  src="/editorial/studio-set.jpg"
+                  alt=""
+                  fill
+                  sizes="(max-width: 1024px) 100vw, 40vw"
+                  className="object-cover contrast-[1.08]"
+                />
+              </div>
+            </Reveal>
+          </div>
+          <div className="lg:col-span-7">
+            <Reveal delay={80}>
+              <span className="eyebrow">Who we are</span>
+              <h2 className="h-display max-w-[16ch]">
+                A small studio that ships finished work.
+              </h2>
+              <Standfirst className="mt-8" dropCap>
+                MANDER is a remote design and development studio building
+                websites, Android apps and local search presence for small
+                and growing businesses across {market.region}. We are
+                deliberately small — there is no account layer between you
+                and the people building the thing, which is most of why the
+                prices look the way they do and all of why the work does.
+              </Standfirst>
+              <Link href="/about" className="link-underline label-caps mt-8 inline-flex items-center gap-2 text-ink">
+                More about the studio
+                <Icon name="arrow" className="h-4 w-4" strokeWidth={2} />
+              </Link>
+            </Reveal>
+          </div>
+        </div>
+      </section>
 
       {/* --------------------------------------------------- 01 · The offer */}
       {/* Six services in a list became three in a sequence. The list read as
@@ -63,6 +115,29 @@ export default function HomePage() {
         <PillarSequence />
       </Spread>
 
+      {/* ------------------------------------------- Editorial image break */}
+      {/* studio-craft.jpg was blurred in an earlier pass — its un-blurred
+          original staged a fake client mockup, so it now exists purely as
+          abstract texture with nothing legible in it, which is exactly what
+          a full-bleed breather section needs. */}
+      <section className="relative border-b border-line bg-ink">
+        <div className="relative aspect-[4/3] w-full overflow-hidden sm:aspect-[16/9] md:aspect-[21/9]">
+          <Image
+            src="/editorial/studio-craft.jpg"
+            alt=""
+            fill
+            sizes="100vw"
+            className="object-cover contrast-[1.08]"
+          />
+          <div className="absolute inset-0 bg-gradient-to-t from-ink/90 via-ink/25 to-transparent" />
+          <div className="container-max absolute inset-x-0 bottom-0 pb-10 md:pb-16">
+            <PullQuote tone="dark">
+              Designed and built by the people who answer your email.
+            </PullQuote>
+          </div>
+        </div>
+      </section>
+
       {/* -------------------------------------------------- 02 · The work */}
       <Spread id="work" index="02" folio="Selected work" className="!pt-0">
         <div className="flex flex-wrap items-end justify-between gap-6">
@@ -77,8 +152,13 @@ export default function HomePage() {
         </div>
       </Spread>
 
-      {/* -------------------------------------------------- 03 · The terms */}
-      <section className="border-y border-line bg-paper-2">
+      {/* -------------------------------- 03 · The terms / why choose us */}
+      {/* Was flat bg-paper-2 — the same neutral every other section on the
+          page already sits on. A warm wash (rose into the yellow, both
+          already-established brand colors, both decorative-only per
+          tailwind.config.js) makes this the page's first real color block
+          rather than another gray card. */}
+      <section className="border-y border-line bg-gradient-to-br from-rose/[0.14] via-paper to-accent-soft/[0.14]">
         <div className="container-max grid grid-cols-1 gap-y-10 stack-y md:grid-cols-12 md:gap-gutter">
           <div className="md:col-span-5">
             <PullQuote>Fixed price. Fixed scope. You see it before you approve it.</PullQuote>
@@ -100,13 +180,33 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* -------------------------------------------------- 04 · The plans */}
+      {/* ---------------------------------------------------------- Team */}
+      {/* Used to be a text link reading "Who you would be working with",
+          pointing at section 5-of-5 on /about — genuinely buried. The whole
+          studio, on the homepage, in color, on its own dark stage: the last
+          credibility beat before the offer. `.h-display` hardcodes text-ink
+          (globals.css) and would go invisible on this bg-ink section, so the
+          heading below is spelled out manually instead of using that class —
+          the same thing every other dark section on this page already does. */}
+      <section className="border-b border-line bg-ink bg-gradient-to-b from-ink to-accent-deep text-paper">
+        <Spread index="04" folio="Who you'd work with" tone="dark">
+          <div className="flex flex-wrap items-end justify-between gap-6">
+            <h2 className="max-w-[14ch] font-display text-headline-lg-mobile leading-[0.98] text-paper md:text-display-lg">
+              The whole studio.
+            </h2>
+            <span className="rail text-paper/60">{TEAM.length} people</span>
+          </div>
+          <TeamShowcase members={TEAM} />
+        </Spread>
+      </section>
+
+      {/* -------------------------------------------------- 05 · The plans */}
       {/* Was four plan names in a row of links, with everything that makes a
           plan a plan — how many pages, how long, how many rounds, who it is
           for — buried on /pricing. Prices are quoted rather than published,
           which makes it doubly important that the shape of the offer is
           legible without clicking anything. */}
-      <Spread id="pricing" index="04" folio="Plans">
+      <Spread id="pricing" index="05" folio="Plans">
         <h2 className="h-display max-w-[13ch]">What you get, and how it is priced.</h2>
         <Standfirst className="mt-8">
           Every project is quoted in writing against a written scope before any
@@ -191,9 +291,9 @@ export default function HomePage() {
       {/* ------------------------------------------------ Community Rate · 20% */}
       <CommunityRateSection />
 
-      {/* ----------------------------------------------------- 07 · Contact */}
+      {/* ----------------------------------------------------- 06 · Contact */}
       <section className="border-t border-line bg-paper">
-        <Spread id="contact" index="05" folio="Get in touch">
+        <Spread id="contact" index="06" folio="Get in touch">
           <div className="grid grid-cols-1 gap-gutter lg:grid-cols-12 lg:gap-16">
             <div className="lg:col-span-5">
               <h2 className="h-display max-w-[12ch]">Tell us about the project.</h2>
@@ -201,11 +301,14 @@ export default function HomePage() {
                 A few lines is enough to start. We reply within one business day,
                 and there is no obligation attached to asking.
               </Standfirst>
-              {/* The team page is one click away rather than five portraits
-                  on the homepage — see /about. */}
+              {/* The team is on this page now (see the section above), so
+                  the old "who you'd be working with → /about" pointer is
+                  gone. WhatsAppCta renders nothing outside India, so it
+                  can't be the only thing in this row — the work link keeps
+                  the row non-empty for every other market too. */}
               <Reveal delay={80} className="mt-8 flex flex-wrap items-center gap-x-9 gap-y-4">
-                <Link href="/about" className="btn-outline">
-                  Who you would be working with
+                <Link href="/work" className="btn-outline">
+                  See more of our work
                 </Link>
                 <WhatsAppCta tone="link" location="home-contact" />
               </Reveal>

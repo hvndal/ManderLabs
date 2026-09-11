@@ -170,12 +170,15 @@ function CoverImage() {
   }, []);
 
   return (
-    // Graded, not shown raw. The source footage is lit magenta and green —
-    // fine as a moving texture behind type, garish beside a slate-and-paper
-    // palette when it is the only photograph on the page. Monochrome with a
-    // little contrast under it reads as editorial photography and lets the
-    // type carry the colour, which is the whole argument of the design.
-    <div className="relative aspect-[3/2] w-full overflow-hidden bg-ink [&_img]:grayscale [&_img]:contrast-[1.08] [&_video]:grayscale [&_video]:contrast-[1.08] sm:aspect-[16/10] lg:aspect-[3/4]">
+    // Graded, not shown raw and not flattened to grayscale either. The
+    // source footage is lit magenta and green — genuinely garish next to
+    // the rest of the page if it ran unedited, but a full desaturation was
+    // overcorrecting: it made this the one photograph on the homepage that
+    // looked like a black-and-white print rather than the brand's own
+    // color. A partial desaturation plus a navy multiply wash pulls the
+    // clashing RGB lighting into the site's own accent-deep family instead
+    // — still visibly a color photo, just cohered to the palette around it.
+    <div className="relative aspect-[3/2] w-full overflow-hidden bg-ink [&_img]:saturate-[0.6] [&_img]:contrast-[1.1] [&_video]:saturate-[0.6] [&_video]:contrast-[1.1] sm:aspect-[16/10] lg:aspect-[3/4]">
       {canPlay ? (
         <video
           ref={ref}
@@ -198,6 +201,10 @@ function CoverImage() {
           className="object-cover"
         />
       )}
+      <div
+        aria-hidden="true"
+        className="pointer-events-none absolute inset-0 bg-accent-deep/25 mix-blend-multiply"
+      />
     </div>
   );
 }

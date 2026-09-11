@@ -23,9 +23,25 @@ function initials(name) {
  * half outside the frame. Used on exactly one member — a grid of six identical
  * portraits is a contact sheet, and one broken frame turns it into a composition.
  * It only works while it stays the exception, so resist applying it twice.
+ *
+ * Portraits render in real color, not grayscale-until-hover — that treatment
+ * looked intentional on a mouse and simply looked gray on a phone, which is
+ * most of this site's traffic. `group-hover:saturate-[1.15]` keeps a small
+ * desktop delight without needing an idle desaturated state to recover from.
+ *
+ * `tone="dark"` is for placing the card on a `bg-ink` section (the homepage
+ * showcase) instead of the default light card grid on `/about`; it swaps the
+ * name/role/bio colors to their paper-on-ink equivalents. `sizes` is exposed
+ * so a caller using a wider column (fewer per row) can ask next/image for a
+ * larger source instead of inheriting the narrower default hint.
  */
-export default function TeamCard({ member }) {
+export default function TeamCard({
+  member,
+  tone = 'light',
+  sizes = '(max-width: 640px) 45vw, (max-width: 1024px) 30vw, 220px',
+}) {
   const half = member.crop === 'half';
+  const dark = tone === 'dark';
 
   return (
     <article className="group flex h-full w-full flex-col">
@@ -39,9 +55,9 @@ export default function TeamCard({ member }) {
             // alt text is read in place of the image, not alongside it.
             alt={`${member.name} — ${member.role}`}
             fill
-            sizes="(max-width: 640px) 45vw, (max-width: 1024px) 30vw, 220px"
+            sizes={sizes}
             style={half ? { objectPosition: '82% 22%' } : undefined}
-            className={`object-cover grayscale transition-all duration-700 ease-premium group-hover:grayscale-0 ${
+            className={`object-cover transition-transform duration-700 ease-premium group-hover:saturate-[1.15] ${
               half
                 ? 'scale-[1.35] group-hover:scale-[1.4]'
                 : 'object-top group-hover:scale-[1.03]'
@@ -64,14 +80,24 @@ export default function TeamCard({ member }) {
           step with its neighbours, and in a grid of five that misalignment is
           the first thing the eye catches. Clamping costs a few words of bio
           and buys a shared baseline across every card in the row. */}
-      <h3 className="mt-4 text-body-lg font-medium text-ink">{member.name}</h3>
-      <p className="label-caps mt-1.5 flex min-h-[2.4em] items-start text-ink-mute">
+      <h3 className={`mt-4 text-body-lg font-medium ${dark ? 'text-paper' : 'text-ink'}`}>
+        {member.name}
+      </h3>
+      <p
+        className={`label-caps mt-1.5 flex min-h-[2.4em] items-start ${
+          dark ? 'text-paper/60' : 'text-ink-mute'
+        }`}
+      >
         <span>
           {member.role}
           {member.location ? ` · ${member.location}` : ''}
         </span>
       </p>
-      <p className="mt-2.5 line-clamp-4 text-label-sm leading-relaxed text-ink-soft">
+      <p
+        className={`mt-2.5 line-clamp-4 text-label-sm leading-relaxed ${
+          dark ? 'text-paper/75' : 'text-ink-soft'
+        }`}
+      >
         {member.bio}
       </p>
 
@@ -82,7 +108,13 @@ export default function TeamCard({ member }) {
           href={member.link.href}
           target="_blank"
           rel="noreferrer noopener"
-          className="link-underline label-caps mt-auto inline-flex w-fit items-center gap-1.5 pt-3 text-accent"
+          className={`link-underline label-caps mt-auto inline-flex w-fit items-center gap-1.5 pt-3 ${
+            // Raw `rose` rather than the deepened `rose-ink`: on the dark
+            // field this is the ~8:1 contrast case the color was suppressed
+            // for everywhere else (see tailwind.config.js), not the ~1.6:1
+            // one — the one place in the system it's meant to carry text.
+            dark ? 'text-rose' : 'text-accent'
+          }`}
         >
           {member.link.label}
           <span aria-hidden="true">↗</span>

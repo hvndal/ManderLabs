@@ -141,8 +141,8 @@ export default function CommunityRateDialog({ open, onClose }) {
                 adjacent features. */}
             <div aria-hidden="true" className="flex h-[3px] w-full shrink-0">
               <span className="h-full flex-1 bg-accent" />
-              <span className="h-full flex-1 bg-[#4a6da8]" />
-              <span className="h-full flex-1 bg-[#1f3a63]" />
+              <span className="h-full flex-1 bg-accent-mid" />
+              <span className="h-full flex-1 bg-accent-deep" />
             </div>
 
             <div className="flex items-start justify-between gap-6 px-7 pt-7 md:px-10 md:pt-9">
