@@ -477,7 +477,7 @@ export const FAQS = [
   },
   {
     q: 'Where are you based, and does it matter?',
-    a: 'The team is split between Langley, British Columbia and Maynard, Massachusetts, and we deliver every project remotely across both countries. In practice that means you get the same senior people whether you are in Vancouver, Boston, Austin or a town of four thousand — and we cover both Pacific and Eastern hours between us.',
+    a: 'The team is split between Langley, British Columbia, Maynard, Massachusetts and Portland, Maine, and we deliver every project remotely. In practice that means you get the same senior people whether you are in Vancouver, Chicago, Austin or a town of four thousand — and we cover both Pacific and Eastern hours between us.',
   },
   {
     q: 'Can you do local SEO if you are not in my town?',
@@ -597,12 +597,14 @@ export const WORK = [
     href: 'https://nouvellemaison.vercel.app/',
   },
 
-  // Kept for the Massachusetts footprint, which is worth real search value,
-  // but deliberately held back: the owner has since replaced this build with
-  // his own design, so the live site no longer shows our work. No link out —
-  // linking it would attribute his redesign to us — and no screenshot, for
-  // the same reason. The stock photograph stays. Restore both only if the
-  // site comes back under our design.
+  // Kept as a historical record of real delivered work, not as marketing for
+  // a currently-active region — Massachusetts and Rhode Island are no longer
+  // marketed local-SEO regions (see lib/locations.js), but that doesn't make
+  // this engagement untrue. Deliberately held back on image/link: the owner
+  // has since replaced this build with his own design, so the live site no
+  // longer shows our work. No link out — linking it would attribute his
+  // redesign to us — and no screenshot, for the same reason. Restore both
+  // only if the site comes back under our design.
   {
     name: 'Waste Universe',
     sector: 'Waste Management',
@@ -699,15 +701,16 @@ export const WORK = [
 export const CLIENTS = WORK.filter((project) => project.kind !== 'studio');
 
 // --- Team -----------------------------------------------------------------
-// Five people: the founder in Langley, BC and the rest out of Maynard, MA.
-// Concentrating them in one town is deliberate — a scattered list of six
-// cities across a five-person company reads as stock-photo staffing, and the
-// whole pitch here is "small, senior, reachable".
+// Six people across three towns: the founder in Langley, BC; Tyler, Sophie
+// and Evan out of Maynard, MA; Danielle and Nick out of Portland, ME. Kept to
+// three towns rather than scattering across six cities for a six-person
+// company, which would read as stock-photo staffing — the pitch here is
+// "small, senior, reachable".
 //
-// Three of the five build the work (Herman, Danielle, Tyler), one runs the
-// platform side (Sophie), one owns the client relationship (Evan) — so the
-// team actually accounts for design and engineering rather than implying a
-// company of marketers.
+// Four of the six build the work (Herman, Danielle, Tyler, Nick), one runs
+// the platform side (Sophie), one owns the client relationship (Evan) — so
+// the team actually accounts for design and engineering rather than implying
+// a company of marketers.
 //
 // `crop` is an art-direction hint consumed by TeamCard: 'half' pushes the
 // subject to the frame edge so they sit half out of it.
@@ -723,11 +726,22 @@ export const TEAM = [
     link: { label: 'Personal portfolio', href: BRAND.portfolio },
   },
   {
-    name: 'Danielle Brooks',
+    name: 'Danielle Holtzhauer',
     role: 'Creative Director',
-    location: 'Maynard, MA',
+    location: 'Portland, ME',
     bio: 'Came out of print — three years art-directing an independent design quarterly. Sets everything on a grid first and adds colour last, if at all.',
     photo: '/team/danielle.jpg',
+  },
+  {
+    // No photo on file yet — photo: null renders the initials placeholder
+    // (see the note above). Bio is kept to confirmed facts only (role,
+    // location) rather than the fuller style the other entries use, since no
+    // further biographical detail has been provided.
+    name: 'Nick Warren',
+    role: 'Web Designer',
+    location: 'Portland, ME',
+    bio: 'Web designer based in Portland, Maine.',
+    photo: null,
   },
   {
     name: 'Tyler Nakamura',

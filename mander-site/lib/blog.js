@@ -1,11 +1,14 @@
 import { BRAND } from './content';
 
 // --- Journal ---------------------------------------------------------------
-// The 17 location pages are the thing this site most needs to rank, and they
-// have no inbound links pointing at them — which is the single reason local
-// pages usually fail. These posts exist to fix that from the inside: each one
-// is genuinely useful on its own terms, and each one links into the location
-// pages with the anchor text those pages are trying to win.
+// The Metro Vancouver location pages are the thing this site most needs to
+// rank, and they have no inbound links pointing at them — which is the
+// single reason local pages usually fail. These posts exist to fix that from
+// the inside: each one is genuinely useful on its own terms, and each one
+// links into the location pages with the anchor text those pages are trying
+// to win. (A Massachusetts-focused post used to live here, built for the
+// same reason — retired along with the Massachusetts location pages it
+// existed to support; see lib/locations.js.)
 //
 // Rules for anything added here, because a blog is the easiest place on a site
 // to start quietly lying:
@@ -28,86 +31,6 @@ export const BLOG_UPDATED = 'August 2026';
 const AUTHOR = { name: 'Herman', role: 'Founder & Design Lead' };
 
 export const POSTS = [
-  {
-    slug: 'small-business-website-cost-massachusetts',
-    title: 'What a small-business website costs in Massachusetts',
-    nav: 'Website costs in Massachusetts',
-    date: '2026-08-18',
-    readingTime: '6 min',
-    tag: 'Pricing',
-    description:
-      'Real numbers for a Massachusetts small-business website in 2026 — what each price band actually buys, and where the money goes.',
-    lede: 'Almost nobody publishes web design prices, which is why every business owner asking this question gets a different answer. Here are ours, and what sits behind each number.',
-    sections: [
-      {
-        h: 'Why nobody will give you a price',
-        p: [
-          'Ask five studios what a website costs and you will get five requests for a discovery call. There is a reason for it that is not entirely cynical: scope genuinely varies, and a five-page site for a dental practice is a different job from a booking platform for a restaurant group. But the practical effect is that a business owner cannot compare anything, and ends up choosing on whoever answered the phone most convincingly.',
-          'We publish fixed prices instead. Below is what each band buys, and — more usefully — what it does not.',
-        ],
-      },
-      {
-        h: 'Under $500: a credible presence',
-        p: [
-          'At this level you are buying existence, not acquisition. A one-page site with a contact form, a Google Maps link and a mobile-first build establishes that you are a real business when somebody searches your name after a referral. Our Launch tier sits here and takes about two weeks.',
-          'What it does not do is find you customers. There is no meaningful SEO at this level and no integration with anything. If your problem is "people hear about us and then cannot find us online", this solves it completely. If your problem is "not enough people hear about us", it will not move at all.',
-        ],
-      },
-      {
-        h: '$500 to $900: the range most businesses actually need',
-        p: [
-          'This is where the majority of Massachusetts small businesses land, and it covers two quite different products.',
-          'Toward the lower end of this band you are buying a proper multi-page site — five pages, copywriting support, enquiry forms, basic technical SEO. It is a brochure that does its job well. Toward the upper end buys the same thing plus the machinery that makes it findable: local SEO, Google Business Profile optimisation, Search Console and Analytics setup, local keyword research, schema, and a booking or CRM integration.',
-          'The gap between those two numbers is almost entirely the difference between a site people can find when they already know your name, and a site that brings you people who did not. For a business in a competitive market like Boston or Cambridge, that gap is the whole point.',
-        ],
-        ul: [
-          'Choose the lower end if you are a referral-driven business and mostly need to look legitimate',
-          'Choose the higher end if customers search a category before they choose a supplier',
-          'The deciding question is not budget — it is whether search is how your customers find people like you',
-        ],
-      },
-      {
-        h: '$1,500 and up: custom functionality',
-        p: [
-          'Past this point you are paying for things a standard site cannot do — e-commerce, API integrations into software you already run, custom workflows, multi-location structure. Our Business Pro tier sits here and runs six to ten weeks depending on what is actually being built.',
-          'Be suspicious of anyone who recommends this band before asking what software your business already uses. The honest version of this conversation starts with your operations, not with a package.',
-        ],
-      },
-      {
-        h: 'The costs that are not the build',
-        p: [
-          'A build price is not a total cost of ownership, and this is where quoted numbers usually get misleading.',
-          'Hosting, security, backups and small content edits are ongoing. We quote that as an optional Care Plan, month to month, and plenty of clients do not take it. Domain registration is yours and typically runs $15 to $25 a year. If you need paid advertising, that is a separate budget entirely and it is not a website cost.',
-          'The number that matters is the one that includes all of it, and any studio should be able to give you that in a sentence.',
-        ],
-      },
-      {
-        h: 'What actually drives the price',
-        ul: [
-          'Page count, but far less than people expect — page ten costs much less than page one',
-          'Whether copy exists. Writing it is often the single biggest hidden cost of a build',
-          'Integrations. A booking system or CRM connection adds real engineering time',
-          'Whether the site needs to rank, which is a different discipline from design',
-          'Revision rounds, which is why we cap and state them rather than leaving it open',
-        ],
-      },
-      {
-        h: 'A note on the cheapest option',
-        p: [
-          'Massachusetts is not one market. What is a reasonable spend in Newton is not a reasonable spend in Brockton, and pretending otherwise is how studios end up quoting one number and building for a different city.',
-          'We run a Community Rate — 20% off any build, granted on trust rather than proof — for exactly that reason. It is not a promotion and it does not expire. If the price is the only thing standing between you and a working website, ask for it.',
-        ],
-      },
-    ],
-    related: [
-      { label: 'Website design in Boston', href: '/locations/massachusetts/boston' },
-      { label: 'Website design in Worcester', href: '/locations/massachusetts/worcester' },
-      { label: 'Website design in Springfield', href: '/locations/massachusetts/springfield' },
-      { label: 'Website design in Brockton', href: '/locations/massachusetts/brockton' },
-      { label: 'See all pricing', href: '/pricing' },
-    ],
-  },
-
   {
     slug: 'local-seo-checklist-small-business',
     title: 'The local SEO checklist we run on every build',
@@ -188,9 +111,9 @@ export const POSTS = [
       },
     ],
     related: [
-      { label: 'Website design in Providence', href: '/locations/rhode-island/providence' },
       { label: 'Website design in Vancouver', href: '/locations/metro-vancouver/vancouver' },
-      { label: 'Website design in Cambridge', href: '/locations/massachusetts/cambridge' },
+      { label: 'Website design in Burnaby', href: '/locations/metro-vancouver/burnaby' },
+      { label: 'Website design in Richmond', href: '/locations/metro-vancouver/richmond' },
       { label: 'Every market we cover', href: '/locations' },
     ],
   },

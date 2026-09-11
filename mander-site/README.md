@@ -114,7 +114,7 @@ components/
 lib/
   content.js               Copy, BRAND, NAV_LINKS, TIERS/APP_TIERS, TERMS, PROCESS, WORK, CLIENTS, TEAM, CAREERS, FAQS
   pillars.js                 BRAND/DIGITAL/GROWTH content, including Growth's demand-engine steps
-  locations.js                Massachusetts, Rhode Island and Metro Vancouver region/city data
+  locations.js                Metro Vancouver region/city data
   markets/                    us.js, in.js, geo.js, index.js, location-markets.js — see Markets below
   market-server.js            getServerMarket()/getServerRegion() for server components
   forms.js                     submitForm() — Web3Forms
@@ -159,21 +159,24 @@ curl -s localhost:3000/pricing                                 # everyone else
 
 Or use the footer's country picker in a browser.
 
-## Local pages — Metro Vancouver, Massachusetts and Rhode Island
+## Local pages — Metro Vancouver
 
-`/locations/<region>/<city>` covers three regions in `lib/locations.js`.
-Massachusetts and Rhode Island are tied to a real client (Waste Universe,
-serviced across both states); Metro Vancouver is the studio's own home
-market. Adding a city is a data change in `lib/locations.js` — no route or
+`/locations/<region>/<city>` covers one region in `lib/locations.js`: Metro
+Vancouver, the studio's own home market. Massachusetts and Rhode Island used
+to have pages here too, tied to a real client (Waste Universe, serviced
+across both states) — retired so the site markets local-SEO presence only
+where it's actually the focus. The business still takes remote work anywhere
+in the US and Canada; it just isn't a set of dedicated city pages outside
+Vancouver. Adding a city is a data change in `lib/locations.js` — no route or
 component edits.
 
 **Location pages are resolved by URL, not by IP.** The homepage, pricing and
 quote pages follow the visitor's country; a page *about a place* follows the
-place, for everyone, crawler included — `/locations/massachusetts/boston`
-quotes USD to a visitor in Vancouver, `/locations/metro-vancouver/vancouver`
-quotes the same to a visitor in Boston. Googlebot crawls from the United
-States, so an IP-resolved page would be indexed showing the wrong market's
-figures and could never rank for its own city.
+place, for everyone, crawler included — `/locations/metro-vancouver/vancouver`
+quotes the same figures to a visitor in Toronto as to one in Seattle.
+Googlebot crawls from the United States, so an IP-resolved page would be
+indexed showing the wrong market's figures and could never rank for its own
+city.
 
 **The doorway-page rule binds.** A city gets a page only when it has a
 genuinely distinct intro paragraph and industry list, not a template with

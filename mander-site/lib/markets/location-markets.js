@@ -11,10 +11,11 @@
 // without deciding its market fails loudly instead of silently serving the
 // wrong currency.
 export const LOCATION_MARKETS = {
-  // North America. India has no location pages — the India market is an
-  // IP-resolved experience only, never a set of indexed city pages.
-  massachusetts: 'us',
-  'rhode-island': 'us',
+  // Metro Vancouver is the one dedicated local-SEO region. Massachusetts and
+  // Rhode Island used to have entries here too, retired along with their
+  // pages in lib/locations.js. India has no location pages — the India
+  // market is an IP-resolved experience only, never a set of indexed city
+  // pages.
   'metro-vancouver': 'us',
 };
 

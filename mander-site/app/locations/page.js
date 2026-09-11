@@ -9,9 +9,9 @@ import { REGIONS } from '@/lib/locations';
 import { BRAND } from '@/lib/content';
 import { breadcrumbSchema, OG_IMAGE, alternates } from '@/lib/seo';
 
-const TITLE = 'Locations — Metro Vancouver, MA & RI';
+const TITLE = 'Locations — Metro Vancouver';
 const DESCRIPTION =
-  'Remote website design and local SEO in Metro Vancouver, Massachusetts and Rhode Island — Vancouver, Boston, Providence and more. Fixed-price, quoted in writing.';
+  'Brand, web design and local SEO for Metro Vancouver — Vancouver, Burnaby, Richmond, Surrey and more. Fixed-price, quoted in writing.';
 
 export const metadata = {
   title: TITLE,
@@ -43,10 +43,14 @@ const trail = [{ name: 'MANDER', href: '/' }, { name: 'Locations' }];
 // pricing, WhatsApp), never a set of indexed city pages — see
 // lib/markets/location-markets.js. This page used to advertise India
 // location pages that didn't exist; don't reintroduce that.
-const COUNTRY_ORDER = [
-  { code: 'US', name: 'United States' },
-  { code: 'CA', name: 'Canada' },
-];
+//
+// US is not listed either, for the same reason: Massachusetts and Rhode
+// Island were retired as marketed local-SEO regions (Metro Vancouver is the
+// one dedicated region now), so there is currently no US entry in REGIONS
+// for this to group. The `.filter` below already drops any country with
+// zero regions automatically — this array just doesn't list one that isn't
+// there. Add it back the moment a real US region exists again.
+const COUNTRY_ORDER = [{ code: 'CA', name: 'Canada' }];
 
 const GROUPS = COUNTRY_ORDER.map((country) => ({
   ...country,
@@ -61,19 +65,21 @@ export default function LocationsHubPage() {
       />
 
       <PageHeader
-        meta={['Locations', 'U.S. · Canada', `${GROUPS.length} countries`]}
+        meta={['Locations', 'Metro Vancouver', 'Remote across US & CA']}
         eyebrow="Locations"
-        title="Website design across Metro Vancouver and the U.S."
+        title="Brand, digital and growth for Metro Vancouver."
         trail={trail}
         media
         mediaSrc="/editorial/urban-aerial.jpg"
         mediaCaption="MANDER — remote studio, wherever you are."
         lede={
           <p>
-            MANDER works remotely with small and mid-sized businesses across
-            the United States and Canada — the process doesn&apos;t change
-            based on your address, and neither does the fixed-scope quote.
-            These are the markets with dedicated local pages so far.
+            Metro Vancouver is where MANDER is based and the one region with
+            dedicated local pages. We also take on remote work for small and
+            mid-sized businesses anywhere in the United States and Canada —
+            the process and the fixed-scope quote don&apos;t change based on
+            your address — it just isn&apos;t marketed city by city outside
+            Vancouver.
           </p>
         }
       />

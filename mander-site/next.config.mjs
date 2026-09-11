@@ -133,6 +133,32 @@ const nextConfig = {
           permanent: true,
         },
       ]),
+      // Massachusetts and Rhode Island are retired as marketed local-SEO
+      // regions — Metro Vancouver is the one dedicated local region now.
+      // The business still takes remote work across the US and Canada; it
+      // just no longer has indexed city-by-city pages outside Vancouver.
+      // Same reasoning as the Indian regions above: these URLs were in a
+      // sitemap Google already crawled, so they redirect rather than 404.
+      ...['massachusetts', 'rhode-island'].flatMap((region) => [
+        {
+          source: `/locations/${region}`,
+          destination: '/locations',
+          permanent: true,
+        },
+        {
+          source: `/locations/${region}/:city`,
+          destination: '/locations',
+          permanent: true,
+        },
+      ]),
+      // The Massachusetts-cost blog post existed specifically to carry link
+      // equity into the now-retired Massachusetts location pages — its
+      // entire premise no longer applies.
+      {
+        source: '/blog/small-business-website-cost-massachusetts',
+        destination: '/blog',
+        permanent: true,
+      },
     ];
   },
   async headers() {

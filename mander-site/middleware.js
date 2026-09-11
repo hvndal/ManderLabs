@@ -60,8 +60,8 @@ export function middleware(request) {
   // A page about a place is resolved by the place, not by who is reading it.
   // /locations/punjab/mohali quotes rupees to everyone including the US-based
   // crawler that decides whether it can rank in India, and /locations/
-  // massachusetts/boston quotes dollars to everyone including a visitor in
-  // Delhi. Deciding it here rather than inside the page is what keeps the
+  // metro-vancouver/vancouver quotes dollars to everyone including a visitor
+  // in Delhi. Deciding it here rather than inside the page is what keeps the
   // header, the footer, the sticky contact bar and the JSON-LD agreeing with
   // the page body — they all read the market off the request, and a page that
   // said rupees while its own structured data said dollars would be a
