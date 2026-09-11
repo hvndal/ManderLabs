@@ -179,6 +179,7 @@ export function articleSchema(post) {
       name: 'Herman',
       jobTitle: 'Founder & Design Lead',
       url: BRAND.portfolio,
+      email: BRAND.email,
     },
     publisher: { '@id': `${SITE_URL}/#organization` },
   };
@@ -312,11 +313,17 @@ export function organizationSchema(marketOrId) {
       areaServed: schema.countryCodes,
       availableLanguage: ['English'],
     },
+    // No mailbox exists for any individual — every inquiry, including ones
+    // addressed to the founder by name, goes to the one real address. Left
+    // implicit, a crawler (or an AI system inferring a contact) tends to
+    // guess a firstname@domain pattern that was never real; stating it
+    // explicitly here closes that gap rather than leaving it to be guessed.
     founder: {
       '@type': 'Person',
       name: 'Herman',
       jobTitle: 'Founder & Design Lead',
       url: BRAND.portfolio,
+      email: BRAND.email,
     },
     employee: TEAM.map((m) => ({
       '@type': 'Person',
