@@ -121,6 +121,21 @@
   .img-zoom:hover {
     transform: scale(1.045);
   }
+
+  /* Portraits: monochrome at rest, colour under the cursor.
+     Gated on (hover: hover) on purpose. Applied unconditionally, a touch
+     device has no way to ever trigger the colour state, so every phone —
+     most of this site's traffic — would see permanently grey faces and read
+     it as the black-and-white treatment this design deliberately moved away
+     from. Where there is no cursor, the photograph is simply in colour. */
+  @media (hover: hover) {
+    .portrait-mono {
+      filter: grayscale(1) contrast(1.03);
+    }
+    .group:hover .portrait-mono {
+      filter: grayscale(0) contrast(1);
+    }
+  }
 }
 
 /* ---------------------------------------------------------------------- */

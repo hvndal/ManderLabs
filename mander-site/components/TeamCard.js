@@ -24,10 +24,12 @@ function initials(name) {
  * portraits is a contact sheet, and one broken frame turns it into a composition.
  * It only works while it stays the exception, so resist applying it twice.
  *
- * Portraits render in real color, not grayscale-until-hover — that treatment
- * looked intentional on a mouse and simply looked gray on a phone, which is
- * most of this site's traffic. `group-hover:saturate-[1.15]` keeps a small
- * desktop delight without needing an idle desaturated state to recover from.
+ * Portraits are monochrome at rest and resolve to colour under the cursor —
+ * see `.portrait-mono` in globals.css. The catch that treatment usually
+ * carries is that a touch device can never reach the colour state, so every
+ * phone gets permanently grey faces; the utility is gated on
+ * `(hover: hover)`, which means a phone simply gets the photograph in
+ * colour and only a pointer sees the reveal.
  *
  * `tone="dark"` is for placing the card on a `bg-ink` section (the homepage
  * showcase) instead of the default light card grid on `/about`; it swaps the
@@ -57,7 +59,7 @@ export default function TeamCard({
             fill
             sizes={sizes}
             style={half ? { objectPosition: '82% 22%' } : undefined}
-            className={`object-cover transition-transform duration-700 ease-premium group-hover:saturate-[1.15] ${
+            className={`portrait-mono object-cover transition-[transform,filter] duration-700 ease-premium ${
               half
                 ? 'scale-[1.35] group-hover:scale-[1.4]'
                 : 'object-top group-hover:scale-[1.03]'
@@ -94,7 +96,7 @@ export default function TeamCard({
         </span>
       </p>
       <p
-        className={`mt-2.5 line-clamp-4 text-label-sm leading-relaxed ${
+        className={`mt-2.5 line-clamp-[7] text-label-sm leading-relaxed ${
           dark ? 'text-paper/75' : 'text-ink-soft'
         }`}
       >
