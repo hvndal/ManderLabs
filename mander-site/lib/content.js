@@ -51,9 +51,14 @@ export const NAV_LINKS = [
   { label: 'Plans', href: '/pricing' },
 ];
 
+// The Team entry is an anchor into /about rather than its own route: the
+// team is one section, and a dedicated page for it would be a thin page
+// competing with the About page it was lifted out of. It sits here because
+// the team came off the homepage — this menu is now the way to it.
 export const NAV_MORE_LINKS = [
   { label: 'Work', href: '/work' },
   { label: 'About', href: '/about' },
+  { label: 'Team', href: '/about#team' },
   { label: 'Locations', href: '/locations' },
   { label: 'Careers', href: '/careers' },
 ];
@@ -701,9 +706,9 @@ export const WORK = [
 export const CLIENTS = WORK.filter((project) => project.kind !== 'studio');
 
 // --- Team -----------------------------------------------------------------
-// Six people across three towns: the founder in Langley, BC; Tyler, Sophie
-// and Evan out of Maynard, MA; Danielle and Nick out of Portland, ME. Kept to
-// three towns rather than scattering across six cities for a six-person
+// Six people: Herman between Langley, BC and Massachusetts; Tyler, Sophie and
+// Evan out of Maynard, MA; Danielle and Nick out of Portland, ME. Kept to a
+// handful of towns rather than scattering across six cities for a six-person
 // company, which would read as stock-photo staffing — the pitch here is
 // "small, senior, reachable".
 //
@@ -719,8 +724,8 @@ export const CLIENTS = WORK.filter((project) => project.kind !== 'studio');
 export const TEAM = [
   {
     name: 'Herman',
-    role: 'Founder & Design Lead',
-    location: 'Langley, BC',
+    role: 'Front-End Web Designer',
+    location: 'Langley, BC & Massachusetts',
     bio: 'Studied computing science and philosophy at Trinity Western in Langley — the mix of building things and asking why they should exist that still runs the shop. Designs and builds alongside the team rather than above it.',
     photo: '/team/herman.jpg',
     link: { label: 'Personal portfolio', href: BRAND.portfolio },

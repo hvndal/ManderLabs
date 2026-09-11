@@ -28,7 +28,7 @@ import { BRAND } from './content';
 
 export const BLOG_UPDATED = 'August 2026';
 
-const AUTHOR = { name: 'Herman', role: 'Founder & Design Lead' };
+const AUTHOR = { name: 'Herman', role: 'Front-End Web Designer' };
 
 export const POSTS = [
   {

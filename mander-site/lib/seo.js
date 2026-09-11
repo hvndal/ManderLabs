@@ -177,7 +177,7 @@ export function articleSchema(post) {
     author: {
       '@type': 'Person',
       name: 'Herman',
-      jobTitle: 'Founder & Design Lead',
+      jobTitle: 'Front-End Web Designer',
       url: BRAND.portfolio,
       email: BRAND.email,
     },
@@ -313,22 +313,22 @@ export function organizationSchema(marketOrId) {
       areaServed: schema.countryCodes,
       availableLanguage: ['English'],
     },
-    // No mailbox exists for any individual — every inquiry, including ones
-    // addressed to the founder by name, goes to the one real address. Left
-    // implicit, a crawler (or an AI system inferring a contact) tends to
-    // guess a firstname@domain pattern that was never real; stating it
-    // explicitly here closes that gap rather than leaving it to be guessed.
-    founder: {
-      '@type': 'Person',
-      name: 'Herman',
-      jobTitle: 'Founder & Design Lead',
-      url: BRAND.portfolio,
-      email: BRAND.email,
-    },
+    // No `founder` property: the studio is presented as a team rather than a
+    // person who owns it, and a job title is what each name carries here.
+    //
+    // Every Person below carries the one real address on purpose. No mailbox
+    // exists for any individual — mail addressed to someone by name still
+    // arrives at the same inbox — and left implicit, a crawler or an AI
+    // system inferring a contact tends to guess a firstname@domain pattern
+    // that was never real. Stating it closes that gap rather than leaving it
+    // to be guessed, which is a mistake that has already been observed in
+    // the wild for this site.
     employee: TEAM.map((m) => ({
       '@type': 'Person',
       name: m.name,
       jobTitle: m.role,
+      email: BRAND.email,
+      ...(m.link?.href ? { url: m.link.href } : {}),
     })),
     priceRange: schema.priceRange,
     currenciesAccepted: schema.currenciesAccepted,

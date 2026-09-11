@@ -5,7 +5,6 @@ import Icon from '@/components/Icon';
 import Cover from '@/components/Cover';
 import ClientMarks from '@/components/ClientMarks';
 import PillarSequence from '@/components/PillarSequence';
-import TeamShowcase from '@/components/TeamShowcase';
 import { Spread, PullQuote, Standfirst } from '@/components/Editorial';
 import {
   CommunityRateSection,
@@ -17,7 +16,7 @@ import WorkTicker from '@/components/WorkTicker';
 import ContactForm from '@/components/ContactForm';
 import WhatsAppCta from '@/components/WhatsAppCta';
 import JsonLd from '@/components/JsonLd';
-import { TERMS, WORK, CLIENTS, TEAM, BRAND } from '@/lib/content';
+import { TERMS, WORK, CLIENTS, BRAND } from '@/lib/content';
 import { getServerMarket } from '@/lib/market-server';
 import { serviceSchemas, alternates } from '@/lib/seo';
 
@@ -195,33 +194,18 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* ---------------------------------------------------------- Team */}
-      {/* Used to be a text link reading "Who you would be working with",
-          pointing at section 5-of-5 on /about — genuinely buried. The whole
-          studio, on the homepage, in color, on its own dark stage: the last
-          credibility beat before the offer. `.h-display` hardcodes text-ink
-          (globals.css) and would go invisible on this bg-ink section, so the
-          heading below is spelled out manually instead of using that class —
-          the same thing every other dark section on this page already does. */}
-      <section className="border-b border-line bg-ink bg-gradient-to-b from-ink to-accent-deep text-paper">
-        <Spread index="04" folio="Who you'd work with" tone="dark">
-          <div className="flex flex-wrap items-end justify-between gap-6">
-            <h2 className="max-w-[14ch] font-display text-headline-lg-mobile leading-[0.98] text-paper md:text-display-lg">
-              The whole studio.
-            </h2>
-            <span className="rail text-paper/60">{TEAM.length} people</span>
-          </div>
-          <TeamShowcase members={TEAM} />
-        </Spread>
-      </section>
+      {/* The team is not on this page. It lives on /about, reached from the
+          "More" menu in the nav — see NAV_MORE_LINKS in lib/content.js. It
+          did run here as a full dark section for a while; this is a
+          deliberate reversal, not drift. */}
 
-      {/* -------------------------------------------------- 05 · The plans */}
+      {/* -------------------------------------------------- 04 · The plans */}
       {/* Was four plan names in a row of links, with everything that makes a
           plan a plan — how many pages, how long, how many rounds, who it is
           for — buried on /pricing. Prices are quoted rather than published,
           which makes it doubly important that the shape of the offer is
           legible without clicking anything. */}
-      <Spread id="pricing" index="05" folio="Plans">
+      <Spread id="pricing" index="04" folio="Plans">
         <h2 className="h-display max-w-[13ch]">What you get, and how it is priced.</h2>
         <Standfirst className="mt-8">
           Every project is quoted in writing against a written scope before any
@@ -308,7 +292,7 @@ export default function HomePage() {
 
       {/* ----------------------------------------------------- 06 · Contact */}
       <section className="border-t border-line bg-paper">
-        <Spread id="contact" index="06" folio="Get in touch">
+        <Spread id="contact" index="05" folio="Get in touch">
           <div className="grid grid-cols-1 gap-gutter lg:grid-cols-12 lg:gap-16">
             <div className="lg:col-span-5">
               <h2 className="h-display max-w-[12ch]">Tell us about the project.</h2>

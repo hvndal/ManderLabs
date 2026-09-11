@@ -231,7 +231,7 @@ export default function AboutPage() {
           invisible on this bg-ink section, so the heading is spelled out
           manually instead, same as every other dark section on the site. */}
       <section className="border-t border-line border-b border-paper/10 bg-ink">
-        <Spread index="05" folio="Who you work with" tone="dark">
+        <Spread id="team" index="05" folio="Who you work with" tone="dark">
           <h2 className="max-w-[12ch] font-display text-headline-lg-mobile leading-[0.98] text-paper md:text-display-lg">
             The whole studio.
           </h2>

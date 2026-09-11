@@ -24,8 +24,10 @@ import { getMarket } from './markets';
 const EMAIL = BRAND.email;
 const UPDATED = '2 September 2026';
 
-// Governing law follows where the company originates — the founder works out
-// of Langley, BC. Revisit with a lawyer if MANDER incorporates elsewhere.
+// Governing law follows where the company originates — MANDER's roots and
+// part of its team are in Langley, BC. This is substantive legal text, not
+// positioning copy: it does not change because a job title or a team page
+// does. Revisit with a lawyer if MANDER ever incorporates elsewhere.
 const JURISDICTION = 'British Columbia, Canada';
 
 // The nav labels and slugs, without the documents themselves.
@@ -190,7 +192,7 @@ export function legalDocs(market = getMarket(null)) {
       {
         h: 'Third-party links',
         p: [
-          'This site links to external sites, including our founder’s personal portfolio and clients’ own websites. Once you follow a link away from this site, this policy no longer applies and we are not responsible for the privacy practices or content of those sites.',
+          'This site links to external sites, including a team member’s personal portfolio and clients’ own websites. Once you follow a link away from this site, this policy no longer applies and we are not responsible for the privacy practices or content of those sites.',
         ],
       },
       {
