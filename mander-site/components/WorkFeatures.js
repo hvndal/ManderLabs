@@ -18,29 +18,35 @@ import Icon from './Icon';
  * with no usable screenshot get a typographic plate rather than a stock
  * photograph of their sector, which is also how the last remote-CDN image
  * dependency left this codebase.
+ *
+ * This is /work only now. The homepage used to run three of these as a
+ * teaser and instead carries a text index plus a small cycling window — see
+ * WorkIndex and WorkTicker. The distinction that matters: a reader on /work
+ * has chosen to read a portfolio, so it is laid out to be read; a reader on
+ * the homepage has not, so there it is a list and a picture.
  */
-export default function WorkFeatures({ items, limit, startIndex = 1, compact = false }) {
-  // The homepage shows three; /work shows everything. Slicing here rather
-  // than at the call site keeps the figure numbering continuous when the same
-  // component renders a second run of projects further down a page.
+export default function WorkFeatures({ items, limit, startIndex = 1 }) {
+  // Slicing here rather than at the call site keeps the figure numbering
+  // continuous when the same component renders a second run of projects
+  // further down a page — /work does exactly that for the in-house builds.
   const shown = limit ? items.slice(0, limit) : items;
   const [lead, ...rest] = shown;
 
   return (
     <div className="border-t border-line">
       <Reveal>
-        <Feature project={lead} index={startIndex} lead={startIndex === 1} compact={compact} />
+        <Feature project={lead} index={startIndex} lead={startIndex === 1} />
       </Reveal>
       {rest.map((project, i) => (
         <Reveal key={project.name} delay={40}>
-          <Feature project={project} index={startIndex + i + 1} flipped={i % 2 === 1} compact={compact} />
+          <Feature project={project} index={startIndex + i + 1} flipped={i % 2 === 1} />
         </Reveal>
       ))}
     </div>
   );
 }
 
-function Feature({ project, index, lead = false, flipped = false, compact = false }) {
+function Feature({ project, index, lead = false, flipped = false }) {
   const num = String(index).padStart(2, '0');
 
   return (
@@ -114,14 +120,7 @@ function Feature({ project, index, lead = false, flipped = false, compact = fals
           {project.body}
         </p>
 
-        <dl
-          className={`mt-6 grid-cols-1 gap-px border-y border-line bg-line sm:grid-cols-2 md:mt-8 md:grid ${
-            // On the homepage teaser this reference detail is hidden on a
-            // phone — the reader has not chosen to look at projects yet, and
-            // /work carries it in full for the reader who has.
-            compact ? 'hidden' : 'grid'
-          }`}
-        >
+        <dl className="mt-6 grid grid-cols-1 gap-px border-y border-line bg-line sm:grid-cols-2 md:mt-8">
           <div className="bg-paper py-4 pr-4">
             <dt className="rail text-ink-mute">Disciplines</dt>
             <dd className="mt-2 text-body-md text-ink">

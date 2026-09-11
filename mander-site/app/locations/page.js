@@ -73,14 +73,28 @@ export default function LocationsHubPage() {
         mediaSrc="/editorial/urban-aerial.jpg"
         mediaCaption="MANDER — remote studio, wherever you are."
         lede={
-          <p>
-            Metro Vancouver is where MANDER is based and the one region with
-            dedicated local pages. We also take on remote work for small and
-            mid-sized businesses anywhere in the United States and Canada —
-            the process and the fixed-scope quote don&apos;t change based on
-            your address — it just isn&apos;t marketed city by city outside
-            Vancouver.
-          </p>
+          <>
+            <p>
+              Metro Vancouver is where MANDER is based and the one region with
+              dedicated local pages. We also take on remote work for small and
+              mid-sized businesses anywhere in the United States and Canada —
+              the process and the fixed-scope quote don&apos;t change based on
+              your address — it just isn&apos;t marketed city by city outside
+              Vancouver.
+            </p>
+            {/* Massachusetts is named because it is true twice over — three
+                of the six people work out of Maynard, and the Waste Universe
+                build was delivered across Massachusetts and Rhode Island —
+                and it is said plainly that there is no page behind it, which
+                is the honest version of a presence without a page. */}
+            <p>
+              New England is not an abstraction here either: part of the team
+              works out of Maynard, Massachusetts, and the waste-management
+              rebuild in our portfolio was delivered across Massachusetts and
+              Rhode Island. There are no per-city pages for those states —
+              there is a team, a client and a phone that answers.
+            </p>
+          </>
         }
       />
 

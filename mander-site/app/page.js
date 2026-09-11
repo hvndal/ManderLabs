@@ -12,7 +12,8 @@ import {
   CommunityRateNote,
   CommunityRateFooterLink,
 } from '@/components/CommunityRate';
-import WorkFeatures from '@/components/WorkFeatures';
+import WorkIndex from '@/components/WorkIndex';
+import WorkTicker from '@/components/WorkTicker';
 import ContactForm from '@/components/ContactForm';
 import WhatsAppCta from '@/components/WhatsAppCta';
 import JsonLd from '@/components/JsonLd';
@@ -23,11 +24,6 @@ import { serviceSchemas, alternates } from '@/lib/seo';
 export const metadata = {
   alternates: alternates('/'),
 };
-
-// Three on the homepage, the rest on /work. Eight full features was most of
-// the page's length and asked a first-time visitor to read a portfolio before
-// finding out what any of it costs.
-const HOME_WORK = 3;
 
 // The process and the questions are not on this page any more. Both exist in
 // full elsewhere — the stages on /about, every question on /pricing — and a
@@ -157,8 +153,17 @@ export default function HomePage() {
             <Icon name="arrow" className="h-4 w-4" strokeWidth={2} />
           </Link>
         </div>
-        <div className="mt-12">
-          <WorkFeatures items={WORK} limit={HOME_WORK} compact />
+        {/* The index carries every project as text; the window beside it is
+            decoration that happens to be moving. Index first in source order
+            so a phone gets the content before the picture without any CSS
+            reordering. */}
+        <div className="mt-12 grid grid-cols-1 gap-10 md:grid-cols-12 md:gap-gutter">
+          <Reveal className="md:col-span-7">
+            <WorkIndex items={WORK} />
+          </Reveal>
+          <Reveal delay={80} className="md:col-span-5 md:self-start">
+            <WorkTicker items={WORK} />
+          </Reveal>
         </div>
       </Spread>
 
