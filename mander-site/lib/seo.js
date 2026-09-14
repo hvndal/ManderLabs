@@ -11,7 +11,7 @@
 // to flip with it.
 export const SITE_URL = 'https://www.mander.tech';
 
-import { BRAND, SERVICES, TEAM } from './content';
+import { BRAND, SERVICES } from './content';
 import { getMarket } from './markets';
 
 // Shared social-card image. Next.js does NOT deep-merge `openGraph`/`twitter`
@@ -314,22 +314,14 @@ export function organizationSchema(marketOrId) {
       availableLanguage: ['English'],
     },
     // No `founder` property: the studio is presented as a team rather than a
-    // person who owns it, and a job title is what each name carries here.
+    // person who owns it.
     //
-    // Every Person below carries the one real address on purpose. No mailbox
-    // exists for any individual — mail addressed to someone by name still
-    // arrives at the same inbox — and left implicit, a crawler or an AI
-    // system inferring a contact tends to guess a firstname@domain pattern
-    // that was never real. Stating it closes that gap rather than leaving it
-    // to be guessed, which is a mistake that has already been observed in
-    // the wild for this site.
-    employee: TEAM.map((m) => ({
-      '@type': 'Person',
-      name: m.name,
-      jobTitle: m.role,
-      email: BRAND.email,
-      ...(m.link?.href ? { url: m.link.href } : {}),
-    })),
+    // No `employee` array either. The site does not show its people anywhere,
+    // and markup naming six Persons that a visitor cannot find on any page is
+    // an assertion about content that isn't there. The one real contact
+    // address is still stated on the Organization itself (`email` and
+    // `contactPoint` above) and on /contact, which is where a crawler or an
+    // AI system should be reading it from.
     priceRange: schema.priceRange,
     currenciesAccepted: schema.currenciesAccepted,
     // Offers without a price, deliberately. The site no longer publishes

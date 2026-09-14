@@ -51,14 +51,12 @@ export const NAV_LINKS = [
   { label: 'Plans', href: '/pricing' },
 ];
 
-// The Team entry is an anchor into /about rather than its own route: the
-// team is one section, and a dedicated page for it would be a thin page
-// competing with the About page it was lifted out of. It sits here because
-// the team came off the homepage — this menu is now the way to it.
+// No Team entry. The team section was removed from the site entirely; the
+// TEAM data and the TeamShowcase/TeamCard components are still in the repo
+// but nothing renders them.
 export const NAV_MORE_LINKS = [
   { label: 'Work', href: '/work' },
   { label: 'About', href: '/about' },
-  { label: 'Team', href: '/about#team' },
   { label: 'Locations', href: '/locations' },
   { label: 'Careers', href: '/careers' },
 ];
