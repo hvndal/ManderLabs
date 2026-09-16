@@ -11,7 +11,7 @@
 // to flip with it.
 export const SITE_URL = 'https://www.mander.tech';
 
-import { BRAND, SERVICES } from './content';
+import { BRAND, SERVICES, TEAM } from './content';
 import { getMarket } from './markets';
 
 // Shared social-card image. Next.js does NOT deep-merge `openGraph`/`twitter`
@@ -314,14 +314,36 @@ export function organizationSchema(marketOrId) {
       availableLanguage: ['English'],
     },
     // No `founder` property: the studio is presented as a team rather than a
-    // person who owns it.
+    // person who owns it, and the CEO is not the founder.
     //
-    // No `employee` array either. The site does not show its people anywhere,
-    // and markup naming six Persons that a visitor cannot find on any page is
-    // an assertion about content that isn't there. The one real contact
-    // address is still stated on the Organization itself (`email` and
-    // `contactPoint` above) and on /contact, which is where a crawler or an
-    // AI system should be reading it from.
+    // `employee` names exactly one person — the CEO. The site shows no team
+    // section anywhere, so listing all seven would be markup asserting
+    // content a visitor cannot find on any page. A named officer is the one
+    // exception worth making: it is the standard way an organization entity
+    // is tied to the person who runs it, and it is a far smaller claim than
+    // a full staff roster nobody can see.
+    //
+    // The address on it is the real one on purpose. No individual mailbox
+    // exists — mail to anyone by name lands in the same inbox — and left
+    // implicit, a crawler or an AI system tends to guess a firstname@domain
+    // pattern that was never real, a mistake already observed in the wild
+    // for this site.
+    employee: TEAM.filter((m) => m.role === 'CEO').map((m) => ({
+      '@type': 'Person',
+      name: m.name,
+      jobTitle: m.role,
+      email: BRAND.email,
+    })),
+    // MANDER is a subsidiary of Waste Universe. Stated to the India market
+    // only, matching the one place the visible copy says so (/about), so the
+    // markup never asserts more than the page a given visitor is reading.
+    // `parentOrganization` means ownership specifically, which is why it is
+    // the right property here. Name only: there is no verified Waste
+    // Universe URL in this repo (WorkIndex withholds its link deliberately),
+    // and inventing one to fill a schema property is not on.
+    ...(market.id === 'in'
+      ? { parentOrganization: { '@type': 'Organization', name: 'Waste Universe' } }
+      : {}),
     priceRange: schema.priceRange,
     currenciesAccepted: schema.currenciesAccepted,
     // Offers without a price, deliberately. The site no longer publishes
