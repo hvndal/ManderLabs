@@ -24,12 +24,12 @@ import { getMarket } from './markets';
 const EMAIL = BRAND.email;
 const UPDATED = '2 September 2026';
 
-// Governing law follows where the company originates, which is British
-// Columbia. This is substantive legal text, not positioning copy: it does
-// not change because a job title, a team page, or a claim about where people
-// physically work does. The marketing copy no longer asserts a BC presence
-// (see lib/locations.js) and that is deliberately not treated as a reason to
-// touch this. Revisit with a lawyer if MANDER ever incorporates elsewhere.
+// Governing law follows where the company originates — MANDER's roots and
+// its base are in Langley, BC. This is substantive legal text, not
+// positioning copy: it does not change because a job title or a team page
+// does, and it did not change during the spell when the marketing copy
+// stopped asserting a BC presence. Revisit with a lawyer if MANDER ever
+// incorporates elsewhere.
 const JURISDICTION = 'British Columbia, Canada';
 
 // The nav labels and slugs, without the documents themselves.

@@ -1,10 +1,7 @@
 // Location SEO data — Metro Vancouver.
 //
-// Metro Vancouver is the studio's one dedicated local-SEO region: the one
-// market the local growth work is actually aimed at. Delivery is remote —
-// nothing here claims the team is physically in the region, because it is
-// not, and a local-SEO page that opens with a presence it doesn't have is
-// the first thing a reader checks and the first thing they catch. Massachusetts and Rhode
+// Metro Vancouver is the studio's one dedicated local-SEO region: real,
+// specific, and where part of the team actually is. Massachusetts and Rhode
 // Island used to have pages here too — they were retired so the site is not
 // claiming a marketed local presence outside the one market that's actually
 // the focus. The business still takes on remote work anywhere in the US and
@@ -59,10 +56,10 @@ const NA_REGIONS = [
     metaDescription:
       'Brand, web design and local growth systems for Metro Vancouver — Vancouver, Burnaby, Richmond, Surrey, North Vancouver, Langley, Coquitlam and New Westminster.',
     intro: [
-      'Metro Vancouver is the one region the local growth work is aimed at. The studio is remote and works with businesses here the way it works with everyone — over email and video — so this is a choice about focus rather than a claim about an office. That is a deliberate narrowing rather than a limitation: local search is won by being genuinely relevant to one place before being thinly present in twenty, and a studio that claims every city on the map is telling you it has traction in none of them.',
+      "Metro Vancouver is where MANDER started — part of the team works out of Langley — and it is where the local growth work is aimed. That is a deliberate narrowing rather than a limitation: local search is won by being genuinely relevant to one place before being thinly present in twenty, and a studio that claims every city on the map is telling you it has traction in none of them.",
       'The work here spans all three pillars. Brand for businesses whose offer is sharper in the founder’s head than anywhere else. Digital for the ones whose site is quietly costing them enquiries. Growth for the ones nobody is finding — which in this market is usually a Business Profile problem before it is a website problem.',
     ],
-    proximityNote: 'MANDER is a remote studio. Metro Vancouver is the one region the local search work is built around.',
+    proximityNote: 'Part of the MANDER team is based in Langley, British Columbia.',
     industries: [
       'Technology & startups',
       'Professional services',
@@ -74,7 +71,7 @@ const NA_REGIONS = [
     faqs: [
       {
         q: 'Is MANDER a BC company?',
-        a: 'MANDER is a remote studio rather than a company with a BC office — most of the team is in Massachusetts and Maine, and the rest works remotely. Metro Vancouver is the one market the local search work is built around, and invoicing in Canadian dollars is normal here.',
+        a: "The company's roots are in Langley, where part of the team is based, with the rest in Massachusetts and Maine. Delivery is remote either way, and Metro Vancouver is the market the local search work is built around.",
       },
       {
         q: 'Do you bill in Canadian dollars?',
@@ -235,14 +232,14 @@ const NA_REGIONS = [
         name: 'Langley',
         h1: 'Website design in Langley, British Columbia.',
         metaDescription:
-          'Website design for Langley, BC businesses — trades, agriculture and professional services across the Fraser Valley. Fixed-price builds, quoted up front.',
+          'Website design in Langley, BC, where part of the MANDER team is based — trades, agriculture and professional services in the Fraser Valley. Fixed-price builds.',
         intro:
-          "Langley is a Fraser Valley mix of trades and construction, agriculture, and a growing professional-services base — businesses that mostly built their reputation locally and are only now working out that reputation doesn't show up in a Google search unless something is actually built to be found.",
+          "Langley is where part of the MANDER team is actually based, so this is the one market on the list the studio has direct, everyday familiarity with rather than research alone. It's a Fraser Valley mix of trades and construction, agriculture, and a growing professional-services base — businesses that mostly built their reputation locally and are only now working out that reputation doesn't show up in a Google search unless something is actually built to be found.",
         industries: ['Trades & construction', 'Agriculture & agritourism', 'Professional services', 'Retail'],
         faqs: [
           {
             q: 'Is MANDER actually based in Langley?',
-            a: 'No — MANDER is a remote studio, with most of the team in Massachusetts and Maine. Langley is part of the one region the local search work is aimed at, and everything from the first call to handover happens over email and video, so the distance changes neither the price nor the timeline.',
+            a: "Yes — part of the team is based in Langley, and the rest works remotely, out of Massachusetts and Maine. It's the one market on this list the studio knows first-hand rather than through research.",
           },
           {
             q: 'Do you invoice in Canadian dollars?',

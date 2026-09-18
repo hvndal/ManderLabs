@@ -480,7 +480,7 @@ export const FAQS = [
   },
   {
     q: 'Where are you based, and does it matter?',
-    a: 'We are a remote studio. Most of the team is in Maynard, Massachusetts and Portland, Maine, and the rest works remotely, so we cover both Pacific and Eastern hours between us. Every project is delivered remotely either way — you get the same senior people whether you are in Vancouver, Chicago, Austin or a town of four thousand.',
+    a: 'The team is split between Langley, British Columbia, Maynard, Massachusetts and Portland, Maine, and we deliver every project remotely. In practice that means you get the same senior people whether you are in Vancouver, Chicago, Austin or a town of four thousand — and we cover both Pacific and Eastern hours between us.',
   },
   {
     q: 'Can you do local SEO if you are not in my town?',
@@ -704,11 +704,17 @@ export const WORK = [
 export const CLIENTS = WORK.filter((project) => project.kind !== 'studio');
 
 // --- Team -----------------------------------------------------------------
-// Seven people: Connar runs the company; Tyler, Sophie and Evan out of
-// Maynard, MA; Danielle and Nick out of Portland, ME; Herman remote. Kept to
-// a handful of towns rather than scattering across seven cities for a
+// Seven people: Connar runs the company; Herman out of Langley, BC; Tyler,
+// Sophie and Evan out of Maynard, MA; Danielle and Nick out of Portland, ME.
+// Kept to a handful of towns rather than scattering across seven cities for a
 // seven-person company, which would read as stock-photo staffing — the pitch
 // here is "small, senior, reachable".
+//
+// Langley is load-bearing beyond this file: it is the first-hand basis for
+// every Metro Vancouver local-search claim in lib/locations.js. It is a base,
+// not a desk — the work travels across Canada — but the base is real, and the
+// region pages are written on the strength of it. Change it here and those
+// claims have to be revisited in the same commit.
 //
 // Four of them build the work (Herman, Danielle, Tyler, Nick), one runs the
 // platform side (Sophie), one owns the client relationship (Evan) — so the
@@ -735,8 +741,8 @@ export const TEAM = [
   {
     name: 'Herman',
     role: 'Front-End Web Designer',
-    location: 'Remote',
-    bio: 'Computing science and philosophy at Trinity Western — one half of that asks how a thing gets built, the other whether it should exist at all. Both questions still open every project. Designs and builds alongside the team rather than above it.',
+    location: 'Langley, BC',
+    bio: 'Computing science and philosophy at Trinity Western, up the road in Langley — one half of that asks how a thing gets built, the other whether it should exist at all. Both questions still open every project. Designs and builds alongside the team rather than above it.',
     photo: '/team/herman.jpg',
     link: { label: 'Personal portfolio', href: BRAND.portfolio },
   },
