@@ -11,6 +11,20 @@
 // to flip with it.
 export const SITE_URL = 'https://www.mander.tech';
 
+// The one real, disciplined "last changed" date for the site's general
+// content — previously duplicated as a second hardcoded literal inside
+// app/sitemap.js, which is exactly the kind of copy that quietly drifts.
+// One place now; app/sitemap.js imports this instead of declaring its own.
+//
+// Also rendered as visible text in the footer (see components/Footer.js),
+// which is what closes the "no freshness signal" finding
+// scripts/audit-answerability.mjs raises on every page that isn't a blog
+// post or a legal document — both of which already carry a real date the
+// same way. Update this whenever site content meaningfully changes, same
+// rule the sitemap comment has always stated; a value that never moves would
+// be as dishonest as a fabricated one.
+export const SITE_LAST_UPDATED = new Date('2026-09-19');
+
 import { BRAND, SERVICES, TEAM } from './content.js';
 import { getMarket } from './markets/index.js';
 

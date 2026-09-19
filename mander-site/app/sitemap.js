@@ -1,4 +1,4 @@
-import { SITE_URL } from '@/lib/seo';
+import { SITE_URL, SITE_LAST_UPDATED } from '@/lib/seo';
 import { REGIONS, allCities } from '@/lib/locations';
 import { LEGAL_NAV } from '@/lib/legal';
 import { PILLARS } from '@/lib/pillars';
@@ -6,10 +6,12 @@ import { INDUSTRIES } from '@/lib/industries';
 import { POSTS } from '@/lib/blog';
 
 export default function sitemap() {
-  // A fixed date that tracks the last real content change. Using new Date()
-  // reported "right now" on every crawl, which teaches Google to ignore the
-  // lastmod signal entirely. Update this when content meaningfully changes.
-  const lastContentUpdate = new Date('2026-09-06');
+  // SITE_LAST_UPDATED (lib/seo.js) is the one real, disciplined date for
+  // this — it used to be a second literal declared right here, which is
+  // exactly the kind of duplicate fact that quietly drifts. Using new
+  // Date() instead of a fixed value would report "right now" on every
+  // crawl, which teaches Google to ignore the lastmod signal entirely.
+  const lastContentUpdate = SITE_LAST_UPDATED;
 
   const regionUrls = REGIONS.map((region) => ({
     url: `${SITE_URL}/locations/${region.slug}`,

@@ -18,6 +18,16 @@ export const BRAND = {
   // looks to tie the site and the profile to the same business.
   instagram: 'https://www.instagram.com/mander.tech/',
   instagramHandle: '@mander.tech',
+  // Herman's personal LinkedIn — there is no MANDER company page, so this is
+  // labelled plainly as "LinkedIn" wherever it's used rather than presented
+  // as an organization profile. Same URL already used in the real email
+  // signature; kept here too so both read from one place instead of two
+  // copies that can drift. Deliberately not added to organizationSchema's
+  // `sameAs` in lib/seo.js — sameAs asserts other profiles of the same
+  // entity, and a person's profile is not the same entity as the
+  // Organization; conflating the two would be the kind of entity confusion
+  // this project has been careful to avoid everywhere else.
+  linkedin: 'https://www.linkedin.com/in/hermanify/',
   // Google Business Profile. The share link is what Google hands you; the
   // knowledge-graph id inside it (/g/11zdgzpwn5) is the stable part, and it
   // is what ties this site to that listing in the eyes of the crawler.

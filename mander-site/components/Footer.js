@@ -8,6 +8,16 @@ import CountryPicker from './CountryPicker';
 import { BRAND, NAV_LINKS, NAV_MORE_LINKS } from '@/lib/content';
 import { getServerMarket, getServerRegion } from '@/lib/market-server';
 import { LEGAL_NAV } from '@/lib/legal';
+import { SITE_LAST_UPDATED } from '@/lib/seo';
+
+// "19 September 2026" — the same plain long-date format lib/legal.js already
+// uses for policy pages, so the two read as one convention rather than two.
+const UPDATED_DISPLAY = SITE_LAST_UPDATED.toLocaleDateString('en-US', {
+  day: 'numeric',
+  month: 'long',
+  year: 'numeric',
+  timeZone: 'UTC',
+});
 
 // Derived from the policy data rather than hand-listed, so a new policy is
 // linked here automatically. These used to be three href="#" placeholders —
@@ -156,6 +166,18 @@ export default function Footer() {
                   More work &amp; references ↗
                 </a>
               </li>
+              {/* Herman's personal profile, labelled plainly — there is no
+                  MANDER company page to link instead. */}
+              <li className="pt-1">
+                <a
+                  href={BRAND.linkedin}
+                  target="_blank"
+                  rel="noreferrer noopener"
+                  className="text-paper/60 underline decoration-paper/30 underline-offset-4 transition-colors hover:text-paper hover:decoration-paper"
+                >
+                  LinkedIn ↗
+                </a>
+              </li>
             </ul>
           </div>
         </div>
@@ -164,6 +186,7 @@ export default function Footer() {
           <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:gap-6">
             <p className="text-label-sm text-paper/45">
               © {new Date().getFullYear()} {BRAND.name}. Built for {market.region}.
+              {' '}Updated {UPDATED_DISPLAY}.
             </p>
             {/* The very end of the page, on purpose: everyone is placed by IP
                 already, so this is for the visitor that got wrong. */}
