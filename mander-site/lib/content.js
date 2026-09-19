@@ -28,13 +28,24 @@ export const BRAND = {
   // two-way link — the profile points at the site, sameAs and hasMap point
   // back at the profile, and Google can tie the two records to one business.
   googleBusinessShare: 'https://share.google/DXHNvMYsz0VNBpVOs',
-  // Masthead furniture, set centred in caps under the mark. Kept short and
-  // free of hyphenated compounds on purpose — the old line ("small &
-  // mid-sized businesses across Canada and the U.S.") broke after "mid-" on
-  // a phone, which is the one place a masthead cannot afford a bad break.
-  // The small-business keyword work is carried by the metadata, the H1 and
-  // the schema, not by this line.
-  region: 'Canada & the United States',
+  // The area MANDER takes remote clients from — broadened from "Canada & the
+  // United States" to "the world" on direct instruction: the studio accepts
+  // worldwide clients and this project's whole ethos is not stating a
+  // business fact more narrowly than the business itself states it. This is
+  // deliberately NOT the same claim as the site's local-SEO targeting, which
+  // stays exactly Metro Vancouver (lib/locations.js) — a studio can be
+  // genuinely local for search purposes in one city and still take on a
+  // client anywhere, and this field is the second thing, not the first.
+  //
+  // Threaded through Footer, the homepage cover caption, /about, /contact,
+  // /pricing and legal copy via `market.region` — changing it here changes
+  // all of them at once. Kept short and free of hyphenated compounds on
+  // purpose — the old line broke after "mid-" on a phone, which is the one
+  // place a masthead cannot afford a bad break; "the world" cannot break at
+  // all. Not literally every country served identically — that's what the
+  // schema-level `areaServed` addition in lib/seo.js states precisely,
+  // rather than this prose line doing double duty as a legal claim.
+  region: 'the world',
 };
 
 // The nav is the positioning. It used to be six links, four of them anchors
@@ -476,7 +487,7 @@ export const FAQS = [
   },
   {
     q: 'Do you only work with local businesses?',
-    a: 'No — we work remotely with small and mid-sized businesses anywhere in the United States and Canada. Everything from the first call to handover happens over email and video, so your location makes no difference to the price or the timeline.',
+    a: 'No — we work remotely with small and mid-sized businesses anywhere in the world. Everything from the first call to handover happens over email and video, so your location makes no difference to the price or the timeline. Metro Vancouver is the one region the local search work is targeted at, but that is about where we market, not who we take on.',
   },
   {
     q: 'Where are you based, and does it matter?',
@@ -902,7 +913,7 @@ export const CAREERS = {
   intro: {
     eyebrow: 'Careers',
     title: 'Work on sites that have to earn their keep.',
-    body: 'MANDER is a small remote studio building websites and Android apps for small businesses across Canada and the United States. Every project is fixed-scope and fixed-price, which changes what the work feels like day to day more than anything else on this page.',
+    body: 'MANDER is a small remote studio building websites and Android apps for small businesses worldwide. Every project is fixed-scope and fixed-price, which changes what the work feels like day to day more than anything else on this page.',
   },
 
   // What it is actually like. Each of these is downstream of something the

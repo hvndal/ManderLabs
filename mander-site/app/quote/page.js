@@ -40,9 +40,10 @@ export default function QuotePage() {
         title={quiz.intro.title}
         lede={<p>{quiz.intro.body}</p>}
         actions={
-          /* India only: skipping the quiz and messaging a person is the
+          /* Universal: skipping the quiz and messaging a person is the
              faster route for a lot of visitors, and hiding that behind six
-             questions loses them. */
+             questions loses them, in every market now rather than just
+             one. */
           <WhatsAppCta tone="outline" location="quote-intro" />
         }
       />

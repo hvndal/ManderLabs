@@ -39,7 +39,10 @@ ok('every sitemap URL reachable by internal links', orphans.length === 0, orphan
 const inHome = await get('/', IN);
 const usHome = await get('/');
 ok('India visitor gets rupees + WhatsApp', /₹/.test(inHome.html) && /wa\.me\/918146298024/.test(inHome.html));
-ok('US visitor gets neither rupees nor WhatsApp', !/₹/.test(usHome.html) && !/wa\.me/.test(usHome.html));
+// WhatsApp is universal as of this project's worldwide-client update — see
+// lib/markets/us.js. Rupees stay India-exclusive (a real pricing/currency
+// fact); WhatsApp is now asserted present rather than absent.
+ok('US visitor gets no rupees, WhatsApp present', !/₹/.test(usHome.html) && /wa\.me/.test(usHome.html));
 ok('US visitor gets the phone line', /857\) 758-7182/.test(usHome.html));
 
 // 3. URL-scoped markets on location pages (what the crawler sees).
@@ -49,7 +52,12 @@ ok('US visitor gets the phone line', /857\) 758-7182/.test(usHome.html));
 const mohali = await get('/locations/punjab/mohali');
 const van = await get('/locations/metro-vancouver/vancouver', IN);
 ok('retired India city URL redirects rather than 404s', mohali.status === 301 || mohali.status === 308);
-ok('Canadian city page shows NA market to an India visitor', !/wa\.me/.test(van.html) && /857\) 758-7182/.test(van.html));
+// The real property this checks is that a city page never flips to rupee
+// pricing or India-market copy just because a visitor's IP does — not
+// WhatsApp absence, which used to be a workable proxy for that and no
+// longer is now that WhatsApp is universal. Assert the actual thing: no
+// rupees, and the NA phone line still renders.
+ok('Canadian city page stays NA market for an India-IP visitor', !/₹/.test(van.html) && /857\) 758-7182/.test(van.html));
 
 // 4. Redirects for the retired BC URLs.
 for (const [from, to] of [['/locations/british-columbia', '/locations/metro-vancouver'],

@@ -339,8 +339,7 @@ export default function HomePage() {
               >
                 Contact sales
               </a>
-              {/* India only — returns null in every other market, so the
-                  number is not in the US page at all. */}
+              {/* Universal — every market carries a WhatsApp number now. */}
               <WhatsAppCta tone="on-dark" location="home-final-cta" />
               <p className="text-label-sm text-paper/50">
                 <CommunityRateFooterLink className="underline decoration-paper/25 underline-offset-4 transition-colors hover:text-paper/80 hover:decoration-paper/60" />

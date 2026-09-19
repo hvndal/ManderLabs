@@ -149,8 +149,7 @@ export default function Nav() {
         </ul>
 
         <div className="hidden items-center gap-3 md:flex">
-          {/* The number for this market — the North American line outside
-              India, nothing inside it, where WhatsApp is the number. */}
+          {/* The phone line for this market, where one exists. */}
           {market.phone && (
             <a
               href={market.phone.href}
@@ -166,8 +165,9 @@ export default function Nav() {
               {market.phone.display}
             </a>
           )}
-          {/* India only. Ordered ahead of email because it is the faster
-              route in that market, and absent entirely in every other. */}
+          {/* Universal. Ordered ahead of email because it is the faster
+              route for a visitor who would rather message than fill in a
+              form, in every market now rather than just one. */}
           <WhatsAppCta tone="sm" location="nav" />
           <a href={SALES_MAILTO} className="btn-sm">
             Contact sales

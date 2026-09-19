@@ -42,17 +42,29 @@ export const US_MARKET = {
   currency: 'USD',
   locale: 'en_US',
 
-  // No WhatsApp number is shown outside India. This is the field every
-  // WhatsApp affordance on the site is gated on, so leaving it null is what
-  // keeps the Indian number off the US experience entirely — it is absent
-  // from the rendered HTML, not hidden with CSS.
-  whatsapp: null,
+  // Universal as of this line — every market gets the same real WhatsApp
+  // number. It used to be null here on purpose (India only), reasoned as
+  // "no number nobody there can sensibly call" — but a WhatsApp number is
+  // reachable internationally by design, and the business explicitly wants
+  // WhatsApp, phone and email all offered everywhere rather than split by
+  // market. Reusing the existing India number rather than inventing a
+  // second one: it is the only WhatsApp line that actually exists in this
+  // codebase, and every WhatsAppCta placement (Nav, ContactForm, homepage
+  // and quote final CTAs, /contact, /about) was already built additively
+  // next to phone/email, so populating this one field is the entire change
+  // — no component touched. If a dedicated non-India number exists later,
+  // swap it in here; nothing else needs to change.
+  whatsapp: {
+    display: '+91 81462 98024',
+    url: 'https://wa.me/918146298024',
+    cta: 'Chat with us on WhatsApp',
+  },
 
-  // The North American line, shown to US, Canadian and every other non-Indian
-  // visitor. Same gating in reverse: India renders its WhatsApp number and
-  // not this one, so neither market ever shows a number nobody there can
-  // sensibly call. E.164 in `href` because that is the only format every
-  // dialler, and Google's structured data, read without ambiguity.
+  // The North American line. Still gated on existing (`market.phone &&`)
+  // rather than assumed, but every market now has both a phone and a
+  // WhatsApp number where one exists — this is no longer an either/or by
+  // market. E.164 in `href` because that is the only format every dialler,
+  // and Google's structured data, read without ambiguity.
   phone: {
     display: '+1 (857) 758-7182',
     href: 'tel:+18577587182',
@@ -63,7 +75,7 @@ export const US_MARKET = {
   region: BRAND.region,
   colophon: {
     headline: 'Define. Build. Grow.',
-    body: 'A Metro Vancouver studio working across three things: the identity people remember, the digital experience they judge you on, and the system that brings the right ones to you. Available across Canada and the U.S.; the local search work is aimed at Metro Vancouver first.',
+    body: 'A Metro Vancouver studio working across three things: the identity people remember, the digital experience they judge you on, and the system that brings the right ones to you. Available worldwide; the local search work is aimed at Metro Vancouver first.',
   },
 
   tiers: TIERS,
@@ -90,12 +102,12 @@ export const US_MARKET = {
   meta: {
     title: 'MANDER | Affordable, Fast Website Design for Small Business',
     description:
-      'Remote website design for small business across the U.S. and Canada. Fixed-price builds quoted up front, with local SEO and ongoing care.',
-    ogTitle: 'MANDER | Website Design for Small Business — U.S. & Canada',
+      'Remote website design for small business, worldwide. Fixed-price builds quoted up front, with local SEO and ongoing care.',
+    ogTitle: 'MANDER | Website Design for Small Business — Worldwide',
     ogDescription:
-      'Remote website design, development and SEO for small and mid-sized businesses across the U.S. and Canada. Fixed scope, fixed price, quoted before work starts.',
+      'Remote website design, development and SEO for small and mid-sized businesses, worldwide. Fixed scope, fixed price, quoted before work starts.',
     twitterDescription:
-      'Remote website design and SEO for small business across the U.S. and Canada. Fixed-price builds, quoted up front.',
+      'Remote website design and SEO for small business, worldwide. Fixed-price builds, quoted up front.',
     keywords: [
       'remote website design',
       'website design for small business',
@@ -115,7 +127,7 @@ export const US_MARKET = {
     pricing: {
       title: 'Plans — Website Design & Android Builds',
       description:
-        'Four website plans and three Android plans for small business in Canada and the U.S. Fixed scope, fixed price, quoted in writing before work starts.',
+        'Four website plans and three Android plans for small business, worldwide. Fixed scope, fixed price, quoted in writing before work starts.',
     },
     quote: {
       title: 'Get a Quote — Fast Website Design, Custom Priced',
@@ -127,8 +139,14 @@ export const US_MARKET = {
   // Feeds the JSON-LD in lib/seo.js. Kept as plain values rather than built
   // schema so the schema shape stays in one place.
   schema: {
+    // Deliberately broader than `countries`/`countryCodes` below: those two
+    // stay US/CA because the pricing they're paired with (USD, CAD) is real
+    // only there, but the studio's actual reach is not limited to the two
+    // countries it prices in — this description and the Organization-level
+    // `areaServed` addition in lib/seo.js both say so; the Service-level
+    // schema stays scoped to the priced markets on purpose.
     description:
-      'Remote website design, development and SEO for small and mid-sized businesses across the United States and Canada. Fixed-price custom builds, quoted before work starts.',
+      'Remote website design, development and SEO for small and mid-sized businesses, worldwide. Fixed-price custom builds, quoted before work starts.',
     priceRange: '$$',
     currenciesAccepted: 'USD, CAD',
     offerCurrency: 'USD',

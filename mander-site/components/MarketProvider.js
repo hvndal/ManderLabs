@@ -8,10 +8,11 @@ import { createContext, useContext } from 'react';
  * The whole market object crosses the boundary rather than just its id, and
  * that is the point: if the client looked its market up by id it would have
  * to import the registry, which would bundle *every* market's data into the
- * JavaScript every visitor downloads — putting the Indian WhatsApp number and
- * the rupee price ladder in the hands of a US visitor who is never shown
- * them. Sending the resolved market means each visitor's payload contains
- * their market and no other.
+ * JavaScript every visitor downloads — putting the rupee price ladder in the
+ * hands of a US visitor who is never shown it. (WhatsApp used to be the
+ * other example here; it no longer applies now that every market carries
+ * the same number.) Sending the resolved market means each visitor's
+ * payload contains their market and no other.
  */
 const MarketContext = createContext(null);
 

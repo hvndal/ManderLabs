@@ -65,7 +65,7 @@ export default function LocationsHubPage() {
       />
 
       <PageHeader
-        meta={['Locations', 'Metro Vancouver', 'Remote across US & CA']}
+        meta={['Locations', 'Metro Vancouver', 'Remote, worldwide']}
         eyebrow="Locations"
         title="Brand, digital and growth for Metro Vancouver."
         trail={trail}
@@ -77,9 +77,10 @@ export default function LocationsHubPage() {
             <p>
               Metro Vancouver is where MANDER is based and the one region with
               dedicated local pages. We also take on remote work for small and
-              mid-sized businesses anywhere in the United States and Canada —
-              the process and the fixed-scope quote don&apos;t change based on
-              your address — it just isn&apos;t marketed city by city outside
+              mid-sized businesses anywhere in the world — the process and the
+              fixed-scope quote don&apos;t change based on your address. That
+              is deliberately not a page-per-country claim: it just
+              isn&apos;t marketed city by city, or country by country, outside
               Vancouver.
             </p>
             {/* Massachusetts is named because it is true twice over — three
@@ -138,8 +139,8 @@ export default function LocationsHubPage() {
               Don&apos;t see your market listed?
             </h2>
             <p className="mx-auto mt-5 max-w-text text-body-lg text-paper/70">
-              We build for businesses anywhere in the U.S. and Canada — get in
-              touch and we&apos;ll treat it exactly the same.
+              We build for businesses anywhere in the world — get in touch
+              and we&apos;ll treat it exactly the same.
             </p>
             <div className="mt-10 flex flex-col justify-center gap-3 sm:flex-row">
               <a

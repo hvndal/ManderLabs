@@ -205,7 +205,7 @@ export default function ContactForm({ defaultPlan }) {
         >
           Or email {BRAND.email}
         </a>
-        {/* India only. A form is still the right primary action — this is the
+        {/* Universal. A form is still the right primary action — this is the
             route for anyone who would rather not fill one in. */}
         <WhatsAppCta tone="link" location="contact-form" />
       </div>

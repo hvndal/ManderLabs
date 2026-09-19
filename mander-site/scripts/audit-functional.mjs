@@ -81,7 +81,11 @@ ok('no failed first-party requests',realBad.length===0,realBad.slice(0,4).join('
   const p2=await b.newPage();
   await p2.goto(BASE+'/',{waitUntil:'domcontentloaded'});
   const h2=await p2.content();
-  ok('US visitor: no rupees, no WhatsApp, no India option',!/₹/.test(h2)&&!/wa\.me/.test(h2)&&!/>India</.test(h2));
+  // WhatsApp became universal on direct instruction — every market shows
+  // it now, so its presence is no longer a proxy for "wrong market". Rupees
+  // and the India picker entry stay market-exclusive; WhatsApp presence is
+  // asserted the other way now: it must be there.
+  ok('US visitor: no rupees, no India option, WhatsApp present',!/₹/.test(h2)&&!/>India</.test(h2)&&/wa\.me/.test(h2));
   await p2.close();
 }
 

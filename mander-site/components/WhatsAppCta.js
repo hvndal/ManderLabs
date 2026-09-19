@@ -5,13 +5,13 @@ import Icon from './Icon';
 import { trackEvent } from '@/lib/analytics';
 
 /**
- * The WhatsApp button — India only.
+ * The WhatsApp button — universal.
  *
- * Renders nothing at all when the visitor's market has no WhatsApp number,
- * which is every market except India. That is a null return rather than a
- * hidden element on purpose: the number is not in the US page's HTML, so it
- * cannot be found by a US visitor reading the source, and no CSS or JS
- * mistake can reveal it.
+ * Every market now carries a `whatsapp` field (see lib/markets/us.js and
+ * lib/markets/in.js), so this renders everywhere. The `if (!wa) return null`
+ * guard below is left in place rather than removed: it is what makes adding
+ * a future market with no WhatsApp number safe by default, the same way a
+ * missing phone number already degrades safely elsewhere on the site.
  *
  * `tone` matches the three button treatments the design system already has,
  * so this sits in a row of existing CTAs without introducing a fourth style.

@@ -77,9 +77,9 @@ export default function Cover({ tagline, region, headline, standfirst }) {
               <Icon name="arrow" className="h-4 w-4" strokeWidth={2} />
             </Link>
 
-            {/* The market's own direct line — the North American number
-                outside India, nothing inside it, where WhatsApp is the
-                number and WhatsAppCta in the nav and footer carries it. */}
+            {/* The market's own direct phone line. WhatsApp sits beside it
+                rather than replacing it — WhatsAppCta in the nav and footer
+                carries that channel, which every market now has. */}
             {market.phone && (
               <a
                 href={market.phone.href}

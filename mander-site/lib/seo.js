@@ -35,7 +35,7 @@ export const OG_IMAGE = {
   url: `${SITE_URL}/opengraph-image`,
   width: 1200,
   height: 630,
-  alt: 'MANDER — website design for small business across Canada and the U.S.',
+  alt: 'MANDER — website design for small business, worldwide.',
 };
 
 // The business is delivered remotely across two countries, so the schema has
@@ -135,9 +135,23 @@ export const IN_SERVICE_AREA = [
 // The service area a market's schema claims. Keyed by market id so a new
 // market declares its own without touching the schema builders below.
 const MARKET_SERVICE_AREA = {
-  // Metro Vancouver first, then the wider countries: the order is a priority
-  // signal as well as a list, and it matches where the local work is aimed.
-  us: [...METRO_VANCOUVER_AREA, ...SERVICE_AREA],
+  // Metro Vancouver first, then the wider countries, then one closing entry
+  // for everywhere else: the order is a priority signal as well as a list,
+  // and it matches where the local work is aimed, then where it is
+  // genuinely sold, then who is actually welcome to ask.
+  //
+  // The last entry is deliberately a single generic Place rather than an
+  // enumerated country list — schema.org's own convention for "we serve
+  // clients anywhere" is exactly this, one broad entry, not fifty specific
+  // ones. Naming every country individually here would be the schema
+  // equivalent of the "spam city pages" this project has explicitly ruled
+  // out elsewhere (see docs/ and the audits in scripts/): it would read as
+  // an attempt to rank for two hundred places rather than an honest
+  // statement of reach. Metro Vancouver, the US and Canada keep their real,
+  // specific, locally-relevant entries above this because those genuinely
+  // carry local-SEO weight; this line exists only to stop the schema from
+  // implying a narrower reach than the business actually has.
+  us: [...METRO_VANCOUVER_AREA, ...SERVICE_AREA, { '@type': 'Place', name: 'Worldwide' }],
   in: IN_SERVICE_AREA,
 };
 

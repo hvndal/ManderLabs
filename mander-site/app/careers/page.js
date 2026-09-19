@@ -17,7 +17,7 @@ import { faqSchema, OG_IMAGE, alternates } from '@/lib/seo';
 // rendered <title>.
 const TITLE = 'Careers — Design & Development Roles';
 const DESCRIPTION =
-  'Design, front-end, Android and SEO roles at a small remote studio building for small business in Canada and the U.S.';
+  'Design, front-end, Android and SEO roles at a small remote studio building for small business worldwide.';
 
 export const metadata = {
   title: TITLE,
