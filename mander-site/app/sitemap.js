@@ -2,6 +2,7 @@ import { SITE_URL } from '@/lib/seo';
 import { REGIONS, allCities } from '@/lib/locations';
 import { LEGAL_NAV } from '@/lib/legal';
 import { PILLARS } from '@/lib/pillars';
+import { INDUSTRIES } from '@/lib/industries';
 import { POSTS } from '@/lib/blog';
 
 export default function sitemap() {
@@ -40,7 +41,19 @@ export default function sitemap() {
     })),
     { url: `${SITE_URL}/pricing`, lastModified: lastContentUpdate, changeFrequency: 'monthly', priority: 0.9 },
     { url: `${SITE_URL}/quote`, lastModified: lastContentUpdate, changeFrequency: 'monthly', priority: 0.8 },
+    // The rapid-launch reframing of the real Launch tier — see /pricing,
+    // which is what links to it.
+    { url: `${SITE_URL}/rapid-launch`, lastModified: lastContentUpdate, changeFrequency: 'monthly', priority: 0.6 },
+    // The performance/ownership argument, linked from the digital pillar.
+    { url: `${SITE_URL}/performance`, lastModified: lastContentUpdate, changeFrequency: 'monthly', priority: 0.6 },
     { url: `${SITE_URL}/locations`, lastModified: lastContentUpdate, changeFrequency: 'monthly', priority: 0.8 },
+    { url: `${SITE_URL}/industries`, lastModified: lastContentUpdate, changeFrequency: 'monthly', priority: 0.65 },
+    ...INDUSTRIES.map((industry) => ({
+      url: `${SITE_URL}/industries/${industry.id}`,
+      lastModified: lastContentUpdate,
+      changeFrequency: 'monthly',
+      priority: 0.7,
+    })),
     { url: `${SITE_URL}/contact`, lastModified: lastContentUpdate, changeFrequency: 'yearly', priority: 0.7 },
     { url: `${SITE_URL}/about`, lastModified: lastContentUpdate, changeFrequency: 'yearly', priority: 0.6 },
     { url: `${SITE_URL}/careers`, lastModified: lastContentUpdate, changeFrequency: 'monthly', priority: 0.5 },

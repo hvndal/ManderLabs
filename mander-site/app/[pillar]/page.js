@@ -159,6 +159,22 @@ export default function PillarPage({ params }) {
             />
           ))}
         </IndexList>
+        {/* /performance is digital's own reframing (speed, ownership), so it
+            is linked only from here rather than added to primary nav for one
+            extra page — the same pattern /pricing uses to point at
+            /rapid-launch. Without this link /performance has nothing on the
+            pillar it belongs under pointing at it. */}
+        {pillar.id === 'digital' && (
+          <Reveal delay={60}>
+            <Link
+              href="/performance"
+              className="link-underline label-caps mt-8 inline-flex items-center gap-2 text-ink-mute"
+            >
+              Why these builds are fast, and who owns the code
+              <Icon name="arrow" className="h-3.5 w-3.5" strokeWidth={2} />
+            </Link>
+          </Reveal>
+        )}
       </Spread>
 
       {/* -------------------------------------------------------- The engine */}

@@ -7,11 +7,16 @@
 // external half of that check).
 //
 // Run:  node scripts/audit-entities.mjs   (no build or server needed)
-import { SERVICES, WORK, TEAM } from '../lib/content.js';
+import { readFileSync } from 'fs';
+import { fileURLToPath } from 'url';
+import { dirname, join } from 'path';
+import { SERVICES, WORK, TEAM, NAV_LINKS, NAV_MORE_LINKS } from '../lib/content.js';
 import { PILLARS } from '../lib/pillars.js';
+import { INDUSTRIES } from '../lib/industries.js';
 import { REGIONS, allCities } from '../lib/locations.js';
 import { SERVICE_AREA } from '../lib/seo.js';
-import { NAV_LINKS } from '../lib/content.js';
+
+const ROOT = join(dirname(fileURLToPath(import.meta.url)), '..');
 
 const problems = [];
 const notes = [];
@@ -91,6 +96,45 @@ function expandAbbrev(s) {
   const map = { BC: 'British Columbia', MA: 'Massachusetts', ME: 'Maine' };
   return map[s] || s;
 }
+
+// ── 5. New-page reachability ─────────────────────────────────────────────
+// Every industry page's evidence must name a real WORK entry — the one
+// field in lib/industries.js that has to already be true rather than
+// written, so a typo here silently breaks the one honesty guarantee the
+// page makes.
+const workNames = new Set(WORK.map((w) => w.name));
+for (const industry of INDUSTRIES) {
+  if (!workNames.has(industry.evidence?.workName)) {
+    problems.push(`INDUSTRIES "${industry.label}" cites evidence.workName "${industry.evidence?.workName}" — no WORK entry with that name`);
+  }
+}
+
+// The industries hub, /performance and /rapid-launch were deliberately kept
+// out of NAV_LINKS (primary nav) to avoid bloating it for a handful of
+// secondary pages — the same treatment /work, /about and /careers already
+// get. That only works if each is reachable some other real way: the hub
+// via NAV_MORE_LINKS (the "More" menu, mobile menu and footer all read from
+// it), and the two single pages via an actual <Link> on the page they are a
+// reframing of. All three are asserted here rather than assumed, because an
+// unreachable page that still sits in the sitemap is exactly the "invisible
+// to a crawler" failure mode the growth pillar page's own comment warns
+// about.
+const moreHrefs = new Set(NAV_MORE_LINKS.map((l) => l.href));
+if (!moreHrefs.has('/industries')) {
+  problems.push('Industries hub (/industries) is not in NAV_MORE_LINKS — unreachable from the nav');
+}
+
+const linkChecks = [
+  ['app/[pillar]/page.js', '/performance', 'the digital pillar page'],
+  ['app/pricing/page.js', '/rapid-launch', '/pricing'],
+];
+for (const [file, href, from] of linkChecks) {
+  const src = readFileSync(join(ROOT, file), 'utf8');
+  if (!src.includes(`href="${href}"`)) {
+    problems.push(`${href} has no <Link href="${href}"> in ${file} — unreachable from ${from}`);
+  }
+}
+notes.push(`${INDUSTRIES.length} industry pages, each cross-checked against a real WORK entry`);
 
 // ── report ───────────────────────────────────────────────────────────────
 notes.forEach((n) => console.log('NOTE:', n));

@@ -129,6 +129,20 @@ export default function PricingPage() {
           ))}
         </IndexList>
 
+        {/* Points at Launch specifically for the visitor who searched for a
+            fast turnaround rather than browsed the plan list — the same real
+            tier, not a separate faster one. Without this link /rapid-launch
+            has nothing pointing at it from the page it is a reframing of. */}
+        <Reveal delay={90}>
+          <Link
+            href="/rapid-launch"
+            className="link-underline label-caps mt-8 inline-flex items-center gap-2 text-ink-mute"
+          >
+            Need something live fast? See Rapid Launch
+            <Icon name="arrow" className="h-3.5 w-3.5" strokeWidth={2} />
+          </Link>
+        </Reveal>
+
         <Reveal delay={100}>
           <div className="mt-10 border-t border-line pt-8">
             <CommunityRateNote />

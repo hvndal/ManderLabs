@@ -67,6 +67,7 @@ export const NAV_LINKS = [
 // but nothing renders them.
 export const NAV_MORE_LINKS = [
   { label: 'Work', href: '/work' },
+  { label: 'Industries', href: '/industries' },
   { label: 'About', href: '/about' },
   { label: 'Locations', href: '/locations' },
   { label: 'Careers', href: '/careers' },
