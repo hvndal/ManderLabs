@@ -9,29 +9,43 @@ import {
   isRegion,
   marketForRegion,
   regionForCountry,
+  LOCALE_HEADER,
+  localeForPath,
+  REGION_CODE_HEADER,
 } from '@/lib/markets/geo';
 import { marketForPath } from '@/lib/markets/location-markets';
 
 /**
- * Edge geolocation → two request headers, and nothing else.
+ * Two independent things happen here, on purpose kept separate.
  *
- * The India version is not a separate URL. Every page keeps the exact path it
- * already had; the middleware only annotates the request with the visitor's
- * region and market, and the server components render that market's copy and
- * prices. That is what makes this safe for SEO — there is one canonical URL
- * per page rather than two competing ones, so there is no duplicate-content
- * question to answer and no /in prefix to keep out of the index.
+ * MARKET (pricing, contact options) is never a separate URL. Every page
+ * keeps the exact path it already had; the middleware only annotates the
+ * request with the visitor's region and market, and server components
+ * render that market's copy and prices. One canonical URL per page, no
+ * duplicate-content question, no prefix to keep out of the index. This used
+ * to also carry India (its own prefix-free rupee experience) — removed
+ * along with that market; only US/CA remains, and they share one market by
+ * design.
  *
- * Geolocation never redirects, so it cannot loop. The explicit picker does
- * redirect, once, and only to strip its own query parameter — a target that
- * can never match the condition that produced it.
+ * LOCALE (English vs. French) is the opposite on purpose: a real, separate
+ * `/fr/` URL prefix, not a geo-gated swap of the same page. The whole point
+ * of building French pages is for them to rank for French search queries,
+ * which requires an independently crawlable URL — a same-URL geo-gated
+ * version would be invisible to Google entirely, since Google's crawler
+ * isn't in Quebec. So `localeForPath` reads pure URL structure, never
+ * geolocation; geolocation's only job for locale is the region code below,
+ * which does nothing but decide whether a banner offers itself.
+ *
+ * Geolocation never redirects, so it cannot loop. The explicit market picker
+ * does redirect, once, and only to strip its own query parameter — a target
+ * that can never match the condition that produced it.
  *
  * Privacy: `request.geo` is derived by the platform from the IP before this
- * runs. The country code is read, mapped to a region, and discarded. No IP
- * address is read, forwarded, logged or stored anywhere in this codebase, and
- * the geolocated region is not persisted — nothing here creates an
- * identifier, which is why it needs no consent gate. The cookie is written
- * only when someone picks a country themselves, and holds two letters.
+ * runs. The country code and region code are read, mapped, and discarded. No
+ * IP address is read, forwarded, logged or stored anywhere in this codebase,
+ * and nothing geolocated is persisted — nothing here creates an identifier,
+ * which is why it needs no consent gate. The cookie is written only when
+ * someone picks a country themselves, and holds two letters.
  */
 export function middleware(request) {
   // request.geo is populated on Vercel; the header is the same value and is
@@ -72,6 +86,20 @@ export function middleware(request) {
   const urlMarket = marketForPath(request.nextUrl.pathname);
   const market = urlMarket || marketForRegion(region);
 
+  // Locale is pure URL structure — the prefix, nothing else. Deliberately
+  // computed independently of everything above: market/region answer "what
+  // do they see priced and offered", locale answers "what language", and
+  // conflating them is exactly the mistake that would make a French page
+  // stop rendering for a visitor geolocation gets wrong.
+  const locale = localeForPath(request.nextUrl.pathname);
+
+  // Raw ISO 3166-2 region code, Vercel's own geolocation — used only to
+  // decide whether the French-language banner offers itself, never to route.
+  const regionCode =
+    request.geo?.countryRegion ||
+    request.headers.get('x-vercel-ip-country-region') ||
+    '';
+
   const headers = new Headers(request.headers);
   // Set, not append: any inbound copy of these headers is replaced, so a
   // visitor cannot hand themselves a market by sending the header directly.
@@ -81,6 +109,8 @@ export function middleware(request) {
     MARKET_SOURCE_HEADER,
     urlMarket ? 'url' : picked ? 'picked' : 'geo'
   );
+  headers.set(LOCALE_HEADER, locale);
+  headers.set(REGION_CODE_HEADER, regionCode);
 
   // No ?market= in play: the ordinary path, no redirect, nothing written.
   if (requested === null) {

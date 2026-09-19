@@ -7,17 +7,23 @@ import WhatsAppCta, { WhatsAppLine } from './WhatsAppCta';
 import CountryPicker from './CountryPicker';
 import { BRAND, NAV_LINKS, NAV_MORE_LINKS } from '@/lib/content';
 import { getServerMarket, getServerRegion } from '@/lib/market-server';
+import { getServerLocale } from '@/lib/locale-server';
+import { localizeHref, NAV_LABEL_KEY } from '@/lib/locale.js';
+import { uiStrings } from '@/lib/ui-strings.js';
 import { LEGAL_NAV } from '@/lib/legal';
 import { SITE_LAST_UPDATED } from '@/lib/seo';
 
 // "19 September 2026" — the same plain long-date format lib/legal.js already
 // uses for policy pages, so the two read as one convention rather than two.
-const UPDATED_DISPLAY = SITE_LAST_UPDATED.toLocaleDateString('en-US', {
-  day: 'numeric',
-  month: 'long',
-  year: 'numeric',
-  timeZone: 'UTC',
-});
+// The date itself never changes by locale, only how it's written.
+function updatedDisplay(locale) {
+  return SITE_LAST_UPDATED.toLocaleDateString(locale === 'fr' ? 'fr-CA' : 'en-US', {
+    day: 'numeric',
+    month: 'long',
+    year: 'numeric',
+    timeZone: 'UTC',
+  });
+}
 
 // Derived from the policy data rather than hand-listed, so a new policy is
 // linked here automatically. These used to be three href="#" placeholders —
@@ -40,6 +46,9 @@ const EXPLORE = [
 export default function Footer() {
   const market = getServerMarket();
   const region = getServerRegion();
+  const locale = getServerLocale();
+  const ui = uiStrings(locale);
+  const UPDATED_DISPLAY = updatedDisplay(locale);
 
   return (
     <footer className="relative overflow-hidden bg-ink text-paper">
@@ -62,22 +71,22 @@ export default function Footer() {
                 )}`}
                 className="btn-on-dark"
               >
-                Contact sales
+                {ui.contactSales}
               </a>
               <WhatsAppCta tone="on-dark" location="footer" />
             </div>
           </div>
 
           <div className="md:col-span-3">
-            <h3 className="label-caps mb-6 text-paper/45">Explore</h3>
+            <h3 className="label-caps mb-6 text-paper/45">{ui.footerExplore}</h3>
             <ul className="flex flex-col gap-3">
               {EXPLORE.map((item) => (
                 <li key={item.label}>
                   <Link
-                    href={item.href}
+                    href={localizeHref(item.href, locale)}
                     className="text-body-md text-paper/75 transition-colors hover:text-paper"
                   >
-                    {item.label}
+                    {ui[NAV_LABEL_KEY[item.href]] || (item.href === '/contact' ? ui.navContact : item.label)}
                   </Link>
                 </li>
               ))}
@@ -85,7 +94,7 @@ export default function Footer() {
           </div>
 
           <div className="md:col-span-3">
-            <h3 className="label-caps mb-6 text-paper/45">Contact</h3>
+            <h3 className="label-caps mb-6 text-paper/45">{ui.footerContact}</h3>
             <ul className="flex flex-col gap-3 text-body-md text-paper/75">
               <li>
                 <a
@@ -110,7 +119,7 @@ export default function Footer() {
               <li>
                 <WhatsAppLine className="transition-colors hover:text-paper" />
               </li>
-              <li className="text-paper/50">Mon–Fri, 9–5 PT</li>
+              <li className="text-paper/50">{ui.footerHours}</li>
               <li className="rail text-paper/35">
                 Metro Vancouver · 49.2827° N 123.1207° W
               </li>
@@ -119,7 +128,7 @@ export default function Footer() {
                   href="/blog"
                   className="text-paper/60 underline decoration-paper/30 underline-offset-4 transition-colors hover:text-paper hover:decoration-paper"
                 >
-                  Journal
+                  {ui.footerJournal}
                 </Link>
               </li>
               <li className="pt-1">
@@ -129,7 +138,7 @@ export default function Footer() {
                   rel="noreferrer noopener"
                   className="text-paper/60 underline decoration-paper/30 underline-offset-4 transition-colors hover:text-paper hover:decoration-paper"
                 >
-                  Find us on Google ↗
+                  {ui.footerFindGoogle}
                 </a>
               </li>
               <li className="pt-1">
@@ -144,10 +153,10 @@ export default function Footer() {
               </li>
               <li className="pt-1">
                 <Link
-                  href="/careers"
+                  href={localizeHref('/careers', locale)}
                   className="text-paper/60 underline decoration-paper/30 underline-offset-4 transition-colors hover:text-paper hover:decoration-paper"
                 >
-                  Careers
+                  {ui.footerCareers}
                 </Link>
               </li>
               <li className="pt-1">
@@ -163,7 +172,7 @@ export default function Footer() {
                   rel="noreferrer noopener"
                   className="text-paper/60 underline decoration-paper/30 underline-offset-4 transition-colors hover:text-paper hover:decoration-paper"
                 >
-                  More work &amp; references ↗
+                  {ui.footerPortfolio}
                 </a>
               </li>
               {/* Herman's personal profile, labelled plainly — there is no
@@ -175,7 +184,7 @@ export default function Footer() {
                   rel="noreferrer noopener"
                   className="text-paper/60 underline decoration-paper/30 underline-offset-4 transition-colors hover:text-paper hover:decoration-paper"
                 >
-                  LinkedIn ↗
+                  {ui.footerLinkedIn}
                 </a>
               </li>
             </ul>
@@ -185,8 +194,8 @@ export default function Footer() {
         <div className="mt-stack-md flex flex-col gap-6 border-t border-paper/15 pt-8 md:flex-row md:items-center md:justify-between">
           <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:gap-6">
             <p className="text-label-sm text-paper/45">
-              © {new Date().getFullYear()} {BRAND.name}. Built for {market.region}.
-              {' '}Updated {UPDATED_DISPLAY}.
+              © {new Date().getFullYear()} {BRAND.name}. {ui.builtFor} {market.region}.
+              {' '}{ui.updated} {UPDATED_DISPLAY}.
             </p>
             {/* The very end of the page, on purpose: everyone is placed by IP
                 already, so this is for the visitor that got wrong. */}

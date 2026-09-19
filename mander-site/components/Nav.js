@@ -8,6 +8,8 @@ import Logo from './Logo';
 import Icon from './Icon';
 import WhatsAppCta from './WhatsAppCta';
 import { useMarket } from './MarketProvider';
+import { useLocale, useUiStrings } from './LocaleProvider';
+import { localizeHref, NAV_LABEL_KEY } from '@/lib/locale.js';
 import { trackEvent } from '@/lib/analytics';
 
 // Buying starts a conversation rather than a checkout, so the primary action
@@ -45,6 +47,8 @@ const navIndex = (i) => String(i + 1).padStart(2, '0');
 
 export default function Nav() {
   const market = useMarket();
+  const locale = useLocale();
+  const ui = useUiStrings();
   const [open, setOpen] = useState(false);
   const [moreOpen, setMoreOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
@@ -98,8 +102,8 @@ export default function Nav() {
         <ul className="hidden items-center gap-8 md:flex">
           {NAV_LINKS.map((link, i) => (
             <li key={link.label}>
-              <NavLink href={link.href} index={navIndex(i)}>
-                {link.label}
+              <NavLink href={localizeHref(link.href, locale)} index={navIndex(i)}>
+                {ui[NAV_LABEL_KEY[link.href]] || link.label}
               </NavLink>
             </li>
           ))}
@@ -115,7 +119,7 @@ export default function Nav() {
                 {navIndex(NAV_LINKS.length)}
               </span>
               <span className="label-caps text-ink-soft transition-colors duration-300 group-hover:text-ink">
-                More
+                {ui.navMore}
               </span>
               <span className="pointer-events-none absolute -bottom-1.5 left-0 h-px w-full origin-left scale-x-0 bg-ink transition-transform duration-300 ease-premium group-hover:scale-x-100" />
             </button>
@@ -134,11 +138,11 @@ export default function Nav() {
                   {NAV_MORE_LINKS.map((link) => (
                     <li key={link.label}>
                       <Link
-                        href={link.href}
+                        href={localizeHref(link.href, locale)}
                         onClick={() => setMoreOpen(false)}
                         className="label-caps block px-5 py-2.5 text-ink-soft transition-colors hover:bg-paper-2 hover:text-ink"
                       >
-                        {link.label}
+                        {ui[NAV_LABEL_KEY[link.href]] || link.label}
                       </Link>
                     </li>
                   ))}
@@ -170,7 +174,7 @@ export default function Nav() {
               form, in every market now rather than just one. */}
           <WhatsAppCta tone="sm" location="nav" />
           <a href={SALES_MAILTO} className="btn-sm">
-            Contact sales
+            {ui.contactSales}
           </a>
         </div>
 
@@ -204,12 +208,12 @@ export default function Nav() {
           {NAV_LINKS.map((link, i) => (
             <li key={link.label} className="border-b border-line">
               <Link
-                href={link.href}
+                href={localizeHref(link.href, locale)}
                 className="group flex items-baseline gap-4 py-6"
               >
                 <span className="rail text-ink-mute">{navIndex(i)}</span>
                 <span className="font-display text-headline-lg-mobile text-ink transition-colors group-hover:text-accent">
-                  {link.label}
+                  {ui[NAV_LABEL_KEY[link.href]] || link.label}
                 </span>
               </Link>
             </li>
@@ -219,8 +223,8 @@ export default function Nav() {
         <ul className="flex flex-wrap gap-x-6 gap-y-1 px-margin-mobile pb-6 pt-5">
           {NAV_MORE_LINKS.map((link) => (
             <li key={link.label}>
-              <Link href={link.href} className="label-caps text-ink-mute transition-colors hover:text-ink">
-                {link.label}
+              <Link href={localizeHref(link.href, locale)} className="label-caps text-ink-mute transition-colors hover:text-ink">
+                {ui[NAV_LABEL_KEY[link.href]] || link.label}
               </Link>
             </li>
           ))}
@@ -244,10 +248,10 @@ export default function Nav() {
           )}
           <WhatsAppCta className="w-full" location="nav-mobile" />
           <a href={SALES_MAILTO} className="btn-primary w-full">
-            Contact sales
+            {ui.contactSales}
           </a>
-          <Link href="/quote" className="btn-outline w-full">
-            Take the fit quiz
+          <Link href={localizeHref('/quote', locale)} className="btn-outline w-full">
+            {ui.getQuote}
           </Link>
         </div>
       </div>

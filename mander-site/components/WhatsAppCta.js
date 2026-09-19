@@ -1,6 +1,7 @@
 'use client';
 
 import { useMarket } from './MarketProvider';
+import { useUiStrings } from './LocaleProvider';
 import Icon from './Icon';
 import { trackEvent } from '@/lib/analytics';
 
@@ -18,6 +19,7 @@ import { trackEvent } from '@/lib/analytics';
  */
 export default function WhatsAppCta({ tone = 'primary', className = '', label, location }) {
   const market = useMarket();
+  const ui = useUiStrings();
   const wa = market.whatsapp;
   if (!wa) return null;
 
@@ -47,7 +49,7 @@ export default function WhatsAppCta({ tone = 'primary', className = '', label, l
       className={`${base} ${className}`}
     >
       <Icon name="whatsapp" className="h-4 w-4" />
-      {label || wa.cta}
+      {label || ui.whatsappCta}
     </a>
   );
 }

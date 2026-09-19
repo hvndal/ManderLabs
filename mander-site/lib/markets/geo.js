@@ -20,6 +20,28 @@ export const DEFAULT_MARKET_ID = 'us';
 // shows you which version you have pinned.
 export const MARKET_SOURCE_HEADER = 'x-mander-market-source';
 
+// 'en' or 'fr' — derived purely from the URL prefix (/fr/... vs everything
+// else), never from geolocation. Routing must never depend on where a
+// request is from: a /fr/ page has to render identically for a Paris
+// visitor, a Googlebot crawl and someone who just prefers reading French,
+// and an English page has to stay English for a Quebec visitor who hasn't
+// asked for anything else. Geolocation's only job, elsewhere, is deciding
+// whether to *offer* the French version via a dismissible banner — see
+// REGION_CODE_HEADER below.
+export const LOCALE_HEADER = 'x-mander-locale';
+export const DEFAULT_LOCALE = 'en';
+
+/** 'fr' for any path under /fr, 'en' for everything else. */
+export function localeForPath(pathname) {
+  return pathname === '/fr' || pathname.startsWith('/fr/') ? 'fr' : DEFAULT_LOCALE;
+}
+
+// The raw ISO 3166-2 region code from Vercel's edge geolocation (e.g. 'QC'),
+// not a market and not a language — used for exactly one thing, the
+// dismissible "Voir en français" banner on the English site. Never used to
+// route, redirect or swap content: see localeForPath above for why.
+export const REGION_CODE_HEADER = 'x-mander-region-code';
+
 // The override: ?market=in / ?market=us pins a market for whoever asked,
 // ?market=auto goes back to geolocation. It is stored in a cookie so it
 // survives navigation, and the middleware redirects the query parameter away

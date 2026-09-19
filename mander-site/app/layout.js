@@ -8,8 +8,11 @@ import Analytics from '@/components/Analytics';
 import CookieHub from '@/components/CookieHub';
 import { CommunityRateProvider } from '@/components/CommunityRate';
 import MarketProvider from '@/components/MarketProvider';
+import LocaleProvider from '@/components/LocaleProvider';
+import FrenchBanner from '@/components/FrenchBanner';
 import QuickContact from '@/components/QuickContact';
 import { getServerMarket } from '@/lib/market-server';
+import { getServerLocale, getServerRegionCode } from '@/lib/locale-server';
 import {
   SITE_URL,
   OG_IMAGE,
@@ -136,10 +139,16 @@ export default function RootLayout({ children }) {
   // components below call getServerMarket() themselves; MarketProvider hands
   // the same id to the client components.
   const market = getServerMarket();
+  // Locale is pure URL structure (localeForPath in lib/markets/geo.js) — 'fr'
+  // for anything under /fr, 'en' everywhere else. Read here once, the same
+  // pattern as market, so <html lang> and every chrome string agree with the
+  // page body rather than each guessing separately.
+  const locale = getServerLocale();
+  const regionCode = getServerRegionCode();
 
   return (
     <html
-      lang="en"
+      lang={locale}
       className={`${hanken.variable} ${jetbrains.variable} ${instrument.variable}`}
     >
       <body>
@@ -165,9 +174,13 @@ export default function RootLayout({ children }) {
             getServerMarket() directly. Wraps the analytics loader too, so
             events are attributed to the market that produced them. */}
         <MarketProvider market={market}>
+          <LocaleProvider locale={locale}>
           {/* Wraps the tree so the pricing note, the plan cards, the section
               and the footer link all open one shared Community Rate drawer. */}
           <CommunityRateProvider>
+            {/* Quebec-only, English pages only, dismissible — see the
+                component for why this is never a redirect. */}
+            <FrenchBanner regionCode={regionCode} />
             <Nav />
             <main id="main">{children}</main>
             <Footer />
@@ -182,6 +195,7 @@ export default function RootLayout({ children }) {
               presentational only — the two communicate by event, not by
               position. */}
           <Analytics />
+          </LocaleProvider>
         </MarketProvider>
         <CookieHub />
       </body>
