@@ -10,7 +10,7 @@
 // const inside app/pricing/page.js. It has to live per-market because its
 // rows are positional — one value per tier — so a market with a different
 // number of tiers needs its own table.
-import { BRAND, TIERS, APP_TIERS, CARE_PLAN, FAQS, QUIZ } from '../content';
+import { BRAND, TIERS, APP_TIERS, CARE_PLAN, FAQS, QUIZ } from '../content.js';
 
 const COMPARISON = [
   { feature: 'Pages', values: ['1', 'Up to 5', 'Up to 10', 'Unlimited'] },

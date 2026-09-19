@@ -13,7 +13,7 @@
 // custom site at ₹19,999, local search bundled at ₹34,999, and the ongoing
 // work sold monthly at ₹2,499 / ₹4,999 where a retainer is a normal expense
 // rather than an unusual one. The Play Store tiers follow the same logic.
-import { QUIZ } from '../content';
+import { QUIZ } from '../content.js';
 
 const TIERS = [
   {

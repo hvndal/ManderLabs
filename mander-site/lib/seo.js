@@ -11,8 +11,8 @@
 // to flip with it.
 export const SITE_URL = 'https://www.mander.tech';
 
-import { BRAND, SERVICES, TEAM } from './content';
-import { getMarket } from './markets';
+import { BRAND, SERVICES, TEAM } from './content.js';
+import { getMarket } from './markets/index.js';
 
 // Shared social-card image. Next.js does NOT deep-merge `openGraph`/`twitter`
 // between a layout and a page — if a page defines its own `openGraph` object

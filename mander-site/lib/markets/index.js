@@ -9,9 +9,9 @@
 // Safe to import from client components: it is plain data with no server-only
 // dependency. The resolution of *which* market a visitor is in is separate
 // (lib/market-server.js on the server, MarketProvider on the client).
-import { US_MARKET } from './us';
-import { IN_MARKET } from './in';
-import { DEFAULT_MARKET_ID } from './geo';
+import { US_MARKET } from './us.js';
+import { IN_MARKET } from './in.js';
+import { DEFAULT_MARKET_ID } from './geo.js';
 
 export {
   DEFAULT_MARKET_ID,
@@ -25,7 +25,7 @@ export {
   isRegion,
   marketForRegion,
   regionForCountry,
-} from './geo';
+} from './geo.js';
 
 export const MARKETS = {
   us: US_MARKET,

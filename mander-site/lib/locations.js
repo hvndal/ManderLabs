@@ -42,7 +42,7 @@
 // Vancouver has to show the same content to every visitor and to Googlebot
 // or it can never reliably rank. The market pages (home, pricing, quote) are
 // still resolved by IP; these are resolved by their own URL.
-import { LOCATION_MARKETS } from './markets/location-markets';
+import { LOCATION_MARKETS } from './markets/location-markets.js';
 
 const NA_REGIONS = [
   {
