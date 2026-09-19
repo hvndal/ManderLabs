@@ -89,21 +89,6 @@ export const SERVICE_AREA = [
   ...CA_PROVINCES.map((name) => ({ '@type': 'State', name })),
 ];
 
-// Indian states and union territories, for the same reason the US and
-// Canadian ones are enumerated above: a service business with no address and
-// no areaServed reads to Google like a local business that forgot its
-// address, and it will try to rank the site for one city.
-const IN_STATES = [
-  'Andhra Pradesh', 'Arunachal Pradesh', 'Assam', 'Bihar', 'Chhattisgarh',
-  'Goa', 'Gujarat', 'Haryana', 'Himachal Pradesh', 'Jharkhand', 'Karnataka',
-  'Kerala', 'Madhya Pradesh', 'Maharashtra', 'Manipur', 'Meghalaya',
-  'Mizoram', 'Nagaland', 'Odisha', 'Punjab', 'Rajasthan', 'Sikkim',
-  'Tamil Nadu', 'Telangana', 'Tripura', 'Uttar Pradesh', 'Uttarakhand',
-  'West Bengal', 'Andaman and Nicobar Islands', 'Chandigarh',
-  'Dadra and Nagar Haveli and Daman and Diu', 'Delhi', 'Jammu and Kashmir',
-  'Ladakh', 'Lakshadweep', 'Puducherry',
-];
-
 // The Metro Vancouver municipalities, named individually.
 //
 // This is the one place where listing every city is right rather than lazy:
@@ -141,13 +126,11 @@ export const METRO_VANCOUVER_AREA = METRO_VANCOUVER.map((name) => ({
   name,
 }));
 
-export const IN_SERVICE_AREA = [
-  { '@type': 'Country', name: 'India' },
-  ...IN_STATES.map((name) => ({ '@type': 'State', name })),
-];
-
 // The service area a market's schema claims. Keyed by market id so a new
 // market declares its own without touching the schema builders below.
+// India used to have its own entry here (a full enumerated state list,
+// matching its own separate market) — removed along with the rest of the
+// India market, see lib/markets/index.js.
 const MARKET_SERVICE_AREA = {
   // Metro Vancouver first, then the wider countries, then one closing entry
   // for everywhere else: the order is a priority signal as well as a list,
@@ -166,7 +149,6 @@ const MARKET_SERVICE_AREA = {
   // carry local-SEO weight; this line exists only to stop the schema from
   // implying a narrower reach than the business actually has.
   us: [...METRO_VANCOUVER_AREA, ...SERVICE_AREA, { '@type': 'Place', name: 'Worldwide' }],
-  in: IN_SERVICE_AREA,
 };
 
 /**
@@ -381,16 +363,17 @@ export function organizationSchema(marketOrId) {
       jobTitle: m.role,
       email: BRAND.email,
     })),
-    // MANDER is a subsidiary of Waste Universe. Stated to the India market
-    // only, matching the one place the visible copy says so (/about), so the
-    // markup never asserts more than the page a given visitor is reading.
-    // `parentOrganization` means ownership specifically, which is why it is
-    // the right property here. Name only: there is no verified Waste
-    // Universe URL in this repo (WorkIndex withholds its link deliberately),
-    // and inventing one to fill a schema property is not on.
-    ...(market.id === 'in'
-      ? { parentOrganization: { '@type': 'Organization', name: 'Waste Universe' } }
-      : {}),
+    // MANDER is a subsidiary of Waste Universe — unconditional now, matching
+    // /about (also unconditional as of the India removal). Was gated to the
+    // India market only; when that market was removed, this fact had nowhere
+    // left to show, and it's real regardless of who's reading — narrowing a
+    // true fact to "nobody sees this now" for lack of a gate was the wrong
+    // default, so it applies to every visitor instead. `parentOrganization`
+    // means ownership specifically, which is why it is the right property
+    // here. Name only: there is no verified Waste Universe URL in this repo
+    // (WorkIndex withholds its link deliberately), and inventing one to fill
+    // a schema property is not on.
+    parentOrganization: { '@type': 'Organization', name: 'Waste Universe' },
     priceRange: schema.priceRange,
     currenciesAccepted: schema.currenciesAccepted,
     // Offers without a price, deliberately. The site no longer publishes

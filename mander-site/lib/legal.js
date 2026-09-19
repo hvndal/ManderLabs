@@ -57,13 +57,16 @@ export const LEGAL_SLUGS = LEGAL_NAV.map((d) => d.slug);
  * treatment and the contact details come from the market.
  */
 export function legalDocs(market = getMarket(null)) {
-  const isIndia = market.id === 'in';
-  const CURRENCY = isIndia ? 'Indian Rupees (INR)' : 'US Dollars (USD)';
-  const TAX_LINE = isIndia
-    ? 'Prices are exclusive of GST, which is added where applicable and shown on the invoice.'
-    : 'Prices are exclusive of any sales tax, GST or VAT that applies in your jurisdiction, which is added where applicable and shown on the invoice.';
-  // One line per market naming the number the reader can actually reach us
-  // on — the North American line outside India, WhatsApp inside it.
+  // Used to branch on isIndia = market.id === 'in' here for CURRENCY and
+  // TAX_LINE — removed along with the India market (lib/markets/index.js);
+  // one real value each now that only one market exists.
+  const CURRENCY = 'US Dollars (USD)';
+  const TAX_LINE =
+    'Prices are exclusive of any sales tax, GST or VAT that applies in your jurisdiction, which is added where applicable and shown on the invoice.';
+  // Phone is the real line now; WhatsApp is a fallback this market never
+  // actually needs (it has both), kept for the same reason the market
+  // registry stayed a lookup rather than a bare constant — safe by default
+  // if a future market ever lacks a phone number.
   const PHONE_LINE = market.phone
     ? `Phone: ${market.phone.display}, Monday to Friday, 9am–5pm Pacific.`
     : market.whatsapp
@@ -274,9 +277,7 @@ export function legalDocs(market = getMarket(null)) {
       {
         h: 'Payment terms',
         p: [
-          isIndia
-            ? 'Prices are quoted and payable in Indian Rupees (INR).'
-            : 'Prices are quoted and payable in US Dollars (USD); Canadian clients can be invoiced in CAD on request, at the same figures.',
+          'Prices are quoted and payable in US Dollars (USD); Canadian clients can be invoiced in CAD on request, at the same figures.',
           `${TAX_LINE} Third-party fees — domains, hosting, licences and platform charges — are your responsibility unless we state otherwise in writing.`,
           'Unless the written scope says otherwise, a deposit is payable before work begins and the balance is payable before launch or handover. Monthly plan fees are billed monthly in advance.',
           'Invoices are payable by the date stated. We may suspend work, withhold delivery or handover, or stop monthly plan services on overdue accounts, and we may charge reasonable costs of recovery to the maximum extent permitted by applicable law.',

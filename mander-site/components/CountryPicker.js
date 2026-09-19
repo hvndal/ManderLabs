@@ -4,12 +4,9 @@ import { useEffect, useRef, useState } from 'react';
 import { usePathname } from 'next/navigation';
 import { REGIONS, MARKET_QUERY_PARAM, MARKET_AUTO } from '@/lib/markets/geo';
 
-// India is offered only to visitors already in India. The India market is
-// real and fully built — rupee pricing, WhatsApp, its own metadata — but it is
-// not something a Canadian visitor should be invited to browse into: a studio
-// that offers a North American buyer a rupee price list looks like it is
-// quoting two different numbers for the same work. Everyone else sees the two
-// countries the studio actually sells to.
+// India used to be a third entry here, offered only to visitors already
+// there. Removed on direct instruction along with the rest of the India
+// market — see lib/markets/index.js. Two countries now, unconditionally.
 const ORDER = ['us', 'ca'];
 
 /**
@@ -79,7 +76,7 @@ export default function CountryPicker({ region }) {
           aria-label="Choose country"
           className="absolute bottom-[calc(100%+8px)] left-0 z-50 min-w-[210px] border border-paper/20 bg-ink shadow-xl"
         >
-          {(region === 'in' ? [...ORDER, 'in'] : ORDER).map((id) => {
+          {ORDER.map((id) => {
             const item = REGIONS[id];
             const active = id === region;
             return (

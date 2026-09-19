@@ -25,13 +25,10 @@ import { breadcrumbSchema, OG_IMAGE, alternates, SITE_URL } from '@/lib/seo';
 export async function generateMetadata() {
   const market = getServerMarket();
   const TITLE = 'Contact Us';
-  // Branches on market.id now, not on market.whatsapp — WhatsApp is offered
-  // in every market as of this project's worldwide-client update, so its
-  // presence can no longer stand in for "this visitor is in India."
-  const description =
-    market.id === 'in'
-      ? `Talk to MANDER — WhatsApp ${market.whatsapp.display}, or email ${BRAND.email}. Fixed-price websites for growing businesses in India.`
-      : `Talk to MANDER — call ${market.phone.display}, WhatsApp, or email ${BRAND.email}. Fixed-price website design, worldwide.`;
+  // Used to branch on market.id === 'in' here for an India-specific
+  // description — the India market is gone (lib/markets/index.js), so one
+  // real description now.
+  const description = `Talk to MANDER — call ${market.phone.display}, WhatsApp, or email ${BRAND.email}. Fixed-price website design, worldwide.`;
 
   return {
     title: TITLE,

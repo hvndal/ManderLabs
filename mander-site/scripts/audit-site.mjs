@@ -36,14 +36,18 @@ const orphans = sitemap.filter((u) => !seen.has(u.replace(/\/$/, '') || '/'));
 ok('every sitemap URL reachable by internal links', orphans.length === 0, orphans.join(', ') || `${sitemap.length} checked`);
 
 // 2. Market gating.
+// The India market was removed entirely (lib/markets/index.js) — this used
+// to assert an India-IP visitor got rupees and WhatsApp as a distinct
+// experience. Now it asserts the opposite: an India-IP visitor renders
+// identically to a default visitor, which is the whole point of the
+// removal. WhatsApp itself is universal as of an earlier change (every
+// visitor gets it, India-IP or not) — that assertion moved below, unified
+// with the general default-visitor check rather than split by geography.
 const inHome = await get('/', IN);
 const usHome = await get('/');
-ok('India visitor gets rupees + WhatsApp', /₹/.test(inHome.html) && /wa\.me\/918146298024/.test(inHome.html));
-// WhatsApp is universal as of this project's worldwide-client update — see
-// lib/markets/us.js. Rupees stay India-exclusive (a real pricing/currency
-// fact); WhatsApp is now asserted present rather than absent.
-ok('US visitor gets no rupees, WhatsApp present', !/₹/.test(usHome.html) && /wa\.me/.test(usHome.html));
-ok('US visitor gets the phone line', /857\) 758-7182/.test(usHome.html));
+ok('India-IP visitor renders identically to default (no rupees)', !/₹/.test(inHome.html) && /wa\.me/.test(inHome.html) && /857\) 758-7182/.test(inHome.html) && !/>India</.test(inHome.html));
+ok('Default visitor gets no rupees, WhatsApp present', !/₹/.test(usHome.html) && /wa\.me/.test(usHome.html));
+ok('Default visitor gets the phone line', /857\) 758-7182/.test(usHome.html));
 
 // 3. URL-scoped markets on location pages (what the crawler sees).
 // The India city pages are gone — India is an IP-resolved experience now, not

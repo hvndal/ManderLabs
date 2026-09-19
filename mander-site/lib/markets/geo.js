@@ -41,15 +41,17 @@ export const MARKET_AUTO = 'auto';
 // American site.
 export const REGION_HEADER = 'x-mander-region';
 
-// Region → market. The picker offers these three; two of them resolve to the
-// same market on purpose. Inventing a separate Canadian price ladder to make
-// the menu look symmetrical would put numbers on the site that nobody has
-// agreed to charge — the pricing page already says USD, invoiced in CAD on
-// request, which is the true answer.
+// Region → market. The picker offers these two, both resolving to the same
+// market on purpose. Inventing a separate Canadian price ladder to make the
+// menu look symmetrical would put numbers on the site that nobody has agreed
+// to charge — the pricing page already says USD, invoiced in CAD on request,
+// which is the true answer.
+//
+// India used to be a third entry here, with its own market. Removed on
+// direct instruction rather than scaled back — see lib/markets/index.js.
 export const REGIONS = {
   us: { market: 'us', flag: '🇺🇸', name: 'United States', short: 'US' },
   ca: { market: 'us', flag: '🇨🇦', name: 'Canada', short: 'CA' },
-  in: { market: 'in', flag: '🇮🇳', name: 'India', short: 'IN' },
 };
 
 export const DEFAULT_REGION_ID = 'us';
@@ -66,15 +68,6 @@ export function marketForRegion(region) {
 export function regionForCountry(country) {
   if (!country) return DEFAULT_REGION_ID;
   const code = String(country).trim().toUpperCase();
-  if (code === 'IN') return 'in';
   if (code === 'CA') return 'ca';
   return DEFAULT_REGION_ID;
 }
-
-// The whole geographic rule, in one object. Adding a market later means one
-// entry here plus one file in lib/markets — no page or component changes.
-// Everything not listed falls through to the default (US) experience, which
-// is the existing site.
-export const COUNTRY_MARKETS = {
-  IN: 'in',
-};

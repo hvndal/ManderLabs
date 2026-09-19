@@ -73,10 +73,15 @@ ok('no failed first-party requests',realBad.length===0,realBad.slice(0,4).join('
 
 // --- market resolution + picker
 {
+  // The India market was removed entirely (lib/markets/index.js) — this used
+  // to assert an India-IP visitor got rupees, WhatsApp and an India picker
+  // entry. Now it asserts the opposite: an India-IP visitor is
+  // indistinguishable from any other, which is the whole point of the
+  // removal.
   const p=await b.newPage({extraHTTPHeaders:{'x-vercel-ip-country':'IN'}});
   await p.goto(BASE+'/',{waitUntil:'domcontentloaded'});
   const h=await p.content();
-  ok('India visitor: rupees + WhatsApp + India in picker',/₹/.test(h)&&/wa\.me\/918146298024/.test(h)&&/India/.test(h));
+  ok('India-IP visitor: no rupees, no India picker entry, same as everyone',!/₹/.test(h)&&!/>India</.test(h));
   await p.close();
   const p2=await b.newPage();
   await p2.goto(BASE+'/',{waitUntil:'domcontentloaded'});

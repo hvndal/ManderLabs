@@ -96,16 +96,15 @@ export default function AboutPage() {
               and the people building the thing, which is most of why the
               prices look the way they do and all of why the work does.
             </p>
-            {/* India only. MANDER is a subsidiary of Waste Universe, and the
-                ownership is stated to the market that asks about it. The
-                Organization schema carries `parentOrganization` under the
-                same gate (lib/seo.js), so the markup never claims more than
-                the page in front of a given visitor. */}
-            {market.id === 'in' && (
-              <p>
-                MANDER is a subsidiary of Waste Universe.
-              </p>
-            )}
+            {/* Was India-only, gated to the one market that asked about it.
+                Now unconditional: it's a real fact regardless of visitor,
+                and it lost its only display surface when the India market
+                was removed — see lib/markets/index.js. The Organization
+                schema states `parentOrganization` unconditionally too
+                (lib/seo.js), so the two still agree. */}
+            <p>
+              MANDER is a subsidiary of Waste Universe.
+            </p>
           </>
         }
         actions={

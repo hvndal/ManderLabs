@@ -1,16 +1,18 @@
 // The market registry.
 //
-// One entry per market, keyed by the ids in geo.js. Everything the site
-// renders that differs by country comes from here — prices, positioning,
-// contact options, metadata and the JSON-LD inputs — so adding a third
-// market is a file plus a line in COUNTRY_MARKETS, with no page or component
-// touched.
+// One entry today — US/Canada, one price ladder, one set of copy. There used
+// to be a second (India: rupee pricing, its own WhatsApp gating, its own
+// FAQ/meta/schema) — removed on direct instruction rather than scaled back,
+// so an Indian visitor is now indistinguishable from any other. The registry
+// is left as a lookup keyed by id, not collapsed into a bare constant, so
+// adding a market back (or a genuinely new one) is still a file plus a
+// branch in geo.js's regionForCountry, no page or component touched — that
+// shape earned its keep once already.
 //
 // Safe to import from client components: it is plain data with no server-only
 // dependency. The resolution of *which* market a visitor is in is separate
 // (lib/market-server.js on the server, MarketProvider on the client).
 import { US_MARKET } from './us.js';
-import { IN_MARKET } from './in.js';
 import { DEFAULT_MARKET_ID } from './geo.js';
 
 export {
@@ -29,7 +31,6 @@ export {
 
 export const MARKETS = {
   us: US_MARKET,
-  in: IN_MARKET,
 };
 
 /** Narrow any value to a real market id, defaulting to the US site. */
