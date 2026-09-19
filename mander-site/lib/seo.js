@@ -170,16 +170,6 @@ const MARKET_SERVICE_AREA = {
 };
 
 /**
- * Canonical plus hreflang for a page.
- *
- * The site is English-only, so the usual reason for hreflang — separate
- * translations — does not apply. It still earns its place here for the other
- * reason: MANDER sells into two countries off one set of pages, and en-US and
- * en-CA both resolving to the same URL is the correct way to say "this page
- * serves both markets" rather than leaving Google to guess which one it is
- * for. x-default catches everyone else.
- */
-/**
  * BlogPosting for a journal entry.
  *
  * publisher points at the same @id the organisation schema declares, so the
@@ -213,12 +203,41 @@ export function articleSchema(post) {
   };
 }
 
+/**
+ * Canonical plus hreflang for a page.
+ *
+ * (This docstring used to sit, misplaced, above articleSchema instead of
+ * here — moved to the function it actually describes.)
+ *
+ * The site is English-only, so the usual reason for hreflang — separate
+ * translations — does not apply. It earns its place here for the other
+ * reason: one set of pages serves several English-speaking markets, and
+ * marking each locale as resolving to the same URL is the correct way to
+ * say "this page serves that market too" rather than leaving Google to
+ * guess which one it's for. x-default catches everyone else.
+ *
+ * US and Canada were the original two, because the business genuinely
+ * priced and marketed to both. The four added alongside them — GB, AU, NZ,
+ * IE — are not a new market: no new pricing, no new copy branch, no
+ * geo-detection deciding what a visitor from one of them sees. They exist
+ * because the site already states, in its own copy and in
+ * organizationSchema's areaServed (the "Worldwide" Place entry), that the
+ * business takes clients anywhere — this is that same fact expressed as a
+ * locale tag instead of a sentence, for the core English-speaking countries
+ * specifically. A dedicated `/uk` or `/au` page with its own pricing and
+ * positioning would be the real, bigger project the "Worldwide" line
+ * doesn't yet promise; this is deliberately smaller than that.
+ */
 export function alternates(path) {
   return {
     canonical: path,
     languages: {
       'en-US': path,
       'en-CA': path,
+      'en-GB': path,
+      'en-AU': path,
+      'en-NZ': path,
+      'en-IE': path,
       'x-default': path,
     },
   };
