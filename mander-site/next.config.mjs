@@ -34,7 +34,8 @@ const isProd = process.env.NODE_ENV === 'production';
 // then present in the DOM, reports itself as visible to its own JS, and is
 // invisible or unreadable to the actual visitor. Verified by checking
 // computed styles rather than trusting the request status.
-const COOKIEHUB = 'https://cdn.cookiehub.eu https://*.cookiehub.eu';
+const COOKIEHUB =
+  'https://cdn.cookiehub.eu https://*.cookiehub.eu https://consent-eu.cookiehub.net https://*.cookiehub.net https://*.cookiehub.com';
 const GA_SCRIPT = 'https://www.googletagmanager.com';
 // gtag.js reports through both of these — googletagmanager.com for the
 // initial config ping, google-analytics.com (or a region-prefixed
