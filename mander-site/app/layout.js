@@ -75,25 +75,16 @@ export async function generateMetadata() {
       template: '%s | MANDER',
     },
     description: meta.description,
-    // Keywords carry almost no ranking weight now, but they cost nothing and a
-    // few engines still read them. The real work is done by the description,
-    // headings and JSON-LD service area.
-    keywords: meta.keywords,
     alternates: alternates('/'),
     category: 'Web Design',
-    // Search Console verification. Google will not show a property's data —
-    // or let a sitemap be submitted — until the domain is verified, and
-    // nothing else here can make that happen. Set
-    // NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION in Vercel to the token Google
-    // gives you and the meta tag appears on every page; leave it unset and
-    // nothing is emitted.
-    ...(process.env.NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION
-      ? {
-          verification: {
-            google: process.env.NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION,
-          },
-        }
-      : {}),
+    verification: {
+      ...(process.env.NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION
+        ? { google: process.env.NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION }
+        : {}),
+      ...(process.env.NEXT_PUBLIC_BING_SITE_VERIFICATION
+        ? { other: { 'msvalidate.01': process.env.NEXT_PUBLIC_BING_SITE_VERIFICATION } }
+        : {}),
+    },
     applicationName: 'MANDER',
     authors: [{ name: 'MANDER', url: SITE_URL }],
     creator: 'MANDER',

@@ -1,0 +1,31 @@
+{
+  "version": "0.0.1",
+  "configurations": [
+    {
+      "name": "mander-dev",
+      "runtimeExecutable": "npm",
+      "runtimeArgs": [
+        "run",
+        "dev"
+      ],
+      "port": 3000
+    },
+    {
+      "name": "mander-prod",
+      "runtimeExecutable": "npm",
+      "runtimeArgs": [
+        "run",
+        "start"
+      ],
+      "port": 3000
+    },
+    {
+      "name": "herhomes",
+      "runtimeExecutable": "node",
+      "runtimeArgs": [
+        "C:/Users/herma/Downloads/herhomes/her-homes-co-website/scripts/serve.mjs"
+      ],
+      "port": 4321
+    }
+  ]
+}

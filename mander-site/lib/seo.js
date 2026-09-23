@@ -219,15 +219,6 @@ export function articleSchema(post) {
 export function alternates(path) {
   return {
     canonical: path,
-    languages: {
-      'en-US': path,
-      'en-CA': path,
-      'en-GB': path,
-      'en-AU': path,
-      'en-NZ': path,
-      'en-IE': path,
-      'x-default': path,
-    },
   };
 }
 
@@ -318,8 +309,14 @@ export function organizationSchema(marketOrId) {
     // are the parts that carry a local signal for a service-area business.
     address: {
       '@type': 'PostalAddress',
+      addressLocality: 'Langley',
       addressRegion: 'BC',
       addressCountry: 'CA',
+    },
+    geo: {
+      '@type': 'GeoCoordinates',
+      latitude: '49.1042',
+      longitude: '-122.6604',
     },
     // Remote-first: the service is delivered online everywhere it is sold.
     areaServed: MARKET_SERVICE_AREA[market.id] || SERVICE_AREA,

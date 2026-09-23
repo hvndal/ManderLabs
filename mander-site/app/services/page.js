@@ -13,9 +13,9 @@ import {
 } from '@/lib/services';
 import { breadcrumbSchema, faqSchema, serviceSchemas, OG_IMAGE, alternates } from '@/lib/seo';
 
-const TITLE = 'Services: Web Design & SEO, Langley & Coquitlam';
+const TITLE = 'Services: Web Design, Redesign, Local SEO & Android Apps';
 const DESCRIPTION =
-  'Website design, ecommerce, local SEO, Google Business Profile, branding and Android apps for Langley, Coquitlam and the Fraser Valley. Fixed prices.';
+  'Fixed-price website design, website redesign, local SEO, Google Business Profile optimization, brand identity, and Android apps for growing businesses.';
 
 export const metadata = {
   title: TITLE,

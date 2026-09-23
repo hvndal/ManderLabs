@@ -178,18 +178,18 @@ export default function HomePage() {
             <PullQuote>Fixed price. Fixed scope. You see it before you approve it.</PullQuote>
           </div>
           <div className="md:col-span-6 md:col-start-7">
-            <dl className="border-t border-line">
+            <div className="border-t border-line">
               {TERMS.map((term) => (
                 <Reveal key={term.index}>
                   <div className="border-b border-line py-7">
-                    <dt className="font-display text-[1.6rem] leading-none text-ink md:text-[2rem]">
+                    <h3 className="font-display text-[1.6rem] leading-none text-ink md:text-[2rem]">
                       {term.title}
-                    </dt>
-                    <dd className="mt-3 max-w-text text-body-md text-ink-soft">{term.body}</dd>
+                    </h3>
+                    <p className="mt-3 max-w-text text-body-md text-ink-soft">{term.body}</p>
                   </div>
                 </Reveal>
               ))}
-            </dl>
+            </div>
           </div>
         </div>
       </section>
