@@ -13,7 +13,7 @@ import {
 } from '@/lib/services';
 import { breadcrumbSchema, faqSchema, serviceSchemas, OG_IMAGE, alternates } from '@/lib/seo';
 
-const TITLE = 'Services: Web Design, Redesign, Local SEO & Android Apps';
+const TITLE = 'Services: Web Design, Local SEO & Apps';
 const DESCRIPTION =
   'Fixed-price website design, website redesign, local SEO, Google Business Profile optimization, brand identity, and Android apps for growing businesses.';
 

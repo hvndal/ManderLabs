@@ -106,7 +106,7 @@ export default function PageHeader({
                   : 'mt-9 max-w-[62rem] text-body-lg leading-[1.65] text-ink-soft md:columns-2 md:gap-16 [&>p+p]:mt-5 [&>p]:break-inside-avoid [&>p:first-child]:first-letter:float-left [&>p:first-child]:first-letter:mr-2.5 [&>p:first-child]:first-letter:mt-[0.09em] [&>p:first-child]:first-letter:font-editorial [&>p:first-child]:first-letter:text-[3.4em] [&>p:first-child]:first-letter:leading-[0.78] [&>p:first-child]:first-letter:text-ink'
               }
             >
-              {lede}
+              {typeof lede === 'string' ? <p>{lede}</p> : lede}
             </Reveal>
           )}
 

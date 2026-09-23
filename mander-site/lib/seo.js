@@ -23,7 +23,7 @@ export const SITE_URL = 'https://www.mander.tech';
 // same way. Update this whenever site content meaningfully changes, same
 // rule the sitemap comment has always stated; a value that never moves would
 // be as dishonest as a fabricated one.
-export const SITE_LAST_UPDATED = new Date('2026-09-19');
+export const SITE_LAST_UPDATED = new Date('2026-09-23');
 
 import { BRAND, TEAM } from './content.js';
 import { getMarket } from './markets/index.js';
