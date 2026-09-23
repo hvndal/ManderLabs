@@ -598,7 +598,7 @@ export const WORK = [
   {
     name: 'Fitway Gym',
     sector: 'Commercial Fitness',
-    location: 'Mohali, Punjab, India',
+    location: 'Client Engagement',
     logo: '/logos/fitway.svg',
     image: '/work/fitway.png',
     // `imageAlt` describes what is actually in the frame. The cards used to
