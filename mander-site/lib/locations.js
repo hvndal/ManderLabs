@@ -235,7 +235,7 @@ const NA_REGIONS = [
           'Website design in Langley, BC, where part of the MANDER team is based — trades, agriculture and professional services in the Fraser Valley. Fixed-price builds.',
         intro:
           "Langley is where part of the MANDER team is actually based, so this is the one market on the list the studio has direct, everyday familiarity with rather than research alone. It's a Fraser Valley mix of trades and construction, agriculture, and a growing professional-services base — businesses that mostly built their reputation locally and are only now working out that reputation doesn't show up in a Google search unless something is actually built to be found.",
-        industries: ['Trades & construction', 'Agriculture & agritourism', 'Professional services', 'Retail'],
+        industries: ['Trades & construction', 'Agriculture & agritourism', 'Professional services', 'Retail & ecommerce'],
         faqs: [
           {
             q: 'Is MANDER actually based in Langley?',
@@ -248,6 +248,14 @@ const NA_REGIONS = [
           {
             q: 'Do you build Android apps for Langley businesses?',
             a: 'Yes, quoted per build. For trades and agricultural operations that’s usually a dispatch, scheduling or a customer-facing ordering tool.',
+          },
+          {
+            q: 'Which web designer in Langley builds ecommerce sites?',
+            a: 'MANDER does — part of the team is based in Langley. Online stores with payments and product pages, for retailers, farms and makers, typically take 6–10 weeks at a fixed price agreed in writing first.',
+          },
+          {
+            q: 'Is there a Langley web designer that also does SEO?',
+            a: 'Yes. MANDER builds the site and handles local SEO and Google Business Profile optimization for Langley and Fraser Valley businesses, included from the Growth plan up.',
           },
           {
             q: 'Do you work with agricultural or estate businesses?',
@@ -263,7 +271,7 @@ const NA_REGIONS = [
           'Website design for Coquitlam and the Tri-Cities, BC — healthcare, construction and hospitality across Coquitlam, Port Moody and Port Coquitlam.',
         intro:
           "Coquitlam anchors the Tri-Cities — Port Moody and Port Coquitlam alongside it — in one of the faster-growing residential and commercial corridors in the Lower Mainland. Healthcare and wellness practices, construction tied to that growth, and a genuine craft-brewing scene around Port Moody's Brewers Row all compete for a local customer base that's expanding faster than most of these businesses' own marketing has kept up with.",
-        industries: ['Healthcare & wellness', 'Construction & development', 'Craft brewing & hospitality', 'Professional services'],
+        industries: ['Healthcare & wellness', 'Construction & development', 'Restaurants, craft brewing & hospitality', 'Professional services'],
         faqs: [
           {
             q: 'Do you cover the whole Tri-Cities area, not just Coquitlam itself?',
@@ -272,6 +280,14 @@ const NA_REGIONS = [
           {
             q: 'Do you invoice in Canadian dollars?',
             a: 'Yes, CAD on request at no extra cost, with the price fixed and agreed before anything starts.',
+          },
+          {
+            q: 'Who makes websites for restaurants in Coquitlam?',
+            a: 'MANDER designs websites for restaurants, cafés, bakeries and breweries in Coquitlam, Port Coquitlam and Port Moody — menus, direct reservations or enquiries, gift cards or pre-orders, and local search so nearby diners find you. Fixed price, quoted up front.',
+          },
+          {
+            q: 'How fast can a Coquitlam business get a website?',
+            a: 'A one-page site typically goes live in about 2 weeks; up to 5 pages in 3–4 weeks; up to 10 pages with local SEO in 4–6 weeks.',
           },
           {
             q: 'Do you build booking systems for healthcare or wellness practices?',

@@ -20,6 +20,7 @@ export const NAV_LABEL_KEY = {
   '/digital': 'navDigital',
   '/growth': 'navGrowth',
   '/pricing': 'navPlans',
+  '/services': 'navServices',
   '/work': 'navWork',
   '/industries': 'navIndustries',
   '/about': 'navAbout',

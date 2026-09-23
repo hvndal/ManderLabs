@@ -25,8 +25,9 @@ export const SITE_URL = 'https://www.mander.tech';
 // be as dishonest as a fabricated one.
 export const SITE_LAST_UPDATED = new Date('2026-09-19');
 
-import { BRAND, SERVICES, TEAM } from './content.js';
+import { BRAND, TEAM } from './content.js';
 import { getMarket } from './markets/index.js';
+import { SERVICE_CATALOGUE } from './services.js';
 
 // Shared social-card image. Next.js does NOT deep-merge `openGraph`/`twitter`
 // between a layout and a page — if a page defines its own `openGraph` object
@@ -126,6 +127,11 @@ export const METRO_VANCOUVER_AREA = METRO_VANCOUVER.map((name) => ({
   name,
 }));
 
+// Langley sits on the Metro Vancouver / Fraser Valley line; the wider valley
+// is named as one region rather than a city list nobody has written for.
+const FRASER_VALLEY = { '@type': 'AdministrativeArea', name: 'Fraser Valley, British Columbia' };
+const LOCAL_AREA = [...METRO_VANCOUVER_AREA, FRASER_VALLEY];
+
 // The service area a market's schema claims. Keyed by market id so a new
 // market declares its own without touching the schema builders below.
 // India used to have its own entry here (a full enumerated state list,
@@ -148,7 +154,7 @@ const MARKET_SERVICE_AREA = {
   // specific, locally-relevant entries above this because those genuinely
   // carry local-SEO weight; this line exists only to stop the schema from
   // implying a narrower reach than the business actually has.
-  us: [...METRO_VANCOUVER_AREA, ...SERVICE_AREA, { '@type': 'Place', name: 'Worldwide' }],
+  us: [...LOCAL_AREA, ...SERVICE_AREA, { '@type': 'Place', name: 'Worldwide' }],
 };
 
 /**
@@ -238,7 +244,6 @@ export function organizationSchema(marketOrId) {
   const market =
     typeof marketOrId === 'string' || !marketOrId ? getMarket(marketOrId) : marketOrId;
   const { schema } = market;
-  const countries = schema.countries.map((name) => ({ '@type': 'Country', name }));
 
   return {
     '@context': 'https://schema.org',
@@ -327,7 +332,7 @@ export function organizationSchema(marketOrId) {
       name: 'Request a fixed-price quote',
       target: `${SITE_URL}/quote`,
     },
-    serviceType: SERVICES.map((s) => s.title),
+    serviceType: SERVICE_CATALOGUE.map((s) => s.name),
     availableLanguage: 'English',
     contactPoint: {
       '@type': 'ContactPoint',
@@ -394,18 +399,22 @@ export function organizationSchema(marketOrId) {
       areaServed: schema.countryCodes,
       url: `${SITE_URL}/pricing`,
     })),
+    // Named exactly as the Google Business Profile services (lib/services.js)
+    // so Ask Maps sees one catalogue, not two that half-agree.
     hasOfferCatalog: {
       '@type': 'OfferCatalog',
-      name: 'Website design services',
-      itemListElement: SERVICES.map((service) => ({
+      name: 'Web design, SEO and app services',
+      itemListElement: SERVICE_CATALOGUE.map((service) => ({
         '@type': 'Offer',
+        ...(service.priceRange ? { priceSpecification: { '@type': 'PriceSpecification', description: service.priceRange } } : {}),
         itemOffered: {
           '@type': 'Service',
-          name: service.title,
-          description: service.body,
-          serviceType: service.title,
+          name: service.name,
+          description: service.what,
+          serviceType: service.name,
+          url: `${SITE_URL}/services#${service.id}`,
           provider: { '@id': `${SITE_URL}/#organization` },
-          areaServed: countries,
+          areaServed: LOCAL_AREA,
         },
       })),
     },
@@ -419,22 +428,23 @@ export function serviceSchemas(marketOrId) {
   const market =
     typeof marketOrId === 'string' || !marketOrId ? getMarket(marketOrId) : marketOrId;
 
-  return SERVICES.map((service) => ({
+  return SERVICE_CATALOGUE.map((service) => ({
     '@context': 'https://schema.org',
     '@type': 'Service',
-    name: `${service.title} — small business`,
-    description: service.body,
-    serviceType: service.title,
+    name: service.name,
+    description: service.what,
+    serviceType: service.name,
+    url: `${SITE_URL}/services#${service.id}`,
     provider: {
       '@type': 'ProfessionalService',
       '@id': `${SITE_URL}/#organization`,
       name: BRAND.name,
       url: SITE_URL,
     },
-    areaServed: market.schema.countries.map((name) => ({
-      '@type': 'Country',
-      name,
-    })),
+    areaServed: [
+      ...LOCAL_AREA,
+      ...market.schema.countries.map((name) => ({ '@type': 'Country', name })),
+    ],
     audience: {
       '@type': 'BusinessAudience',
       name: 'Small and mid-sized businesses',

@@ -76,6 +76,7 @@ export const NAV_LINKS = [
 // TEAM data and the TeamShowcase/TeamCard components are still in the repo
 // but nothing renders them.
 export const NAV_MORE_LINKS = [
+  { label: 'Services', href: '/services' },
   { label: 'Work', href: '/work' },
   { label: 'Industries', href: '/industries' },
   { label: 'About', href: '/about' },
@@ -507,6 +508,14 @@ export const FAQS = [
   {
     q: 'Can you do local SEO if you are not in my town?',
     a: 'Yes, and it is one of the things we do most. Local search is won with your Google Business Profile, location-specific pages, citations and reviews — none of which require us to be down the road from you. We have ranked clients in towns none of us have visited.',
+  },
+  {
+    q: 'Do you reply on WhatsApp?',
+    a: 'Yes. WhatsApp, phone and email all reach the same people, and every message gets a reply within one business day — Monday to Friday, 9am–5pm Pacific.',
+  },
+  {
+    q: 'Do you do SEO as well as web design?',
+    a: 'Yes. Local SEO and Google Business Profile optimization are included from the Growth plan up, and available on their own — see the full list on the services page.',
   },
   {
     q: 'Do I own the website?',

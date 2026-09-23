@@ -1,4 +1,5 @@
 import Link from 'next/link';
+import { SERVICE_CATALOGUE } from '@/lib/services';
 import { notFound } from 'next/navigation';
 import Reveal from '@/components/Reveal';
 import GridField from '@/components/GridField';
@@ -11,7 +12,7 @@ import { IndexList, IndexRow } from '@/components/Swiss';
 import MarketProvider from '@/components/MarketProvider';
 import WhatsAppCta from '@/components/WhatsAppCta';
 import { getCity, allCities } from '@/lib/locations';
-import { SERVICES, BRAND } from '@/lib/content';
+import { BRAND } from '@/lib/content';
 import { getMarket } from '@/lib/markets';
 import { breadcrumbSchema, locationServiceSchema, faqSchema, OG_IMAGE, alternates } from '@/lib/seo';
 
@@ -157,16 +158,16 @@ export default function CityPage({ params }) {
         <Spread index="02" folio="What we build">
           <div className="flex flex-wrap items-end justify-between gap-6">
             <h2 className="h-display max-w-[16ch]">What we build in {city.name}.</h2>
-            <span className="rail text-ink-mute">{SERVICES.length} total</span>
+            <span className="rail text-ink-mute">{SERVICE_CATALOGUE.length} total</span>
           </div>
           <IndexList className="mt-14">
-            {SERVICES.map((service, i) => (
+            {SERVICE_CATALOGUE.map((service, i) => (
               <IndexRow
-                key={service.title}
-                index={service.index}
-                title={service.title}
-                body={service.body}
-                href="/#services"
+                key={service.id}
+                index={String(i + 1).padStart(2, '0')}
+                title={service.name}
+                body={`${service.what} Typical timeline: ${service.timeline}`}
+                href={`/services#${service.id}`}
                 action="Read"
                 delay={i * 40}
               />
