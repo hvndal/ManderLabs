@@ -55,8 +55,8 @@ export const US_MARKET = {
   // — no component touched. If a dedicated non-India number exists later,
   // swap it in here; nothing else needs to change.
   whatsapp: {
-    display: '+91 81462 98024',
-    url: 'https://wa.me/918146298024',
+    display: '+1 (857) 758-7182',
+    url: 'https://wa.me/18577587182',
     cta: 'Chat with us on WhatsApp',
   },
 

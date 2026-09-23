@@ -254,7 +254,7 @@ export function organizationSchema(marketOrId) {
     url: SITE_URL,
     email: BRAND.email,
     slogan: market.tagline,
-    knowsLanguage: ['en'],
+    knowsLanguage: ['en', 'fr'],
     // sameAs is how Google confirms that this site, that Instagram account and
     // the business behind them are one entity. Both entries have to be profiles
     // that actually resolve, or the signal is worth less than nothing.
@@ -333,7 +333,7 @@ export function organizationSchema(marketOrId) {
       target: `${SITE_URL}/quote`,
     },
     serviceType: SERVICE_CATALOGUE.map((s) => s.name),
-    availableLanguage: 'English',
+    availableLanguage: ['English', 'French'],
     contactPoint: {
       '@type': 'ContactPoint',
       contactType: 'sales',
@@ -345,7 +345,7 @@ export function organizationSchema(marketOrId) {
           ? { telephone: market.whatsapp.display.replace(/\s/g, '') }
           : {}),
       areaServed: schema.countryCodes,
-      availableLanguage: ['English'],
+      availableLanguage: ['English', 'French'],
     },
     // No `founder` property: the studio is presented as a team rather than a
     // person who owns it, and the CEO is not the founder.

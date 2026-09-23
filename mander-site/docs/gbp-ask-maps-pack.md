@@ -16,27 +16,25 @@ and regenerate this section rather than editing the profile alone.
 | Response time | Within one business day | `/contact`, `/services`, forms |
 | Contact modes | WhatsApp, phone, email quote (sales@mander.tech) | nav, footer, `/services` |
 | Phone | +1 (857) 758-7182 | nav, footer, schema |
-| WhatsApp | +91 81462 98024 | nav, footer, `/services` |
-| Language | English | `/services`, schema |
+| WhatsApp | +1 (857) 758-7182 (same as phone) | nav, footer, `/services` |
+| Languages | English, French (Herman) | `/services`, schema |
 | Pricing | Fixed price, quoted in writing before work starts (no public figures) | `/pricing`, `/services` |
 | Website | https://mander.tech | — |
 | Street address | **Hidden** (service-area business — do not add one) | none on site |
 
 ### Contradictions / risks found — please check
 
-1. **WhatsApp number is Indian (+91).** The India market was removed from the
-   site, but the only WhatsApp number is still an India number. Ask Maps may
-   read a +91 contact as a sign the business isn't in BC. If you have a
-   Canadian WhatsApp line, swap it in `lib/markets/us.js` (one field) and on GBP.
+1. **WhatsApp — resolved.** WhatsApp now uses the same +1 (857) 758-7182
+   number as the phone line. Make sure WhatsApp Business is actually
+   registered on that number, and use it for both fields on GBP.
 2. **Phone is a Massachusetts area code (857).** Fine if that's the line you
    answer, but make sure GBP lists the *same* number. A 604/778/236 number
    would be a stronger local signal for Langley/Coquitlam.
 3. **Hours:** the site says Mon–Fri 9–5 Pacific. If GBP shows anything else
    (weekends, 24h, blank), make it match — this is the most common contradiction.
-4. **Languages:** the site now states **English only**. A French-language
-   version of the site is being built for Quebec; if nobody on the team
-   actually works in French (or Punjabi, Hindi etc.), keep GBP at English only.
-   If someone does, tell me and I'll add it to the site and schema.
+4. **Languages — resolved.** Site and schema now say English and French
+   (French with Herman). On GBP, add French under languages if offered, and
+   mention "Service en français avec Herman" in the description.
 5. **Team location:** the site says part of the team is in Langley and the rest
    in Massachusetts and Maine. Keep the GBP description consistent with that —
    don't call it an office.

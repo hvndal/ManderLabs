@@ -138,7 +138,7 @@ export const ASK_MAPS_FAQS = [
   },
   {
     q: 'What languages does MANDER work in?',
-    a: 'English. Every call, message, document and website is handled in English.',
+    a: 'English and French. Herman works with clients in French; everyone else on the team works in English.',
   },
   {
     q: 'What is included in a MANDER website?',

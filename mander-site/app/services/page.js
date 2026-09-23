@@ -129,7 +129,7 @@ export default function ServicesPage() {
               <a href={`mailto:${BRAND.email}`} className="link-underline text-ink">{BRAND.email}</a>
             </Row>
             <Row label="Hours">Monday to Friday, 9am–5pm Pacific. Reply within one business day.</Row>
-            <Row label="Language">English</Row>
+            <Row label="Languages">English and French (French with Herman)</Row>
           </dl>
         </Spread>
       </section>
