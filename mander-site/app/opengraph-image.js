@@ -22,9 +22,10 @@ export const contentType = 'image/png';
 // darkest at the left where the type sits and stays readable on the right,
 // so the image is visible as an image instead of being dimmed into a texture.
 export default async function Image() {
-  const hero = await fetch(new URL('./og-hero.jpg', import.meta.url)).then(
-    (res) => res.arrayBuffer()
-  );
+  const [hero, glyph] = await Promise.all([
+    fetch(new URL('./og-hero.jpg', import.meta.url)).then((res) => res.arrayBuffer()),
+    fetch(new URL('./logo-glyph.png', import.meta.url)).then((res) => res.arrayBuffer()),
+  ]);
 
   return new ImageResponse(
     (
@@ -122,6 +123,12 @@ export default async function Image() {
               color: 'rgba(244,242,236,0.72)',
             }}
           >
+            <img
+              src={glyph}
+              width={56}
+              height={50}
+              style={{ marginRight: 18 }}
+            />
             <span
               style={{
                 fontWeight: 700,

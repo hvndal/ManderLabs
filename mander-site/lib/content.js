@@ -499,11 +499,11 @@ export const FAQS = [
   },
   {
     q: 'Do you only work with local businesses?',
-    a: 'No — we work remotely with small and mid-sized businesses anywhere in the world. Everything from the first call to handover happens over email and video, so your location makes no difference to the price or the timeline. Metro Vancouver is the one region the local search work is targeted at, but that is about where we market, not who we take on.',
+    a: 'No — we work with small and mid-sized businesses anywhere in the world. Everything from the first call to handover happens over email and video, so your location makes no difference to the price or the timeline. Metro Vancouver is the one region the local search work is targeted at, but that is about where we market, not who we take on.',
   },
   {
     q: 'Where are you based, and does it matter?',
-    a: 'The team is split between Langley, British Columbia, Maynard, Massachusetts and Portland, Maine, and we deliver every project remotely. In practice that means you get the same senior people whether you are in Vancouver, Chicago, Austin or a town of four thousand — and we cover both Pacific and Eastern hours between us.',
+    a: 'The team is based in Langley, British Columbia, and we deliver every project over call, video and email. In practice that means you get the same senior people whether you are in Vancouver, Chicago, Austin or a town of four thousand.',
   },
   {
     q: 'Can you do local SEO if you are not in my town?',
@@ -933,7 +933,7 @@ export const CAREERS = {
   intro: {
     eyebrow: 'Careers',
     title: 'Work on sites that have to earn their keep.',
-    body: 'MANDER is a small remote studio building websites and Android apps for small businesses worldwide. Every project is fixed-scope and fixed-price, which changes what the work feels like day to day more than anything else on this page.',
+    body: 'MANDER is a small studio building websites and Android apps for small businesses worldwide. Every project is fixed-scope and fixed-price, which changes what the work feels like day to day more than anything else on this page.',
   },
 
   // What it is actually like. Each of these is downstream of something the
@@ -949,8 +949,8 @@ export const CAREERS = {
       body: 'There is no layer between what you make and the person paying for it. You will talk to the business owner, hear what actually broke, and see your work carry real traffic instead of disappearing into a backlog.',
     },
     {
-      title: 'Remote across two countries',
-      body: 'The team works from British Columbia and Massachusetts. Overlap matters more than location — a few reliable hours against Pacific time is worth more than sitting in a particular city.',
+      title: 'Small team, broad reach',
+      body: 'The team works from British Columbia. Overlap matters more than location — a few reliable hours against Pacific time is worth more than sitting in a particular city.',
     },
     {
       title: 'Craft is the product',
@@ -968,7 +968,7 @@ export const CAREERS = {
       title: 'Web Designer',
       discipline: 'Design',
       type: 'Contract or full-time',
-      location: 'Remote — Canada or U.S.',
+      location: 'Vancouver, BC',
       status: 'rolling',
       blurb: 'Design small-business sites that look authored rather than assembled, and hand them over in a state a developer can actually build.',
       doing: [
@@ -987,7 +987,7 @@ export const CAREERS = {
       title: 'Front-End Developer',
       discipline: 'Engineering',
       type: 'Contract or full-time',
-      location: 'Remote — Canada or U.S.',
+      location: 'Vancouver, BC',
       status: 'rolling',
       blurb: 'Build the sites in Next.js and Tailwind, and keep them fast on the mid-range Android phone most of our clients’ customers are actually holding.',
       doing: [
@@ -1006,7 +1006,7 @@ export const CAREERS = {
       title: 'Android Developer',
       discipline: 'Engineering',
       type: 'Contract',
-      location: 'Remote — Canada or U.S.',
+      location: 'Vancouver, BC',
       status: 'rolling',
       blurb: 'Build the native Android side of the studio — custom apps shipped to Google Play under the client’s own developer account.',
       doing: [
@@ -1025,7 +1025,7 @@ export const CAREERS = {
       title: 'SEO & Local Search Specialist',
       discipline: 'Growth',
       type: 'Part-time or contract',
-      location: 'Remote — Canada or U.S.',
+      location: 'Vancouver, BC',
       status: 'rolling',
       blurb: 'Make sure the sites we build actually get found — local search, Google Business Profile, and the technical work underneath it.',
       doing: [

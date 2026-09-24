@@ -178,7 +178,7 @@ export default function ContactPage() {
           </SpecRow>
           <SpecRow label="Where we work" delay={60}>
             <p className="max-w-text text-body-md text-ink-soft">
-              {market.region}. MANDER is a remote studio with no public office
+              {market.region}. MANDER is a studio with no public office
               or walk-in premises — every project runs over call, video and
               email.
             </p>

@@ -71,7 +71,7 @@ const NA_REGIONS = [
     faqs: [
       {
         q: 'Is MANDER a BC company?',
-        a: "The company's roots are in Langley, where part of the team is based, with the rest in Massachusetts and Maine. Delivery is remote either way, and Metro Vancouver is the market the local search work is built around.",
+        a: "The company's roots are in Langley, where the team is based. Metro Vancouver is the market the local search work is built around.",
       },
       {
         q: 'Do you bill in Canadian dollars?',
@@ -99,7 +99,7 @@ const NA_REGIONS = [
         faqs: [
           {
             q: 'How do you compete with Vancouver agency pricing?',
-            a: 'By keeping the studio small and remote rather than carrying downtown-Vancouver overhead — the design quality holds, the invoice comes down.',
+            a: 'By keeping the studio small rather than carrying downtown-Vancouver overhead — the design quality holds, the invoice comes down.',
           },
           {
             q: 'Do you invoice in Canadian dollars?',
@@ -239,7 +239,7 @@ const NA_REGIONS = [
         faqs: [
           {
             q: 'Is MANDER actually based in Langley?',
-            a: "Yes — part of the team is based in Langley, and the rest works remotely, out of Massachusetts and Maine. It's the one market on this list the studio knows first-hand rather than through research.",
+            a: "Yes — the team is based in Langley. It's the one market on this list the studio knows first-hand rather than through research.",
           },
           {
             q: 'Do you invoice in Canadian dollars?',

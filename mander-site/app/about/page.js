@@ -27,7 +27,7 @@ export async function generateMetadata() {
   // Trimmed to survive truncation: a description that runs past ~160
   // characters is cut mid-sentence in the result, which reads as carelessness
   // on the one page a stranger opens to judge whether you are careful.
-  const description = `A small remote studio in Metro Vancouver: brand, digital and growth for small and growing businesses across ${market.region}.`;
+  const description = `A small studio in Metro Vancouver: brand, digital and growth for small and growing businesses across ${market.region}.`;
 
   return {
     title: 'About Us',
@@ -75,7 +75,7 @@ export default function AboutPage() {
       />
 
       <PageHeader
-        meta={['About', market.region, 'Remote studio']}
+        meta={['About', market.region, 'Vancouver studio']}
         eyebrow="About"
         title="A small studio that ships finished work."
         trail={trail}
@@ -85,7 +85,7 @@ export default function AboutPage() {
         lede={
           <>
             <p>
-              MANDER is a remote design and development studio building
+              MANDER is a design and development studio building
               websites, Android apps and local search presence for small and
               growing businesses across {market.region}. Every project is
               fixed-scope and fixed-price, quoted in writing before any work
@@ -96,15 +96,7 @@ export default function AboutPage() {
               and the people building the thing, which is most of why the
               prices look the way they do and all of why the work does.
             </p>
-            {/* Was India-only, gated to the one market that asked about it.
-                Now unconditional: it's a real fact regardless of visitor,
-                and it lost its only display surface when the India market
-                was removed — see lib/markets/index.js. The Organization
-                schema states `parentOrganization` unconditionally too
-                (lib/seo.js), so the two still agree. */}
-            <p>
-              MANDER is a subsidiary of Waste Universe.
-            </p>
+
           </>
         }
         actions={

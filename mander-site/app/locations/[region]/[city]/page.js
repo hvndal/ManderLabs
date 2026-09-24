@@ -98,7 +98,7 @@ export default function CityPage({ params }) {
 
       {/* ---------------------------------------------------------------- Hero */}
       <PageHeader
-        meta={[city.name, `${region.name}, ${region.countryName}`, 'Remote studio']}
+        meta={[city.name, `${region.name}, ${region.countryName}`, 'Vancouver studio']}
         eyebrow={`${region.name}, ${region.countryName}`}
         title={city.h1}
         trail={trail}

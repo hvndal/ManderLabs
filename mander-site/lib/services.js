@@ -18,7 +18,7 @@
 
 export const TOWNS = ['Langley', 'Coquitlam', 'Port Coquitlam', 'Port Moody', 'Surrey', 'the Fraser Valley'];
 export const TOWNS_LINE =
-  'Langley, Coquitlam and the Tri-Cities, Surrey, the Fraser Valley and the rest of Metro Vancouver — plus remote clients anywhere.';
+  'Langley, Coquitlam and the Tri-Cities, Surrey, the Fraser Valley and the rest of Metro Vancouver — plus clients anywhere.';
 
 export const PRICE_FALLBACK = 'Fixed price, quoted in writing before work starts.';
 
@@ -130,7 +130,7 @@ export const ASK_MAPS_FAQS = [
   },
   {
     q: 'What areas does MANDER serve?',
-    a: 'Langley, Coquitlam and the Tri-Cities, Surrey, the Fraser Valley and the rest of Metro Vancouver, British Columbia. Work is delivered remotely, so clients elsewhere in Canada, the US and worldwide are taken on the same way.',
+    a: 'Langley, Coquitlam and the Tri-Cities, Surrey, the Fraser Valley and the rest of Metro Vancouver, British Columbia. Clients elsewhere in Canada, the US and worldwide are taken on the same way.',
   },
   {
     q: 'How do I get a quote from MANDER?',

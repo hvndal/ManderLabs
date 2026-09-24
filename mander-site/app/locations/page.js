@@ -65,18 +65,18 @@ export default function LocationsHubPage() {
       />
 
       <PageHeader
-        meta={['Locations', 'Metro Vancouver', 'Remote, worldwide']}
+        meta={['Locations', 'Metro Vancouver', 'Worldwide']}
         eyebrow="Locations"
         title="Brand, digital and growth for Metro Vancouver."
         trail={trail}
         media
         mediaSrc="/editorial/urban-aerial.jpg"
-        mediaCaption="MANDER — remote studio, wherever you are."
+        mediaCaption="MANDER — wherever you are."
         lede={
           <>
             <p>
               Metro Vancouver is where MANDER is based and the one region with
-              dedicated local pages. We also take on remote work for small and
+              dedicated local pages. We also take on work for small and
               mid-sized businesses anywhere in the world — the process and the
               fixed-scope quote don&apos;t change based on your address. That
               is deliberately not a page-per-country claim: it just

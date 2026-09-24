@@ -17,7 +17,7 @@ import { faqSchema, OG_IMAGE, alternates } from '@/lib/seo';
 // rendered <title>.
 const TITLE = 'Careers — Design & Development Roles';
 const DESCRIPTION =
-  'Design, front-end, Android and SEO roles at a small remote studio building for small business worldwide.';
+  'Design, front-end, Android and SEO roles at a small studio building for small business worldwide.';
 
 export const metadata = {
   title: TITLE,
@@ -133,7 +133,7 @@ export default function CareersPage() {
 
       {/* ---------------------------------------------------------------- Hero */}
       <PageHeader
-        meta={['Careers', 'Remote studio', openings > 0 ? 'Open roles' : 'Rolling applications']}
+        meta={['Careers', 'Vancouver studio', openings > 0 ? 'Open roles' : 'Rolling applications']}
         eyebrow={CAREERS.intro.eyebrow}
         title={CAREERS.intro.title}
         media

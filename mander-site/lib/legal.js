@@ -78,7 +78,7 @@ export function legalDocs(market = getMarket(null)) {
     p: [
       `Questions about this policy, or any request relating to it, can be sent to ${EMAIL} and we will respond within a reasonable period.`,
       ...(PHONE_LINE ? [PHONE_LINE] : []),
-      `MANDER is a remote studio serving clients across ${market.region}. We do not operate a public office or walk-in premises, so email is the correct and fastest route for every enquiry, including legal, billing and privacy requests.`,
+      `MANDER is a studio serving clients across ${market.region}. We do not operate a public office or walk-in premises, so email is the correct and fastest route for every enquiry, including legal, billing and privacy requests.`,
     ],
   };
 
@@ -228,7 +228,7 @@ export function legalDocs(market = getMarket(null)) {
       {
         h: 'Services',
         p: [
-          'MANDER provides digital services: website design, website development, website redesign, brand identity, search engine optimisation, local search work, and ongoing maintenance under a care plan. All services are delivered remotely.',
+          'MANDER provides digital services: website design, website development, website redesign, brand identity, search engine optimisation, local search work, and ongoing maintenance under a care plan. All services are delivered over call, video and email.',
           'Nothing on this website is an offer capable of acceptance. Prices shown are starting prices for the scope described, and a project becomes binding only when we have agreed a written scope and you have confirmed it.',
         ],
       },

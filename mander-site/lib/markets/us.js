@@ -102,19 +102,19 @@ export const US_MARKET = {
   meta: {
     title: 'MANDER | Affordable, Fast Website Design for Small Business',
     description:
-      'Remote website design for small business, worldwide. Fixed-price builds quoted up front, with local SEO and ongoing care.',
+      'Website design for small business, worldwide. Fixed-price builds quoted up front, with local SEO and ongoing care.',
     ogTitle: 'MANDER | Website Design for Small Business — Worldwide',
     ogDescription:
-      'Remote website design, development and SEO for small and mid-sized businesses, worldwide. Fixed scope, fixed price, quoted before work starts.',
+      'Website design, development and SEO for small and mid-sized businesses, worldwide. Fixed scope, fixed price, quoted before work starts.',
     twitterDescription:
-      'Remote website design and SEO for small business, worldwide. Fixed-price builds, quoted up front.',
+      'Website design and SEO for small business, worldwide. Fixed-price builds, quoted up front.',
     keywords: [
-      'remote website design',
+      'website design Vancouver',
       'website design for small business',
       'affordable website design USA',
       'website design Canada',
       'small business web design agency',
-      'custom website design remote',
+      'custom website design Vancouver',
       'fixed price website design',
       'small business SEO',
       'local SEO for small business',
@@ -146,7 +146,7 @@ export const US_MARKET = {
     // `areaServed` addition in lib/seo.js both say so; the Service-level
     // schema stays scoped to the priced markets on purpose.
     description:
-      'Remote website design, development and SEO for small and mid-sized businesses, worldwide. Fixed-price custom builds, quoted before work starts.',
+      'Website design, development and SEO for small and mid-sized businesses, worldwide. Fixed-price custom builds, quoted before work starts.',
     priceRange: '$$',
     currenciesAccepted: 'USD, CAD',
     offerCurrency: 'USD',

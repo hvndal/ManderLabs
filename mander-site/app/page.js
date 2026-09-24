@@ -90,7 +90,7 @@ export default function HomePage() {
                 A small studio that ships finished work.
               </h2>
               <Standfirst className="mt-8" dropCap>
-                MANDER is a remote design and development studio building
+                MANDER is a design and development studio building
                 websites, Android apps and local search presence for small
                 and growing businesses across {market.region}. We are
                 deliberately small — there is no account layer between you

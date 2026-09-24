@@ -365,17 +365,7 @@ export function organizationSchema(marketOrId) {
       jobTitle: m.role,
       email: BRAND.email,
     })),
-    // MANDER is a subsidiary of Waste Universe — unconditional now, matching
-    // /about (also unconditional as of the India removal). Was gated to the
-    // India market only; when that market was removed, this fact had nowhere
-    // left to show, and it's real regardless of who's reading — narrowing a
-    // true fact to "nobody sees this now" for lack of a gate was the wrong
-    // default, so it applies to every visitor instead. `parentOrganization`
-    // means ownership specifically, which is why it is the right property
-    // here. Name only: there is no verified Waste Universe URL in this repo
-    // (WorkIndex withholds its link deliberately), and inventing one to fill
-    // a schema property is not on.
-    parentOrganization: { '@type': 'Organization', name: 'Waste Universe' },
+
     priceRange: schema.priceRange,
     currenciesAccepted: schema.currenciesAccepted,
     // Offers without a price, deliberately. The site no longer publishes
