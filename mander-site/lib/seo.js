@@ -37,20 +37,18 @@ import { SERVICE_CATALOGUE } from './services.js';
 // (see app/layout.js and every route under app/) rather than set once and
 // relied on to inherit.
 //
-// Points at the generated card in app/opengraph-image.js, not the old static
-// /og-image.jpg. Two reasons. The site was previously serving two different
-// thumbnails: the homepage picked up the generated route (Next's file
-// convention overrides inherited layout metadata), while every other page
-// used the static logo card — and on the homepage og:image and twitter:image
-// disagreed with each other outright. Naming one source here makes all of it
-// consistent. Second, the static file was a bare wordmark on cream; the
-// generated card carries the hero footage, which is what a share preview is
-// actually for.
+// Points at the static card in app/opengraph-image.jpg. It used to be an
+// ImageResponse route, which can only emit PNG — with the hero photo in it
+// that came out at ~566 KB, over the ~300 KB WhatsApp and LinkedIn accept,
+// so previews silently dropped the thumbnail. Rendered once and saved as a
+// JPEG (~50 KB). To change the card, edit and re-export the JPEG; keep it
+// 1200×630 and under 200 KB.
 export const OG_IMAGE = {
-  url: `${SITE_URL}/opengraph-image`,
+  url: `${SITE_URL}/opengraph-image.jpg`,
   width: 1200,
   height: 630,
-  alt: 'MANDER — website design for small business, worldwide.',
+  type: 'image/jpeg',
+  alt: 'MANDER — Websites that grow small business. Web design for small business, fixed scope, fixed price.',
 };
 
 // The business is delivered remotely across two countries, so the schema has

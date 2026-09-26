@@ -78,6 +78,14 @@ const nextConfig = {
         destination: '/',
         permanent: true,
       },
+      // The share card was a generated route at /opengraph-image; it is a
+      // static JPEG now. Previews already cached by chat apps still hold the
+      // old URL.
+      {
+        source: '/opengraph-image',
+        destination: '/opengraph-image.jpg',
+        permanent: true,
+      },
       {
         source: '/index.php',
         destination: '/',
