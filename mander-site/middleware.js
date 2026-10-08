@@ -125,10 +125,18 @@ export function middleware(request) {
   const cleanPath = request.nextUrl.pathname === '/' ? '' : request.nextUrl.pathname.replace(/\/+$/, '');
   const canonicalUrl = `https://www.mander.tech${cleanPath}`;
 
+  // Only inject Link: <...>; rel="canonical" for canonical HTML content routes, never metadata/images
+  const isMetadataAsset =
+    cleanPath.startsWith('/opengraph-image') ||
+    cleanPath.startsWith('/apple-icon') ||
+    cleanPath.startsWith('/icon');
+
   // No ?market= in play: the ordinary path, no redirect, nothing written.
   if (requested === null) {
     const response = NextResponse.next({ request: { headers } });
-    response.headers.set('Link', `<${canonicalUrl}>; rel="canonical"`);
+    if (!isMetadataAsset) {
+      response.headers.set('Link', `<${canonicalUrl}>; rel="canonical"`);
+    }
     return response;
   }
 
@@ -158,6 +166,6 @@ export const config = {
   // never read the market, so running on them would cost a middleware
   // invocation per asset for nothing.
   matcher: [
-    '/((?!_next/static|_next/image|favicon.ico|robots.txt|sitemap.xml|.*\\.(?:jpg|jpeg|png|gif|svg|webp|avif|ico|mp4|webm|woff|woff2|txt|xml|webmanifest)$).*)',
+    '/((?!_next/static|_next/image|favicon.ico|robots.txt|sitemap.xml|opengraph-image|apple-icon|icon|.*\\.(?:jpg|jpeg|png|gif|svg|webp|avif|ico|mp4|webm|woff|woff2|txt|xml|webmanifest)$).*)',
   ],
 };

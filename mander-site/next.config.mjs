@@ -73,6 +73,18 @@ const nextConfig = {
   },
   async redirects() {
     return [
+      // Apex-to-www canonical host redirect at server/edge level
+      {
+        source: '/:path*',
+        has: [
+          {
+            type: 'host',
+            value: 'mander.tech',
+          },
+        ],
+        destination: 'https://www.mander.tech/:path*',
+        permanent: true,
+      },
       {
         source: '/index.html',
         destination: '/',
@@ -194,6 +206,39 @@ const nextConfig = {
               'camera=(), microphone=(), geolocation=(), payment=(), usb=(), magnetometer=(), gyroscope=()',
           },
           { key: 'X-DNS-Prefetch-Control', value: 'on' },
+        ],
+      },
+      // Explicit X-Robots-Tag: noindex headers for sitemap, robots, and open-graph image assets.
+      // Search engines must crawl these resources for discovery/previews, but should NEVER index
+      // them as search result pages (prevents Google Search Console "Crawled - currently not indexed").
+      {
+        source: '/sitemap.xml',
+        headers: [
+          { key: 'X-Robots-Tag', value: 'noindex' },
+        ],
+      },
+      {
+        source: '/robots.txt',
+        headers: [
+          { key: 'X-Robots-Tag', value: 'noindex' },
+        ],
+      },
+      {
+        source: '/opengraph-image',
+        headers: [
+          { key: 'X-Robots-Tag', value: 'noindex' },
+        ],
+      },
+      {
+        source: '/opengraph-image.jpg',
+        headers: [
+          { key: 'X-Robots-Tag', value: 'noindex' },
+        ],
+      },
+      {
+        source: '/apple-icon(.*)',
+        headers: [
+          { key: 'X-Robots-Tag', value: 'noindex' },
         ],
       },
     ];
