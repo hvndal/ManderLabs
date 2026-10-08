@@ -14,7 +14,7 @@ import {
 import WhatsAppCta from '@/components/WhatsAppCta';
 import { BRAND } from '@/lib/content';
 import { getServerMarket } from '@/lib/market-server';
-import { faqSchema, serviceSchemas, OG_IMAGE, alternates } from '@/lib/seo';
+import { faqSchema, serviceSchemas, SITE_URL, OG_IMAGE, alternates } from '@/lib/seo';
 
 export async function generateMetadata() {
   const { pricing } = getServerMarket().meta;
@@ -28,7 +28,7 @@ export async function generateMetadata() {
     openGraph: {
       title: pricing.title,
       description: pricing.description,
-      url: '/pricing',
+      url: `${SITE_URL}/pricing`,
       type: 'website',
       images: [OG_IMAGE],
     },

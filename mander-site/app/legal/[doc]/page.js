@@ -7,7 +7,7 @@ import { Spread } from '@/components/Editorial';
 import { LEGAL_NAV, LEGAL_UPDATED, legalDocs, getLegalDoc } from '@/lib/legal';
 import { getServerMarket } from '@/lib/market-server';
 import { BRAND } from '@/lib/content';
-import { breadcrumbSchema, OG_IMAGE, alternates } from '@/lib/seo';
+import { breadcrumbSchema, SITE_URL, OG_IMAGE, alternates } from '@/lib/seo';
 
 // One route renders all four policies from lib/legal.js. Adding a policy is
 // adding an object there — no new route, no new markup.
@@ -38,7 +38,7 @@ export function generateMetadata({ params }) {
     openGraph: {
       title: `${doc.title} | MANDER`,
       description: doc.description,
-      url: path,
+      url: `${SITE_URL}${path}`,
       type: 'article',
       images: [OG_IMAGE],
     },

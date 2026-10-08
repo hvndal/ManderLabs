@@ -9,7 +9,7 @@ import { Spread } from '@/components/Editorial';
 import { IndexList, IndexRow } from '@/components/Swiss';
 import { INDUSTRIES } from '@/lib/industries';
 import { BRAND } from '@/lib/content';
-import { breadcrumbSchema, OG_IMAGE, alternates } from '@/lib/seo';
+import { breadcrumbSchema, SITE_URL, OG_IMAGE, alternates } from '@/lib/seo';
 
 const TITLE = 'Industries';
 const DESCRIPTION =
@@ -22,7 +22,7 @@ export const metadata = {
   openGraph: {
     title: `${TITLE} | MANDER`,
     description: DESCRIPTION,
-    url: '/industries',
+    url: `${SITE_URL}/industries`,
     type: 'website',
     images: [OG_IMAGE],
   },

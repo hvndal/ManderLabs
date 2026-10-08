@@ -52,7 +52,7 @@ export function generateMetadata({ params }) {
     openGraph: {
       title: `MANDER ${pillar.label}`,
       description,
-      url: path,
+      url: `${SITE_URL}${path}`,
       type: 'website',
       images: [OG_IMAGE],
     },

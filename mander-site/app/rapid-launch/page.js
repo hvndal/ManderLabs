@@ -9,7 +9,7 @@ import Faq from '@/components/Faq';
 import { Spread } from '@/components/Editorial';
 import { IndexList, IndexRow } from '@/components/Swiss';
 import { BRAND, TIERS } from '@/lib/content';
-import { breadcrumbSchema, faqSchema, OG_IMAGE, alternates } from '@/lib/seo';
+import { breadcrumbSchema, faqSchema, SITE_URL, OG_IMAGE, alternates } from '@/lib/seo';
 
 const TITLE = 'Rapid Launch — Online This Month';
 const DESCRIPTION =
@@ -22,7 +22,7 @@ export const metadata = {
   openGraph: {
     title: `${TITLE} | MANDER`,
     description: DESCRIPTION,
-    url: '/rapid-launch',
+    url: `${SITE_URL}/rapid-launch`,
     type: 'website',
     images: [OG_IMAGE],
   },

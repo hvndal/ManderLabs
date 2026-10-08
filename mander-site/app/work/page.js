@@ -34,7 +34,7 @@ export async function generateMetadata() {
     openGraph: {
       title: 'Selected Work — MANDER',
       description,
-      url: '/work',
+      url: `${SITE_URL}/work`,
       type: 'website',
       images: [OG_IMAGE],
     },

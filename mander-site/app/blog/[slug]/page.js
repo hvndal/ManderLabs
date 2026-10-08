@@ -8,7 +8,7 @@ import JsonLd from '@/components/JsonLd';
 import { CellGrid, Cell } from '@/components/Swiss';
 import { POSTS, POSTS_BY_DATE, getPost } from '@/lib/blog';
 import { BRAND } from '@/lib/content';
-import { articleSchema, breadcrumbSchema, OG_IMAGE, alternates } from '@/lib/seo';
+import { articleSchema, breadcrumbSchema, SITE_URL, OG_IMAGE, alternates } from '@/lib/seo';
 
 // One route renders every post from lib/blog.js. Adding a post is adding an
 // object there — same arrangement as the legal documents.
@@ -46,7 +46,7 @@ export function generateMetadata({ params }) {
     openGraph: {
       title: `${post.title} | MANDER`,
       description: post.description,
-      url: path,
+      url: `${SITE_URL}${path}`,
       type: 'article',
       publishedTime: post.date,
       authors: ['Herman'],

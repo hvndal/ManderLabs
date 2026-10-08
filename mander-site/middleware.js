@@ -112,9 +112,24 @@ export function middleware(request) {
   headers.set(LOCALE_HEADER, locale);
   headers.set(REGION_CODE_HEADER, regionCode);
 
+  // Enforce canonical www host at edge level (301 permanent redirect)
+  const host = request.headers.get('host') || request.nextUrl.host || '';
+  if (host === 'mander.tech') {
+    const canonicalRedirect = request.nextUrl.clone();
+    canonicalRedirect.protocol = 'https:';
+    canonicalRedirect.host = 'www.mander.tech';
+    return NextResponse.redirect(canonicalRedirect, 301);
+  }
+
+  // Compute canonical URL for HTTP Link header (RFC 5988 / Google Search Console directive)
+  const cleanPath = request.nextUrl.pathname === '/' ? '' : request.nextUrl.pathname.replace(/\/+$/, '');
+  const canonicalUrl = `https://www.mander.tech${cleanPath}`;
+
   // No ?market= in play: the ordinary path, no redirect, nothing written.
   if (requested === null) {
-    return NextResponse.next({ request: { headers } });
+    const response = NextResponse.next({ request: { headers } });
+    response.headers.set('Link', `<${canonicalUrl}>; rel="canonical"`);
+    return response;
   }
 
   // Someone used the picker. Remember the choice, then strip the parameter

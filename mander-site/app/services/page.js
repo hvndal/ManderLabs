@@ -11,7 +11,7 @@ import {
   TOWNS_LINE,
   PRICE_FALLBACK,
 } from '@/lib/services';
-import { breadcrumbSchema, faqSchema, serviceSchemas, OG_IMAGE, alternates } from '@/lib/seo';
+import { breadcrumbSchema, faqSchema, serviceSchemas, SITE_URL, OG_IMAGE, alternates } from '@/lib/seo';
 
 const TITLE = 'Services: Web Design, Local SEO & Apps';
 const DESCRIPTION =
@@ -21,7 +21,7 @@ export const metadata = {
   title: TITLE,
   description: DESCRIPTION,
   alternates: alternates('/services'),
-  openGraph: { title: `${TITLE} | MANDER`, description: DESCRIPTION, url: '/services', type: 'website', images: [OG_IMAGE] },
+  openGraph: { title: `${TITLE} | MANDER`, description: DESCRIPTION, url: `${SITE_URL}/services`, type: 'website', images: [OG_IMAGE] },
   twitter: { card: 'summary_large_image', title: `${TITLE} | MANDER`, description: DESCRIPTION, images: [OG_IMAGE.url] },
 };
 

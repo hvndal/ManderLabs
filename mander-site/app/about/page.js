@@ -36,7 +36,7 @@ export async function generateMetadata() {
     openGraph: {
       title: 'About MANDER',
       description,
-      url: '/about',
+      url: `${SITE_URL}/about`,
       type: 'website',
       images: [OG_IMAGE],
     },

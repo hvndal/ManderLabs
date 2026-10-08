@@ -14,7 +14,7 @@ import WhatsAppCta from '@/components/WhatsAppCta';
 import { getCity, allCities } from '@/lib/locations';
 import { BRAND } from '@/lib/content';
 import { getMarket } from '@/lib/markets';
-import { breadcrumbSchema, locationServiceSchema, faqSchema, OG_IMAGE, alternates } from '@/lib/seo';
+import { breadcrumbSchema, locationServiceSchema, faqSchema, SITE_URL, OG_IMAGE, alternates } from '@/lib/seo';
 
 // One entry per city across every region in lib/locations.js — adding a city
 // there is what adds a route here.
@@ -41,7 +41,7 @@ export function generateMetadata({ params }) {
     openGraph: {
       title,
       description: city.metaDescription,
-      url: path,
+      url: `${SITE_URL}${path}`,
       type: 'website',
       images: [OG_IMAGE],
     },

@@ -7,7 +7,7 @@ import { Spread } from '@/components/Editorial';
 import { IndexList, IndexRow } from '@/components/Swiss';
 import { REGIONS } from '@/lib/locations';
 import { BRAND } from '@/lib/content';
-import { breadcrumbSchema, OG_IMAGE, alternates } from '@/lib/seo';
+import { breadcrumbSchema, SITE_URL, OG_IMAGE, alternates } from '@/lib/seo';
 
 const TITLE = 'Locations — Metro Vancouver';
 const DESCRIPTION =
@@ -20,7 +20,7 @@ export const metadata = {
   openGraph: {
     title: TITLE,
     description: DESCRIPTION,
-    url: '/locations',
+    url: `${SITE_URL}/locations`,
     type: 'website',
     images: [OG_IMAGE],
   },

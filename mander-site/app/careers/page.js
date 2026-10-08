@@ -9,7 +9,7 @@ import ProcessTimeline from '@/components/ProcessTimeline';
 import { Spread } from '@/components/Editorial';
 import { CellGrid, Cell } from '@/components/Swiss';
 import { CAREERS, BRAND } from '@/lib/content';
-import { faqSchema, OG_IMAGE, alternates } from '@/lib/seo';
+import { faqSchema, SITE_URL, OG_IMAGE, alternates } from '@/lib/seo';
 
 // No trailing "at MANDER" — the root layout's title template already
 // appends " | MANDER" to every page title, and this constant used to
@@ -26,7 +26,7 @@ export const metadata = {
   openGraph: {
     title: TITLE,
     description: DESCRIPTION,
-    url: '/careers',
+    url: `${SITE_URL}/careers`,
     type: 'website',
     images: [OG_IMAGE],
   },

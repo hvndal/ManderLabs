@@ -14,7 +14,7 @@ import WhatsAppCta from '@/components/WhatsAppCta';
 import { REGIONS, getRegion } from '@/lib/locations';
 import { SERVICES, PROCESS, WORK, BRAND } from '@/lib/content';
 import { getMarket } from '@/lib/markets';
-import { breadcrumbSchema, locationServiceSchema, faqSchema, OG_IMAGE, alternates } from '@/lib/seo';
+import { breadcrumbSchema, locationServiceSchema, faqSchema, SITE_URL, OG_IMAGE, alternates } from '@/lib/seo';
 
 // Static params only — one entry per region in lib/locations.js. Adding a
 // state or province there is what adds a route here; this file doesn't
@@ -44,7 +44,7 @@ export function generateMetadata({ params }) {
     openGraph: {
       title,
       description: region.metaDescription,
-      url: path,
+      url: `${SITE_URL}${path}`,
       type: 'website',
       images: [OG_IMAGE],
     },

@@ -101,16 +101,23 @@ const nextConfig = {
         destination: '/locations/metro-vancouver',
         permanent: true,
       },
-      {
-        source: '/locations/british-columbia/vancouver',
-        destination: '/locations/metro-vancouver/vancouver',
+      // Map each known Metro Vancouver city from the legacy /british-columbia path
+      // to its exact /metro-vancouver equivalent so Google consolidates link equity 1:1
+      ...[
+        'vancouver',
+        'surrey',
+        'burnaby',
+        'richmond',
+        'north-vancouver',
+        'langley',
+        'coquitlam',
+        'new-westminster',
+      ].map((city) => ({
+        source: `/locations/british-columbia/${city}`,
+        destination: `/locations/metro-vancouver/${city}`,
         permanent: true,
-      },
-      {
-        source: '/locations/british-columbia/surrey',
-        destination: '/locations/metro-vancouver/surrey',
-        permanent: true,
-      },
+      })),
+      // Any other legacy BC city (e.g. Victoria, Kelowna) redirects to the region hub
       {
         source: '/locations/british-columbia/:city',
         destination: '/locations/metro-vancouver',

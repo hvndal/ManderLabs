@@ -215,8 +215,9 @@ export function articleSchema(post) {
  * doesn't yet promise; this is deliberately smaller than that.
  */
 export function alternates(path) {
+  const cleanPath = !path || path === '/' ? '' : path.startsWith('/') ? path : `/${path}`;
   return {
-    canonical: path,
+    canonical: `${SITE_URL}${cleanPath}`,
   };
 }
 
@@ -453,12 +454,15 @@ export function breadcrumbSchema(trail) {
   return {
     '@context': 'https://schema.org',
     '@type': 'BreadcrumbList',
-    itemListElement: trail.map((item, i) => ({
-      '@type': 'ListItem',
-      position: i + 1,
-      name: item.name,
-      item: `${SITE_URL}${item.path}`,
-    })),
+    itemListElement: trail.map((item, i) => {
+      const cleanPath = !item.path || item.path === '/' ? '' : item.path.startsWith('/') ? item.path : `/${item.path}`;
+      return {
+        '@type': 'ListItem',
+        position: i + 1,
+        name: item.name,
+        item: `${SITE_URL}${cleanPath}`,
+      };
+    }),
   };
 }
 

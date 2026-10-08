@@ -3,7 +3,7 @@ import Reveal from '@/components/Reveal';
 import WhatsAppCta from '@/components/WhatsAppCta';
 import PageHeader from '@/components/PageHeader';
 import { getServerMarket } from '@/lib/market-server';
-import { OG_IMAGE, alternates } from '@/lib/seo';
+import { SITE_URL, OG_IMAGE, alternates } from '@/lib/seo';
 
 export async function generateMetadata() {
   const { quote } = getServerMarket().meta;
@@ -15,7 +15,7 @@ export async function generateMetadata() {
     openGraph: {
       title: quote.title,
       description: quote.description,
-      url: '/quote',
+      url: `${SITE_URL}/quote`,
       type: 'website',
       images: [OG_IMAGE],
     },

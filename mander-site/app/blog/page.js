@@ -6,7 +6,7 @@ import { IndexList, IndexRow } from '@/components/Swiss';
 import Icon from '@/components/Icon';
 import { POSTS_BY_DATE } from '@/lib/blog';
 import { BRAND } from '@/lib/content';
-import { OG_IMAGE, alternates } from '@/lib/seo';
+import { SITE_URL, OG_IMAGE, alternates } from '@/lib/seo';
 
 const TITLE = 'Journal — Costs, Local SEO & Small Business';
 const DESCRIPTION =
@@ -19,7 +19,7 @@ export const metadata = {
   openGraph: {
     title: TITLE,
     description: DESCRIPTION,
-    url: '/blog',
+    url: `${SITE_URL}/blog`,
     type: 'website',
     images: [OG_IMAGE],
   },
