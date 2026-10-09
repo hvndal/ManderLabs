@@ -780,7 +780,7 @@ export const TEAM = [
   {
     name: 'Danielle Holtzhauer',
     role: 'Creative Director',
-    location: 'Portland, ME',
+    location: 'Coquitlam, BC',
     bio: 'Came out of print, where a bad decision costs a whole run rather than a deploy — three years art-directing an independent design quarterly. Sets everything on a grid first and adds colour last, if at all. Usually it is "if at all".',
     photo: '/team/danielle.jpg',
   },

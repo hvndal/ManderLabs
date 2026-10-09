@@ -142,6 +142,10 @@ export default function RootLayout({ children }) {
       lang={locale}
       className={`${hanken.variable} ${jetbrains.variable} ${instrument.variable}`}
     >
+      <head>
+        <link rel="alternate" type="text/plain" href="/llms.txt" title="LLM Summary" />
+        <link rel="alternate" type="text/plain" href="/llms-full.txt" title="LLM Full Documentation" />
+      </head>
       <body>
         {/* Organization and WebSite are genuinely site-wide entities — every
             page is part of the same site, published by the same

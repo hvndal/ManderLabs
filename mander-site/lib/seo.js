@@ -343,27 +343,64 @@ export function organizationSchema(marketOrId) {
       areaServed: schema.countryCodes,
       availableLanguage: ['English', 'French'],
     },
-    // No `founder` property: the studio is presented as a team rather than a
-    // person who owns it, and the CEO is not the founder.
-    //
-    // `employee` names exactly one person — the CEO. The site shows no team
-    // section anywhere, so listing all seven would be markup asserting
-    // content a visitor cannot find on any page. A named officer is the one
-    // exception worth making: it is the standard way an organization entity
-    // is tied to the person who runs it, and it is a far smaller claim than
-    // a full staff roster nobody can see.
-    //
-    // The address on it is the real one on purpose. No individual mailbox
-    // exists — mail to anyone by name lands in the same inbox — and left
-    // implicit, a crawler or an AI system tends to guess a firstname@domain
-    // pattern that was never real, a mistake already observed in the wild
-    // for this site.
-    employee: TEAM.filter((m) => m.role === 'CEO').map((m) => ({
+    knowsAbout: [
+      'Website Design',
+      'Local SEO',
+      'Search Engine Optimization',
+      'Google Business Profile Optimization',
+      'Brand Identity Design',
+      'Logo Design',
+      'Shopify Development',
+      'Ecommerce Website Development',
+      'Custom Web Development',
+      'Contractor Web Design',
+      'Trade SEO',
+      'WordPress to Next.js Migration',
+      'Wix Website Redesign',
+      'Mobile-First Responsive Design',
+      'Next.js 14 Development',
+    ],
+    foundingLocation: {
+      '@type': 'Place',
+      name: 'Langley, British Columbia, Canada',
+    },
+    founder: {
       '@type': 'Person',
-      name: m.name,
-      jobTitle: m.role,
+      name: 'Herman',
+      jobTitle: 'Founder & Front-End Web Designer',
+      url: BRAND.portfolio,
+      sameAs: [BRAND.linkedin, BRAND.portfolio],
       email: BRAND.email,
-    })),
+    },
+    employee: [
+      ...TEAM.filter((m) => m.role === 'CEO').map((m) => ({
+        '@type': 'Person',
+        name: m.name,
+        jobTitle: m.role,
+        email: BRAND.email,
+      })),
+      {
+        '@type': 'Person',
+        name: 'Herman',
+        jobTitle: 'Front-End Web Designer',
+        url: BRAND.portfolio,
+        email: BRAND.email,
+        workLocation: {
+          '@type': 'Place',
+          name: 'Langley, BC, Canada',
+        },
+      },
+      {
+        '@type': 'Person',
+        name: 'Danielle Holtzhauer',
+        jobTitle: 'Creative Director',
+        email: BRAND.email,
+        workLocation: {
+          '@type': 'Place',
+          name: 'Coquitlam, BC, Canada',
+        },
+      },
+    ],
 
     priceRange: schema.priceRange,
     currenciesAccepted: schema.currenciesAccepted,
@@ -444,6 +481,8 @@ export const websiteSchema = {
   '@id': `${SITE_URL}/#website`,
   name: BRAND.name,
   url: SITE_URL,
+  description:
+    'Independent web design, brand identity, and local SEO studio based in Langley and Coquitlam, serving Metro Vancouver and clients worldwide.',
   publisher: { '@id': `${SITE_URL}/#organization` },
   inLanguage: 'en',
 };
