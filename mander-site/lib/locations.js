@@ -52,227 +52,336 @@ const NA_REGIONS = [
     country: 'CA',
     countryName: 'Canada',
     kicker: 'British Columbia',
-    h1: 'Brand, digital and growth for Metro Vancouver.',
+    h1: 'Custom website design, branding & local SEO for Metro Vancouver.',
     metaDescription:
-      'Brand, web design and local growth systems for Metro Vancouver — Vancouver, Burnaby, Richmond, Surrey, North Vancouver, Langley, Coquitlam and New Westminster.',
+      'Custom website design, Shopify development, and local SEO across Metro Vancouver — Langley, Surrey, Coquitlam, Vancouver, and Burnaby. Fixed price.',
     intro: [
-      "Metro Vancouver is where MANDER started — part of the team works out of Langley — and it is where the local growth work is aimed. That is a deliberate narrowing rather than a limitation: local search is won by being genuinely relevant to one place before being thinly present in twenty, and a studio that claims every city on the map is telling you it has traction in none of them.",
-      'The work here spans all three pillars. Brand for businesses whose offer is sharper in the founder’s head than anywhere else. Digital for the ones whose site is quietly costing them enquiries. Growth for the ones nobody is finding — which in this market is usually a Business Profile problem before it is a website problem.',
+      "Metro Vancouver is where MANDER started — with team members based in Langley and Coquitlam — delivering the high-touch accessibility and fair pricing of an independent freelance web designer combined with the craft of a dedicated brand identity and digital studio. We build custom websites, Shopify ecommerce stores, and local SEO growth engines for small businesses, contractors, plumbers, restaurants, and professional practices across the Lower Mainland.",
+      'The work here spans all three pillars. Brand identity for businesses whose offer needs sharp authority. Custom digital builds for companies whose slow DIY templates are quietly costing them enquiries. Growth for the ones nobody is finding — pairing on-page local SEO with Google Business Profile optimization so searchers in your neighbourhood find and hire you first.',
     ],
-    proximityNote: 'Part of the MANDER team is based in Langley, British Columbia.',
+    proximityNote: 'MANDER team members are based in Langley and Coquitlam, British Columbia.',
     industries: [
-      'Technology & startups',
-      'Professional services',
-      'Trades & construction',
-      'Health & wellness practices',
-      'Hospitality & food',
-      'Retail & studios',
+      'Trades, contractors & home services',
+      'Plumbing, HVAC & electrical',
+      'Real estate & boutique development',
+      'Technology & local startups',
+      'Healthcare, dental & wellness practices',
+      'Restaurants, bakeries & craft brewing',
+      'Retail & Shopify ecommerce',
+      'Professional & legal services',
     ],
     faqs: [
       {
         q: 'Is MANDER a BC company?',
-        a: "The company's roots are in Langley, where the team is based. Metro Vancouver is the market the local search work is built around.",
+        a: "The company's roots are in Langley and Coquitlam, where team members live and work. Metro Vancouver is the primary market our local search and custom web design work is built around.",
+      },
+      {
+        q: 'Can I hire an independent or freelance web designer through MANDER?',
+        a: 'Yes. MANDER functions as an agile, senior independent studio. You get the direct communication, personal attention, and accessible rates of a freelance web designer, backed by the reliability and technical engineering of a full-stack digital agency.',
+      },
+      {
+        q: 'Do you offer affordable web design packages for small businesses?',
+        a: 'Yes. We offer transparent fixed-price website packages — from our Launch tier for fast 3-page sites to Starter and Growth plans with local SEO and booking. Every package has a written scope with zero hidden fees, and you own your website and code outright.',
       },
       {
         q: 'Do you bill in Canadian dollars?',
-        a: 'Yes — quoted in USD by default and invoiced in CAD on request, at the same figures.',
+        a: 'Yes — quoted in USD by default and invoiced in CAD on request, at transparent fixed figures.',
       },
       {
         q: 'Why these eight municipalities, when Metro Vancouver has twenty-one?',
-        a: 'Because a page is only worth building where we can say something true and specific about the market. These eight are the ones with a genuinely distinct paragraph written for them; the rest of Metro Vancouver — Delta, Maple Ridge, White Rock and the others — is served exactly the same way, it just does not have a page yet. We add one when there is evidence the demand is there, not because the municipality exists.',
+        a: 'Because a page is only worth building where we can say something true and specific about the market. These eight are the ones with genuinely distinct local context; the rest of Metro Vancouver — Delta, Maple Ridge, White Rock, Abbotsford corridor — is served with the exact same dedication.',
       },
       {
-        q: "Can you compete with Vancouver's larger agencies?",
-        a: "On attention and on price, yes — that is the model. Senior people, fixed scope, fixed price, and you own everything at the end. On a fifty-person pitch process, no, and we will say so.",
+        q: "How does MANDER compare to high-overhead downtown Vancouver web agencies?",
+        a: "We cut out downtown office leases, junior handoffs, and layers of account managers. You work directly with senior designers and developers at a fraction of typical agency rates, while getting superior code quality, sub-second load times, and complete ownership.",
       },
     ],
     cities: [
       {
         slug: 'vancouver',
         name: 'Vancouver',
-        h1: 'Website design in Vancouver, British Columbia.',
+        h1: 'Custom website design & local SEO in Vancouver, BC.',
         metaDescription:
-          'Website design for Vancouver, BC small businesses — fixed-price alternative to downtown agency rates. Tech, retail, hospitality and professional services.',
+          'Freelance web designer alternative & SEO agency in Vancouver, BC. Custom website design, Shopify developer, logo designer & brand identity agency. Fixed price.',
         intro:
-          "Vancouver's small-business market competes for attention against a genuinely large, well-funded tech and design scene, and against some of the highest agency rates in Canada. That combination pushes a lot of good small businesses toward DIY builders that undersell them. MANDER exists partly because of that gap — senior design and development, fixed-price, without the overhead a Vancouver studio agency has to charge for.",
-        industries: ['Technology & startups', 'Professional services', 'Retail & hospitality', 'Creative industries'],
+          "Vancouver's small-business market competes against high agency rates and large tech budgets. That often leaves local businesses stuck choosing between an expensive $15,000+ downtown agency retainer or an underwhelming DIY website maker. MANDER offers an independent, senior freelance alternative: high-end Scandinavian and Swiss aesthetics, custom website design, Shopify development, and local SEO services that make world-class digital presence accessible to Vancouver retail, trades, tech, and professional brands without downtown overhead.",
+        industries: [
+          'Technology startups & SaaS',
+          'Professional, financial & legal services',
+          'Boutique retail & Shopify ecommerce',
+          'Creative agencies & design studios',
+          'Architecture, interiors & construction',
+        ],
         faqs: [
           {
-            q: 'How do you compete with Vancouver agency pricing?',
-            a: 'By keeping the studio small rather than carrying downtown-Vancouver overhead — the design quality holds, the invoice comes down.',
+            q: 'Why hire an independent studio instead of a downtown Vancouver web agency?',
+            a: 'Large Vancouver agencies charge for downtown office rent, layers of account managers, and junior production staff. MANDER is an independent studio of senior designers and developers — you get faster turnarounds, direct collaboration, higher code quality, and invoices that are a fraction of downtown agency rates.',
+          },
+          {
+            q: 'Do you provide custom website design rather than generic templates?',
+            a: 'Yes. Every site we build is custom-designed and engineered with clean code (Next.js, Tailwind CSS) — no pre-bought WordPress templates or drag-and-drop page builders. That delivers sub-second load times, flawless mobile responsiveness, and superior organic search rankings.',
+          },
+          {
+            q: 'Can you migrate our site from Wix or Squarespace to a custom high-performance build?',
+            a: 'Yes. Generic builders like Wix, Squarespace, and GoDaddy often suffer from sluggish loading speeds, code bloat, and limited SEO control. We rebuild your site on modern, clean code that achieves 95+ Google PageSpeed scores and gives you total technical freedom.',
+          },
+          {
+            q: 'Do you build Shopify stores and ecommerce sites for Vancouver brands?',
+            a: 'Yes. As a Shopify developer, we build custom Shopify storefronts and ecommerce platforms with optimized checkout flows, integrated analytics, and responsive product catalogs tailored to Canadian and international shoppers.',
+          },
+          {
+            q: 'Do you offer logo design and brand identity agency services in Vancouver?',
+            a: 'Yes. We deliver complete brand identity systems — logos, typography guidelines, color palettes, and digital asset kits — designed to give your company immediate market authority.',
           },
           {
             q: 'Do you invoice in Canadian dollars?',
             a: 'Yes, CAD on request at no extra cost, and every price is fixed and agreed before work starts.',
-          },
-                  {
-            q: "What does an Android app cost compared with a Vancouver agency?",
-            a: "App Launch and App Growth are both fixed-scope and quoted up front. That is a fraction of a Vancouver studio day rate for equivalent scope, for the same reason the websites are.",
-          },
-          {
-            q: "Do you work with early-stage Vancouver startups?",
-            a: "Often. A Starter site is usually right before funding, and App Launch covers a first Play Store release with authentication and a basic backend.",
           },
         ],
       },
       {
         slug: 'surrey',
         name: 'Surrey',
-        h1: 'Website design in Surrey, British Columbia.',
+        h1: 'Custom website design & local SEO in Surrey, BC.',
         metaDescription:
-          'Website design for Surrey, BC — logistics, trades, retail and multicultural small businesses across the Fraser Valley corridor.',
+          'Custom website design & local SEO expert in Surrey, BC. Freelance graphic designer, contractor websites, WordPress developer, and logo design. Fixed price.',
         intro:
-          "Surrey is one of the fastest-growing cities in Canada, with a small-business base that's more diverse — culturally and industrially — than almost anywhere else on this list, spanning logistics and trades tied to the Fraser Valley corridor alongside a fast-growing retail and service sector. Growth this fast usually outpaces marketing, so a lot of genuinely good Surrey businesses are still being found by word of mouth alone. A properly built site with real local SEO behind it tends to close that gap quickly.",
-        industries: ['Logistics & trades', 'Retail & food service', 'Professional services', 'Multicultural & community businesses'],
+          "Surrey is one of the fastest-growing commercial and industrial centres in Canada. From contractors, transport, and logistics along the Fraser Valley corridor to vibrant retail and multicultural service businesses, Surrey companies need websites that work as hard as they do. MANDER delivers the speed and value of an independent freelance web designer combined with the capability of a full-service digital and brand identity agency — building custom, high-speed websites that capture local contractor leads, rank organically, and elevate your brand.",
+        industries: [
+          'Contractors, roofing & electrical trades',
+          'Landscaping & site maintenance',
+          'Logistics, warehousing & trucking',
+          'Retail, grocery & food service',
+          'Professional, legal & multicultural businesses',
+        ],
         faqs: [
           {
+            q: 'Do you build custom websites for contractors and trades in Surrey?',
+            a: 'Yes. Contractor web design is one of our primary services in Surrey. We build mobile-first sites tailored to how homeowners and commercial clients search: fast quote requests, click-to-call buttons, verified project photo galleries, and local SEO tuned for Surrey, Cloverdale, Newton, and Fleetwood.',
+          },
+          {
+            q: 'Can you act as a freelance graphic designer and logo designer in Surrey?',
+            a: 'Yes. We design complete brand identities and logos for Surrey businesses — logos, typography, color palettes, vehicle wrap branding, and marketing collateral — at accessible studio pricing without agency account manager bloat.',
+          },
+          {
+            q: 'Do you design custom WordPress and ecommerce websites in Surrey, BC?',
+            a: 'Yes. Whether you need a custom WordPress developer, a modern headless build, or a custom Shopify store, we engineer fast, secure platforms with complete client ownership and zero ongoing plugin lock-in.',
+          },
+          {
+            q: 'Are you a local SEO expert for Surrey companies?',
+            a: 'Yes. We handle comprehensive local SEO services for Surrey landscapers, roofers, trades, and professional firms — ranking your Google Business Profile in the local Map Pack and targeting geo-modified service keywords across Surrey and the Fraser Valley.',
+          },
+          {
             q: 'Can you write copy for a business that serves a multilingual customer base?',
-            a: 'We write in English by default; if your customers search or read in another language too, bilingual builds — like the one we did for a hospitality client — are something we handle as part of Website Design.',
+            a: 'We write in English by default; if your customers search or read in another language too, bilingual builds are something we handle as part of Website Design.',
           },
           {
-            q: "We've grown mainly through word of mouth — is a website still worth it?",
-            a: "Very much so, especially in a fast-growing market like Surrey — word of mouth gets undermined the moment a prospective customer searches you and finds nothing credible. Local Search is built for exactly that gap.",
-          },
-                  {
-            q: "Do you build Android apps for Surrey businesses?",
-            a: "Yes, quoted per build and shipped to Google Play under your own developer account. For logistics and trades in Surrey that usually means dispatch, job tracking or a driver-facing tool.",
-          },
-          {
-            q: "Do you invoice Surrey clients in Canadian dollars?",
-            a: "Yes on request. Prices are shown in USD by default and Canadian clients are invoiced in CAD at your preference.",
+            q: 'Do you invoice Surrey clients in Canadian dollars?',
+            a: 'Yes on request. Prices are shown in USD by default and Canadian clients are invoiced in CAD at your preference.',
           },
         ],
       },
       {
         slug: 'burnaby',
         name: 'Burnaby',
-        h1: 'Website design in Burnaby, British Columbia.',
+        h1: 'Custom website design & local SEO in Burnaby, BC.',
         metaDescription:
-          'Website design for Burnaby, BC small businesses — Metrotown retail, SFU-adjacent tech and services, and Lower Mainland trades. Fixed-price, no agency overhead.',
+          'Custom website design & local SEO expert in Burnaby, BC. Affordable web design packages, Shopify developer, logo designer & contractor websites. Fixed price.',
         intro:
-          "Burnaby sits between two of Metro Vancouver's busiest commercial centres, Metrotown and Brentwood, with SFU up on the mountain feeding a steady run of small tech and professional-services businesses down into the city. That mix — retail density on one side, a university on the other — means a lot of Burnaby businesses are competing for attention in a market that never stops moving. A site that loads fast and actually shows up in a Burnaby search does more work here than a bigger budget spent on the wrong things.",
-        industries: ['Retail & commercial services', 'Technology & professional services', 'Trades & light industrial', 'Food & hospitality'],
+          "Burnaby sits between two of Metro Vancouver's busiest commercial centres, Metrotown and Brentwood, with SFU on the mountain feeding tech and professional services down into the city. From Metrotown retailers and commercial services to light industrial trades and contractors, Burnaby businesses need fast, tailored websites that stand out. MANDER delivers custom website design, Shopify development, and local SEO services with the agility of a freelance web designer and the quality of a dedicated agency.",
+        industries: [
+          'Retail & commercial services near Metrotown & Brentwood',
+          'Technology startups & SFU-adjacent services',
+          'Contractors, mechanical & light industrial trades',
+          'Food, hospitality & catering',
+          'Professional & accounting practices',
+        ],
         faqs: [
           {
-            q: 'Do you work with businesses near Metrotown or Brentwood specifically?',
-            a: 'Yes — both are covered under Burnaby, and the local SEO work is built around wherever your customers actually search from, not a single neighbourhood.',
+            q: 'Do you offer affordable web design packages in Burnaby?',
+            a: 'Yes. We provide transparent fixed-price website packages for Burnaby small businesses — from fast 3-page Launch sites to full 10-page custom builds with local SEO and booking. Every project has a written scope with zero hourly overages.',
+          },
+          {
+            q: 'Can you work as a local SEO expert for Burnaby businesses?',
+            a: 'Yes. We optimize your Google Business Profile and local search architecture so nearby customers searching for services in Burnaby, Metrotown, or Brentwood find you first.',
+          },
+          {
+            q: 'Do you build Shopify stores and custom ecommerce websites in Burnaby?',
+            a: 'Yes. As a Shopify developer, we design and build custom Shopify and ecommerce websites for Burnaby retailers and makers, complete with secure payment processing, product collections, and local pickup.',
+          },
+          {
+            q: 'Can you redesign our slow Wix, Squarespace, or WordPress site?',
+            a: 'Yes. We specialize in modern website redesigns — migrating dated, slow website builder pages into sleek, custom-coded web experiences that load instantly.',
           },
           {
             q: 'Do you invoice in Canadian dollars?',
             a: 'Yes, CAD on request at no extra cost, with the price fixed and agreed before anything starts.',
-          },
-          {
-            q: 'Do you build Android apps for Burnaby businesses?',
-            a: 'Yes, quoted per build. App Launch is the usual starting point for a first Play Store release.',
-          },
-          {
-            q: 'Can you help a Burnaby business compete with bigger Metrotown-area retailers online?',
-            a: 'That is mostly a local-search problem, not a budget problem — a properly optimised Business Profile and a fast site close most of the gap that a bigger competitor’s ad spend opens up.',
           },
         ],
       },
       {
         slug: 'richmond',
         name: 'Richmond',
-        h1: 'Website design in Richmond, British Columbia.',
+        h1: 'Custom website design & local SEO in Richmond, BC.',
         metaDescription:
-          'Website design for Richmond, BC — international trade, food and hospitality, and professional services near YVR. Fixed-price, quoted in writing.',
+          'Custom website design & Shopify developer in Richmond, BC. Affordable web design, bilingual websites, logo design & local SEO services. Fixed price.',
         intro:
-          "Richmond runs on trade — YVR sits inside it, and the city has one of the most internationally connected small-business communities in the Lower Mainland, from import/export operations to a food and hospitality scene that draws visitors well beyond the neighbourhood. A lot of that business still gets found by word of mouth or a listing on a directory nobody maintains, which is a real gap when the customer base is this used to searching before they choose.",
-        industries: ['International trade & logistics', 'Food & hospitality', 'Professional & financial services', 'Retail'],
+          "Richmond runs on international trade, logistics, and one of the most vibrant culinary and hospitality scenes in North America. With YVR at its centre, Richmond businesses cater to both local residents and international clientele. MANDER provides custom website design, Shopify store development, bilingual website builds, and local SEO services that help Richmond companies capture search demand across the Lower Mainland.",
+        industries: [
+          'International trade, import/export & logistics',
+          'Restaurants, bakeries & Asian hospitality',
+          'Professional, accounting & financial services',
+          'Specialty retail & ecommerce',
+          'Contractors & commercial services',
+        ],
         faqs: [
           {
-            q: 'Can you build a bilingual site for a Richmond business?',
-            a: 'Yes — English by default, and a second language handled the same way we did for a hospitality client, as part of Website Design rather than a separate line item.',
+            q: 'Do you design custom Shopify and ecommerce websites in Richmond?',
+            a: 'Yes. We build high-converting Shopify storefronts for Richmond retailers, distributors, and food brands with multi-currency checkout, mobile optimization, and product catalogs.',
+          },
+          {
+            q: 'Can you build bilingual websites for Richmond businesses?',
+            a: 'Yes. We build clean, modern bilingual sites (English with Chinese or French) with proper language alternates and SEO tags, ensuring seamless experiences for diverse audiences.',
+          },
+          {
+            q: 'Are your website packages affordable for Richmond small businesses?',
+            a: 'Yes. Every project is scoped at a fixed price agreed in advance — giving you the quality of an agency with the cost-efficiency and direct contact of an independent web designer.',
+          },
+          {
+            q: 'Do you provide local SEO and Google Business Profile optimization in Richmond?',
+            a: 'Yes. We optimize your Google Business Profile and local keywords so customers searching in Richmond or near YVR find your business in Maps and organic search.',
           },
           {
             q: 'Do you invoice Richmond clients in Canadian dollars?',
             a: 'Yes on request. Prices are shown in USD by default and Canadian clients are invoiced in CAD at your preference.',
-          },
-          {
-            q: 'Do you build Android apps for Richmond businesses?',
-            a: 'Yes, quoted per build and shipped to Google Play under your own developer account.',
-          },
-          {
-            q: 'Do you do local SEO for a business that mostly serves visitors and travellers?',
-            a: 'Yes — Local Search covers Google Business Profile and map-pack visibility, which matters more, not less, for a customer base that’s new to the area and searching cold.',
           },
         ],
       },
       {
         slug: 'north-vancouver',
         name: 'North Vancouver',
-        h1: 'Website design in North Vancouver, British Columbia.',
+        h1: 'Custom website design & branding in North Vancouver, BC.',
         metaDescription:
-          'Website design for North Vancouver, BC — outdoor and recreation brands, the Shipyards district, and North Shore trades. Fixed-price website design.',
+          'Custom website design & brand identity agency in North Vancouver, BC. Logo designer, outdoor brand websites, Shopify developer & local SEO. Fixed price.',
         intro:
-          "The North Shore's small-business base leans outdoor and recreation — gear, guiding, food and craft businesses built around the mountains at the edge of the city — alongside the marine and trades work that's been part of the Shipyards district for decades. Both sides of that mix are competing for a customer who researches before they buy, on a phone, usually outdoors themselves. A site that's slow or hard to find on a map costs more here than it would somewhere less search-driven.",
-        industries: ['Outdoor & recreation brands', 'Marine & waterfront trades', 'Food & hospitality', 'Professional services'],
+          "North Vancouver blends outdoor and recreation brands with the historic marine and industrial trades of the Shipyards district. From Lonsdale retail and recreation outfitters to North Shore contractors and waterfront services, customers research extensively on mobile devices. MANDER delivers custom website design, logo and brand identity design, Shopify development, and local SEO services engineered for North Vancouver businesses.",
+        industries: [
+          'Outdoor, recreation & sports brands',
+          'Marine, waterfront & construction trades',
+          'Lonsdale retail, hospitality & dining',
+          'Health, wellness & physiotherapy clinics',
+          'Architects, builders & designers',
+        ],
         faqs: [
           {
-            q: 'Do you build sites for outdoor or recreation brands specifically?',
-            a: 'We build for whatever the business actually is — the site is built around real photography and a clear structure either way, not a template that happens to look outdoorsy.',
+            q: 'Do you build custom websites for outdoor and lifestyle brands in North Vancouver?',
+            a: 'Yes. We build image-rich, mobile-first websites and Shopify stores for outdoor brands, guides, and lifestyle retailers that capture the active spirit of the North Shore.',
+          },
+          {
+            q: 'Do you offer logo design and brand identity services in North Vancouver?',
+            a: 'Yes. As a brand identity agency, we create cohesive visual systems — logos, typography, color palettes, and digital style guides — designed to stand out in the Shipyards district and across the Lower Mainland.',
+          },
+          {
+            q: 'Can you help North Vancouver contractors and marine trades rank locally?',
+            a: 'Yes. Our local SEO services optimize your Google Business Profile and service pages to capture high-intent inquiries across North and West Vancouver.',
+          },
+          {
+            q: 'Do you build fast custom sites to replace slow Wix or Squarespace templates?',
+            a: 'Yes. We replace bloated DIY templates with custom, clean code that loads in under a second on phones, ensuring you never lose customers to slow load times.',
           },
           {
             q: 'Do you invoice in Canadian dollars?',
             a: 'Yes, CAD on request at no extra cost, with the price fixed and agreed before anything starts.',
-          },
-          {
-            q: 'Do you build Android apps for North Vancouver businesses?',
-            a: 'Yes, quoted per build — App Launch covers a first Play Store release with authentication and a basic backend.',
-          },
-          {
-            q: 'How fast can a North Vancouver business get local search set up?',
-            a: 'Local Search typically runs alongside a Growth-tier build; Google Business Profile changes themselves can show up within days once they’re live.',
           },
         ],
       },
       {
         slug: 'langley',
         name: 'Langley',
-        h1: 'Website design in Langley, British Columbia.',
+        h1: 'Custom website design & local SEO in Langley, BC.',
         metaDescription:
-          'Website design in Langley, BC, where part of the MANDER team is based — trades, agriculture and professional services in the Fraser Valley. Fixed-price builds.',
+          'Freelance web designer & local SEO expert in Langley, BC. Custom website design, Shopify developer, logo design & SEO for plumbers and trades. Fixed price.',
         intro:
-          "Langley is where part of the MANDER team is actually based, so this is the one market on the list the studio has direct, everyday familiarity with rather than research alone. It's a Fraser Valley mix of trades and construction, agriculture, and a growing professional-services base — businesses that mostly built their reputation locally and are only now working out that reputation doesn't show up in a Google search unless something is actually built to be found.",
-        industries: ['Trades & construction', 'Agriculture & agritourism', 'Professional services', 'Retail & ecommerce'],
+          "Langley is where part of the MANDER team is based. As an independent design studio, we give Fraser Valley small businesses the direct agility and affordable pricing of a freelance web designer with the technical execution of a senior digital agency. Whether you need a custom website design built from scratch, a Shopify developer to launch an ecommerce store, a complete brand identity and logo designer, an independent local SEO expert to rank your Google Business Profile, or high-converting websites for plumbers, landscapers, and construction contractors, we engineer digital systems that turn local searchers into paying clients.",
+        industries: [
+          'Plumbing, HVAC & mechanical trades',
+          'General contractors & construction',
+          'Landscaping & tree services',
+          'Agriculture, wineries & equestrian',
+          'Retail & Shopify ecommerce',
+          'Professional, legal & healthcare practices',
+        ],
         faqs: [
           {
-            q: 'Is MANDER actually based in Langley?',
-            a: "Yes — the team is based in Langley. It's the one market on this list the studio knows first-hand rather than through research.",
+            q: 'Can I hire a freelance web designer or independent developer in Langley, BC?',
+            a: 'Yes. MANDER operates as an independent studio with team members based in Langley. You get the direct communication, personal dedication, and accessible pricing of a freelance web designer, backed by the reliability and code quality of senior full-stack developers.',
+          },
+          {
+            q: 'What affordable web design packages do you offer in Langley?',
+            a: 'We offer transparent, fixed-price website packages designed specifically for small businesses — from our Launch tier for emerging ventures to custom Starter and Growth plans with local SEO and booking. Every quote is fixed in writing with zero hidden fees, and you own the code, domain, and design outright.',
+          },
+          {
+            q: 'Do you work as a local SEO expert and consultant for Langley businesses?',
+            a: 'Yes. Our local SEO services cover full Google Business Profile optimization, local keyword strategy, schema markup, citation building, and Google Maps ranking. We help Langley companies rank in the local 3-pack for high-intent searches in their service areas.',
+          },
+          {
+            q: 'Do you provide web design and SEO for plumbers, landscapers, and contractors in Langley?',
+            a: 'Yes — trades and home services are one of our core specialties in the Fraser Valley. We build mobile-first contractor sites with quick quote forms, click-to-call buttons, verified project galleries, and local SEO targeted at high-intent queries like "plumber Langley", "electrician Fraser Valley", and "landscaping contractor".',
+          },
+          {
+            q: 'Are you a Shopify developer or ecommerce website maker for Langley businesses?',
+            a: 'Yes. We design and launch custom Shopify stores for Langley retailers, agricultural producers, makers, and boutique brands. We handle store setup, custom theme styling, payment processing, product catalogs, and local pickup workflows at a fixed agreed price.',
+          },
+          {
+            q: 'Can you redesign a slow Wix, Squarespace, or WordPress website?',
+            a: 'Yes. Many local businesses outgrow DIY website makers like Wix, Squarespace, or bloated WordPress themes that suffer from slow load times and poor SEO. We rebuild your site in modern, ultra-fast custom code that achieves 95+ Google PageSpeed scores.',
+          },
+          {
+            q: 'Do you offer logo design and brand identity services in Langley?',
+            a: 'Yes. We provide complete brand identity design — logos, typography scales, color palettes, vehicle branding assets, and signage guidelines — so your business looks established and authoritative from day one.',
           },
           {
             q: 'Do you invoice in Canadian dollars?',
             a: 'Yes, CAD on request at no extra cost, with the price fixed and agreed before anything starts.',
-          },
-          {
-            q: 'Do you build Android apps for Langley businesses?',
-            a: 'Yes, quoted per build. For trades and agricultural operations that’s usually a dispatch, scheduling or a customer-facing ordering tool.',
-          },
-          {
-            q: 'Which web designer in Langley builds ecommerce sites?',
-            a: 'MANDER does — part of the team is based in Langley. Online stores with payments and product pages, for retailers, farms and makers, typically take 6–10 weeks at a fixed price agreed in writing first.',
-          },
-          {
-            q: 'Is there a Langley web designer that also does SEO?',
-            a: 'Yes. MANDER builds the site and handles local SEO and Google Business Profile optimization for Langley and Fraser Valley businesses, included from the Growth plan up.',
-          },
-          {
-            q: 'Do you work with agricultural or estate businesses?',
-            a: 'Yes — wineries, farms and agritourism operations are part of the local mix here, and the same fixed-scope approach applies.',
           },
         ],
       },
       {
         slug: 'coquitlam',
         name: 'Coquitlam',
-        h1: 'Website design in Coquitlam, British Columbia.',
+        h1: 'Custom website design & digital growth in Coquitlam, BC.',
         metaDescription:
-          'Website design for Coquitlam and the Tri-Cities, BC — healthcare, construction and hospitality across Coquitlam, Port Moody and Port Coquitlam.',
+          'Affordable web design for small business in Coquitlam & Tri-Cities. Shopify developer, real estate branding, logo designer & local SEO expert. Fixed price.',
         intro:
-          "Coquitlam anchors the Tri-Cities — Port Moody and Port Coquitlam alongside it — in one of the faster-growing residential and commercial corridors in the Lower Mainland. Healthcare and wellness practices, construction tied to that growth, and a genuine craft-brewing scene around Port Moody's Brewers Row all compete for a local customer base that's expanding faster than most of these businesses' own marketing has kept up with.",
-        industries: ['Healthcare & wellness', 'Construction & development', 'Restaurants, craft brewing & hospitality', 'Professional services'],
+          "Coquitlam anchors the Tri-Cities — Port Moody and Port Coquitlam alongside it — across an expanding residential, commercial, and culinary corridor. Healthcare practices, boutique real estate agents, construction firms, and Port Moody's renowned craft brewing scene all compete for local attention. MANDER delivers affordable web design for small businesses across Coquitlam: custom website design, Shopify developer store setup, polished real estate branding, and local SEO services that turn Tri-Cities searchers into customers.",
+        industries: [
+          'Real estate & boutique property development',
+          'Restaurants, craft brewing & bakeries',
+          'Healthcare, dental & wellness practices',
+          'Construction & home renovation',
+          'Ecommerce & specialty retail',
+        ],
         faqs: [
+          {
+            q: 'Do you offer affordable web design for small business in Coquitlam?',
+            a: 'Yes. We specialize in affordable, high-return web design packages for small and independent businesses across Coquitlam, Port Coquitlam, and Port Moody. Every project is quoted at a transparent fixed price with zero surprises and no ongoing agency retainers.',
+          },
+          {
+            q: 'Can you set up a Shopify store as an ecommerce website maker in Coquitlam?',
+            a: 'Yes. We help Tri-Cities retailers, makers, and local brands launch on Shopify — configuring payment gateways, custom product variants, inventory syncing, and local pickup options with a clean, branded shopping experience.',
+          },
+          {
+            q: 'Do you design branding, logos, and websites for real estate in Coquitlam?',
+            a: 'Yes. We act as a dedicated brand identity agency and web design partner for real estate agents, mortgage brokers, and boutique developers — focusing on neighbourhood authority, active listings presentation, and direct lead generation.',
+          },
+          {
+            q: 'Who makes websites for restaurants and craft breweries in Coquitlam?',
+            a: 'MANDER designs high-converting websites for restaurants, cafés, bakeries, and craft breweries across the Tri-Cities — featuring mobile-friendly menus, direct reservation tools, online gift cards, and local SEO to attract diners searching near Brewers Row or Coquitlam Centre.',
+          },
+          {
+            q: 'Can you redesign a slow Wix, Squarespace, or WordPress website?',
+            a: 'Yes. We routinely rebuild slow, rigid builder sites into lightweight, custom websites that load in under a second and rank significantly better on Google.',
+          },
           {
             q: 'Do you cover the whole Tri-Cities area, not just Coquitlam itself?',
             a: 'Yes — Port Moody and Port Coquitlam are covered under the same page, and the local SEO work follows wherever your actual customers search from.',
@@ -281,49 +390,43 @@ const NA_REGIONS = [
             q: 'Do you invoice in Canadian dollars?',
             a: 'Yes, CAD on request at no extra cost, with the price fixed and agreed before anything starts.',
           },
-          {
-            q: 'Who makes websites for restaurants in Coquitlam?',
-            a: 'MANDER designs websites for restaurants, cafés, bakeries and breweries in Coquitlam, Port Coquitlam and Port Moody — menus, direct reservations or enquiries, gift cards or pre-orders, and local search so nearby diners find you. Fixed price, quoted up front.',
-          },
-          {
-            q: 'How fast can a Coquitlam business get a website?',
-            a: 'A one-page site typically goes live in about 2 weeks; up to 5 pages in 3–4 weeks; up to 10 pages with local SEO in 4–6 weeks.',
-          },
-          {
-            q: 'Do you build booking systems for healthcare or wellness practices?',
-            a: 'Yes — appointment booking and intake forms are part of Growth-tier and above, built to the practice’s own scheduling needs rather than a generic plugin.',
-          },
-          {
-            q: 'Do you build Android apps for Coquitlam businesses?',
-            a: 'Yes, quoted per build and shipped to Google Play under your own developer account.',
-          },
         ],
       },
       {
         slug: 'new-westminster',
         name: 'New Westminster',
-        h1: 'Website design in New Westminster, British Columbia.',
+        h1: 'Custom website design & local SEO in New Westminster, BC.',
         metaDescription:
-          'Website design for New Westminster, BC — heritage retail, healthcare near Royal Columbian, and waterfront businesses in the Royal City.',
+          'Affordable custom website design & local SEO expert in New Westminster, BC. Logo designer, healthcare clinic websites & Shopify developer. Fixed price.',
         intro:
-          "New Westminster carries more history than most of the cities on this list — it was British Columbia's first capital — and that shows up in a downtown built around independent, long-standing businesses rather than chain retail, alongside a healthcare economy anchored by Royal Columbian Hospital. A lot of that independence is a strength that doesn't automatically translate online: a business that's been trusted on Columbia Street for twenty years still needs to show up in a search from someone who's never heard of it.",
-        industries: ['Heritage & independent retail', 'Healthcare & medical services', 'Professional & legal services', 'Hospitality'],
+          "New Westminster carries deep history as British Columbia's original capital, anchored by independent businesses along Columbia Street and Uptown, and a major healthcare corridor around Royal Columbian Hospital. MANDER builds custom websites, brand identities, and local SEO systems for New Westminster businesses — providing the high-touch collaboration of an independent freelance web designer with the technical precision of a modern studio.",
+        industries: [
+          'Independent downtown retail & heritage services',
+          'Healthcare, dental & specialist medical clinics',
+          'Construction, renovation & local trades',
+          'Professional, legal & financial practices',
+          'Hospitality, cafés & waterfront dining',
+        ],
         faqs: [
           {
-            q: 'Do you work with long-established, not just new, New Westminster businesses?',
-            a: 'Most of the work here is exactly that — a business with a real local reputation that has never had a site doing anything for it. That’s a straightforward Starter or Growth build, not a special case.',
+            q: 'Do you build websites for healthcare practices near Royal Columbian Hospital?',
+            a: 'Yes. We build clean, accessible websites with patient intake forms, practitioner profiles, and appointment scheduling tailored for medical and wellness clinics.',
+          },
+          {
+            q: 'Do you offer affordable website design packages in New Westminster?',
+            a: 'Yes. We offer transparent fixed-price packages suited for established independent businesses and emerging startups alike, with zero hourly overages.',
+          },
+          {
+            q: 'Do you provide local SEO and Google Maps optimization in New Westminster?',
+            a: 'Yes. We help Royal City businesses rank prominently on Google Search and Maps for local service queries, driving direct calls and enquiries.',
+          },
+          {
+            q: 'Can you create logos and brand identity for New West businesses?',
+            a: 'Yes. As a brand identity and logo designer, we build cohesive visual systems that honor your company’s heritage while modernizing your digital presence.',
           },
           {
             q: 'Do you invoice in Canadian dollars?',
             a: 'Yes, CAD on request at no extra cost, with the price fixed and agreed before anything starts.',
-          },
-          {
-            q: 'Do you build intake or booking tools for healthcare practices near Royal Columbian?',
-            a: 'Yes — appointment booking and patient intake are part of Growth-tier and above, built around the practice’s own workflow.',
-          },
-          {
-            q: 'Do you build Android apps for New Westminster businesses?',
-            a: 'Yes, quoted per build. App Launch is the usual starting point for a first Play Store release.',
           },
         ],
       },

@@ -26,42 +26,42 @@ export const SERVICE_CATALOGUE = [
   {
     id: 'website-design',
     name: 'Website Design',
-    what: 'A custom, mobile-first website for a small business — designed, written with you and built to load fast — from a one-page site to a ten-page site with booking.',
-    whoFor: 'Local businesses with no real site yet, or a site built on a DIY builder that is not bringing in enquiries.',
+    what: 'Custom website design for small businesses — clean-coded, mobile-first websites built to load in under a second. Transparent packages from single-page Launch sites to 10-page custom builds with booking.',
+    whoFor: 'Small businesses, contractors, retailers and clinics that need a professional website that turns local searchers into paying clients.',
     timeline: 'About 2 weeks for a one-page site; 3–4 weeks for up to 5 pages; 4–6 weeks for up to 10 pages.',
     priceRange: null,
     href: '/digital',
-    gbp: 'Custom, mobile-first websites for small businesses in Langley, Coquitlam, the Fraser Valley and across Metro Vancouver. A one-page site typically takes about 2 weeks; a site of up to 5 pages 3–4 weeks; up to 10 pages with booking and local SEO 4–6 weeks. Every project has a fixed price, agreed in writing before work starts — no hourly billing. You own the site, the code and the domain outright. Contact us by WhatsApp, phone or email for a quote; we reply within one business day.',
+    gbp: 'Custom website design for small businesses in Langley, Surrey, Coquitlam, Vancouver and across Metro Vancouver. We build high-speed, mobile-first websites — from affordable 3-page starter packages to custom corporate and contractor lead-generation sites. Transparent fixed pricing agreed in writing before work starts — no hourly billing. You own the site, code, and domain outright. Contact sales@mander.tech or reach out via WhatsApp; we reply within one business day.',
   },
   {
     id: 'website-redesign',
     name: 'Website Redesign',
-    what: 'Rebuilding a site that has aged out: sharper design, clearer structure, faster load times and the technical basics search engines reward.',
-    whoFor: 'Businesses whose site is slow, hard to use on a phone, or quietly costing them enquiries.',
+    what: 'Rebuilding slow, dated websites: migrating businesses trapped on slow DIY builders (Wix, Squarespace, GoDaddy, or dated WordPress themes) into modern, lightning-fast custom websites that rank higher and convert.',
+    whoFor: 'Businesses whose current website is slow, failing Core Web Vitals, or quietly costing them enquiries.',
     timeline: '3–6 weeks depending on the number of pages, the same as a new build of that size.',
     priceRange: null,
     href: '/digital',
-    gbp: 'Website redesigns for small businesses in Langley, Coquitlam, the Fraser Valley and Metro Vancouver. We rebuild sites that are slow, dated or hard to use on a phone — clearer structure, faster load times and the technical SEO basics built in. Typical timeline is 3–6 weeks depending on size. Fixed price agreed in writing before work starts, and you own everything at the end. Message us on WhatsApp, call or email for a quote; we reply within one business day.',
+    gbp: 'Website redesign services for small businesses in Langley, Surrey, Coquitlam and Metro Vancouver. We migrate dated, sluggish sites from Wix, Squarespace, GoDaddy and legacy WordPress to fast custom code — cleaner layout, sub-second load times and technical SEO built in. Typical timeline is 3–6 weeks. Fixed price agreed in writing before work starts, with complete ownership. Contact us on WhatsApp or email for a quote.',
   },
   {
     id: 'ecommerce-website-design',
     name: 'Ecommerce Website Design',
-    what: 'A website that takes orders and payments — products, gift cards or pre-orders — built on your own accounts rather than a marketplace taking a cut of every sale.',
-    whoFor: 'Retailers, makers, farms, bakeries and restaurants that want to sell online directly.',
+    what: 'Shopify developer and custom ecommerce website maker — online stores for retailers, makers, bakeries, and trade brands with secure checkout, product collections, and direct customer relationships.',
+    whoFor: 'Retailers, makers, farms, bakeries and direct-to-consumer brands that want to sell online without marketplace commissions.',
     timeline: '6–10 weeks (the Business Pro scope, which is where e-commerce is included).',
     priceRange: null,
     href: '/pricing',
-    gbp: 'Ecommerce websites for businesses in Langley, Coquitlam, the Fraser Valley and Metro Vancouver — online stores for retailers, makers, farms, bakeries and restaurants selling products, gift cards or pre-orders. Built on accounts in your name, with payments, product pages and local SEO included. Typical timeline is 6–10 weeks. Fixed price, agreed in writing before work starts. Contact us on WhatsApp, by phone or by email for a quote; we reply within one business day.',
+    gbp: 'Shopify developer and ecommerce website design for businesses in Langley, Surrey, Coquitlam and Metro Vancouver — custom online stores for retailers, makers, and local brands. Includes payment setup, product catalogs, shipping rules, local pickup, and on-page SEO. Typical timeline is 6–10 weeks. Fixed price, agreed in writing before work starts. Contact sales@mander.tech or WhatsApp for a quote.',
   },
   {
     id: 'local-seo',
     name: 'Local SEO',
-    what: 'Getting found by people searching for what you do in your town: on-page SEO, local keyword research, location pages, citations, Search Console and analytics.',
+    what: 'Local SEO expert services: Google Business Profile optimization, local keyword strategy, schema markup, and Google Maps pack ranking for contractors, plumbers, landscapers, clinics, and professional services.',
     whoFor: 'Businesses whose customers search Google or Maps before they buy — trades, clinics, restaurants, professional services.',
     timeline: 'Set up alongside a Growth-tier build (4–6 weeks); ranking gains then build over the following months — no one can honestly promise a date.',
     priceRange: null,
     href: '/growth',
-    gbp: 'Local SEO for small businesses in Langley, Coquitlam, the Fraser Valley and Metro Vancouver. We handle on-page SEO, local keyword research, location pages, citations, Google Search Console and Analytics, so people searching for what you do in your town find you. Set up alongside a website build in 4–6 weeks; results build over the following months, and we will not promise a ranking date. Fixed price, quoted in writing. WhatsApp, call or email us; we reply within one business day.',
+    gbp: 'Local SEO services for small businesses in Langley, Surrey, Coquitlam, Vancouver and the Fraser Valley. We handle Google Business Profile optimization, local keyword research, citations, Google Search Console, and Schema markup so people searching for contractors, plumbers, clinics, and local services in your town find you. Fixed price, quoted in writing. Contact us via WhatsApp or email for a consultation.',
   },
   {
     id: 'google-business-profile-optimization',
@@ -76,12 +76,12 @@ export const SERVICE_CATALOGUE = [
   {
     id: 'brand-identity-design',
     name: 'Brand Identity Design',
-    what: 'Logo, typography, colour and the rules that hold them together, so a business looks established from day one and consistent everywhere it appears.',
+    what: 'Logo designer and brand identity agency services: custom logos, typography scales, colour palettes, vehicle wrap branding, and design guidelines that give small businesses immediate authority.',
     whoFor: 'New businesses, and established ones whose offer is sharper in the owner’s head than anywhere a customer can see it.',
     timeline: 'Quoted with the written scope — it depends on how much of the identity is being made.',
     priceRange: null,
     href: '/brand',
-    gbp: 'Brand identity design for businesses in Langley, Coquitlam, the Fraser Valley and Metro Vancouver: logo, typography, colour palette and simple usage rules, so your business looks established and consistent on your website, signage, Google profile and social media. Timeline is set in a written scope before work starts, at a fixed price — no hourly billing. You own every file at the end. Contact us by WhatsApp, phone or email; we reply within one business day.',
+    gbp: 'Brand identity and logo design for businesses in Langley, Surrey, Coquitlam and Metro Vancouver: custom logo design, typography rules, color palettes, and digital style guides, so your brand looks established on your website, vehicle wraps, signage, and social media. Fixed price with complete file ownership. Contact us on WhatsApp or email sales@mander.tech for a quote.',
   },
   {
     id: 'android-app-development',
@@ -109,32 +109,52 @@ export const SERVICE_CATALOGUE = [
 // answered in its first sentence. Rendered on /services with FAQPage schema.
 export const ASK_MAPS_FAQS = [
   {
-    q: 'Which web designer in Langley builds ecommerce sites?',
-    a: 'MANDER builds ecommerce websites for Langley businesses — part of the team is based in Langley. Online stores with payments, product pages and local SEO typically take 6–10 weeks at a fixed price agreed in writing before work starts.',
+    q: 'Can I hire a freelance web designer or independent studio in Langley or Surrey?',
+    a: 'Yes. MANDER operates as an agile, senior independent studio with team members based in Langley and Coquitlam. You get the direct communication, personal care, and affordable rates of a freelance web designer, backed by the reliability and code quality of senior full-stack developers.',
   },
   {
-    q: 'Who makes websites for restaurants in Coquitlam?',
-    a: 'MANDER designs websites for restaurants, cafés and bakeries in Coquitlam, Port Coquitlam and Port Moody, with direct reservations or enquiries, menus, pre-orders or gift cards, and local search so diners nearby find you. Fixed price, quoted up front.',
+    q: 'Which web designer in Langley is a Shopify developer for ecommerce?',
+    a: 'MANDER designs and develops custom Shopify stores for businesses in Langley and the Fraser Valley — part of the team is based in Langley. Online stores with payment integration, product collections, local pickup, and local SEO typically take 6–10 weeks at a fixed price agreed in writing.',
   },
   {
-    q: 'Is there a web designer near me that also does SEO?',
-    a: 'Yes — MANDER builds websites and does local SEO and Google Business Profile optimization together, for businesses in Langley, Coquitlam, the Fraser Valley and across Metro Vancouver. Local SEO is included from the Growth plan up.',
+    q: 'Do you build websites and handle SEO for contractors, plumbers, and trades?',
+    a: 'Yes — contractor web design and trade SEO is a core specialty across Surrey, Langley, and Metro Vancouver. We build fast, mobile-friendly websites with quick quote forms, click-to-call buttons, verified job photos, and Google Map Pack optimization so local homeowners call you first.',
   },
   {
-    q: 'How fast can I get a website?',
-    a: 'A one-page website typically goes live in about 2 weeks. A site of up to 5 pages takes 3–4 weeks and up to 10 pages 4–6 weeks, mostly depending on how quickly content and feedback come back.',
+    q: 'Can you redesign or migrate a slow Wix, Squarespace, or WordPress website?',
+    a: 'Yes. We routinely rebuild slow, template-heavy sites from Wix, Squarespace, GoDaddy, and legacy WordPress into clean, custom-coded websites that load in under a second and rank significantly better on Google.',
+  },
+  {
+    q: 'What affordable website design packages do you offer for small businesses?',
+    a: 'We offer transparent, fixed-price website packages — from our Launch tier for fast 3-page essentials to Starter and Growth plans with local SEO and booking. Every package includes full client ownership with zero hidden fees or ongoing retainers.',
+  },
+  {
+    q: 'Do you offer logo design and brand identity services?',
+    a: 'Yes. As a brand identity and logo designer, MANDER creates complete visual systems — logos, typography scales, color palettes, vehicle wrap files, and style guides — that give local businesses immediate market authority.',
+  },
+  {
+    q: 'Who makes websites for restaurants in Coquitlam and Port Moody?',
+    a: 'MANDER designs websites for restaurants, cafés, bakeries and craft breweries in Coquitlam, Port Coquitlam and Port Moody — menus, direct reservations, gift cards or pre-orders, and local search so diners find you without aggregator fees. Fixed price, quoted up front.',
+  },
+  {
+    q: 'Is there a local SEO expert near me in Metro Vancouver?',
+    a: 'Yes — MANDER handles local SEO and Google Business Profile optimization together for businesses in Langley, Surrey, Coquitlam, Vancouver, and the Fraser Valley. Local SEO is included from the Growth plan up.',
+  },
+  {
+    q: 'How fast can I get a custom website built?',
+    a: 'A one-page website typically goes live in about 2 weeks. A site of up to 5 pages takes 3–4 weeks and up to 10 pages 4–6 weeks, depending on content review and feedback.',
   },
   {
     q: 'Does MANDER reply on WhatsApp?',
-    a: 'Yes. You can reach MANDER on WhatsApp, by phone or by email, and every message gets a reply within one business day. Hours are Monday to Friday, 9am–5pm Pacific.',
+    a: 'Yes. You can reach MANDER on WhatsApp, by phone (+1 857-758-7182) or by email (sales@mander.tech), and every message gets a reply within one business day. Hours are Monday to Friday, 9am–5pm Pacific.',
   },
   {
-    q: 'What areas does MANDER serve?',
-    a: 'Langley, Coquitlam and the Tri-Cities, Surrey, the Fraser Valley and the rest of Metro Vancouver, British Columbia. Clients elsewhere in Canada, the US and worldwide are taken on the same way.',
+    q: 'What areas does MANDER serve in British Columbia?',
+    a: 'Langley, Surrey, Coquitlam, Port Coquitlam, Port Moody, Vancouver, Burnaby, Richmond, North Vancouver, New Westminster, and the Fraser Valley — plus remote clients across Canada and worldwide.',
   },
   {
     q: 'How do I get a quote from MANDER?',
-    a: 'Send a WhatsApp message, call, or email sales@mander.tech with a few lines about the business. You get one fixed price in writing before any work starts — no hourly billing.',
+    a: 'Send a WhatsApp message, call, or email sales@mander.tech with a few lines about your project. You receive one fixed price in writing before any work starts — no hourly billing.',
   },
   {
     q: 'What languages does MANDER work in?',
@@ -142,6 +162,6 @@ export const ASK_MAPS_FAQS = [
   },
   {
     q: 'What is included in a MANDER website?',
-    a: 'Every site includes mobile-first design, a contact form and basic technical setup; from 5 pages up, copywriting support and basic SEO; from the Growth plan up, local SEO, Google Business Profile optimization, Analytics, Search Console and booking or CRM integration. You own the site, code and domain.',
+    a: 'Every site includes custom mobile-first design, contact forms, and clean Next.js code; from 5 pages up, copywriting support and basic SEO; from the Growth plan up, local SEO, Google Business Profile optimization, Analytics, Search Console, and booking or CRM integration. You own the site, code, and domain outright.',
   },
 ];
