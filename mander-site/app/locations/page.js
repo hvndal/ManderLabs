@@ -11,7 +11,7 @@ import { breadcrumbSchema, SITE_URL, OG_IMAGE, alternates } from '@/lib/seo';
 
 const TITLE = 'Locations — Metro Vancouver';
 const DESCRIPTION =
-  'Brand, web design and local SEO for Metro Vancouver — Vancouver, Burnaby, Richmond, Surrey and more. Fixed-price, quoted in writing.';
+  'Brand, web design and local SEO for Metro Vancouver — Vancouver, Langley, Coquitlam, Burnaby and the Fraser Valley. Fixed-price, quoted in writing.';
 
 export const metadata = {
   title: TITLE,

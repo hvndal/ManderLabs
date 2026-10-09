@@ -117,7 +117,6 @@ const nextConfig = {
       // to its exact /metro-vancouver equivalent so Google consolidates link equity 1:1
       ...[
         'vancouver',
-        'surrey',
         'burnaby',
         'richmond',
         'north-vancouver',
@@ -129,6 +128,12 @@ const nextConfig = {
         destination: `/locations/metro-vancouver/${city}`,
         permanent: true,
       })),
+      // Retired Surrey city page — 301 permanent redirect to the regional hub per SEO best practice
+      {
+        source: '/locations/metro-vancouver/surrey',
+        destination: '/locations/metro-vancouver',
+        permanent: true,
+      },
       // Any other legacy BC city (e.g. Victoria, Kelowna) redirects to the region hub
       {
         source: '/locations/british-columbia/:city',

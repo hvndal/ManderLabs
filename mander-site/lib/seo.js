@@ -95,7 +95,7 @@ export const SERVICE_AREA = [
 // delivered, not a page that has to justify itself with content. Naming them
 // tells Google the studio serves the region without publishing fifteen thin
 // city pages to say the same thing — which is the exact distinction between
-// the schema and the /locations tree, where only Vancouver and Surrey have
+// the schema and the /locations tree, where dedicated municipal hubs have
 // earned a page.
 //
 // Deliberately excludes Victoria, Nanaimo and Kelowna. They are not Metro
@@ -108,7 +108,6 @@ const METRO_VANCOUVER = [
   'West Vancouver',
   'Burnaby',
   'Richmond',
-  'Surrey',
   'Coquitlam',
   'Port Coquitlam',
   'Port Moody',
@@ -363,6 +362,7 @@ export function organizationSchema(marketOrId) {
       'Custom Web Development',
       'Contractor Web Design',
       'Trade SEO',
+      'Fraser Valley Web Design & SEO',
       'WordPress to Next.js Migration',
       'Wix Website Redesign',
       'Mobile-First Responsive Design',

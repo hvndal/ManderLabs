@@ -24,16 +24,16 @@ export const INDUSTRIES = [
     index: '01',
     label: 'Contractors & Trades',
     line: 'A site that earns the call before the quote does.',
-    meta: 'Web design and local SEO for contractors, plumbers, electricians, and trades across Surrey, Langley, and Metro Vancouver. Mobile-first sites that win the call.',
+    meta: 'Web design and local SEO for contractors, plumbers, electricians, and trades across Langley, the Fraser Valley, and Metro Vancouver. Mobile-first sites that win the call.',
     lede: 'Most trade sites are a digital business card: a logo, a phone number, three stock photos of a hard hat. The job that site was supposed to do — turn a local search into a paid job — quietly falls to whichever competitor answers the phone first.',
     body: [
-      'We build the site around the one thing it actually has to produce: an immediate quote request from a property owner who is ready to hire. Whether you are a plumber in Langley, an electrical contractor in Surrey, a landscaping team in Coquitlam, or a custom home builder in Vancouver, your customers search on mobile when an urgent problem arises.',
+      'We build the site around the one thing it actually has to produce: an immediate quote request from a property owner who is ready to hire. Whether you are a plumber in Langley, an electrical contractor in the Fraser Valley, a landscaping team in Coquitlam, or a custom home builder in Vancouver, your customers search on mobile when an urgent problem arises.',
       'That means mobile-first by default with one-tap calling, frictionless quote forms, verified job galleries, and local search optimization that puts your business at the top of Google Maps. Every project is built under a transparent, fixed-price scope with zero ongoing platform lock-in.',
     ],
     capabilities: [
       { name: 'Mobile-first trade websites', note: 'Designed for property owners searching on a phone in a driveway with instant click-to-call.' },
       { name: 'Frictionless quote forms', note: 'One clear, one-handed quote path that converts urgent visitors into paid jobs.' },
-      { name: 'Trade & contractor SEO', note: 'Local SEO for plumbers in Langley, contractor web design in Surrey, and Google Map Pack ranking.' },
+      { name: 'Trade & contractor SEO', note: 'Local SEO for plumbers in Langley, contractor web design in the Fraser Valley, and Google Map Pack ranking.' },
       { name: 'Job gallery & credentials', note: 'Real project photos, before/after galleries, and license badges that earn immediate trust.' },
       { name: 'Care Plan & high-speed hosting', note: 'Fast cloud hosting, SSL, and security updates so your trade business never misses an inbound lead.' },
     ],
@@ -44,11 +44,11 @@ export const INDUSTRIES = [
     faqs: [
       {
         q: 'Do you build websites specifically for plumbers, electricians, landscapers, and HVAC?',
-        a: 'Yes. We specialize in contractor web design and trade SEO across Surrey, Langley, Coquitlam, and Metro Vancouver for plumbers, electricians, landscapers, HVAC specialists, roofers, and general renovation contractors.',
+        a: 'Yes. We specialize in contractor web design and trade SEO across Langley, Coquitlam, the Fraser Valley, and Metro Vancouver for plumbers, electricians, landscapers, HVAC specialists, roofers, and general renovation contractors.',
       },
       {
         q: 'How does local SEO help contractors rank in Google’s Map Pack?',
-        a: 'We optimize your Google Business Profile, structure localized service pages for queries like "plumber in Langley" or "contractor web design Surrey", configure local schema markup, and build consistent citations so your business appears in the top 3 Google Map results.',
+        a: 'We optimize your Google Business Profile, structure localized service pages for queries like "plumber in Langley" or "contractor web design Fraser Valley", configure local schema markup, and build consistent citations so your business appears in the top 3 Google Map results.',
       },
       {
         q: 'Can you redesign an outdated trade website or replace a slow Wix or Squarespace site?',
@@ -60,7 +60,7 @@ export const INDUSTRIES = [
       },
       {
         q: 'Can the site feature photos of recent jobs and customer reviews?',
-        a: 'Yes. A structured project gallery and verified customer reviews are essential for trade websites. Real before-and-after photos of your craftsmanship in Langley, Surrey, or Vancouver consistently outperform stock images.',
+        a: 'Yes. A structured project gallery and verified customer reviews are essential for trade websites. Real before-and-after photos of your craftsmanship in Langley, Coquitlam, or Vancouver consistently outperform stock images.',
       },
     ],
   },

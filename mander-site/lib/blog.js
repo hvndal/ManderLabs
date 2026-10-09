@@ -177,7 +177,7 @@ export const POSTS = [
     related: [
       { label: 'Pricing for websites and apps', href: '/pricing' },
       { label: 'Take the 60-second fit quiz', href: '/quote' },
-      { label: 'Website design in Surrey', href: '/locations/metro-vancouver/surrey' },
+      { label: 'Website design in Langley', href: '/locations/metro-vancouver/langley' },
     ],
   },
 ];

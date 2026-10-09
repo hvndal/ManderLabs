@@ -54,7 +54,7 @@ const NA_REGIONS = [
     kicker: 'British Columbia',
     h1: 'Custom website design, branding & local SEO for Metro Vancouver.',
     metaDescription:
-      'Custom website design, Shopify development, and local SEO across Metro Vancouver — Langley, Surrey, Coquitlam, Vancouver, and Burnaby. Fixed price.',
+      'Custom website design, Shopify development, and local SEO across Metro Vancouver and the Fraser Valley — Langley, Coquitlam, Vancouver, and Burnaby. Fixed price.',
     intro: [
       "Metro Vancouver is where MANDER started — with team members based in Langley and Coquitlam — delivering the high-touch accessibility and fair pricing of an independent freelance web designer combined with the craft of a dedicated brand identity and digital studio. We build custom websites, Shopify ecommerce stores, and local SEO growth engines for small businesses, contractors, plumbers, restaurants, and professional practices across the Lower Mainland.",
       'The work here spans all three pillars. Brand identity for businesses whose offer needs sharp authority. Custom digital builds for companies whose slow DIY templates are quietly costing them enquiries. Growth for the ones nobody is finding — pairing on-page local SEO with Google Business Profile optimization so searchers in your neighbourhood find and hire you first.',
@@ -88,8 +88,8 @@ const NA_REGIONS = [
         a: 'Yes — quoted in USD by default and invoiced in CAD on request, at transparent fixed figures.',
       },
       {
-        q: 'Why these eight municipalities, when Metro Vancouver has twenty-one?',
-        a: 'Because a page is only worth building where we can say something true and specific about the market. These eight are the ones with genuinely distinct local context; the rest of Metro Vancouver — Delta, Maple Ridge, White Rock, Abbotsford corridor — is served with the exact same dedication.',
+        q: 'Why these seven municipalities, when Metro Vancouver has twenty-one?',
+        a: 'Because a page is only worth building where we can say something true and specific about the market. These seven are the ones with genuinely distinct local context; the rest of Metro Vancouver and the Fraser Valley — Delta, Maple Ridge, White Rock, Abbotsford corridor — is served with the exact same dedication.',
       },
       {
         q: "How does MANDER compare to high-overhead downtown Vancouver web agencies?",
@@ -136,48 +136,6 @@ const NA_REGIONS = [
           {
             q: 'Do you invoice in Canadian dollars?',
             a: 'Yes, CAD on request at no extra cost, and every price is fixed and agreed before work starts.',
-          },
-        ],
-      },
-      {
-        slug: 'surrey',
-        name: 'Surrey',
-        h1: 'Custom website design & local SEO in Surrey, BC.',
-        metaDescription:
-          'Custom website design & local SEO expert in Surrey, BC. Freelance graphic designer, contractor websites, WordPress developer, and logo design. Fixed price.',
-        intro:
-          "Surrey is one of the fastest-growing commercial and industrial centres in Canada. From contractors, transport, and logistics along the Fraser Valley corridor to vibrant retail and multicultural service businesses, Surrey companies need websites that work as hard as they do. MANDER delivers the speed and value of an independent freelance web designer combined with the capability of a full-service digital and brand identity agency — building custom, high-speed websites that capture local contractor leads, rank organically, and elevate your brand.",
-        industries: [
-          'Contractors, roofing & electrical trades',
-          'Landscaping & site maintenance',
-          'Logistics, warehousing & trucking',
-          'Retail, grocery & food service',
-          'Professional, legal & multicultural businesses',
-        ],
-        faqs: [
-          {
-            q: 'Do you build custom websites for contractors and trades in Surrey?',
-            a: 'Yes. Contractor web design is one of our primary services in Surrey. We build mobile-first sites tailored to how homeowners and commercial clients search: fast quote requests, click-to-call buttons, verified project photo galleries, and local SEO tuned for Surrey, Cloverdale, Newton, and Fleetwood.',
-          },
-          {
-            q: 'Can you act as a freelance graphic designer and logo designer in Surrey?',
-            a: 'Yes. We design complete brand identities and logos for Surrey businesses — logos, typography, color palettes, vehicle wrap branding, and marketing collateral — at accessible studio pricing without agency account manager bloat.',
-          },
-          {
-            q: 'Do you design custom WordPress and ecommerce websites in Surrey, BC?',
-            a: 'Yes. Whether you need a custom WordPress developer, a modern headless build, or a custom Shopify store, we engineer fast, secure platforms with complete client ownership and zero ongoing plugin lock-in.',
-          },
-          {
-            q: 'Are you a local SEO expert for Surrey companies?',
-            a: 'Yes. We handle comprehensive local SEO services for Surrey landscapers, roofers, trades, and professional firms — ranking your Google Business Profile in the local Map Pack and targeting geo-modified service keywords across Surrey and the Fraser Valley.',
-          },
-          {
-            q: 'Can you write copy for a business that serves a multilingual customer base?',
-            a: 'We write in English by default; if your customers search or read in another language too, bilingual builds are something we handle as part of Website Design.',
-          },
-          {
-            q: 'Do you invoice Surrey clients in Canadian dollars?',
-            a: 'Yes on request. Prices are shown in USD by default and Canadian clients are invoiced in CAD at your preference.',
           },
         ],
       },

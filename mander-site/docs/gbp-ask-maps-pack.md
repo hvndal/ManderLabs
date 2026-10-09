@@ -11,7 +11,7 @@ and regenerate this section rather than editing the profile alone.
 | Field | Value on the site | Where on the site |
 |---|---|---|
 | Business name | MANDER | everywhere |
-| Service area | Langley, Coquitlam, Port Coquitlam, Port Moody, Surrey, Fraser Valley, + rest of Metro Vancouver | `/services`, town pages, schema `areaServed` |
+| Service area | Langley, Coquitlam, Port Coquitlam, Port Moody, Fraser Valley, + rest of Metro Vancouver | `/services`, town pages, schema `areaServed` |
 | Hours | Mon–Fri, 9:00–17:00 Pacific | footer, `/contact`, schema |
 | Response time | Within one business day | `/contact`, `/services`, forms |
 | Contact modes | WhatsApp, phone, email quote (sales@mander.tech) | nav, footer, `/services` |

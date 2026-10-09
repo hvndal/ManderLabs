@@ -16,9 +16,9 @@
 // and it renders on /services and in the schema; left null, it reads
 // "Fixed price, quoted in writing before work starts".
 
-export const TOWNS = ['Langley', 'Coquitlam', 'Port Coquitlam', 'Port Moody', 'Surrey', 'the Fraser Valley'];
+export const TOWNS = ['Langley', 'Coquitlam', 'Port Coquitlam', 'Port Moody', 'the Fraser Valley'];
 export const TOWNS_LINE =
-  'Langley, Coquitlam and the Tri-Cities, Surrey, the Fraser Valley and the rest of Metro Vancouver — plus clients anywhere.';
+  'Langley, Coquitlam and the Tri-Cities, the Fraser Valley and the rest of Metro Vancouver — plus clients anywhere.';
 
 export const PRICE_FALLBACK = 'Fixed price, quoted in writing before work starts.';
 
@@ -31,7 +31,7 @@ export const SERVICE_CATALOGUE = [
     timeline: 'About 2 weeks for a one-page site; 3–4 weeks for up to 5 pages; 4–6 weeks for up to 10 pages.',
     priceRange: null,
     href: '/digital',
-    gbp: 'Custom website design for small businesses in Langley, Surrey, Coquitlam, Vancouver and across Metro Vancouver. We build high-speed, mobile-first websites — from affordable 3-page starter packages to custom corporate and contractor lead-generation sites. The smart alternative to rigid DIY website builders and website makers. Transparent fixed pricing agreed in writing before work starts — no hourly billing. You own the site, code, and domain outright. Contact sales@mander.tech or reach out via WhatsApp; we reply within one business day.',
+    gbp: 'Custom website design for small businesses in Langley, Coquitlam, Vancouver, the Fraser Valley and across Metro Vancouver. We build high-speed, mobile-first websites — from affordable 3-page starter packages to custom corporate and contractor lead-generation sites. The smart alternative to rigid DIY website builders and website makers. Transparent fixed pricing agreed in writing before work starts — no hourly billing. You own the site, code, and domain outright. Contact sales@mander.tech or reach out via WhatsApp; we reply within one business day.',
   },
   {
     id: 'website-redesign',
@@ -41,7 +41,7 @@ export const SERVICE_CATALOGUE = [
     timeline: '3–6 weeks depending on the number of pages, the same as a new build of that size.',
     priceRange: null,
     href: '/digital',
-    gbp: 'Website redesign services for small businesses in Langley, Surrey, Coquitlam and Metro Vancouver. We migrate dated, sluggish sites from Wix, Squarespace, GoDaddy and legacy WordPress to fast custom code — cleaner layout, sub-second load times and technical SEO built in. Typical timeline is 3–6 weeks. Fixed price agreed in writing before work starts, with complete ownership. Contact us on WhatsApp or email for a quote.',
+    gbp: 'Website redesign services for small businesses in Langley, Coquitlam, the Fraser Valley and Metro Vancouver. We migrate dated, sluggish sites from Wix, Squarespace, GoDaddy and legacy WordPress to fast custom code — cleaner layout, sub-second load times and technical SEO built in. Typical timeline is 3–6 weeks. Fixed price agreed in writing before work starts, with complete ownership. Contact us on WhatsApp or email for a quote.',
   },
   {
     id: 'ecommerce-website-design',
@@ -51,7 +51,7 @@ export const SERVICE_CATALOGUE = [
     timeline: '6–10 weeks (the Business Pro scope, which is where e-commerce is included).',
     priceRange: null,
     href: '/pricing',
-    gbp: 'Shopify developer and ecommerce website design for businesses in Langley, Surrey, Coquitlam and Metro Vancouver — custom online stores for retailers, makers, and local brands. Includes payment setup, product catalogs, shipping rules, local pickup, and on-page SEO. Typical timeline is 6–10 weeks. Fixed price, agreed in writing before work starts. Contact sales@mander.tech or WhatsApp for a quote.',
+    gbp: 'Shopify developer and ecommerce website design for businesses in Langley, Coquitlam, the Fraser Valley and Metro Vancouver — custom online stores for retailers, makers, and local brands. Includes payment setup, product catalogs, shipping rules, local pickup, and on-page SEO. Typical timeline is 6–10 weeks. Fixed price, agreed in writing before work starts. Contact sales@mander.tech or WhatsApp for a quote.',
   },
   {
     id: 'local-seo',
@@ -61,7 +61,7 @@ export const SERVICE_CATALOGUE = [
     timeline: 'Set up alongside a Growth-tier build (4–6 weeks); ranking gains then build over the following months — no one can honestly promise a date.',
     priceRange: null,
     href: '/growth',
-    gbp: 'Local SEO services for small businesses in Langley, Surrey, Coquitlam, Vancouver and the Fraser Valley. We handle Google Business Profile optimization, local keyword research, citations, Google Search Console, and Schema markup so people searching for contractors, plumbers, clinics, and local services in your town find you. Fixed price, quoted in writing. Contact us via WhatsApp or email for a consultation.',
+    gbp: 'Local SEO services for small businesses in Langley, Coquitlam, Vancouver and the Fraser Valley. We handle Google Business Profile optimization, local keyword research, citations, Google Search Console, and Schema markup so people searching for contractors, plumbers, clinics, and local services in your town find you. Fixed price, quoted in writing. Contact us via WhatsApp or email for a consultation.',
   },
   {
     id: 'google-business-profile-optimization',
@@ -81,7 +81,7 @@ export const SERVICE_CATALOGUE = [
     timeline: 'Quoted with the written scope — it depends on how much of the identity is being made.',
     priceRange: null,
     href: '/brand',
-    gbp: 'Brand identity and logo design for businesses in Langley, Surrey, Coquitlam and Metro Vancouver: custom logo design, typography rules, color palettes, and digital style guides, so your brand looks established on your website, vehicle wraps, signage, and social media. Professional alternative to generic logo creators. Fixed price with complete file ownership. Contact us on WhatsApp or email sales@mander.tech for a quote.',
+    gbp: 'Brand identity and logo design for businesses in Langley, Coquitlam, the Fraser Valley and Metro Vancouver: custom logo design, typography rules, color palettes, and digital style guides, so your brand looks established on your website, vehicle wraps, signage, and social media. Professional alternative to generic logo creators. Fixed price with complete file ownership. Contact us on WhatsApp or email sales@mander.tech for a quote.',
   },
   {
     id: 'android-app-development',
@@ -109,7 +109,7 @@ export const SERVICE_CATALOGUE = [
 // answered in its first sentence. Rendered on /services with FAQPage schema.
 export const ASK_MAPS_FAQS = [
   {
-    q: 'Can I hire a freelance web designer or independent studio in Langley or Surrey?',
+    q: 'Can I hire a freelance web designer or independent studio in Langley or the Fraser Valley?',
     a: 'Yes. MANDER operates as an agile, senior independent studio with team members based in Langley and Coquitlam. You get the direct communication, personal care, and affordable rates of a freelance web designer, backed by the reliability and code quality of senior full-stack developers.',
   },
   {
@@ -118,7 +118,7 @@ export const ASK_MAPS_FAQS = [
   },
   {
     q: 'Do you build websites and handle SEO for contractors, plumbers, and trades?',
-    a: 'Yes — contractor web design and trade SEO is a core specialty across Surrey, Langley, and Metro Vancouver. We build fast, mobile-friendly websites with quick quote forms, click-to-call buttons, verified job photos, and Google Map Pack optimization so local homeowners call you first.',
+    a: 'Yes — contractor web design and trade SEO is a core specialty across Langley, the Fraser Valley, and Metro Vancouver. We build fast, mobile-friendly websites with quick quote forms, click-to-call buttons, verified job photos, and Google Map Pack optimization so local homeowners call you first.',
   },
   {
     q: 'Can you redesign or migrate a slow Wix, Squarespace, or WordPress website?',
@@ -142,7 +142,7 @@ export const ASK_MAPS_FAQS = [
   },
   {
     q: 'Is there a local SEO expert near me in Metro Vancouver?',
-    a: 'Yes — MANDER handles local SEO and Google Business Profile optimization together for businesses in Langley, Surrey, Coquitlam, Vancouver, and the Fraser Valley. Local SEO is included from the Growth plan up.',
+    a: 'Yes — MANDER handles local SEO and Google Business Profile optimization together for businesses in Langley, Coquitlam, Vancouver, and the Fraser Valley. Local SEO is included from the Growth plan up.',
   },
   {
     q: 'How fast can I get a custom website built?',
@@ -154,7 +154,7 @@ export const ASK_MAPS_FAQS = [
   },
   {
     q: 'What areas does MANDER serve in British Columbia?',
-    a: 'Langley, Surrey, Coquitlam, Port Coquitlam, Port Moody, Vancouver, Burnaby, Richmond, North Vancouver, New Westminster, and the Fraser Valley — plus remote clients across Canada and worldwide.',
+    a: 'Langley, Coquitlam, Port Coquitlam, Port Moody, Vancouver, Burnaby, Richmond, North Vancouver, New Westminster, and the Fraser Valley — plus remote clients across Canada and worldwide.',
   },
   {
     q: 'How do I get a quote from MANDER?',
