@@ -26,17 +26,17 @@ export const SERVICE_CATALOGUE = [
   {
     id: 'website-design',
     name: 'Website Design',
-    what: 'Custom website design for small businesses — clean-coded, mobile-first websites built to load in under a second. Transparent packages from single-page Launch sites to 10-page custom builds with booking.',
+    what: 'Custom website design for small businesses — the high-performance alternative to generic website makers and DIY website builders. Clean-coded, mobile-first websites built to load in under a second. Transparent packages from single-page Launch sites to 10-page custom builds with booking.',
     whoFor: 'Small businesses, contractors, retailers and clinics that need a professional website that turns local searchers into paying clients.',
     timeline: 'About 2 weeks for a one-page site; 3–4 weeks for up to 5 pages; 4–6 weeks for up to 10 pages.',
     priceRange: null,
     href: '/digital',
-    gbp: 'Custom website design for small businesses in Langley, Surrey, Coquitlam, Vancouver and across Metro Vancouver. We build high-speed, mobile-first websites — from affordable 3-page starter packages to custom corporate and contractor lead-generation sites. Transparent fixed pricing agreed in writing before work starts — no hourly billing. You own the site, code, and domain outright. Contact sales@mander.tech or reach out via WhatsApp; we reply within one business day.',
+    gbp: 'Custom website design for small businesses in Langley, Surrey, Coquitlam, Vancouver and across Metro Vancouver. We build high-speed, mobile-first websites — from affordable 3-page starter packages to custom corporate and contractor lead-generation sites. The smart alternative to rigid DIY website builders and website makers. Transparent fixed pricing agreed in writing before work starts — no hourly billing. You own the site, code, and domain outright. Contact sales@mander.tech or reach out via WhatsApp; we reply within one business day.',
   },
   {
     id: 'website-redesign',
     name: 'Website Redesign',
-    what: 'Rebuilding slow, dated websites: migrating businesses trapped on slow DIY builders (Wix, Squarespace, GoDaddy, or dated WordPress themes) into modern, lightning-fast custom websites that rank higher and convert.',
+    what: 'Rebuilding slow, dated websites: migrating businesses trapped on slow DIY website builders (Wix, Squarespace, GoDaddy, or dated WordPress themes) into modern, lightning-fast custom websites that rank higher and convert.',
     whoFor: 'Businesses whose current website is slow, failing Core Web Vitals, or quietly costing them enquiries.',
     timeline: '3–6 weeks depending on the number of pages, the same as a new build of that size.',
     priceRange: null,
@@ -76,12 +76,12 @@ export const SERVICE_CATALOGUE = [
   {
     id: 'brand-identity-design',
     name: 'Brand Identity Design',
-    what: 'Logo designer and brand identity agency services: custom logos, typography scales, colour palettes, vehicle wrap branding, and design guidelines that give small businesses immediate authority.',
+    what: 'Logo designer and brand identity agency services: custom logo design rather than automated online logo creators. Bespoke vector logos, typography scales, colour palettes, vehicle wrap branding, and design guidelines that give small businesses immediate authority.',
     whoFor: 'New businesses, and established ones whose offer is sharper in the owner’s head than anywhere a customer can see it.',
     timeline: 'Quoted with the written scope — it depends on how much of the identity is being made.',
     priceRange: null,
     href: '/brand',
-    gbp: 'Brand identity and logo design for businesses in Langley, Surrey, Coquitlam and Metro Vancouver: custom logo design, typography rules, color palettes, and digital style guides, so your brand looks established on your website, vehicle wraps, signage, and social media. Fixed price with complete file ownership. Contact us on WhatsApp or email sales@mander.tech for a quote.',
+    gbp: 'Brand identity and logo design for businesses in Langley, Surrey, Coquitlam and Metro Vancouver: custom logo design, typography rules, color palettes, and digital style guides, so your brand looks established on your website, vehicle wraps, signage, and social media. Professional alternative to generic logo creators. Fixed price with complete file ownership. Contact us on WhatsApp or email sales@mander.tech for a quote.',
   },
   {
     id: 'android-app-development',
@@ -129,8 +129,12 @@ export const ASK_MAPS_FAQS = [
     a: 'We offer transparent, fixed-price website packages — from our Launch tier for fast 3-page essentials to Starter and Growth plans with local SEO and booking. Every package includes full client ownership with zero hidden fees or ongoing retainers.',
   },
   {
-    q: 'Do you offer logo design and brand identity services?',
-    a: 'Yes. As a brand identity and logo designer, MANDER creates complete visual systems — logos, typography scales, color palettes, vehicle wrap files, and style guides — that give local businesses immediate market authority.',
+    q: 'Do you offer logo design and brand identity services, and how does it compare to an online logo creator?',
+    a: 'Yes. Online logo creators generate generic clip-art icons that dozens of competitors share and cannot be legally trademarked. As a custom brand identity and logo designer, MANDER crafts bespoke vector marks, scalable typography systems, and complete brand identity guidelines tailored for long-term authority.',
+  },
+  {
+    q: 'Why hire a custom website designer instead of using a DIY website maker or free website builder?',
+    a: 'DIY website builders and free website maker tools advertise simplicity, but they lock you into proprietary hosting, slow bloated code, and poor Google rankings. MANDER delivers custom Next.js website design with sub-second load times, tailored local SEO, and 100% complete code and domain ownership.',
   },
   {
     q: 'Who makes websites for restaurants in Coquitlam and Port Moody?',

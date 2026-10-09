@@ -333,12 +333,12 @@ const NA_REGIONS = [
             a: 'Yes. We design and launch custom Shopify stores for Langley retailers, agricultural producers, makers, and boutique brands. We handle store setup, custom theme styling, payment processing, product catalogs, and local pickup workflows at a fixed agreed price.',
           },
           {
-            q: 'Can you redesign a slow Wix, Squarespace, or WordPress website?',
-            a: 'Yes. Many local businesses outgrow DIY website makers like Wix, Squarespace, or bloated WordPress themes that suffer from slow load times and poor SEO. We rebuild your site in modern, ultra-fast custom code that achieves 95+ Google PageSpeed scores.',
+            q: 'Can you redesign a slow Wix, Squarespace, or WordPress website, or replace a DIY website builder?',
+            a: 'Yes. Many local businesses outgrow DIY website builders and website makers like Wix, Squarespace, GoDaddy, or bloated WordPress themes that suffer from slow load times and poor SEO. We rebuild your site in modern, ultra-fast custom code that achieves 95+ Google PageSpeed scores.',
           },
           {
             q: 'Do you offer logo design and brand identity services in Langley?',
-            a: 'Yes. We provide complete brand identity design — logos, typography scales, color palettes, vehicle branding assets, and signage guidelines — so your business looks established and authoritative from day one.',
+            a: 'Yes. We provide complete brand identity and custom logo design — avoiding generic automated logo creators. We deliver vector logos, typography scales, color palettes, vehicle branding assets, and signage guidelines — so your business looks established and authoritative from day one.',
           },
           {
             q: 'Do you invoice in Canadian dollars?',

@@ -60,6 +60,10 @@ export const PILLARS = [
         q: 'What do I actually receive at the end?',
         a: 'Working files for the mark and type system, the colour rules, and one guidelines document your own team or future suppliers can work from without asking us first — not a single exported logo file.',
       },
+      {
+        q: 'Why invest in professional logo design instead of using an online logo creator?',
+        a: 'An automated logo creator generates generic, template-based icons that dozens of other businesses share and cannot be legally trademarked. Custom logo design creates unique, vector-crafted marks, scalable typography hierarchies, and complete brand identity guidelines tailored specifically to build long-term market authority and customer recognition.',
+      },
     ],
   },
   {
@@ -100,6 +104,10 @@ export const PILLARS = [
       {
         q: 'Do I own the site and code once it is finished?',
         a: 'Yes, outright. Fast, accessible and maintainable foundations, built to be handed to any developer afterward — not locked to this studio or to a proprietary platform.',
+      },
+      {
+        q: 'Why choose custom website design over a DIY website maker or free website builder?',
+        a: 'DIY website builders like Wix, Squarespace, or free website maker platforms seem convenient, but they lock you into proprietary hosting, bloated code, recurring plugin fees, and severe SEO limitations. Custom website design provides sub-second load times, superior Google search rankings, frictionless conversion paths, and 100% complete code ownership with zero monthly platform lock-in.',
       },
     ],
   },

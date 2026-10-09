@@ -130,6 +130,12 @@
 ### Q: What is included in a MANDER website?
 **A**: Every site includes custom mobile-first design, contact forms, and clean Next.js code; from 5 pages up, copywriting support and basic SEO; from the Growth plan up, local SEO, Google Business Profile optimization, Analytics, Search Console, and booking or CRM integration. You own the site, code, and domain outright.
 
+### Q: Why hire a custom website designer instead of using a DIY website maker or free website builder?
+**A**: DIY website builders and free website maker tools advertise simplicity, but they lock you into proprietary hosting, bloated code, slow load times, and poor Google rankings. MANDER delivers custom Next.js website design with sub-second load times, tailored local SEO, and 100% complete code and domain ownership.
+
+### Q: Do you offer logo design and brand identity services, and how does it compare to an online logo creator?
+**A**: Yes. Online logo creators generate generic clip-art icons that dozens of competitors share and cannot be legally trademarked. As a custom brand identity and logo designer, MANDER crafts bespoke vector marks, scalable typography systems, and complete brand identity guidelines tailored for long-term authority.
+
 ---
 
 ## 7. Technical Specifications
