@@ -118,20 +118,24 @@ const NA_REGIONS = [
             a: 'Large Vancouver agencies charge for downtown office rent, layers of account managers, and junior production staff. MANDER is an independent studio of senior designers and developers — you get faster turnarounds, direct collaboration, higher code quality, and invoices that are a fraction of downtown agency rates.',
           },
           {
-            q: 'Do you provide custom website design rather than generic templates?',
-            a: 'Yes. Every site we build is custom-designed and engineered with clean code (Next.js, Tailwind CSS) — no pre-bought WordPress templates or drag-and-drop page builders. That delivers sub-second load times, flawless mobile responsiveness, and superior organic search rankings.',
+            q: 'Do you provide custom website design rather than generic templates in Vancouver?',
+            a: 'Yes. Every custom website design we build in Vancouver is custom-engineered with clean code (Next.js, Tailwind CSS) — no pre-bought WordPress templates or drag-and-drop page builders. That delivers sub-second load times, flawless mobile responsiveness, and superior organic search rankings.',
           },
           {
             q: 'Can you migrate our site from Wix or Squarespace to a custom high-performance build?',
             a: 'Yes. Generic builders like Wix, Squarespace, and GoDaddy often suffer from sluggish loading speeds, code bloat, and limited SEO control. We rebuild your site on modern, clean code that achieves 95+ Google PageSpeed scores and gives you total technical freedom.',
           },
           {
-            q: 'Do you build Shopify stores and ecommerce sites for Vancouver brands?',
-            a: 'Yes. As a Shopify developer, we build custom Shopify storefronts and ecommerce platforms with optimized checkout flows, integrated analytics, and responsive product catalogs tailored to Canadian and international shoppers.',
+            q: 'Are you a Shopify developer and ecommerce website maker in Vancouver?',
+            a: 'Yes. As a Shopify developer and ecommerce website maker in Vancouver, we build custom Shopify storefronts and ecommerce platforms with optimized checkout flows, integrated analytics, and responsive product catalogs tailored to Canadian and international shoppers.',
           },
           {
-            q: 'Do you offer logo design and brand identity agency services in Vancouver?',
-            a: 'Yes. We deliver complete brand identity systems — logos, typography guidelines, color palettes, and digital asset kits — designed to give your company immediate market authority.',
+            q: 'What SEO services does your SEO agency provide as a local SEO expert in Vancouver?',
+            a: 'As a local SEO expert and boutique SEO agency in Vancouver, we optimize Google Business Profiles, build local schema structured data, and target high-converting search keywords so local customers find and contact your business first.',
+          },
+          {
+            q: 'Do you offer logo designer and brand identity agency services in Vancouver?',
+            a: 'Yes. As a brand identity agency and logo designer in Vancouver, we deliver complete brand identity systems — bespoke logos, typography guidelines, color palettes, and digital asset kits — designed to give your company immediate market authority.',
           },
           {
             q: 'Do you invoice in Canadian dollars?',
@@ -156,20 +160,24 @@ const NA_REGIONS = [
         ],
         faqs: [
           {
-            q: 'Do you offer affordable web design packages in Burnaby?',
-            a: 'Yes. We provide transparent fixed-price website packages for Burnaby small businesses — from fast 3-page Launch sites to full 10-page custom builds with local SEO and booking. Every project has a written scope with zero hourly overages.',
+            q: 'Do you offer affordable custom website design packages in Burnaby?',
+            a: 'Yes. We provide transparent fixed-price custom website design packages for Burnaby small businesses — from fast 3-page Launch sites to full 10-page custom builds with local SEO and booking. Every project has a written scope with zero hourly overages.',
           },
           {
-            q: 'Can you work as a local SEO expert for Burnaby businesses?',
-            a: 'Yes. We optimize your Google Business Profile and local search architecture so nearby customers searching for services in Burnaby, Metrotown, or Brentwood find you first.',
+            q: 'What SEO services do you provide as a local SEO expert and SEO agency in Burnaby?',
+            a: 'As a local SEO expert and SEO agency in Burnaby, we optimize your Google Business Profile, structure schema markup, and target local keywords so customers searching in Metrotown, Brentwood, or across Burnaby find and choose your business.',
           },
           {
-            q: 'Do you build Shopify stores and custom ecommerce websites in Burnaby?',
-            a: 'Yes. As a Shopify developer, we design and build custom Shopify and ecommerce websites for Burnaby retailers and makers, complete with secure payment processing, product collections, and local pickup.',
+            q: 'Do you build Shopify stores as an ecommerce website maker in Burnaby?',
+            a: 'Yes. As a Shopify developer and ecommerce website maker in Burnaby, we design and build custom Shopify and ecommerce websites for Burnaby retailers and makers, complete with secure payment processing, product collections, and local pickup.',
           },
           {
             q: 'Can you redesign our slow Wix, Squarespace, or WordPress site?',
             a: 'Yes. We specialize in modern website redesigns — migrating dated, slow website builder pages into sleek, custom-coded web experiences that load instantly.',
+          },
+          {
+            q: 'Do you offer logo designer and brand identity agency services in Burnaby?',
+            a: 'Yes. As a brand identity agency and logo designer in Burnaby, we create complete brand packages — custom logos, typography standards, color palettes, and digital asset libraries — built for long-term commercial authority.',
           },
           {
             q: 'Do you invoice in Canadian dollars?',
@@ -194,20 +202,24 @@ const NA_REGIONS = [
         ],
         faqs: [
           {
-            q: 'Do you design custom Shopify and ecommerce websites in Richmond?',
-            a: 'Yes. We build high-converting Shopify storefronts for Richmond retailers, distributors, and food brands with multi-currency checkout, mobile optimization, and product catalogs.',
+            q: 'Do you design custom Shopify and ecommerce websites as an ecommerce website maker in Richmond?',
+            a: 'Yes. As a Shopify developer and ecommerce website maker in Richmond, we build high-converting Shopify storefronts for Richmond retailers, distributors, and food brands with multi-currency checkout, mobile optimization, and product catalogs.',
           },
           {
             q: 'Can you build bilingual websites for Richmond businesses?',
             a: 'Yes. We build clean, modern bilingual sites (English with Chinese or French) with proper language alternates and SEO tags, ensuring seamless experiences for diverse audiences.',
           },
           {
-            q: 'Are your website packages affordable for Richmond small businesses?',
-            a: 'Yes. Every project is scoped at a fixed price agreed in advance — giving you the quality of an agency with the cost-efficiency and direct contact of an independent web designer.',
+            q: 'Are your custom website design packages affordable for Richmond small businesses?',
+            a: 'Yes. Every custom website design project is scoped at a fixed price agreed in advance — giving you the quality of an agency with the cost-efficiency and direct contact of an independent web designer.',
           },
           {
-            q: 'Do you provide local SEO and Google Business Profile optimization in Richmond?',
-            a: 'Yes. We optimize your Google Business Profile and local keywords so customers searching in Richmond or near YVR find your business in Maps and organic search.',
+            q: 'Do you provide local SEO services and SEO agency expertise in Richmond?',
+            a: 'Yes. As a local SEO expert and SEO agency in Richmond, we optimize your Google Business Profile and local keywords so customers searching in Richmond or near YVR find your business in Maps and organic search.',
+          },
+          {
+            q: 'Can you act as a logo designer and brand identity agency for Richmond companies?',
+            a: 'Yes. As a brand identity agency and logo designer in Richmond, we create bespoke vector marks, bilingual typography systems, and comprehensive brand identity guidelines that build trust across domestic and international markets.',
           },
           {
             q: 'Do you invoice Richmond clients in Canadian dollars?',
@@ -232,16 +244,20 @@ const NA_REGIONS = [
         ],
         faqs: [
           {
-            q: 'Do you build custom websites for outdoor and lifestyle brands in North Vancouver?',
-            a: 'Yes. We build image-rich, mobile-first websites and Shopify stores for outdoor brands, guides, and lifestyle retailers that capture the active spirit of the North Shore.',
+            q: 'Do you build custom website design for outdoor and lifestyle brands in North Vancouver?',
+            a: 'Yes. Every custom website design we deliver in North Vancouver features image-rich, mobile-first architectures and custom Shopify stores for outdoor brands, guides, and lifestyle retailers that capture the active spirit of the North Shore.',
           },
           {
-            q: 'Do you offer logo design and brand identity services in North Vancouver?',
-            a: 'Yes. As a brand identity agency, we create cohesive visual systems — logos, typography, color palettes, and digital style guides — designed to stand out in the Shipyards district and across the Lower Mainland.',
+            q: 'Do you offer logo designer and brand identity agency services in North Vancouver?',
+            a: 'Yes. As a brand identity agency and logo designer in North Vancouver, we create cohesive visual systems — bespoke logos, typography scales, color palettes, and digital style guides — designed to stand out in the Shipyards district and across the Lower Mainland.',
           },
           {
-            q: 'Can you help North Vancouver contractors and marine trades rank locally?',
-            a: 'Yes. Our local SEO services optimize your Google Business Profile and service pages to capture high-intent inquiries across North and West Vancouver.',
+            q: 'Can your SEO agency help North Vancouver contractors and marine trades with local SEO services?',
+            a: 'Yes. As a local SEO expert and boutique SEO agency, our local SEO services optimize your Google Business Profile and service pages to capture high-intent inquiries across North and West Vancouver.',
+          },
+          {
+            q: 'Are you a Shopify developer and ecommerce website maker in North Vancouver?',
+            a: 'Yes. As a Shopify developer and ecommerce website maker in North Vancouver, we build image-rich, mobile-first Shopify stores for outdoor brands, equipment retailers, and artisans with fast inventory and local checkout.',
           },
           {
             q: 'Do you build fast custom sites to replace slow Wix or Squarespace templates?',
@@ -275,28 +291,28 @@ const NA_REGIONS = [
             a: 'Yes. MANDER operates as an independent studio with team members based in Langley. You get the direct communication, personal dedication, and accessible pricing of a freelance web designer, backed by the reliability and code quality of senior full-stack developers.',
           },
           {
-            q: 'What affordable web design packages do you offer in Langley?',
-            a: 'We offer transparent, fixed-price website packages designed specifically for small businesses — from our Launch tier for emerging ventures to custom Starter and Growth plans with local SEO and booking. Every quote is fixed in writing with zero hidden fees, and you own the code, domain, and design outright.',
+            q: 'What custom website design and affordable web design packages do you offer in Langley?',
+            a: 'We offer transparent, fixed-price custom website design packages designed specifically for small businesses — from our Launch tier for emerging ventures to custom Starter and Growth plans with local SEO and booking. Every quote is fixed in writing with zero hidden fees, and you own the code, domain, and design outright.',
           },
           {
-            q: 'Do you work as a local SEO expert and consultant for Langley businesses?',
-            a: 'Yes. Our local SEO services cover full Google Business Profile optimization, local keyword strategy, schema markup, citation building, and Google Maps ranking. We help Langley companies rank in the local 3-pack for high-intent searches in their service areas.',
+            q: 'Do you operate as a local SEO expert and SEO agency in Langley?',
+            a: 'Yes. As a local SEO expert and boutique SEO agency in Langley, our SEO services cover Google Business Profile optimization, local keyword strategy, schema markup, citation building, and Google Maps ranking to help Langley companies rank #1 in the local 3-pack.',
           },
           {
             q: 'Do you provide web design and SEO for plumbers, landscapers, and contractors in Langley?',
             a: 'Yes — trades and home services are one of our core specialties in the Fraser Valley. We build mobile-first contractor sites with quick quote forms, click-to-call buttons, verified project galleries, and local SEO targeted at high-intent queries like "plumber Langley", "electrician Fraser Valley", and "landscaping contractor".',
           },
           {
-            q: 'Are you a Shopify developer or ecommerce website maker for Langley businesses?',
-            a: 'Yes. We design and launch custom Shopify stores for Langley retailers, agricultural producers, makers, and boutique brands. We handle store setup, custom theme styling, payment processing, product catalogs, and local pickup workflows at a fixed agreed price.',
+            q: 'Are you a Shopify developer and ecommerce website maker in Langley?',
+            a: 'Yes. As a Shopify developer and ecommerce website maker in Langley, we design and launch custom Shopify stores for Langley retailers, agricultural producers, makers, and boutique brands. We handle store setup, custom theme styling, payment processing, product catalogs, and local pickup workflows at a fixed agreed price.',
           },
           {
             q: 'Can you redesign a slow Wix, Squarespace, or WordPress website, or replace a DIY website builder?',
             a: 'Yes. Many local businesses outgrow DIY website builders and website makers like Wix, Squarespace, GoDaddy, or bloated WordPress themes that suffer from slow load times and poor SEO. We rebuild your site in modern, ultra-fast custom code that achieves 95+ Google PageSpeed scores.',
           },
           {
-            q: 'Do you offer logo design and brand identity services in Langley?',
-            a: 'Yes. We provide complete brand identity and custom logo design — avoiding generic automated logo creators. We deliver vector logos, typography scales, color palettes, vehicle branding assets, and signage guidelines — so your business looks established and authoritative from day one.',
+            q: 'Do you offer logo designer and brand identity agency services in Langley?',
+            a: 'Yes. As a brand identity agency and logo designer in Langley, we provide complete brand systems — avoiding generic automated logo creators. We deliver bespoke vector logos, typography scales, color palettes, vehicle branding assets, and signage guidelines — so your business looks authoritative from day one.',
           },
           {
             q: 'Do you invoice in Canadian dollars?',
@@ -321,12 +337,20 @@ const NA_REGIONS = [
         ],
         faqs: [
           {
-            q: 'Do you offer affordable web design for small business in Coquitlam?',
-            a: 'Yes. We specialize in affordable, high-return web design packages for small and independent businesses across Coquitlam, Port Coquitlam, and Port Moody. Every project is quoted at a transparent fixed price with zero surprises and no ongoing agency retainers.',
+            q: 'Do you offer custom website design and affordable web design for small business in Coquitlam?',
+            a: 'Yes. We deliver custom website design and affordable web design packages for small and independent businesses across Coquitlam, Port Coquitlam, and Port Moody. Every project is quoted at a transparent fixed price with zero surprises and no ongoing agency retainers.',
           },
           {
-            q: 'Can you set up a Shopify store as an ecommerce website maker in Coquitlam?',
-            a: 'Yes. We help Tri-Cities retailers, makers, and local brands launch on Shopify — configuring payment gateways, custom product variants, inventory syncing, and local pickup options with a clean, branded shopping experience.',
+            q: 'Are you a Shopify developer and ecommerce website maker in Coquitlam?',
+            a: 'Yes. As a Shopify developer and ecommerce website maker in Coquitlam, we help Tri-Cities retailers, makers, and local brands launch on Shopify — configuring payment gateways, custom product variants, inventory syncing, and local pickup options with a clean, branded shopping experience.',
+          },
+          {
+            q: 'What local SEO services do you provide as a local SEO expert and SEO agency in Coquitlam?',
+            a: 'As a local SEO expert and boutique SEO agency in Coquitlam, our SEO services optimize your Google Business Profile, structure rich JSON-LD schema, and target local Tri-Cities search terms so high-intent buyers find your business first on Google Search and Maps.',
+          },
+          {
+            q: 'Do you offer logo designer and brand identity agency services in Coquitlam?',
+            a: 'Yes. As a brand identity agency and logo designer in Coquitlam, we create complete brand packages — custom vector logos, typography standards, color palettes, and digital style guides — for local businesses, real estate teams, and craft breweries.',
           },
           {
             q: 'Do you design branding, logos, and websites for real estate in Coquitlam?',
@@ -371,16 +395,20 @@ const NA_REGIONS = [
             a: 'Yes. We build clean, accessible websites with patient intake forms, practitioner profiles, and appointment scheduling tailored for medical and wellness clinics.',
           },
           {
-            q: 'Do you offer affordable website design packages in New Westminster?',
-            a: 'Yes. We offer transparent fixed-price packages suited for established independent businesses and emerging startups alike, with zero hourly overages.',
+            q: 'Do you offer custom website design and affordable web design packages in New Westminster?',
+            a: 'Yes. We offer transparent fixed-price custom website design packages suited for established independent businesses, heritage shops, and emerging startups alike, with zero hourly overages.',
           },
           {
-            q: 'Do you provide local SEO and Google Maps optimization in New Westminster?',
-            a: 'Yes. We help Royal City businesses rank prominently on Google Search and Maps for local service queries, driving direct calls and enquiries.',
+            q: 'Do you operate as a local SEO expert and SEO agency in New Westminster?',
+            a: 'Yes. As a local SEO expert and boutique SEO agency in New Westminster, our SEO services help Royal City businesses rank prominently on Google Search and Google Maps for high-intent queries, driving direct client bookings and telephone inquiries.',
           },
           {
-            q: 'Can you create logos and brand identity for New West businesses?',
-            a: 'Yes. As a brand identity and logo designer, we build cohesive visual systems that honor your company’s heritage while modernizing your digital presence.',
+            q: 'Are you a Shopify developer and ecommerce website maker in New Westminster?',
+            a: 'Yes. As a Shopify developer and ecommerce website maker in New Westminster, we build high-converting Shopify stores and ecommerce websites for local merchants and boutique retailers with fast checkout, mobile-first design, and inventory sync.',
+          },
+          {
+            q: 'Do you provide logo designer and brand identity agency services in New Westminster?',
+            a: 'Yes. As a brand identity agency and logo designer in New Westminster, we build cohesive visual systems — custom logos, typographic hierarchies, color palettes, and print collateral — that honor Royal City heritage while modernizing your commercial appeal.',
           },
           {
             q: 'Do you invoice in Canadian dollars?',
